@@ -1,0 +1,64 @@
+# Project info
+site_name: BDP
+site_description: 'foobar'
+site_author: 'Betfair Data Scientists'
+# site_url: 'http://localhost:8000/'
+# Copyright
+copyright: 'Copyright &copy; 2016 - 2018'
+
+# Navigation
+nav:
+    - Home: index.md
+    - Resources: resources.md
+    - Reviews: 
+        - Bet Angel Tipping Automation: reviews/betAngelTip.md
+        - Bet Angel Ratings Automation: reviews/betAngelRatings.md
+    - Historic Data:
+        - Download & Extract the Data: historicdata/download.md
+        - Parsing the Data: historicdata/parse.md
+
+# Theme settings
+theme:
+    name: 'material'
+    # custom_dir: 'custom_theme/'
+    language: 'en'
+    palette:
+        primary: 'blue grey'
+        accent: 'red'
+    font:
+        text: 'Roboto'
+        code: 'Roboto Mono'
+    feature:
+        tabs: true
+
+# extra_css:
+#     - css/extra.css
+
+# Extensions
+markdown_extensions:
+    - admonition
+    - codehilite:
+        guess_lang: false
+        use_pygments: true
+        noclasses: true
+        # pygments_style: onedark
+    - footnotes
+    - meta
+    - toc:
+        permalink: true
+    - pymdownx.arithmatex
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.emoji:
+        emoji_generator: !!python/name:pymdownx.emoji.to_svg
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.tilde

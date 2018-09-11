@@ -11,10 +11,10 @@ nav:
     - Resources: 
         External data & dev resources: index.md
     - Third party tools: 
-        - Bet Angel - Tipping Automation: reviews/betAngelTip.md
-        - Bet Angel - Ratings Automation: reviews/betAngelRatings.md
+        - Bet Angel - Tipping Automation: thirdPartyTools/betAngelTippingAutomation.md
+        - Bet Angel - Ratings Automation: thirdPartyTools/betAngelRatingsAutomation.md
     - Historic Data:
-        - Download & Extract the Data: historicdata/download.md
+        - Download & Extract the Data: historicData/downloadHistoricData.md
 
 # Theme settings
 theme:

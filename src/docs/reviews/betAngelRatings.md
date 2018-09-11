@@ -19,7 +19,7 @@ Here I'll step through how I went about getting Bet Angel Pro to place bets usin
 
 !!! note "Resources"
     - Tips: [Betfair Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/)
-    - Rules: here's the spreadsheet I set up with my rules included, but you'll need to tweak it to suit your strategy and the format of your ratings 
+    - Rules: [here's the spreadsheet](./assets/BetAngel_RatingsAutomation.xls) I set up with my macros and rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings 
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
 
 ---
@@ -38,7 +38,7 @@ Here I'm using the ratings shared by our Data Scientists on the Hub. This makes 
 
 If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.
 
-Wherever your ratings come from, you'll need to open up the BetAngel template (or if you prefer you can use this version that I edited for this strategy), and then create a new sheet and copy in your ratings. In my example I've called this tab RATINGS.
+Wherever your ratings come from, you'll need to open up the BetAngel template (or if you prefer you can use this version [I created for this strategy](./assets/BetAngel_RatingsAutomation.xls)), and then create a new sheet and copy in your ratings. In my example I've called this tab RATINGS.
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExample.png)
 
@@ -176,9 +176,9 @@ Stepping through each step:
 
 !!! note "Excel functions"
 
-    - [IF statement: IF(if this is true,do this,else do this)](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2)
-    - [AND statement: AND(this is true,so is this,so is this) - returns true or false](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9)
-    - [Absolute references: if you're copy/pasting forumlas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the foruma is being pasted into.](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9)
+    - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true,do this,else do this)
+    - [AND statement:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true,so is this,so is this) - returns true or false
+    - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting forumlas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the foruma is being pasted into.
 
 ---
 ### Preparing the spreadsheet
@@ -187,7 +187,7 @@ You need to copy/paste these three formulas in the relevant cell on each green r
 
 **Trigger bet rule**
 
-This is the trigger on Excel forumula we created earlier, and it needs to go in column L (L9 for the first runner).
+This is the trigger on Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).
 
 ``` excel tab="Multi line"
 =IF(
@@ -247,7 +247,7 @@ Open the 'Excel' tab in Guardian, then use the browse functionality to choose th
 
 Here are some Bet Angel features that you'll need to consider:
 
-- **Clearing status cells:** if there is a value in the status cell then no bets will place for that runner, to avoid placing duplicate bets accidentally. As we want to use the same sheet for multiple races, and our bet trigger rule includes a check to see whether we already have a bet on the runner, I created a macro in the Excel sheet that auto-clears the status cells every 5 seconds. This was based on some logic I found in [a forum discussion on Bet Angel](https://www.betangel.com/forum/viewtopic.php?f=31&t=1879&start=10).
+- **Clearing status cells:** if there is a value in the status cell then no bets will place for that runner, to avoid placing duplicate bets accidentally. As we want to use the same sheet for multiple races, and our bet trigger rule includes a check to see whether we already have a bet on the runner, I created a macro in [the Excel sheet](./assets/BetAngel_RatingsAutomation.xls) that auto-clears the status cells every 5 seconds. This was based on some logic I found in [a forum discussion on Bet Angel](https://www.betangel.com/forum/viewtopic.php?f=31&t=1879&start=10).
 - **Turning off bet confirmation:** unless you want to manually confirm each individual bet placed (which you definitely might want to leave turned on until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program.
 - **Editing the spreadsheet:** the spreadsheet really doesn't like it when you try and edit it 'live' - make sure you untick 'connect' on the Excel tab in Guardian while you're editing the spreadsheet, save changes, then tick 'connect' again when you've finished your edits. 
 

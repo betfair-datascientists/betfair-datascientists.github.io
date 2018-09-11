@@ -1,21 +1,20 @@
 # Project info
-site_name: BDP
-site_description: 'foobar'
+site_name: Betfair Data Scientists
+# site_description: 'foobar'
 site_author: 'Betfair Data Scientists'
-# site_url: 'http://localhost:8000/'
-# Copyright
-copyright: 'Copyright &copy; 2016 - 2018'
+site_url: 'https://betfair-datascientists.github.io'
+# site_dir: '../.'
+copyright: 'Copyright &copy; 2018'
 
 # Navigation
 nav:
-    - Home: index.md
-    - Resources: resources.md
-    - Reviews: 
-        - Bet Angel Tipping Automation: reviews/betAngelTip.md
-        - Bet Angel Ratings Automation: reviews/betAngelRatings.md
+    - Resources: 
+        External data & dev resources: index.md
+    - Third party tools: 
+        - Bet Angel - Tipping Automation: reviews/betAngelTip.md
+        - Bet Angel - Ratings Automation: reviews/betAngelRatings.md
     - Historic Data:
         - Download & Extract the Data: historicdata/download.md
-        - Parsing the Data: historicdata/parse.md
 
 # Theme settings
 theme:
@@ -23,8 +22,8 @@ theme:
     # custom_dir: 'custom_theme/'
     language: 'en'
     palette:
-        primary: 'blue grey'
-        accent: 'red'
+        primary: 'yellow'
+        accent: 'blue'
     font:
         text: 'Roboto'
         code: 'Roboto Mono'

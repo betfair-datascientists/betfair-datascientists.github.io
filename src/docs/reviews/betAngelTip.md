@@ -16,13 +16,13 @@ Here I'll step through how I went about getting Bet Angel Pro to place bets on t
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipHub.png)
 
-After digging around on [Bet Angel's forum](https://www.betangel.com/forum) and [blog](https://www.betangel.com/blog_wp/tag/automation/), I found an article on [how to create a generic automation rule](https://www.betangel.com/forum/viewtopic.php?f=37&t=15358), which I found useful in helping me learn how to use the tool to automate these tips. I also found a rule that someone else had written to [back or lay a selection at BSP](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668), which is what I used as the basis for the rule I'm using here. 
+After digging around on [Bet Angel's forum](https://www.betangel.com/forum) and [blog](https://www.betangel.com/blog_wp/tag/automation/), I found an article on [how to create a generic automation rule](https://www.betangel.com/forum/viewtopic.php?f=37&t=15358), which I found useful in helping me learn how to use the tool to automate these tips. I also found a rule that someone else had written to [back or lay a selection at BSP](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668), which is what I used as the basis for the [rule I'm using here](./assets/BetAngelTippingRule.baf). 
 
 If you want to follow along and try this approach yourself you'll need to download [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/) and sign up for either a subscription or at least a test period. They have a [14 day free trial](https://www.betangel.com/trial/) that's valuable for establishing whether this tool will do what you want it to for your specific strategy. 
 
 !!! note "Resources"
     - Tips: [Betfair Data Scientists' Racing Prediction Model](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/)
-    - Rules: rule file, based on [Bet Angel Automation - Horse racing - Pre off : Back or Lay at Betfair SP Guardian Automation Bot](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668)
+    - Rules: [rule file](./assets/BetAngelTippingRule.baf), based on [Bet Angel Automation - Horse racing - Pre off : Back or Lay at Betfair SP Guardian Automation Bot](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668)
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
 
 --- 
@@ -34,13 +34,13 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipPro.png)
 
-I've created an automated rule that you can download here, roughly based on the one discussed in [this forum post](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668) (note: you will need to create a Bet Angel forum account to be able to download the rule). 
+I've created an [automated rule](./assets/BetAngelTippingRule.baf) that you can download here, roughly based on the one discussed in [this forum post](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668) (note: you will need to create a Bet Angel forum account to be able to download the rule). 
 
 #### Setting up your rules
 
 - open up the 'Automation' tab
 - click 'import a rule'
-- navigate to the rule file you just downloaded from the forum post (probably in your Downloads folder by default)
+- navigate to the [rule file you just downloaded](./assets/BetAngelTippingRule.baf) (probably in your Downloads folder by default)
 - upload the rule 
 - click on the 'rules file name' and select the rule file you just uploaded
 

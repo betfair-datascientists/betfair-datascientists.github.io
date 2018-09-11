@@ -1,17 +1,16 @@
-# Bet Angel - ratings automation
+# Bet Angel - Ratings Automation
 
 ---
-### Automating a ratings based strategy using Bet Angel
+### Automating a ratings based strategy using Bet Angel Pro
 
+Ratings are the basis for a lot of betting strategies, but they can be paricularly painful and time-consuming to implement manually. This makes them ideal for automation, where you use a program to place bets on your behalf while you get on with other things. 
 
-We all love getting some good racing tips, but who has time to sit and place bets all day? Wouldn't it be easier if you could take those tips and get a program to automatically place the bets on your behalf? 
-
-This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is my first time using Bet Angel for this approach, and am very open to any thoughts about more effecitve ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
+Bet Angel Pro has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what I've used here to automate these ratings. There are so many different ways to use this part of Bet Angel and I'm very open to any thoughts about more effecitve ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
 ### The plan
 
-Let's say you have a set of tips that you want to bet on each day, but don't want to have to go to the hassle of manually placing those bets. Bet Angel Pro's 'Guardian' funcationality has the capacity to let you create rules that can then be applied to specific selections.
+I'm using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so I'm going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Bet Angel Pro's 'Guardian' feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what I've used for the automation here. 
 
 Here I'll step through how I went about getting Bet Angel Pro to place bets using the ratings from [Betfair's DataScientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program running and be able to walk away.
 
@@ -34,11 +33,11 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 ---
 ### Finding & formatting ratings
 
-Here I'm using the ratings shared by our Data Scientists on the Hub. This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. 
+Here I'm using the [ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. 
 
 If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.
 
-Wherever your ratings come from, you'll need to open up the BetAngel template (or if you prefer you can use this version [I created for this strategy](./assets/BetAngel_RatingsAutomation.xls)), and then create a new sheet and copy in your ratings. In my example I've called this tab RATINGS.
+Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact wtih Bet Angel. Here I'm using a [spreadsheet I edited for this strategy](./assets/BetAngel_RatingsAutomation.xls)), and I've included a tab called RATINGS where you can copy in the runner names and ratings.
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExample.png)
 
@@ -47,9 +46,9 @@ Wherever your ratings come from, you'll need to open up the BetAngel template (o
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. 
 
-I'm using the default Bet Angel template Excel sheet to implement my strategy to make betting decisions based on my ratings. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. 
+I'm using a [customised version of the default Bet Angel template Excel sheet](./assets/BetAngel_RatingsAutomation.xls) to implement my strategy, so it can make betting decisions based on my ratings. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. 
 
-Here's how I used Excel to implement my set of rules. 
+This is how I used Excel to implement my set of rules. 
 
 
 #### Trigger to place bet
@@ -129,7 +128,7 @@ Stepping through each step:
 )
 ```
 
-- **Existing bet:** checking whether a bet's already been placed on the runner (a number show in column AB when there's a bet on that runner)
+- **No existing bet:** checking whether a bet's already been placed on the runner (a number show in column AB when there's a bet on that runner)
 
 ``` excel hl_lines="6"
 =IF(
@@ -144,7 +143,7 @@ Stepping through each step:
 )
 ```
 
-- **In play:** checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place.
+- **Not in play:** checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place.
 
 ``` excel hl_lines="7"
 =IF(
@@ -243,7 +242,7 @@ Open the 'Excel' tab in Guardian, then use the browse functionality to choose th
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsSetUp.png)
 
 ---
-### To note about Bet Angel
+### Bet Angel features
 
 Here are some Bet Angel features that you'll need to consider:
 
@@ -256,9 +255,7 @@ Here are some Bet Angel features that you'll need to consider:
 
 There are parts of this approach that I'm still trying to get to work to my liking, and I'll update this article as I find better solutions. If you have any suggestions for improvements please reach out to bdp@betfair.com.au - I'd love to hear your thoughts. 
 
-These are some of the issues I'm having that I'm still looking for solutions to:
-
-- The spreadsheet only binds with one market at a time, so if one market gets delayed and runs overtime the program won't be able to move on to the next market - I missed some races because of this. 
+For example, the spreadsheet only binds with one market at a time, so if one market gets delayed and runs overtime the program won't be able to move on to the next market - I missed some races because of this. 
 
 ---
 ### And you're set!

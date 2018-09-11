@@ -1,7 +1,7 @@
-# Bet Angel - tipping automation
+# Bet Angel - Tipping Automation
 
 ---
-## Automating a (non-ratings based) tipping strategy using Bet Angel
+## Automating a (non-ratings based) tipping strategy using Bet Angel Pro
 
 We all love getting some good racing tips, but who has time to sit and place bets all day? Wouldn't it be easier if you could take those tips and get a program to automatically place the bets on your behalf? 
 

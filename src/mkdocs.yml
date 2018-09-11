@@ -19,11 +19,13 @@ nav:
 # Theme settings
 theme:
     name: 'material'
+    favicon: 'img/BetfairFavicon.ico'
+    logo: 'img/BetfairIcon.jpg'
     # custom_dir: 'custom_theme/'
     language: 'en'
     palette:
-        primary: 'yellow'
-        accent: 'blue'
+        primary: 'amber'
+        accent: 'light blue'
     font:
         text: 'Roboto'
         code: 'Roboto Mono'

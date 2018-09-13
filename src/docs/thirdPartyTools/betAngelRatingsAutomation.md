@@ -37,7 +37,7 @@ Here I'm using the [ratings shared by our Data Scientists on the Hub](https://ww
 
 If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.
 
-Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact wtih Bet Angel. Here I'm using a [spreadsheet I edited for this strategy](./assets/BetAngel_RatingsAutomation.xls)), and I've included a tab called RATINGS where you can copy in the runner names and ratings.
+Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact wtih Bet Angel. Here I'm using a [spreadsheet I edited for this strategy](./assets/BetAngel_RatingsAutomation.xls), and I've included a tab called RATINGS where you can copy in the runner names and ratings.
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExample.png)
 
@@ -59,7 +59,7 @@ In short, I want to back runners when:
 - they have a rating less than 5
 - the scheduled event start time is less than 2 minutes away 
 - there isn't a bet already placed on the runner 
-- the event isn't in play
+- the event isn't in play 
 
 
 **This is my trigger on Excel formula:**
@@ -83,7 +83,7 @@ In short, I want to back runners when:
 
 Stepping through each step:
 
-- **Price > rating:** check whether the available to back price is better tha the runner's rating multipled by 1.1 (10%) - it does this by using the runner name in column B and looking up the corresponding rating from the RATINGS sheet
+- **Price > rating:** check whether the available to back price is better than the runner's rating multipled by 1.1 (10%) - I do this by using the runner name in column B and looking up the corresponding rating for that runner from the RATINGS sheet. 
 
 ``` excel hl_lines="3"
 =IF(
@@ -97,6 +97,20 @@ Stepping through each step:
     ""
 )
 ```
+
+!!! note "Updating references to suit your ratings format"
+    If your ratings are formatted differently to my simple runner **name | rating** layout you can easily edit the formula to refence the relevant column directly, instead of changing your ratings to fit the formula. 
+    Let's say your ratings sheet is set out like this: **race date | venue | runner name | last race time | weight | rating** 
+    
+    Here's the set up of the formula:
+    
+    ```RATINGS!B:B[your rating],MATCH(B9,RATINGS!A:A[runner name],0))```
+
+    So your edited formula would be:
+
+    ```RATINGS!F:F,MATCH(B9,RATINGS!C:C,0))```
+
+    You need to make sure that you updated these references both in the this part of the formula, and in the next step too.  
 
 - **Rating < 5:** check whether the runner's rating is less than 5 (because I only want to bet on the favourite few runners)
 
@@ -113,7 +127,7 @@ Stepping through each step:
 )
 ```
 
-- **Time < 2:** check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 of Sheet2.
+- **Time < 2 mins:** check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 of Sheet2, where I've already done the calculations for you.
 
 ``` excel hl_lines="5"
 =IF(
@@ -128,7 +142,7 @@ Stepping through each step:
 )
 ```
 
-- **No existing bet:** checking whether a bet's already been placed on the runner (a number show in column AB when there's a bet on that runner)
+- **No existing bet:** checking whether a bet's already been placed on the runner, as I only want the bet to place once. The number of bets matched on the runner shows in column AB - obviously there are other ways you can check this, but whichever one you go with you'll need a check in place to make sure your bets don't fire again and again, unless that's part of your strategy! This is particularly important because I've created a macro that clears the 'status' cells in column O, which is what Bet Angel uses by default to avoid multiple bets going on unintentionally. 
 
 ``` excel hl_lines="6"
 =IF(
@@ -143,7 +157,7 @@ Stepping through each step:
 )
 ```
 
-- **Not in play:** checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place.
+- **Not in play:** checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. I appreciate that greyhound races don't go in play, but I wanted this check in place anyway in case I (or you!) wanted to use a version of this strategy on horse racing in the future. 
 
 ``` excel hl_lines="7"
 =IF(
@@ -158,7 +172,7 @@ Stepping through each step:
 )
 ```
 
-- **Result:** if all of this is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will stay blank and nothing will happen
+- **Result:** if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.
 
 ``` excel hl_lines="8 9"
 =IF(
@@ -175,18 +189,16 @@ Stepping through each step:
 
 !!! note "Excel functions"
 
-    - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true,do this,else do this)
-    - [AND statement:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true,so is this,so is this) - returns true or false
-    - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting forumlas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the foruma is being pasted into.
+    - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true, do this, else do this)
+    - [AND statement:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true, and so is this, and so is this) - returns true or false
+    - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. 
 
 ---
 ### Preparing the spreadsheet
 
-You need to copy/paste these three formulas in the relevant cell on each green row - I did a few extra rows than the runner in the markets I was looking at, just in case. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula in each cell. 
+You need to copy/paste these three formulas into the relevant cell on each green row - I did a few extra rows than the number of runners in the markets I was looking at, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
 
-**Trigger bet rule**
-
-This is the trigger on Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).
+- **Trigger bet rule:** this is the bet trigger Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).
 
 ``` excel tab="Multi line"
 =IF(
@@ -207,17 +219,13 @@ This is the trigger on Excel formula we created earlier, and it needs to go in c
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel1.png)
 
-**Odds**
-
-Initially I was using the rating as the price, but I got a bet placement error for some of the selections - eventually I realised that the odds need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake I'm now just using the current back odds (cell G9 for the first runner). This goes in column M (M9 for the first runner).
+- **Odds:** initially I was using the runner's rating as the price, but I got a bet placement error for some of the selections - eventually I realised that the odds the bet's being placed at need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake I'm now just using the currently available back odds (cell G9 for the first runner). This goes in column M (M9 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest ['tick' price](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements) - if you do this, please do [send me](mailto:bdp@betfair.com.au) through your formula and I'll add it to this article.
 
 ```=G9```
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel2.png)
 
-**Stake**
-
-It's up to you what staking approach you want to take. I've kept it simple, and am using a 'to win' strategy. Each bet aims to win $10 at the currently available odds. The formula divides $10 by the current available best back odds (cell G9 for the first runner) minus one to get the stake required to win $10. This goes in column N (N9 for the first runner).
+- **Stake:** it's completely up to you what staking approach you want to take. I've kept it simple, and am just using a 'to win' strategy. Each bet aims to win $10 on that runner at the curret odds. The formula divides $10 by the current available best back odds (cell G9 for the first runner) minus one to get the stake required to win $10. This goes in column N (N9 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
 ```=10/(G9-1)```
 
@@ -226,20 +234,31 @@ It's up to you what staking approach you want to take. I've kept it simple, and 
 ---
 ### Selecting markets
 
-I used the markets menu to navigate to the tracks I have ratings for, then multi-slected all the win markets by holding down the control key and clicking on each win market.
+I used the markets menu in the Guardian tool to navigate to the tracks I had ratings for, then multi-slected all the win markets by holding down the control key and clicking on the different markets.
 
-If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab. 
+If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab to do this more efficiently. 
 
 Once you've chosen the races you're interested in click the 'add' button and you'll see them appear in the main body of the screen. 
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngeltipMarkets.png)
+Make sure you sort the races by start time, so Bet Angel will automatically move through them in the right order and allocate the next race to the spreadsheet once the previous one ends. 
+
+You do this by clicking on the 'start time' column heading until the races are in time order (when the arrow is pointing up).
+
+![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsMarketTimes.png)
 
 ---
 ### Linking the spreadsheet
 
-Open the 'Excel' tab in Guardian, then use the browse functionality to choose the spreadsheet you've been working on. From there, click on 'open workbook', then make sure you have 'connect', 'auto-bind Bet Angel sheets and 'auto-clear Bet Angel bindings' all selected.
+Open the 'Excel' tab in Guardian, then use the browse functionality to choose the spreadsheet you've been working on. From there, click on 'open workbook', then make sure you have 'connect', 'auto-bind Bet Angel sheets and 'auto-clear Bet Angel bindings' all selected. You also need to make sure that the first race has the 'Bet Angel' tab selected in the 'Excel sheet' column - from there it will then automatically update this for each race as one finishes and the next one begins. 
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsSetUp.png)
+
+---
+### And you're set!
+
+Once you've set your spreadsheet set up and you're comfortable using Bet Angel Pro it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.
+
+*Note: you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.*
 
 ---
 ### Bet Angel features
@@ -247,8 +266,8 @@ Open the 'Excel' tab in Guardian, then use the browse functionality to choose th
 Here are some Bet Angel features that you'll need to consider:
 
 - **Clearing status cells:** if there is a value in the status cell then no bets will place for that runner, to avoid placing duplicate bets accidentally. As we want to use the same sheet for multiple races, and our bet trigger rule includes a check to see whether we already have a bet on the runner, I created a macro in [the Excel sheet](./assets/BetAngel_RatingsAutomation.xls) that auto-clears the status cells every 5 seconds. This was based on some logic I found in [a forum discussion on Bet Angel](https://www.betangel.com/forum/viewtopic.php?f=31&t=1879&start=10).
-- **Turning off bet confirmation:** unless you want to manually confirm each individual bet placed (which you definitely might want to leave turned on until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program.
-- **Editing the spreadsheet:** the spreadsheet really doesn't like it when you try and edit it 'live' - make sure you untick 'connect' on the Excel tab in Guardian while you're editing the spreadsheet, save changes, then tick 'connect' again when you've finished your edits. 
+- **Turning off bet confirmation:** unless you want to manually confirm each individual bet you're placing (which you definitely might want to do until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program to change the default confirmation behaviour.
+- **Editing the spreadsheet:** the spreadsheet really doesn't like it when you try and edit it 'live', so make sure you untick 'connect' on the Excel tab in Guardian before you make any changes, save the sheet, then tick 'connect' again once you've finished your edits. 
 
 ---
 ### Areas for improvement
@@ -256,13 +275,6 @@ Here are some Bet Angel features that you'll need to consider:
 There are parts of this approach that I'm still trying to get to work to my liking, and I'll update this article as I find better solutions. If you have any suggestions for improvements please reach out to bdp@betfair.com.au - I'd love to hear your thoughts. 
 
 For example, the spreadsheet only binds with one market at a time, so if one market gets delayed and runs overtime the program won't be able to move on to the next market - I missed some races because of this. 
-
----
-### And you're set!
-
-Once you've set your spreadsheet set up and you're comfortable using Bet Angel Pro it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day.
-
-Note: you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
 
 ---
 ### What next? 

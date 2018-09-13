@@ -396,6 +396,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#and-youre-set" title="And you're set!" class="md-nav__link">
+    And you're set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bet-angel-features" title="Bet Angel features" class="md-nav__link">
     Bet Angel features
   </a>
@@ -405,13 +412,6 @@
         <li class="md-nav__item">
   <a href="#areas-for-improvement" title="Areas for improvement" class="md-nav__link">
     Areas for improvement
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#and-youre-set" title="And you're set!" class="md-nav__link">
-    And you're set!
   </a>
   
 </li>
@@ -572,6 +572,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#and-youre-set" title="And you're set!" class="md-nav__link">
+    And you're set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bet-angel-features" title="Bet Angel features" class="md-nav__link">
     Bet Angel features
   </a>
@@ -581,13 +588,6 @@
         <li class="md-nav__item">
   <a href="#areas-for-improvement" title="Areas for improvement" class="md-nav__link">
     Areas for improvement
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#and-youre-set" title="And you're set!" class="md-nav__link">
-    And you're set!
   </a>
   
 </li>
@@ -650,7 +650,7 @@
 <h3 id="finding-formatting-ratings">Finding &amp; formatting ratings<a class="headerlink" href="#finding-formatting-ratings" title="Permanent link">&para;</a></h3>
 <p>Here I'm using the <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">ratings shared by our Data Scientists on the Hub</a>. This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. </p>
 <p>If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.</p>
-<p>Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact wtih Bet Angel. Here I'm using a <a href="../assets/BetAngel_RatingsAutomation.xls">spreadsheet I edited for this strategy</a>), and I've included a tab called RATINGS where you can copy in the runner names and ratings.</p>
+<p>Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact wtih Bet Angel. Here I'm using a <a href="../assets/BetAngel_RatingsAutomation.xls">spreadsheet I edited for this strategy</a>, and I've included a tab called RATINGS where you can copy in the runner names and ratings.</p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExample.png" /></p>
 <hr />
 <h3 id="writing-a-rule">Writing a rule<a class="headerlink" href="#writing-a-rule" title="Permanent link">&para;</a></h3>
@@ -664,7 +664,7 @@
 <li>they have a rating less than 5</li>
 <li>the scheduled event start time is less than 2 minutes away </li>
 <li>there isn't a bet already placed on the runner </li>
-<li>the event isn't in play</li>
+<li>the event isn't in play </li>
 </ul>
 <p><strong>This is my trigger on Excel formula:</strong></p>
 <div class="superfences-tabs">
@@ -688,7 +688,7 @@
 </div>
 <p>Stepping through each step:</p>
 <ul>
-<li><strong>Price &gt; rating:</strong> check whether the available to back price is better tha the runner's rating multipled by 1.1 (10%) - it does this by using the runner name in column B and looking up the corresponding rating from the RATINGS sheet</li>
+<li><strong>Price &gt; rating:</strong> check whether the available to back price is better than the runner's rating multipled by 1.1 (10%) - I do this by using the runner name in column B and looking up the corresponding rating for that runner from the RATINGS sheet. </li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -702,6 +702,16 @@
 )
 </pre></div>
 
+<div class="admonition note">
+<p class="admonition-title">Updating references to suit your ratings format</p>
+<p>If your ratings are formatted differently to my simple runner <strong>name | rating</strong> layout you can easily edit the formula to refence the relevant column directly, instead of changing your ratings to fit the formula. 
+Let's say your ratings sheet is set out like this: <strong>race date | venue | runner name | last race time | weight | rating</strong> </p>
+<p>Here's the set up of the formula:</p>
+<p><code>RATINGS!B:B[your rating],MATCH(B9,RATINGS!A:A[runner name],0))</code></p>
+<p>So your edited formula would be:</p>
+<p><code>RATINGS!F:F,MATCH(B9,RATINGS!C:C,0))</code></p>
+<p>You need to make sure that you updated these references both in the this part of the formula, and in the next step too.  </p>
+</div>
 <ul>
 <li><strong>Rating &lt; 5:</strong> check whether the runner's rating is less than 5 (because I only want to bet on the favourite few runners)</li>
 </ul>
@@ -718,7 +728,7 @@
 </pre></div>
 
 <ul>
-<li><strong>Time &lt; 2:</strong> check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of Sheet2.</li>
+<li><strong>Time &lt; 2 mins:</strong> check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of Sheet2, where I've already done the calculations for you.</li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -733,7 +743,7 @@
 </pre></div>
 
 <ul>
-<li><strong>No existing bet:</strong> checking whether a bet's already been placed on the runner (a number show in column AB when there's a bet on that runner)</li>
+<li><strong>No existing bet:</strong> checking whether a bet's already been placed on the runner, as I only want the bet to place once. The number of bets matched on the runner shows in column AB - obviously there are other ways you can check this, but whichever one you go with you'll need a check in place to make sure your bets don't fire again and again, unless that's part of your strategy! This is particularly important because I've created a macro that clears the 'status' cells in column O, which is what Bet Angel uses by default to avoid multiple bets going on unintentionally. </li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -748,7 +758,7 @@
 </pre></div>
 
 <ul>
-<li><strong>Not in play:</strong> checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place.</li>
+<li><strong>Not in play:</strong> checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. I appreciate that greyhound races don't go in play, but I wanted this check in place anyway in case I (or you!) wanted to use a version of this strategy on horse racing in the future. </li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -763,7 +773,7 @@
 </pre></div>
 
 <ul>
-<li><strong>Result:</strong> if all of this is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will stay blank and nothing will happen</li>
+<li><strong>Result:</strong> if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -780,16 +790,17 @@
 <div class="admonition note">
 <p class="admonition-title">Excel functions</p>
 <ul>
-<li><a href="https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2">IF statement:</a> IF(if this is true,do this,else do this)</li>
-<li><a href="https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9">AND statement:</a> AND(this is true,so is this,so is this) - returns true or false</li>
-<li><a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">Absolute references:</a> if you're copy/pasting forumlas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the foruma is being pasted into.</li>
+<li><a href="https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2">IF statement:</a> IF(if this is true, do this, else do this)</li>
+<li><a href="https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9">AND statement:</a> AND(this is true, and so is this, and so is this) - returns true or false</li>
+<li><a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">Absolute references:</a> if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. </li>
 </ul>
 </div>
 <hr />
 <h3 id="preparing-the-spreadsheet">Preparing the spreadsheet<a class="headerlink" href="#preparing-the-spreadsheet" title="Permanent link">&para;</a></h3>
-<p>You need to copy/paste these three formulas in the relevant cell on each green row - I did a few extra rows than the runner in the markets I was looking at, just in case. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula in each cell. </p>
-<p><strong>Trigger bet rule</strong></p>
-<p>This is the trigger on Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).</p>
+<p>You need to copy/paste these three formulas into the relevant cell on each green row - I did a few extra rows than the number of runners in the markets I was looking at, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your <a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">relative and absolute references straight</a>. </p>
+<ul>
+<li><strong>Trigger bet rule:</strong> this is the bet trigger Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).</li>
+</ul>
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Multi line</label>
@@ -810,40 +821,44 @@
 </pre></div></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel1.png" /></p>
-<p><strong>Odds</strong></p>
-<p>Initially I was using the rating as the price, but I got a bet placement error for some of the selections - eventually I realised that the odds need to be <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">valid Betfair 'ticks'</a>. For simplicity's sake I'm now just using the current back odds (cell G9 for the first runner). This goes in column M (M9 for the first runner).</p>
+<ul>
+<li><strong>Odds:</strong> initially I was using the runner's rating as the price, but I got a bet placement error for some of the selections - eventually I realised that the odds the bet's being placed at need to be <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">valid Betfair 'ticks'</a>. For simplicity's sake I'm now just using the currently available back odds (cell G9 for the first runner). This goes in column M (M9 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">'tick' price</a> - if you do this, please do <a href="mailto:bdp@betfair.com.au">send me</a> through your formula and I'll add it to this article.</li>
+</ul>
 <p><code>=G9</code></p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel2.png" /></p>
-<p><strong>Stake</strong></p>
-<p>It's up to you what staking approach you want to take. I've kept it simple, and am using a 'to win' strategy. Each bet aims to win $10 at the currently available odds. The formula divides $10 by the current available best back odds (cell G9 for the first runner) minus one to get the stake required to win $10. This goes in column N (N9 for the first runner).</p>
+<ul>
+<li><strong>Stake:</strong> it's completely up to you what staking approach you want to take. I've kept it simple, and am just using a 'to win' strategy. Each bet aims to win $10 on that runner at the curret odds. The formula divides $10 by the current available best back odds (cell G9 for the first runner) minus one to get the stake required to win $10. This goes in column N (N9 for the first runner). We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
+</ul>
 <p><code>=10/(G9-1)</code></p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel3.png" /></p>
 <hr />
 <h3 id="selecting-markets">Selecting markets<a class="headerlink" href="#selecting-markets" title="Permanent link">&para;</a></h3>
-<p>I used the markets menu to navigate to the tracks I have ratings for, then multi-slected all the win markets by holding down the control key and clicking on each win market.</p>
-<p>If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab. </p>
+<p>I used the markets menu in the Guardian tool to navigate to the tracks I had ratings for, then multi-slected all the win markets by holding down the control key and clicking on the different markets.</p>
+<p>If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab to do this more efficiently. </p>
 <p>Once you've chosen the races you're interested in click the 'add' button and you'll see them appear in the main body of the screen. </p>
-<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngeltipMarkets.png" /></p>
+<p>Make sure you sort the races by start time, so Bet Angel will automatically move through them in the right order and allocate the next race to the spreadsheet once the previous one ends. </p>
+<p>You do this by clicking on the 'start time' column heading until the races are in time order (when the arrow is pointing up).</p>
+<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsMarketTimes.png" /></p>
 <hr />
 <h3 id="linking-the-spreadsheet">Linking the spreadsheet<a class="headerlink" href="#linking-the-spreadsheet" title="Permanent link">&para;</a></h3>
-<p>Open the 'Excel' tab in Guardian, then use the browse functionality to choose the spreadsheet you've been working on. From there, click on 'open workbook', then make sure you have 'connect', 'auto-bind Bet Angel sheets and 'auto-clear Bet Angel bindings' all selected.</p>
+<p>Open the 'Excel' tab in Guardian, then use the browse functionality to choose the spreadsheet you've been working on. From there, click on 'open workbook', then make sure you have 'connect', 'auto-bind Bet Angel sheets and 'auto-clear Bet Angel bindings' all selected. You also need to make sure that the first race has the 'Bet Angel' tab selected in the 'Excel sheet' column - from there it will then automatically update this for each race as one finishes and the next one begins. </p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsSetUp.png" /></p>
+<hr />
+<h3 id="and-youre-set">And you're set!<a class="headerlink" href="#and-youre-set" title="Permanent link">&para;</a></h3>
+<p>Once you've set your spreadsheet set up and you're comfortable using Bet Angel Pro it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.</p>
+<p><em>Note: you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.</em></p>
 <hr />
 <h3 id="bet-angel-features">Bet Angel features<a class="headerlink" href="#bet-angel-features" title="Permanent link">&para;</a></h3>
 <p>Here are some Bet Angel features that you'll need to consider:</p>
 <ul>
 <li><strong>Clearing status cells:</strong> if there is a value in the status cell then no bets will place for that runner, to avoid placing duplicate bets accidentally. As we want to use the same sheet for multiple races, and our bet trigger rule includes a check to see whether we already have a bet on the runner, I created a macro in <a href="../assets/BetAngel_RatingsAutomation.xls">the Excel sheet</a> that auto-clears the status cells every 5 seconds. This was based on some logic I found in <a href="https://www.betangel.com/forum/viewtopic.php?f=31&amp;t=1879&amp;start=10">a forum discussion on Bet Angel</a>.</li>
-<li><strong>Turning off bet confirmation:</strong> unless you want to manually confirm each individual bet placed (which you definitely might want to leave turned on until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program.</li>
-<li><strong>Editing the spreadsheet:</strong> the spreadsheet really doesn't like it when you try and edit it 'live' - make sure you untick 'connect' on the Excel tab in Guardian while you're editing the spreadsheet, save changes, then tick 'connect' again when you've finished your edits. </li>
+<li><strong>Turning off bet confirmation:</strong> unless you want to manually confirm each individual bet you're placing (which you definitely might want to do until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program to change the default confirmation behaviour.</li>
+<li><strong>Editing the spreadsheet:</strong> the spreadsheet really doesn't like it when you try and edit it 'live', so make sure you untick 'connect' on the Excel tab in Guardian before you make any changes, save the sheet, then tick 'connect' again once you've finished your edits. </li>
 </ul>
 <hr />
 <h3 id="areas-for-improvement">Areas for improvement<a class="headerlink" href="#areas-for-improvement" title="Permanent link">&para;</a></h3>
 <p>There are parts of this approach that I'm still trying to get to work to my liking, and I'll update this article as I find better solutions. If you have any suggestions for improvements please reach out to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> - I'd love to hear your thoughts. </p>
 <p>For example, the spreadsheet only binds with one market at a time, so if one market gets delayed and runs overtime the program won't be able to move on to the next market - I missed some races because of this. </p>
-<hr />
-<h3 id="and-youre-set">And you're set!<a class="headerlink" href="#and-youre-set" title="Permanent link">&para;</a></h3>
-<p>Once you've set your spreadsheet set up and you're comfortable using Bet Angel Pro it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day.</p>
-<p>Note: you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.</p>
 <hr />
 <h3 id="what-next">What next?<a class="headerlink" href="#what-next" title="Permanent link">&para;</a></h3>
 <p>We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> </p>

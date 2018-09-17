@@ -1,10 +1,8 @@
 # Project info
-site_name: Betfair Data Scientists
+site_name: Data Scientists
 # site_description: 'foobar'
 site_author: 'Betfair Data Scientists'
 site_url: 'https://betfair-datascientists.github.io'
-# site_dir: '../.'
-copyright: 'Copyright &copy; 2018'
 
 # Navigation
 nav:
@@ -18,22 +16,34 @@ nav:
 
 # Theme settings
 theme:
-    name: 'material'
+    name: null
+    custom_dir: 'theme/material'
     favicon: 'img/BetfairFavicon.ico'
-    logo: 'img/BetfairIcon.jpg'
+    logo: 'img/logo.svg'
     # custom_dir: 'custom_theme/'
     language: 'en'
     palette:
-        primary: 'amber'
-        accent: 'light blue'
+        primary: null
+        accent: null
     font:
         text: 'Roboto'
         code: 'Roboto Mono'
     feature:
         tabs: true
 
-# extra_css:
-#     - css/extra.css
+# Social Media links (footer)
+extra:
+  social:
+    - type: 'twitter'
+      link: 'https://twitter.com/Betfair_Aus'
+    - type: 'linkedin'
+      link: 'https://linkedin.com/company/betfair-australia'
+    - type: 'facebook'
+      link: 'https://facebook.com/betfareaustralia'
+    - type: 'youtube'
+      link: 'https://youtube.com/user/betfairaus'
+    - type: 'github'
+      link: 'https://github.com/betfair-datascientists'
 
 # Extensions
 markdown_extensions:

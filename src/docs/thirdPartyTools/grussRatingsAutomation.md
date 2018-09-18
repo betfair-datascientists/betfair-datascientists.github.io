@@ -1,7 +1,7 @@
-# Bet Angel - ratings automation
+# Gruss Betting Assistant - ratings automation
 
 ---
-### Automating a ratings based strategy using Bet Angel Pro
+### Automating a ratings based strategy using Gruss Betting Assistant
 
 Ratings are the basis for a lot of betting strategies, but they can be paricularly painful and time-consuming to implement manually. This makes them ideal for automation, where you use a program to place bets on your behalf while you get on with other things. 
 
@@ -10,25 +10,23 @@ Bet Angel Pro has a spreadsheet functionality that lets you place bets using you
 --- 
 ### The plan
 
-I'm using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so I'm going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Bet Angel Pro's 'Guardian' feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what I've used for the automation here. 
+I'm using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so I'm going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Gruss Betting Assistant's Excel triggered betting feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what I've used for the automation here. 
 
 Here I'll step through how I went about getting Bet Angel Pro to place bets using the ratings from [Betfair's DataScientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program running and be able to walk away.
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsHub.png)
+![Automating a ratings based strategy with Gruss](./img/GrussRatingsHub.png)
 
 !!! note "Resources"
     - Tips: [Betfair Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/)
-    - Rules: [here's the spreadsheet](./assets/BetAngel_RatingsAutomation.xls) I set up with my macros and rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings 
-    - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
+    - Rules: [here's the spreadsheet]() I set up with my rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings 
+    - Tool: [Gruss Betting Assistant](http://www.gruss-software.co.uk/betfair-products/betfair-betting-assistant)
 
 ---
 ### Set up 
 
-Make sure you've downloaded and installed Bet Angel Pro, and signed in.
+Make sure you've downloaded and installed [Gruss Betting Assistant](http://www.gruss-software.co.uk/betfair-products/betfair-betting-assistant), and signed in.
 
-Once you open the program up click on the 'G' Guardian icon and open the Guardian functionality up. 
-
-![Automating a rating strategy with Bet Angel](./img/BetAngeltipPro.png)
+![Automating a rating strategy with Gruss](./img/GrussRatingsUI.png)
 
 ---
 ### Finding & formatting ratings
@@ -37,16 +35,16 @@ Here I'm using the [ratings shared by our Data Scientists on the Hub](https://ww
 
 If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.
 
-Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact wtih Bet Angel. Here I'm using a [spreadsheet I edited for this strategy](./assets/BetAngel_RatingsAutomation.xls), and I've included a tab called RATINGS where you can copy in the runner names and ratings.
+Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact wtih Gruss. Here I'm using a [spreadsheet I edited for this strategy](), and I've included a tab called RATINGS where you can copy in the runner names and ratings.
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExample.png)
+![Automating a ratings based strategy with Gruss](./img/GrussRatingsRunners.png)
 
 ---
 ### Writing a rule 
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. 
 
-I'm using a [customised version of the default Bet Angel template Excel sheet](./assets/BetAngel_RatingsAutomation.xls) to implement my strategy, so it can make betting decisions based on my ratings. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. 
+I'm using a [customised version of the default Gruss template Excel sheet]() to implement my strategy, so it can make betting decisions based on my ratings. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. There are lots of posts on the [Gruss Forum on the topic](http://www.gruss-software.co.uk/forum/viewforum.php?f=8) if you want to explore it more yourself.
 
 This is how I used Excel to implement my set of rules. 
 
@@ -127,7 +125,7 @@ Stepping through each step:
 )
 ```
 
-- **Time < 2 mins:** check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 of Sheet2, where I've already done the calculations for you.
+- **Time < 2 mins:** check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. 
 
 ``` excel hl_lines="5"
 =IF(
@@ -142,7 +140,7 @@ Stepping through each step:
 )
 ```
 
-- **No existing bet:** checking whether a bet's already been placed on the runner, as I only want the bet to place once. The number of bets matched on the runner shows in column AB - obviously there are other ways you can check this, but whichever one you go with you'll need a check in place to make sure your bets don't fire again and again, unless that's part of your strategy! This is particularly important because I've created a macro that clears the 'status' cells in column O, which is what Bet Angel uses by default to avoid multiple bets going on unintentionally. 
+- **No existing bet:** checking whether a bet's already been placed on the runner, as I only want the bet to place once. The number of bets matched on the runner shows in column AB - obviously there are other ways you can check this, but whichever one you go with you'll need a check in place to make sure your bets don't fire again and again, unless that's part of your strategy! 
 
 ``` excel hl_lines="6"
 =IF(
@@ -198,7 +196,7 @@ Stepping through each step:
 
 You need to copy/paste these three formulas into the relevant cell on each green row - I did a few extra rows than the number of runners in the markets I was looking at, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
 
-- **Trigger bet rule:** this is the bet trigger Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).
+- **Trigger bet rule:** this is the bet trigger Excel formula we created earlier, and it needs to go in column AE (AE5 for the first runner).
 
 ``` excel tab="Multi line"
 =IF(
@@ -217,51 +215,43 @@ You need to copy/paste these three formulas into the relevant cell on each green
 =IF(AND(G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, Sheet2!$E$4 < 120, AB10 < 1, ISBLANK($G$1)),"BACK","")
 ```
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel1.png)
+![Automating a ratings based strategy with Gruss]()
 
-- **Odds:** initially I was using the runner's rating as the price, but I got a bet placement error for some of the selections - eventually I realised that the odds the bet's being placed at need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake I'm now just using the currently available back odds (cell G9 for the first runner). This goes in column M (M9 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest ['tick' price](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements) - if you do this, please do [send me](mailto:bdp@betfair.com.au) through your formula and I'll add it to this article.
+- **Odds:** initially I was using the runner's rating as the price, but I got a bet placement error for some of the selections - eventually I realised that the odds the bet's being placed at need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake I'm now just using the currently available back odds (cell G5 for the first runner). This goes in column R (R5 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest ['tick' price](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements) - if you do this, please do [send me](mailto:bdp@betfair.com.au) through your formula and I'll add it to this article.
 
-```=G9```
+```=R5```
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel2.png)
+![Automating a ratings based strategy with Gruss]()
 
-- **Stake:** it's completely up to you what staking approach you want to take. I've kept it simple, and am just using a 'to win' strategy. Each bet aims to win $10 on that runner at the curret odds. The formula divides $10 by the current available best back odds (cell G9 for the first runner) minus one to get the stake required to win $10. This goes in column N (N9 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
+- **Stake:** it's completely up to you what staking approach you want to take. I've kept it simple, and am just using a 'to win' strategy. Each bet aims to win $10 on that runner at the curret odds. The formula divides $10 by the current available best back odds (cell R5 for the first runner) minus one to get the stake required to win $10. This goes in column AC (AC5 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
-```=10/(G9-1)```
+```=10/(R5-1)```
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel3.png)
+![Automating a ratings based strategy with Gruss]()
 
 ---
 ### Selecting markets
 
-I used the markets menu in the Guardian tool to navigate to the tracks I had ratings for, then multi-slected all the win markets by holding down the control key and clicking on the different markets.
+TO DO
 
-If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab to do this more efficiently. 
-
-Once you've chosen the races you're interested in click the 'add' button and you'll see them appear in the main body of the screen. 
-
-Make sure you sort the races by start time, so Bet Angel will automatically move through them in the right order and allocate the next race to the spreadsheet once the previous one ends. 
-
-You do this by clicking on the 'start time' column heading until the races are in time order (when the arrow is pointing up).
-
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsMarketTimes.png)
+![Automating a ratings based strategy with Gruss]()
 
 ---
 ### Linking the spreadsheet
 
-Open the 'Excel' tab in Guardian, then use the browse functionality to choose the spreadsheet you've been working on. From there, click on 'open workbook', then make sure you have 'connect', 'auto-bind Bet Angel sheets and 'auto-clear Bet Angel bindings' all selected. You also need to make sure that the first race has the 'Bet Angel' tab selected in the 'Excel sheet' column - from there it will then automatically update this for each race as one finishes and the next one begins. 
+TO DO
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsSetUp.png)
+![Automating a ratings based strategy with Gruss]()
 
 ---
 ### And you're set!
 
-Once you've set your spreadsheet set up and you're comfortable using Bet Angel Pro it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.
+Once you've set your spreadsheet set up and you're comfortable using Gruss Betting Assistant it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.
 
 *Note: you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.*
 
 ---
-### Bet Angel features
+### Gruss features
 
 Here are some Bet Angel features that you'll need to consider:
 

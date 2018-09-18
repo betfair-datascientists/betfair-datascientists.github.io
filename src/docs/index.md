@@ -30,7 +30,7 @@
     There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data
 
 ---
-### Modelling 
+### Data modelling 
 
 - [How to make a predictive model](https://www.betfair.com.au/hub/how-to-make-a-predictive-model-in-5-easy-steps/)
 - [Open source predictive models](https://github.com/betfair-datascientists/predictive-models) built by our in-house Data Scientists, including AFL, EPL and the recent FIFA World Cup
@@ -39,7 +39,7 @@
     Many of our most successful customers use predictive models as the basis for their betting strategies 
 
 --- 
-### Inspiration & Information 
+### Inspiration & information 
 
 - [The Banker: A Quant's AFL Betting Strategy](https://www.betfair.com.au/hub/better-betting/customer-insights/the-banker-a-quants-afl-betting-strategy/)
 - [The Mathematician](https://www.betfair.com.au/hub/better-betting/customer-insights/mathematician/)
@@ -50,3 +50,11 @@
 
 !!! note "Some extra info"
     There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. 
+
+--- 
+### Main site 
+
+- [Betfair Exchange](https://www.betfair.com.au/exchange/plus/)
+- [The Hub]('https://www.betfair.com.au/hub/')
+- [Github]('https://github.com/betfair-datascientists')
+- [Responsible Gambling]('https://www.betfair.com.au/info/responsible-gambling/')

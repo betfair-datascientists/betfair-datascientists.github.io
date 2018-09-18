@@ -1,5 +1,5 @@
 # Project info
-site_name: Betfair Data Scientists
+site_name: Betfair Australia Data Scientists
 # site_description: 'foobar'
 site_author: 'Betfair Data Scientists'
 site_url: 'https://betfair-datascientists.github.io'
@@ -10,11 +10,13 @@ copyright: 'Copyright &copy; 2018'
 nav:
     - Resources: 
         External data & dev resources: index.md
-    - Third party tools: 
-        - Bet Angel - Tipping Automation: thirdPartyTools/betAngelTippingAutomation.md
-        - Bet Angel - Ratings Automation: thirdPartyTools/betAngelRatingsAutomation.md
+    - Third Party Tools: 
+        - Bet Angel - ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
+        - Bet Angel - tipping automation: thirdPartyTools/betAngelTippingAutomation.md
     - Historic Data: 
         - Downloading the data: historicdata/index.md
+    - Betfair Exchange: 
+        - Betfair Exchange: 'https://www.betfair.com.au/exchange/plus/'
 
 # Theme settings
 theme:

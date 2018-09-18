@@ -1,6 +1,6 @@
 # Project info
-site_name: Data Scientists
-# site_description: 'foobar'
+site_name: Automation & Data Analysis
+site_description: 'Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.'
 site_author: 'Betfair Data Scientists'
 site_url: 'https://betfair-datascientists.github.io'
 
@@ -46,7 +46,7 @@ extra:
       link: 'https://youtube.com/user/betfairaus'
     - type: 'github'
       link: 'https://github.com/betfair-datascientists'
-      
+
 # Extensions
 markdown_extensions:
     - admonition
@@ -75,3 +75,8 @@ markdown_extensions:
     - pymdownx.tasklist:
         custom_checkbox: true
     - pymdownx.tilde
+
+# Google Analytics
+google_analytics:
+    - 'UA-125973915-1'
+    - 'auto'

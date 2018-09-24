@@ -5,7 +5,7 @@
 
 Ratings are the basis for a lot of betting strategies, but they can be paricularly painful and time-consuming to implement manually. This makes them ideal for automation, where you use a program to place bets on your behalf while you get on with other things. 
 
-Bet Angel Pro has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what I've used here to automate these ratings. There are so many different ways to use this part of Bet Angel and I'm very open to any thoughts about more effecitve ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
+Bet Angel Pro has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what I've used here to automate these ratings. There are so many different ways to use this part of Bet Angel and I'm very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
 ### The plan
@@ -55,10 +55,9 @@ This is how I used Excel to implement my set of rules.
 
 In short, I want to back runners when:
 
-- the available to back price is better than the rating for that runner by at least 10%
+- the available to back price is better than the rating for that runner by a variable percentage
 - they have a rating less than 5
 - the scheduled event start time is less than 2 minutes away 
-- there isn't a bet already placed on the runner 
 - the event isn't in play 
 
 
@@ -67,10 +66,9 @@ In short, I want to back runners when:
 ``` excel tab="Multi line"
 =IF(
     AND(
-        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),
-        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, 
-        Sheet2!$E$4 < 120, 
-        AB10 < 1,
+        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
         ISBLANK($G$1)),
     "BACK",
     ""
@@ -78,20 +76,58 @@ In short, I want to back runners when:
 ```
 
 ``` excel tab="Single line"
-=IF(AND(G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, Sheet2!$E$4 < 120, AB10 < 1, ISBLANK($G$1)),"BACK","")
+=IF(AND(G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)),INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,SETTINGS!$E$4 < 120,ISBLANK($G$1)),"BACK","")
 ```
 
 Stepping through each step:
 
-- **Price > rating:** check whether the available to back price is better than the runner's rating multipled by 1.1 (10%) - I do this by using the runner name in column B and looking up the corresponding rating for that runner from the RATINGS sheet. 
+- **Price > rating * percentage offset:** check whether the available to back price is better than the runner's rating multipled by a percentage - I do this by using the runner name in column B and looking up the corresponding rating for that runner from the RATINGS sheet. 
 
-``` excel hl_lines="3"
+**Percentage offset:** There are lots of different approaches you can take to this. I'm using a variable percentage offset, as I appreciate that we might want a different percentage better than the rating, depending on the price - i.e. 10% better than $2 ($2.20) is very different than 10% better than a $20 shot ($22.20), so here I'm using a vlookup table to determine the percentage better than the rating that I want based on the current odds. Here are the 'ranges' of prices to percentage offset that I'm using - you can disregard this and just change it to be a set percentage (i.e. *1.1 hardcoded into the forumla) or just use your rating straight without an offset, or edit the ranges in the SETTINGS tab to suit your opinions. This table takes the 'min' odds for the range in the left column, and the number you want to multiply the odds by in the right column - so for 15% you'd multiply by 1.15 etc. 
+
+**Viewing your values:** I've added columns (AF:AH) to show the rating, percentage offset and minimum acceptable odds for each runner, to add some reassurance that the spreadsheet is pulling the values we want it to.
+
+ODDS RANGE | % MULTIPLIER
+:-------|:-----------------------
+1 - 5   | 1.1 (10%)
+5 - 8	| 1.15 (15%)
+8 - 15	| 1.2 (20%)
+15 - 20	| 1.3 (30%)
+20 - 33	| 1.4 (40%)
+33 +	| 1.5 (50%)
+
+Here are three different examples of formulas you can use here, depending on your approach:
+
+``` excel tab="Variable percentage" hl_lines="3"
 =IF(
     AND(
-        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),
-        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, 
-        Sheet2!$E$4 < 120, 
-        AB10 < 1,
+        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
+        ISBLANK($G$1)),
+    "BACK",
+    ""
+)
+```
+
+``` excel tab="Fixed percentage" hl_lines="3"
+=IF(
+    AND(
+        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
+        ISBLANK($G$1)),
+    "BACK",
+    ""
+)
+```
+
+``` excel tab="Pure rating" hl_lines="3"
+=IF(
+    AND(
+        G9 > INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
         ISBLANK($G$1)),
     "BACK",
     ""
@@ -117,40 +153,23 @@ Stepping through each step:
 ``` excel hl_lines="4"
 =IF(
     AND(
-        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),
-        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, 
-        Sheet2!$E$4 < 120, 
-        AB10 < 1,
+        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
         ISBLANK($G$1)),
     "BACK",
     ""
 )
 ```
 
-- **Time < 2 mins:** check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 of Sheet2, where I've already done the calculations for you.
+- **Time < 2 mins:** check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 of the SETTINGS sheet, where I've already done the calculations for you.
 
 ``` excel hl_lines="5"
 =IF(
     AND(
-        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),
-        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, 
-        Sheet2!$E$4 < 120, 
-        AB10 < 1,
-        ISBLANK($G$1)),
-    "BACK",
-    ""
-)
-```
-
-- **No existing bet:** checking whether a bet's already been placed on the runner, as I only want the bet to place once. The number of bets matched on the runner shows in column AB - obviously there are other ways you can check this, but whichever one you go with you'll need a check in place to make sure your bets don't fire again and again, unless that's part of your strategy! This is particularly important because I've created a macro that clears the 'status' cells in column O, which is what Bet Angel uses by default to avoid multiple bets going on unintentionally. 
-
-``` excel hl_lines="6"
-=IF(
-    AND(
-        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),
-        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, 
-        Sheet2!$E$4 < 120, 
-        AB10 < 1,
+        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
         ISBLANK($G$1)),
     "BACK",
     ""
@@ -159,13 +178,12 @@ Stepping through each step:
 
 - **Not in play:** checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. I appreciate that greyhound races don't go in play, but I wanted this check in place anyway in case I (or you!) wanted to use a version of this strategy on horse racing in the future. 
 
-``` excel hl_lines="7"
+``` excel hl_lines="6"
 =IF(
     AND(
-        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),
-        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, 
-        Sheet2!$E$4 < 120, 
-        AB10 < 1,
+        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
         ISBLANK($G$1)),
     "BACK",
     ""
@@ -174,13 +192,12 @@ Stepping through each step:
 
 - **Result:** if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.
 
-``` excel hl_lines="8 9"
+``` excel hl_lines="7 8"
 =IF(
     AND(
-        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),
-        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, 
-        Sheet2!$E$4 < 120, 
-        AB10 < 1,
+        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
         ISBLANK($G$1)),
     "BACK",
     ""
@@ -191,6 +208,7 @@ Stepping through each step:
 
     - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true, do this, else do this)
     - [AND statement:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true, and so is this, and so is this) - returns true or false
+    - [VLOOKUP:](https://support.office.com/en-us/article/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1) looking up a value from a table based on the value you pass in
     - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. 
 
 ---
@@ -203,10 +221,9 @@ You need to copy/paste these three formulas into the relevant cell on each green
 ``` excel tab="Multi line"
 =IF(
     AND(
-        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),
-        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, 
-        Sheet2!$E$4 < 120, 
-        AB10 < 1,
+        G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)), 
+        INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,
+        SETTINGS!$E$4 < 120, 
         ISBLANK($G$1)),
     "BACK",
     ""
@@ -214,7 +231,7 @@ You need to copy/paste these three formulas into the relevant cell on each green
 ```
 
 ``` excel tab="Single line"
-=IF(AND(G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*1.1),INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5, Sheet2!$E$4 < 120, AB10 < 1, ISBLANK($G$1)),"BACK","")
+=IF(AND(G9 > (INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0))*VLOOKUP(INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)),SETTINGS!$C$12:$D$17,2)),INDEX(RATINGS!B:B,MATCH(B9,RATINGS!A:A,0)) < 5,SETTINGS!$E$4 < 120,ISBLANK($G$1)),"BACK","")
 ```
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel1.png)
@@ -234,13 +251,13 @@ You need to copy/paste these three formulas into the relevant cell on each green
 ---
 ### Selecting markets
 
-I used the markets menu in the Guardian tool to navigate to the tracks I had ratings for, then multi-slected all the win markets by holding down the control key and clicking on the different markets.
+I used the markets menu in the Guardian tool to navigate to the tracks I had ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.
 
 If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab to do this more efficiently. 
 
 Once you've chosen the races you're interested in click the 'add' button and you'll see them appear in the main body of the screen. 
 
-Make sure you sort the races by start time, so Bet Angel will automatically move through them in the right order and allocate the next race to the spreadsheet once the previous one ends. 
+Make sure you sort the races **by start time**, so Bet Angel will automatically move through them in the right order and allocate the next race to the spreadsheet once the previous one ends. 
 
 You do this by clicking on the 'start time' column heading until the races are in time order (when the arrow is pointing up).
 
@@ -263,11 +280,18 @@ Once you've set your spreadsheet set up and you're comfortable using Bet Angel P
 ---
 ### Bet Angel features
 
-Here are some Bet Angel features that you'll need to consider:
+Here are some Bet Angel features that you'll need to consider.
 
-- **Clearing status cells:** if there is a value in the status cell then no bets will place for that runner, to avoid placing duplicate bets accidentally. As we want to use the same sheet for multiple races, and our bet trigger rule includes a check to see whether we already have a bet on the runner, I created a macro in [the Excel sheet](./assets/BetAngel_RatingsAutomation.xls) that auto-clears the status cells every 5 seconds. This was based on some logic I found in [a forum discussion on Bet Angel](https://www.betangel.com/forum/viewtopic.php?f=31&t=1879&start=10).
-- **Turning off bet confirmation:** unless you want to manually confirm each individual bet you're placing (which you definitely might want to do until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program to change the default confirmation behaviour.
-- **Editing the spreadsheet:** the spreadsheet really doesn't like it when you try and edit it 'live', so make sure you untick 'connect' on the Excel tab in Guardian before you make any changes, save the sheet, then tick 'connect' again once you've finished your edits. 
+#### Multiple bets/clearing status cells
+The Bet Angel spreadsheet won't let a bet go on if there is a value in column 0 for the runner, the 'status' column, to avoid accidentally placing multiple bets unintentionally. As soon as a bet triggers, Bet Angel automatically changes this cell to 'PLACING', then to 'PLACED' when the bet is confirmed as having been received by Betfair. In this strategy I only want to place one bet per runner, but if you wanted to place multiple bets on a runner you'd need to have a play wtih the macros to clear the 'status' cells more regularly, and instead reference the number of bets placed/matched in columns T:AE. Careful here though, as the values in these columns sometimes take a little time to update, and I've had more bets go on than I intended when using these cells as my check, as bet trigger reevaluated before columns T:AE had updated. 
+
+As we want to use the same sheet for multiple races, and the 'status' cells don't clear automatically, I've created a macro in [the Excel sheet](./assets/BetAngel_RatingsAutomation.xls) that auto-clears the status cells whenever a new race loads. It also clears the cells if they say 'FAILED', as I found that if there were internet network issues or similar it would fail once then not try to place the bet again. This was based on some logic I found in [a forum discussion on Bet Angel](https://www.betangel.com/forum/viewtopic.php?f=31&t=1879&start=10). If you're feeling adventurous you can have a play with the macros and edit them to suit your specific needs. 
+
+#### Turning off bet confirmation
+Unless you want to manually confirm each individual bet you're placing (which you definitely might want to do until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?' - you can then save these settings.
+
+#### Editing the spreadsheet
+The spreadsheet really doesn't like it when you try and edit it 'live', so make sure you untick 'connect' on the Excel tab in Guardian before you make any changes, save the sheet, then tick 'connect' again once you've finished your edits. 
 
 ---
 ### Areas for improvement
@@ -279,7 +303,7 @@ For example, the spreadsheet only binds with one market at a time, so if one mar
 ---
 ### What next? 
 
-We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au 
+We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au - this article has already been updated with extra learnings including variable percentages and new macros.
 
 ---
 ### Disclaimer

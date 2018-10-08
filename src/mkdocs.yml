@@ -10,11 +10,14 @@ nav:
         External data & dev resources: index.md
     - Third Party Tools: 
         - Bet Angel - ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
+        - Bet Angel - market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
         - Bet Angel - tipping automation: thirdPartyTools/betAngelTippingAutomation.md
     - Historic Data: 
         - Downloading the data: historicdata/index.md
     - Betfair Exchange: 
         - Betfair Exchange: 'https://www.betfair.com.au/exchange/plus/'
+    - Back to the Hub:
+        - The Hub: 'https://www.betfair.com.au/hub'
 
 # Theme settings
 theme:

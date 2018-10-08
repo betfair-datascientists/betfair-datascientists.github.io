@@ -42,7 +42,7 @@ Wherever your ratings come from, you'll need to include them in the spreadsheet 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExample.png)
 
 ---
-### Writing a rule 
+### Writing your rules
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. 
 
@@ -214,7 +214,7 @@ Here are three different examples of formulas you can use here, depending on you
 ---
 ### Preparing the spreadsheet
 
-You need to copy/paste these three formulas into the relevant cell on each green row - I did a few extra rows than the number of runners in the markets I was looking at, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
+You need to copy/paste these three formulas into the relevant cell on each green row - I copied mine into all of the coloured cells in the sheet, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
 
 - **Trigger bet rule:** this is the bet trigger Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).
 

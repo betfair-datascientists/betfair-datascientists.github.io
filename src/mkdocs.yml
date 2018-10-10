@@ -1,19 +1,21 @@
 # Project info
-site_name: Automation & Data Analysis
+site_name: The Automation Hub
 site_description: 'Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.'
 site_author: 'Betfair Data Scientists'
 site_url: 'https://betfair-datascientists.github.io'
 
 # Navigation
 nav:
-    - Resources: 
-        External data & dev resources: index.md
+    - Home: 
+        The Automation Hub: index.md
     - Third Party Tools: 
         - Bet Angel - ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
         - Bet Angel - market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
         - Bet Angel - tipping automation: thirdPartyTools/betAngelTippingAutomation.md
+    - API:
+        - How to access the Betfair API: api/apiappkey.md
     - Historic Data: 
-        - Downloading the data: historicdata/index.md
+        - Downloading from the Historic Data site: historicdata/index.md
     - Betfair Exchange: 
         - Betfair Exchange: 'https://www.betfair.com.au/exchange/plus/'
     - Back to the Hub:

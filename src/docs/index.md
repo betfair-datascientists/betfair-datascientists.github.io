@@ -1,12 +1,18 @@
 
-# External data & dev resources
+Betfair is one of the only betting platforms in the world that demands winning clients. Unlike bookies, we don’t ban you. We need you, and we want you to get smarter. We genuinely love seeing clients with automated betting strategies that win.
+
+We're here to help you in your automation journey, and this site is dedicated to sharing the tools and resources you need to succeed in this journey. 
 
 ---
-### API documentation & support
+### Accessing our API
+As you may already know, Betfair has its own API to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software.
 
-- [Creating & activating your app key](https://www.betfair.com.au/hub/tools/betting-tools/how-to-setup-your-betfair-api-key/)
+There are lots of resources available to support you in accessing the API effectively:
+
+- [Creating & activating your app key](./api/apiappkey.md)
 - [Developer Program knowledge base](https://betfairdevelopersupport.zendesk.com/hc/en-us)
 - [Dev Docs](http://developer.betfair.com)
+- [Developer Forum](https://forum.developer.betfair.com/) where you can share your experiences and find out what's worked for other clients
 - [Exchange Sports API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) for testing market-related queries
 - [Exchange Account API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/) for testing account-related queries
 - [Our Github repo](https://github.com/betfair-datascientists/API) including an R library for using our API
@@ -15,9 +21,11 @@
 !!! note "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
     If you're a programmer there are lots of resources around to help
-    
---- 
-### Historic data
+
+---
+### Historic Data
+
+We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the [different data sources](https://www.betfair.com.au/hub/tools/betfair-data-cheat-sheet/) if you’re not quite sure where to start. We’ve also shared some tips on learning to create [predictive models using this data](https://www.betfair.com.au/hub/how-to-make-a-predictive-model-in-5-easy-steps/), which link in with the models shared on our main [Github page](https://github.com/betfair-datascientists/predictive-models).
 
 - [Betfair data sources](https://www.betfair.com.au/hub/tools/betfair-data-cheat-sheet/)
 - [Historic Data FAQs & sample data](https://historicdata.betfair.com/#/help)
@@ -28,6 +36,19 @@
 
 !!! note "Historic Betfair data"
     There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data
+
+---
+### Using third party tools for automation 
+
+Whilst the following tools are not custom built for your approach, they do allow you to automate your betting strategies. You just set up specific betting conditions and let the third party application do the work for you. [Bet Angel](https://betangel.com) and [Gruss Betting Assistant](http://gruss-software.co.uk) are the most popular third party tools. 
+
+We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.
+
+- [Bet Angel](https://betangel.com)
+    - [Ratings automation](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/)
+    - [Market favourite automation](https://betfair-datascientists.github.io/thirdPartyTools/betAngelMarketFavouriteAutomation/) 
+    - [Tipping automation](https://betfair-datascientists.github.io/thirdPartyTools/betAngelTippingAutomation/)
+- [Gruss](http://gruss-software.co.uk)
 
 ---
 ### Data modelling 
@@ -51,10 +72,7 @@
 !!! note "Some extra info"
     There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. 
 
---- 
-### Main site 
+---
+### Need extra help?
 
-- [Betfair Exchange](https://www.betfair.com.au/exchange/plus/)
-- [The Hub]('https://www.betfair.com.au/hub/')
-- [Github]('https://github.com/betfair-datascientists')
-- [Responsible Gambling]('https://www.betfair.com.au/info/responsible-gambling/')
+If you’re looking for bespoke advice or have extra questions, please contact us at bdp@betfair.com.au. We have a dedicated in-house resource that is here to automate your betting strategies.

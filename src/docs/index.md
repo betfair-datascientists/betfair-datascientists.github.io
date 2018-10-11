@@ -1,5 +1,6 @@
+![The Automation Hub](./img/automationHubHero.gif)
 
-Betfair is one of the only betting platforms in the world that demands winning clients. Unlike bookies, we don’t ban you. We need you, and we want you to get smarter. We genuinely love seeing clients with automated betting strategies that win.
+Betfair is one of the only betting platforms in the world that demands winning clients. Unlike bookies, we don’t ban you when you succeed. We need you, and we want you to be able to keep improving your strategies so you win more. 
 
 We're here to help you in your automation journey, and this site is dedicated to sharing the tools and resources you need to succeed in this journey. 
 

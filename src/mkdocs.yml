@@ -12,10 +12,21 @@ nav:
         - Bet Angel - ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
         - Bet Angel - market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
         - Bet Angel - tipping automation: thirdPartyTools/betAngelTippingAutomation.md
+        - Gruss - ratings automation: thirdPartyTools/grussRatingsAutomation.md
     - API:
         - How to access the Betfair API: api/apiappkey.md
     - Historic Data: 
         - Downloading from the Historic Data site: historicdata/index.md
+    - Modelling:
+        - EPL 01. Data acquisition & exploration: modelling/EPLmodelPart1.md
+        - EPL 02. Data preparation & feature engineering: modelling/EPLmodelPart2.md
+        - EPL 03. Model building & hyperparameter tuning: modelling/EPLmodelPart3.md
+        - EPL 04. Weekly predictions: modelling/EPLmodelPart4.md
+        - AFL 01. Data cleaning: modelling/AFLmodelPart1.md
+        - AFL 02. Feature creation: modelling/AFLmodelPart2.md
+        - AFL 03. Modelling: modelling/AFLmodelPart3.md
+        - AFL 04. Weekly predictions: modelling/AFLmodelPart4.md
+        - Modelling the Brownlow Medal: modelling/brownlowModelTutorial.md
     - Betfair Exchange: 
         - Betfair Exchange: 'https://www.betfair.com.au/exchange/plus/'
     - Back to the Hub:

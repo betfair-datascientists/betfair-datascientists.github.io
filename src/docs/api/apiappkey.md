@@ -5,6 +5,7 @@ Betfair has it’s own [Exchange API](http://developer.betfair.com). You can use
 This guide helps Australian and New Zealand customers with obtaining their Betfair API Key. If you’re outside of these two regions please go to the [UK's Developer Program website](http://developer.betfair.com).
 
 There are four steps involved in getting access to our API
+
 - Obtain an SSOID token
 - Register your application
 - Obtain your app key

@@ -1,7 +1,7 @@
 # Bet Angel - market favourite automation
 
 ---
-### Automating a market favourite strategy using Bet Angel Pro
+## Automating a market favourite strategy using Bet Angel Pro
 
 Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of back them.
 

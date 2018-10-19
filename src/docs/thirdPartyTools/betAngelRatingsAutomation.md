@@ -1,7 +1,7 @@
 # Bet Angel - ratings automation
 
 ---
-### Automating a ratings based strategy using Bet Angel Pro
+## Automating a ratings based strategy using Bet Angel Pro
 
 Ratings are the basis for a lot of betting strategies, but they can be paricularly painful and time-consuming to implement manually. This makes them ideal for automation, where you use a program to place bets on your behalf while you get on with other things. 
 
@@ -17,7 +17,7 @@ Here I'll step through how I went about getting Bet Angel Pro to place bets usin
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsHub.png)
 
 !!! note "Resources"
-    - Tips: [Betfair Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/)
+    - Ratings: [Betfair Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/)
     - Rules: [here's the spreadsheet](./assets/BetAngel_RatingsAutomation.xls) I set up with my macros and rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings 
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
 
@@ -89,12 +89,12 @@ Stepping through each step:
 
 ODDS RANGE | % MULTIPLIER
 :-------|:-----------------------
-1 - 5   | 1.1 (10%)
-5 - 8	| 1.15 (15%)
-8 - 15	| 1.2 (20%)
+1 - 6   | 1.1 (10%)
+6 - 9	| 1.15 (15%)
+9 - 15	| 1.2 (20%)
 15 - 20	| 1.3 (30%)
-20 - 33	| 1.4 (40%)
-33 +	| 1.5 (50%)
+20 - 35	| 1.4 (40%)
+35 +	| 1.5 (50%)
 
 Here are three different examples of formulas you can use here, depending on your approach:
 

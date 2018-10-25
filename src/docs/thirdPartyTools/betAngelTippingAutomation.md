@@ -1,4 +1,4 @@
-# Bet Angel - Tipping Automation
+# Bet Angel - tipping automation
 
 ---
 ## Automating a (non-ratings based) tipping strategy using Bet Angel Pro
@@ -36,7 +36,7 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 
 I've created an [automated rule](./assets/BetAngelTippingRule.baf) that you can download here, roughly based on the one discussed in [this forum post](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668) (note: you will need to create a Bet Angel forum account to be able to download the rule). 
 
-#### Setting up your rules
+#### Writing your rules
 
 - open up the 'Automation' tab
 - click 'import a rule'

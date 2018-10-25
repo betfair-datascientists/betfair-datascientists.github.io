@@ -1,5 +1,4 @@
-
-# Downloading & Extracting Historic Data
+# Using the Historic Data site
 
 ---
 The [Betfair Historic Data site](https://historicdata.betfair.com/#/home) includes complete historic data for nearly all markets offered on the Exchange since 2016, when the new APING was launched. The data available includes prices, volume traded, winning status, average weighted price, BSP, and a variety of other details that are valuable for modelling and strategy development. 

@@ -16,7 +16,7 @@ There are lots of resources available to support you in accessing the API effect
 - [Developer Forum](https://forum.developer.betfair.com/) where you can share your experiences and find out what's worked for other clients
 - [Exchange Sports API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) for testing market-related queries
 - [Exchange Account API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/) for testing account-related queries
-- [Our Github repo](https://github.com/betfair-datascientists/API) including an R library for using our API
+- [Our Datascientists' repo](/api/apiRtutorial) for using R to access the API
 - [The UK’s Github repo](https://github.com/betfair/API-NG-Excel-Toolkit) including libraries for other languages
 
 !!! note "API access"

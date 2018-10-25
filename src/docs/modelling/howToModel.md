@@ -16,7 +16,7 @@ If you’re new to these languages, here are some resources that will help get y
 - [What is R?](https://www.r-project.org/about.html)
 - [Download and install R](https://cran.ms.unimelb.edu.au/) – get the language set up on your computer
 - [Download and install RStudio](https://www.rstudio.com/) – you’ll need a program to develop in, and this one is custom-designed to work with R
-- Take a look at the some of the existing R libraries you can use if you want to connect to our API, including [abettor](https://github.com/phillc73/abettor) and our [Data Scientists’ R repo](https://github.com/betfair-datascientists/API).
+- Take a look at the some of the existing R libraries you can use if you want to connect to our API, including [abettor](https://github.com/phillc73/abettor) and our [Data Scientists’ R repo](/api/apiRtutorial.md).
 
 
 ### Language 2: Python
@@ -39,7 +39,7 @@ For our workshops we use historical NBA odds data from the Exchange ([which you 
 ---
 ## Learn to Program
 
-Okay, so easier said than done, but you don't actually need a high level of programming knowledge to be able to build a decent model, and there are so many excellent resources available online that the barrier to entry is much lower than it's been in the past. 
+Okay, so easier said than done, but you don't actually need a high level of programming knowledge to be able to build a decent model, and there are so many excellent resources available online that the barrier to entry is much lower than it's been in the past.
 
 These are some of our favourites if you want to learn to use R or Python for data modelling:
 
@@ -47,7 +47,7 @@ These are some of our favourites if you want to learn to use R or Python for dat
 - [Datacamp](https://www.datacamp.com/) – another popular free resource to learn both R and Python for data science
 - [Codeacademy](https://www.codecademy.com/) – free online programming courses with community engagement
 
-We've also shared a [R repo for connecting with our API](https://github.com/betfair-datascientists/API), which might make that part of the learning process easier for you, if you go down that path.
+We've also shared a [R repo for connecting with our API](/../api/apiRtutorial), which might make that part of the learning process easier for you, if you go down that path.
 
 ---
 ## Learn how to model data
@@ -65,5 +65,5 @@ The best way to learn is by doing. Make sure you have a solid foundation knowled
 
 - Make sure you’ve got your [betting basics](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/) and [wagering fundamentals](https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/) knowledge solid
 - Learn about the importance of [ratings and prices](https://www.betfair.com.au/hub/better-betting/betsmart-education/ratings-and-prices/) and get inspired by the [models](https://www.betfair.com.au/hub/tools/models/) created by our Data Scientists
-- Consider how you could use our [API](../../api/apiappkey) in building and automating your model
+- Consider how you could use our [API](/../api/apiappkey) in building and automating your model
 - Read about how successful some of our customers have been in their [modelling journeys](https://www.betfair.com.au/hub/better-betting/customer-insights/)

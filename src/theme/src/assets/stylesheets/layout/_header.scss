@@ -24,6 +24,31 @@
 // Rules
 // ----------------------------------------------------------------------------
 
+// return to Betfair and Hub buttons
+.bf-nav {
+  font-size: 2rem; 
+  line-height: 5rem;
+  font-family: "Clarke Regular";
+  text-transform: uppercase;
+  min-width: 160px;
+
+  a {
+    padding: 4px;
+    color: #ffb80c;
+  }
+  svg {
+    fill: #ffb80c;
+  }
+
+  @include break-to-device(tablet) {
+    min-width: 80px;
+    .bf-hidable span {
+      display: none;
+    }
+  }
+}
+
+
 // Application header (stays always on top)
 .md-header {
 

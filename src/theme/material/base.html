@@ -48,7 +48,7 @@
       {% endif %}
     {% endblock %}
     {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.66a59cf2.css' | url }}">
+      <link rel="stylesheet" href="{{ 'assets/stylesheets/application.8f5e77b0.css' | url }}">
       {% if palette.primary or palette.accent %}
         <link rel="stylesheet" href="{{ 'assets/stylesheets/application-palette.22915126.css' | url }}">
       {% endif %}
@@ -148,7 +148,7 @@
                   <a href="{{ page.edit_url }}" title="{{ lang.t('edit.link.title') }}" class="md-icon md-content__icon">&#xE3C9;</a>
                 {% endif %}
                 {% if not "\x3ch1" in page.content %}
-                  <h1>{{ page.title | default(config.site_name, true)}}</h1>
+                  <h1 style="display:none">{{ page.title | default(config.site_name, true)}}</h1>
                 {% endif %}
                 {{ page.content }}
                 {% block source %}

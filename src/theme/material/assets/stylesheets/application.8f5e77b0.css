@@ -557,6 +557,18 @@ hr {
   .md-typeset .md-content__icon {
     color: rgba(0, 0, 0, 0.26); }
 
+.bf-nav {
+  font-size: 2rem;
+  line-height: 5rem;
+  font-family: "Clarke Regular";
+  text-transform: uppercase;
+  min-width: 160px; }
+  .bf-nav a {
+    padding: 4px;
+    color: #ffb80c; }
+  .bf-nav svg {
+    fill: #ffb80c; }
+
 .md-header {
   background-color: #1e1e1e;
   color: #ffb80c;
@@ -1137,7 +1149,7 @@ hr {
 
 .md-tabs {
   font-family: "Clarke Regular";
-  color: rgba(0, 0, 0, 0.54);
+  color: #1e1e1e;
   background-color: #ffb80c;
   width: 100%;
   transition: background 0.25s;
@@ -1157,14 +1169,12 @@ hr {
     display: block;
     margin-top: 0.65rem;
     text-transform: uppercase;
-    font-weight: bold;
     transition: opacity 0.25s, -webkit-transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1);
     transition: transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1), opacity 0.25s;
     transition: transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1), opacity 0.25s, -webkit-transform 0.4s cubic-bezier(0.1, 0.7, 0.1, 1);
     font-size: 1.8rem;
     opacity: 0.8; }
     .md-tabs__link--active, .md-tabs__link:hover {
-      color: inherit;
       opacity: 1; }
     .md-tabs__item:nth-child(2) .md-tabs__link {
       transition-delay: 0.02s; }
@@ -2174,6 +2184,10 @@ hr {
       height: 100%;
       transition: width   0s, height  0s, opacity 0.25s;
       opacity: 1; }
+    .bf-nav {
+      min-width: 80px; }
+      .bf-nav .bf-hidable span {
+        display: none; }
       .md-header-nav__button.md-icon--home, .md-header-nav__button.md-logo {
         display: none; }
       .md-hero__inner {
@@ -2592,4 +2606,4 @@ hr {
         max-height: 5rem;
         -webkit-line-clamp: 3; } }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uNjZhNTljZjIuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uOGY1ZTc3YjAuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

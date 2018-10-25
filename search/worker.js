@@ -84,7 +84,6 @@ function onScriptsLoaded () {
     console.log('Lunr index built, search ready');
   }
   allowSearch = true;
-  postMessage({allowSearch: allowSearch});
 }
 
 function init () {

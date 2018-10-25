@@ -2,7 +2,7 @@
 
 # 02. Data Preparation & Feature Engineering
 
-Welcome to the second part of this Machine Learning Walkthrough. This tutorial will focus on data preparation and feature creation, before we dive into modelling in the [next tutorial]('03. model_building').
+Welcome to the second part of this Machine Learning Walkthrough. This tutorial will focus on data preparation and feature creation, before we dive into modelling in the [next tutorial](/modelling/EPLmodelPart3).
 
 Specifically, this tutorial will cover a few things:
 

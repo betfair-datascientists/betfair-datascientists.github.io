@@ -477,4 +477,4 @@ So whilst our model performs decently, it doesn't beat the odds in terms of log 
 
 ---
 ## Next Steps
-Now that we have a model up and running, the next steps are to implement the model on a week to week basis. In the next tutorial we will be predicting the upcoming round of footy.
+Now that we have a model up and running, the next steps are to implement the model on a week to week basis. In the [next tutorial](/modelling/AFLmodelPart4) we will be predicting the 2018 round of footy.

@@ -155,7 +155,7 @@ fixture.tail()
 | 206 | 2018-09-29 | 2018 | 1 | 28 | West Coast | Collingwood | MCG |
 
 ### Create Each Feature
-Now let's append next week's DataFrame to our afl_data, match_results and odds DataFrames and then create all the features we used in the [AFL Feature Creation Tutorial](0.2. afl_feature_creation_tutorial.ipynb). We need to append the games and then feed them into our function so that we can create features for upcoming games.
+Now let's append next week's DataFrame to our afl_data, match_results and odds DataFrames and then create all the features we used in the [AFL Feature Creation Tutorial](/modelling/AFLmodelPart2). We need to append the games and then feed them into our function so that we can create features for upcoming games.
 
 ```python
 # Append next week's games to our afl_data DataFrame
@@ -187,7 +187,7 @@ features_df.tail()
 
 ---
 ## Create Predictions For the Upcoming Round
-Now that we have our features, we can use our model that we created in part 3 to predict the next round. First we need to filter our features_df into a training df and a df with next round's features/matches. Then we can use the model created in the last tutorial to create predictions. For simplicity, I have hardcoded the parameters we used in the last tutorial.
+Now that we have our features, we can use our model that we created in [part 3](/modelling/AFLmodelPart3) to predict the next round. First we need to filter our features_df into a training df and a df with next round's features/matches. Then we can use the model created in the last tutorial to create predictions. For simplicity, I have hardcoded the parameters we used in the last tutorial.
 
 ```python
 # Get the train df by only taking the games IDs which aren't in the next week df
@@ -272,4 +272,4 @@ print(afl_modelling_v2.create_predictions())
    
 ---
 ## Conclusion
-Congratulations! You have created AFL predictions for this week. If you are beginner to this, don't be overwhelmed. The process gets easier each time you do it. And it is super rewarding. In future iterations we will update this tutorial to predict actual odds, and then integrate this with Betfair's API so that you can create an automated betting strategy using Machine Learning to create your predictions!
+Congratulations! You have created AFL predictions for this week. If you are beginner to this, don't be overwhelmed. The process gets easier each time you do it. And it is super rewarding. In future iterations we will update this tutorial to predict actual odds, and then integrate this with [Betfair's API](../../api/apiappkey) so that you can create an automated betting strategy using Machine Learning to create your predictions!

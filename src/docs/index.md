@@ -1,4 +1,4 @@
-![The Automation Hub](./img/automationHubHero.gif)
+![The Automation Hub](/img/automationHubHero.gif)
 
 Betfair is one of the only betting platforms in the world that demands winning clients. Unlike bookies, we don’t ban you when you succeed. We need you, and we want you to be able to keep improving your strategies so you win more. 
 
@@ -10,7 +10,7 @@ As you may already know, Betfair has its own API to allow you to integrate your 
 
 There are lots of resources available to support you in accessing the API effectively:
 
-- [Creating & activating your app key](./api/apiappkey.md)
+- [Creating & activating your app key](/api/apiappkey.md)
 - [Developer Program knowledge base](https://betfairdevelopersupport.zendesk.com/hc/en-us)
 - [Dev Docs](http://developer.betfair.com)
 - [Developer Forum](https://forum.developer.betfair.com/) where you can share your experiences and find out what's worked for other clients
@@ -26,9 +26,10 @@ There are lots of resources available to support you in accessing the API effect
 ---
 ### Historic Data
 
-We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the [different data sources](https://www.betfair.com.au/hub/tools/betfair-data-cheat-sheet/) if you’re not quite sure where to start. We’ve also shared some tips on learning to create [predictive models using this data](https://www.betfair.com.au/hub/how-to-make-a-predictive-model-in-5-easy-steps/), which link in with the models shared on our main [Github page](https://github.com/betfair-datascientists/predictive-models).
+We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the [different data sources](/historicData/dataSources) if you’re not quite sure where to start. We’ve also shared some tips on learning to create [predictive models using this data](/modelling/howToModel), which link in with the models shared in the [modelling section](/modelling/EPLmodelPart1).
 
-- [Betfair data sources](https://www.betfair.com.au/hub/tools/betfair-data-cheat-sheet/)
+- [Betfair data sources](/historicData/dataSources)
+- [Accessing the official Historic Data site](/historicData/usingHistoricDataSite)
 - [Historic Data FAQs & sample data](https://historicdata.betfair.com/#/help)
 - [Historic Data Specifications](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf)
 - [API for downloading historic data files](https://historicdata.betfair.com/#/apidocs) (quicker than manually downloading)
@@ -46,16 +47,20 @@ Whilst the following tools are not custom built for your approach, they do allow
 We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.
 
 - [Bet Angel](https://betangel.com)
-    - [Ratings automation](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/)
-    - [Market favourite automation](https://betfair-datascientists.github.io/thirdPartyTools/betAngelMarketFavouriteAutomation/) 
-    - [Tipping automation](https://betfair-datascientists.github.io/thirdPartyTools/betAngelTippingAutomation/)
+    - [Ratings automation](/thirdPartyTools/betAngelRatingsAutomation)
+    - [Market favourite automation](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
+    - [Tipping automation](/thirdPartyTools/betAngelTippingAutomation)
 - [Gruss](http://gruss-software.co.uk)
+    - [Ratings automation](/thirdPartyTools/grussRatingsAutomation)
 
 ---
 ### Data modelling 
 
-- [How to make a predictive model](https://www.betfair.com.au/hub/how-to-make-a-predictive-model-in-5-easy-steps/)
-- [Open source predictive models](https://github.com/betfair-datascientists/predictive-models) built by our in-house Data Scientists, including AFL, EPL and the recent FIFA World Cup
+- [An intro to building a predictive model](/modelling/howToModel)
+- [Open source predictive models](/modelling/EPLmodelPart1) built by our in-house Data Scientists
+    - [EPL modelling series](/modelling/EPLmodelPart1)
+    - [AFL modelling series](/modelling/AFLmodelPart1)
+    - [Brownlow modelling tutorial](/modelling/brownlowModelTutorial)
 
 !!! note "Predictive modelling"
     Many of our most successful customers use predictive models as the basis for their betting strategies 

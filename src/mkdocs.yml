@@ -16,8 +16,10 @@ nav:
     - API:
         - How to access the Betfair API: api/apiappkey.md
     - Historic Data: 
-        - Downloading from the Historic Data site: historicdata/index.md
+        - Historic Data Sources: historicData/dataSources.md
+        - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
     - Modelling:
+        - Intro to modelling: modelling/howToModel.md
         - EPL 01. Data acquisition & exploration: modelling/EPLmodelPart1.md
         - EPL 02. Data preparation & feature engineering: modelling/EPLmodelPart2.md
         - EPL 03. Model building & hyperparameter tuning: modelling/EPLmodelPart3.md

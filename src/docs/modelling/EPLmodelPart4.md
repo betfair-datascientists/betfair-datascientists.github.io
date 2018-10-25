@@ -45,7 +45,7 @@ fixture.head()
 
 Now we are going to connect to the API and retrieve game level information for the next week. To do this, we will use an R script. If you are not familiar with R, don't worry, it is relatively simple to read through. For this, we will run the script weekly_game_info_puller.R. Go ahead and run that script now.
 
-Note that for this step, you will require a Betfair API App Key. If you don't have one, visit [this page and follow the instructions](https://betfair-datascientists.github.io/api/apiappkey/).
+Note that for this step, you will require a Betfair API App Key. If you don't have one, visit [this page and follow the instructions](../../api/apiappkey).
 
 I will upload an updated weekly file, so you can follow along regardless of if you have an App Key or not. Let's load that file in now.
 

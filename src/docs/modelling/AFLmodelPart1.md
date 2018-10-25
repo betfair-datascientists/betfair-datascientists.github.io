@@ -305,4 +305,4 @@ afl_data.tail(3)
 | 3155 | North Melbourne | 1.3936 | 2018-08-26 | 0 | 15398 | 23 | 17 | 15 | 117 | 23 | Docklands | St Kilda | 14 | 10 | 94 | 2018 | 1707 | 13 | 7 | 15.0 | 50 | 24 | 6 | 131 | 425 | 322 | 14 | 18 | 17 | 13 | 201 | 32 | 59 | 77.0 | 224 | 106 | 5833.0 | 23 | 33 | 29 | 1735 | 9.0 | 154.0 | 48 | 9.0 | 66.0 | 300 |
 | 3156 | St Kilda | 3.5178 | 2018-08-26 | 1 | 15398 | 23 | 14 | 10 | 94 | -23 | Docklands | North Melbourne | 17 | 15 | 117 | 2018 | 1587 | 8 | 11 | 19.0 | 48 | 33 | 7 | 125 | 383 | 299 | 18 | 14 | 14 | 13 | 173 | 23 | 48 | 68.0 | 210 | 112 | 5522.0 | 14 | 46 | 35 | 1568 | 14.0 | 95.0 | 50 | 7.0 | 77.0 | 269 |
 
-Our data is now fully ready to be explored and for features to be created, which we will walk you through in our next tutorial, [AFL Feature Creation Tutorial](02. afl_feature_creation_tutorial.ipynb).
+Our data is now fully ready to be explored and for features to be created, which we will walk you through in our next tutorial, [AFL Feature Creation Tutorial](/modelling/AFLmodelPart2).

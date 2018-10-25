@@ -1,7 +1,7 @@
 # EPL Machine Learning Walkthrough
 
 ## 01. Data Acquisition & Exploration
-Welcome to the first part of this Machine Learning Walkthrough. This tutorial will be made of two parts; how we actually acquired our data (programmatically) and exploring the data to find potential features to use in the [next tutorial]('02. Data Preparation & Feature Engineering Tutorial').
+Welcome to the first part of this Machine Learning Walkthrough. This tutorial will be made of two parts; how we actually acquired our data (programmatically) and exploring the data to find potential features to use in the [next tutorial](/modelling/EPLmodelPart2).
 
 ---
 ## Data Acquisition

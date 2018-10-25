@@ -482,4 +482,4 @@ diff_df.tail()
 ## Wrapping it Up
 We now have a fairly decent amount of features. Some other features which could be added include whether the game is in a major Capital city outisde of Mebourne (i.e. Sydney, Adelaide or Peth), how many 'Elite' players are playing (which could be judged by average SuperCoach scores over 110, for example), as well as your own metrics for attacking and defending.
 
-Note that all of our features have columns starting with 'f_' so in the next tutorial, we will grab this feature dataframe and use these features to sport predicting the matches.
+Note that all of our features have columns starting with 'f_' so in the [next tutorial](/modelling/AFLmodelPart3), we will grab this feature dataframe and use these features to sport predicting the matches.

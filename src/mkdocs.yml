@@ -94,11 +94,8 @@ markdown_extensions:
     - pymdownx.tasklist:
         custom_checkbox: true
     - pymdownx.tilde
-<<<<<<< HEAD
-=======
 
 # Google Analytics
 google_analytics:
     - 'UA-125973915-1'
     - 'auto'
->>>>>>> 2167e91085759aed68de935bdef409e83354d969

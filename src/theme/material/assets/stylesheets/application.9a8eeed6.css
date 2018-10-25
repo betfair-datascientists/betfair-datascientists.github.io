@@ -177,7 +177,6 @@ kbd {
     border-bottom: 0.1rem dotted rgba(0, 0, 0, 0.26); }
   .md-typeset a {
     color: rgba(0, 0, 0, 0.87);
-    text-decoration: underline;
     font-weight: bold;
     word-break: break-word; }
     .md-typeset a, .md-typeset a::before {
@@ -448,6 +447,7 @@ hr {
     overflow: hidden; }
 
 .md-skip {
+  display: none;
   position: fixed;
   width: 0.1rem;
   height: 0.1rem;
@@ -558,11 +558,11 @@ hr {
     color: rgba(0, 0, 0, 0.26); }
 
 .bf-nav {
+  top: 13px;
   font-size: 2rem;
-  line-height: 5rem;
   font-family: "Clarke Regular";
   text-transform: uppercase;
-  min-width: 160px; }
+  min-width: 167px; }
   .bf-nav a {
     padding: 4px;
     color: #ffb80c; }
@@ -2606,4 +2606,4 @@ hr {
         max-height: 5rem;
         -webkit-line-clamp: 3; } }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uOGY1ZTc3YjAuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uOWE4ZWVlZDYuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

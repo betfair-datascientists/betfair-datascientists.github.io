@@ -26,11 +26,11 @@
 
 // return to Betfair and Hub buttons
 .bf-nav {
+  top: 13px; // push it down a touch from the top
   font-size: 2rem; 
-  line-height: 5rem;
   font-family: "Clarke Regular";
   text-transform: uppercase;
-  min-width: 160px;
+  min-width: 167px;
 
   a {
     padding: 4px;

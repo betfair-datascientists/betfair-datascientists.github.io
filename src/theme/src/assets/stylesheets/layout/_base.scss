@@ -207,6 +207,8 @@ hr {
 
 // Skip link
 .md-skip {
+  display: none;
+
   position: fixed;
   width: 0.1rem;
   height: 0.1rem;

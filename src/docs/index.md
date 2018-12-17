@@ -10,7 +10,7 @@ As you may already know, Betfair has its own API to allow you to integrate your 
 
 There are lots of resources available to support you in accessing the API effectively:
 
-- [Creating & activating your app key](/api/apiappkey.md)
+- [Creating & activating your app key](/api/apiappkey)
 - [Developer Program knowledge base](https://betfairdevelopersupport.zendesk.com/hc/en-us)
 - [Dev Docs](http://developer.betfair.com)
 - [Developer Forum](https://forum.developer.betfair.com/) where you can share your experiences and find out what's worked for other clients

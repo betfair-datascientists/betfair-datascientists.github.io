@@ -13,7 +13,7 @@
         <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
       
       
-        <link rel="canonical" href="https://betfair-datascientists.github.io/historicData/usingHistoricDataSite/">
+        <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/howToModelTheAusOpen/">
       
       
         <meta name="author" content="Betfair Data Scientists">
@@ -42,7 +42,7 @@
     
     
       
-        <title>Downloading from the Historic Data site - The Automation Hub</title>
+        <title>How to model the Australian Open - The Automation Hub</title>
       
     
     
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#using-the-historic-data-site" tabindex="1" class="md-skip">
+      <a href="../../#how-to-model-the-australian-open" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -104,7 +104,7 @@
                 The Automation Hub
               </span>
               <span class="md-header-nav__topic">
-                Downloading from the Historic Data site
+                How to model the Australian Open
               </span>
             
           
@@ -211,7 +211,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../dataSources/" title="Historic Data" class="md-tabs__link md-tabs__link--active">
+        <a href="../../historicData/dataSources/" title="Historic Data" class="md-tabs__link">
           Historic Data
         </a>
       
@@ -224,7 +224,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../../modelling/howToModel/" title="Modelling" class="md-tabs__link">
+        <a href="../howToModel/" title="Modelling" class="md-tabs__link md-tabs__link--active">
           Modelling
         </a>
       
@@ -427,12 +427,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
       Historic Data
@@ -450,8 +448,58 @@
 
 
   <li class="md-nav__item">
-    <a href="../dataSources/" title="Historic Data Sources" class="md-nav__link">
+    <a href="../../historicData/dataSources/" title="Historic Data Sources" class="md-nav__link">
       Historic Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
     </a>
   </li>
 
@@ -471,11 +519,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Downloading from the Historic Data site
+        How to model the Australian Open
       </label>
     
-    <a href="./" title="Downloading from the Historic Data site" class="md-nav__link md-nav__link--active">
-      Downloading from the Historic Data site
+    <a href="./" title="How to model the Australian Open" class="md-nav__link md-nav__link--active">
+      How to model the Australian Open
     </a>
     
       
@@ -489,36 +537,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purchasing-the-data" title="Purchasing the data" class="md-nav__link">
-    Purchasing the data
+  <a href="#tools-for-creating-our-model" title="Tools for creating our model" class="md-nav__link">
+    Tools for creating our model
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#downloading-the-data" title="Downloading the data" class="md-nav__link">
-    Downloading the data
+  <a href="#tournament-structure" title="Tournament structure" class="md-nav__link">
+    Tournament structure
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#unzipping-the-files" title="Unzipping the files" class="md-nav__link">
-    Unzipping the files
+  <a href="#how-to-set-up-data-and-features" title="How to set up data and features" class="md-nav__link">
+    How to set up data and features
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-it-for" title="What's it for?" class="md-nav__link">
-    What's it for?
+  <a href="#target-variable" title="Target variable" class="md-nav__link">
+    Target variable
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#extra-resources" title="Extra resources" class="md-nav__link">
-    Extra resources
+  <a href="#sports-modelling-nuances" title="Sports modelling nuances" class="md-nav__link">
+    Sports modelling nuances
   </a>
   
 </li>
@@ -534,61 +582,13 @@
   </li>
 
         
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
-    
-    <label class="md-nav__link" for="nav-5">
-      Modelling
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-5">
-        Modelling
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
           
           
           
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/howToModel/" title="Intro to modelling" class="md-nav__link">
-      Intro to modelling
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../modelling/howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
-      How to model the Australian Open
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../modelling/EPLmodelPart1/" title="EPL 01. Data acquisition & exploration" class="md-nav__link">
+    <a href="../EPLmodelPart1/" title="EPL 01. Data acquisition & exploration" class="md-nav__link">
       EPL 01. Data acquisition & exploration
     </a>
   </li>
@@ -600,7 +600,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/EPLmodelPart2/" title="EPL 02. Data preparation & feature engineering" class="md-nav__link">
+    <a href="../EPLmodelPart2/" title="EPL 02. Data preparation & feature engineering" class="md-nav__link">
       EPL 02. Data preparation & feature engineering
     </a>
   </li>
@@ -612,7 +612,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/EPLmodelPart3/" title="EPL 03. Model building & hyperparameter tuning" class="md-nav__link">
+    <a href="../EPLmodelPart3/" title="EPL 03. Model building & hyperparameter tuning" class="md-nav__link">
       EPL 03. Model building & hyperparameter tuning
     </a>
   </li>
@@ -624,7 +624,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/EPLmodelPart4/" title="EPL 04. Weekly predictions" class="md-nav__link">
+    <a href="../EPLmodelPart4/" title="EPL 04. Weekly predictions" class="md-nav__link">
       EPL 04. Weekly predictions
     </a>
   </li>
@@ -636,7 +636,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/AFLmodelPart1/" title="AFL 01. Data cleaning" class="md-nav__link">
+    <a href="../AFLmodelPart1/" title="AFL 01. Data cleaning" class="md-nav__link">
       AFL 01. Data cleaning
     </a>
   </li>
@@ -648,7 +648,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/AFLmodelPart2/" title="AFL 02. Feature creation" class="md-nav__link">
+    <a href="../AFLmodelPart2/" title="AFL 02. Feature creation" class="md-nav__link">
       AFL 02. Feature creation
     </a>
   </li>
@@ -660,7 +660,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/AFLmodelPart3/" title="AFL 03. Modelling" class="md-nav__link">
+    <a href="../AFLmodelPart3/" title="AFL 03. Modelling" class="md-nav__link">
       AFL 03. Modelling
     </a>
   </li>
@@ -672,7 +672,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/AFLmodelPart4/" title="AFL 04. Weekly predictions" class="md-nav__link">
+    <a href="../AFLmodelPart4/" title="AFL 04. Weekly predictions" class="md-nav__link">
       AFL 04. Weekly predictions
     </a>
   </li>
@@ -684,7 +684,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/brownlowModelTutorial/" title="Modelling the Brownlow Medal" class="md-nav__link">
+    <a href="../brownlowModelTutorial/" title="Modelling the Brownlow Medal" class="md-nav__link">
       Modelling the Brownlow Medal
     </a>
   </li>
@@ -716,36 +716,36 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purchasing-the-data" title="Purchasing the data" class="md-nav__link">
-    Purchasing the data
+  <a href="#tools-for-creating-our-model" title="Tools for creating our model" class="md-nav__link">
+    Tools for creating our model
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#downloading-the-data" title="Downloading the data" class="md-nav__link">
-    Downloading the data
+  <a href="#tournament-structure" title="Tournament structure" class="md-nav__link">
+    Tournament structure
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#unzipping-the-files" title="Unzipping the files" class="md-nav__link">
-    Unzipping the files
+  <a href="#how-to-set-up-data-and-features" title="How to set up data and features" class="md-nav__link">
+    How to set up data and features
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-it-for" title="What's it for?" class="md-nav__link">
-    What's it for?
+  <a href="#target-variable" title="Target variable" class="md-nav__link">
+    Target variable
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#extra-resources" title="Extra resources" class="md-nav__link">
-    Extra resources
+  <a href="#sports-modelling-nuances" title="Sports modelling nuances" class="md-nav__link">
+    Sports modelling nuances
   </a>
   
 </li>
@@ -767,80 +767,58 @@
               
                 
                 
-                <h1 id="using-the-historic-data-site">Using the Historic Data site<a class="headerlink" href="#using-the-historic-data-site" title="Permanent link">&para;</a></h1>
+                <h1 id="how-to-model-the-australian-open">How to model the Australian Open<a class="headerlink" href="#how-to-model-the-australian-open" title="Permanent link">&para;</a></h1>
+<p>Betfair’s Data Scientists Team are putting together a collection of articles on How to Build a Model and submit an entry to the <a href="https://www.betfair.com.au/hub/australian-open-datathon/">Betfair Aus Open Datathon</a>.</p>
+<p>This article will outline their thought process and share their approach. Subsequent articles will be posted with code examples that outline how this approach can be put into practice.</p>
 <hr />
-<p>The <a href="https://historicdata.betfair.com/#/home">Betfair Historic Data site</a> includes complete historic data for nearly all markets offered on the Exchange since 2016, when the new APING was launched. The data available includes prices, volume traded, winning status, average weighted price, BSP, and a variety of other details that are valuable for modelling and strategy development. </p>
-<p>We know that the process of downloading and extracting these data files can be a bit intimidating the first time round, so here's a walk through of one way to go about it to help make it more accessible. </p>
-<div class="admonition note">
-<p class="admonition-title">Data tiers</p>
-<p>There are three tiers of historic data available on this site. You can download samples of each tier of data <a href="https://historicdata.betfair.com/#/help">here</a>.</p>
-<p>The biggest differece is between the free and paid data. The free data includes a lot of information about the market, but no volume, and only last traded price per minute, not a full price ladder. The two paid tiers include the same data, just at different frequencies. If your strategy isn't particularly price sensitive and doesn't need volume as a variable then you'll probably be fine wtih the free tier, however if you need to see a more granular view of the market then you should probably consider the paid advanced or pro tiers. </p>
-<p>A full catalogue of the values included in each data tier is available <a href="https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf">here</a>.</p>
-</div>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>Basic</strong></th>
-<th align="left"><strong>Advanced</strong></th>
-<th align="left"><strong>Pro</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left"><li>1 minute intervals</li><li>last traded price</li><li>no volume</li></td>
-<td align="left"><li>1 second intervals</li><li>price ladder</li><li>volume</li></td>
-<td align="left"><li>API tick intervals (50ms)</li><li>price ladder</li><li>volume</li></td>
-</tr>
-</tbody>
-</table>
+<h2 id="tools-for-creating-our-model">Tools for creating our model<a class="headerlink" href="#tools-for-creating-our-model" title="Permanent link">&para;</a></h2>
+<p>We will be providing a step by step tutorial in two languages – Python and R.</p>
+<p>These are the two most popular languages used in data science nowadays. Both code examples will follow identical approaches.</p>
 <hr />
-<h3 id="purchasing-the-data">Purchasing the data<a class="headerlink" href="#purchasing-the-data" title="Permanent link">&para;</a></h3>
-<p>Start by going to <a href="https://historicdata.betfair.com/#/home">the Betfair Historic Data site</a> and log in using your Betfair account. Note: if you have less than 100 <a href="https://www.betfair.com.au/hub/help/account-help/discount-rates/">Betfair points</a> you may have problems downloading data. </p>
-<p>On the <a href="https://historicdata.betfair.com/#/home">Home</a> page select the data set you want to download.</p>
+<h2 id="tournament-structure">Tournament structure<a class="headerlink" href="#tournament-structure" title="Permanent link">&para;</a></h2>
+<p>The Datathon structure requires contestants to predict every possible tournament match-up only using data that is available at the start of the tournament.</p>
+<p>This means we can’t use information from previous rounds (data from Round 1 matches for potential Round 2 matches and so on). For example, if we were to just train our model on all the tennis matches in the data set, our model would have been trained assuming that it had the result from previous rounds in the Australian Open.</p>
+<p>But this isn’t the case, so we need to account for this nuance of the competition. We need to ensure that we don’t include previous round data from the same tournament in the way we structure our features for predicting results.</p>
+<hr />
+<h2 id="how-to-set-up-data-and-features">How to set up data and features<a class="headerlink" href="#how-to-set-up-data-and-features" title="Permanent link">&para;</a></h2>
+<p>In predictive modelling language – features are data metrics we use to predict an outcome or target variable. We have several choices to make before we get to the prediction phase. What are the features? How do we structure the outcome variable? What does each row mean? Do we use all data or just a subset? We narrowed it down to two options</p>
 <div class="admonition note">
-<p class="admonition-title">Free data</p>
+<p class="admonition-title">Training the model</p>
 <ul>
-<li>You need to 'purchase' the data set you want to download, even if it's from the free tier</li>
-<li>You can only 'purchase' each time period of data once. For example, if you had previously 'purchased' all Greyhound data for January 2018, then tried to download Greyhound data for January to March 2018 you would receive an error, and would need to purchase the data for February to March instead. </li>
+<li><strong>We can train the model on every tennis match in the data set</strong> or</li>
+<li><strong>We can only train the model on Australian Open matches</strong></li>
+</ul>
+<p>Doing <strong>Option 1</strong> would mean we have a lot more data to build a strong model, but it might be challenging to work around the constraints described in the tournament structure.</p>
+<p>Doing <strong>Option 2</strong> fits better from that angle but leaves us with very few matches to train our model on.</p>
+</div>
+<p>In the end, we decided to go with an option that combines strengths from both approaches, by training the model on matches from the Aus Open and the US Open because both grand slams are played on the same surface – hard court.</p>
+<p>Next decision is to decide the features (or the metrics we feed into the model, which makes the decision on who the winner is going to be).</p>
+<p>We don’t have a definitive list of features that we will use, but we will most likely keep the number of features quite low (between 4-5).</p>
+<div class="admonition note">
+<p class="admonition-title">Features set</p>
+<p>Likely features may include:</p>
+<ul>
+<li><strong>ELO</strong></li>
+<li><strong>First serve %</strong></li>
+<li><strong>Winners-unforced error ratio</strong></li>
 </ul>
 </div>
-<p>Once you 'purchase' your choice of data it's recommended that you go to the <a href="https://historicdata.betfair.com/#/mydata">My Data</a> page, and choose the subset of data to then download.</p>
-<p><img alt="Betfair Historic Data" src="../img/historicDataDownload2.png" /></p>
+<p>We will also use the difference between opponents' statistics (Difference of Averages), such as the difference between average first serve % in a single column rather than Player 1’s first serve % and Player 2’s first serve % in two separate columns. This will reduce the dimensionality of the model.</p>
+<p>A typical row of the transformed data will look like this – For a match between Player A – Roger Federer and Player B – Rafael Nadal, we will have a bunch of features like the difference in first serve %, difference in ELO rating etc.</p>
 <hr />
-<h3 id="downloading-the-data">Downloading the data<a class="headerlink" href="#downloading-the-data" title="Permanent link">&para;</a></h3>
-<p>On the <a href="https://historicdata.betfair.com/#/mydata">My Data</a> page you can filter the purchased data to the actual markets you're interested in. You can filter by Sport, Date range, EventId, Event Name, Market Type, Country &amp; File Type (M = market, E = Event), which will cut down the size of the data you need to download.</p>
-<p>For example, if you wanted the win market for Australian and New Zealand greyhound races you'd use these filters. </p>
-<p><img alt="Betfair Historic Data" src="../img/historicDataDownload3.png" /></p>
+<h2 id="target-variable">Target variable<a class="headerlink" href="#target-variable" title="Permanent link">&para;</a></h2>
+<p>Our target variable (what we are trying to predict) is whether player A wins or not against player B. In machine learning terms this is a classification problem.</p>
+<p>The output will be a probability number between 0 and 1. A number closer to 0 means Player B is likely to win, and a number closer to 1 will mean Player A is likely to win.</p>
+<p>Another positive of a probabilistic outcome is that they can easily be converted to odds, and can also be compared with the historical Betfair odds that have been provided, and test if our model would have been profitable for previous seasons.</p>
+<hr />
+<h2 id="sports-modelling-nuances">Sports modelling nuances<a class="headerlink" href="#sports-modelling-nuances" title="Permanent link">&para;</a></h2>
+<p>Sports data is inherently complex to model. Generally when predicting something, like “will it rain today”, you have information for that day, such as the temperature, which you can use in formulating your prediction.</p>
+<p>However with sports data, you cannot use the majority of information that is provided in the raw dataset, such as aces, winners, etc, as this will create what is called feature leakage – using data from after the event, which you won’t have access to before the event, to predict the result.</p>
+<p>You will also need to use historic results in such a way that will have predictive power for the sports event that you are trying to predict. This means that you run into little nuances like needing to use rolling averages, as well as whether to model each match on a single row or multiple rows. In the next article in this series, we will show you how we tackle this problem using code examples that anyone can replicate.</p>
 <div class="admonition note">
-<p class="admonition-title">File type</p>
-<p>The file type filter has two options that you can choose from:</p>
-<ul>
-<li><strong>E = Event</strong> - includes event level data, i.e. Geelong greyhounds on x date</li>
-<li><strong>M = Market</strong> - includes market level data, i.e. the win market for Geelong greyhounds race 3 on x date</li>
-</ul>
+<p class="admonition-title">Betfair's Aus Open Datathon</p>
+<p>Make sure you register for our <a href="https://www.betfair.com.au/hub/australian-open-datathon/">Australian Open Datathon</a> to receive 7 years of match data for tournments all around the world, along with historic Aus Open price data. Submit a model and you'll also be in the running to take home some of the $15k prize pool!</p>
 </div>
-<p>The site can be pretty slow to download from, and you'll generally have a better experience if you download the data a bit at a time, say month by month. Alternatively if you're going to download a lot of data it might be worth having a look at the historic data API, that can automate the download process and speed it up significantly. There's a guide available <a href="https://historicdata.betfair.com/#/apidocs">here</a>, and some <a href="https://github.com/betfair/historicdata">sample code</a> the help get you started.</p>
-<hr />
-<h3 id="unzipping-the-files">Unzipping the files<a class="headerlink" href="#unzipping-the-files" title="Permanent link">&para;</a></h3>
-<p>You'll need to download a program to unzip the TAR files. Here we'll be using <a href="https://www.7-zip.org/">7Zip</a>, which is free, open source and generally well respected. Once you've downloaded it make sure you also instal it onto the computer you'll be using to open the data files.</p>
-<p>Locate the data.tar file in your computer's file explorer program. Right click on the file, select '7-Zip' from the menu then choose 'Extract files...'.</p>
-<p><img alt="Betfair Historic Data" src="../img/historicDataUnzip2.png" /></p>
-<p>In the model that pops up change the pathmode to 'No pathnames'. You can also change the name and/or path of the folder you want the files extracted to if you want to.</p>
-<p><img alt="Betfair Historic Data" src="../img/historicDataUnzip3.png" /></p>
-<p>You now have a collection of .bz2 files. The final step is to select all the files, right click, select '7-Zip' from the menu then choose 'Extract here'. This will then extract all the individual zipped files which you can then either open in a text editor - you can use something basic like Notepad (installed on basically all computers by default) or a more complete program like <a href="https://code.visualstudio.com/">Visual Studio Code</a> (my go to), <a href="https://www.vim.org/">Vim</a> or <a href="https://notepad-plus-plus.org/">Notepad++</a> - or you can parse over the using a program to do the work for you. We'll explore how to parse the data another time. If you're opening the files with a text editor you might need to right click, choose 'open with' and select your preferred program. </p>
-<p><img alt="Betfair Historic Data" src="../img/historicDataUnzip4.png" /></p>
-<hr />
-<h3 id="whats-it-for">What's it for?<a class="headerlink" href="#whats-it-for" title="Permanent link">&para;</a></h3>
-<p>The data available on the Historic Data site is extensive, and can be a really valuable tool or input. For example, you can include some of the columns as variables in a predictive model, compare BSP odds against win rates, or determine the average length of time it takes for 2 year old horses to run 1200m at Geelong. Quality data underpins the vast majority of successful betting strategies, so becoming comfortable working with the data available to you is a really important part of both the modelling and automation processes. </p>
-<hr />
-<h3 id="extra-resources">Extra resources<a class="headerlink" href="#extra-resources" title="Permanent link">&para;</a></h3>
-<p>Here are some other useful resources that can help you work with this Historic Data:</p>
-<ul>
-<li><a href="https://historicdata.betfair.com/#/help">Historic Data FAQs</a></li>
-<li><a href="https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf">Data Specification</a></li>
-<li><a href="https://historicdata.betfair.com/#/apidocs">API for downloading historic data files</a> (quicker than manually downloading)</li>
-<li><a href="https://github.com/betfair/historicdata">Sample code for using the historic data download API</a></li>
-</ul>
                 
                   
                 
@@ -861,7 +839,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../dataSources/" title="Historic Data Sources" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../howToModel/" title="Intro to modelling" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -870,19 +848,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Historic Data Sources
+                Intro to modelling
               </span>
             </div>
           </a>
         
         
-          <a href="../../modelling/howToModel/" title="Intro to modelling" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../EPLmodelPart1/" title="EPL 01. Data acquisition & exploration" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Intro to modelling
+                EPL 01. Data acquisition & exploration
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

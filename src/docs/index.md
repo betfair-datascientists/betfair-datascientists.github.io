@@ -16,7 +16,7 @@ There are lots of resources available to support you in accessing the API effect
 - [Developer Forum](https://forum.developer.betfair.com/) where you can share your experiences and find out what's worked for other clients
 - [Exchange Sports API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) for testing market-related queries
 - [Exchange Account API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/) for testing account-related queries
-- [Our Datascientists' repo](/api/apiRtutorial) for using R to access the API
+- Our Datascientists' repos for using [R](/api/apiRtutorial) and [Python](/api/apiPythontutorial) to access the API
 - [The UK’s Github repo](https://github.com/betfair/API-NG-Excel-Toolkit) including libraries for other languages
 
 !!! note "API access"
@@ -34,6 +34,7 @@ We know that automated strategies are only as good as your data. There’s a hug
 - [Historic Data Specifications](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf)
 - [API for downloading historic data files](https://historicdata.betfair.com/#/apidocs) (quicker than manually downloading)
 - [Sample code for using the historic data download API](https://github.com/betfair/historicdata)
+- [The Stream API dev docs](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Exchange+Stream+API) are the best source of information for interpreting the data from the Historic Data site
 - [Historic BSP csv files](https://promo.betfair.com/betfairsp/prices)
 
 !!! note "Historic Betfair data"
@@ -58,6 +59,7 @@ We’re putting together a collection of articles on how to use some of these th
 
 - [An intro to building a predictive model](/modelling/howToModel)
 - [Open source predictive models](/modelling/EPLmodelPart1) built by our in-house Data Scientists
+    - [Modelling the Aus Open](/modelling/howToModelTheAusOpen)
     - [EPL modelling series](/modelling/EPLmodelPart1)
     - [AFL modelling series](/modelling/AFLmodelPart1)
     - [Brownlow modelling tutorial](/modelling/brownlowModelTutorial)

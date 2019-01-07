@@ -48,7 +48,7 @@ We don’t have a definitive list of features that we will use, but we will most
 
 We will also use the difference between opponents' statistics (Difference of Averages), such as the difference between average first serve % in a single column rather than Player 1’s first serve % and Player 2’s first serve % in two separate columns. This will reduce the dimensionality of the model.
 
-A typical row of the transformed data will look like this – For a match between Player A – Roger Federer and Player B – Rafael Nadal, we will have a bunch of features like the difference in first serve %, difference in ELO rating etc.
+A typical row of the transformed data will look like this – For a match between Player A – Roger Federer and Player B – Rafael Nadal, we will have a bunch of features like the difference in first serve %, the difference in ELO rating etc.
 
 ---
 ## Target variable

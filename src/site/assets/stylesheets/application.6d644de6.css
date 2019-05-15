@@ -854,6 +854,8 @@ hr {
     padding: 0 7.2rem 0 4.4rem; }
   .md-search__input::-webkit-input-placeholder {
     transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
+  .md-search__input::-moz-placeholder {
+    transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
   .md-search__input:-ms-input-placeholder {
     transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
   .md-search__input::-ms-input-placeholder {
@@ -861,6 +863,8 @@ hr {
   .md-search__input::placeholder {
     transition: color 0.25s cubic-bezier(0.1, 0.7, 0.1, 1); }
   .md-search__input ~ .md-search__icon, .md-search__input::-webkit-input-placeholder {
+    color: rgba(0, 0, 0, 0.54); }
+  .md-search__input ~ .md-search__icon, .md-search__input::-moz-placeholder {
     color: rgba(0, 0, 0, 0.54); }
   .md-search__input ~ .md-search__icon, .md-search__input:-ms-input-placeholder {
     color: rgba(0, 0, 0, 0.54); }
@@ -2432,6 +2436,8 @@ hr {
         color: inherit; }
       .md-search__input::-webkit-input-placeholder {
         color: rgba(255, 255, 255, 0.7); }
+      .md-search__input::-moz-placeholder {
+        color: rgba(255, 255, 255, 0.7); }
       .md-search__input:-ms-input-placeholder {
         color: rgba(255, 255, 255, 0.7); }
       .md-search__input::-ms-input-placeholder {
@@ -2446,6 +2452,8 @@ hr {
         color: rgba(0, 0, 0, 0.87);
         text-overflow: none; }
         [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon, [data-md-toggle="search"]:checked ~ .md-header .md-search__input::-webkit-input-placeholder {
+          color: rgba(0, 0, 0, 0.54); }
+        [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon, [data-md-toggle="search"]:checked ~ .md-header .md-search__input::-moz-placeholder {
           color: rgba(0, 0, 0, 0.54); }
         [data-md-toggle="search"]:checked ~ .md-header .md-search__input + .md-search__icon, [data-md-toggle="search"]:checked ~ .md-header .md-search__input:-ms-input-placeholder {
           color: rgba(0, 0, 0, 0.54); }
@@ -2606,4 +2614,4 @@ hr {
         max-height: 5rem;
         -webkit-line-clamp: 3; } }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uOWE4ZWVlZDYuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uNmQ2NDRkZTYuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

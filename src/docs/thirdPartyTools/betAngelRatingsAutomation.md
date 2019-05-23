@@ -16,7 +16,7 @@ Here I'll step through how I went about getting Bet Angel Pro to place bets usin
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsHub.png)
 
-!!! note "Resources"
+!!! info "Resources"
     - Ratings: [Betfair Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/)
     - Rules: [here's the spreadsheet](./assets/BetAngel_RatingsAutomation.xls) I set up with my macros and rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings 
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
@@ -134,7 +134,7 @@ Here are three different examples of formulas you can use here, depending on you
 )
 ```
 
-!!! note "Updating references to suit your ratings format"
+!!! tip "Updating references to suit your ratings format"
     If your ratings are formatted differently to my simple runner **name | rating** layout you can easily edit the formula to refence the relevant column directly, instead of changing your ratings to fit the formula. 
     Let's say your ratings sheet is set out like this: **race date | venue | runner name | last race time | weight | rating** 
     
@@ -204,7 +204,7 @@ Here are three different examples of formulas you can use here, depending on you
 )
 ```
 
-!!! note "Excel functions"
+!!! info "Excel functions"
 
     - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true, do this, else do this)
     - [AND statement:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true, and so is this, and so is this) - returns true or false

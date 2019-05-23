@@ -14,7 +14,7 @@ Given that we're simply choosing our selections based on the market we don't nee
 
 My approach here, and how I've set up the accompanying spreadsheet, backs the top two runners in the market two minutes out from the scheduled start time using the Betfair Starting Price. 
 
-!!! note "Resources"
+!!! info "Resources"
     - Rules: [here's the spreadsheet](./assets/BetAngel_MarketFavouriteAutomation.xls) I set up with my macros and rules included, but you'll obviously need to tweak it to suit your strategy and approach
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
 
@@ -124,7 +124,7 @@ Once it's established what each selection's rank is, we then check if that rank 
 =IF(SETTINGS!$E$4 < 60, "TAKE_SP_ALL", "")
 ```
 
-!!! note "Excel functions"
+!!! info "Excel functions"
 
     - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true, do this, else do this)
     - [AND statement:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true, and so is this, and so is this) - returns true or false

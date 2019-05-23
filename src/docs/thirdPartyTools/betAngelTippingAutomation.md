@@ -54,7 +54,7 @@ You can choose to change the bet stake and other parts of the rule by:
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipEditRule.png)
 
-!!! note "Turning off bet confirmation"
+!!! tip "Turning off bet confirmation"
     Unless you want to manually confirm each individual bet placed (which you definitely might want to leave turned on until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. 
     
     You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program.
@@ -82,7 +82,7 @@ The final step is to choose which selections you want to bet on. In this example
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipBack.png)
 
-!!! note "Changing the rules"
+!!! tip "Changing the rules"
     This approach only allows you to back one runner and lay one runner per race. If your strategy bets on multiple runners per race you can edit the rules file, select 'copy rule', then edit the second rule to use the runner selected in 'Automation Nomination Selection 2 and delete the lay strategy.
 
     The beauty of this tool is that you can customise the rules until you have a set that do what you want them to.

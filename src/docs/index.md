@@ -47,12 +47,16 @@ Whilst the following tools are not custom built for your approach, they do allow
 
 We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.
 
-- [Bet Angel](https://betangel.com)
+- [Bet Angel](/thirdPartyTools/betAngel/betAngel)
     - [Ratings automation](/thirdPartyTools/betAngelRatingsAutomation)
     - [Market favourite automation](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
     - [Tipping automation](/thirdPartyTools/betAngelTippingAutomation)
-- [Gruss](http://gruss-software.co.uk)
+    - [Automating multiple simultaneous markets](/thirdPartyTools/betAngelSimultaneousMarkets)
+- [Gruss](/thirdPartyTools/Gruss/Gruss)
     - [Ratings automation](/thirdPartyTools/grussRatingsAutomation)
+    - [Automating multiple simultaneous markets](/thirdPartyTools/grusslSimultaneousMarkets)
+- [Cymatic Trader](/thirdPartyTools/CymaticTrader/CymaticTrader)
+    - [Ratings automation](/thirdPartyTools/cymaticTraderRatingsAutomation)
 
 ---
 ### Data modelling 

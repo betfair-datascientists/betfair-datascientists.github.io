@@ -43,7 +43,7 @@ You’ll notice that two application keys have been created;
 
 - Version – 1.0: is the live pricing app key; on yours it should have a status ‘No’ in Active.
 
-Grab the application key listed for the live price one - for the example above, that is ‘EQtfV6x58mgkstqL’
+Grab the application key listed for the live price one - for the example above, that is ‘MkcBqyZrD53V6A’
 
 ---
 ### Activate your app key

@@ -57,6 +57,8 @@ We’re putting together a collection of articles on how to use some of these th
     - [Automating multiple simultaneous markets](/thirdPartyTools/grusslSimultaneousMarkets)
 - [Cymatic Trader](/thirdPartyTools/CymaticTrader/CymaticTrader)
     - [Ratings automation](/thirdPartyTools/cymaticTraderRatingsAutomation)
+- [BF Bot Manager](/thirdPartyTools/BfBotManager/BfBotManager)
+    - [Rule automation](/thirdPartyTools/BfBotManagerAutomation.md)
 
 ---
 ### Data modelling 

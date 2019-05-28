@@ -6,7 +6,9 @@ If you havn't before used a third party betting tool, below is a quick guide whi
 
 ![third party tools comparison](./img/compare.jpg)
 
-On the left hand navigation menu, we will provide examples of different basic strategies and how they can be implemented into various tools listed above.
+On the left hand navigation menu, we will provide examples of different basic strategies and how they can be implemented into various tools listed above. These are seperated by how the automation is integrated into that particular tool. (Excel) for tutorials that utilize Excel spreadsheets to automate a strategy and (Rules) for tutorials that focus on automation strategies using the applications rule editor. 
+
+
 If you have any suggestions for new tutorials / improvements please reach out to bdp@betfair.com.au - We'd love to hear your thoughts and feedback. 
 
 ---

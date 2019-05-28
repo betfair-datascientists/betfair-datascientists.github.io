@@ -12,17 +12,20 @@ nav:
         - Overview: thirdPartyTools/overview.md
         - Bet Angel: 
             - Bet Angel overview: thirdPartyTools/betAngel/betAngel.md
-            - Bet Angel - Ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
-            - Bet Angel - Market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
-            - Bet Angel - Tipping automation: thirdPartyTools/betAngelTippingAutomation.md
-            - Bet Angel - Automating simultaneous markets: thirdPartyTools/betAngelSimultaneousMarkets.md
+            - Ratings automation (Excel): thirdPartyTools/betAngelRatingsAutomation.md
+            - Market favourite automation (Excel): thirdPartyTools/betAngelMarketFavouriteAutomation.md
+            - Tipping automation (Excel): thirdPartyTools/betAngelTippingAutomation.md
+            - Automating simultaneous markets (Excel): thirdPartyTools/betAngelSimultaneousMarkets.md
         - Gruss:
             - Gruss overview: thirdPartyTools/Gruss/Gruss.md
-            - Gruss - Ratings automation: thirdPartyTools/grussRatingsAutomation.md
-            - Gruss - Automating simultaneous markets: thirdPartyTools/grusslSimultaneousMarkets.md
+            - Ratings automation (Excel): thirdPartyTools/grussRatingsAutomation.md
+            - Automating simultaneous markets (Excel): thirdPartyTools/grusslSimultaneousMarkets.md
         - Cymatic Trader:
             - Cymatic Trader overview: thirdPartyTools/CymaticTrader/CymaticTrader.md
-            - Cymatic Trader - Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md
+            - Ratings automation (Excel): thirdPartyTools/cymaticTraderRatingsAutomation.md
+        - BF Bot Manager:
+            - BF Bot Manager overview: thirdPartyTools/BfBotManager/BfBotManager.md
+            - Double or Bust (Rules): thirdPartyTools/BfBotManagerAutomation.md
     - API:
         - How to access the Betfair API: api/apiappkey.md
         - API tutorials in R: api/apiRtutorial.md

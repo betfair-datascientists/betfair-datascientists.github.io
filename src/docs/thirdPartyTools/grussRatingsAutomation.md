@@ -1,4 +1,4 @@
-# Gruss Betting Assistant - ratings automation
+# Gruss Betting Assistant: Ratings automation
 
 ---
 ## Automating a ratings based strategy using Gruss Betting Assistant

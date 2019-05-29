@@ -1,4 +1,4 @@
-# Cymatic Trader - ratings automation
+# Cymatic Trader: Ratings automation
 
 ---
 ## Automating a ratings based strategy using Cymatic Trader   

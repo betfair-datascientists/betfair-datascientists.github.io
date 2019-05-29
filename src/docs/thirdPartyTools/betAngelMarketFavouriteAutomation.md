@@ -1,4 +1,4 @@
-# Bet Angel - market favourite automation
+# Bet Angel: Market favourite automation
 
 ---
 ## Automating a market favourite strategy using Bet Angel Pro

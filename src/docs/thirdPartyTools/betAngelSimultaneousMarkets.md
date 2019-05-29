@@ -1,4 +1,4 @@
-# Bet Angel - Automating simultaneous markets
+# Bet Angel: Automating simultaneous markets
 
 ---
 ## Dont miss out on a market with simultaneous automation

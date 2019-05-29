@@ -1,4 +1,4 @@
-# Bet Angel - tipping automation
+# Bet Angel: Tipping automation
 
 ---
 ## Automating a (non-ratings based) tipping strategy using Bet Angel Pro

@@ -1,4 +1,4 @@
-# BF Bot Manager - Double or Bust
+# BF Bot Manager: Double or bust
 
 ---
 ## Dobbing using BF Bot Manager automation rules 

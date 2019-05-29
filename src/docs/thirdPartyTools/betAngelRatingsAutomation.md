@@ -1,4 +1,4 @@
-# Bet Angel - ratings automation
+# Bet Angel: Ratings automation
 
 ---
 ## Automating a ratings based strategy using Bet Angel Pro

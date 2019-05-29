@@ -19,7 +19,7 @@ There are lots of resources available to support you in accessing the API effect
 - Our Datascientists' repos for using [R](/api/apiRtutorial) and [Python](/api/apiPythontutorial) to access the API
 - [The UK’s Github repo](https://github.com/betfair/API-NG-Excel-Toolkit) including libraries for other languages
 
-!!! note "API access"
+!!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
     If you're a programmer there are lots of resources around to help
 
@@ -37,7 +37,7 @@ We know that automated strategies are only as good as your data. There’s a hug
 - [The Stream API dev docs](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Exchange+Stream+API) are the best source of information for interpreting the data from the Historic Data site
 - [Historic BSP csv files](https://promo.betfair.com/betfairsp/prices)
 
-!!! note "Historic Betfair data"
+!!! info "Historic Betfair data"
     There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data
 
 ---
@@ -48,17 +48,19 @@ Whilst the following tools are not custom built for your approach, they do allow
 We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.
 
 - [Bet Angel](/thirdPartyTools/betAngel/betAngel)
-    - [Ratings automation](/thirdPartyTools/betAngelRatingsAutomation)
-    - [Market favourite automation](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
-    - [Tipping automation](/thirdPartyTools/betAngelTippingAutomation)
-    - [Automating multiple simultaneous markets](/thirdPartyTools/betAngelSimultaneousMarkets)
+    - [Ratings automation (Excel)](/thirdPartyTools/betAngelRatingsAutomation)
+    - [Market favourite automation (Excel)](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
+    - [Tipping automation (Excel)](/thirdPartyTools/betAngelTippingAutomation)
+    - [Automating simultaneous markets (Excel)](/thirdPartyTools/betAngelSimultaneousMarkets)
 - [Gruss](/thirdPartyTools/Gruss/Gruss)
-    - [Ratings automation](/thirdPartyTools/grussRatingsAutomation)
-    - [Automating multiple simultaneous markets](/thirdPartyTools/grusslSimultaneousMarkets)
+    - [Ratings automation (Excel)](/thirdPartyTools/grussRatingsAutomation)
+    - [Automating simultaneous markets (Excel)](/thirdPartyTools/grusslSimultaneousMarkets)
 - [Cymatic Trader](/thirdPartyTools/CymaticTrader/CymaticTrader)
-    - [Ratings automation](/thirdPartyTools/cymaticTraderRatingsAutomation)
+    - [Ratings automation (Excel)](/thirdPartyTools/cymaticTraderRatingsAutomation)
 - [BF Bot Manager](/thirdPartyTools/BfBotManager/BfBotManager)
-    - [Rule automation](/thirdPartyTools/BfBotManagerAutomation.md)
+    - [Double or Bust (Rules)](/thirdPartyTools/BfBotManagerAutomation.md)
+- [MarketFeeder Pro](/thirdPartyTools/MarketFeeder/MarketFeeder)
+    - [2-6 Staking (Rules)](/thirdPartyTools/MarketFeeder2_6Staking.md)
 
 ---
 ### Data modelling 
@@ -70,7 +72,7 @@ We’re putting together a collection of articles on how to use some of these th
     - [AFL modelling series](/modelling/AFLmodelPart1)
     - [Brownlow modelling tutorial](/modelling/brownlowModelTutorial)
 
-!!! note "Predictive modelling"
+!!! tip "Predictive modelling"
     Many of our most successful customers use predictive models as the basis for their betting strategies 
 
 --- 
@@ -83,7 +85,7 @@ We’re putting together a collection of articles on how to use some of these th
 - [Staking Plans and Strategies](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/)
 - [Staking and Money Management](https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/staking-and-money-management/)
 
-!!! note "Some extra info"
+!!! info "Some extra info"
     There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. 
 
 ---

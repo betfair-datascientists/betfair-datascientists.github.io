@@ -8,7 +8,7 @@ Ratings are the basis for a lot of betting strategies, but they can be paricular
 Just like Bet Angle and Gruss, Cymatic Trader has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what I've used here to automate these ratings. There are so many different ways to use this part of Cymatic Trader and I'm very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
-### The plan
+## The plan
 
 I'm using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so I'm going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Cymatic Trader has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what I've used for the automation here. 
 
@@ -50,7 +50,7 @@ I'm using a [customised version of the default Cymatic Trader template Excel she
 This is how I used Excel to implement my set of rules. 
 
 
-#### Trigger to place bet
+### Trigger to place bet
 
 In short, I want to back runners when:
 
@@ -101,13 +101,10 @@ ODDS RANGE | % MULTIPLIER
 
 - **Rating < 5:** check whether the runner's rating is less than 5 (because I only want to bet on the favourite few runners). 
 
-***Formula Reference:***
-
-*- 'RunnerNames' refers to column A in the RUNNERS sheet.*
-
-*- 'RunnerRatings' refers to column B in the RUNNERS sheet.*
-
-*- 'Rating' refers to cell E6 in the RUNNERS sheet which when changed by the user, will update the formula for all runners in a market.*
+!!! info "Formula Reference:"
+    - 'RunnerNames' refers to column A in the RUNNERS sheet.
+    - 'RunnerRatings' refers to column B in the RUNNERS sheet.
+    - 'Rating' refers to cell E6 in the RUNNERS sheet which when changed by the user, will update the formula for all runners in a market.
 
 ``` excel hl_lines="5"
 =IFERROR(
@@ -125,11 +122,9 @@ ODDS RANGE | % MULTIPLIER
 
 - **Time < 2 mins:** check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 of the SETTINGS sheet, where I've already done the calculations for you. Cell E4 has been renamed to "SecondsToOff" to keep our formulas more simple and easier to read. 
 
-***Formula Reference:***
-
-*- 'SecondsToOff' refers to cell E4 in the SETTINGS sheet.*
-
-*- 'BetTime' refers to cell E2 in the RUNNERS sheet which when changed by the user, will update the formula for all runners in a market.*
+!!! info "Formula Reference:"
+    - 'SecondsToOff' refers to cell E4 in the SETTINGS sheet.
+    - 'BetTime' refers to cell E2 in the RUNNERS sheet which when changed by the user, will update the formula for all runners in a market.
 
 ``` excel hl_lines="6"
 =IFERROR(
@@ -147,9 +142,8 @@ ODDS RANGE | % MULTIPLIER
 
 - **Not in play:** Checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is populated with a 'FALSE' message it means it's safe to place bets. I appreciate that greyhound races don't go in play, but I wanted this check in place anyway in case I (or you!) wanted to use a version of this strategy on horse racing in the future. 
 
-***Formula Reference:***
-
-*- 'InPlayCheck' refers to cell E4 in the Cymatic sheet.*
+!!! info "Formula Reference:"
+    - 'InPlayCheck' refers to cell E4 in the Cymatic sheet.
 
 ``` excel hl_lines="7"
 =IFERROR(
@@ -181,7 +175,7 @@ ODDS RANGE | % MULTIPLIER
 "")
 ```
 
-!!! tip "Excel functions"
+!!! tip "TIP: Excel functions"
 
     - [IFERROR:](https://support.office.com/en-us/article/iferror-function-c526fd07-caeb-47b8-8bb6-63f3e417f611) If an error is returned, then don't show anything
     - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true, do this, else do this)
@@ -228,13 +222,14 @@ You need to copy/paste these three formulas into the relevant cell on each row i
 
 ```=IF(10/(I8-1)<0,"",10/(I8-1))```
 
-**Note:** *The IF statement in here is purely to keep our document clean of clutter when there are cells that are not populated with runners. A similar effect to IFERROR, if Cymatic Trader hasn't populated cell I8 with a number higher than 0, then dont populate this cell at all (I8 will only be populated if there is an applicable runner in the market).*
+!!! info "Note:" 
+    The IF statement in here is purely to keep our document clean of clutter when there are cells that are not populated with runners. A similar effect to IFERROR, if Cymatic Trader hasn't populated cell I8 with a number higher than 0, then dont populate this cell at all (I8 will only be populated if there is an applicable runner in the market).
 
 
 ![Automating a ratings based strategy with Cymatic Trader](./img/CTRatingsExcel5.jpg)
 
 ---
-### Selecting markets
+## Selecting markets
 
 I used the Navigator menu in Cymatic Trader to navigate to the tracks I had ratings for.
 If you wanted to include all horse or greyhound races for a day you could use the 'autopilot' tool to do this more efficiently. 
@@ -244,30 +239,31 @@ Once you've chosen the races you're interested in tick the 'autopilot' button an
 ![Automating a ratings based strategy with Bet Angel](./img/CTRatingsUI2.jpg)
 
 ---
-### Linking the spreadsheet
+## Linking the spreadsheet
 
 Click the Excel icon in the main tool bar and then 'connect Excel' from the drop down menu. From here, you will be able to point Cymatic Trader in the direction of where your Excel sheet is located on your computer. Make sure 'Enable Trigger Commands' is selected and 'Clear status cells when selecting different market" if you are automating a series of markets. 
 
 ![Automating a ratings based strategy with Bet Angel](./img/CTRatingsUI3.jpg)
 
 ---
-### And you're set!
+## And you're set!
 
 Once you've set your spreadsheet set up and you're comfortable using Cymatic Trader it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.
 
-*Note: you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.*
-
+!!! info "Note:" 
+    you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
+    
 ---
-### Areas for improvement
+## Areas for improvement
 
 There are parts of this approach that I'm still trying to get to work to my liking, and I'll update this article as I find better solutions. If you have any suggestions for improvements please reach out to bdp@betfair.com.au - I'd love to hear your thoughts. 
 
 ---
-### What next? 
+## What next? 
 
 We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au - this article has already been updated with extra learnings including variable percentages and new macros.
 
 ---
-### Disclaimer
+## Disclaimer
 
 Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.

@@ -94,8 +94,9 @@ The final step is to choose which selections you want to bet on. In this example
 
 Once you've set your rules up and got comfortable using Bet Angel Pro it should only take  number of seconds to load the markets up and choose your selections for the day. 
 
-Note: you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
-
+!!! info "Note:" 
+    you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
+    
 ---
 ### What next? 
 

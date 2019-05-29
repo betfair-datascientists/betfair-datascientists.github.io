@@ -26,6 +26,9 @@ nav:
         - BF Bot Manager:
             - BF Bot Manager overview: thirdPartyTools/BfBotManager/BfBotManager.md
             - Double or Bust (Rules): thirdPartyTools/BfBotManagerAutomation.md
+        - MarketFeeder Pro:
+            - MarketFeeder Pro overview: thirdPartyTools/MarketFeeder/MarketFeeder.md
+            - 2-6 Staking (Rules): thirdPartyTools/MarketFeeder2_6Staking.md
     - API:
         - How to access the Betfair API: api/apiappkey.md
         - API tutorials in R: api/apiRtutorial.md

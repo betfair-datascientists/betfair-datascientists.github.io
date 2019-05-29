@@ -6,7 +6,8 @@
 BF Bot Manager may not have Excel automation integration like Gruss or Bet Angel, but it does make up for it with an intuitive rule based automation system which is great if you're starting out with automation in general. There are hundreds of ways to implement different strategies using rules in BF Bot Manager but if you have any specific tutorial ideas that you would like to see here, please get in contact with us at bdp@betfair.com.au - We'd love to hear from you.
 
 --- 
-## The plan
+## Are you Ready?
+###- The plan
 
 In this tutorial, we're going over the implementation of a strategy called "DOBBING" which means Double Or Bust. The idea behind Dobbing is to place bets on the movement of prices within a market rather than the actual race result itself. More specifically, backing a horse and then hedging that bet – by laying it, to achieve an evens money return – no matter the outcome of the race.
 
@@ -18,7 +19,7 @@ If you want to follow along and try this approach yourself you'll need to downlo
     - [BF Bot Manager Manuals](https://www.bfbotmanager.com/help/2)
 
 --- 
-#### Set up
+###- Set up
 
 First up we need to make sure we've downloaded and installed BF Bot Manager, and signed in.
 
@@ -32,7 +33,7 @@ This will prompt a pop-up window to appear where you choose the name of the stra
 ![Dobbing in BF Bot Manager](./img/BfBotManagerNewRule.png)
 
 
-#### Creating a new strategy
+###- Creating a new strategy
 
 Once the strategy has been created, several conditions will also be automatically applied.
 
@@ -53,7 +54,7 @@ Under 'Selection Conditions':
 
 All These conditions must be met before the strategy will trigger any bet. 
 
-#### Conditions
+###- Conditions
 
 First, we will create the condition 'Bet on "My Selections" Only'. Click the plus icon and set the condition group as 'Selection Conditions' and then choose the 'Bet on "My Selections" Only' and click add.  
 
@@ -64,7 +65,7 @@ Make sure that Back is selected from the options box that will appear.
 ![Dobbing in BF Bot Manager](./img/BfBotManagerConditionOption.png)
 
 
-#### Rules
+###- Rules
 Next, we are going to add a price rule to our strategy. Using the same process that used to create the 'Bet on My Selections only' condition, select the 'Price Rules' rule from the 'Price Settings' group. In the set price rules option box, select the following options:
 
 ![Dobbing in BF Bot Manager](./img/BfBotManagerPriceRule.png)

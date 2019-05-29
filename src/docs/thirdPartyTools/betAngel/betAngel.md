@@ -20,21 +20,8 @@ For those who wish to write their own automated betting or trading strategies, B
     - Advanced market navigation
     - In-play interface designed for fast moving racing markets  
 
+![Bet Angel](./img/BetAngel.png)
+
 ---
 
-#Extra resources
-Bet Angel have a great set of online tutorials and customer service channels, as well as an active forum.
-
-We recommend checking out:
-
-[BetAngel.tv](https://www.betangel.tv/) or [Bet Angel YouTube](https://www.youtube.com/user/betangeltv/featured)
-
-[Bet Angel user guide](https://www.betangel.com/user-guide/index.html)
-
-[Bet Angel academy](https://www.betangelacademy.com/)
-
-[Bet Angel forum](https://www.betangel.com/forum/)
-
-There are also some template automation strategies.
-
-If these don’t help, your best option is probably to either post your query on the BetAngel forum or contact their support team directly on contact@betangel.com
+To find out more and to sign up for a FREE 14 Day trial, head to the [Bet Angel Website](https://www.betangel.com/trial/)

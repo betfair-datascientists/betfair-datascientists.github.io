@@ -24,7 +24,8 @@ You can also order custom functionality that we can develop for you and adjust s
     - Simulation Mode
     - One-click Betting
 
----
+![BF Bot Manager](./img/BfBotManager.png)   
 
+---
 
 To find out more and to sign up for a FREE 5 Day trial, head to the [BF Bot Manager Website](https://www.bfbotmanager.com/trial)

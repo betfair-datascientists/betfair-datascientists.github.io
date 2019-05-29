@@ -8,7 +8,8 @@ Ratings are an ideal base for an automation strategy, as they're an easy metric 
 We've previously explored using [Bet Angel Pro to implement this style of strategy](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/), now we're going to use Gruss Betting Assistant to look at a different tool for automatating bettnig on ratings. Like Bet Angel Pro, Gruss Betting Assistant also has a spreadsheet functionality that lets you place bets using your own variables and information from the live market. Gruss is a complex tool, and there are lots of different ways to use it, and I'd love any thoughts about more effecitve ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
-### The plan
+## Lets do this
+###- The plan
 
 I'm using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so I'm going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Gruss Betting Assistant's Excel triggered betting feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what I've used for the automation here. 
 
@@ -22,14 +23,14 @@ Here I'll step through how I went about getting Gruss to place bets using [these
     - Tool: [Gruss Betting Assistant](http://www.gruss-software.co.uk/betfair-products/betfair-betting-assistant)
 
 ---
-### Set up 
+###- Set up 
 
 Make sure you've downloaded and installed [Gruss Betting Assistant](http://www.gruss-software.co.uk/betfair-products/betfair-betting-assistant), and signed in.
 
 ![Automating a rating strategy with Gruss](./img/GrussRatingsUI.png)
 
 ---
-### Finding & formatting ratings
+###- Finding & formatting ratings
 
 Here I'm using the [Betfair's DataScientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. 
 
@@ -40,7 +41,7 @@ Wherever your ratings come from, you'll need to include them in the spreadsheet 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsRunners.png)
 
 ---
-### Writing a rule 
+###- Writing a rule 
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. 
 
@@ -49,7 +50,7 @@ I'm using a [customised version of the default Gruss template Excel sheet](./ass
 This is how I used Excel to implement my set of rules. 
 
 
-#### Trigger to place bet
+###- Trigger to place bet
 
 In short, I want to back runners when:
 
@@ -190,7 +191,7 @@ ODDS RANGE | % MULTIPLIER
     - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. 
 
 ---
-### Preparing the spreadsheet
+###- Preparing the spreadsheet
 
 You need to copy/paste these three formulas into the relevant cell on each runner - I did a few extra rows than the number of runners in the markets I was looking at, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
 
@@ -228,7 +229,7 @@ You need to copy/paste these three formulas into the relevant cell on each runne
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsExcel3.PNG)
 
 ---
-### Selecting markets
+###- Selecting markets
 
 Gruss makes it really easy to selectmarkets in bulk. You could go through an add each market you have in your ratings individually, but it's much easier to just use the Quick Pick functionality to add all Australian racing win markets. This is safe, because bets will only fire when they link up with a runner in your RATINGS sheet. 
 
@@ -239,7 +240,7 @@ You also need to make sure you set it up so that the program will automatically 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsMarkets2.png)
 
 ---
-### Linking the spreadsheet
+###- Linking the spreadsheet
 
 This is a little tricky the first time, but easy once you know how. Make sure you have the [Excel sheet](./assets/Gruss_RatingsAutomation.xlsx) saved to your local computer - when I tried using a file I had saved in OneDrive it simply didn't work. Open the Excel sheet, then click on Excel/Log current prices. 
 
@@ -256,7 +257,7 @@ Then click OK and the sheet with be linked with the program.
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsLinkingExcel2.PNG)
 
 ---
-### And you're set!
+## And you're set!
 
 Once you've set your spreadsheet set up and you're comfortable using Gruss Betting Assistant it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.
 
@@ -264,18 +265,18 @@ Once you've set your spreadsheet set up and you're comfortable using Gruss Betti
     you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
     
 ---
-### Areas for improvement
+## Areas for improvement
 
 There are parts of this approach that I'm still trying to get to work to my liking, and I'll update this article as I find better solutions. If you have any suggestions for improvements please reach out to bdp@betfair.com.au - I'd love to hear your thoughts. 
 
 For example, the spreadsheet only binds with one market at a time, so if one market gets delayed and runs overtime the program won't be able to move on to the next market - I missed some races because of this. 
 
 ---
-### What next? 
+## What next? 
 
 We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au 
 
 ---
-### Disclaimer
+## Disclaimer
 
 Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.

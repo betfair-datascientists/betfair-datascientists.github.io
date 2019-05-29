@@ -8,7 +8,8 @@ We all love getting some good racing tips, but who has time to sit and place bet
 This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is my first time using Bet Angel for this approach, and am very open to any thoughts about more effecitve ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
-### The plan
+## Lets Go!
+###- The plan
 
 I have a set of tips that I've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips have. My goal is to create an automated process which will let me choose my tips for the day, then walk away and the the program do the leg work. 
 
@@ -26,7 +27,7 @@ If you want to follow along and try this approach yourself you'll need to downlo
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
 
 --- 
-### Set up
+###- Set up
 
 First up we need to make sure we've downloaded and installed Bet Angel Pro, and signed in.
 
@@ -36,7 +37,7 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 
 I've created an [automated rule](./assets/BetAngelTippingRule.baf) that you can download here, roughly based on the one discussed in [this forum post](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668) (note: you will need to create a Bet Angel forum account to be able to download the rule). 
 
-#### Writing your rules
+###- Writing your rules
 
 - open up the 'Automation' tab
 - click 'import a rule'
@@ -60,7 +61,7 @@ You can choose to change the bet stake and other parts of the rule by:
     You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program.
 
 ---
-### Selecting your markets
+###- Selecting your markets
 
 I decided I only wanted to bet on the gallops races at Geelong, so I used the markets menu to navigate to Geelong, then multi-slected all the win markets by holding down the control key and clicking on each win market.
 
@@ -71,7 +72,7 @@ Once you've chosen the races you're interested in click the 'add' button and you
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipMarkets.png)
 
 ---
-### Choosing your selections
+###- Choosing your selections
 
 The final step is to choose which selections you want to bet on. In this example I just chose the number 1 selection chosen by the Data Scientists in their [Racing Prediction Model](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/). Just click on the dropdown in the 'Automation Nomination Selection 1' column for each race and choose your selection. 
 
@@ -90,7 +91,7 @@ The final step is to choose which selections you want to bet on. In this example
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipNewRule.png)
 
 ---
-### And you're set!
+## And you're set!
 
 Once you've set your rules up and got comfortable using Bet Angel Pro it should only take  number of seconds to load the markets up and choose your selections for the day. 
 
@@ -98,11 +99,11 @@ Once you've set your rules up and got comfortable using Bet Angel Pro it should 
     you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
     
 ---
-### What next? 
+## What next? 
 
 We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au 
 
 ---
-### Disclaimer
+## Disclaimer
 
 Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.

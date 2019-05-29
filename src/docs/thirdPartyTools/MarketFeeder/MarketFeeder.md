@@ -16,7 +16,8 @@ A trigger is an effective way to maximise your time and safe-guard you from any 
     - Auto-Dutching (arbitrage)
     - Ladder Interface for Scalping
 
----
+![MarketFeeder Pro](./img/MarketFeederPro.png)   
 
+---
 
 To find out more and to sign up for a FREE 1 month trial, head to the [MarketFeeder Pro Website](https://marketfeeder.co.uk/buy/)

@@ -8,7 +8,8 @@ Ratings are the basis for a lot of betting strategies, but they can be paricular
 Bet Angel Pro has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what I've used here to automate these ratings. There are so many different ways to use this part of Bet Angel and I'm very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
-### The plan
+## Ready. Set. GO!
+###- The plan
 
 I'm using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so I'm going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Bet Angel Pro's 'Guardian' feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what I've used for the automation here. 
 
@@ -22,7 +23,7 @@ Here I'll step through how I went about getting Bet Angel Pro to place bets usin
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
 
 ---
-### Set up 
+###- Set up 
 
 Make sure you've downloaded and installed Bet Angel Pro, and signed in.
 
@@ -31,7 +32,7 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 ![Automating a rating strategy with Bet Angel](./img/BetAngeltipPro.png)
 
 ---
-### Finding & formatting ratings
+###- Finding & formatting ratings
 
 Here I'm using the [ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. 
 
@@ -42,7 +43,7 @@ Wherever your ratings come from, you'll need to include them in the spreadsheet 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExample.png)
 
 ---
-### Writing your rules
+###- Writing your rules
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. 
 
@@ -51,7 +52,7 @@ I'm using a [customised version of the default Bet Angel template Excel sheet](.
 This is how I used Excel to implement my set of rules. 
 
 
-#### Trigger to place bet
+###- Trigger to place bet
 
 In short, I want to back runners when:
 
@@ -212,7 +213,7 @@ Here are three different examples of formulas you can use here, depending on you
     - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. 
 
 ---
-### Preparing the spreadsheet
+###- Preparing the spreadsheet
 
 You need to copy/paste these three formulas into the relevant cell on each green row - I copied mine into all of the coloured cells in the sheet, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
 
@@ -249,7 +250,7 @@ You need to copy/paste these three formulas into the relevant cell on each green
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel3.png)
 
 ---
-### Selecting markets
+###- Selecting markets
 
 I used the markets menu in the Guardian tool to navigate to the tracks I had ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.
 
@@ -264,14 +265,14 @@ You do this by clicking on the 'start time' column heading until the races are i
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsMarketTimes.png)
 
 ---
-### Linking the spreadsheet
+###- Linking the spreadsheet
 
 Open the 'Excel' tab in Guardian, then use the browse functionality to choose the spreadsheet you've been working on. From there, click on 'open workbook', then make sure you have 'connect', 'auto-bind Bet Angel sheets and 'auto-clear Bet Angel bindings' all selected. You also need to make sure that the first race has the 'Bet Angel' tab selected in the 'Excel sheet' column - from there it will then automatically update this for each race as one finishes and the next one begins. 
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsSetUp.png)
 
 ---
-### And you're set!
+## And you're set!
 
 Once you've set your spreadsheet set up and you're comfortable using Bet Angel Pro it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.
 
@@ -279,34 +280,34 @@ Once you've set your spreadsheet set up and you're comfortable using Bet Angel P
     you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
 
 ---
-### Bet Angel features
+## Bet Angel features
 
 Here are some Bet Angel features that you'll need to consider.
 
-#### Multiple bets/clearing status cells
+###- Multiple bets/clearing status cells
 The Bet Angel spreadsheet won't let a bet go on if there is a value in column 0 for the runner, the 'status' column, to avoid accidentally placing multiple bets unintentionally. As soon as a bet triggers, Bet Angel automatically changes this cell to 'PLACING', then to 'PLACED' when the bet is confirmed as having been received by Betfair. In this strategy I only want to place one bet per runner, but if you wanted to place multiple bets on a runner you'd need to have a play wtih the macros to clear the 'status' cells more regularly, and instead reference the number of bets placed/matched in columns T:AE. Careful here though, as the values in these columns sometimes take a little time to update, and I've had more bets go on than I intended when using these cells as my check, as bet trigger reevaluated before columns T:AE had updated. 
 
 As we want to use the same sheet for multiple races, and the 'status' cells don't clear automatically, I've created a macro in [the Excel sheet](./assets/BetAngel_RatingsAutomation.xls) that auto-clears the status cells whenever a new race loads. It also clears the cells if they say 'FAILED', as I found that if there were internet network issues or similar it would fail once then not try to place the bet again. This was based on some logic I found in [a forum discussion on Bet Angel](https://www.betangel.com/forum/viewtopic.php?f=31&t=1879&start=10). If you're feeling adventurous you can have a play with the macros and edit them to suit your specific needs. 
 
-#### Turning off bet confirmation
+###- Turning off bet confirmation
 Unless you want to manually confirm each individual bet you're placing (which you definitely might want to do until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?' - you can then save these settings.
 
-#### Editing the spreadsheet
+###- Editing the spreadsheet
 The spreadsheet really doesn't like it when you try and edit it 'live', so make sure you untick 'connect' on the Excel tab in Guardian before you make any changes, save the sheet, then tick 'connect' again once you've finished your edits. 
 
 ---
-### Areas for improvement
+## Areas for improvement
 
 There are parts of this approach that I'm still trying to get to work to my liking, and I'll update this article as I find better solutions. If you have any suggestions for improvements please reach out to bdp@betfair.com.au - I'd love to hear your thoughts. 
 
 For example, the spreadsheet only binds with one market at a time, so if one market gets delayed and runs overtime the program won't be able to move on to the next market - I missed some races because of this. 
 
 ---
-### What next? 
+## What next? 
 
 We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au - this article has already been updated with extra learnings including variable percentages and new macros.
 
 ---
-### Disclaimer
+## Disclaimer
 
 Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.

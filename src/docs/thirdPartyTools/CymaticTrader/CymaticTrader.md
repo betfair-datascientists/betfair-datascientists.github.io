@@ -32,6 +32,8 @@ The software is well suited to single or multiple monitor scenarios.  Downloadin
     - API Monitoring – for real-time overview and management of internet and exchange issues, including automatic instant email notifications of errors and API Monitor reports.
     - Accounting – downloading/filtering of betting history and account statements 
 
+![Cymatic Trader](./img/CymaticTrader.png)    
 
+---
 
 To find out more and to sign up for a FREE 14 Day trial, head to the [Cymatic Trader Website](http://www.cymatic.co.uk/).

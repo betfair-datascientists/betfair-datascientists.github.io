@@ -6,7 +6,8 @@
 In other tutorials available on the automation hub, the primary focus has been on choosing which runner to place a bet on. For this tutorial, we're going to look into something a little different. We will go through the steps to automate our stakes based on the percentage of our bank. This is a good method to keep the stakes that we're placing on the exchange under control and is primarily intended for backing on favourites.
 
 --- 
-## The plan
+## Lets do this
+###- The plan
 
 If you want to follow along and try this approach yourself you'll need to download [MarketFeeder Pro](http://marketfeeder.co.uk/buy/) and sign up for either a subscription or at least a test period. They have a [1 month free trial](http://marketfeeder.co.uk/buy/) that's valuable for establishing whether this tool will do what you want it to for your specific strategy. 
 
@@ -29,7 +30,7 @@ If there are any losses after each of these bets, the loss is included in the fo
     This strategy is designed to work while betting on favourites (back bets only)
 
 --- 
-### Set up
+###- Set up
 
 First up we need to make sure we've downloaded and installed MarketFeeder Pro, and signed in.
 
@@ -44,7 +45,7 @@ Once the 'Active Triggers' window appears, click the triggers editor button whic
 Click 'New File' and we're ready to start creating our strategy.
 
 ---
-#### Constants
+###- Constants
 
 First, we will create the constants and enter the values that will be used by our strategy. Click the 'Add constant' button 3 times which will give us 3 variables that we can start editing. 
 
@@ -55,7 +56,7 @@ We want to have 3 variables: 'cycle_length', 'bet_target' and 'init_bet'. As cov
 ![2-6 staking in MarketFeeder](./img/MarketFeederConstantFilled.png)
 
 ---
-#### Trigger 1 - initialisation of variables
+###- Trigger 1: initialisation of variables
 
 Next, we're going to create the necessary triggers which will contain the variables necessary for our strategy to work. In the Triggers window that we already have open, click the 'Add Block' button and then 'Add Trigger' 
 
@@ -78,7 +79,7 @@ Change the trigger selections to 'First Matching Session' and Execute 'One time 
 
 ---
 
-#### Trigger 2 - incrementing the counter at the end of an event
+###- Trigger 2: incrementing the counter at the end of an event
 
 For our next trigger which we will name 'incrementing the counter at the end of an event', we will create two actions, both as 'Set user variables'.
 
@@ -99,7 +100,7 @@ Again, we will be setting the selections for this trigger as 'First matching sel
 ![2-6 staking in MarketFeeder](./img/MarketFeederTrigger2.png)
 
 ---
-#### Trigger 3 - After Winning
+###- Trigger 3: after Winning
 
 Our third trigger called 'After Winning' will only contain one action called 'wns_counter'. Follow the same process set above to complete the trigger. The formula we'll be using for this value will be: 
 
@@ -110,7 +111,7 @@ wns_counter+1
 ![2-6 staking in MarketFeeder](./img/MarketFeederTrigger3.png)
 
 ---
-#### Trigger 4 - resetting counters
+###- Trigger 4: resetting counters
 
 The fourth trigger will contain 4 actions: 'cycle_counter', 'wns_counter', 'current_loss' and 'current_bet'. The last action will be using the formula: 
 
@@ -121,7 +122,7 @@ init_bet*IF(test_mode=1, test_funds, total_funds)/100
 ![2-6 staking in MarketFeeder](./img/MarketFeederTrigger4.png)
 
 ---
-#### Trigger 5 - backing
+###- Trigger 5: backing
 
 Our fifth and final trigger called 'backing' is a little different from the previous triggers and actions. Instead of it being a 'Set user variable' it will be changed to 'back'. The back price will need to be changed to 'back_price' and the amount will need the following formula:
 

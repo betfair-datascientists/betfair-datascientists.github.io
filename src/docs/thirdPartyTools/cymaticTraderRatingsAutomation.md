@@ -8,7 +8,8 @@ Ratings are the basis for a lot of betting strategies, but they can be paricular
 Just like Bet Angle and Gruss, Cymatic Trader has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what I've used here to automate these ratings. There are so many different ways to use this part of Cymatic Trader and I'm very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
-## The plan
+## Lets Begin
+###- The plan
 
 I'm using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so I'm going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Cymatic Trader has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what I've used for the automation here. 
 
@@ -22,7 +23,7 @@ Here I'll step through how I went about getting Cymatic Trader to place bets usi
     - Tool: [Cymatic Trader](http://www.cymatic.co.uk/)
 
 ---
-### Set up 
+###- Set up 
 
 Make sure you've downloaded and installed Cymatic Trader, and signed in.
 Once you open the program, you will see an Excel icon which is where we will link our spreadsheet to Cymatic Trader 
@@ -30,7 +31,7 @@ Once you open the program, you will see an Excel icon which is where we will lin
 ![Automating a rating strategy with Cymatic Trader](./img/CTRatingsUI.jpg)
 
 ---
-### Finding & formatting ratings
+###- Finding & formatting ratings
 
 Here I'm using the [ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. 
 
@@ -41,7 +42,7 @@ Wherever your ratings come from, you'll need to include them in the spreadsheet 
 ![Automating a ratings based strategy with Cymatic Trader](./img/CTRatingsExcel1.jpg)
 
 ---
-### Writing your rules
+###- Writing your rules
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. 
 
@@ -50,7 +51,7 @@ I'm using a [customised version of the default Cymatic Trader template Excel she
 This is how I used Excel to implement my set of rules. 
 
 
-### Trigger to place bet
+###- Trigger to place bet
 
 In short, I want to back runners when:
 
@@ -184,7 +185,7 @@ ODDS RANGE | % MULTIPLIER
     - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. 
 
 ---
-### Preparing the spreadsheet
+###- Preparing the spreadsheet
 
 You need to copy/paste these three formulas into the relevant cell on each row in the 'Command' (BA) column. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
 
@@ -229,7 +230,7 @@ You need to copy/paste these three formulas into the relevant cell on each row i
 ![Automating a ratings based strategy with Cymatic Trader](./img/CTRatingsExcel5.jpg)
 
 ---
-## Selecting markets
+###- Selecting markets
 
 I used the Navigator menu in Cymatic Trader to navigate to the tracks I had ratings for.
 If you wanted to include all horse or greyhound races for a day you could use the 'autopilot' tool to do this more efficiently. 
@@ -239,7 +240,7 @@ Once you've chosen the races you're interested in tick the 'autopilot' button an
 ![Automating a ratings based strategy with Bet Angel](./img/CTRatingsUI2.jpg)
 
 ---
-## Linking the spreadsheet
+###- Linking the spreadsheet
 
 Click the Excel icon in the main tool bar and then 'connect Excel' from the drop down menu. From here, you will be able to point Cymatic Trader in the direction of where your Excel sheet is located on your computer. Make sure 'Enable Trigger Commands' is selected and 'Clear status cells when selecting different market" if you are automating a series of markets. 
 

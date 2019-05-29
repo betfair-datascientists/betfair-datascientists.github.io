@@ -13,4 +13,8 @@ Gruss Software is a constantly evolving solution where the developers listen to 
     - Advanced market navigation
     - In-play interface designed for fast moving racing markets  
 
-To find out more and to sign up for a FREE 30 Day trial, head to the Gruss [Software Website](https://www.gruss-software.co.uk/downloads.asp).
+![Gruss](./img/Gruss.png)    
+
+---
+
+To find out more and to sign up for a FREE 30 Day trial, head to the [Gruss Software Website](https://www.gruss-software.co.uk/downloads.asp).

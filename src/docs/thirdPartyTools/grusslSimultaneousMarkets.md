@@ -1,7 +1,7 @@
 # Gruss: Automating simultaneous markets
 
 ---
-## Dont miss out on a market with simultaneous automation
+## Don't miss out on a market with simultaneous automation
 
 If you have a concern of missing markets due to delays or unforeseen circumstances at a market, Gruss is able to work off multiple worksheets for different meetings, all from the same workbook. 
 For example, we can have worksheet one from our spreadsheet work through the markets taking place in Flemington, while worksheet 2 will work through markets at Sandown, worksheet 3 works through markets at Bendigo etc. 
@@ -45,4 +45,4 @@ We're working through some of the popular automation tools and creating articles
 ---
 ### Disclaimer
 
-Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.
+Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies, please gamble responsibly and note that you are responsible for any winnings/losses incurred.

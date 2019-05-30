@@ -24,7 +24,7 @@ For example, if we start with $10, we are aiming to win the following amounts:
 
 $10, $20, $40, $60, $80, $120
 
-If there are any losses after each of these bets, the loss is included in the following bet. Once 2 bets have been won, the automation cycle will restart and likewise, if we reach the end of the cycle and 2 bets havn't been won the cycle will also restart. After each restart, the stake is recalculated as a percentage of our current bank.
+If there are any losses after each of these bets, the loss is included in the following bet. Once 2 bets have been won, the automation cycle will restart and likewise, if we reach the end of the cycle and 2 bets haven’t been won the cycle will also restart. After each restart, the stake is recalculated as a percentage of our current bank.
 
 !!! warning "Please Note"
     This strategy is designed to work while betting on favourites (back bets only)
@@ -51,7 +51,7 @@ First, we will create the constants and enter the values that will be used by ou
 
 ![2-6 staking in MarketFeeder](./img/MarketFeederConstant.png)
 
-We want to have 3 variables: 'cycle_length', 'bet_target' and 'init_bet'. As covered above, the cycle lenth will be 6 (the 6 opportunities in our planned sequence), bet target will be 2 (aim to win 2 bets before the cycle is restarted) and initial bet will be 1 (relating to trying to win 10% of our bank).
+We want to have 3 variables: 'cycle_length', 'bet_target' and 'init_bet'. As covered above, the cycle length will be 6 (the 6 opportunities in our planned sequence), bet target will be 2 (aim to win 2 bets before the cycle is restarted) and initial bet will be 1 (relating to trying to win 10% of our bank).
 
 ![2-6 staking in MarketFeeder](./img/MarketFeederConstantFilled.png)
 
@@ -158,4 +158,4 @@ We're working through some of the popular automation tools and creating articles
 ---
 ## Disclaimer
 
-Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.
+Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies, please gamble responsibly and note that you are responsible for any winnings/losses incurred.

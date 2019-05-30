@@ -3,7 +3,7 @@
 ---
 ## Dobbing using BF Bot Manager automation rules 
 
-BF Bot Manager may not have Excel automation integration like Gruss or Bet Angel, but it does make up for it with an intuitive rule based automation system which is great if you're starting out with automation in general. There are hundreds of ways to implement different strategies using rules in BF Bot Manager but if you have any specific tutorial ideas that you would like to see here, please get in contact with us at bdp@betfair.com.au - We'd love to hear from you.
+BF Bot Manager may not have Excel automation integration like Gruss or Bet Angel, but it does make up for it with an intuitive rule-based automation system which is great if you're starting out with automation in general. There are hundreds of ways to implement different strategies using rules in BF Bot Manager but if you have any specific tutorial ideas that you would like to see here, please get in contact with us at bdp@betfair.com.au - We'd love to hear from you.
 
 --- 
 ## Are you Ready?
@@ -72,12 +72,12 @@ Next, we are going to add a price rule to our strategy. Using the same process t
 
 The next rule we're going to create will be under the Staking category called 'Level/Initial stake'. You can choose whatever default stake you are comfortable starting out with. 
 
-Finally, we need to create an after bet rule that will allow us to trade out. This rule is called 'Trade out (second) bet' under the 'After bet rules' category. See below the options that I have selected for this rule. 
+Finally, we need to create an after-bet rule that will allow us to trade out. This rule is called 'Trade out (second) bet' under the 'After bet rules' category. See below the options that I have selected for this rule. 
 
 ![Dobbing in BF Bot Manager](./img/BfBotManagerTradeOut.png)
 
 !!! tip "TIP: BF Bot Manager strategies manual"
-    We recommend taking a look at the [strategies manual](https://www.bfbotmanager.com/documents/manuals/bf_bot_manager_v3_strategies_manual.pdf) if you get stuck or aren't sure how any of the conditions / rules work. It's an exteremly good resource that goes into detail about each of the various functions and abilites that are available. 
+    We recommend taking a look at the [strategies manual](https://www.bfbotmanager.com/documents/manuals/bf_bot_manager_v3_strategies_manual.pdf) if you get stuck or aren't sure how any of the conditions / rules work. It's an extremely good resource that goes into detail about each of the various functions and abilities that are available. 
 
 ---
 ## And you're set!
@@ -99,4 +99,4 @@ We're working through some of the popular automation tools and creating articles
 ---
 ## Disclaimer
 
-Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.
+Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies, please gamble responsibly and note that you are responsible for any winnings/losses incurred.

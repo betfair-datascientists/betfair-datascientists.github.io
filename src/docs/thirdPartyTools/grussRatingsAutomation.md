@@ -3,9 +3,9 @@
 ---
 ## Automating a ratings based strategy using Gruss Betting Assistant
 
-Ratings are an ideal base for an automation strategy, as they're an easy metric to write a set of rule around, and are also pretty timeconsuming to implement manually if you're physically placing the bets yourself. 
+Ratings are an ideal base for an automation strategy, as they're an easy metric to write a set of rule around, and are also pretty time consuming to implement manually if you're physically placing the bets yourself. 
 
-We've previously explored using [Bet Angel Pro to implement this style of strategy](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/), now we're going to use Gruss Betting Assistant to look at a different tool for automatating bettnig on ratings. Like Bet Angel Pro, Gruss Betting Assistant also has a spreadsheet functionality that lets you place bets using your own variables and information from the live market. Gruss is a complex tool, and there are lots of different ways to use it, and I'd love any thoughts about more effecitve ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
+We've previously explored using [Bet Angel Pro to implement this style of strategy](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/), now we're going to use Gruss Betting Assistant to look at a different tool for automating betting on ratings. Like Bet Angel Pro, Gruss Betting Assistant also has a spreadsheet functionality that lets you place bets using your own variables and information from the live market. Gruss is a complex tool, and there are lots of different ways to use it, and I'd love any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
 ## Lets do this
@@ -13,7 +13,7 @@ We've previously explored using [Bet Angel Pro to implement this style of strate
 
 I'm using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so I'm going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Gruss Betting Assistant's Excel triggered betting feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what I've used for the automation here. 
 
-Here I'll step through how I went about getting Gruss to place bets using [these ratings](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program running and be able to walk away. Obviously you can use your own ratings and change the rules according to what your strategy is.
+Here I'll step through how I went about getting Gruss to place bets using [these ratings](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program running and be able to walk away. Obviously, you can use your own ratings and change the rules according to what your strategy is.
 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsHub.png)
 
@@ -32,18 +32,18 @@ Make sure you've downloaded and installed [Gruss Betting Assistant](http://www.g
 ---
 ###- Finding & formatting ratings
 
-Here I'm using the [Betfair's DataScientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. 
+Here I'm using the [Betfair's Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. 
 
 If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.
 
-Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact wtih Gruss. Here I'm using a [spreadsheet I edited for this strategy](./assets/Gruss_RatingsAutomation.xlsx), and I've included a tab called RATINGS where you can copy in the runner names and ratings.
+Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact with Gruss. Here I'm using a [spreadsheet I edited for this strategy](./assets/Gruss_RatingsAutomation.xlsx), and I've included a tab called RATINGS where you can copy in the runner names and ratings.
 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsRunners.png)
 
 ---
 ###- Writing a rule 
 
-As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. 
+As with any automated strategy, one of the most important steps is deciding what logical approach you want to take and writing rules that suit. 
 
 I'm using a [customised version of the default Gruss template Excel sheet](./assets/Gruss_RatingsAutomation.xlsx) to implement my strategy, so it can make betting decisions based on my ratings. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. There are lots of posts on the [Gruss Forum on the topic](http://www.gruss-software.co.uk/forum/viewforum.php?f=8) if you want to explore it more yourself.
 
@@ -81,9 +81,9 @@ In short, I want to back runners when:
 
 Stepping through each step:
 
-- **Price > rating:** check whether the available to back price is better than the runner's rating multipled by a percentage - I do this by using the runner name in column A and looking up the corresponding rating for that runner from the RATINGS sheet. 
+- **Price > rating:** check whether the available to back price is better than the runner's rating multiplied by a percentage - I do this by using the runner name in column A and looking up the corresponding rating for that runner from the RATINGS sheet. 
 
-**Percentage offset:** There are lots of different approaches you can take to this. I'm using a variable percentage offset, which is the same approach I took in [Bet Angel article implementing this same strategy](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/), as I appreciate that we might want a different percentage better than the rating, depending on the price - i.e. 10% better than $2 ($2.20) is very different than 10% better than a $20 shot ($22.20), so here I'm using a vlookup table to determine the percentage better than the rating that I want based on the current odds. Here are the 'ranges' of prices to percentage offset that I'm using - you can disregard this and just change it to be a set percentage (i.e. *1.1 hardcoded into the forumla) or just use your rating straight without an offset, or edit the ranges in the SETTINGS tab to suit your opinions. This table takes the 'min' odds for the range in the left column, and the number you want to multiply the odds by in the right column - so for 15% you'd multiply by 1.15 etc. 
+**Percentage offset:** There are lots of different approaches you can take to this. I'm using a variable percentage offset, which is the same approach I took in [Bet Angel article implementing this same strategy](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/), as I appreciate that we might want a different percentage better than the rating, depending on the price - i.e. 10% better than $2 ($2.20) is very different than 10% better than a $20 shot ($22.20), so here I'm using a vlookup table to determine the percentage better than the rating that I want based on the current odds. Here are the 'ranges' of prices to percentage offset that I'm using - you can disregard this and just change it to be a set percentage (i.e. *1.1 hardcoded into the formula) or just use your rating straight without an offset, or edit the ranges in the SETTINGS tab to suit your opinions. This table takes the 'min' odds for the range in the left column, and the number you want to multiply the odds by in the right column - so for 15% you'd multiply by 1.15 etc. 
 
 **Viewing your values:** I've added columns (Y:AB) to show the rating, percentage offset and minimum acceptable odds for each runner, to add some reassurance that the spreadsheet is pulling the values we want it to.
 
@@ -231,7 +231,7 @@ You need to copy/paste these three formulas into the relevant cell on each runne
 ---
 ###- Selecting markets
 
-Gruss makes it really easy to selectmarkets in bulk. You could go through an add each market you have in your ratings individually, but it's much easier to just use the Quick Pick functionality to add all Australian racing win markets. This is safe, because bets will only fire when they link up with a runner in your RATINGS sheet. 
+Gruss makes it really easy to select markets in bulk. You could go through an add each market you have in your ratings individually, but it's much easier to just use the quick Pick functionality to add all Australian racing win markets. This is safe, because bets will only fire when they link up with a runner in your RATINGS sheet. 
 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsMarkets.png)
 
@@ -279,4 +279,4 @@ We're working through some of the popular automation tools and creating articles
 ---
 ## Disclaimer
 
-Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.
+Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies, please gamble responsibly and note that you are responsible for any winnings/losses incurred.

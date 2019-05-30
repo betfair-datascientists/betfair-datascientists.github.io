@@ -5,15 +5,15 @@
 
 We all love getting some good racing tips, but who has time to sit and place bets all day? Wouldn't it be easier if you could take those tips and get a program to automatically place the bets on your behalf? 
 
-This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is my first time using Bet Angel for this approach, and am very open to any thoughts about more effecitve ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
+This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is my first-time using Bet Angel for this approach and am very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
 ## Lets Go!
 ###- The plan
 
-I have a set of tips that I've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips have. My goal is to create an automated process which will let me choose my tips for the day, then walk away and the the program do the leg work. 
+I have a set of tips that I've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips have. My goal is to create an automated process which will let me choose my tips for the day, then walk away and the program do the leg work. 
 
-Here I'll step through how I went about getting Bet Angel Pro to place bets on the favourite runner identified by [Betfair's DataScientists](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/). There are no ratings associated wtih these tips, so I'm happy to take [Betfair's Starting Price](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) instead of a price for these bets. Bet Angel Pro's 'Guardian' feature has the capacity to let you create rules that can then be applied to specific selections, which is how we're going to implement this strategy. 
+Here I'll step through how I went about getting Bet Angel Pro to place bets on the favourite runner identified by [Betfair's Data Scientists](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/). There are no ratings associated with these tips, so I'm happy to take [Betfair's Starting Price](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) instead of a price for these bets. Bet Angel Pro's 'Guardian' feature has the capacity to let you create rules that can then be applied to specific selections, which is how we're going to implement this strategy. 
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipHub.png)
 
@@ -63,7 +63,7 @@ You can choose to change the bet stake and other parts of the rule by:
 ---
 ###- Selecting your markets
 
-I decided I only wanted to bet on the gallops races at Geelong, so I used the markets menu to navigate to Geelong, then multi-slected all the win markets by holding down the control key and clicking on each win market.
+I decided I only wanted to bet on the gallops races at Geelong, so I used the markets menu to navigate to Geelong, then multi-selected all the win markets by holding down the control key and clicking on each win market.
 
 If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab. 
 

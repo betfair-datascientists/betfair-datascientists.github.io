@@ -4,7 +4,7 @@
 ## Dont miss out on a market with simultaneous automation
 
 If you have a concern of missing markets due to delays or unforeseen circumstances, Bet Angel is able to work off multiple worksheets for different meetings, all from the same workbook. 
-For example, we can have worksheet one from our spreadsheet work through the markets taking place in Flemington, while worksheet 2 will work through markets at Sandown,worksheet 3 works through markets at Bendigo etc. 
+For example, we can have worksheet one from our spreadsheet work through the markets taking place in Flemington, while worksheet 2 will work through markets at Sandown, worksheet 3 works through markets at Bendigo etc. 
 
 To Set this up, we need to do need to duplicate the main ‘Market’ worksheet and have enough instances of the sheet for each meeting. There are four meetings that I want to cover, so I have duplicated the worksheet four times and renamed them to help me keep track. 
 

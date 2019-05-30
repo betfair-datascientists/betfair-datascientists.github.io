@@ -66,7 +66,7 @@ In short, I want to back runners when:
 
 Stepping through each step:
 
-- **Finding the top two selections in the market:** check each runner to see if they're one of the two market favourites - I'm doing this by going through the best available to back (blue) price for each runner, ranking them in order (which sorts them from highest to lowest - which is the opposite of what we want) then subtracting that rank number from the total number of selections available to inverse the order. Finally I plus one to the resulting rank - if I didn't do this then you'd have a rank order that started at 0, not 1, and I thought that would just confuse matters!
+- **Finding the top two selections in the market:** check each runner to see if they're one of the two market favourites - I'm doing this by going through the best available to back (blue) price for each runner, ranking them in order (which sorts them from highest to lowest - which is the opposite of what we want) then subtracting that rank number from the total number of selections available to inverse the order. Finally, I plus one to the resulting rank - if I didn't do this then you'd have a rank order that started at 0, not 1, and I thought that would just confuse matters!
 
 Once it's established what each selection's rank is, we then check if that rank is less than three, and if it is we know that the runner in question is one of the top two in the market, based on the current available to back prices.
 
@@ -119,7 +119,7 @@ Once it's established what each selection's rank is, we then check if that rank 
 )
 ```
 
-- **Convert bets to Betfair Starting Price:** Bet Angel Pro doesn't offer the option to place straight BSP bets, so  I've got around that here by placing the bets initally at odds of 1000 (which won't get matched for short favourites), and then a minute off from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. This formula goes in cell L6, and once it's triggered the bets will automatically convert. 
+- **Convert bets to Betfair Starting Price:** Bet Angel Pro doesn't offer the option to place straight BSP bets, so  I've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then a minute off from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. This formula goes in cell L6, and once it's triggered the bets will automatically convert. 
 
 ``` excel hl_lines="1"
 =IF(SETTINGS!$E$4 < 60, "TAKE_SP_ALL", "")
@@ -217,7 +217,7 @@ Once you've set your spreadsheet set up and you're comfortable using Bet Angel P
 Here are some Bet Angel features that you'll need to consider.
 
 ###- Multiple bets/clearing status cells
-The Bet Angel spreadsheet won't let a bet go on if there is a value in column 0 for the runner, the 'status' column, to avoid accidentally placing multiple bets unintentionally. As soon as a bet triggers, Bet Angel automatically changes this cell to 'PLACING', then to 'PLACED' when the bet is confirmed as having been received by Betfair. In this strategy I only want to place one bet per runner, but if you wanted to place multiple bets on a runner you'd need to have a play wtih the macros to clear the 'status' cells more regularly, and instead reference the number of bets placed/matched in columns T:AE. Careful here though, as the values in these columns sometimes take a little time to update, and I've had more bets go on than I intended when using these cells as my check, as bet trigger reevaluated before columns T:AE had updated. 
+The Bet Angel spreadsheet won't let a bet go on if there is a value in column 0 for the runner, the 'status' column, to avoid accidentally placing multiple bets unintentionally. As soon as a bet triggers, Bet Angel automatically changes this cell to 'PLACING', then to 'PLACED' when the bet is confirmed as having been received by Betfair. In this strategy I only want to place one bet per runner, but if you wanted to place multiple bets on a runner you'd need to have a play with the macros to clear the 'status' cells more regularly, and instead reference the number of bets placed/matched in columns T:AE. Careful here though, as the values in these columns sometimes take a little time to update, and I've had more bets go on than I intended when using these cells as my check, as bet trigger re-evaluated before columns T:AE had updated. 
 
 As we want to use the same sheet for multiple races, and the 'status' cells don't clear automatically, I've created a macro in [the Excel sheet](./assets/BetAngel_RatingsAutomation.xls) that auto-clears the status and global status cells whenever a new race loads. It also clears the cells if they say 'FAILED', as I found that if there were internet network issues or similar it would fail once then not try to place the bet again. This was based on some logic I found in [a forum discussion on Bet Angel](https://www.betangel.com/forum/viewtopic.php?f=31&t=1879&start=10). If you're feeling adventurous you can have a play with the macros and edit them to suit your specific needs. 
 
@@ -244,4 +244,4 @@ We're working through some of the popular automation tools and creating articles
 ---
 ## Disclaimer
 
-Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.
+Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies, please gamble responsibly and note that you are responsible for any winnings/losses incurred.

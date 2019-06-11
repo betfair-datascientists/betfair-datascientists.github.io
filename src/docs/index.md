@@ -61,6 +61,7 @@ We’re putting together a collection of articles on how to use some of these th
     - [Double or Bust (Rules)](/thirdPartyTools/BfBotManagerAutomation.md)
 - [MarketFeeder Pro](/thirdPartyTools/MarketFeeder/MarketFeeder)
     - [2-6 Staking (Rules)](/thirdPartyTools/MarketFeeder2_6Staking.md)
+- [The Bet Engine](/thirdPartyTools/TheBetEngine/TheBetEngine)
 
 ---
 ### Data modelling 

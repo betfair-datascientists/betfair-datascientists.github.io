@@ -29,13 +29,15 @@ nav:
         - MarketFeeder Pro:
             - MarketFeeder Pro overview: thirdPartyTools/MarketFeeder/MarketFeeder.md
             - 2-6 Staking (Rules): thirdPartyTools/MarketFeeder2_6Staking.md
+        - The Bet Engine:
+            - The Bet Engine overview: thirdPartyTools/TheBetEngine/TheBetEngine.md
     - API:
         - How to access the Betfair API: api/apiappkey.md
         - API tutorials in R: api/apiRtutorial.md
         - API tutorial in Python: api/apiPythontutorial.md
     - Historic Data: 
-        - Historic Data Sources: historicData/dataSources.md
-        - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
+        - Historic Data Sources: historicdata/dataSources.md
+        - Downloading from the Historic Data site: historicData/TheBetEngine/ThebetEngine.md
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
         - How to model the Australian Open: modelling/howToModelTheAusOpen.md

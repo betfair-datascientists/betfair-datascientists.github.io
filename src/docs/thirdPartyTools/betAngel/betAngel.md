@@ -1,6 +1,5 @@
 ![Bet Angel](./img/BetAngelLogo.jpg)
 
-
 Bet Angel is one of the longest established API Products available.
 
 Bet Angel has three separate products available for Betfair customers. Bet Angel Basic is free and useful for placing occasional bets but has limited trading and professional tools. Bet Angel Trader contains the essential trading tools and Bet Angel Professional is the ultimate trading tool kit providing all the advanced tools and features required.
@@ -18,9 +17,7 @@ For those who wish to write their own automated betting or trading strategies, B
     - One click betting
     - Dutching functionality
     - Advanced market navigation
-    - In-play interface designed for fast moving racing markets  
-
-![Bet Angel](./img/BetAngel.png)
+    - In-play interface designed for fast moving racing markets
 
 ---
 

@@ -47,22 +47,22 @@ Whilst the following tools are not custom built for your approach, they do allow
 
 We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.
 
-- [Bet Angel](/thirdPartyTools/betAngel/betAngel)
-    - [Ratings automation (Excel)](/thirdPartyTools/betAngelRatingsAutomation)
-    - [Market favourite automation (Excel)](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
-    - [Tipping automation (Excel)](/thirdPartyTools/betAngelTippingAutomation)
-    - [Automating simultaneous markets (Excel)](/thirdPartyTools/betAngelSimultaneousMarkets)
+- [Bet Angel Excel Automation](/thirdPartyTools/betAngel/betAngel)
+    - [Ratings automation](/thirdPartyTools/betAngelRatingsAutomation)
+    - [Market favourite automation](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
+    - [Tipping automation](/thirdPartyTools/betAngelTippingAutomation)
+    - [Automating simultaneous markets](/thirdPartyTools/betAngelSimultaneousMarkets) 
 - [Gruss](/thirdPartyTools/Gruss/Gruss)
-    - [Ratings automation (Excel)](/thirdPartyTools/grussRatingsAutomation)
-    - [Automating simultaneous markets (Excel)](/thirdPartyTools/grusslSimultaneousMarkets)
+    - [Ratings automation](/thirdPartyTools/grussRatingsAutomation)
+    - [Automating simultaneous markets](/thirdPartyTools/grusslSimultaneousMarkets)
 - [Cymatic Trader](/thirdPartyTools/CymaticTrader/CymaticTrader)
-    - [Ratings automation (Excel)](/thirdPartyTools/cymaticTraderRatingsAutomation)
+    - [Ratings automation](/thirdPartyTools/cymaticTraderRatingsAutomation)
 - [BF Bot Manager](/thirdPartyTools/BfBotManager/BfBotManager)
-    - [Double or Bust (Rules)](/thirdPartyTools/BfBotManagerAutomation.md)
+    - [Double or Bust](/thirdPartyTools/BfBotManagerAutomation.md)
 - [MarketFeeder Pro](/thirdPartyTools/MarketFeeder/MarketFeeder)
-    - [2-6 Staking (Rules)](/thirdPartyTools/MarketFeeder2_6Staking.md)
-- [The Bet Engine](/thirdPartyTools/TheBetEngine/TheBetEngine)
-
+    - [2-6 Staking](/thirdPartyTools/MarketFeeder2_6Staking.md)
+- [BfExplorer](/thirdPartyTools/bfexplorer/bfexplorer)
+    - [intro to automation in Bfexplorer](/thirdPartyTools/bfexplorerintro.md)
 ---
 ### Data modelling 
 

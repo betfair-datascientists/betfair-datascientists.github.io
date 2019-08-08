@@ -11,7 +11,7 @@ nav:
     - Third Party Tools: 
         - Overview: thirdPartyTools/overview.md
         - Bet Angel: 
-            - Bet Angel overview: thirdPartyTools/betAngel/betAngel.md
+            - Bet Angel Overview: thirdPartyTools/betAngel/betAngel.md
             - Ratings automation (Excel): thirdPartyTools/betAngelRatingsAutomation.md
             - Market favourite automation (Excel): thirdPartyTools/betAngelMarketFavouriteAutomation.md
             - Tipping automation (Excel): thirdPartyTools/betAngelTippingAutomation.md
@@ -29,8 +29,10 @@ nav:
         - MarketFeeder Pro:
             - MarketFeeder Pro overview: thirdPartyTools/MarketFeeder/MarketFeeder.md
             - 2-6 Staking (Rules): thirdPartyTools/MarketFeeder2_6Staking.md
-        - The Bet Engine:
-            - The Bet Engine overview: thirdPartyTools/TheBetEngine/TheBetEngine.md
+        - Bfexplorer:
+            - Bfexplorer Overview: thirdPartyTools/bfexplorer/bfexplorer.md
+            - Intro to automation in Bfexplorer: thirdPartyTools/bfexplorerintro.md
+        
     - API:
         - How to access the Betfair API: api/apiappkey.md
         - API tutorials in R: api/apiRtutorial.md

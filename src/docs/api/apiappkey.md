@@ -43,8 +43,16 @@ You’ll notice that two application keys have been created;
 
 - Version – 1.0: is the live pricing app key; on yours it should have a status ‘No’ in Active.
 
-Grab the application key listed for the live price one - for the example above, that is ‘MkcBqyZrD53V6A’
+Grab the application key listed for the live price one - for the example above, that is ‘MkcBqyZrD53V6A..’
 
 ---
 ### Activate your app key
-Please [contact us](mailto:bdp@betfair.com.au) when you’re ready to activate your app key - we have a dedicated resource to make it as easy for you as possible.
+This process will generate two app keys: 
+
+•	A developer key which is designed for development purposes. This has a variable delay of between 1 and 180 seconds, doesn’t show matched volume and doesn’t need to be activated prior to use.
+
+•	A live app key is intended for transacting on the Exchange and should only be used when you’re ready to start placing bets or can no longer test your strategy effectively using the developer key. 
+
+Please note that if the live key is used to pull data from the Exchange without corresponding bets being placed a delay may be automatically applied to the live key. 
+
+If you’re ready to start testing your strategy or placing bets, please contact api@betfair.com.au and we will be happy to assist with activating the live key and implementing your strategy. 

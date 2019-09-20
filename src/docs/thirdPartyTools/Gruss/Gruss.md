@@ -1,6 +1,8 @@
 ![Gruss](./img/Gruss.jpg)
 
-Gruss Software is another popular choice for AU / NZ punters giving the ability to users to integrate their strategies through Excel using formulas. This ability allows you to create more sophisticated approaches to your strategy as compared to other third-party alternatives. 
+Gruss Software offers one-click betting in the standard or ladder type interface and also the ability to link into Excel using pre-defined triggers to place bets. Betting Assistant deploys a wealth of functionality such as green-up, fill or kill, stop loss, dutch betting, coupon market view and more.
+
+Gruss Software is a constantly evolving solution where the developers listen to the users and their needs. Users can communicate directly with the developers, make suggestions and exchange ideas on the Betting Assistant Forum.
 
 !!! info "GRUSS KEY FEATURES"
     - One click betting

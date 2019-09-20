@@ -1179,14 +1179,14 @@
 <hr />
 <h2 id="automating-a-non-ratings-based-tipping-strategy-using-bet-angel-pro">Automating a (non-ratings based) tipping strategy using Bet Angel Pro<a class="headerlink" href="#automating-a-non-ratings-based-tipping-strategy-using-bet-angel-pro" title="Permanent link">&para;</a></h2>
 <p>We all love getting some good racing tips, but who has time to sit and place bets all day? Wouldn't it be easier if you could take those tips and get a program to automatically place the bets on your behalf? </p>
-<p>This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is my first-time using Bet Angel for this approach and am very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to me on <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> with your feedback and opinions. </p>
+<p>This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is our first-time using Bet Angel for this approach and we are very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> with your feedback and opinions. </p>
 <hr />
 <h2 id="lets-go">Lets Go!<a class="headerlink" href="#lets-go" title="Permanent link">&para;</a></h2>
 <h3 id="-the-plan">- The plan<a class="headerlink" href="#-the-plan" title="Permanent link">&para;</a></h3>
-<p>I have a set of tips that I've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips have. My goal is to create an automated process which will let me choose my tips for the day, then walk away and the program do the leg work. </p>
-<p>Here I'll step through how I went about getting Bet Angel Pro to place bets on the favourite runner identified by <a href="https://www.betfair.com.au/hub/tools/models/racing-prediction-model/">Betfair's Data Scientists</a>. There are no ratings associated with these tips, so I'm happy to take <a href="https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/">Betfair's Starting Price</a> instead of a price for these bets. Bet Angel Pro's 'Guardian' feature has the capacity to let you create rules that can then be applied to specific selections, which is how we're going to implement this strategy. </p>
+<p>We have a set of tips that we've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips you may have. Our goal is to create an automated process which will let us choose our tips for the day, then walk away and the program do the leg work. </p>
+<p>Here we'll step through how we went about getting Bet Angel Pro to place bets on the favourite runner identified by <a href="https://www.betfair.com.au/hub/tools/models/racing-prediction-model/">Betfair's Data Scientists</a>. There are no ratings associated with these tips, so we're happy to take <a href="https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/">Betfair's Starting Price</a> instead of a price for these bets. Bet Angel Pro's 'Guardian' feature has the capacity to let you create rules that can then be applied to specific selections, which is how we're going to implement this strategy. </p>
 <p><img alt="Automating a tipping strategy with Bet Angel" src="../img/BetAngeltipHub.png" /></p>
-<p>After digging around on <a href="https://www.betangel.com/forum">Bet Angel's forum</a> and <a href="https://www.betangel.com/blog_wp/tag/automation/">blog</a>, I found an article on <a href="https://www.betangel.com/forum/viewtopic.php?f=37&amp;t=15358">how to create a generic automation rule</a>, which I found useful in helping me learn how to use the tool to automate these tips. I also found a rule that someone else had written to <a href="https://www.betangel.com/forum/viewtopic.php?f=53&amp;t=11668">back or lay a selection at BSP</a>, which is what I used as the basis for the <a href="../assets/BetAngelTippingRule.baf">rule I'm using here</a>. </p>
+<p>After digging around on <a href="https://www.betangel.com/forum">Bet Angel's forum</a> and <a href="https://www.betangel.com/blog_wp/tag/automation/">blog</a>, we found an article on <a href="https://www.betangel.com/forum/viewtopic.php?f=37&amp;t=15358">how to create a generic automation rule</a>, which we found useful in helping us learn how to use the tool to automate these tips. We also found a rule that someone else had written to <a href="https://www.betangel.com/forum/viewtopic.php?f=53&amp;t=11668">back or lay a selection at BSP</a>, which is what we used as the basis for the <a href="../assets/BetAngelTippingRule.baf">rule we're using here</a>. </p>
 <p>If you want to follow along and try this approach yourself you'll need to download <a href="https://www.betangel.com/bet-angel-professional/">Bet Angel Pro</a> and sign up for either a subscription or at least a test period. They have a <a href="https://www.betangel.com/trial/">14 day free trial</a> that's valuable for establishing whether this tool will do what you want it to for your specific strategy. </p>
 <div class="admonition note">
 <p class="admonition-title">Resources</p>
@@ -1201,7 +1201,7 @@
 <p>First up we need to make sure we've downloaded and installed Bet Angel Pro, and signed in.</p>
 <p>Once you open the program up click on the 'G' Guardian icon and open the Guardian functionality up. </p>
 <p><img alt="Automating a tipping strategy with Bet Angel" src="../img/BetAngeltipPro.png" /></p>
-<p>I've created an <a href="../assets/BetAngelTippingRule.baf">automated rule</a> that you can download here, roughly based on the one discussed in <a href="https://www.betangel.com/forum/viewtopic.php?f=53&amp;t=11668">this forum post</a> (note: you will need to create a Bet Angel forum account to be able to download the rule). </p>
+<p>We've created an <a href="../assets/BetAngelTippingRule.baf">automated rule</a> that you can download here, roughly based on the one discussed in <a href="https://www.betangel.com/forum/viewtopic.php?f=53&amp;t=11668">this forum post</a> (note: you will need to create a Bet Angel forum account to be able to download the rule). </p>
 <h3 id="-writing-your-rules">- Writing your rules<a class="headerlink" href="#-writing-your-rules" title="Permanent link">&para;</a></h3>
 <ul>
 <li>open up the 'Automation' tab</li>
@@ -1218,27 +1218,27 @@
 <li>change the stake as desired</li>
 </ul>
 <p><img alt="Automating a tipping strategy with Bet Angel" src="../img/BetAngeltipEditRule.png" /></p>
-<div class="admonition tip">
+<div class="admonition info">
 <p class="admonition-title">Turning off bet confirmation</p>
 <p>Unless you want to manually confirm each individual bet placed (which you definitely might want to leave turned on until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. </p>
 <p>You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program.</p>
 </div>
 <hr />
 <h3 id="-selecting-your-markets">- Selecting your markets<a class="headerlink" href="#-selecting-your-markets" title="Permanent link">&para;</a></h3>
-<p>I decided I only wanted to bet on the gallops races at Geelong, so I used the markets menu to navigate to Geelong, then multi-selected all the win markets by holding down the control key and clicking on each win market.</p>
+<p>We decided we only wanted to bet on the gallops races at Geelong, so we used the markets menu to navigate to Geelong, then multi-selected all the win markets by holding down the control key and clicking on each win market.</p>
 <p>If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab. </p>
 <p>Once you've chosen the races you're interested in click the 'add' button and you'll see them appear in the main body of the screen. </p>
 <p><img alt="Automating a tipping strategy with Bet Angel" src="../img/BetAngeltipMarkets.png" /></p>
 <hr />
 <h3 id="-choosing-your-selections">- Choosing your selections<a class="headerlink" href="#-choosing-your-selections" title="Permanent link">&para;</a></h3>
-<p>The final step is to choose which selections you want to bet on. In this example I just chose the number 1 selection chosen by the Data Scientists in their <a href="https://www.betfair.com.au/hub/tools/models/racing-prediction-model/">Racing Prediction Model</a>. Just click on the dropdown in the 'Automation Nomination Selection 1' column for each race and choose your selection. </p>
+<p>The final step is to choose which selections you want to bet on. In this example we just chose the number 1 selection chosen by the Data Scientists in their <a href="https://www.betfair.com.au/hub/tools/models/racing-prediction-model/">Racing Prediction Model</a>. Just click on the dropdown in the 'Automation Nomination Selection 1' column for each race and choose your selection. </p>
 <p><strong>Back and lay bets:</strong></p>
 <ul>
 <li>The runner selected in 'Automation Nomination Selection 1' will have a BSP back bet for your chosen stake placed. </li>
 <li>The runner selected in 'Automation Nomination Selection 2' will have a BSP lay bet for your chosen stake placed. </li>
 </ul>
 <p><img alt="Automating a tipping strategy with Bet Angel" src="../img/BetAngeltipBack.png" /></p>
-<div class="admonition tip">
+<div class="admonition info">
 <p class="admonition-title">Changing the rules</p>
 <p>This approach only allows you to back one runner and lay one runner per race. If your strategy bets on multiple runners per race you can edit the rules file, select 'copy rule', then edit the second rule to use the runner selected in 'Automation Nomination Selection 2 and delete the lay strategy.</p>
 <p>The beauty of this tool is that you can customise the rules until you have a set that do what you want them to.</p>
@@ -1253,7 +1253,7 @@
 </div>
 <hr />
 <h2 id="what-next">What next?<a class="headerlink" href="#what-next" title="Permanent link">&para;</a></h2>
-<p>We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> </p>
+<p>We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to us at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> </p>
 <hr />
 <h2 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
 <p>Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies please gamble responsibly and note that you are responsible for any winnings/losses incurred.</p>

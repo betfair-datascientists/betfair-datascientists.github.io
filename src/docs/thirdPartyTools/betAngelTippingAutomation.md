@@ -5,19 +5,19 @@
 
 We all love getting some good racing tips, but who has time to sit and place bets all day? Wouldn't it be easier if you could take those tips and get a program to automatically place the bets on your behalf? 
 
-This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is my first-time using Bet Angel for this approach and am very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to me on bdp@betfair.com.au with your feedback and opinions. 
+This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is our first-time using Bet Angel for this approach and we are very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at bdp@betfair.com.au with your feedback and opinions. 
 
 --- 
 ## Lets Go!
 ###- The plan
 
-I have a set of tips that I've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips have. My goal is to create an automated process which will let me choose my tips for the day, then walk away and the program do the leg work. 
+We have a set of tips that we've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips you may have. Our goal is to create an automated process which will let us choose our tips for the day, then walk away and the program do the leg work. 
 
-Here I'll step through how I went about getting Bet Angel Pro to place bets on the favourite runner identified by [Betfair's Data Scientists](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/). There are no ratings associated with these tips, so I'm happy to take [Betfair's Starting Price](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) instead of a price for these bets. Bet Angel Pro's 'Guardian' feature has the capacity to let you create rules that can then be applied to specific selections, which is how we're going to implement this strategy. 
+Here we'll step through how we went about getting Bet Angel Pro to place bets on the favourite runner identified by [Betfair's Data Scientists](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/). There are no ratings associated with these tips, so we're happy to take [Betfair's Starting Price](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) instead of a price for these bets. Bet Angel Pro's 'Guardian' feature has the capacity to let you create rules that can then be applied to specific selections, which is how we're going to implement this strategy. 
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipHub.png)
 
-After digging around on [Bet Angel's forum](https://www.betangel.com/forum) and [blog](https://www.betangel.com/blog_wp/tag/automation/), I found an article on [how to create a generic automation rule](https://www.betangel.com/forum/viewtopic.php?f=37&t=15358), which I found useful in helping me learn how to use the tool to automate these tips. I also found a rule that someone else had written to [back or lay a selection at BSP](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668), which is what I used as the basis for the [rule I'm using here](./assets/BetAngelTippingRule.baf). 
+After digging around on [Bet Angel's forum](https://www.betangel.com/forum) and [blog](https://www.betangel.com/blog_wp/tag/automation/), we found an article on [how to create a generic automation rule](https://www.betangel.com/forum/viewtopic.php?f=37&t=15358), which we found useful in helping us learn how to use the tool to automate these tips. We also found a rule that someone else had written to [back or lay a selection at BSP](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668), which is what we used as the basis for the [rule we're using here](./assets/BetAngelTippingRule.baf). 
 
 If you want to follow along and try this approach yourself you'll need to download [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/) and sign up for either a subscription or at least a test period. They have a [14 day free trial](https://www.betangel.com/trial/) that's valuable for establishing whether this tool will do what you want it to for your specific strategy. 
 
@@ -35,7 +35,7 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipPro.png)
 
-I've created an [automated rule](./assets/BetAngelTippingRule.baf) that you can download here, roughly based on the one discussed in [this forum post](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668) (note: you will need to create a Bet Angel forum account to be able to download the rule). 
+We've created an [automated rule](./assets/BetAngelTippingRule.baf) that you can download here, roughly based on the one discussed in [this forum post](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668) (note: you will need to create a Bet Angel forum account to be able to download the rule). 
 
 ###- Writing your rules
 
@@ -55,7 +55,7 @@ You can choose to change the bet stake and other parts of the rule by:
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipEditRule.png)
 
-!!! tip "Turning off bet confirmation"
+!!! info "Turning off bet confirmation"
     Unless you want to manually confirm each individual bet placed (which you definitely might want to leave turned on until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?'. 
     
     You can then save these settings, but you'll need to go into the settings tab and choose the saved file each time you open the program.
@@ -63,7 +63,7 @@ You can choose to change the bet stake and other parts of the rule by:
 ---
 ###- Selecting your markets
 
-I decided I only wanted to bet on the gallops races at Geelong, so I used the markets menu to navigate to Geelong, then multi-selected all the win markets by holding down the control key and clicking on each win market.
+We decided we only wanted to bet on the gallops races at Geelong, so we used the markets menu to navigate to Geelong, then multi-selected all the win markets by holding down the control key and clicking on each win market.
 
 If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab. 
 
@@ -74,7 +74,7 @@ Once you've chosen the races you're interested in click the 'add' button and you
 ---
 ###- Choosing your selections
 
-The final step is to choose which selections you want to bet on. In this example I just chose the number 1 selection chosen by the Data Scientists in their [Racing Prediction Model](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/). Just click on the dropdown in the 'Automation Nomination Selection 1' column for each race and choose your selection. 
+The final step is to choose which selections you want to bet on. In this example we just chose the number 1 selection chosen by the Data Scientists in their [Racing Prediction Model](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/). Just click on the dropdown in the 'Automation Nomination Selection 1' column for each race and choose your selection. 
 
 **Back and lay bets:**
 
@@ -83,7 +83,7 @@ The final step is to choose which selections you want to bet on. In this example
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipBack.png)
 
-!!! tip "Changing the rules"
+!!! info "Changing the rules"
     This approach only allows you to back one runner and lay one runner per race. If your strategy bets on multiple runners per race you can edit the rules file, select 'copy rule', then edit the second rule to use the runner selected in 'Automation Nomination Selection 2 and delete the lay strategy.
 
     The beauty of this tool is that you can customise the rules until you have a set that do what you want them to.
@@ -101,7 +101,7 @@ Once you've set your rules up and got comfortable using Bet Angel Pro it should 
 ---
 ## What next? 
 
-We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au 
+We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to us at bdp@betfair.com.au 
 
 ---
 ## Disclaimer

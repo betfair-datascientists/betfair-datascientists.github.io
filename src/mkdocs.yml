@@ -12,23 +12,23 @@ nav:
         - Overview: thirdPartyTools/overview.md
         - Bet Angel: 
             - Bet Angel Overview: thirdPartyTools/betAngel/betAngel.md
-            - Ratings automation (Excel): thirdPartyTools/betAngelRatingsAutomation.md
-            - Market favourite automation (Excel): thirdPartyTools/betAngelMarketFavouriteAutomation.md
-            - Tipping automation (Excel): thirdPartyTools/betAngelTippingAutomation.md
-            - Automating simultaneous markets (Excel): thirdPartyTools/betAngelSimultaneousMarkets.md
+            - Ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
+            - Market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
+            - Tipping automation: thirdPartyTools/betAngelTippingAutomation.md
+            - Automating simultaneous markets: thirdPartyTools/betAngelSimultaneousMarkets.md
         - Gruss:
             - Gruss overview: thirdPartyTools/Gruss/Gruss.md
-            - Ratings automation (Excel): thirdPartyTools/grussRatingsAutomation.md
-            - Automating simultaneous markets (Excel): thirdPartyTools/grusslSimultaneousMarkets.md
+            - Ratings automation: thirdPartyTools/grussRatingsAutomation.md
+            - Automating simultaneous markets: thirdPartyTools/grusslSimultaneousMarkets.md
         - Cymatic Trader:
             - Cymatic Trader overview: thirdPartyTools/CymaticTrader/CymaticTrader.md
-            - Ratings automation (Excel): thirdPartyTools/cymaticTraderRatingsAutomation.md
+            - Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md
         - BF Bot Manager:
             - BF Bot Manager overview: thirdPartyTools/BfBotManager/BfBotManager.md
-            - Double or Bust (Rules): thirdPartyTools/BfBotManagerAutomation.md
+            - Double or Bust: thirdPartyTools/BfBotManagerAutomation.md
         - MarketFeeder Pro:
             - MarketFeeder Pro overview: thirdPartyTools/MarketFeeder/MarketFeeder.md
-            - 2-6 Staking (Rules): thirdPartyTools/MarketFeeder2_6Staking.md
+            - 2-6 Staking: thirdPartyTools/MarketFeeder2_6Staking.md
         - Bfexplorer:
             - Bfexplorer Overview: thirdPartyTools/bfexplorer/bfexplorer.md
             - Intro to automation in Bfexplorer: thirdPartyTools/bfexplorerintro.md
@@ -39,7 +39,7 @@ nav:
         - API tutorial in Python: api/apiPythontutorial.md
     - Historic Data: 
         - Historic Data Sources: historicData/dataSources.md
-        - Downloading from the Historic Data site: historicData/TheBetEngine/ThebetEngine.md
+        - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
         - How to model the Australian Open: modelling/howToModelTheAusOpen.md

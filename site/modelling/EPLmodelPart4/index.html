@@ -1,0 +1,2844 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
+      
+      
+        <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/EPLmodelPart4/">
+      
+      
+        <meta name="author" content="Betfair Data Scientists">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>EPL 04. Weekly predictions - The Automation Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.9a8eeed6.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/clarke-regular.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo.svg" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                The Automation Hub
+              </span>
+              <span class="md-header-nav__topic">
+                EPL 04. Weekly predictions
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      <div class="bf-nav md-flex__cell">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26"/>
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z"/>
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." title="Home" class="md-tabs__link">
+          Home
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../thirdPartyTools/overview/" title="Tutorials" class="md-tabs__link">
+          Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/apiappkey/" title="API" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../historicData/dataSources/" title="Historic Data" class="md-tabs__link">
+          Historic Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../howToModel/" title="Modelling" class="md-tabs__link md-tabs__link--active">
+          Modelling
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo.svg" width="48" height="48">
+      
+    </a>
+    The Automation Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Home
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="The Automation Hub" class="md-nav__link">
+      The Automation Hub
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/overview/" title="Tools Overview" class="md-nav__link">
+      Tools Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Third Party tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        Third Party tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngel/betAngel/" title="Bet Angel" class="md-nav__link">
+      Bet Angel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/Gruss/Gruss/" title="Gruss Betting Assistant" class="md-nav__link">
+      Gruss Betting Assistant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/CymaticTrader/CymaticTrader/" title="Cymatic Trader" class="md-nav__link">
+      Cymatic Trader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/BfBotManager/BfBotManager/" title="BF Bot Manager" class="md-nav__link">
+      BF Bot Manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/MarketFeeder/MarketFeeder/" title="MarketFeeder Pro" class="md-nav__link">
+      MarketFeeder Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/bfexplorer/bfexplorer/" title="Bfexplorer" class="md-nav__link">
+      Bfexplorer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Ratings / Tipping Automations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Ratings / Tipping Automations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelRatingsAutomation/" title="Bet Angel - Ratings automation" class="md-nav__link">
+      Bet Angel - Ratings automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/BetAngelMultipleMarketRatings/" title="Bet Angel - Multiple market ratings" class="md-nav__link">
+      Bet Angel - Multiple market ratings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelTippingAutomation/" title="Bet Angel - Tipping automation" class="md-nav__link">
+      Bet Angel - Tipping automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/grussRatingsAutomation/" title="Gruss - Ratings automation" class="md-nav__link">
+      Gruss - Ratings automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/cymaticTraderRatingsAutomation/" title="Cymatic - Trader Ratings automation" class="md-nav__link">
+      Cymatic - Trader Ratings automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Market Favourite Automations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Market Favourite Automations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelMarketFavouriteAutomation/" title="Bet Angel - Market favourite automation" class="md-nav__link">
+      Bet Angel - Market favourite automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5">
+    
+    <label class="md-nav__link" for="nav-2-5">
+      Automating Simultaneous Markets
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        Automating Simultaneous Markets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelSimultaneousMarkets/" title="Bet Angel - simultaneous markets" class="md-nav__link">
+      Bet Angel - simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/grusslSimultaneousMarkets/" title="Gruss - simultaneous markets" class="md-nav__link">
+      Gruss - simultaneous markets
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6">
+    
+    <label class="md-nav__link" for="nav-2-6">
+      Staking Strategies
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        Staking Strategies
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/BfBotManagerAutomation/" title="BF Bot Manager - Double or Bust" class="md-nav__link">
+      BF Bot Manager - Double or Bust
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/MarketFeeder2_6Staking/" title="Market Feeder - Pro 2-6 Staking" class="md-nav__link">
+      Market Feeder - Pro 2-6 Staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiappkey/" title="How to access the Betfair API" class="md-nav__link">
+      How to access the Betfair API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiRtutorial/" title="API tutorials in R" class="md-nav__link">
+      API tutorials in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiPythontutorial/" title="API tutorial in Python" class="md-nav__link">
+      API tutorial in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Historic Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Historic Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/dataSources/" title="Historic Data Sources" class="md-nav__link">
+      Historic Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
+      How to model the Australian Open
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AusOpenRTutorial/" title="Aus Open R Tutorial" class="md-nav__link">
+      Aus Open R Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AusOpenPythonTutorial/" title="Aus Open Python Tutorial" class="md-nav__link">
+      Aus Open Python Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../EPLmodelPart1/" title="EPL 01. Data acquisition & exploration" class="md-nav__link">
+      EPL 01. Data acquisition & exploration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../EPLmodelPart2/" title="EPL 02. Data preparation & feature engineering" class="md-nav__link">
+      EPL 02. Data preparation & feature engineering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../EPLmodelPart3/" title="EPL 03. Model building & hyperparameter tuning" class="md-nav__link">
+      EPL 03. Model building & hyperparameter tuning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="EPL 04. Weekly predictions" class="md-nav__link md-nav__link--active">
+      EPL 04. Weekly predictions
+    </a>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AFLmodelPart1/" title="AFL 01. Data cleaning" class="md-nav__link">
+      AFL 01. Data cleaning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AFLmodelPart2/" title="AFL 02. Feature creation" class="md-nav__link">
+      AFL 02. Feature creation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AFLmodelPart3/" title="AFL 03. Modelling" class="md-nav__link">
+      AFL 03. Modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AFLmodelPart4/" title="AFL 04. Weekly predictions" class="md-nav__link">
+      AFL 04. Weekly predictions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../brownlowModelTutorial/" title="Modelling the Brownlow Medal" class="md-nav__link">
+      Modelling the Brownlow Medal
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="epl-machine-learning-walkthrough">EPL Machine Learning Walkthrough<a class="headerlink" href="#epl-machine-learning-walkthrough" title="Permanent link">&para;</a></h1>
+<h1 id="04-weekly-predictions">04. Weekly Predictions<a class="headerlink" href="#04-weekly-predictions" title="Permanent link">&para;</a></h1>
+<p>Welcome to the third part of this Machine Learning Walkthrough. This tutorial will be a walk through of creating weekly EPL predictions from the basic logistic regression model we built in the previous tutorial. We will then analyse our predictions and create staking strategies in the next tutorial.</p>
+<p>Specifically, this tutorial will cover a few things:</p>
+<ol>
+<li>Obtaining Weekly Odds / Game Info Using Betfair's API</li>
+<li>Data Wrangling This Week's Game Info Into Our Feature Set</li>
+</ol>
+<hr />
+<h2 id="obtaining-weekly-odds-game-info-using-betfairs-api">Obtaining Weekly Odds / Game Info Using Betfair's API<a class="headerlink" href="#obtaining-weekly-odds-game-info-using-betfairs-api" title="Permanent link">&para;</a></h2>
+<p>The first thing we need to do to create weekly predictions is get both the games being played this week, as well as match odds from Betfair to be used as features.</p>
+<p>To make this process easier, I have created a csv file with the fixture for the 2018/19 season. Let's load that now.</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## Import libraries</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">weekly_prediction_functions</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">data_preparation_functions</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> log_loss, confusion_matrix
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">warnings</span>
+warnings<span style="color: #666666">.</span>filterwarnings(<span style="color: #BA2121">&#39;ignore&#39;</span>)
+pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&#39;display.max_columns&#39;</span>, <span style="color: #666666">100</span>)
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fixture <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/fixture.csv&#39;</span>)
+              <span style="color: #666666">.</span>assign(Date<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: pd<span style="color: #666666">.</span>to_datetime(df<span style="color: #666666">.</span>Date)))
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fixture<span style="color: #666666">.</span>head()
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Date</th>
+<th>Time (AEST)</th>
+<th>HomeTeam</th>
+<th>AwayTeam</th>
+<th>Venue</th>
+<th>TV</th>
+<th>Year</th>
+<th>round</th>
+<th>season</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2018-08-11</td>
+<td>5:00 AM</td>
+<td>Man United</td>
+<td>Leicester</td>
+<td>Old Trafford, Manchester</td>
+<td>Optus, Fox Sports (delay)</td>
+<td>2018</td>
+<td>1</td>
+<td>1819</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2018-08-11</td>
+<td>9:30 PM</td>
+<td>Newcastle</td>
+<td>Tottenham</td>
+<td>St.James’ Park, Newcastle</td>
+<td>Optus, SBS</td>
+<td>2018</td>
+<td>1</td>
+<td>1819</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2018-08-12</td>
+<td>12:00 AM</td>
+<td>Bournemouth</td>
+<td>Cardiff</td>
+<td>Vitality Stadium, Bournemouth</td>
+<td>Optus</td>
+<td>2018</td>
+<td>1</td>
+<td>1819</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2018-08-12</td>
+<td>12:00 AM</td>
+<td>Fulham</td>
+<td>Crystal Palace</td>
+<td>Craven Cottage, London</td>
+<td>Optus</td>
+<td>2018</td>
+<td>1</td>
+<td>1819</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2018-08-12</td>
+<td>12:00 AM</td>
+<td>Huddersfield</td>
+<td>Chelsea</td>
+<td>John Smith’s Stadium, Huddersfield</td>
+<td>Optus, Fox Sports (delay)</td>
+<td>2018</td>
+<td>1</td>
+<td>1819</td>
+</tr>
+</tbody>
+</table>
+<p>Now we are going to connect to the API and retrieve game level information for the next week. To do this, we will use an R script. If you are not familiar with R, don't worry, it is relatively simple to read through. For this, we will run the script weekly_game_info_puller.R. Go ahead and run that script now.</p>
+<p>Note that for this step, you will require a Betfair API App Key. If you don't have one, visit <a href="../../api/apiappkey">this page and follow the instructions</a>.</p>
+<p>I will upload an updated weekly file, so you can follow along regardless of if you have an App Key or not. Let's load that file in now.</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>game_info <span style="color: #666666">=</span> create_game_info_df(<span style="color: #BA2121">&quot;data/weekly_game_info.csv&quot;</span>)
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>game_info<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AwayTeam</th>
+<th>HomeTeam</th>
+<th>awaySelectionId</th>
+<th>drawSelectionId</th>
+<th>homeSelectionId</th>
+<th>draw</th>
+<th>marketId</th>
+<th>marketStartTime</th>
+<th>totalMatched</th>
+<th>eventId</th>
+<th>eventName</th>
+<th>homeOdds</th>
+<th>drawOdds</th>
+<th>awayOdds</th>
+<th>competitionId</th>
+<th>Date</th>
+<th>localMarketStartTime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Arsenal</td>
+<td>Cardiff</td>
+<td>1096</td>
+<td>58805</td>
+<td>79343</td>
+<td>The Draw</td>
+<td>1.146897152</td>
+<td>2018-09-02 12:30:00</td>
+<td>30123.595116</td>
+<td>28852020</td>
+<td>Cardiff v Arsenal</td>
+<td>7.00</td>
+<td>4.3</td>
+<td>1.62</td>
+<td>10932509</td>
+<td>2018-09-02</td>
+<td>Sun September  2, 10:30PM</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Bournemouth</td>
+<td>Chelsea</td>
+<td>1141</td>
+<td>58805</td>
+<td>55190</td>
+<td>The Draw</td>
+<td>1.146875421</td>
+<td>2018-09-01 14:00:00</td>
+<td>30821.329656</td>
+<td>28851426</td>
+<td>Chelsea v Bournemouth</td>
+<td>1.32</td>
+<td>6.8</td>
+<td>12.00</td>
+<td>10932509</td>
+<td>2018-09-01</td>
+<td>Sun September  2, 12:00AM</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Fulham</td>
+<td>Brighton</td>
+<td>56764</td>
+<td>58805</td>
+<td>18567</td>
+<td>The Draw</td>
+<td>1.146875746</td>
+<td>2018-09-01 14:00:00</td>
+<td>16594.833096</td>
+<td>28851429</td>
+<td>Brighton v Fulham</td>
+<td>2.36</td>
+<td>3.5</td>
+<td>3.50</td>
+<td>10932509</td>
+<td>2018-09-01</td>
+<td>Sun September  2, 12:00AM</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, we will use the API to grab the weekly odds. This R script is also provided, but I have also included the weekly odds csv for convenience.</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>odds <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/weekly_epl_odds.csv&#39;</span>)
+           <span style="color: #666666">.</span>replace({
+                <span style="color: #BA2121">&#39;Man Utd&#39;</span>: <span style="color: #BA2121">&#39;Man United&#39;</span>,
+                <span style="color: #BA2121">&#39;C Palace&#39;</span>: <span style="color: #BA2121">&#39;Crystal Palace&#39;</span>}))
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>odds<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>HomeTeam</th>
+<th>AwayTeam</th>
+<th>f_homeOdds</th>
+<th>f_drawOdds</th>
+<th>f_awayOdds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Leicester</td>
+<td>Liverpool</td>
+<td>7.80</td>
+<td>5.1</td>
+<td>1.48</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Brighton</td>
+<td>Fulham</td>
+<td>2.36</td>
+<td>3.5</td>
+<td>3.50</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Everton</td>
+<td>Huddersfield</td>
+<td>1.54</td>
+<td>4.4</td>
+<td>8.20</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="data-wrangling-this-weeks-game-info-into-our-feature-set">Data Wrangling This Week's Game Info Into Our Feature Set<a class="headerlink" href="#data-wrangling-this-weeks-game-info-into-our-feature-set" title="Permanent link">&para;</a></h2>
+<p>Now we have the arduous task of wrangling all of this info into a feature set that we can use to predict this week's games. Luckily our functions we created earlier should work if we just append the non-features to our main dataframe.</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df <span style="color: #666666">=</span> create_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>)
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df<span style="color: #666666">.</span>head()
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AC</th>
+<th>AF</th>
+<th>AR</th>
+<th>AS</th>
+<th>AST</th>
+<th>AY</th>
+<th>AwayTeam</th>
+<th>B365A</th>
+<th>B365D</th>
+<th>B365H</th>
+<th>BWA</th>
+<th>BWD</th>
+<th>BWH</th>
+<th>Bb1X2</th>
+<th>BbAH</th>
+<th>BbAHh</th>
+<th>BbAv&lt;2.5</th>
+<th>BbAv&gt;2.5</th>
+<th>BbAvA</th>
+<th>BbAvAHA</th>
+<th>BbAvAHH</th>
+<th>BbAvD</th>
+<th>BbAvH</th>
+<th>BbMx&lt;2.5</th>
+<th>BbMx&gt;2.5</th>
+<th>BbMxA</th>
+<th>BbMxAHA</th>
+<th>BbMxAHH</th>
+<th>BbMxD</th>
+<th>BbMxH</th>
+<th>BbOU</th>
+<th>Date</th>
+<th>Day</th>
+<th>Div</th>
+<th>FTAG</th>
+<th>FTHG</th>
+<th>FTR</th>
+<th>HC</th>
+<th>HF</th>
+<th>HR</th>
+<th>HS</th>
+<th>HST</th>
+<th>HTAG</th>
+<th>HTHG</th>
+<th>HTR</th>
+<th>HY</th>
+<th>HomeTeam</th>
+<th>IWA</th>
+<th>IWD</th>
+<th>IWH</th>
+<th>LBA</th>
+<th>LBD</th>
+<th>LBH</th>
+<th>Month</th>
+<th>Referee</th>
+<th>VCA</th>
+<th>VCD</th>
+<th>VCH</th>
+<th>Year</th>
+<th>season</th>
+<th>gameId</th>
+<th>homeWin</th>
+<th>awayWin</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>6.0</td>
+<td>14.0</td>
+<td>1.0</td>
+<td>11.0</td>
+<td>5.0</td>
+<td>1.0</td>
+<td>Blackburn</td>
+<td>2.75</td>
+<td>3.20</td>
+<td>2.50</td>
+<td>2.90</td>
+<td>3.30</td>
+<td>2.20</td>
+<td>55.0</td>
+<td>20.0</td>
+<td>0.00</td>
+<td>1.71</td>
+<td>2.02</td>
+<td>2.74</td>
+<td>2.04</td>
+<td>1.82</td>
+<td>3.16</td>
+<td>2.40</td>
+<td>1.80</td>
+<td>2.25</td>
+<td>2.90</td>
+<td>2.08</td>
+<td>1.86</td>
+<td>3.35</td>
+<td>2.60</td>
+<td>35.0</td>
+<td>2005-08-13</td>
+<td>13</td>
+<td>E0</td>
+<td>1.0</td>
+<td>3.0</td>
+<td>H</td>
+<td>2.0</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>13.0</td>
+<td>5.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>A</td>
+<td>0.0</td>
+<td>West Ham</td>
+<td>2.7</td>
+<td>3.0</td>
+<td>2.3</td>
+<td>2.75</td>
+<td>3.00</td>
+<td>2.38</td>
+<td>8</td>
+<td>A Wiley</td>
+<td>2.75</td>
+<td>3.25</td>
+<td>2.40</td>
+<td>2005</td>
+<td>0506</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>home</td>
+</tr>
+<tr>
+<td>1</td>
+<td>8.0</td>
+<td>16.0</td>
+<td>0.0</td>
+<td>13.0</td>
+<td>6.0</td>
+<td>2.0</td>
+<td>Bolton</td>
+<td>3.00</td>
+<td>3.25</td>
+<td>2.30</td>
+<td>3.15</td>
+<td>3.25</td>
+<td>2.10</td>
+<td>56.0</td>
+<td>22.0</td>
+<td>-0.25</td>
+<td>1.70</td>
+<td>2.01</td>
+<td>3.05</td>
+<td>1.84</td>
+<td>2.01</td>
+<td>3.16</td>
+<td>2.20</td>
+<td>1.87</td>
+<td>2.20</td>
+<td>3.40</td>
+<td>1.92</td>
+<td>2.10</td>
+<td>3.30</td>
+<td>2.40</td>
+<td>36.0</td>
+<td>2005-08-13</td>
+<td>13</td>
+<td>E0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>D</td>
+<td>7.0</td>
+<td>14.0</td>
+<td>0.0</td>
+<td>3.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>2.0</td>
+<td>D</td>
+<td>0.0</td>
+<td>Aston Villa</td>
+<td>3.1</td>
+<td>3.0</td>
+<td>2.1</td>
+<td>3.20</td>
+<td>3.00</td>
+<td>2.10</td>
+<td>8</td>
+<td>M Riley</td>
+<td>3.10</td>
+<td>3.25</td>
+<td>2.20</td>
+<td>2005</td>
+<td>0506</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>draw</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6.0</td>
+<td>14.0</td>
+<td>0.0</td>
+<td>12.0</td>
+<td>5.0</td>
+<td>1.0</td>
+<td>Man United</td>
+<td>1.72</td>
+<td>3.40</td>
+<td>5.00</td>
+<td>1.75</td>
+<td>3.35</td>
+<td>4.35</td>
+<td>56.0</td>
+<td>23.0</td>
+<td>0.75</td>
+<td>1.79</td>
+<td>1.93</td>
+<td>1.69</td>
+<td>1.86</td>
+<td>2.00</td>
+<td>3.36</td>
+<td>4.69</td>
+<td>1.87</td>
+<td>2.10</td>
+<td>1.80</td>
+<td>1.93</td>
+<td>2.05</td>
+<td>3.70</td>
+<td>5.65</td>
+<td>36.0</td>
+<td>2005-08-13</td>
+<td>13</td>
+<td>E0</td>
+<td>2.0</td>
+<td>0.0</td>
+<td>A</td>
+<td>8.0</td>
+<td>15.0</td>
+<td>0.0</td>
+<td>10.0</td>
+<td>5.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>A</td>
+<td>3.0</td>
+<td>Everton</td>
+<td>1.8</td>
+<td>3.1</td>
+<td>3.8</td>
+<td>1.83</td>
+<td>3.20</td>
+<td>3.75</td>
+<td>8</td>
+<td>G Poll</td>
+<td>1.80</td>
+<td>3.30</td>
+<td>4.50</td>
+<td>2005</td>
+<td>0506</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>away</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6.0</td>
+<td>13.0</td>
+<td>0.0</td>
+<td>7.0</td>
+<td>4.0</td>
+<td>2.0</td>
+<td>Birmingham</td>
+<td>2.87</td>
+<td>3.25</td>
+<td>2.37</td>
+<td>2.80</td>
+<td>3.20</td>
+<td>2.30</td>
+<td>56.0</td>
+<td>21.0</td>
+<td>0.00</td>
+<td>1.69</td>
+<td>2.04</td>
+<td>2.87</td>
+<td>2.05</td>
+<td>1.81</td>
+<td>3.16</td>
+<td>2.31</td>
+<td>1.77</td>
+<td>2.24</td>
+<td>3.05</td>
+<td>2.11</td>
+<td>1.85</td>
+<td>3.30</td>
+<td>2.60</td>
+<td>36.0</td>
+<td>2005-08-13</td>
+<td>13</td>
+<td>E0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>D</td>
+<td>6.0</td>
+<td>12.0</td>
+<td>0.0</td>
+<td>15.0</td>
+<td>7.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>D</td>
+<td>1.0</td>
+<td>Fulham</td>
+<td>2.9</td>
+<td>3.0</td>
+<td>2.2</td>
+<td>2.88</td>
+<td>3.00</td>
+<td>2.25</td>
+<td>8</td>
+<td>R Styles</td>
+<td>2.80</td>
+<td>3.25</td>
+<td>2.35</td>
+<td>2005</td>
+<td>0506</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>draw</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>13.0</td>
+<td>3.0</td>
+<td>3.0</td>
+<td>West Brom</td>
+<td>5.00</td>
+<td>3.40</td>
+<td>1.72</td>
+<td>4.80</td>
+<td>3.45</td>
+<td>1.65</td>
+<td>55.0</td>
+<td>23.0</td>
+<td>-0.75</td>
+<td>1.77</td>
+<td>1.94</td>
+<td>4.79</td>
+<td>1.76</td>
+<td>2.10</td>
+<td>3.38</td>
+<td>1.69</td>
+<td>1.90</td>
+<td>2.10</td>
+<td>5.60</td>
+<td>1.83</td>
+<td>2.19</td>
+<td>3.63</td>
+<td>1.80</td>
+<td>36.0</td>
+<td>2005-08-13</td>
+<td>13</td>
+<td>E0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>D</td>
+<td>3.0</td>
+<td>13.0</td>
+<td>0.0</td>
+<td>15.0</td>
+<td>8.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>D</td>
+<td>2.0</td>
+<td>Man City</td>
+<td>4.2</td>
+<td>3.2</td>
+<td>1.7</td>
+<td>4.50</td>
+<td>3.25</td>
+<td>1.67</td>
+<td>8</td>
+<td>C Foy</td>
+<td>5.00</td>
+<td>3.25</td>
+<td>1.75</td>
+<td>2005</td>
+<td>0506</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>draw</td>
+</tr>
+</tbody>
+</table>
+<p>Now we need to specify which game week we would like to predict. We will then filter the fixture for this game week and append this info to the main DataFrame</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>round_to_predict <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Which game week would you like to predict? Please input next week&#39;s Game Week</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&quot;</span>))
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Which game week would you like to predict? Please input next week&#39;s Game Week
+4
+</pre></div>
+
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>future_predictions <span style="color: #666666">=</span> (fixture<span style="color: #666666">.</span>loc[fixture[<span style="color: #BA2121">&#39;round&#39;</span>] <span style="color: #666666">==</span> round_to_predict, [<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>]]
+                             <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, odds, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>])
+                             <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{
+                                 <span style="color: #BA2121">&#39;f_homeOdds&#39;</span>: <span style="color: #BA2121">&#39;B365H&#39;</span>,
+                                 <span style="color: #BA2121">&#39;f_awayOdds&#39;</span>: <span style="color: #BA2121">&#39;B365A&#39;</span>,
+                                 <span style="color: #BA2121">&#39;f_drawOdds&#39;</span>: <span style="color: #BA2121">&#39;B365D&#39;</span>})
+                             <span style="color: #666666">.</span>assign(season<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>season<span style="color: #666666">.</span>astype(<span style="color: #008000">str</span>)))
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df_including_future_games <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>, dtype<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;season&#39;</span>: <span style="color: #008000">str</span>})
+                <span style="color: #666666">.</span>assign(Date<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: pd<span style="color: #666666">.</span>to_datetime(df<span style="color: #666666">.</span>Date))
+                <span style="color: #666666">.</span>pipe(<span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>dropna(thresh<span style="color: #666666">=</span><span style="color: #008000">len</span>(df) <span style="color: #666666">-</span> <span style="color: #666666">2</span>, axis<span style="color: #666666">=1</span>))  <span style="color: #408080; font-style: italic"># Drop cols with NAs</span>
+                <span style="color: #666666">.</span>dropna(axis<span style="color: #666666">=0</span>)  <span style="color: #408080; font-style: italic"># Drop rows with NAs</span>
+                <span style="color: #666666">.</span>sort_values(<span style="color: #BA2121">&#39;Date&#39;</span>)
+                <span style="color: #666666">.</span>append(future_predictions, sort<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+                <span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+                <span style="color: #666666">.</span>assign(gameId<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: <span style="color: #008000">list</span>(df<span style="color: #666666">.</span>index <span style="color: #666666">+</span> <span style="color: #666666">1</span>),
+                            Year<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Date<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: row<span style="color: #666666">.</span>year),
+                            homeWin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">&gt;</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=1</span>),
+                            awayWin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTAG <span style="color: #666666">&gt;</span> row<span style="color: #666666">.</span>FTHG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=1</span>),
+                            result<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #BA2121">&#39;home&#39;</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">&gt;</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> (<span style="color: #BA2121">&#39;draw&#39;</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">==</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #BA2121">&#39;away&#39;</span>), axis<span style="color: #666666">=1</span>)))
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df_including_future_games<span style="color: #666666">.</span>tail(<span style="color: #666666">12</span>)
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>AC</th>
+<th>AF</th>
+<th>AR</th>
+<th>AS</th>
+<th>AST</th>
+<th>AY</th>
+<th>AwayTeam</th>
+<th>B365A</th>
+<th>B365D</th>
+<th>B365H</th>
+<th>BWA</th>
+<th>BWD</th>
+<th>BWH</th>
+<th>Bb1X2</th>
+<th>BbAH</th>
+<th>BbAHh</th>
+<th>BbAv&lt;2.5</th>
+<th>BbAv&gt;2.5</th>
+<th>BbAvA</th>
+<th>BbAvAHA</th>
+<th>BbAvAHH</th>
+<th>BbAvD</th>
+<th>BbAvH</th>
+<th>BbMx&lt;2.5</th>
+<th>BbMx&gt;2.5</th>
+<th>BbMxA</th>
+<th>BbMxAHA</th>
+<th>BbMxAHH</th>
+<th>BbMxD</th>
+<th>BbMxH</th>
+<th>BbOU</th>
+<th>Date</th>
+<th>Day</th>
+<th>Div</th>
+<th>FTAG</th>
+<th>FTHG</th>
+<th>FTR</th>
+<th>HC</th>
+<th>HF</th>
+<th>HR</th>
+<th>HS</th>
+<th>HST</th>
+<th>HTAG</th>
+<th>HTHG</th>
+<th>HTR</th>
+<th>HY</th>
+<th>HomeTeam</th>
+<th>IWA</th>
+<th>IWD</th>
+<th>IWH</th>
+<th>LBA</th>
+<th>LBD</th>
+<th>LBH</th>
+<th>Month</th>
+<th>Referee</th>
+<th>VCA</th>
+<th>VCD</th>
+<th>VCH</th>
+<th>Year</th>
+<th>season</th>
+<th>gameId</th>
+<th>homeWin</th>
+<th>awayWin</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4952</td>
+<td>4.0</td>
+<td>8.0</td>
+<td>0.0</td>
+<td>12.0</td>
+<td>2.0</td>
+<td>1.0</td>
+<td>Burnley</td>
+<td>4.33</td>
+<td>3.40</td>
+<td>2.00</td>
+<td>4.0</td>
+<td>3.3</td>
+<td>2.00</td>
+<td>39.0</td>
+<td>20.0</td>
+<td>-0.25</td>
+<td>1.65</td>
+<td>2.22</td>
+<td>4.14</td>
+<td>2.22</td>
+<td>1.69</td>
+<td>3.36</td>
+<td>1.98</td>
+<td>1.72</td>
+<td>2.31</td>
+<td>4.5</td>
+<td>2.32</td>
+<td>1.74</td>
+<td>3.57</td>
+<td>2.04</td>
+<td>36.0</td>
+<td>2018-08-26</td>
+<td>26.0</td>
+<td>E0</td>
+<td>2.0</td>
+<td>4.0</td>
+<td>H</td>
+<td>6.0</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>25.0</td>
+<td>12.0</td>
+<td>2.0</td>
+<td>3.0</td>
+<td>H</td>
+<td>2.0</td>
+<td>Fulham</td>
+<td>4.10</td>
+<td>3.35</td>
+<td>1.97</td>
+<td>3.90</td>
+<td>3.2</td>
+<td>2.00</td>
+<td>8.0</td>
+<td>D Coote</td>
+<td>4.33</td>
+<td>3.4</td>
+<td>2.0</td>
+<td>2018</td>
+<td>1819</td>
+<td>4953</td>
+<td>1</td>
+<td>0</td>
+<td>home</td>
+</tr>
+<tr>
+<td>4953</td>
+<td>2.0</td>
+<td>16.0</td>
+<td>0.0</td>
+<td>9.0</td>
+<td>5.0</td>
+<td>4.0</td>
+<td>Tottenham</td>
+<td>2.90</td>
+<td>3.30</td>
+<td>2.62</td>
+<td>2.9</td>
+<td>3.2</td>
+<td>2.55</td>
+<td>42.0</td>
+<td>20.0</td>
+<td>-0.25</td>
+<td>1.79</td>
+<td>2.03</td>
+<td>2.86</td>
+<td>1.72</td>
+<td>2.18</td>
+<td>3.27</td>
+<td>2.56</td>
+<td>1.84</td>
+<td>2.10</td>
+<td>3.0</td>
+<td>1.76</td>
+<td>2.25</td>
+<td>3.40</td>
+<td>2.67</td>
+<td>40.0</td>
+<td>2018-08-27</td>
+<td>27.0</td>
+<td>E0</td>
+<td>3.0</td>
+<td>0.0</td>
+<td>A</td>
+<td>5.0</td>
+<td>11.0</td>
+<td>0.0</td>
+<td>23.0</td>
+<td>5.0</td>
+<td>0.0</td>
+<td>0.0</td>
+<td>D</td>
+<td>2.0</td>
+<td>Man United</td>
+<td>2.75</td>
+<td>3.25</td>
+<td>2.60</td>
+<td>2.75</td>
+<td>3.2</td>
+<td>2.55</td>
+<td>8.0</td>
+<td>C Pawson</td>
+<td>2.90</td>
+<td>3.3</td>
+<td>2.6</td>
+<td>2018</td>
+<td>1819</td>
+<td>4954</td>
+<td>0</td>
+<td>1</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4954</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Liverpool</td>
+<td>1.48</td>
+<td>5.10</td>
+<td>7.80</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-01</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Leicester</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4955</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4955</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Fulham</td>
+<td>3.50</td>
+<td>3.50</td>
+<td>2.36</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Brighton</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4956</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4956</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Man United</td>
+<td>1.70</td>
+<td>3.90</td>
+<td>6.60</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Burnley</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4957</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4957</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Bournemouth</td>
+<td>12.00</td>
+<td>6.80</td>
+<td>1.32</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Chelsea</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4958</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4958</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Southampton</td>
+<td>4.50</td>
+<td>3.55</td>
+<td>2.04</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Crystal Palace</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4959</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4959</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Huddersfield</td>
+<td>8.20</td>
+<td>4.40</td>
+<td>1.54</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Everton</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4960</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4960</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Wolves</td>
+<td>2.98</td>
+<td>3.50</td>
+<td>2.62</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>West Ham</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4961</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4961</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Newcastle</td>
+<td>32.00</td>
+<td>12.50</td>
+<td>1.12</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Man City</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4962</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4962</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Arsenal</td>
+<td>1.62</td>
+<td>4.30</td>
+<td>7.00</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-02</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Cardiff</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4963</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+<tr>
+<td>4963</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Tottenham</td>
+<td>1.68</td>
+<td>4.30</td>
+<td>5.90</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018-09-03</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Watford</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2018</td>
+<td>1819</td>
+<td>4964</td>
+<td>0</td>
+<td>0</td>
+<td>away</td>
+</tr>
+</tbody>
+</table>
+<p>As we can see, what we have done is appended the Game information to our main DataFrame. The rest of the info is left as NAs, but this will be filled when we created our rolling average features. This is a 'hacky' type of way to complete this task, but works well as we can use the same functions that we created in the previous tutorials on this DataFrame. We now need to add the odds from our odds DataFrame, then we can just run our create features functions as usual.</p>
+<hr />
+<h2 id="predicting-next-gameweeks-results">Predicting Next Gameweek's Results<a class="headerlink" href="#predicting-next-gameweeks-results" title="Permanent link">&para;</a></h2>
+<p>Now that we have our feature DataFrame, all we need to do is split the feature DataFrame up into a training set and next week's games, then use the model we tuned in the last tutorial to create predictions!</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features <span style="color: #666666">=</span> create_feature_df(df<span style="color: #666666">=</span>df_including_future_games)
+
+    Creating <span style="color: #008000">all</span> games feature DataFrame
+    Creating stats feature DataFrame
+    Creating odds feature DataFrame
+    Creating market values feature DataFrame
+    Filling NAs
+    Merging stats, odds <span style="color: #AA22FF; font-weight: bold">and</span> market values into one features DataFrame
+    Complete<span style="color: #666666">.</span>
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a feature DataFrame for this week&#39;s games.</span>
+production_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>merge(future_predictions, features, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>])
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a training DataFrame</span>
+training_df <span style="color: #666666">=</span> features[<span style="color: #666666">~</span>features<span style="color: #666666">.</span>gameId<span style="color: #666666">.</span>isin(production_df<span style="color: #666666">.</span>gameId)]
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>feature_names <span style="color: #666666">=</span> [col <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> training_df <span style="color: #008000; font-weight: bold">if</span> col<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;f_&#39;</span>)]
+
+le <span style="color: #666666">=</span> LabelEncoder()
+train_y <span style="color: #666666">=</span> le<span style="color: #666666">.</span>fit_transform(training_df<span style="color: #666666">.</span>result)
+train_x <span style="color: #666666">=</span> training_df[feature_names]
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>lr <span style="color: #666666">=</span> LogisticRegression(C<span style="color: #666666">=0.01</span>, solver<span style="color: #666666">=</span><span style="color: #BA2121">&#39;liblinear&#39;</span>)
+lr<span style="color: #666666">.</span>fit(train_x, train_y)
+predicted_probs <span style="color: #666666">=</span> lr<span style="color: #666666">.</span>predict_proba(production_df[feature_names])
+predicted_odds <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #666666">/</span> predicted_probs
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Assign the modelled odds to our predictions df</span>
+predictions_df <span style="color: #666666">=</span> (production_df<span style="color: #666666">.</span>loc[:, [<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;B365H&#39;</span>, <span style="color: #BA2121">&#39;B365D&#39;</span>, <span style="color: #BA2121">&#39;B365A&#39;</span>]]
+                               <span style="color: #666666">.</span>assign(homeModelledOdds<span style="color: #666666">=</span>[i[<span style="color: #666666">2</span>] <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> predicted_odds],
+                                      drawModelledOdds<span style="color: #666666">=</span>[i[<span style="color: #666666">1</span>] <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> predicted_odds],
+                                      awayModelledOdds<span style="color: #666666">=</span>[i[<span style="color: #666666">0</span>] <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> predicted_odds])
+                               <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{
+                                   <span style="color: #BA2121">&#39;B365H&#39;</span>: <span style="color: #BA2121">&#39;BetfairHomeOdds&#39;</span>,
+                                   <span style="color: #BA2121">&#39;B365D&#39;</span>: <span style="color: #BA2121">&#39;BetfairDrawOdds&#39;</span>,
+                                   <span style="color: #BA2121">&#39;B365A&#39;</span>: <span style="color: #BA2121">&#39;BetfairAwayOdds&#39;</span>}))
+</pre></div>
+
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>predictions_df
+</pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Date</th>
+<th>HomeTeam</th>
+<th>AwayTeam</th>
+<th>BetfairHomeOdds</th>
+<th>BetfairDrawOdds</th>
+<th>BetfairAwayOdds</th>
+<th>homeModelledOdds</th>
+<th>drawModelledOdds</th>
+<th>awayModelledOdds</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>2018-09-01</td>
+<td>Leicester</td>
+<td>Liverpool</td>
+<td>7.80</td>
+<td>5.10</td>
+<td>1.48</td>
+<td>5.747661</td>
+<td>5.249857</td>
+<td>1.573478</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2018-09-02</td>
+<td>Brighton</td>
+<td>Fulham</td>
+<td>2.36</td>
+<td>3.50</td>
+<td>3.50</td>
+<td>2.183193</td>
+<td>3.803120</td>
+<td>3.584057</td>
+</tr>
+<tr>
+<td>2</td>
+<td>2018-09-02</td>
+<td>Burnley</td>
+<td>Man United</td>
+<td>6.60</td>
+<td>3.90</td>
+<td>1.70</td>
+<td>5.282620</td>
+<td>4.497194</td>
+<td>1.699700</td>
+</tr>
+<tr>
+<td>3</td>
+<td>2018-09-02</td>
+<td>Chelsea</td>
+<td>Bournemouth</td>
+<td>1.32</td>
+<td>6.80</td>
+<td>12.00</td>
+<td>1.308366</td>
+<td>6.079068</td>
+<td>14.047070</td>
+</tr>
+<tr>
+<td>4</td>
+<td>2018-09-02</td>
+<td>Crystal Palace</td>
+<td>Southampton</td>
+<td>2.04</td>
+<td>3.55</td>
+<td>4.50</td>
+<td>2.202871</td>
+<td>4.213695</td>
+<td>3.239122</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2018-09-02</td>
+<td>Everton</td>
+<td>Huddersfield</td>
+<td>1.54</td>
+<td>4.40</td>
+<td>8.20</td>
+<td>1.641222</td>
+<td>3.759249</td>
+<td>8.020055</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2018-09-02</td>
+<td>West Ham</td>
+<td>Wolves</td>
+<td>2.62</td>
+<td>3.50</td>
+<td>2.98</td>
+<td>1.999816</td>
+<td>4.000456</td>
+<td>4.000279</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2018-09-02</td>
+<td>Man City</td>
+<td>Newcastle</td>
+<td>1.12</td>
+<td>12.50</td>
+<td>32.00</td>
+<td>1.043103</td>
+<td>29.427939</td>
+<td>136.231983</td>
+</tr>
+<tr>
+<td>8</td>
+<td>2018-09-02</td>
+<td>Cardiff</td>
+<td>Arsenal</td>
+<td>7.00</td>
+<td>4.30</td>
+<td>1.62</td>
+<td>6.256929</td>
+<td>4.893445</td>
+<td>1.572767</td>
+</tr>
+<tr>
+<td>9</td>
+<td>2018-09-03</td>
+<td>Watford</td>
+<td>Tottenham</td>
+<td>5.90</td>
+<td>4.30</td>
+<td>1.68</td>
+<td>5.643663</td>
+<td>4.338926</td>
+<td>1.688224</td>
+</tr>
+</tbody>
+</table>
+<p>Above are the predictions for this Gameweek's matches. In the next tutorial we will explore the errors our model has made, and work on creating a profitable betting strategy.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../EPLmodelPart3/" title="EPL 03. Model building & hyperparameter tuning" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                EPL 03. Model building & hyperparameter tuning
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../AFLmodelPart1/" title="AFL 01. Data cleaning" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                AFL 01. Data cleaning
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/Betfair_Aus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/company/betfair-australia" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://facebook.com/betfairaustralia" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://youtube.com/user/betfairaus" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://github.com/betfair-datascientists" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+    <div class="bf-footer">
+      <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+      <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Don’t let the game play you. Stay in control. Gamble Responsibly.
+      Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      <ul class="bf-links">
+        <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+        <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+        <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.83382bb6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

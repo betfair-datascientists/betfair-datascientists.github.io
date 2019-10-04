@@ -1,0 +1,1428 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
+      
+      
+        <link rel="canonical" href="https://betfair-datascientists.github.io/thirdPartyTools/MarketFeeder2_6Staking/">
+      
+      
+        <meta name="author" content="Betfair Data Scientists">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Market Feeder - Pro 2-6 Staking - The Automation Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.9a8eeed6.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/clarke-regular.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#marketfeeder-pro-2-6-staking" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo.svg" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                The Automation Hub
+              </span>
+              <span class="md-header-nav__topic">
+                Market Feeder - Pro 2-6 Staking
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      <div class="bf-nav md-flex__cell">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26"/>
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z"/>
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." title="Home" class="md-tabs__link">
+          Home
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../overview/" title="Tutorials" class="md-tabs__link md-tabs__link--active">
+          Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/apiappkey/" title="API" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../historicData/dataSources/" title="Historic Data" class="md-tabs__link">
+          Historic Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../modelling/howToModel/" title="Modelling" class="md-tabs__link">
+          Modelling
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo.svg" width="48" height="48">
+      
+    </a>
+    The Automation Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Home
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="The Automation Hub" class="md-nav__link">
+      The Automation Hub
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="Tools Overview" class="md-nav__link">
+      Tools Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Third Party tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        Third Party tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngel/betAngel/" title="Bet Angel" class="md-nav__link">
+      Bet Angel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Gruss/Gruss/" title="Gruss Betting Assistant" class="md-nav__link">
+      Gruss Betting Assistant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CymaticTrader/CymaticTrader/" title="Cymatic Trader" class="md-nav__link">
+      Cymatic Trader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../BfBotManager/BfBotManager/" title="BF Bot Manager" class="md-nav__link">
+      BF Bot Manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MarketFeeder/MarketFeeder/" title="MarketFeeder Pro" class="md-nav__link">
+      MarketFeeder Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bfexplorer/bfexplorer/" title="Bfexplorer" class="md-nav__link">
+      Bfexplorer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Ratings / Tipping Automations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Ratings / Tipping Automations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelRatingsAutomation/" title="Bet Angel - Ratings automation" class="md-nav__link">
+      Bet Angel - Ratings automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../BetAngelMultipleMarketRatings/" title="Bet Angel - Multiple market ratings" class="md-nav__link">
+      Bet Angel - Multiple market ratings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelTippingAutomation/" title="Bet Angel - Tipping automation" class="md-nav__link">
+      Bet Angel - Tipping automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussRatingsAutomation/" title="Gruss - Ratings automation" class="md-nav__link">
+      Gruss - Ratings automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cymaticTraderRatingsAutomation/" title="Cymatic - Trader Ratings automation" class="md-nav__link">
+      Cymatic - Trader Ratings automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Market Favourite Automations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Market Favourite Automations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelMarketFavouriteAutomation/" title="Bet Angel - Market favourite automation" class="md-nav__link">
+      Bet Angel - Market favourite automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5">
+    
+    <label class="md-nav__link" for="nav-2-5">
+      Automating Simultaneous Markets
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        Automating Simultaneous Markets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelSimultaneousMarkets/" title="Bet Angel - simultaneous markets" class="md-nav__link">
+      Bet Angel - simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grusslSimultaneousMarkets/" title="Gruss - simultaneous markets" class="md-nav__link">
+      Gruss - simultaneous markets
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6" checked>
+    
+    <label class="md-nav__link" for="nav-2-6">
+      Staking Strategies
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        Staking Strategies
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../BfBotManagerAutomation/" title="BF Bot Manager - Double or Bust" class="md-nav__link">
+      BF Bot Manager - Double or Bust
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Market Feeder - Pro 2-6 Staking
+      </label>
+    
+    <a href="./" title="Market Feeder - Pro 2-6 Staking" class="md-nav__link md-nav__link--active">
+      Market Feeder - Pro 2-6 Staking
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#automating-a-2-6-staking-strategy-using-marketfeeder-pro" title="Automating a 2-6 Staking strategy using MarketFeeder Pro" class="md-nav__link">
+    Automating a 2-6 Staking strategy using MarketFeeder Pro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-do-this" title="Lets do this" class="md-nav__link">
+    Lets do this
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-the-plan" title="- The plan" class="md-nav__link">
+    - The plan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-set-up" title="- Set up" class="md-nav__link">
+    - Set up
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-constants" title="- Constants" class="md-nav__link">
+    - Constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-1-initialisation-of-variables" title="- Trigger 1: initialisation of variables" class="md-nav__link">
+    - Trigger 1: initialisation of variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-2-incrementing-the-counter-at-the-end-of-an-event" title="- Trigger 2: incrementing the counter at the end of an event" class="md-nav__link">
+    - Trigger 2: incrementing the counter at the end of an event
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-3-after-winning" title="- Trigger 3: after Winning" class="md-nav__link">
+    - Trigger 3: after Winning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-4-resetting-counters" title="- Trigger 4: resetting counters" class="md-nav__link">
+    - Trigger 4: resetting counters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-5-backing" title="- Trigger 5: backing" class="md-nav__link">
+    - Trigger 5: backing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and-youre-set" title="And you're set!" class="md-nav__link">
+    And you're set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-next" title="What next?" class="md-nav__link">
+    What next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiappkey/" title="How to access the Betfair API" class="md-nav__link">
+      How to access the Betfair API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiRtutorial/" title="API tutorials in R" class="md-nav__link">
+      API tutorials in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiPythontutorial/" title="API tutorial in Python" class="md-nav__link">
+      API tutorial in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Historic Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Historic Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/dataSources/" title="Historic Data Sources" class="md-nav__link">
+      Historic Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
+      How to model the Australian Open
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AusOpenRTutorial/" title="Aus Open R Tutorial" class="md-nav__link">
+      Aus Open R Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AusOpenPythonTutorial/" title="Aus Open Python Tutorial" class="md-nav__link">
+      Aus Open Python Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmodelPart1/" title="EPL 01. Data acquisition & exploration" class="md-nav__link">
+      EPL 01. Data acquisition & exploration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmodelPart2/" title="EPL 02. Data preparation & feature engineering" class="md-nav__link">
+      EPL 02. Data preparation & feature engineering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmodelPart3/" title="EPL 03. Model building & hyperparameter tuning" class="md-nav__link">
+      EPL 03. Model building & hyperparameter tuning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmodelPart4/" title="EPL 04. Weekly predictions" class="md-nav__link">
+      EPL 04. Weekly predictions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodelPart1/" title="AFL 01. Data cleaning" class="md-nav__link">
+      AFL 01. Data cleaning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodelPart2/" title="AFL 02. Feature creation" class="md-nav__link">
+      AFL 02. Feature creation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodelPart3/" title="AFL 03. Modelling" class="md-nav__link">
+      AFL 03. Modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodelPart4/" title="AFL 04. Weekly predictions" class="md-nav__link">
+      AFL 04. Weekly predictions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/brownlowModelTutorial/" title="Modelling the Brownlow Medal" class="md-nav__link">
+      Modelling the Brownlow Medal
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#automating-a-2-6-staking-strategy-using-marketfeeder-pro" title="Automating a 2-6 Staking strategy using MarketFeeder Pro" class="md-nav__link">
+    Automating a 2-6 Staking strategy using MarketFeeder Pro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-do-this" title="Lets do this" class="md-nav__link">
+    Lets do this
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-the-plan" title="- The plan" class="md-nav__link">
+    - The plan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-set-up" title="- Set up" class="md-nav__link">
+    - Set up
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-constants" title="- Constants" class="md-nav__link">
+    - Constants
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-1-initialisation-of-variables" title="- Trigger 1: initialisation of variables" class="md-nav__link">
+    - Trigger 1: initialisation of variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-2-incrementing-the-counter-at-the-end-of-an-event" title="- Trigger 2: incrementing the counter at the end of an event" class="md-nav__link">
+    - Trigger 2: incrementing the counter at the end of an event
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-3-after-winning" title="- Trigger 3: after Winning" class="md-nav__link">
+    - Trigger 3: after Winning
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-4-resetting-counters" title="- Trigger 4: resetting counters" class="md-nav__link">
+    - Trigger 4: resetting counters
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-5-backing" title="- Trigger 5: backing" class="md-nav__link">
+    - Trigger 5: backing
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and-youre-set" title="And you're set!" class="md-nav__link">
+    And you're set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-next" title="What next?" class="md-nav__link">
+    What next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="marketfeeder-pro-2-6-staking">MarketFeeder Pro: 2-6 Staking<a class="headerlink" href="#marketfeeder-pro-2-6-staking" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="automating-a-2-6-staking-strategy-using-marketfeeder-pro">Automating a 2-6 Staking strategy using MarketFeeder Pro<a class="headerlink" href="#automating-a-2-6-staking-strategy-using-marketfeeder-pro" title="Permanent link">&para;</a></h2>
+<p>In other tutorials available on the automation hub, the primary focus has been on choosing which runner to place a bet on. For this tutorial, we're going to look into something a little different. We will go through the steps to automate our stakes based on the percentage of our bank. This is a good method to keep the stakes that we're placing on the exchange under control and is primarily intended for backing on favourites.</p>
+<hr />
+<h2 id="lets-do-this">Lets do this<a class="headerlink" href="#lets-do-this" title="Permanent link">&para;</a></h2>
+<h3 id="-the-plan">- The plan<a class="headerlink" href="#-the-plan" title="Permanent link">&para;</a></h3>
+<p>If you want to follow along and try this approach yourself you'll need to download <a href="http://marketfeeder.co.uk/buy/">MarketFeeder Pro</a> and sign up for either a subscription or at least a test period. They have a <a href="http://marketfeeder.co.uk/buy/">1 month free trial</a> that's valuable for establishing whether this tool will do what you want it to for your specific strategy. </p>
+<div class="admonition note">
+<p class="admonition-title">Resources</p>
+<ul>
+<li>Tool: <a href="http://marketfeeder.co.uk/buy/">MarketFeeder Pro</a></li>
+<li><a href="https://community.welldonesoft.com/">MarketFeeder Pro Forum</a></li>
+</ul>
+</div>
+<p>The idea behind this staking strategy is to win 2 bets out of a sequence of 6 opportunities. Each bet in the sequence is multiplied by predefined values from a list:</p>
+<p>1, 2, 4, 6, 8, 12</p>
+<p>For example, if we start with $10, we are aiming to win the following amounts:</p>
+<p>$10, $20, $40, $60, $80, $120</p>
+<p>If there are any losses after each of these bets, the loss is included in the following bet. Once 2 bets have been won, the automation cycle will restart and likewise, if we reach the end of the cycle and 2 bets haven’t been won the cycle will also restart. After each restart, the stake is recalculated as a percentage of our current bank.</p>
+<div class="admonition warning">
+<p class="admonition-title">Please Note</p>
+<p>This strategy is designed to work while betting on favourites (back bets only)</p>
+</div>
+<hr />
+<h3 id="-set-up">- Set up<a class="headerlink" href="#-set-up" title="Permanent link">&para;</a></h3>
+<p>First up we need to make sure we've downloaded and installed MarketFeeder Pro, and signed in.</p>
+<p>Once you open the program up click on the 'Triggers' icon and open the triggers window. </p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTriggerButton.png" /></p>
+<p>Once the 'Active Triggers' window appears, click the triggers editor button which will open another window where we will create this strategy.</p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTriggerEditor.png" /></p>
+<p>Click 'New File' and we're ready to start creating our strategy.</p>
+<hr />
+<h3 id="-constants">- Constants<a class="headerlink" href="#-constants" title="Permanent link">&para;</a></h3>
+<p>First, we will create the constants and enter the values that will be used by our strategy. Click the 'Add constant' button 3 times which will give us 3 variables that we can start editing. </p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederConstant.png" /></p>
+<p>We want to have 3 variables: 'cycle_length', 'bet_target' and 'init_bet'. As covered above, the cycle length will be 6 (the 6 opportunities in our planned sequence), bet target will be 2 (aim to win 2 bets before the cycle is restarted) and initial bet will be 1 (relating to trying to win 10% of our bank).</p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederConstantFilled.png" /></p>
+<hr />
+<h3 id="-trigger-1-initialisation-of-variables">- Trigger 1: initialisation of variables<a class="headerlink" href="#-trigger-1-initialisation-of-variables" title="Permanent link">&para;</a></h3>
+<p>Next, we're going to create the necessary triggers which will contain the variables necessary for our strategy to work. In the Triggers window that we already have open, click the 'Add Block' button and then 'Add Trigger' </p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederAddTrigger.png" /></p>
+<p>Change the action from 'Lay' by clicking on it and selecting 'Set user variable' from the drop down box that appears. Then Rename it to 'Cycle_Counter' and give the value of 1. </p>
+<p>Create a further 3 actions by clicking the 'Add action' button named 'wns_counter' with a value of 0, 'current_loss' with a value of 0, 'Current bet' entering the below formula as the value:</p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">formula for 'Current bet' action </label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>init_bet*IF(test_mode=1,test_funds,total_funds)/100
+</pre></div></div>
+</div>
+<p>Change the trigger selections to 'First Matching Session' and Execute 'One time Only'</p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederBlockOne.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">TIP: Naming triggers</p>
+<p>It's a good idea to give meaningful names to your triggers that help identify what they are and what they do. For this first trigger that we've created, I've renamed it to 'Initialisation of Variables'</p>
+</div>
+<hr />
+<h3 id="-trigger-2-incrementing-the-counter-at-the-end-of-an-event">- Trigger 2: incrementing the counter at the end of an event<a class="headerlink" href="#-trigger-2-incrementing-the-counter-at-the-end-of-an-event" title="Permanent link">&para;</a></h3>
+<p>For our next trigger which we will name 'incrementing the counter at the end of an event', we will create two actions, both as 'Set user variables'.</p>
+<p>The first will be named 'cycle-counter' and contain a value as the formula:</p>
+<div class="superfences-tabs">
+<input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
+<label for="__tab_2_0">formula for 'cycle_counter'</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>cycle_counter+1
+</pre></div></div>
+</div>
+<p>The second will be named 'current_loss' with a value of: </p>
+<div class="superfences-tabs">
+<input name="__tabs_3" type="radio" id="__tab_3_0" checked="checked" />
+<label for="__tab_3_0">formula for 'cycle_loss'</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>IF(current_loss - market_settled_pl &gt; 0.5, current_loss - market_settled_pl, 0)
+</pre></div></div>
+</div>
+<p>Again, we will be setting the selections for this trigger as 'First matching selection' but the Execute will be set as 'Once Per market'. We will also be setting the Market status to 'Settled'.</p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTrigger2.png" /></p>
+<hr />
+<h3 id="-trigger-3-after-winning">- Trigger 3: after Winning<a class="headerlink" href="#-trigger-3-after-winning" title="Permanent link">&para;</a></h3>
+<p>Our third trigger called 'After Winning' will only contain one action called 'wns_counter'. Follow the same process set above to complete the trigger. The formula we'll be using for this value will be: </p>
+<div class="superfences-tabs">
+<input name="__tabs_4" type="radio" id="__tab_4_0" checked="checked" />
+<label for="__tab_4_0">formula for 'wns_counter'</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>wns_counter+1
+</pre></div></div>
+</div>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTrigger3.png" /></p>
+<hr />
+<h3 id="-trigger-4-resetting-counters">- Trigger 4: resetting counters<a class="headerlink" href="#-trigger-4-resetting-counters" title="Permanent link">&para;</a></h3>
+<p>The fourth trigger will contain 4 actions: 'cycle_counter', 'wns_counter', 'current_loss' and 'current_bet'. The last action will be using the formula: </p>
+<div class="superfences-tabs">
+<input name="__tabs_5" type="radio" id="__tab_5_0" checked="checked" />
+<label for="__tab_5_0">formula for 'current_bet'</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>init_bet*IF(test_mode=1, test_funds, total_funds)/100
+</pre></div></div>
+</div>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTrigger4.png" /></p>
+<hr />
+<h3 id="-trigger-5-backing">- Trigger 5: backing<a class="headerlink" href="#-trigger-5-backing" title="Permanent link">&para;</a></h3>
+<p>Our fifth and final trigger called 'backing' is a little different from the previous triggers and actions. Instead of it being a 'Set user variable' it will be changed to 'back'. The back price will need to be changed to 'back_price' and the amount will need the following formula:</p>
+<div class="superfences-tabs">
+<input name="__tabs_6" type="radio" id="__tab_6_0" checked="checked" />
+<label for="__tab_6_0">formula for 'backing'</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>(current_bet*IF(cycle_counter=1, multiplier1, IF(cycle_counter=2, multiplier2, IF(cycle_counter=3, multiplier3, IF(cycle_counter=4, multiplier4, IF(cycle_counter=5, multiplier5, multiplier6))))) + current_loss)/(back_price-1)
+</pre></div></div>
+</div>
+<p>Selections gets changed to 'Favourite, Execute changed to 'Once per Market' and market status to 'All Except Settled'</p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTrigger5.png" /></p>
+<p>Once all of the triggers and actions have been added, it should look like this: </p>
+<p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTriggerFinal.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">TIP: Reorder triggers</p>
+<p>If your triggers are not listed in the same order as shown above, you can click and drag the triggers to re-order them correctly. </p>
+</div>
+<hr />
+<h2 id="and-youre-set">And you're set!<a class="headerlink" href="#and-youre-set" title="Permanent link">&para;</a></h2>
+<p>Once you've set your rules up and got comfortable using MarketFeeder Pro it should only take  number of seconds to load the markets up and choose your selections for the day. </p>
+<div class="admonition info">
+<p class="admonition-title">Note:</p>
+<p>you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.</p>
+</div>
+<hr />
+<h2 id="what-next">What next?<a class="headerlink" href="#what-next" title="Permanent link">&para;</a></h2>
+<p>We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> </p>
+<hr />
+<h2 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
+<p>Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies, please gamble responsibly and note that you are responsible for any winnings/losses incurred.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../BfBotManagerAutomation/" title="BF Bot Manager - Double or Bust" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                BF Bot Manager - Double or Bust
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../api/apiappkey/" title="How to access the Betfair API" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                How to access the Betfair API
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/Betfair_Aus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/company/betfair-australia" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://facebook.com/betfairaustralia" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://youtube.com/user/betfairaus" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://github.com/betfair-datascientists" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+    <div class="bf-footer">
+      <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+      <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Don’t let the game play you. Stay in control. Gamble Responsibly.
+      Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      <ul class="bf-links">
+        <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+        <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+        <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.83382bb6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

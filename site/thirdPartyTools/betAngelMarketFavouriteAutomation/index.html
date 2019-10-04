@@ -1,0 +1,1654 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
+      
+      
+        <link rel="canonical" href="https://betfair-datascientists.github.io/thirdPartyTools/betAngelMarketFavouriteAutomation/">
+      
+      
+        <meta name="author" content="Betfair Data Scientists">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Bet Angel - Market favourite automation - The Automation Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.9a8eeed6.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/clarke-regular.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../../#bet-angel-market-favourite-automation" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo.svg" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                The Automation Hub
+              </span>
+              <span class="md-header-nav__topic">
+                Bet Angel - Market favourite automation
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      <div class="bf-nav md-flex__cell">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26"/>
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z"/>
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." title="Home" class="md-tabs__link">
+          Home
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../overview/" title="Tutorials" class="md-tabs__link md-tabs__link--active">
+          Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/apiappkey/" title="API" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../historicData/dataSources/" title="Historic Data" class="md-tabs__link">
+          Historic Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../modelling/howToModel/" title="Modelling" class="md-tabs__link">
+          Modelling
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo.svg" width="48" height="48">
+      
+    </a>
+    The Automation Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Home
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="The Automation Hub" class="md-nav__link">
+      The Automation Hub
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="Tools Overview" class="md-nav__link">
+      Tools Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Third Party tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        Third Party tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngel/betAngel/" title="Bet Angel" class="md-nav__link">
+      Bet Angel
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Gruss/Gruss/" title="Gruss Betting Assistant" class="md-nav__link">
+      Gruss Betting Assistant
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CymaticTrader/CymaticTrader/" title="Cymatic Trader" class="md-nav__link">
+      Cymatic Trader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../BfBotManager/BfBotManager/" title="BF Bot Manager" class="md-nav__link">
+      BF Bot Manager
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MarketFeeder/MarketFeeder/" title="MarketFeeder Pro" class="md-nav__link">
+      MarketFeeder Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../bfexplorer/bfexplorer/" title="Bfexplorer" class="md-nav__link">
+      Bfexplorer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Ratings / Tipping Automations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Ratings / Tipping Automations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelRatingsAutomation/" title="Bet Angel - Ratings automation" class="md-nav__link">
+      Bet Angel - Ratings automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../BetAngelMultipleMarketRatings/" title="Bet Angel - Multiple market ratings" class="md-nav__link">
+      Bet Angel - Multiple market ratings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelTippingAutomation/" title="Bet Angel - Tipping automation" class="md-nav__link">
+      Bet Angel - Tipping automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussRatingsAutomation/" title="Gruss - Ratings automation" class="md-nav__link">
+      Gruss - Ratings automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cymaticTraderRatingsAutomation/" title="Cymatic - Trader Ratings automation" class="md-nav__link">
+      Cymatic - Trader Ratings automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4" checked>
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Market Favourite Automations
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Market Favourite Automations
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Bet Angel - Market favourite automation
+      </label>
+    
+    <a href="./" title="Bet Angel - Market favourite automation" class="md-nav__link md-nav__link--active">
+      Bet Angel - Market favourite automation
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#automating-a-market-favourite-strategy-using-bet-angel-pro" title="Automating a market favourite strategy using Bet Angel Pro" class="md-nav__link">
+    Automating a market favourite strategy using Bet Angel Pro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-begin" title="Lets Begin" class="md-nav__link">
+    Lets Begin
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-the-plan" title="- The plan" class="md-nav__link">
+    - The plan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-set-up" title="- Set up" class="md-nav__link">
+    - Set up
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-writing-your-rules" title="- Writing your rules" class="md-nav__link">
+    - Writing your rules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-to-place-bet" title="- Trigger to place bet" class="md-nav__link">
+    - Trigger to place bet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-using-cell-references-to-simplify-formulas" title="- Using cell references to simplify formulas" class="md-nav__link">
+    - Using cell references to simplify formulas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-preparing-the-spreadsheet" title="- Preparing the spreadsheet" class="md-nav__link">
+    - Preparing the spreadsheet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-you-know-the-drill" title="- You know the drill" class="md-nav__link">
+    - You know the drill
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-selecting-markets" title="- Selecting markets" class="md-nav__link">
+    - Selecting markets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-linking-the-spreadsheet" title="- Linking the spreadsheet" class="md-nav__link">
+    - Linking the spreadsheet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and-youre-set" title="And you're set!" class="md-nav__link">
+    And you're set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bet-angel-features" title="Bet Angel features" class="md-nav__link">
+    Bet Angel features
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-multiple-betsclearing-status-cells" title="- Multiple bets/clearing status cells" class="md-nav__link">
+    - Multiple bets/clearing status cells
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-turning-off-bet-confirmation" title="- Turning off bet confirmation" class="md-nav__link">
+    - Turning off bet confirmation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-editing-the-spreadsheet" title="- Editing the spreadsheet" class="md-nav__link">
+    - Editing the spreadsheet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#areas-for-improvement" title="Areas for improvement" class="md-nav__link">
+    Areas for improvement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-next" title="What next?" class="md-nav__link">
+    What next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-5" type="checkbox" id="nav-2-5">
+    
+    <label class="md-nav__link" for="nav-2-5">
+      Automating Simultaneous Markets
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-5">
+        Automating Simultaneous Markets
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelSimultaneousMarkets/" title="Bet Angel - simultaneous markets" class="md-nav__link">
+      Bet Angel - simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grusslSimultaneousMarkets/" title="Gruss - simultaneous markets" class="md-nav__link">
+      Gruss - simultaneous markets
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-6" type="checkbox" id="nav-2-6">
+    
+    <label class="md-nav__link" for="nav-2-6">
+      Staking Strategies
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-6">
+        Staking Strategies
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../BfBotManagerAutomation/" title="BF Bot Manager - Double or Bust" class="md-nav__link">
+      BF Bot Manager - Double or Bust
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../MarketFeeder2_6Staking/" title="Market Feeder - Pro 2-6 Staking" class="md-nav__link">
+      Market Feeder - Pro 2-6 Staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiappkey/" title="How to access the Betfair API" class="md-nav__link">
+      How to access the Betfair API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiRtutorial/" title="API tutorials in R" class="md-nav__link">
+      API tutorials in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiPythontutorial/" title="API tutorial in Python" class="md-nav__link">
+      API tutorial in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Historic Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Historic Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/dataSources/" title="Historic Data Sources" class="md-nav__link">
+      Historic Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
+      How to model the Australian Open
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AusOpenRTutorial/" title="Aus Open R Tutorial" class="md-nav__link">
+      Aus Open R Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AusOpenPythonTutorial/" title="Aus Open Python Tutorial" class="md-nav__link">
+      Aus Open Python Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmodelPart1/" title="EPL 01. Data acquisition & exploration" class="md-nav__link">
+      EPL 01. Data acquisition & exploration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmodelPart2/" title="EPL 02. Data preparation & feature engineering" class="md-nav__link">
+      EPL 02. Data preparation & feature engineering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmodelPart3/" title="EPL 03. Model building & hyperparameter tuning" class="md-nav__link">
+      EPL 03. Model building & hyperparameter tuning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmodelPart4/" title="EPL 04. Weekly predictions" class="md-nav__link">
+      EPL 04. Weekly predictions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodelPart1/" title="AFL 01. Data cleaning" class="md-nav__link">
+      AFL 01. Data cleaning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodelPart2/" title="AFL 02. Feature creation" class="md-nav__link">
+      AFL 02. Feature creation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodelPart3/" title="AFL 03. Modelling" class="md-nav__link">
+      AFL 03. Modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodelPart4/" title="AFL 04. Weekly predictions" class="md-nav__link">
+      AFL 04. Weekly predictions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/brownlowModelTutorial/" title="Modelling the Brownlow Medal" class="md-nav__link">
+      Modelling the Brownlow Medal
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#automating-a-market-favourite-strategy-using-bet-angel-pro" title="Automating a market favourite strategy using Bet Angel Pro" class="md-nav__link">
+    Automating a market favourite strategy using Bet Angel Pro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lets-begin" title="Lets Begin" class="md-nav__link">
+    Lets Begin
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-the-plan" title="- The plan" class="md-nav__link">
+    - The plan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-set-up" title="- Set up" class="md-nav__link">
+    - Set up
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-writing-your-rules" title="- Writing your rules" class="md-nav__link">
+    - Writing your rules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-trigger-to-place-bet" title="- Trigger to place bet" class="md-nav__link">
+    - Trigger to place bet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-using-cell-references-to-simplify-formulas" title="- Using cell references to simplify formulas" class="md-nav__link">
+    - Using cell references to simplify formulas
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-preparing-the-spreadsheet" title="- Preparing the spreadsheet" class="md-nav__link">
+    - Preparing the spreadsheet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-you-know-the-drill" title="- You know the drill" class="md-nav__link">
+    - You know the drill
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-selecting-markets" title="- Selecting markets" class="md-nav__link">
+    - Selecting markets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-linking-the-spreadsheet" title="- Linking the spreadsheet" class="md-nav__link">
+    - Linking the spreadsheet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and-youre-set" title="And you're set!" class="md-nav__link">
+    And you're set!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bet-angel-features" title="Bet Angel features" class="md-nav__link">
+    Bet Angel features
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-multiple-betsclearing-status-cells" title="- Multiple bets/clearing status cells" class="md-nav__link">
+    - Multiple bets/clearing status cells
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-turning-off-bet-confirmation" title="- Turning off bet confirmation" class="md-nav__link">
+    - Turning off bet confirmation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#-editing-the-spreadsheet" title="- Editing the spreadsheet" class="md-nav__link">
+    - Editing the spreadsheet
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#areas-for-improvement" title="Areas for improvement" class="md-nav__link">
+    Areas for improvement
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-next" title="What next?" class="md-nav__link">
+    What next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="bet-angel-market-favourite-automation">Bet Angel: Market favourite automation<a class="headerlink" href="#bet-angel-market-favourite-automation" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="automating-a-market-favourite-strategy-using-bet-angel-pro">Automating a market favourite strategy using Bet Angel Pro<a class="headerlink" href="#automating-a-market-favourite-strategy-using-bet-angel-pro" title="Permanent link">&para;</a></h2>
+<p>Here we explore how to implement an automated strategy to place <a href="https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/">Betfair Starting Price (BSP)</a> bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of back them.</p>
+<p>Building on our <a href="../betAngelRatingsAutomation/">previous articles</a>, we're using the spreadsheet functionality available in Bet Angel Pro to implement this strategy. If you haven't already we'd recommend going back and having a read of <a href="../betAngelRatingsAutomation/">this article</a>, as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us on <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> with your feedback and opinions. </p>
+<hr />
+<h2 id="lets-begin">Lets Begin<a class="headerlink" href="#lets-begin" title="Permanent link">&para;</a></h2>
+<h3 id="-the-plan">- The plan<a class="headerlink" href="#-the-plan" title="Permanent link">&para;</a></h3>
+<p>Given that we're simply choosing our selections based on the market we don't need any ratings for this strategy. The plan is to look at the market a couple of minutes before the scheduled jump and place BSP bets based on its formation. </p>
+<p>Our approach here, and how we've set up the accompanying spreadsheet, backs the top two runners in the market two minutes out from the scheduled start time using the Betfair Starting Price. </p>
+<div class="admonition info">
+<p class="admonition-title">Resources</p>
+<ul>
+<li>Rules: <a href="../assets/BetAngel_MarketFavouriteAutomation.xls">here's the spreadsheet</a> we set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy and approach</li>
+<li>Tool: <a href="https://www.betangel.com/bet-angel-professional/">Bet Angel Pro</a></li>
+</ul>
+</div>
+<hr />
+<h3 id="-set-up">- Set up<a class="headerlink" href="#-set-up" title="Permanent link">&para;</a></h3>
+<p>Make sure you've downloaded and installed Bet Angel Pro, and signed in.</p>
+<p>Once you open the program up click on the 'G' Guardian icon and open the Guardian functionality up. </p>
+<p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngeltipPro.png" /></p>
+<hr />
+<h3 id="-writing-your-rules">- Writing your rules<a class="headerlink" href="#-writing-your-rules" title="Permanent link">&para;</a></h3>
+<p>As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. </p>
+<p>We're using a <a href="../assets/BetAngel_MarketFavouriteAutomation.xls">customised version of the default Bet Angel template Excel sheet</a> to implement our strategy, so it can make betting decisions based on the favourites being shown in the market. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. </p>
+<p>This is how we used Excel to implement our set of rules. </p>
+<h3 id="-trigger-to-place-bet">- Trigger to place bet<a class="headerlink" href="#-trigger-to-place-bet" title="Permanent link">&para;</a></h3>
+<p>In short, we want to back runners when:</p>
+<ul>
+<li>the selection's available to back price (the blue box on the Exchange) is either the lowest or second lowest in the market - the top two market favourites </li>
+<li>the scheduled event start time is less than 2 minutes away </li>
+<li>the event isn't in play </li>
+</ul>
+<h3 id="-using-cell-references-to-simplify-formulas">- Using cell references to simplify formulas<a class="headerlink" href="#-using-cell-references-to-simplify-formulas" title="Permanent link">&para;</a></h3>
+<p>Throughout this tutorial, we'll be referencing certain cells with custom names that will make it easier to understand and follow the formulas as we progress. This is an especially effective method to
+keep on top of more complex strategies that require long formaulas to implement.</p>
+<div class="admonition info">
+<p class="admonition-title">Cell names used in this tutorial</p>
+<ul>
+<li>
+<p><strong>Fav</strong> refers to cell H4 in the SETTINGS worksheet</p>
+</li>
+<li>
+<p><strong>CurrentBMP</strong> refers to cell AI8 in the Bet Angel worksheet where the overrounds are calculated</p>
+</li>
+<li>
+<p><strong>BMP</strong> refers to cell J3 in the SETTINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
+</li>
+<li>
+<p><strong>TimeTillJump</strong> refers to cell E4 in the SETTINGS worksheet </p>
+</li>
+<li>
+<p><strong>MinTime</strong> refers to cell I2 in the SETTINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
+</li>
+<li>
+<p><strong>MaxTime</strong> refers to cell K2 in the SETTINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
+</li>
+<li>
+<p><strong>InPlay</strong> refers to cell G1 in the Bet Angel work sheet. Bet Angel will populate a status in this cell such as "In Play" or "Suspended"</p>
+</li>
+<li>
+<p><strong>TakeSP</strong> refers to cell H5 in the SETTINGS worksheet which allows you to change a single value more easily, alongside other values for the global command</p>
+</li>
+</ul>
+</div>
+<p><strong>This is our trigger on Excel formula:</strong></p>
+<div class="superfences-tabs">
+<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
+<label for="__tab_1_0">Multi line</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+        CurrentBMP&lt;BMP,
+        ISBLANK(InPlay)),
+    &quot;BACK&quot;,
+&quot;&quot;)
+</pre></div></div>
+<input name="__tabs_1" type="radio" id="__tab_1_1" />
+<label for="__tab_1_1">Single line</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump &lt; MaxTime,TimeTillJump &gt; MinTime,CurrentBMP&lt;BMP,ISBLANK(InPlay)),&quot;BACK&quot;,&quot;&quot;)
+</pre></div></div>
+</div>
+<p>Stepping through each step:</p>
+<ul>
+<li><strong>Finding the top two selections in the market:</strong> check each runner to see if they're one of the two market favourites - We're doing this by going through the best available to back (blue) price for each runner, ranking them in order (which sorts them from highest to lowest - which is the opposite of what we want) then subtracting that rank number from the total number of selections available to inverse the order. Finally, we plus one to the resulting rank - if we didn't do this then you'd have a rank order that started at 0, not 1, and we thought that would just confuse matters!</li>
+</ul>
+<p>Once it's established what each selection's rank is, we then check if that rank is less than three, and if it is we know that the runner in question is one of the top two in the market, based on the current available to back prices.</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+<span style="background-color: #ffffcc">        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+</span>        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+        CurrentBMP&lt;BMP,
+        ISBLANK(InPlay)),
+    &quot;BACK&quot;,
+&quot;&quot;)
+</pre></div>
+
+<ul>
+<li><strong>Time &lt; 2 mins and &gt; 1 min:</strong> check whether the seconds left on the countdown are smaller than what is defined in the SETTINGS worksheet, cell K2 and greater than SETTINGS worksheet, cell I2, as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of the SETTINGS sheet, where we've already done the calculations for you.</li>
+</ul>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+<span style="background-color: #ffffcc">        TimeTillJump &lt; MaxTime,
+</span><span style="background-color: #ffffcc">        TimeTillJump &gt; MinTime,
+</span>        CurrentBMP&lt;BMP,
+        ISBLANK(InPlay)),
+    &quot;BACK&quot;,
+&quot;&quot;)
+</pre></div>
+
+<ul>
+<li><strong>BMP:</strong> checking whether the event overrounds are less than the specific value that can be changed from cell J3 in the SETTINGS worksheet</li>
+</ul>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+<span style="background-color: #ffffcc">        CurrentBMP&lt;BMP,
+</span>        ISBLANK(InPlay)),
+    &quot;BACK&quot;,
+&quot;&quot;)
+</pre></div>
+
+<ul>
+<li><strong>Not in play:</strong> checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. </li>
+</ul>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+        CurrentBMP&lt;BMP,
+<span style="background-color: #ffffcc">        ISBLANK(InPlay)),
+</span>    &quot;BACK&quot;,
+&quot;&quot;)
+</pre></div>
+
+<ul>
+<li><strong>Result:</strong> if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
+</ul>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+        CurrentBMP&lt;BMP,
+        ISBLANK(InPlay)),
+<span style="background-color: #ffffcc">    &quot;BACK&quot;,
+</span><span style="background-color: #ffffcc">&quot;&quot;)
+</span></pre></div>
+
+<ul>
+<li><strong>Convert bets to Betfair Starting Price:</strong> Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell H5 from the SETTINGS worksheet. This formula goes in cell L6, and once it's triggered the bets will automatically convert. </li>
+</ul>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="background-color: #ffffcc">=IF(TimeTillJump &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
+</span></pre></div>
+
+<div class="admonition info">
+<p class="admonition-title">Excel functions</p>
+<ul>
+<li><a href="https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2">IF statement:</a> IF(if this is true, do this, else do this)</li>
+<li><a href="https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9">AND statement:</a> AND(this is true, and so is this, and so is this) - returns true or false</li>
+<li><a href="https://support.office.com/en-us/article/count-function-a59cd7fc-b623-4d93-87a4-d23bf411294c">COUNT function:</a> returns number of cells in the range you pass in tha contain a number</li>
+<li><a href="https://support.office.com/en-us/article/rank-function-6a2fc49d-1831-4a03-9d8c-c279cf99f723">RANK function:</a> returns the rank of a number in a list of numbers, with the smallest number returning the highest rank.</li>
+<li><a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">Absolute references:</a> if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. </li>
+</ul>
+</div>
+<hr />
+<h3 id="-preparing-the-spreadsheet">- Preparing the spreadsheet<a class="headerlink" href="#-preparing-the-spreadsheet" title="Permanent link">&para;</a></h3>
+<p>You need to copy/paste these three formulas into the relevant cell on each green row - We copied ours into all of the coloured cells in the sheet, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your <a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">relative and absolute references straight</a>. </p>
+<ul>
+<li><strong>Trigger bet rule:</strong> this is the bet trigger Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).</li>
+</ul>
+<div class="superfences-tabs">
+<input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
+<label for="__tab_2_0">Multi line</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+        CurrentBMP&lt;BMP,
+        ISBLANK(InPlay)),
+    &quot;BACK&quot;,
+&quot;&quot;)
+</pre></div></div>
+<input name="__tabs_2" type="radio" id="__tab_2_1" />
+<label for="__tab_2_1">Single line</label>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump &lt; MaxTime,TimeTillJump &gt; MinTime,CurrentBMP&lt;BMP,ISBLANK(InPlay)),&quot;BACK&quot;,&quot;&quot;)
+</pre></div></div>
+</div>
+<p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel1.png" /></p>
+<ul>
+<li><strong>Odds:</strong> as we said we're putting the bet up initially at odds of 1000, so this is a simple one.</li>
+</ul>
+<p><code>1000</code></p>
+<p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel2.png" /></p>
+<ul>
+<li><strong>Stake:</strong> it's completely up to you what staking approach you want to take. We're keeping it simple and using flat staking here, so will just place $10 on each runner. This goes in column N (N9 for the first runner). We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
+</ul>
+<p><code>10</code></p>
+<p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel3.png" /></p>
+<ul>
+<li><strong>Global Command:</strong> this is what triggers the open bets to convert to BSP, and only goes in one cell, L6. As soon as the countdown timer reaches less than 60 seconds this will fire. </li>
+</ul>
+<p>'''
+=IF(TimeTillJump &lt; TakeSP, "TAKE_SP_ALL", "")
+'''</p>
+<p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel4.png" /></p>
+<hr />
+<h3 id="-you-know-the-drill">- You know the drill<a class="headerlink" href="#-you-know-the-drill" title="Permanent link">&para;</a></h3>
+<p>The process is effectively the same from here on as for our previously automated strategy, but we've included it here just in case you want a refresher or are new to Bet Angel Pro.</p>
+<hr />
+<h3 id="-selecting-markets">- Selecting markets<a class="headerlink" href="#-selecting-markets" title="Permanent link">&para;</a></h3>
+<p>We used the markets menu in the Guardian tool to navigate to the tracks we have ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.</p>
+<p>If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab to do this more efficiently. </p>
+<p>Once you've chosen the races you're interested in click the 'add' button and you'll see them appear in the main body of the screen. </p>
+<p>Make sure you sort the races <strong>by start time</strong>, so Bet Angel will automatically move through them in the right order and allocate the next race to the spreadsheet once the previous one ends. </p>
+<p>You do this by clicking on the 'start time' column heading until the races are in time order (when the arrow is pointing up).</p>
+<p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelRatingsMarketTimes.png" /></p>
+<hr />
+<h3 id="-linking-the-spreadsheet">- Linking the spreadsheet<a class="headerlink" href="#-linking-the-spreadsheet" title="Permanent link">&para;</a></h3>
+<p>Open the 'Excel' tab in Guardian, then use the browse functionality to choose the spreadsheet you've been working on. From there, click on 'open workbook', then make sure you have 'connect', 'auto-bind Bet Angel sheets and 'auto-clear Bet Angel bindings' all selected. You also need to make sure that the first race has the 'Bet Angel' tab selected in the 'Excel sheet' column - from there it will then automatically update this for each race as one finishes and the next one begins. </p>
+<p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelRatingsSetUp.png" /></p>
+<hr />
+<h2 id="and-youre-set">And you're set!<a class="headerlink" href="#and-youre-set" title="Permanent link">&para;</a></h2>
+<p>Once you've set your spreadsheet set up and you're comfortable using Bet Angel Pro it should only take a number of seconds to load your markets and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.</p>
+<p><em>Note: We appreciate it's obvious, but you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.</em></p>
+<hr />
+<h2 id="bet-angel-features">Bet Angel features<a class="headerlink" href="#bet-angel-features" title="Permanent link">&para;</a></h2>
+<p>Here are some Bet Angel features that you'll need to consider.</p>
+<h3 id="-multiple-betsclearing-status-cells">- Multiple bets/clearing status cells<a class="headerlink" href="#-multiple-betsclearing-status-cells" title="Permanent link">&para;</a></h3>
+<p>The Bet Angel spreadsheet won't let a bet go on if there is a value in column 0 for the runner, the 'status' column, to avoid accidentally placing multiple bets unintentionally. As soon as a bet triggers, Bet Angel automatically changes this cell to 'PLACING', then to 'PLACED' when the bet is confirmed as having been received by Betfair. In this strategy we only want to place one bet per runner, but if you wanted to place multiple bets on a runner you'd need to have a play with the macros to clear the 'status' cells more regularly, and instead reference the number of bets placed/matched in columns T:AE. Careful here though, as the values in these columns sometimes take a little time to update, and we've had more bets go on than we intended when using these cells as my check, as bet trigger re-evaluated before columns T:AE had updated. </p>
+<p>As we want to use the same sheet for multiple races, and the 'status' cells don't clear automatically, we've created a macro in <a href="../assets/BetAngel_RatingsAutomation.xls">the Excel sheet</a> that auto-clears the status and global status cells whenever a new race loads. It also clears the cells if they say 'FAILED', as we found that if there were internet network issues or similar it would fail once then not try to place the bet again. This was based on some logic we found in <a href="https://www.betangel.com/forum/viewtopic.php?f=31&amp;t=1879&amp;start=10">a forum discussion on Bet Angel</a>. If you're feeling adventurous you can have a play with the macros and edit them to suit your specific needs. </p>
+<h3 id="-turning-off-bet-confirmation">- Turning off bet confirmation<a class="headerlink" href="#-turning-off-bet-confirmation" title="Permanent link">&para;</a></h3>
+<p>Unless you want to manually confirm each individual bet you're placing (which you definitely might want to do until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?' - you can then save these settings.</p>
+<h3 id="-editing-the-spreadsheet">- Editing the spreadsheet<a class="headerlink" href="#-editing-the-spreadsheet" title="Permanent link">&para;</a></h3>
+<p>The spreadsheet really doesn't like it when you try and edit it 'live', so make sure you untick 'connect' on the Excel tab in Guardian before you make any changes, save the sheet, then tick 'connect' again once you've finished your edits. </p>
+<hr />
+<h2 id="areas-for-improvement">Areas for improvement<a class="headerlink" href="#areas-for-improvement" title="Permanent link">&para;</a></h2>
+<p>There are parts of this approach that we're still trying to get to work to our liking, and we'll update this article as we find better solutions. If you have any suggestions for improvements please reach out to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> - we'd love to hear your thoughts. </p>
+<p>For example, the spreadsheet only binds with one market at a time, so if one market gets delayed and runs overtime the program won't be able to move on to the next market - we missed some races because of this.</p>
+<p>Also, if the market changes significantly in those last few minutes and a third selection shortens in past the two we've placed bets on you could end up with bets on more than the intended two runner. This is something you could check for in your bet rule if you wanted to ensure you were only backing a set number of runners. </p>
+<hr />
+<h2 id="what-next">What next?<a class="headerlink" href="#what-next" title="Permanent link">&para;</a></h2>
+<p>We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#98;&#100;&#112;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> - this article has already been updated with extra learnings including variable percentages and new macros.</p>
+<hr />
+<h2 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
+<p>Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies, please gamble responsibly and note that you are responsible for any winnings/losses incurred.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../cymaticTraderRatingsAutomation/" title="Cymatic - Trader Ratings automation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Cymatic - Trader Ratings automation
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../betAngelSimultaneousMarkets/" title="Bet Angel - simultaneous markets" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Bet Angel - simultaneous markets
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/Betfair_Aus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/company/betfair-australia" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://facebook.com/betfairaustralia" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://youtube.com/user/betfairaus" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://github.com/betfair-datascientists" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+    <div class="bf-footer">
+      <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+      <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Don’t let the game play you. Stay in control. Gamble Responsibly.
+      Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      <ul class="bf-links">
+        <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+        <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+        <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.83382bb6.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

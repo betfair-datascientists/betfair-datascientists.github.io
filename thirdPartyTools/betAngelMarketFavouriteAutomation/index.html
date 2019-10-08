@@ -1359,98 +1359,90 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
         TimeTillJump &lt; MaxTime,
         TimeTillJump &gt; MinTime,
         CurrentBMP&lt;BMP,
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div></div>
+    "BACK",
+"")</code></pre></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump &lt; MaxTime,TimeTillJump &gt; MinTime,CurrentBMP&lt;BMP,ISBLANK(InPlay)),&quot;BACK&quot;,&quot;&quot;)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump &lt; MaxTime,TimeTillJump &gt; MinTime,CurrentBMP&lt;BMP,ISBLANK(InPlay)),"BACK","")</code></pre></div>
 </div>
 <p>Stepping through each step:</p>
 <ul>
 <li><strong>Finding the top two selections in the market:</strong> check each runner to see if they're one of the two market favourites - We're doing this by going through the best available to back (blue) price for each runner, ranking them in order (which sorts them from highest to lowest - which is the opposite of what we want) then subtracting that rank number from the total number of selections available to inverse the order. Finally, we plus one to the resulting rank - if we didn't do this then you'd have a rank order that started at 0, not 1, and we thought that would just confuse matters!</li>
 </ul>
 <p>Once it's established what each selection's rank is, we then check if that rank is less than three, and if it is we know that the runner in question is one of the top two in the market, based on the current available to back prices.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
-<span style="background-color: #ffffcc">        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
-</span>        TimeTillJump &lt; MaxTime,
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        TimeTillJump &lt; MaxTime,
         TimeTillJump &gt; MinTime,
         CurrentBMP&lt;BMP,
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div>
+    "BACK",
+"")</code></pre>
 
 <ul>
 <li><strong>Time &lt; 2 mins and &gt; 1 min:</strong> check whether the seconds left on the countdown are smaller than what is defined in the SETTINGS worksheet, cell K2 and greater than SETTINGS worksheet, cell I2, as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of the SETTINGS sheet, where we've already done the calculations for you.</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
-<span style="background-color: #ffffcc">        TimeTillJump &lt; MaxTime,
-</span><span style="background-color: #ffffcc">        TimeTillJump &gt; MinTime,
-</span>        CurrentBMP&lt;BMP,
+        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+        CurrentBMP&lt;BMP,
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div>
+    "BACK",
+"")</code></pre>
 
 <ul>
 <li><strong>BMP:</strong> checking whether the event overrounds are less than the specific value that can be changed from cell J3 in the SETTINGS worksheet</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
-    AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
-        TimeTillJump &lt; MaxTime,
-        TimeTillJump &gt; MinTime,
-<span style="background-color: #ffffcc">        CurrentBMP&lt;BMP,
-</span>        ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div>
-
-<ul>
-<li><strong>Not in play:</strong> checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. </li>
-</ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
-    AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
-        TimeTillJump &lt; MaxTime,
-        TimeTillJump &gt; MinTime,
-        CurrentBMP&lt;BMP,
-<span style="background-color: #ffffcc">        ISBLANK(InPlay)),
-</span>    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div>
-
-<ul>
-<li><strong>Result:</strong> if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
-</ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
         TimeTillJump &lt; MaxTime,
         TimeTillJump &gt; MinTime,
         CurrentBMP&lt;BMP,
         ISBLANK(InPlay)),
-<span style="background-color: #ffffcc">    &quot;BACK&quot;,
-</span><span style="background-color: #ffffcc">&quot;&quot;)
-</span></pre></div>
+    "BACK",
+"")</code></pre>
+
+<ul>
+<li><strong>Not in play:</strong> checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. </li>
+</ul>
+<pre class="codehilite"><code class="language-excel">=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+        CurrentBMP&lt;BMP,
+        ISBLANK(InPlay)),
+    "BACK",
+"")</code></pre>
+
+<ul>
+<li><strong>Result:</strong> if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
+</ul>
+<pre class="codehilite"><code class="language-excel">=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        TimeTillJump &lt; MaxTime,
+        TimeTillJump &gt; MinTime,
+        CurrentBMP&lt;BMP,
+        ISBLANK(InPlay)),
+    "BACK",
+"")</code></pre>
 
 <ul>
 <li><strong>Convert bets to Betfair Starting Price:</strong> Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell H5 from the SETTINGS worksheet. This formula goes in cell L6, and once it's triggered the bets will automatically convert. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="background-color: #ffffcc">=IF(TimeTillJump &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
-</span></pre></div>
+<pre class="codehilite"><code class="language-excel">=IF(TimeTillJump &lt; TakeSP, "TAKE_SP_ALL", "")</code></pre>
 
 <div class="admonition info">
 <p class="admonition-title">Excel functions</p>
@@ -1471,20 +1463,18 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
         TimeTillJump &lt; MaxTime,
         TimeTillJump &gt; MinTime,
         CurrentBMP&lt;BMP,
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div></div>
+    "BACK",
+"")</code></pre></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump &lt; MaxTime,TimeTillJump &gt; MinTime,CurrentBMP&lt;BMP,ISBLANK(InPlay)),&quot;BACK&quot;,&quot;&quot;)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump &lt; MaxTime,TimeTillJump &gt; MinTime,CurrentBMP&lt;BMP,ISBLANK(InPlay)),"BACK","")</code></pre></div>
 </div>
 <p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel1.png" /></p>
 <ul>

@@ -1240,8 +1240,7 @@
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">formula for 'Current bet' action </label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>init_bet*IF(test_mode=1,test_funds,total_funds)/100
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">init_bet*IF(test_mode=1,test_funds,total_funds)/100</code></pre></div>
 </div>
 <p>Change the trigger selections to 'First Matching Session' and Execute 'One time Only'</p>
 <p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederBlockOne.png" /></p>
@@ -1256,15 +1255,13 @@
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">formula for 'cycle_counter'</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>cycle_counter+1
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">cycle_counter+1</code></pre></div>
 </div>
 <p>The second will be named 'current_loss' with a value of: </p>
 <div class="superfences-tabs">
 <input name="__tabs_3" type="radio" id="__tab_3_0" checked="checked" />
 <label for="__tab_3_0">formula for 'cycle_loss'</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>IF(current_loss - market_settled_pl &gt; 0.5, current_loss - market_settled_pl, 0)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">IF(current_loss - market_settled_pl &gt; 0.5, current_loss - market_settled_pl, 0)</code></pre></div>
 </div>
 <p>Again, we will be setting the selections for this trigger as 'First matching selection' but the Execute will be set as 'Once Per market'. We will also be setting the Market status to 'Settled'.</p>
 <p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTrigger2.png" /></p>
@@ -1274,8 +1271,7 @@
 <div class="superfences-tabs">
 <input name="__tabs_4" type="radio" id="__tab_4_0" checked="checked" />
 <label for="__tab_4_0">formula for 'wns_counter'</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>wns_counter+1
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">wns_counter+1</code></pre></div>
 </div>
 <p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTrigger3.png" /></p>
 <hr />
@@ -1284,8 +1280,7 @@
 <div class="superfences-tabs">
 <input name="__tabs_5" type="radio" id="__tab_5_0" checked="checked" />
 <label for="__tab_5_0">formula for 'current_bet'</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>init_bet*IF(test_mode=1, test_funds, total_funds)/100
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">init_bet*IF(test_mode=1, test_funds, total_funds)/100</code></pre></div>
 </div>
 <p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTrigger4.png" /></p>
 <hr />
@@ -1294,8 +1289,7 @@
 <div class="superfences-tabs">
 <input name="__tabs_6" type="radio" id="__tab_6_0" checked="checked" />
 <label for="__tab_6_0">formula for 'backing'</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>(current_bet*IF(cycle_counter=1, multiplier1, IF(cycle_counter=2, multiplier2, IF(cycle_counter=3, multiplier3, IF(cycle_counter=4, multiplier4, IF(cycle_counter=5, multiplier5, multiplier6))))) + current_loss)/(back_price-1)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">(current_bet*IF(cycle_counter=1, multiplier1, IF(cycle_counter=2, multiplier2, IF(cycle_counter=3, multiplier3, IF(cycle_counter=4, multiplier4, IF(cycle_counter=5, multiplier5, multiplier6))))) + current_loss)/(back_price-1)</code></pre></div>
 </div>
 <p>Selections gets changed to 'Favourite, Execute changed to 'Once per Market' and market status to 'All Except Settled'</p>
 <p><img alt="2-6 staking in MarketFeeder" src="../img/MarketFeederTrigger5.png" /></p>

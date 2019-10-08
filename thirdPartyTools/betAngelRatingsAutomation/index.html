@@ -1371,20 +1371,19 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
         G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
         OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
         TimeTillJump &lt; MyTime,
         CurrentBMP &lt; BMP,
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div></div>
+    "BACK",
+"")
+</code></pre></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,TimeTillJump &lt; MyTime,CurrentBMP &lt; BMP,ISBLAN(InPlay)),&quot;BACK&quot;,&quot;&quot;)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND(G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,TimeTillJump &lt; MyTime,CurrentBMP &lt; BMP,ISBLAN(InPlay)),"BACK","")</code></pre></div>
 </div>
 <p>Stepping through each step:</p>
 <ul>
@@ -1430,40 +1429,37 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Variable percentage</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
-<span style="background-color: #ffffcc">        G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),SETTINGS!$C$12:$D$17,2)), 
-</span>        INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt; RatingThreshold,
+        G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),SETTINGS!$C$12:$D$17,2)), 
+        INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt; RatingThreshold,
         TimeTillJump &lt; MyTime, 
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-    &quot;&quot;
-)
-</pre></div></div>
+    "BACK",
+    ""
+)</code></pre></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Fixed percentage</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
-<span style="background-color: #ffffcc">        G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*1.1), 
-</span>        INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt; RatingThreshold,
+        G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*1.1), 
+        INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt; RatingThreshold,
         TimeTillJump &lt; MyTime, 
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-    &quot;&quot;
-)
-</pre></div></div>
+    "BACK",
+    ""
+)</code></pre></div>
 <input name="__tabs_2" type="radio" id="__tab_2_2" />
 <label for="__tab_2_2">Pure rating</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
-<span style="background-color: #ffffcc">        G9 &gt; INDEX(MyRatings,MATCH(B9,MyRunners,0)), 
-</span>        INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt; RatingThreshold,
+        G9 &gt; INDEX(MyRatings,MATCH(B9,MyRunners,0)), 
+        INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt; RatingThreshold,
         TimeTillJump &lt; MyTime, 
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-    &quot;&quot;
-)
-</pre></div></div>
+    "BACK",
+    ""
+)</code></pre></div>
 </div>
 <div class="admonition info">
 <p class="admonition-title">Updating references to suit your ratings format</p>
@@ -1478,69 +1474,64 @@ Let's say your ratings sheet is set out like this: <strong>race date | venue | r
 <ul>
 <li><strong>RatingThreshold:</strong> check whether the runner's rating is less than the value you can specify in cell E4 in the RATINGS worksheet (because we only want to bet on the favourite few runners)</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
-<span style="background-color: #ffffcc">        OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
-</span>        TimeTillJump &lt; MyTime,
+        OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
+        TimeTillJump &lt; MyTime,
         CurrentBMP &lt; BMP,
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div>
+    "BACK",
+"")</code></pre>
 
 <ul>
 <li><strong>Time &lt; 2 mins:</strong> check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of the SETTINGS sheet, where I've already done the calculations for you.</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
-    AND(
-        G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
-        OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
-<span style="background-color: #ffffcc">        TimeTillJump &lt; MyTime,
-</span>        CurrentBMP &lt; BMP,
-        ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div>
-- <strong>BMP:</strong> checking whether the event overrounds are less than the specific value that can be changed from cell E2 in the RATINGS tab</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<p><pre class="codehilite"><code class="language-excel">=IF(
     AND(
         G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
         OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
         TimeTillJump &lt; MyTime,
-<span style="background-color: #ffffcc">        CurrentBMP &lt; BMP,
-</span>        ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div>
+        CurrentBMP &lt; BMP,
+        ISBLANK(InPlay)),
+    "BACK",
+"")</code></pre>
+- <strong>BMP:</strong> checking whether the event overrounds are less than the specific value that can be changed from cell E2 in the RATINGS tab</p>
+<pre class="codehilite"><code class="language-excel">=IF(
+    AND(
+        G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
+        OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
+        TimeTillJump &lt; MyTime,
+        CurrentBMP &lt; BMP,
+        ISBLANK(InPlay)),
+    "BACK",
+"")</code></pre>
 
 <ul>
 <li><strong>Not in play:</strong> checking whether the event has gone in play - as odds change so much in the run we only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. We appreciate that greyhound races don't go in play, but we wanted this check in place anyway in case we (or you!) wanted to use a version of this strategy on horse racing in the future. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
         OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
         TimeTillJump &lt; MyTime,
         CurrentBMP &lt; BMP,
-<span style="background-color: #ffffcc">        ISBLANK(InPlay)),
-</span>    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div>
+        ISBLANK(InPlay)),
+    "BACK",
+"")</code></pre>
 
 <ul>
 <li><strong>Result:</strong> if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
         OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
         TimeTillJump &lt; MyTime,
         CurrentBMP &lt; BMP,
-<span style="background-color: #ffffcc">        ISBLANK(InPlay)),
-</span><span style="background-color: #ffffcc">    &quot;BACK&quot;,
-</span>&quot;&quot;)
-</pre></div>
+        ISBLANK(InPlay)),
+    "BACK",
+"")</code></pre>
 
 <div class="admonition info">
 <p class="admonition-title">Excel functions</p>
@@ -1560,20 +1551,18 @@ Let's say your ratings sheet is set out like this: <strong>race date | venue | r
 <div class="superfences-tabs">
 <input name="__tabs_3" type="radio" id="__tab_3_0" checked="checked" />
 <label for="__tab_3_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
         G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
         OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,
         TimeTillJump &lt; MyTime,
         CurrentBMP &lt; BMP,
         ISBLANK(InPlay)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div></div>
+    "BACK",
+"")</code></pre></div>
 <input name="__tabs_3" type="radio" id="__tab_3_1" />
 <label for="__tab_3_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,TimeTillJump &lt; MyTime,CurrentBMP &lt; BMP,ISBLANK(InPlay)),&quot;BACK&quot;,&quot;&quot;)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND(G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),OddsMultiplier,2)), INDEX(MyRatings,MATCH(B9,MyRunners,0)) &lt;RatingThreshold,TimeTillJump &lt; MyTime,CurrentBMP &lt; BMP,ISBLANK(InPlay)),"BACK","")</code></pre></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel1.png" /></p>
 <ul>

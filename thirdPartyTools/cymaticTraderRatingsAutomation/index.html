@@ -1254,23 +1254,21 @@ Once you open the program, you will see an Excel icon which is where we will lin
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IFERROR(
     IF(
         AND(
            A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
             INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,
             SecondsToOff &lt; BetTime,
-            InPlayCheck=&quot;FALSE&quot;),
-        &quot;BACK&quot;,
-        &quot;&quot;
+            InPlayCheck="FALSE"),
+        "BACK",
+        ""
     ),
-&quot;&quot;)
-</pre></div></div>
+"")</code></pre></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(IF(AND(A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTime,InPlayCheck=&quot;FALSE&quot;),&quot;BACK&quot;,&quot;&quot;),&quot;&quot;)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IFERROR(IF(AND(A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
+INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTime,InPlayCheck="FALSE"),"BACK",""),"")</code></pre></div>
 </div>
 <p>Stepping through each step:</p>
 <p><strong>Price &gt; rating * percentage offset:</strong> check whether the available to back price is better than the runner's rating multiplied  by a percentage - I do this by using the runner name in column B and looking up the corresponding rating for that runner from the RUNNERS sheet. </p>
@@ -1321,18 +1319,17 @@ INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTim
 <li>'Rating' refers to cell E6 in the RUNNERS sheet which when changed by the user, will update the formula for all runners in a market.</li>
 </ul>
 </div>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
+<pre class="codehilite"><code class="language-excel">=IFERROR(
     IF(
         AND(
            A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-<span style="background-color: #ffffcc">            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))&lt;Rating,
-</span>            SecondsToOff &lt; BetTime,
-            InPlayCheck=&quot;FALSE&quot;),
-        &quot;BACK&quot;,
-        &quot;&quot;
+            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))&lt;Rating,
+            SecondsToOff &lt; BetTime,
+            InPlayCheck="FALSE"),
+        "BACK",
+        ""
     ),
-&quot;&quot;)
-</pre></div>
+"")</code></pre>
 
 <ul>
 <li><strong>Time &lt; 2 mins:</strong> check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of the SETTINGS sheet, where I've already done the calculations for you. Cell E4 has been renamed to "SecondsToOff" to keep our formulas more simple and easier to read. </li>
@@ -1344,18 +1341,17 @@ INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTim
 <li>'BetTime' refers to cell E2 in the RUNNERS sheet which when changed by the user, will update the formula for all runners in a market.</li>
 </ul>
 </div>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
+<pre class="codehilite"><code class="language-excel">=IFERROR(
     IF(
         AND(
            A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
             INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,
-<span style="background-color: #ffffcc">            SecondsToOff &lt; BetTime,
-</span>            InPlayCheck=&quot;FALSE&quot;),
-        &quot;BACK&quot;,
-        &quot;&quot;
+            SecondsToOff &lt; BetTime,
+            InPlayCheck="FALSE"),
+        "BACK",
+        ""
     ),
-&quot;&quot;)
-</pre></div>
+"")</code></pre>
 
 <ul>
 <li><strong>Not in play:</strong> Checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is populated with a 'FALSE' message it means it's safe to place bets. I appreciate that greyhound races don't go in play, but I wanted this check in place anyway in case I (or you!) wanted to use a version of this strategy on horse racing in the future. </li>
@@ -1366,34 +1362,32 @@ INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTim
 <li>'InPlayCheck' refers to cell E4 in the Cymatic sheet.</li>
 </ul>
 </div>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
+<pre class="codehilite"><code class="language-excel">=IFERROR(
     IF(
         AND(
            A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
             INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,
             SecondsToOff &lt; BetTime,
-<span style="background-color: #ffffcc">            InPlayCheck=&quot;FALSE&quot;),
-</span>        &quot;BACK&quot;,
-        &quot;&quot;
+            InPlayCheck="FALSE"),
+        "BACK",
+        ""
     ),
-&quot;&quot;)
-</pre></div>
+"")</code></pre>
 
 <ul>
 <li><strong>Result:</strong> if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
+<pre class="codehilite"><code class="language-excel">=IFERROR(
     IF(
         AND(
            A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
             INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,
             SecondsToOff &lt; BetTime,
-            InPlayCheck=&quot;FALSE&quot;),
-<span style="background-color: #ffffcc">        &quot;BACK&quot;,
-</span>        &quot;&quot;
+            InPlayCheck="FALSE"),
+        "BACK",
+        ""
     ),
-&quot;&quot;)
-</pre></div>
+"")</code></pre>
 
 <div class="admonition tip">
 <p class="admonition-title">TIP: Excel functions</p>
@@ -1414,23 +1408,21 @@ INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTim
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IFERROR(
     IF(
         AND(
            A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
             INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))&lt;Rating,
             SecondsToOff &lt; BetTime,
-            InPlayCheck=&quot;FALSE&quot;),
-        &quot;BACK&quot;,
-        &quot;&quot;
+            InPlayCheck="FALSE"),
+        "BACK",
+        ""
     ),
-&quot;&quot;)
-</pre></div></div>
+"")</code></pre></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(IF(AND(A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))&lt;Rating,SecondsToOff &lt; BetTime,InPlayCheck=&quot;FALSE&quot;),&quot;BACK&quot;,&quot;&quot;),&quot;&quot;)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IFERROR(IF(AND(A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
+            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))&lt;Rating,SecondsToOff &lt; BetTime,InPlayCheck="FALSE"),"BACK",""),"")</code></pre></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel3.jpg" /></p>
 <ul>

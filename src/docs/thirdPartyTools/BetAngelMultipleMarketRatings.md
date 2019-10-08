@@ -254,6 +254,12 @@ The formula is referencing cell H2 in the SETTINGS worksheet where we can easily
 
 ##- Connecting to Bet Angel
 
+### Video walk through
+
+We've put together a litte video walk through to help make this process easier. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ###- Selecting markets
 
 We used the markets menu in the 'Guardian' tool to navigate to Australian tracks that BetSmart have provided ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.

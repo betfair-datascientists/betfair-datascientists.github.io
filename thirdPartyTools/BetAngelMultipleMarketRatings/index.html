@@ -563,6 +563,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#video-walk-through" title="Video walk through" class="md-nav__link">
+    Video walk through
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-selecting-markets" title="- Selecting markets" class="md-nav__link">
     - Selecting markets
   </a>
@@ -1218,6 +1225,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#video-walk-through" title="Video walk through" class="md-nav__link">
+    Video walk through
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#-selecting-markets" title="- Selecting markets" class="md-nav__link">
     - Selecting markets
   </a>
@@ -1397,71 +1411,66 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
+             AND(BACKLAY="LAY",(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
         BMP&lt;UserBMP,
         TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay)),
         BACKLAY,
-    &quot;&quot;
-)
-</pre></div></div>
+    ""
+)</code></pre></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(B9,RunnerName,0))))),AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(B9,RunnerName,0)))))),BMP&lt;UserBMP,TimeTillJump1&lt;UserTimeTillJump,ISBLANK(InPlay)),BACKLAY,&quot;&quot;)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND(OR(AND(BACKLAY = "BACK", (G9 &gt; (INDEX(Ratings,MATCH(B9,RunnerName,0))))),AND(BACKLAY = "LAY", (G9 &lt; (INDEX(Ratings,MATCH(B9,RunnerName,0)))))),BMP&lt;UserBMP,TimeTillJump1&lt;UserTimeTillJump,ISBLANK(InPlay)),BACKLAY,"")</code></pre></div>
 </div>
 <p>Stepping through each step:</p>
 <ul>
 <li><strong>Chcking market odds based on back or lay bet type:</strong> Here we're checking which bet type we've chosen from the dropdown box in the SETTINGS worksheet. If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the RATINGS worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         OR(
-<span style="background-color: #ffffcc">             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-</span><span style="background-color: #ffffcc">             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
-</span>        BMP&lt;UserBMP,
+             AND(BACKLAY="BACK",(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
+             AND(BACKLAY="LAY",(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+        BMP&lt;UserBMP,
         TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay)),
         BACKLAY,
-    &quot;&quot;
-)
-</pre></div>
+    ""
+)</code></pre>
 
 <ul>
 <li><strong>Back market percentage (BMP) is less than what we define:</strong> Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the SETTINGS worksheet. <a href="https://www.betfair.com.au/hub/understanding-over-round/">Additional information relating to over-rounds can be found on the Hub.</a></li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
-<span style="background-color: #ffffcc">        BMP&lt;UserBMP,
-</span>        TimeTillJump1&lt;UserTimeTillJump,
+             AND(BACKLAY="BACK",(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
+             AND(BACKLAY="LAY",(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+        BMP&lt;UserBMP,
+        TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay)),
         BACKLAY,
-    &quot;&quot;
-)
-</pre></div>
+    ""
+)</code></pre>
 
 <ul>
 <li><strong>Time until the jump is less than what we define:</strong> Check whether the seconds left on the countdown are smaller than 120 (2 minutes), as the majority of markets don't fully form until the last few minutes before the off. This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E2 of the SETTINGS sheet (TimeTillJump1), where we've already done the calculations for you. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
+             AND(BACKLAY="LAY",(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
         BMP&lt;UserBMP,
-<span style="background-color: #ffffcc">        TimeTillJump1&lt;UserTimeTillJump,
-</span>        ISBLANK(InPlay)),
+        TimeTillJump1&lt;UserTimeTillJump,
+        ISBLANK(InPlay)),
         BACKLAY,
-    &quot;&quot;
-)
-</pre></div>
+    ""
+)</code></pre>
 
 <div class="admonition info">
 <p class="admonition-title">Calculating the time until the jump for multiple markets at the same time</p>
@@ -1471,34 +1480,32 @@ keep on top of more complex strategies that require long formaulas to implement.
 <ul>
 <li><strong>Not in play:</strong> checking whether the event has gone in play - as odds change so much in the run we only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
+             AND(BACKLAY="LAY",(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
         BMP&lt;UserBMP,
         TimeTillJump1&lt;UserTimeTillJump,
-<span style="background-color: #ffffcc">        ISBLANK(InPlay)),
-</span>        BACKLAY,
-    &quot;&quot;
-)
-</pre></div>
+        ISBLANK(InPlay)),
+        BACKLAY,
+    ""
+)</code></pre>
 
 <ul>
 <li><strong>Result:</strong> if the statement above is true, the formula returns either a "BACK" or "LAY" depending on what has been selected from the SETTINGS worksheet, at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<pre class="codehilite"><code class="language-excel">=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
+             AND(BACKLAY="LAY",(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
         BMP&lt;UserBMP,
         TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay)),
-<span style="background-color: #ffffcc">        BACKLAY,
-</span><span style="background-color: #ffffcc">    &quot;&quot;
-</span>)
-</pre></div>
+        BACKLAY,
+    ""
+)</code></pre>
 
 <div class="admonition info">
 <p class="admonition-title">Excel functions</p>
@@ -1519,22 +1526,20 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
+             AND(BACKLAY="LAY",(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
         BMP&lt;UserBMP,
         TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay)),
         BACKLAY,
-    &quot;&quot;
-)
-</pre></div></div>
+    ""
+)</code></pre></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),BMP&lt;UserBMP,TimeTillJump1&lt;UserTimeTillJump,ISBLANK(InPlay)),BACKLAY,&quot;&quot;)
-</pre></div></div>
+<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND(OR(AND(BACKLAY="BACK",(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),AND(BACKLAY="LAY",(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),BMP&lt;UserBMP,TimeTillJump1&lt;UserTimeTillJump,ISBLANK(InPlay)),BACKLAY,"")</code></pre></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel1.png" /></p>
 <ul>
@@ -1550,6 +1555,10 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel3.png" /></p>
 <hr />
 <h2 id="-connecting-to-bet-angel">- Connecting to Bet Angel<a class="headerlink" href="#-connecting-to-bet-angel" title="Permanent link">&para;</a></h2>
+<h3 id="video-walk-through">Video walk through<a class="headerlink" href="#video-walk-through" title="Permanent link">&para;</a></h3>
+<p>We've put together a litte video walk through to help make this process easier. </p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <h3 id="-selecting-markets">- Selecting markets<a class="headerlink" href="#-selecting-markets" title="Permanent link">&para;</a></h3>
 <p>We used the markets menu in the 'Guardian' tool to navigate to Australian tracks that BetSmart have provided ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.</p>
 <p>Once you've chosen the races you're interested in click the 'add' button and you'll see them appear in the main body of the screen. </p>

@@ -18,10 +18,7 @@ If you have any suggestions for new tutorials / improvements please reach out to
 ---
 # Disclaimer
 
-Note that whilst we create tutorials for third party applications for educational use, Betfair do not own or have any control over how third party applications are created, developed and maintained. If you use any of the above third party applications, please gamble responsibly and note that you are responsible for any winnings/losses incurred.
-
-
-
+Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable, and we make no representations in relation to the information on this page. If you're implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred.  Under no circumstances will Betfair be liable for any loss or damage you suffer.
 
 
 

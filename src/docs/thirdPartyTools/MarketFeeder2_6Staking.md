@@ -158,4 +158,4 @@ We're working through some of the popular automation tools and creating articles
 ---
 ## Disclaimer
 
-Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable. If you're implementing your own strategies, please gamble responsibly and note that you are responsible for any winnings/losses incurred.
+Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable, and we make no representations in relation to the information on this page. If you're implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred.  Under no circumstances will Betfair be liable for any loss or damage you suffer.

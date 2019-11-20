@@ -285,6 +285,17 @@ You need to copy/paste these three formulas into the relevant cell on each green
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel3.png)
 
 ---
+
+##- Connecting to Bet Angel
+
+### Video walk through
+
+We've put together a litte video walk through to help make this process easier. 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+---
 ###- Selecting markets
 
 We used the markets menu in the Guardian tool to navigate to the tracks we had ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.

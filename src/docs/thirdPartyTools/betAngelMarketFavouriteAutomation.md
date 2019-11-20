@@ -226,6 +226,12 @@ You need to copy/paste these three formulas into the relevant cell on each green
 
 The process is effectively the same from here on as for our previously automated strategy, but we've included it here just in case you want a refresher or are new to Bet Angel Pro.
 
+### Video walk through
+
+We've put together a litte video walk through to help make this process easier. 
+
+<iframe width="760" height="515" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ---
 ###- Selecting markets
 

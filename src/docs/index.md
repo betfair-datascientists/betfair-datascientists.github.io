@@ -47,23 +47,26 @@ Whilst the following tools are not custom built for your approach, they do allow
 
 We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.
 
-- [Bet Angel Excel Automation](/thirdPartyTools/betAngel/betAngel)
+- [Bet Angel Professional](/thirdPartyTools/betAngel/betAngel)
     - [Ratings automation](/thirdPartyTools/betAngelRatingsAutomation)
     - [Multiple market ratings](/thirdPartyTools/BetAngelMultipleMarketRatings)
     - [Market favourite automation](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
     - [Tipping automation](/thirdPartyTools/betAngelTippingAutomation)
-    - [Automating simultaneous markets](/thirdPartyTools/betAngelSimultaneousMarkets) 
-- [Gruss](/thirdPartyTools/Gruss/Gruss)
+    - [Automating simultaneous markets](/thirdPartyTools/betAngelSimultaneousMarkets)
+    <!--[Kelly Criterion staking method](/thirdPartyTools/betAngelKellyStake) -->
+
+- [Gruss Betting Assistant](/thirdPartyTools/Gruss/Gruss)
     - [Ratings automation](/thirdPartyTools/grussRatingsAutomation)
     - [Automating simultaneous markets](/thirdPartyTools/grusslSimultaneousMarkets)
+
 - [Cymatic Trader](/thirdPartyTools/CymaticTrader/CymaticTrader)
     - [Ratings automation](/thirdPartyTools/cymaticTraderRatingsAutomation)
+
 - [BF Bot Manager](/thirdPartyTools/BfBotManager/BfBotManager)
     - [Double or Bust](/thirdPartyTools/BfBotManagerAutomation.md)
+
 - [MarketFeeder Pro](/thirdPartyTools/MarketFeeder/MarketFeeder)
     - [2-6 Staking](/thirdPartyTools/MarketFeeder2_6Staking.md)
-- [BfExplorer](/thirdPartyTools/bfexplorer/bfexplorer)
-    - [intro to automation in Bfexplorer](/thirdPartyTools/bfexplorerintro.md)
 ---
 ### Data modelling 
 

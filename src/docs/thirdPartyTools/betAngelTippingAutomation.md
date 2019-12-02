@@ -5,7 +5,7 @@
 
 We all love getting some good racing tips, but who has time to sit and place bets all day? Wouldn't it be easier if you could take those tips and get a program to automatically place the bets on your behalf? 
 
-This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is our first-time using Bet Angel for this approach and we are very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at bdp@betfair.com.au with your feedback and opinions. 
+This is what we're going to explore here - we'll be using Bet Angel Pro to place bets automatically based on a set of tips. This is our first-time using Bet Angel for this approach and we are very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at automation@betfair.com.au with your feedback and opinions. 
 
 --- 
 ## Lets Go!
@@ -86,7 +86,7 @@ The final step is to choose which selections you want to bet on. In this example
 !!! info "Changing the rules"
     This approach only allows you to back one runner and lay one runner per race. If your strategy bets on multiple runners per race you can edit the rules file, select 'copy rule', then edit the second rule to use the runner selected in 'Automation Nomination Selection 2 and delete the lay strategy.
 
-    The beauty of this tool is that you can customise the rules until you have a set that do what you want them to.
+    The beauty of this tool is that you can customise the rules until you have a set that do what you want them to do.
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipNewRule.png)
 
@@ -96,12 +96,12 @@ The final step is to choose which selections you want to bet on. In this example
 Once you've set your rules up and got comfortable using Bet Angel Pro it should only take  number of seconds to load the markets up and choose your selections for the day. 
 
 !!! info "Note:" 
-    you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
+    You will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
     
 ---
 ## What next? 
 
-We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to us at bdp@betfair.com.au 
+We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to us at automation@betfair.com.au 
 
 ---
 ## Disclaimer

@@ -5,7 +5,7 @@
 
 Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of back them.
 
-Building on our [previous articles](../betAngelRatingsAutomation/), we're using the spreadsheet functionality available in Bet Angel Pro to implement this strategy. If you haven't already we'd recommend going back and having a read of [this article](../betAngelRatingsAutomation/), as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us on bdp@betfair.com.au with your feedback and opinions. 
+Building on our [previous articles](../betAngelRatingsAutomation/), we're using the spreadsheet functionality available in Bet Angel Pro to implement this strategy. If you haven't already we'd recommend going back and having a read of [this article](../betAngelRatingsAutomation/), as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at automation@betfair.com.au with your feedback and opinions. 
 
 --- 
 ## Lets Begin
@@ -90,7 +90,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
 Stepping through each step:
 
-- **Finding the top two selections in the market:** check each runner to see if they're one of the two market favourites - We're doing this by going through the best available to back (blue) price for each runner, ranking them in order (which sorts them from highest to lowest - which is the opposite of what we want) then subtracting that rank number from the total number of selections available to inverse the order. Finally, we plus one to the resulting rank - if we didn't do this then you'd have a rank order that started at 0, not 1, and we thought that would just confuse matters!
+- **Finding the top two selections in the market:** check each runner to see if they're one of the two market favourites - We're doing this by going through the best available to back (column G) price for each runner, ranking them in order (which sorts them from highest to lowest - which is the opposite of what we want) then subtracting that rank number from the total number of selections available to inverse the order. Finally, we plus one to the resulting rank - if we didn't do this then you'd have a rank order that started at 0, not 1, and we thought that would just confuse matters!
 
 Once it's established what each selection's rank is, we then check if that rank is less than three, and if it is we know that the runner in question is one of the top two in the market, based on the current available to back prices.
 
@@ -226,7 +226,7 @@ You need to copy/paste these three formulas into the relevant cell on each green
 
 The process is effectively the same from here on as for our previously automated strategy, but we've included it here just in case you want a refresher or are new to Bet Angel Pro.
 
-### Video walk through
+###- Video walk through
 
 We've put together a litte video walk through to help make this process easier. 
 

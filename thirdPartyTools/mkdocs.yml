@@ -16,6 +16,7 @@ nav:
             - Bet Angel - Market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
             - Bet Angel - Automating simultaneous markets: thirdPartyTools/betAngelSimultaneousMarkets.md
             - Bet Angel - Tipping automation: thirdPartyTools/betAngelTippingAutomation.md
+            # - Bet Angel - Kelly Criterion staking method: thirdPartyTools/betAngelKellyStake.md
         - Gruss:
             - Gruss overview: thirdPartyTools/Gruss/Gruss.md
             - Gruss - Ratings automation: thirdPartyTools/grussRatingsAutomation.md
@@ -27,9 +28,7 @@ nav:
             - BF Bot Manager - Rule automation: thirdPartyTools/BfBotManagerAutomation.md
         - MarketFeeder Pro:
             - MarketFeeder - 2-6 Staking: thirdPartyTools/MarketFeeder2_6Staking.md
-        - Bfexplorer: 
-            - BFexplorer overview: thirdPartyTools/bfexplorer/bfexplorer.md
-            - Intro to automation in Bfexplorer: thirdPartyTools/bfexplorerintro.md
+
         
     - API:
         - How to access the Betfair API: api/apiappkey.md

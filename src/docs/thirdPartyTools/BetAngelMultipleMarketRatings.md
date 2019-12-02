@@ -41,7 +41,7 @@ Here we're using the [ratings shared by BetSmart on the Hub](https://www.betfair
 
 If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.
 
-Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact with Bet Angel. Here we're using an Excel [spreadsheet we edited for this strategy](./assets/BetAngel_MultipleMarketRatings.xls), and we've included a tab called RATINGS where you can copy in the runner names and ratings.
+Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact with Bet Angel. Here we're using an Excel [spreadsheet we edited for this strategy](./assets/BetAngel_MultipleMarketRatings.xls), and we've included a worksheet called RATINGS where you can copy in the runner names, ratings and adjust other strategy variables.
 
 ![Automating a ratings based strategy with Bet Angel](./img/BARatingsBetsmartExample.jpeg)
 
@@ -85,8 +85,6 @@ keep on top of more complex strategies that require long formaulas to implement.
      - **InPlay** refers to cell G1 in the Bet Angel work sheet. Bet Angel will populate a status in this cell such as "In Play" or "Suspended"
 
      - **BACKLAY** refers to cell H5 in the SETTINGS work sheet which allows you to easily switch between Back and Lay bet typers via a drop down box and will automatically update the formulas for all runners
-    
-    ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel4.png)
 
 
 
@@ -113,7 +111,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
 Stepping through each step:
 
-- **Chcking market odds based on back or lay bet type:** Here we're checking which bet type we've chosen from the dropdown box in the SETTINGS worksheet. If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the RATINGS worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.
+- **Checking market odds based on back or lay bet type:** Here we're checking which bet type we've chosen from the dropdown box in the RATINGS worksheet (cell ). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the RATINGS worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.
 
 ``` excel hl_lines="4 5"
 =IF(
@@ -129,7 +127,7 @@ Stepping through each step:
 )
 ```
 
-- **Back market percentage (BMP) is less than what we define:** Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the SETTINGS worksheet. [Additional information relating to over-rounds can be found on the Hub.](https://www.betfair.com.au/hub/understanding-over-round/)
+- **Back market percentage (BMP) is less than what we define (UserBMP):** Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the RATINGS worksheet. [Additional information relating to over-rounds can be found on the Hub.](https://www.betfair.com.au/hub/understanding-over-round/)
 
 ``` excel hl_lines="6"
 =IF(

@@ -9,29 +9,30 @@ nav:
     - Home: 
         The Automation Hub: index.md
     - Tutorials: 
-        - Tools Overview: thirdPartyTools/overview.md
-            
+        - Tools Overview: thirdPartyTools/overview.md           
         - Third Party tools:
-            - Bet Angel: thirdPartyTools/betAngel/betAngel.md
+            - Bet Angel Professional: thirdPartyTools/betAngel/betAngel.md
             - Gruss Betting Assistant: thirdPartyTools/Gruss/Gruss.md
             - Cymatic Trader: thirdPartyTools/CymaticTrader/CymaticTrader.md
             - BF Bot Manager: thirdPartyTools/BfBotManager/BfBotManager.md
             - MarketFeeder Pro: thirdPartyTools/MarketFeeder/MarketFeeder.md
-            - Bfexplorer: thirdPartyTools/bfexplorer/bfexplorer.md
-        - Ratings / Tipping Automations: 
+        - Bet Angel Professional: 
             - Bet Angel - Ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
             - Bet Angel - Multiple market ratings: thirdPartyTools/BetAngelMultipleMarketRatings.md
             - Bet Angel - Tipping automation: thirdPartyTools/betAngelTippingAutomation.md
-            - Gruss - Ratings automation: thirdPartyTools/grussRatingsAutomation.md
-            - Cymatic - Trader Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md
-        - Market Favourite Automations:
             - Bet Angel - Market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
-        - Automating Simultaneous Markets: 
             - Bet Angel - simultaneous markets: thirdPartyTools/betAngelSimultaneousMarkets.md
+           # - Bet Angel - Kelly Criterion staking: thirdPartyTools/betAngelKellyStake.md           
+        - Gruss Betting Assistant:
+            - Gruss - Ratings automation: thirdPartyTools/grussRatingsAutomation.md
             - Gruss - simultaneous markets: thirdPartyTools/grusslSimultaneousMarkets.md
-        - Staking Strategies:
-            - BF Bot Manager - Double or Bust: thirdPartyTools/BfBotManagerAutomation.md
+        - Cymatic Trader: 
+            - Cymatic Trader - Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md          
+        - BF Bot Manager: 
+            - BF Bot Manager - Double or Bust: thirdPartyTools/BfBotManagerAutomation.md          
+        - Market Feeder Pro: 
             - Market Feeder - Pro 2-6 Staking: thirdPartyTools/MarketFeeder2_6Staking.md
+
 
     - API:
         - How to access the Betfair API: api/apiappkey.md

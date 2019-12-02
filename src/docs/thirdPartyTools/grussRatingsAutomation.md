@@ -5,11 +5,10 @@
 
 Ratings are an ideal base for an automation strategy, as they're an easy metric to write a set of rule around, and are also pretty time consuming to implement manually if you're physically placing the bets yourself. 
 
-We've previously explored using [Bet Angel Pro to implement this style of strategy](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/), now we're going to use Gruss Betting Assistant to look at a different tool for automating betting on ratings. Like Bet Angel Pro, Gruss Betting Assistant also has a spreadsheet functionality that lets you place bets using your own variables and information from the live market. Gruss is a complex tool, and there are lots of different ways to use it, and we'd love any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us on bdp@betfair.com.au with your feedback and opinions. 
+We've previously explored using [Bet Angel Pro to implement this style of strategy](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/), now we're going to use Gruss Betting Assistant to look at a different tool for automating betting on ratings. Like Bet Angel Pro, Gruss Betting Assistant also has a spreadsheet functionality that lets you place bets using your own variables and information from the live market. Gruss is a complex tool, and there are lots of different ways to use it, and we'd love any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us on automation@betfair.com.au with your feedback and opinions. 
 
 --- 
-## Lets do this
-###- The plan
+## - The plan
 
 We're using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of our Data Scientists. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so we're going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Gruss Betting Assistant's Excel triggered betting feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what we've used for the automation here. 
 
@@ -65,25 +64,25 @@ Throughout this tutorial, we'll be referencing certain cells with custom names t
 keep on top of more complex strategies that require long formaulas to implement.
  
 !!! info "Cell names used in this tutorial"
-     - **MyRatings** refers to the entire Column B in the Ratings worksheet
+     - **MyRatings** refers to the entire Column B in the 'RATINGS' worksheet
 
-     - **MyRunners** refers to the entire column A in the Ratings worksheet
+     - **MyRunners** refers to the entire column A in the 'RATINGS' worksheet
 
-     - **OddsMultiplier** refers to the table in the Settings worksheet (C11 to D17)
+     - **OddsMultiplier** refers to the table in the 'SETTINGS' worksheet (C11 to D17)
 
-     - **CurrentBMP** refers to cell AC4 in the Market worksheet where the overrounds are calculated
+     - **CurrentBMP** refers to cell AC4 in the 'Market' worksheet where the overrounds are calculated
 
-     - **BMP** refers to cell E3 in the RATINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners
+     - **BMP** refers to cell E3 in the 'RATINGS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
 
-     - **TimeTillJump** refers to cell E3 in the Settings work sheet 
+     - **TimeTillJump** refers to cell E3 in the 'SETTINGS' work sheet 
 
-     - **MyTime** refers to cell E4 in the RATINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners
+     - **MyTime** refers to cell E4 in the 'RATINGS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
 
-     - **NotInPlayCheck** refers to cell E2 in the Market worksheet. Gruss will populate a status in this cell such as "In Play"
+     - **NotInPlayCheck** refers to cell E2 in the 'Market' worksheet. Gruss will populate a status in this cell such as "In Play"
 
-     - **MarketStatus** refers to cell F2 in the Market worksheet. Gruss will populate a status in this cell such as "Suspended"
+     - **MarketStatus** refers to cell F2 in the 'Market' worksheet. Gruss will populate a status in this cell such as "Suspended"
 
-     - **RatingThreshold** refers to cell E5 in the RATINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners
+     - **RatingThreshold** refers to cell E5 in the 'RATINGS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
 
 
 **This is our trigger on Excel formula:**
@@ -112,7 +111,7 @@ Stepping through each step:
 
 **Percentage offset:** There are lots of different approaches you can take to this. We're using a variable percentage offset, which is the same approach we took in [Bet Angel article implementing this same strategy](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/), as we appreciate that we might want a different percentage better than the rating, depending on the price - i.e. 10% better than $2 ($2.20) is very different than 10% better than a $20 shot ($22.20), so here we're using a vlookup table to determine the percentage better than the rating that we want based on the current odds. Here are the 'ranges' of prices to percentage offset that we're using - you can disregard this and just change it to be a set percentage (i.e. *1.1 hardcoded into the formula) or just use your rating straight without an offset, or edit the ranges in the SETTINGS tab to suit your opinions. This table takes the 'min' odds for the range in the left column, and the number you want to multiply the odds by in the right column - so for 15% you'd multiply by 1.15 etc. 
 
-**Viewing your values:** We've added columns (Y:AB) to show the rating, percentage offset and minimum acceptable odds for each runner, to add some reassurance that the spreadsheet is pulling the values we want it to.
+**Viewing your values:** We've added columns Y:AB in the 'Markets' sheet to show the rating, percentage offset and minimum acceptable odds for each runner, to add some reassurance that the spreadsheet is pulling the values we want it to.
 
 ODDS RANGE | % MULTIPLIER
 :-------|:-----------------------
@@ -165,7 +164,7 @@ ODDS RANGE | % MULTIPLIER
 "")
 ```
 
-- **Time < what we specify** check whether the seconds left on the countdown are smaller than what we specify in cell E4 in the RATINGS worksheet, as the majority of markets don't fully form until the last few minutes before the off. I've taken the countdown in D2 (which is in hours, minutes, seconds) and turned it into a second countdown on the settings sheet, for simplicity's sake.
+- **TimeTillJump < MyTime** check whether the seconds left on the countdown are smaller than what we specify in cell E4 in the 'RATINGS' worksheet, as the majority of markets don't fully form until the last few minutes before the off. We've taken the countdown cell E3 in the 'SETTINGS' worksheet (which is in hours, minutes, seconds) and turned it into a second countdown on the settings sheet, for simplicity's sake.
 
 ``` excel hl_lines="5"
 =IF(
@@ -180,7 +179,7 @@ ODDS RANGE | % MULTIPLIER
 "")
 ```
 
-- **BMP < what we specify** checking whether the event overrounds are less than the specific value that can be changed from cell E3 in the RATINGS tab
+- **CurrentBMP < BMP** checking whether the event overrounds (which is calculated in cell AC4 of the 'Market' spreadhseet) are less than the specific value that can be changed from cell E3 in the 'RATINGS' tab
 
 ``` excel hl_lines="6"
 =IF(
@@ -195,7 +194,7 @@ ODDS RANGE | % MULTIPLIER
 "")
 ```
 
-- **Not in play:** checking whether the event has gone in play - as odds change so much in the run, we only want to use this strategy pre-play. We're checking two cells here, to make sure to make sure the market's not in play and also not suspended - suspended shouldn't be an issue except it will cause the program to produce errors. We appreciate that greyhound races don't go in play, but we wanted this check in place anyway in case we (or you!) wanted to use a version of this strategy on horse racing in the future. 
+- **NotInPlayCheck:** checking whether the event has gone in play - as odds change so much in the run, we only want to use this strategy pre-play. We're checking two cells here, to make sure to make sure the market's not in play and also not suspended - suspended shouldn't be an issue except it will cause the program to produce errors. We appreciate that greyhound races don't go in play, but we wanted this check in place anyway in case we (or you!) wanted to use a version of this strategy on horse racing in the future. 
 
 ``` excel hl_lines="7 8"
 =IF(
@@ -237,7 +236,7 @@ ODDS RANGE | % MULTIPLIER
 
 You need to copy/paste these three formulas into the relevant cell on each runner - we did a few extra rows than the number of runners in the markets we were looking at, just in case the fields are bigger in future events. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
 
-- **Trigger bet rule:** this is the bet trigger Excel formula we created earlier, and it needs to go in column Q (Q5 for the first runner).
+- **Trigger bet rule:** this is the bet trigger Excel formula we created earlier, and it needs to go in column Q (Q5 for the first runner) in the 'Market' worksheet.
 
 ``` excel tab="Multi line"
 =IF(
@@ -258,13 +257,13 @@ You need to copy/paste these three formulas into the relevant cell on each runne
 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsExcel1.PNG)
 
-- **Odds:** initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake we're now just using the currently available back odds (cell F5 for the first runner). This goes in column R (R5 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest ['tick' price](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements) - if you do this, please do [send us](mailto:bdp@betfair.com.au) through your formula and we'll add it to this article.
+- **Odds:** initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake we're now just using the currently available back odds (cell F5 for the first runner). This goes in column R (R5 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest ['tick' price](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements) - if you do this, please do [send us](mailto:automation@betfair.com.au) through your formula and we'll add it to this article.
 
 ```=IF(F5=0,"",F5)```
 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsExcel2.PNG)
 
-- **Stake:** it's completely up to you what staking approach you want to take. We've kept it simple, and am just using a 'to win' strategy. Each bet aims to win $10 on that runner at the curret odds. The formula divides $10 by the current available best back odds (cell R5 for the first runner) minus one to get the stake required to win $10. We've then used the ROUND function to make sure we get a valid stake size that won't be rejected by the Exchange. This goes in column S (S5 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
+- **Stake:** it's completely up to you what staking approach you want to take. We've kept it simple, and are just using a 'to win' strategy. Each bet aims to win $10 on that runner at the curret odds. The formula divides $10 by the current available best back odds (cell R5 for the first runner) minus one to get the stake required to win $10. We've then used the ROUND function to make sure we get a valid stake size that won't be rejected by the Exchange. This goes in column S (S5 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
 ```=IF(ROUND(10/(F5-1),2)=-10,"",ROUND(10/(F5-1),2))```
 
@@ -273,7 +272,7 @@ You need to copy/paste these three formulas into the relevant cell on each runne
 ---
 ###- Selecting markets
 
-Gruss makes it really easy to select markets in bulk. You could go through an add each market you have in your ratings individually, but it's much easier to just use the quick Pick functionality to add all Australian racing win markets. This is safe, because bets will only fire when they link up with a runner in your RATINGS sheet. 
+Gruss makes it really easy to select markets in bulk. You could go through an add each market you have in your ratings individually, but it's much easier to just use the quick Pick functionality to add all Australian racing win markets. This is safe, because bets will only fire when they link up with a runner in your 'RATINGS' sheet. 
 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsMarkets.png)
 
@@ -309,14 +308,14 @@ Once you've set your spreadsheet set up and you're comfortable using Gruss Betti
 ---
 ## Areas for improvement
 
-There are parts of this approach that we're still trying to get to work to our liking, and we'll update this article as we find better solutions. If you have any suggestions for improvements please reach out to bdp@betfair.com.au - we'd love to hear your thoughts. 
+There are parts of this approach that we're still trying to get to work to our liking, and we'll update this article as we find better solutions. If you have any suggestions for improvements please reach out to automation@betfair.com.au - we'd love to hear your thoughts. 
 
 For example, the spreadsheet only binds with one market at a time, so if one market gets delayed and runs overtime the program won't be able to move on to the next market - we missed some races because of this. 
 
 ---
 ## What next? 
 
-We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au 
+We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to automation@betfair.com.au 
 
 ---
 ## Disclaimer

@@ -77,11 +77,13 @@ We’re putting together a collection of articles on how to use some of these th
     - [AFL modelling series](/modelling/AFLmodelPart1)
     - [Brownlow modelling tutorial](/modelling/brownlowModelTutorial)
 
-!!! tip "Predictive modelling"
+!!! info "Predictive modelling"
     Many of our most successful customers use predictive models as the basis for their betting strategies 
 
 --- 
 ### Inspiration & information 
+
+There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. 
 
 - [The Banker: A Quant's AFL Betting Strategy](https://www.betfair.com.au/hub/better-betting/customer-insights/the-banker-a-quants-afl-betting-strategy/)
 - [The Mathematician](https://www.betfair.com.au/hub/better-betting/customer-insights/mathematician/)
@@ -90,10 +92,8 @@ We’re putting together a collection of articles on how to use some of these th
 - [Staking Plans and Strategies](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/)
 - [Staking and Money Management](https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/staking-and-money-management/)
 
-!!! info "Some extra info"
-    There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. 
 
 ---
 ### Need extra help?
 
-If you’re looking for bespoke advice or have extra questions, please contact us at bdp@betfair.com.au. We have a dedicated in-house resource that is here to automate your betting strategies.
+If you’re looking for bespoke advice or have extra questions, please contact us at automation@betfair.com.au. We have a dedicated in-house resource that is here to automate your betting strategies.

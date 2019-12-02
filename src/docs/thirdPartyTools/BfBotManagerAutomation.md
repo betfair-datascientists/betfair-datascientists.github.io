@@ -3,7 +3,7 @@
 ---
 ## Dobbing using BF Bot Manager automation rules 
 
-BF Bot Manager may not have Excel automation integration like Gruss or Bet Angel, but it does make up for it with an intuitive rule-based automation system which is great if you're starting out with automation in general. There are hundreds of ways to implement different strategies using rules in BF Bot Manager but if you have any specific tutorial ideas that you would like to see here, please get in contact with us at bdp@betfair.com.au - We'd love to hear from you.
+BF Bot Manager may not have Excel automation integration like Gruss or Bet Angel, but it does make up for it with an intuitive rule-based automation system which is great if you're starting out with automation in general. There are hundreds of ways to implement different strategies using rules in BF Bot Manager but if you have any specific tutorial ideas that you would like to see here, please get in contact with us at automation@betfair.com.au - We'd love to hear from you.
 
 --- 
 ## Are you Ready?
@@ -11,7 +11,7 @@ BF Bot Manager may not have Excel automation integration like Gruss or Bet Angel
 
 In this tutorial, we're going over the implementation of a strategy called "DOBBING" which means Double Or Bust. The idea behind Dobbing is to place bets on the movement of prices within a market rather than the actual race result itself. More specifically, backing a horse and then hedging that bet – by laying it, to achieve an evens money return – no matter the outcome of the race.
 
-If you want to follow along and try this approach yourself you'll need to download [BF Bot Manager](https://www.bfbotmanager.com/) and sign up for either a subscription or at least a test period. They have a [5 day free trial](https://www.bfbotmanager.com/trial) that's valuable for establishing whether this tool will do what you want it to for your specific strategy. 
+If you want to follow along and try this approach yourself you'll need to download [BF Bot Manager](https://www.bfbotmanager.com/). They have a [5 day free trial](https://www.bfbotmanager.com/trial) which is valuable for establishing whether or not this tool will be right for you. 
 
 !!! note "Resources"
     - [Additional information on Dobbing](https://caanberry.com/what-is-dobbing-in-horse-racing/)
@@ -27,15 +27,14 @@ Once you open the program up click on the 'STRATEGIES' tab and then 'Add new' bu
 
 ![Dobbing in BF Bot Manager](./img/BfBotManagerDobbing.png)
 
-This will prompt a pop-up window to appear where you choose the name of the strategy and select a colour for it. I've named my strategy "Double or Bust" and set the colour as orange to make it easily identifiable which is a good idea, especially if you have a range of different strategies.
-
+This will prompt a pop-up window to appear where you choose the name of the strategy and select a colour for it. I've named my strategy "Double or Bust" and set the colour as orange to make it easily identifiable. This is really handy, especially if you have a complex strategy with a lot of rules. 
 
 ![Dobbing in BF Bot Manager](./img/BfBotManagerNewRule.png)
 
 
 ###- Creating a new strategy
 
-Once the strategy has been created, several conditions will also be automatically applied.
+Once the rule has been created, several conditions will also be automatically applied.
 
 Under 'Market Conditions': 
 
@@ -52,7 +51,7 @@ Under 'Selection Conditions':
 
 - 'Min/Max Selection Price' will ensure that the lay price for any runner is within price range of 1.5 and 10. We will delete this condition completely and replace it with a condition called 'Bet on my favourites only' We will do this in the next section of the tutorial. 
 
-All These conditions must be met before the strategy will trigger any bet. 
+All of these conditions will need to be met before any bet can be placed to the exchange.  
 
 ###- Conditions
 
@@ -76,7 +75,7 @@ Finally, we need to create an after-bet rule that will allow us to trade out. Th
 
 ![Dobbing in BF Bot Manager](./img/BfBotManagerTradeOut.png)
 
-!!! tip "TIP: BF Bot Manager strategies manual"
+!!! info "BF Bot Manager strategies manual"
     We recommend taking a look at the [strategies manual](https://www.bfbotmanager.com/documents/manuals/bf_bot_manager_v3_strategies_manual.pdf) if you get stuck or aren't sure how any of the conditions / rules work. It's an extremely good resource that goes into detail about each of the various functions and abilities that are available. 
 
 ---
@@ -94,7 +93,7 @@ Once you've set your rules up and got comfortable using BF Bot Manager it should
 ---
 ## What next? 
 
-We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au 
+We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to automation@betfair.com.au 
 
 ---
 ## Disclaimer

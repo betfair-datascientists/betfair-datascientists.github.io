@@ -9,8 +9,7 @@ Using ratings from reputable sources such as BetSmart can be a great way to incr
 Bet Angel Pro has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what we've used here to automate these ratings. There are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us on automation@betfair.com.au with your feedback and opinions. 
 
 --- 
-## Increasing Wagering IQ through BetSmart Ratings
-###- The plan
+## - The plan
 
 We're using the [BetSmart Ratings Model](https://www.betfair.com.au/hub/betsmart-ratings/) which is led by pro punter, Daniel O’Sullivan. BetSmart specializes in ratings for VIC and NSW markets and are [shared on our Hub](https://www.betfair.com.au/hub/betsmart-ratings/). Bet Angel Pro's 'Guardian' feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what we've used for the automation here, incorporating BetSmart ratings into the auotmation. 
 

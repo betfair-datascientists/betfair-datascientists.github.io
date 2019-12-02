@@ -6,10 +6,10 @@
 In other tutorials available on the automation hub, the primary focus has been on choosing which runner to place a bet on. For this tutorial, we're going to look into something a little different. We will go through the steps to automate our stakes based on the percentage of our bank. This is a good method to keep the stakes that we're placing on the exchange under control and is primarily intended for backing on favourites.
 
 --- 
-## Lets do this
-###- The plan
+## - The plan
 
-If you want to follow along and try this approach yourself you'll need to download [MarketFeeder Pro](http://marketfeeder.co.uk/buy/) and sign up for either a subscription or at least a test period. They have a [1 month free trial](http://marketfeeder.co.uk/buy/) that's valuable for establishing whether this tool will do what you want it to for your specific strategy. 
+If you want to follow along and try this approach yourself you'll need to download [MarketFeeder Pro](http://marketfeeder.co.uk/buy/) and sign up for either a subscription or a free trial. They have a [1 month free trial](http://marketfeeder.co.uk/buy/) which is valuable for establishing whether or not this tool will be right for you. 
+
 
 !!! note "Resources"
     - Tool: [MarketFeeder Pro](http://marketfeeder.co.uk/buy/)
@@ -74,7 +74,7 @@ Change the trigger selections to 'First Matching Session' and Execute 'One time 
 
 ![2-6 staking in MarketFeeder](./img/MarketFeederBlockOne.png)
 
-!!! tip "TIP: Naming triggers"
+!!! info "Naming triggers"
     It's a good idea to give meaningful names to your triggers that help identify what they are and what they do. For this first trigger that we've created, I've renamed it to 'Initialisation of Variables'
 
 ---
@@ -139,21 +139,18 @@ Once all of the triggers and actions have been added, it should look like this:
 
 ![2-6 staking in MarketFeeder](./img/MarketFeederTriggerFinal.png)
 
-!!! tip "TIP: Reorder triggers"
+!!! info "Reorder triggers"
     If your triggers are not listed in the same order as shown above, you can click and drag the triggers to re-order them correctly. 
 
 ---
 ## And you're set!
 
-Once you've set your rules up and got comfortable using MarketFeeder Pro it should only take  number of seconds to load the markets up and choose your selections for the day. 
-
-!!! info "Note:" 
-    you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
+Once you've set your rules up and got comfortable using MarketFeeder Pro it should only take  number of seconds to load the markets up and choose your selections for the day. You will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
 
 ---
 ## What next? 
 
-We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au 
+We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to automation@betfair.com.au 
 
 ---
 ## Disclaimer

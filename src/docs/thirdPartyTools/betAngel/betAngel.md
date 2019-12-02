@@ -20,6 +20,7 @@ For those who wish to write their own automated betting or trading strategies, B
     - Excel Spreadhseet integration
     - Cash-Out
 
+![Gruss](./img/BetAngel.png) 
 
 ---
 

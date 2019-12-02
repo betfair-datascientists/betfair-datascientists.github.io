@@ -12,7 +12,7 @@ To Set this up, we need to do need to duplicate the main ‘Market’ worksheet 
  
 ---
 
-After these changes have been made, restart Gruss so that the changes go into effect. Once Gruss is back open, as before, click ‘Market’, ‘Add to Quick Pick List’, ‘Horse Racing’ (Or any event you are automating for), The country that you would like to bet and then ‘All Win’. 
+After these changes have been made, restart Gruss so that the changes go into effect. Once Gruss is back open, as before, click ‘Market’, ‘Add to Quick Pick List’, ‘Horse Racing’ (Or any event you are automating for), the country that you would like to bet and then ‘All Win’. 
 
 
 ![Automating simultaneous markets](./img/GrussSimultaneousMarkets2.png)
@@ -40,7 +40,7 @@ Once you've set your spreadsheet set up and you're comfortable using Gruss it sh
 ---
 ### What next? 
 
-We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to bdp@betfair.com.au - this article has already been updated with extra learnings including variable percentages and new macros.
+We're working through some of the popular automation tools and creating articles like this one to help you learn how to use them to implement different styles of strategies. If you have any thoughts or feedback on this article or other programs you'd like to see us explore please reach out to automation@betfair.com.au - this article has already been updated with extra learnings including variable percentages and new macros.
 
 ---
 ### Disclaimer

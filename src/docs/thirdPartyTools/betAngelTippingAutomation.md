@@ -62,7 +62,7 @@ You can choose to change the bet stake and other parts of the rule by:
 ---
 ###- Selecting your markets
 
-We decided we only wanted to bet on the gallops races at Geelong, so we used the markets menu to navigate to Geelong, then multi-selected all the win markets by holding down the control key and clicking on each win market.
+We've decided we only wanted to bet on the gallops races at Geelong, so we used the markets menu to navigate to Geelong, then multi-selected all the win markets by holding down the control key and clicking on each win market.
 
 If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab. 
 

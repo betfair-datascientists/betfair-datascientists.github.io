@@ -76,6 +76,8 @@ keep on top of more complex strategies that require long formaulas to implement.
     
     - **InPlayCheck** refers to cell E4 in the 'Cymatic' worksheet.
 
+    - **ToWin** refers to cell E5 in the 'RUNNERS' worksheet
+
 
 **This is our Excel formula trigger:**
 
@@ -223,20 +225,21 @@ You need to copy/paste these three formulas into the relevant cell on each row i
 
 ![Automating a ratings based strategy with Cymatic Trader](./img/CTRatingsExcel3.jpg)
 
-- **Odds:** initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake we're now just using the currently available back odds (cell I8 for the first runner). This goes in column BB (BB8 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest ['tick' price](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements) - if you do this, please do [send us](mailto:automation@betfair.com.au) through your formula and we'll add it to this article.
+---
 
-```=IF(10/(G10-1)<0,"",10/(G10-1))```
+- **Odds:** initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake we're now just using the currently available back odds (cell I8 for the first runner). This goes in column BB (BB8 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest ['tick' price](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements) - if you do this, please do [send us](mailto:automation@betfair.com.au) through your formula and we'll add it to this article. 
+
+!!! info "Note:" 
+    The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are cells that are not populated with runners. A similar effect to IFERROR, if Cymatic Trader hasn't populated cell A8 with a runner name, then dont populate this cell at all.
+
+```=IF(A8=0,"",I8)```
 
 
 ![Automating a ratings based strategy with Cymatic Trader](./img/CTRatingsExcel4.jpg)
 
-- **Stake:** it's completely up to you what staking approach you want to take. We've kept it simple, and are just using a 'to win' strategy. Each bet aims to win $10 on that runner at the curret odds. The formula divides $10 by the current available best back odds (cell I8 for the first runner) minus one to get the stake required to win $10. This goes in column BC (BC8 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
+- **Stake:** it's completely up to you what staking approach you want to take. We've kept it simple, and are just using a 'to win' strategy. Each bet aims to win whatever has been defined in cell E5 of the 'RUNNERS' tab on that runner at the curret odds. The formula divides our variable by the current available best back odds (cell I8 for the first runner) minus one to get the stake required to win what we have defined. This goes in column BC (BC8 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
-```=IF(10/(I8-1)<0,"",10/(I8-1))```
-
-!!! info "Note:" 
-    The IF statement in here is purely to keep our document clean of clutter when there are cells that are not populated with runners. A similar effect to IFERROR, if Cymatic Trader hasn't populated cell I8 with a number higher than 0, then dont populate this cell at all (I8 will only be populated if there is an applicable runner in the market).
-
+```=IF(A8=0,"",ToWin/(I8-1))```
 
 ![Automating a ratings based strategy with Cymatic Trader](./img/CTRatingsExcel5.jpg)
 

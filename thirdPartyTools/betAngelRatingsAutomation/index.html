@@ -1348,13 +1348,13 @@
 <hr />
 <h3 id="-set-up">- Set up<a class="headerlink" href="#-set-up" title="Permanent link">&para;</a></h3>
 <p>Make sure you've downloaded and installed Bet Angel Pro, and signed in.
-Once you open the program up click on the 'G' Guardian icon and open the Guardian functionality up. 
-<img alt="Automating a rating strategy with Bet Angel" src="../img/BetAngeltipPro.png" /></p>
+Once you open the program up click on the 'G' Guardian icon and open the Guardian functionality up. </p>
+<p><img alt="Automating a rating strategy with Bet Angel" src="../img/BetAngeltipPro.png" /></p>
 <hr />
 <h3 id="-finding-formatting-ratings">- Finding &amp; formatting ratings<a class="headerlink" href="#-finding-formatting-ratings" title="Permanent link">&para;</a></h3>
 <p>Here we're using the <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">ratings shared by our Data Scientists on the Hub</a>. This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. </p>
 <p>If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.
-Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact with Bet Angel. Here we're using a <a href="../assets/BetAngel_RatingsAutomation.xls">spreadsheet we edited for this strategy</a>, and we've included a tab called RATINGS where you can copy in the runner names and ratings.</p>
+Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact with Bet Angel. Here we're using a <a href="../assets/BetAngel_RatingsAutomation.xls">spreadsheet we edited for this strategy</a>, and we've included a worksheet called 'RATINGS' where you can copy in the runner names and ratings.</p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExample.png" /></p>
 <hr />
 <h3 id="-writing-your-rules">- Writing your rules<a class="headerlink" href="#-writing-your-rules" title="Permanent link">&para;</a></h3>
@@ -1376,31 +1376,31 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p class="admonition-title">Cell names used in this tutorial</p>
 <ul>
 <li>
-<p><strong>MyRatings</strong> refers to the entire Column B in the Ratings worksheet</p>
+<p><strong>MyRatings</strong> refers to the entire Column B in the 'RATINGS' worksheet</p>
 </li>
 <li>
-<p><strong>MyRunners</strong> refers to the entire column A in the Ratings worksheet</p>
+<p><strong>MyRunners</strong> refers to the entire column A in the 'RATINGS' worksheet</p>
 </li>
 <li>
-<p><strong>OddsMultiplier</strong> refers to the table in the Settings worksheet (C11 to D17)</p>
+<p><strong>OddsMultiplier</strong> refers to the table in the 'SETTINGS' worksheet (C11 to D17)</p>
 </li>
 <li>
-<p><strong>CurrentBMP</strong> refers to cell AI8 in the Bet Angel worksheet where the overrounds are calculated</p>
+<p><strong>CurrentBMP</strong> refers to cell AI8 in the 'BET ANGEL' worksheet where the overrounds are calculated</p>
 </li>
 <li>
-<p><strong>BMP</strong> refers to cell E2 in the RATINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
+<p><strong>BMP</strong> refers to cell E2 in the 'RATINGS' worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
 </li>
 <li>
-<p><strong>TimeTillJump</strong> refers to cell E3 in the Settings work sheet </p>
+<p><strong>TimeTillJump</strong> refers to cell E3 in the 'SETTINGS' work sheet </p>
 </li>
 <li>
-<p><strong>MyTime</strong> refers to cell E3 in the RATINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
+<p><strong>MyTime</strong> refers to cell E3 in the 'RATINGS' worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
 </li>
 <li>
-<p><strong>InPlay</strong> refers to cell G1 in the Bet Angel worksheet. Bet Angel will populate a status in this cell such as "In Play" or "Suspended"</p>
+<p><strong>InPlay</strong> refers to cell G1 in the 'BET ANGEL' worksheet. Bet Angel will populate a status in this cell such as "In Play" or "Suspended"</p>
 </li>
 <li>
-<p><strong>RatingThreshold</strong> refers to cell E4 in the RATINGS worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
+<p><strong>RatingThreshold</strong> refers to cell E4 in the 'RATINGS' worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
 </li>
 </ul>
 </div>
@@ -1425,9 +1425,9 @@ keep on top of more complex strategies that require long formaulas to implement.
 </div>
 <p>Stepping through each step:</p>
 <ul>
-<li><strong>Price &gt; rating * percentage offset:</strong> check whether the available to back price is better than the runner's rating multiplied by a percentage - we do this by using the runner name in column B and looking up the corresponding rating for that runner from the RATINGS sheet. </li>
+<li><strong>Price &gt; rating * percentage offset:</strong> check whether the available to back price is better than the runner's rating multiplied by a percentage - we do this by using the runner name in column B and looking up the corresponding rating for that runner from the 'RATINGS' worksheet. </li>
 </ul>
-<p><strong>Percentage offset:</strong> There are lots of different approaches you can take to this. We're using a variable percentage offset, as we appreciate that we might want a different percentage better than the rating, depending on the price - i.e. 10% better than <span><span class="MathJax_Preview">2 (</span><script type="math/tex">2 (</script></span>2.20) is very different than 10% better than a <span><span class="MathJax_Preview">20 shot (</span><script type="math/tex">20 shot (</script></span>22.20), so here we're using a vlookup table to determine the percentage better than the rating that we want based on the current odds. Here are the 'ranges' of prices to percentage offset that we're using - you can disregard this and just change it to be a set percentage (i.e. *1.1 hardcoded into the formula) or just use your rating straight without an offset, or edit the ranges in the SETTINGS tab to suit your opinions. This table takes the 'min' odds for the range in the left column, and the number you want to multiply the odds by in the right column - so for 15% you'd multiply by 1.15 etc. </p>
+<p><strong>Percentage offset:</strong> There are lots of different approaches you can take to this. We're using a variable percentage offset, as we appreciate that we might want a different percentage better than the rating, depending on the price - i.e. 10% better than <span><span class="MathJax_Preview">2 (</span><script type="math/tex">2 (</script></span>2.20) is very different than 10% better than a <span><span class="MathJax_Preview">20 shot (</span><script type="math/tex">20 shot (</script></span>22.20), so here we're using a vlookup table to determine the percentage better than the rating that we want based on the current odds. Here are the 'ranges' of prices to percentage offset that we're using - you can disregard this and just change it to be a set percentage (i.e. *1.1 hardcoded into the formula) or just use your rating straight without an offset, or edit the ranges in the 'RATINGS' worksheet to suit your opinions. This table takes the 'min' odds for the range in the left column, and the number you want to multiply the odds by in the right column - so for 15% you'd multiply by 1.15 etc. </p>
 <p><strong>Viewing your values:</strong> We've added columns (AF:AH) to show the rating, percentage offset and minimum acceptable odds for each runner, to add some reassurance that the spreadsheet is pulling the values we want it to.</p>
 <table>
 <thead>
@@ -1508,12 +1508,12 @@ keep on top of more complex strategies that require long formaulas to implement.
 Let's say your ratings sheet is set out like this: <strong>race date | venue | runner name | last race time | weight | rating</strong> </p>
 <p>Here's the set up of the formula:</p>
 <p><code>MyRatings[your rating],MATCH(B9,MyRunners[runner name],0))</code></p>
-<p>So your edited formula would be:</p>
+<p>So, your edited formula would be:</p>
 <p><code>RATINGS!F:F,MATCH(B9,RATINGS!C:C,0))</code></p>
-<p>You need to make sure that you updated these references both in the this part of the formula, and in the next step too.  </p>
+<p>You need to make sure that you updated these references both in this part of the formula, and in the next step too.  </p>
 </div>
 <ul>
-<li><strong>RatingThreshold:</strong> check whether the runner's rating is less than the value you can specify in cell E4 in the RATINGS worksheet (because we only want to bet on the favourite few runners)</li>
+<li><strong>RatingThreshold:</strong> check whether the runner's rating is less than the value you can specify in cell E4 in the 'RATINGS' worksheet (because we only want to bet on the favourite few runners)</li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1527,7 +1527,7 @@ Let's say your ratings sheet is set out like this: <strong>race date | venue | r
 </pre></div>
 
 <ul>
-<li><strong>TimeTillJump &lt; MyTime:</strong> check whether the seconds left on the countdown (cell E4 in the SETTINGS tab which is named "TimeTillJump") are smaller than 120 seconds (a variable named "MyTime" that you can easily change from cell E3 in the RATINGS worksheet). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of the SETTINGS sheet (named "TimeTillJump"), where we've already done the calculations for you.</li>
+<li><strong>TimeTillJump &lt; MyTime:</strong> check whether the seconds left on the countdown (cell E4 in the 'SETTINGS' worksheet which is named "TimeTillJump") are smaller than 120 seconds (a variable named "MyTime" that you can easily change from cell E3 in the 'RATINGS' worksheet). This one's a bit complicated, as the time is actually returned as a percentage of a 24-hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of the 'SETTINGS' worksheet (named "TimeTillJump"), where we've already done the calculations for you.</li>
 </ul>
 <p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1539,7 +1539,7 @@ Let's say your ratings sheet is set out like this: <strong>race date | venue | r
     &quot;BACK&quot;,
 &quot;&quot;)
 </pre></div>
-- <strong>CurrentBMP &lt; BMP:</strong> checking whether the event overrounds (named "CurrentBMP") are less than the specific value that can be changed from cell E2 in the RATINGS tab (named "BMP")</p>
+- <strong>CurrentBMP &lt; BMP:</strong> checking whether the event overrounds (named 'CurrentBMP') are less than the specific value that can be changed from cell E2 in the 'RATINGS' worksheet (named 'BMP')</p>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         G9 &gt; (INDEX(MyRatings,MATCH(B9,MyRunners,0))*VLOOKUP(INDEX(MyRatings,MATCH(B9,MyRunners,0)),
@@ -1552,7 +1552,7 @@ Let's say your ratings sheet is set out like this: <strong>race date | venue | r
 </pre></div>
 
 <ul>
-<li><strong>ISBLANK(InPlay):</strong> checking whether the event has gone in play - as odds change so much in the run we only want to use this strategy pre-play. If cell G1 in the Bet Angel worksheet (named "InPlay") is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. We appreciate that greyhound races don't go in play, but we wanted this check in place anyway in case we (or you!) wanted to use a version of this strategy on horse racing in the future. </li>
+<li><strong>ISBLANK(InPlay):</strong> checking whether the event has gone in play - as odds change so much in the run, we only want to use this strategy pre-play. If cell G1 in the Bet Angel worksheet (named 'InPlay') is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. We appreciate that greyhound races don't go in play, but we wanted this check in place anyway in case we (or you!) wanted to use a version of this strategy on horse racing in the future. </li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1614,14 +1614,18 @@ Let's say your ratings sheet is set out like this: <strong>race date | venue | r
 </div>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel1.png" /></p>
 <ul>
-<li><strong>Odds:</strong> initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">valid Betfair 'ticks'</a>. For simplicity's sake we're now just using the currently available back odds (cell G9 for the first runner). This goes in column M (M9 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">'tick' price</a> - if you do this, please do <a href="mailto:bdp@betfair.com.au">send us</a> through your formula and we'll add it to this article.</li>
+<li><strong>Odds:</strong> initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">valid Betfair 'ticks'</a>. For simplicity's sake we're now just using the currently available back odds (cell G9 for the first runner). This goes in column M (M9 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">'tick' price</a> - if you do this, please do <a href="mailto:automation@betfair.com.au">send us</a> through your formula and we'll add it to this article. </li>
 </ul>
-<p><code>=G9</code></p>
+<div class="admonition info">
+<p class="admonition-title">Note:</p>
+<p>The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are no runners in column B. A similar effect to IFERROR, if Bet Angel hasn't populated cell B9 with a runner name, then dont populate this cell at all.</p>
+</div>
+<p><code>=IF(B9="","",G9)</code></p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel2.png" /></p>
 <ul>
 <li><strong>Stake:</strong> it's completely up to you what staking approach you want to take. We've kept it simple, and am just using a 'to win' strategy. Each bet aims to win $10 on that runner at the current odds. The formula divides $10 by the current available best back odds (cell G9 for the first runner) minus one to get the stake required to win $10. This goes in column N (N9 for the first runner). We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
 </ul>
-<p><code>=10/(G9-1)</code></p>
+<p><code>=IF(B9="","",10/(G9-1))</code></p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel3.png" /></p>
 <hr />
 <h2 id="-connecting-to-bet-angel">- Connecting to Bet Angel<a class="headerlink" href="#-connecting-to-bet-angel" title="Permanent link">&para;</a></h2>
@@ -1633,7 +1637,7 @@ Let's say your ratings sheet is set out like this: <strong>race date | venue | r
 <h3 id="-selecting-markets">- Selecting markets<a class="headerlink" href="#-selecting-markets" title="Permanent link">&para;</a></h3>
 <p>We used the markets menu in the Guardian tool to navigate to the tracks we had ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.
 If you wanted to include all horse or greyhound races for a day you could use the 'quick picks' tab to do this more efficiently. 
-Once you've chosen the races you're interested in click the 'add' button and you'll see them appear in the main body of the screen. 
+Once you've chosen the races you're interested in, click the 'add' button and you'll see them appear in the main body of the screen. 
 Make sure you sort the races <strong>by start time</strong>, so Bet Angel will automatically move through them in the right order and allocate the next race to the spreadsheet once the previous one ends. 
 You do this by clicking on the 'start time' column heading until the races are in time order (when the arrow is pointing up).
 <img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsMarketTimes.png" /></p>

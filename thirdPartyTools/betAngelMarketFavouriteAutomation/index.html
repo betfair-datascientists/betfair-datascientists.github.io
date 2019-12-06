@@ -1344,7 +1344,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p><strong>Fav</strong> refers to cell C4 in the 'OPTIONS' worksheet</p>
 </li>
 <li>
-<p><strong>CurrentBMP</strong> refers to cell AF8 in the 'Bet Angel' worksheet where the overrounds are calculated</p>
+<p><strong>CurrentBMP</strong> refers to cell AF8 in the 'BET ANGEL' worksheet where the overrounds are calculated</p>
 </li>
 <li>
 <p><strong>BMP</strong> refers to cell C3 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
@@ -1359,7 +1359,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p><strong>MaxTime</strong> refers to cell E2 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
 </li>
 <li>
-<p><strong>InPlay</strong> refers to cell G1 in the 'Bet Angel' worksheet. Bet Angel will populate a status in this cell such as "In Play" or "Suspended"</p>
+<p><strong>InPlay</strong> refers to cell G1 in the 'BET ANGEL' worksheet. Bet Angel will populate a status in this cell such as 'In Play' or 'Suspended'</p>
 </li>
 <li>
 <p><strong>TakeSP</strong> refers to cell C5 in the 'OPTIONS' worksheet which allows you to change a single value more easily, alongside other values for the global command</p>
@@ -1402,7 +1402,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div>
 
 <ul>
-<li><strong>TimeTillJump &lt; MaxTime and &gt; MinTime min:</strong> check whether the seconds left on the countdown are smaller than what is defined in the OPTIONS worksheet, cell C2 and greater than 'OPTIONS' worksheet, cell E2, as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 (named 'TimeTillJump')in the 'SETTINGS' sheet, where we've already done the calculations for you.</li>
+<li><strong>TimeTillJump &lt; MaxTime and &gt; MinTime min:</strong> check whether the seconds left on the countdown are smaller than what is defined in cell C2 and greater than cell E2 in the 'OPTIONS' worksheet (named 'MinTime' and 'MaxTime' respectively), as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 (named 'TimeTillJump')in the 'SETTINGS' worksheet, where we've already done the calculations for you.</li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1430,7 +1430,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div>
 
 <ul>
-<li><strong>InPlay:</strong> checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. InPlay refers to G1 in the 'Bet Angel' worksheet, if this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. </li>
+<li><strong>InPlay:</strong> checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. InPlay refers to G1 in the 'BET ANGEL' worksheet, if this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. </li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1444,7 +1444,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div>
 
 <ul>
-<li><strong>Result:</strong> if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
+<li><strong>Result:</strong> if the statement above is true, the formula returns 'BACK', at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1458,7 +1458,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </span></pre></div>
 
 <ul>
-<li><strong>Convert bets to Betfair Starting Price:</strong> Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell C5 from the 'OPTIONS' worksheet. This formula goes in cell L6 of the 'Bet Angel' worksheet, and once it's triggered the bets will automatically convert. </li>
+<li><strong>Convert bets to Betfair Starting Price:</strong> Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell C5 from the 'OPTIONS' worksheet. This formula goes in cell L6 of the 'BET ANGEL' worksheet, and once it's triggered the bets will automatically convert. </li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="background-color: #ffffcc">=IF(TimeTillJump &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
 </span></pre></div>
@@ -1499,14 +1499,18 @@ keep on top of more complex strategies that require long formaulas to implement.
 </div>
 <p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel1.png" /></p>
 <ul>
-<li><strong>Odds:</strong> as we said we're putting the bet up initially at odds of 1000, so this is a simple one.</li>
+<li><strong>Odds:</strong> as we said we're putting the bet up initially at odds of 1000, so this is a simple one. </li>
 </ul>
-<p><code>1000</code></p>
+<div class="admonition info">
+<p class="admonition-title">Note:</p>
+<p>The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are no runners in column B. A similar effect to IFERROR, if Bet Angel hasn't populated cell B9 with a runner name, then dont populate this cell at all.</p>
+</div>
+<p><code>=IF(B9="","","1000")</code></p>
 <p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel2.png" /></p>
 <ul>
 <li><strong>Stake:</strong> it's completely up to you what staking approach you want to take. We're keeping it simple and using flat staking here, so will just place $10 on each runner. This goes in column N (N9 for the first runner). We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
 </ul>
-<p><code>10</code></p>
+<p><code>=IF(B9="","","10")</code></p>
 <p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel3.png" /></p>
 <ul>
 <li><strong>Global Command:</strong> this is what triggers the open bets to convert to BSP, and only goes in one cell, L6. As soon as the countdown timer reaches less than 60 seconds this will fire. </li>

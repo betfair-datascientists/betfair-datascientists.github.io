@@ -1282,6 +1282,9 @@ keep on top of more complex strategies that require long formaulas to implement.
 <li>
 <p><strong>InPlayCheck</strong> refers to cell E4 in the 'Cymatic' worksheet.</p>
 </li>
+<li>
+<p><strong>ToWin</strong> refers to cell E5 in the 'RUNNERS' worksheet</p>
+</li>
 </ul>
 </div>
 <p><strong>This is our Excel formula trigger:</strong></p>
@@ -1454,19 +1457,20 @@ INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTim
 </pre></div></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel3.jpg" /></p>
+<hr />
 <ul>
-<li><strong>Odds:</strong> initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">valid Betfair 'ticks'</a>. For simplicity's sake we're now just using the currently available back odds (cell I8 for the first runner). This goes in column BB (BB8 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">'tick' price</a> - if you do this, please do <a href="mailto:automation@betfair.com.au">send us</a> through your formula and we'll add it to this article.</li>
+<li><strong>Odds:</strong> initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">valid Betfair 'ticks'</a>. For simplicity's sake we're now just using the currently available back odds (cell I8 for the first runner). This goes in column BB (BB8 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">'tick' price</a> - if you do this, please do <a href="mailto:automation@betfair.com.au">send us</a> through your formula and we'll add it to this article. </li>
 </ul>
-<p><code>=IF(10/(G10-1)&lt;0,"",10/(G10-1))</code></p>
-<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel4.jpg" /></p>
-<ul>
-<li><strong>Stake:</strong> it's completely up to you what staking approach you want to take. We've kept it simple, and are just using a 'to win' strategy. Each bet aims to win $10 on that runner at the curret odds. The formula divides $10 by the current available best back odds (cell I8 for the first runner) minus one to get the stake required to win $10. This goes in column BC (BC8 for the first runner). We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
-</ul>
-<p><code>=IF(10/(I8-1)&lt;0,"",10/(I8-1))</code></p>
 <div class="admonition info">
 <p class="admonition-title">Note:</p>
-<p>The IF statement in here is purely to keep our document clean of clutter when there are cells that are not populated with runners. A similar effect to IFERROR, if Cymatic Trader hasn't populated cell I8 with a number higher than 0, then dont populate this cell at all (I8 will only be populated if there is an applicable runner in the market).</p>
+<p>The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are cells that are not populated with runners. A similar effect to IFERROR, if Cymatic Trader hasn't populated cell A8 with a runner name, then dont populate this cell at all.</p>
 </div>
+<p><code>=IF(A8=0,"",I8)</code></p>
+<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel4.jpg" /></p>
+<ul>
+<li><strong>Stake:</strong> it's completely up to you what staking approach you want to take. We've kept it simple, and are just using a 'to win' strategy. Each bet aims to win whatever has been defined in cell E5 of the 'RUNNERS' tab on that runner at the curret odds. The formula divides our variable by the current available best back odds (cell I8 for the first runner) minus one to get the stake required to win what we have defined. This goes in column BC (BC8 for the first runner). We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
+</ul>
+<p><code>=IF(A8=0,"",ToWin/(I8-1))</code></p>
 <p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel5.jpg" /></p>
 <hr />
 <h3 id="-selecting-markets">- Selecting markets<a class="headerlink" href="#-selecting-markets" title="Permanent link">&para;</a></h3>

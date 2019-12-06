@@ -53,7 +53,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 !!! info "Cell names used in this tutorial"
      - **Fav** refers to cell C4 in the 'OPTIONS' worksheet
 
-     - **CurrentBMP** refers to cell AF8 in the 'Bet Angel' worksheet where the overrounds are calculated
+     - **CurrentBMP** refers to cell AF8 in the 'BET ANGEL' worksheet where the overrounds are calculated
 
      - **BMP** refers to cell C3 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
 
@@ -63,7 +63,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
      - **MaxTime** refers to cell E2 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
 
-     - **InPlay** refers to cell G1 in the 'Bet Angel' worksheet. Bet Angel will populate a status in this cell such as "In Play" or "Suspended"
+     - **InPlay** refers to cell G1 in the 'BET ANGEL' worksheet. Bet Angel will populate a status in this cell such as 'In Play' or 'Suspended'
 
      - **TakeSP** refers to cell C5 in the 'OPTIONS' worksheet which allows you to change a single value more easily, alongside other values for the global command
 
@@ -105,7 +105,7 @@ Once it's established what each selection's rank is, we then check if that rank 
 "")
 ```
 
-- **TimeTillJump < MaxTime and > MinTime min:** check whether the seconds left on the countdown are smaller than what is defined in the OPTIONS worksheet, cell C2 and greater than 'OPTIONS' worksheet, cell E2, as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 (named 'TimeTillJump')in the 'SETTINGS' sheet, where we've already done the calculations for you.
+- **TimeTillJump < MaxTime and > MinTime min:** check whether the seconds left on the countdown are smaller than what is defined in cell C2 and greater than cell E2 in the 'OPTIONS' worksheet (named 'MinTime' and 'MaxTime' respectively), as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 (named 'TimeTillJump')in the 'SETTINGS' worksheet, where we've already done the calculations for you.
 
 ``` excel hl_lines="4 5"
 =IF(
@@ -133,7 +133,7 @@ Once it's established what each selection's rank is, we then check if that rank 
 "")
 ```
 
-- **InPlay:** checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. InPlay refers to G1 in the 'Bet Angel' worksheet, if this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. 
+- **InPlay:** checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. InPlay refers to G1 in the 'BET ANGEL' worksheet, if this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. 
 
 ``` excel hl_lines="7"
 =IF(
@@ -147,7 +147,7 @@ Once it's established what each selection's rank is, we then check if that rank 
 "")
 ```
 
-- **Result:** if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.
+- **Result:** if the statement above is true, the formula returns 'BACK', at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.
 
 ``` excel hl_lines="8 9"
 =IF(
@@ -161,7 +161,7 @@ Once it's established what each selection's rank is, we then check if that rank 
 "")
 ```
 
-- **Convert bets to Betfair Starting Price:** Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell C5 from the 'OPTIONS' worksheet. This formula goes in cell L6 of the 'Bet Angel' worksheet, and once it's triggered the bets will automatically convert. 
+- **Convert bets to Betfair Starting Price:** Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell C5 from the 'OPTIONS' worksheet. This formula goes in cell L6 of the 'BET ANGEL' worksheet, and once it's triggered the bets will automatically convert. 
 
 ``` excel hl_lines="1"
 =IF(TimeTillJump < TakeSP, "TAKE_SP_ALL", "")
@@ -200,15 +200,18 @@ You need to copy/paste these three formulas into the relevant cell on each green
 
 ![Automating a market favourite strategy with Bet Angel](./img/BetAngelMarketFavouriteExcel1.png)
 
-- **Odds:** as we said we're putting the bet up initially at odds of 1000, so this is a simple one.
+- **Odds:** as we said we're putting the bet up initially at odds of 1000, so this is a simple one. 
 
-```1000```
+!!! info "Note:" 
+    The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are no runners in column B. A similar effect to IFERROR, if Bet Angel hasn't populated cell B9 with a runner name, then dont populate this cell at all.
+
+```=IF(B9="","","1000")```
 
 ![Automating a market favourite strategy with Bet Angel](./img/BetAngelMarketFavouriteExcel2.png)
 
 - **Stake:** it's completely up to you what staking approach you want to take. We're keeping it simple and using flat staking here, so will just place $10 on each runner. This goes in column N (N9 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
-```10```
+```=IF(B9="","","10")```
 
 ![Automating a market favourite strategy with Bet Angel](./img/BetAngelMarketFavouriteExcel3.png)
 

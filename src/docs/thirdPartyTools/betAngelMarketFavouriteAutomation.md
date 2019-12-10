@@ -3,9 +3,9 @@
 ---
 ## Automating a market favourite strategy using Bet Angel Pro
 
-Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of back them.
+Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of backing them.
 
-Building on our [previous articles](../betAngelRatingsAutomation/), we're using the spreadsheet functionality available in Bet Angel Pro to implement this strategy. If you haven't already we'd recommend going back and having a read of [this article](../betAngelRatingsAutomation/), as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at automation@betfair.com.au with your feedback and opinions. 
+Building on our [previous articles](../betAngelBetsmartRatingsAutomation/), we're using the spreadsheet functionality available in Bet Angel Pro to implement this strategy. If you haven't already we'd recommend going back and having a read of [this article](../betAngelBetsmartRatingsAutomation/), as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at automation@betfair.com.au with your feedback and opinions. 
 
 --- 
 ## - The plan
@@ -30,7 +30,7 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 ---
 ###- Writing your rules
 
-As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. 
+As with any automated strategy, one of the most important steps is deciding what logical approach you want to take and writing rules that suit. 
 
 We're using a [customised version of the default Bet Angel template Excel sheet](./assets/BetAngel_MarketFavouriteAutomation.xls) to implement our strategy, so it can make betting decisions based on the favourites being shown in the market. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. 
 
@@ -41,8 +41,9 @@ This is how we used Excel to implement our set of rules.
 
 In short, we want to back runners when:
 
-- the selection's available to back price (the blue box on the Exchange) is either the lowest or second lowest in the market - the top two market favourites 
-- the scheduled event start time is less than 2 minutes away 
+- the selection's available to back price (Column G) is either the lowest or second lowest in the market - the top two market favourites with the ability to easily change this
+- the scheduled event start time is less and greater than what we specify
+- Back market percentage is less than a certain value that we choose
 - the event isn't in play 
 
 ###- Using cell references to simplify formulas
@@ -51,21 +52,22 @@ Throughout this tutorial, we'll be referencing certain cells with custom names t
 keep on top of more complex strategies that require long formaulas to implement.
  
 !!! info "Cell names used in this tutorial"
-     - **Fav** refers to cell C4 in the 'OPTIONS' worksheet
 
-     - **CurrentBMP** refers to cell AF8 in the 'BET ANGEL' worksheet where the overrounds are calculated
+    - **Fav** refers to cell C4 in the 'OPTIONS' worksheet
 
-     - **BMP** refers to cell C3 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
+    - **Overrounds1, Overrounds2 and Overrounds3** refers to cell AF8 in the 'BET ANGEL', 'BET ANGEL 2' and 'BET ANGEL 3' worksheets repectively, where the overrounds are calculated. Each worksheet needs to contain their own formula calculations as they will each be working off different markets
 
-     - **TimeTillJump** refers to cell E4 in the 'SETTINGS' worksheet 
+    - **UserOverround** refers to cell C3 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
 
-     - **MinTime** refers to cell C2 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
+    - **TimeTillJump1, TimeTillJump2 and TimeTillJump3** refers to cell E9, E13 and E17 in the 'SETTINGS' worksheet respectively. Just like the overrounds, each worksheet needs their own TimeTillJump calculation - one for each market
 
-     - **MaxTime** refers to cell E2 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
+    - **MinTime** refers to cell C2 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
 
-     - **InPlay** refers to cell G1 in the 'BET ANGEL' worksheet. Bet Angel will populate a status in this cell such as 'In Play' or 'Suspended'
+    - **MaxTime** refers to cell E2 in the 'OPTIONS' worksheet which allows you to change a single value that will automatically update the formulas for all runners
 
-     - **TakeSP** refers to cell C5 in the 'OPTIONS' worksheet which allows you to change a single value more easily, alongside other values for the global command
+    - **InPlay1, InPlay2, InPlay3** refers to cell G1 in the 'BET ANGEL', 'BET ANGEL 2' and 'BET ANGEL 3' worksheets respectively. Bet Angel will populate a status in these worksheet cells such as "In Play" or "Suspended" for each market
+
+    - **TakeSP** refers to cell C5 in the 'OPTIONS' worksheet which allows you to change a single value more easily.
 
 
 
@@ -74,17 +76,18 @@ keep on top of more complex strategies that require long formaulas to implement.
 ``` excel tab="Multi line"
 =IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
-        TimeTillJump < MaxTime,
-        TimeTillJump > MinTime,
-        CurrentBMP<BMP,
-        ISBLANK(InPlay)),
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump1 < MaxTime,
+        TimeTillJump1 > MinTime,
+        Overrounds1<UserOverrounds,
+        ISBLANK(InPlay1)),
     "BACK",
 "")
+
 ```
 
 ``` excel tab="Single line"
-=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,TimeTillJump < MaxTime,TimeTillJump > MinTime,CurrentBMP<BMP,ISBLANK(InPlay)),"BACK","")
+=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,TimeTillJump1 < MaxTime,TimeTillJump1 > MinTime,Overrounds1<UserOverrounds,ISBLANK(InPlay1)),"BACK","")
 ```
 
 Stepping through each step:
@@ -96,53 +99,53 @@ Once it's established what each selection's rank is, we then check if that rank 
 ``` excel hl_lines="3"
 =IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
-        TimeTillJump < MaxTime,
-        TimeTillJump > MinTime,
-        CurrentBMP<BMP,
-        ISBLANK(InPlay)),
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump1 < MaxTime,
+        TimeTillJump1 > MinTime,
+        Overrounds1<UserOverrounds,
+        ISBLANK(InPlay1)),
     "BACK",
 "")
 ```
 
-- **TimeTillJump < MaxTime and > MinTime min:** check whether the seconds left on the countdown are smaller than what is defined in cell C2 and greater than cell E2 in the 'OPTIONS' worksheet (named 'MinTime' and 'MaxTime' respectively), as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 (named 'TimeTillJump')in the 'SETTINGS' worksheet, where we've already done the calculations for you.
+- **TimeTillJump1 < MaxTime and > MinTime:** check whether the seconds left on the countdown are smaller than what is defined in cell C2 and greater than cell E2 in the 'OPTIONS' worksheet (named 'MinTime' and 'MaxTime' respectively), as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E4 (named 'TimeTillJump1')in the 'SETTINGS' worksheet, where we've already done the calculations for you.
 
 ``` excel hl_lines="4 5"
 =IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
-        TimeTillJump < MaxTime,
-        TimeTillJump > MinTime,
-        CurrentBMP<BMP,
-        ISBLANK(InPlay)),
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump1 < MaxTime,
+        TimeTillJump1 > MinTime,
+        Overrounds1<UserOverrounds,
+        ISBLANK(InPlay1)),
     "BACK",
 "")
 ```
 
-- **BMP:** checking whether the event overrounds are less than the specific value that can be changed from cell C3 in the 'OPTIONS' worksheet
+- **Overrounds1 < UserOverrounds:** checking whether the market overrounds are less than the specific value that is specified in cell C3 of the 'OPTIONS' worksheet
 
 ``` excel hl_lines="6"
 =IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
-        TimeTillJump < MaxTime,
-        TimeTillJump > MinTime,
-        CurrentBMP<BMP,
-        ISBLANK(InPlay)),
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump1 < MaxTime,
+        TimeTillJump1 > MinTime,
+        Overrounds1<UserOverrounds,
+        ISBLANK(InPlay1)),
     "BACK",
 "")
 ```
 
-- **InPlay:** checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. InPlay refers to G1 in the 'BET ANGEL' worksheet, if this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. 
+- **InPlay1:** checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. InPlay refers to G1 in the 'BET ANGEL' worksheet, if this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. 
 
 ``` excel hl_lines="7"
 =IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
-        TimeTillJump < MaxTime,
-        TimeTillJump > MinTime,
-        CurrentBMP<BMP,
-        ISBLANK(InPlay)),
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump1 < MaxTime,
+        TimeTillJump1 > MinTime,
+        Overrounds1<UserOverrounds,
+        ISBLANK(InPlay1)),
     "BACK",
 "")
 ```
@@ -152,20 +155,66 @@ Once it's established what each selection's rank is, we then check if that rank 
 ``` excel hl_lines="8 9"
 =IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
-        TimeTillJump < MaxTime,
-        TimeTillJump > MinTime,
-        CurrentBMP<BMP,
-        ISBLANK(InPlay)),
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump1 < MaxTime,
+        TimeTillJump1 > MinTime,
+        Overrounds1<UserOverrounds,
+        ISBLANK(InPlay1)),
     "BACK",
 "")
 ```
 
-- **Convert bets to Betfair Starting Price:** Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell C5 from the 'OPTIONS' worksheet. This formula goes in cell L6 of the 'BET ANGEL' worksheet, and once it's triggered the bets will automatically convert. 
+!!! info "updating the trigger for 'BET ANGEL 2' and 'Bet ANGEL 3' worksheets"
 
-``` excel hl_lines="1"
-=IF(TimeTillJump < TakeSP, "TAKE_SP_ALL", "")
+     You will need to ensure that the reference names for Overrounds, TimeTillJump and InPlay are changed so that they are referencing the cells that are applicable for those specific worksheets. Forgetting to do this can lead to the automation working off information from the wrong market.  
+
+
+- **Trigger for 'BET ANGEL 2' worksheet:** Note that Overrounds has been changed to Overrounds2, TimeTillJump1 to TimeTillJump2 and InPlay1 to InPlay2
+
+``` excel hl_lines="5 6 7 8"
+=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump2 < MaxTime,
+        TimeTillJump2 > MinTime,
+        Overrounds2<UserOverrounds,
+        ISBLANK(InPlay2)),
+    "BACK",
+"")
 ```
+
+- **Trigger for 'BET ANGEL 3' worksheet:** Note that Overrounds has been changed to Overrounds3, TimeTillJump1 to TimeTillJump3 and InPlay1 to InPlay3
+
+``` excel hl_lines="5 6 7 8"
+=IF(
+    AND(
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump2 < MaxTime,
+        TimeTillJump2 > MinTime,
+        Overrounds2<UserOverrounds,
+        ISBLANK(InPlay2)),
+    "BACK",
+"")
+
+```     
+
+
+- **Convert bets to Betfair Starting Price:** Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell C5 from the 'OPTIONS' worksheet. This formula goes in cell L6 of the 'BET ANGEL' worksheet, and once it's triggered the bets will automatically convert. Remember, just like the main trigger, each worksheet's global command will need to be updated to reference its respective TimeTillJump calculation. 
+
+-- 'BET ANGEL' worksheet global command formula
+    ``` excel hl_lines="1"
+    =IF(TimeTillJump1 < TakeSP, "TAKE_SP_ALL", "")
+    ```
+
+-- 'BET ANGEL 2' worksheet global command formula
+    ``` excel hl_lines="1"
+    =IF(TimeTillJump2 < TakeSP, "TAKE_SP_ALL", "")
+    ```
+
+-- 'BET ANGEL 3' worksheet global command formula
+    ``` excel hl_lines="1"
+    =IF(TimeTillJump3 < TakeSP, "TAKE_SP_ALL", "")
+    ```
 
 !!! info "Excel functions"
 
@@ -185,17 +234,17 @@ You need to copy/paste these three formulas into the relevant cell on each green
 ``` excel tab="Multi line"
 =IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
-        TimeTillJump < MaxTime,
-        TimeTillJump > MinTime,
-        CurrentBMP<BMP,
-        ISBLANK(InPlay)),
+        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,
+        TimeTillJump1 < MaxTime,
+        TimeTillJump1 > MinTime,
+        Overrounds1<UserOverrounds,
+        ISBLANK(InPlay1)),
     "BACK",
 "")
 ```
 
 ``` excel tab="Single line"
-=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G67,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,TimeTillJump < MaxTime,TimeTillJump > MinTime,CurrentBMP<BMP,ISBLANK(InPlay)),"BACK","")
+=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) < Fav+1,TimeTillJump1 < MaxTime,TimeTillJump1 > MinTime,Overrounds1<UserOverrounds,ISBLANK(InPlay1)),"BACK","")
 ```
 
 ![Automating a market favourite strategy with Bet Angel](./img/BetAngelMarketFavouriteExcel1.png)
@@ -215,11 +264,9 @@ You need to copy/paste these three formulas into the relevant cell on each green
 
 ![Automating a market favourite strategy with Bet Angel](./img/BetAngelMarketFavouriteExcel3.png)
 
-- **Global Command:** this is what triggers the open bets to convert to BSP, and only goes in one cell, L6. As soon as the countdown timer reaches less than 60 seconds this will fire. 
+- **Global Command:** this is what triggers the open bets to convert to BSP, and only goes in one cell, L6. As soon as the countdown timer reaches less than 60 seconds this will fire. As mentioned above, remember to update the formula for each worksheet.
 
-'''
-=IF(TimeTillJump < TakeSP, "TAKE_SP_ALL", "")
-'''
+```=IF(TimeTillJump1 < TakeSP, "TAKE_SP_ALL", "")```
 
 ![Automating a market favourite strategy with Bet Angel](./img/BetAngelMarketFavouriteExcel4.png)
 
@@ -232,7 +279,7 @@ The process is effectively the same from here on as for our previously automated
 
 We've put together a litte video walk through to help make this process easier. 
 
-<iframe width="760" height="515" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="700" height="455" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 ###- Selecting markets
@@ -261,8 +308,9 @@ Open the 'Excel' tab in Guardian, then use the browse functionality to choose th
 
 Once you've set your spreadsheet set up and you're comfortable using Bet Angel Pro it should only take a number of seconds to load your markets and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.
 
-*Note: We appreciate it's obvious, but you will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.*
-
+!!! info "Note:" 
+    You will need to leave your computer up and running for the duration of the chosen markets, as the program needs the computer to be 'awake' to be able to run.
+    
 ---
 ## Bet Angel features
 

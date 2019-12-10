@@ -1,4 +1,4 @@
-# Bet Angel: Kelly Criterion staking
+# Bet Angel Pro: Kelly Criterion staking
 
 ---
 ## Automating a ratings based strategy using Bet Angel Pro

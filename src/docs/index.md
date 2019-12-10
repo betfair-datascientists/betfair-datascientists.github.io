@@ -49,7 +49,6 @@ We’re putting together a collection of articles on how to use some of these th
 
 - [Bet Angel Professional](/thirdPartyTools/betAngel/betAngel)
     - [Ratings automation](/thirdPartyTools/betAngelRatingsAutomation)
-    - [Multiple market ratings](/thirdPartyTools/BetAngelMultipleMarketRatings)
     - [Market favourite automation](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
     - [Tipping automation](/thirdPartyTools/betAngelTippingAutomation)
     - [Automating simultaneous markets](/thirdPartyTools/betAngelSimultaneousMarkets)
@@ -61,12 +60,6 @@ We’re putting together a collection of articles on how to use some of these th
 
 - [Cymatic Trader](/thirdPartyTools/CymaticTrader/CymaticTrader)
     - [Ratings automation](/thirdPartyTools/cymaticTraderRatingsAutomation)
-
-- [BF Bot Manager](/thirdPartyTools/BfBotManager/BfBotManager)
-    - [Double or Bust](/thirdPartyTools/BfBotManagerAutomation.md)
-
-- [MarketFeeder Pro](/thirdPartyTools/MarketFeeder/MarketFeeder)
-    - [2-6 Staking](/thirdPartyTools/MarketFeeder2_6Staking.md)
 ---
 ### Data modelling 
 

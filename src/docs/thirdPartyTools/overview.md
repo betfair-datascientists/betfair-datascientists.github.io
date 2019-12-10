@@ -13,7 +13,7 @@ If you have any suggestions for new tutorials / improvements please reach out to
 ---
 # Links to third party Tools
 
-[Bet Angel Pro](https://www.betangel.com/) // [Gruss](https://www.gruss-software.co.uk/) // [Market Feeder](https://marketfeeder.co.uk/) // [Cymatic Trader](http://www.cymatic.co.uk/) // [BF Bot Manager](https://www.bfbotmanager.com/)
+[Bet Angel Pro](https://www.betangel.com/) // [Gruss](https://www.gruss-software.co.uk/) // [Market Feeder](https://marketfeeder.co.uk/) // [Cymatic Trader](http://www.cymatic.co.uk/) 
 
 ---
 # Disclaimer

@@ -1,4 +1,4 @@
-# Bet Angel: Tipping automation
+# Bet Angel Pro: Tipping automation
 
 ---
 ## Automating a (non-ratings based) tipping strategy using Bet Angel Pro
@@ -20,7 +20,7 @@ After digging around on [Bet Angel's forum](https://www.betangel.com/forum) and 
 
 If you want to follow along and try this approach yourself you'll need to download [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/) and sign up for either a subscription or at least a test period. They have a [14 day free trial](https://www.betangel.com/trial/) that's valuable for establishing whether this tool will do what you want it to for your specific strategy. 
 
-!!! note "Resources"
+!!! info "Resources"
     - Tips: [Betfair Data Scientists' Racing Prediction Model](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/)
     - Rules: [rule file](./assets/BetAngelTippingRule.baf), based on [Bet Angel Automation - Horse racing - Pre off : Back or Lay at Betfair SP Guardian Automation Bot](https://www.betangel.com/forum/viewtopic.php?f=53&t=11668)
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)

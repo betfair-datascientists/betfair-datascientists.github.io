@@ -1204,7 +1204,7 @@
 <h2 id="-the-plan">- The plan<a class="headerlink" href="#-the-plan" title="Permanent link">&para;</a></h2>
 <p>Bet Angel Pro's 'Guardian' feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what we've used for the automation here, incorporating the thoroughbred racing ratings into the auotmation. </p>
 <p>We'll step through how we went about getting Bet Angel Pro to place bets using the <a href="https://www.betfair.com.au/hub/horse-racing-tips/#today">Betfair's Data Scientists' thoroughbred ratings model</a>. Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program to run and be able to walk away. You'll also be able to use this approach to automate using your own ratings. </p>
-<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelHubHorseRatings.png" /></p>
+<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/HubHorseRatings.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Resources</p>
 <ul>
@@ -1222,10 +1222,10 @@
 <hr />
 <h3 id="-downloading-formatting-ratings">- Downloading &amp; formatting ratings<a class="headerlink" href="#-downloading-formatting-ratings" title="Permanent link">&para;</a></h3>
 <p>Here we're using the <a href="https://www.betfair.com.au/hub/horse-racing-tips/#today">Betfair's Data Scientists' thoroughbred ratings model</a> for horse racing but alternatively you can follow the same process using the <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">Betfair's Data Scientists' Greyhound Ratings Model</a> which is also available on the hub. When there are ratings made available, you will have the options to download them as a CSV or JSON file. For this tutorial, we'll go ahead and download the ratings as a CSV file. </p>
-<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelHubRatings.png" /></p>
+<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/RatingsHub.png" /></p>
 <p>Once we've downloaded the ratings, we'll go ahead and open up the files in Excel and copy the contents (Excluding the column headers) from cell A2, across all applicable columns which in this example is column N. Make sure to copy all rows that has data in them. </p>
-<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsCSVData.png" /></p>
-<p>Copy the ratings data over to the <a href="../assets/BetAngel_ThoroughbredRatingsAutomation.xls">customised Bet Angel template Excel sheet</a> 'RATINGS' worksheet, being sure that cell A2 is selected when pasting the data. In the Excel template that we've provided, we've coloured the cells which should be populated by the ratings data as green. </p>
+<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/RatingsCSVData.png" /></p>
+<p>Copy the ratings data over to the <a href="../assets/BetAngel_ThoroughbredRatingsAutomation.xls">customised Bet Angel template Excel sheet</a> 'RATINGS' worksheet, being sure that cell A2 is selected when pasting the data. In the Excel template that we've provided, we've coloured the cells green where the data should be populated.</p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsWorksheet.png" /></p>
 <hr />
 <h3 id="-writing-your-rules">- Writing your rules<a class="headerlink" href="#-writing-your-rules" title="Permanent link">&para;</a></h3>
@@ -1296,7 +1296,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </div>
 <p>Stepping through each step:</p>
 <ul>
-<li><strong>Checking market odds based on back or lay bet type:</strong> Here we're checking which bet type we've chosen from the dropdown box in the 'RATINGS' worksheet (cell F5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.</li>
+<li><strong>Checking market odds based on back or lay bet type:</strong> Here we're checking which bet type we've chosen from the dropdown box in the 'SETTINGS' worksheet (cell I5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.</li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1312,7 +1312,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div>
 
 <ul>
-<li><strong>Back market percentage (BMP) is less than what we define (UserBMP):</strong> Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'RATINGS' worksheet. <a href="https://www.betfair.com.au/hub/understanding-over-round/">Additional information relating to over-rounds can be found on the Hub.</a></li>
+<li><strong>Back market percentage (Overrounds1) is less than what we define (UserOverround):</strong> Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'RATINGS' worksheet. <a href="https://www.betfair.com.au/hub/understanding-over-round/">Additional information relating to over-rounds can be found on the Hub.</a></li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1328,7 +1328,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div>
 
 <ul>
-<li><strong>Time until the jump is less than what we define:</strong> Check whether the seconds left on the countdown timer are less than what we define in cell F3 in the 'RATINGS' worksheet. This one's a bit complicated, as the time is actually returned as a percentage of a 24-hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E2 of the 'SETTINGS' worksheet (named 'TimeTillJump1'), where we've already done the calculations for you. </li>
+<li><strong>Time until the jump is less than what we define:</strong> Check whether the seconds left on the countdown timer are less than what we define in cell F3 in the 'SETTINGS' worksheet. This one's a bit complicated, as the time is actually returned as a percentage of a 24-hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E2 of the 'SETTINGS' worksheet (named 'TimeTillJump1'), where we've already done the calculations for you. </li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
@@ -1422,7 +1422,6 @@ keep on top of more complex strategies that require long formaulas to implement.
 <li><a href="https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2">IF statement:</a> IF(if this is true, do this, else do this)</li>
 <li><a href="https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9">AND statement:</a> AND(this is true, and so is this, and so is this) - returns true or false</li>
 <li><a href="https://support.office.com/en-us/article/use-and-and-or-to-test-a-combination-of-conditions-e1ed88d7-1de3-4422-ae41-45291a69f9e1">And Or statement:</a> checks that the statement meets more than one condition. If this OR that, then do the following. </li>
-<li><a href="https://support.office.com/en-us/article/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1">VLOOKUP:</a> looking up a value from a table based on the value you pass in</li>
 <li><a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">Absolute references:</a> if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. </li>
 </ul>
 </div>
@@ -1458,14 +1457,14 @@ keep on top of more complex strategies that require long formaulas to implement.
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Note:</p>
-<p>The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are no runners in column B. A similar effect to IFERROR, if Bet Angel hasn't populated cell B9 with a runner name, then dont populate this cell at all.</p>
+<p>The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are no runners in column B. A similar effect to IFERROR, if Bet Angel hasn't populated cell B9 with a runner name, then dont populate this cell at all. </p>
 </div>
 <p><code>=IF(B9="","",G9)</code></p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel2.png" /></p>
 <ul>
 <li><strong>Stake:</strong> It's completely up to you what staking approach you want to take. We've kept it simple and are just using a 'to win / to lose' strategy. Each bet aims to win whatever value has been entered in the 'SETTINGS' worksheet on that runner at the current odds if the bet type has been set to BACK. If the bet type has been changed to LAY, then the stake becomes the liability - again, easily changed in the 'SETTINGS' worksheet. We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
 </ul>
-<p><code>=IF(B9="","",stake/(G9-1))</code></p>
+<p><code>=IF(B9="","",IF(BACKLAY="BACK", stake/(G9-1),stake*(H9/(H9-1))-stake))</code></p>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel3.png" /></p>
 <hr />
 <h2 id="-connecting-to-bet-angel">- Connecting to Bet Angel<a class="headerlink" href="#-connecting-to-bet-angel" title="Permanent link">&para;</a></h2>

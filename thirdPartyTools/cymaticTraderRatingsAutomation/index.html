@@ -534,8 +534,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#automating-a-ratings-based-strategy-using-cymatic-trader" title="Automating a ratings based strategy using Cymatic Trader" class="md-nav__link">
-    Automating a ratings based strategy using Cymatic Trader
+  <a href="#automating-a-thoroughbred-ratings-strategy-using-cymatic-trader" title="Automating a thoroughbred ratings strategy using Cymatic Trader" class="md-nav__link">
+    Automating a thoroughbred ratings strategy using Cymatic Trader
   </a>
   
 </li>
@@ -556,8 +556,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-finding-formatting-ratings" title="- Finding &amp; formatting ratings" class="md-nav__link">
-    - Finding &amp; formatting ratings
+  <a href="#-downloading-formatting-ratings" title="- Downloading &amp; formatting ratings" class="md-nav__link">
+    - Downloading &amp; formatting ratings
   </a>
   
 </li>
@@ -967,8 +967,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#automating-a-ratings-based-strategy-using-cymatic-trader" title="Automating a ratings based strategy using Cymatic Trader" class="md-nav__link">
-    Automating a ratings based strategy using Cymatic Trader
+  <a href="#automating-a-thoroughbred-ratings-strategy-using-cymatic-trader" title="Automating a thoroughbred ratings strategy using Cymatic Trader" class="md-nav__link">
+    Automating a thoroughbred ratings strategy using Cymatic Trader
   </a>
   
 </li>
@@ -989,8 +989,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#-finding-formatting-ratings" title="- Finding &amp; formatting ratings" class="md-nav__link">
-    - Finding &amp; formatting ratings
+  <a href="#-downloading-formatting-ratings" title="- Downloading &amp; formatting ratings" class="md-nav__link">
+    - Downloading &amp; formatting ratings
   </a>
   
 </li>
@@ -1089,19 +1089,18 @@
                 
                 <h1 id="cymatic-trader-ratings-automation">Cymatic Trader: Ratings automation<a class="headerlink" href="#cymatic-trader-ratings-automation" title="Permanent link">&para;</a></h1>
 <hr />
-<h2 id="automating-a-ratings-based-strategy-using-cymatic-trader">Automating a ratings based strategy using Cymatic Trader<a class="headerlink" href="#automating-a-ratings-based-strategy-using-cymatic-trader" title="Permanent link">&para;</a></h2>
-<p>Ratings are the basis for a lot of betting strategies, but they can be particularly painful and time-consuming to implement manually. This makes them ideal for automation, where you use a program to place bets on your behalf while you get on with other things. </p>
-<p>Just like Bet Angle and Gruss, Cymatic Trader has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what we've used here to automate these ratings. There are so many different ways to use this part of Cymatic Trader and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#117;&#116;&#111;&#109;&#97;&#116;&#105;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#97;&#117;&#116;&#111;&#109;&#97;&#116;&#105;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> with your feedback and opinions. </p>
+<h2 id="automating-a-thoroughbred-ratings-strategy-using-cymatic-trader">Automating a thoroughbred ratings strategy using Cymatic Trader<a class="headerlink" href="#automating-a-thoroughbred-ratings-strategy-using-cymatic-trader" title="Permanent link">&para;</a></h2>
+<p>Using ratings from reputable sources can be a great way to increase your wagering IQ. In this tutorial, we'll be following a similar process to the ratings tutorials for Bet Angel and Gruss, but here we'll be using the ratings for thoroughbreds, created by the data science team at Betfair and incorporate them into our automation in Cymatic Trader. </p>
+<p>Cymatic Trader has a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what we've used here to automate these ratings. There are so many different ways to use this part of Cymatic Trader and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us on <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#117;&#116;&#111;&#109;&#97;&#116;&#105;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#97;&#117;&#116;&#111;&#109;&#97;&#116;&#105;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> with your feedback and opinions. </p>
 <hr />
 <h2 id="-the-plan">- The plan<a class="headerlink" href="#-the-plan" title="Permanent link">&para;</a></h2>
-<p>We're using the <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">Greyhound Ratings Model</a> put together by some of my Data Scientist colleagues. This model creates ratings for Victorian greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so we're going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Cymatic Trader has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what we've used for the automation here. </p>
-<p>Here we'll step through how we went about getting Cymatic Trader to place bets using the ratings from <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">Betfair's Data Scientists' Greyhound Ratings Model</a>. Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program running and be able to walk away.</p>
-<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/BetAngelRatingsHub.png" /></p>
+<p>We'll step through how we went about getting Cymatic Trader to place bets using the <a href="https://www.betfair.com.au/hub/horse-racing-tips/#today">Betfair's Data Scientists' thoroughbred ratings model</a>. Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program to run and be able to walk away. You'll also be able to use this approach to automate using your own ratings. </p>
+<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/HubHorseRatings.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Resources</p>
 <ul>
-<li>Ratings: <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">Betfair Data Scientists' Greyhound Ratings Model</a></li>
-<li>Rules: <a href="../assets/CT_Ratings_Automation_Tutorial.xlsx">here's the spreadsheet</a> I set up with my macros and rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings </li>
+<li>Ratings: <a href="https://www.betfair.com.au/hub/horse-racing-tips/#today">Betfair's Data Scientists' thoroughbred ratings model</a></li>
+<li>Rules: <a href="../assets/CT_Ratings_Automation_Tutorial.xlsx">here's the spreadsheet</a> We set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings </li>
 <li>Tool: <a href="http://www.cymatic.co.uk/">Cymatic Trader</a></li>
 </ul>
 </div>
@@ -1111,23 +1110,26 @@
 Once you open the program, you will see an Excel icon which is where we will link our spreadsheet to Cymatic Trader </p>
 <p><img alt="Automating a rating strategy with Cymatic Trader" src="../img/CTRatingsUI.jpg" /></p>
 <hr />
-<h3 id="-finding-formatting-ratings">- Finding &amp; formatting ratings<a class="headerlink" href="#-finding-formatting-ratings" title="Permanent link">&para;</a></h3>
-<p>Here we're using the <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">ratings shared by our Data Scientists on the Hub</a>. This makes for a bit of prep work, copying the list of runners and their rating into an Excel spreadsheet. As a minimum you'll need a list of runner names (including the runner number followed by a full stop, i.e. 1. Runner Name) in one column and their rating in another in an Excel sheet. </p>
-<p>If you have a list of ratings already in a spreadsheet that's even better - you'll be able to tweak the Excel formulas to work with whatever format your data is in.</p>
-<p>Wherever your ratings come from, you'll need to include them in the spreadsheet you're using to interact with Cymatic Trader. Here we're using a <a href="../assets/CT_Ratings_Automation_Tutorial.xlsx">spreadsheet we edited for this strategy</a>, and we've included a tab called RUNNERS where you can copy in the runner names and ratings.</p>
-<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel1.jpg" /></p>
+<h3 id="-downloading-formatting-ratings">- Downloading &amp; formatting ratings<a class="headerlink" href="#-downloading-formatting-ratings" title="Permanent link">&para;</a></h3>
+<p>Here we're using the <a href="https://www.betfair.com.au/hub/horse-racing-tips/#today">Betfair's Data Scientists' thoroughbred ratings model</a> for horse racing but alternatively you can follow the same process using the <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">Betfair's Data Scientists' Greyhound Ratings Model</a> which is also available on the hub. When there are ratings made available, you will have the options to download them as a CSV or JSON file. For this tutorial, we'll go ahead and download the ratings as a CSV file. </p>
+<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/RatingsHub.png" /></p>
+<p>Once we've downloaded the ratings, we'll go ahead and open up the files in Excel and copy the contents (Excluding the column headers) from cell A2, across all applicable columns which in this example is column N. Make sure to copy all rows that has data in them. </p>
+<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/RatingsCSVData.png" /></p>
+<p>Copy the ratings data over to the <a href="../assets/CT_Ratings_Automation_Tutorial.xlsx">customised Cymatic Trader template Excel sheet</a> 'RATINGS' worksheet, being sure that cell A2 is selected when pasting the data. In the Excel template that we've provided, we've coloured the cells green where the data should be populated. </p>
+<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CymaticRatingsWorksheet.png" /></p>
 <hr />
 <h3 id="-writing-your-rules">- Writing your rules<a class="headerlink" href="#-writing-your-rules" title="Permanent link">&para;</a></h3>
 <p>As with any automated strategy, one of the most important steps is deciding what logical approach you want to take, and writing rules that suit. </p>
-<p>We're using a <a href="../assets/CT_Ratings_Automation_Tutorial.xlsx">customised version of the default Cymatic Trader template Excel sheet</a> to implement our strategy, so it can make betting decisions based on our ratings. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. </p>
+<p>We're using a <a href="../assets/CT_Ratings_Automation_Tutorial.xlsx">customised Cymatic Trader template Excel sheet</a> to implement our strategy, so it can make betting decisions based on our ratings. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. </p>
 <p>This is how we used Excel to implement our set of rules. </p>
 <h3 id="-trigger-to-place-bet">- Trigger to place bet<a class="headerlink" href="#-trigger-to-place-bet" title="Permanent link">&para;</a></h3>
-<p>In short, we want to back runners when:</p>
+<p>In short, we want to back or lay runners when:</p>
 <ul>
-<li>the available to back price is better than the rating for that runner by a variable percentage</li>
-<li>they have a rating less than a variable that we choose</li>
-<li>the scheduled event start time is less than variable that we choose </li>
-<li>the event isn't in play </li>
+<li>The available to back price is greater than the rating for that runner, then we will back the runner</li>
+<li>The available to back price is less than the rating for that runner, then we will lay the runner</li>
+<li>Back market percentage is less than a certain value that we choose</li>
+<li>The scheduled event start time is less than a certain number of seconds that we choose</li>
+<li>The event isn't in play </li>
 </ul>
 <h3 id="-using-cell-references-to-simplify-formulas">- Using cell references to simplify formulas<a class="headerlink" href="#-using-cell-references-to-simplify-formulas" title="Permanent link">&para;</a></h3>
 <p>Throughout this tutorial, we'll be referencing certain cells with custom names that will make it easier to understand and follow the formulas as we progress. This is an especially effective method to
@@ -1136,22 +1138,28 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p class="admonition-title">Cell names used in this tutorial</p>
 <ul>
 <li>
-<p><strong>TimeTillJump</strong> refers to cell E4 in the 'SETTINGS' sheet.</p>
+<p><strong>Ratings</strong> refers to the entire Column I in the 'RATINGS' worksheet</p>
 </li>
 <li>
-<p><strong>MyTime</strong> refers to cell E2 in the 'RUNNERS' sheet which we can easily change and it will update the formulas for all runners in a market.</p>
+<p><strong>RunnerName</strong> refers to the entire column H in the 'RATINGS' worksheet</p>
 </li>
 <li>
-<p><strong>BMP</strong> refers to cell E3 in the 'RUNNERS' worksheet which we can easily change and it will update the formulas for all runners in a market.</p>
+<p><strong>Overrounds</strong> refers to cell BJ7 in the 'CYMATIC'worksheet, where the overrounds for the current market are calculated. </p>
 </li>
 <li>
-<p><strong>Rating</strong> refers to cell E4 in the 'RUNNERS' worksheet that we can easily change.</p>
+<p><strong>UserOverround</strong> refers to cell G4 in the 'SETTINGS' worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
 </li>
 <li>
-<p><strong>InPlayCheck</strong> refers to cell E4 in the 'Cymatic' worksheet.</p>
+<p><strong>TimeTillJump</strong> refers to cell D4 in the 'SETTINGS' worksheet</p>
 </li>
 <li>
-<p><strong>ToWin</strong> refers to cell E5 in the 'RUNNERS' worksheet</p>
+<p><strong>UserTimeTillJump</strong> refers to cell G3 in the 'SETTINGS' worksheet which allows you to change a single value that will automatically update the formulas for all runners</p>
+</li>
+<li>
+<p><strong>InPlay</strong> refers to cell E4 in the 'CYMATIC' worksheet. Cymatic Trader will populate a 'FALSE' flag leading up to the jump</p>
+</li>
+<li>
+<p><strong>BACKLAY</strong> refers to cell G5 in the 'SETTINGS' worksheet which allows you to easily switch between Back and Lay bet typers via a drop-down box and will automatically update the formulas for all runners</p>
 </li>
 </ul>
 </div>
@@ -1159,169 +1167,135 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
-    IF(
-        AND(
-           A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,
-            SecondsToOff &lt; BetTime,
-            InPlayCheck=&quot;FALSE&quot;),
-        &quot;BACK&quot;,
-        &quot;&quot;
-    ),
-&quot;&quot;)
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        OR(
+             AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),
+        Overrounds&lt;UserOverround,
+        TimeTillJump&lt;UserTimeTillJump,
+        InPlay=&quot;FALSE&quot;),
+        BACKLAY,
+    &quot;&quot;
+)
 </pre></div></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(IF(AND(A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTime,InPlayCheck=&quot;FALSE&quot;),&quot;BACK&quot;,&quot;&quot;),&quot;&quot;)
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),Overrounds&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay=&quot;FALSE&quot;),BACKLAY,&quot;&quot;)
 </pre></div></div>
 </div>
 <p>Stepping through each step:</p>
-<p><strong>Price &gt; rating * percentage offset:</strong> check whether the available to back price is better than the runner's rating multiplied  by a percentage - We do this by using the runner name in column B and looking up the corresponding rating for that runner from the RUNNERS sheet. </p>
-<p><strong>Percentage offset:</strong> There are lots of different approaches you can take to this. We're using a variable percentage offset, as we appreciate that we might want a different percentage better than the rating, depending on the price - i.e. 10% better than <span><span class="MathJax_Preview">2 (</span><script type="math/tex">2 (</script></span>2.20) is very different than 10% better than a <span><span class="MathJax_Preview">20 shot (</span><script type="math/tex">20 shot (</script></span>22.20), so here we're using a vlookup table to determine the percentage better than the rating that we want based on the current odds. Here are the 'ranges' of prices to percentage offset that we're using - you can disregard this and just change it to be a set percentage (i.e. *1.1 hardcoded into the formula) or just use your rating straight without an offset, or edit the ranges in the SETTINGS tab to suit your opinions. This table takes the 'min' odds for the range in the left column, and the number you want to multiply the odds by in the right column - so for 15% you'd multiply by 1.15 etc. </p>
-<p><strong>Viewing your values:</strong> We've added columns (AF:AH) to show the rating, percentage offset and minimum acceptable odds for each runner, to add some reassurance that the spreadsheet is pulling the values we want it to.</p>
-<table>
-<thead>
-<tr>
-<th align="left">ODDS RANGE</th>
-<th align="left">% MULTIPLIER</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">1 - 6</td>
-<td align="left">1.1 (10%)</td>
-</tr>
-<tr>
-<td align="left">6 - 9</td>
-<td align="left">1.15 (15%)</td>
-</tr>
-<tr>
-<td align="left">9 - 15</td>
-<td align="left">1.2 (20%)</td>
-</tr>
-<tr>
-<td align="left">15 - 20</td>
-<td align="left">1.3 (30%)</td>
-</tr>
-<tr>
-<td align="left">20 - 35</td>
-<td align="left">1.4 (40%)</td>
-</tr>
-<tr>
-<td align="left">35 +</td>
-<td align="left">1.5 (50%)</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Rating &lt; 5:</strong> check whether the runner's rating is less than 5 (because we only want to bet on the favourite few runners). </li>
-</ul>
-<div class="admonition info">
-<p class="admonition-title">Formula Reference:</p>
-<ul>
-<li>'RunnerNames' refers to column A in the RUNNERS sheet.</li>
-<li>'RunnerRatings' refers to column B in the RUNNERS sheet.</li>
-<li>'Rating' refers to cell E6 in the RUNNERS sheet which when changed by the user, will update the formula for all runners in a market.</li>
-</ul>
-</div>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
-    IF(
-        AND(
-           A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-<span style="background-color: #ffffcc">            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))&lt;Rating,
-</span>            SecondsToOff &lt; BetTime,
-            InPlayCheck=&quot;FALSE&quot;),
-        &quot;BACK&quot;,
-        &quot;&quot;
-    ),
-&quot;&quot;)
+<p><strong>Checking market odds based on back or lay bet type:</strong> Here we're checking which bet type we've chosen from the dropdown box in the 'SETTINGS' worksheet (cell G5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        OR(
+<span style="background-color: #ffffcc">             AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),
+</span><span style="background-color: #ffffcc">             AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),
+</span>        Overrounds&lt;UserOverround,
+        TimeTillJump&lt;UserTimeTillJump,
+        InPlay=&quot;FALSE&quot;),
+        BACKLAY,
+    &quot;&quot;
+)
 </pre></div>
 
 <ul>
-<li><strong>TimeTillJump &lt; MyTime:</strong> check whether the seconds left on the countdown are smaller than our chosen variable (Cell E3 in the 'RUNNERS' worksheet). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 of the 'SETTINGS' worksheet, where we've already done the calculations for you. </li>
+<li><strong>Back market percentage (Overrounds) is less than what we define (UserOverround):</strong> Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'RATINGS' worksheet. <a href="https://www.betfair.com.au/hub/understanding-over-round/">Additional information relating to over-rounds can be found on the Hub.</a></li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
-    IF(
-        AND(
-           A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,
-<span style="background-color: #ffffcc">            SecondsToOff &lt; BetTime,
-</span>            InPlayCheck=&quot;FALSE&quot;),
-        &quot;BACK&quot;,
-        &quot;&quot;
-    ),
-&quot;&quot;)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        OR(
+             AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),
+<span style="background-color: #ffffcc">        Overrounds&lt;UserOverround,
+</span>        TimeTillJump&lt;UserTimeTillJump,
+        InPlay=&quot;FALSE&quot;),
+        BACKLAY,
+    &quot;&quot;
+)
 </pre></div>
 
 <ul>
-<li><strong>Not in play:</strong> Checking whether the event has gone in play - as odds change so much in the run I only want to use this strategy pre-play. If this cell is populated with a 'FALSE' message it means it's safe to place bets. I appreciate that greyhound races don't go in play, but I wanted this check in place anyway in case I (or you!) wanted to use a version of this strategy on horse racing in the future. </li>
+<li><strong>Time until the jump is less than what we define:</strong> Check whether the seconds left on the countdown timer are less than what we define in cell G3 in the 'SETTINGS' worksheet. This one's a bit complicated, as the time is actually returned as a percentage of a 24-hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell D4 of the 'SETTINGS' worksheet (named 'TimeTillJump'), where we've already done the calculations for you. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
-    IF(
-        AND(
-           A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,
-            SecondsToOff &lt; BetTime,
-<span style="background-color: #ffffcc">            InPlayCheck=&quot;FALSE&quot;),
-</span>        &quot;BACK&quot;,
-        &quot;&quot;
-    ),
-&quot;&quot;)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        OR(
+             AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),
+        Overrounds&lt;UserOverround,
+<span style="background-color: #ffffcc">        TimeTillJump&lt;UserTimeTillJump,
+</span>        InPlay=&quot;FALSE&quot;),
+        BACKLAY,
+    &quot;&quot;
+)
 </pre></div>
 
 <ul>
-<li><strong>Result:</strong> if the statement above is true, the formula returns "BACK", at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
+<li><strong>Not in play:</strong> checking whether the event has gone in play - as odds change so much in the run we only want to use this strategy pre-play. If this cell is populated with the 'FALSE' flag, it's safe to place bets. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
-    IF(
-        AND(
-           A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,
-            SecondsToOff &lt; BetTime,
-            InPlayCheck=&quot;FALSE&quot;),
-<span style="background-color: #ffffcc">        &quot;BACK&quot;,
-</span>        &quot;&quot;
-    ),
-&quot;&quot;)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        OR(
+             AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),
+        Overrounds&lt;UserOverround,
+        TimeTillJump&lt;UserTimeTillJump,
+<span style="background-color: #ffffcc">        InPlay=&quot;FALSE&quot;),
+</span>        BACKLAY,
+    &quot;&quot;
+)
+</pre></div>
+
+<ul>
+<li><strong>Result:</strong> if the statement above is true, the formula returns either a "BACK" or "LAY" depending on what has been selected from the 'SETTINGS' worksheet, at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
+</ul>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        OR(
+             AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),
+        Overrounds&lt;UserOverround,
+        TimeTillJump&lt;UserTimeTillJump,
+        InPlay=&quot;FALSE&quot;),
+<span style="background-color: #ffffcc">        BACKLAY,
+</span><span style="background-color: #ffffcc">    &quot;&quot;
+</span>)
 </pre></div>
 
 <div class="admonition info">
 <p class="admonition-title">Excel functions</p>
 <ul>
-<li><a href="https://support.office.com/en-us/article/iferror-function-c526fd07-caeb-47b8-8bb6-63f3e417f611">IFERROR:</a> If an error is returned, then don't show anything</li>
 <li><a href="https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2">IF statement:</a> IF(if this is true, do this, else do this)</li>
 <li><a href="https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9">AND statement:</a> AND(this is true, and so is this, and so is this) - returns true or false</li>
-<li><a href="https://support.office.com/en-us/article/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1">VLOOKUP:</a> looking up a value from a table based on the value you pass in</li>
+<li><a href="https://support.office.com/en-us/article/use-and-and-or-to-test-a-combination-of-conditions-e1ed88d7-1de3-4422-ae41-45291a69f9e1">And Or statement:</a> checks that the statement meets more than one condition. If this OR that, then do the following. </li>
 <li><a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">Absolute references:</a> if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. </li>
 </ul>
 </div>
 <hr />
 <h3 id="-preparing-the-spreadsheet">- Preparing the spreadsheet<a class="headerlink" href="#-preparing-the-spreadsheet" title="Permanent link">&para;</a></h3>
-<p>You need to copy/paste these three formulas into the relevant cell on each row in the 'Command' (BA) column. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your <a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">relative and absolute references straight</a>. </p>
+<p>You need to copy/paste the trigger formula into the relevant cells on each row in the 'Command' (BA) column. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your <a href="https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9">relative and absolute references straight</a>. </p>
 <ul>
 <li><strong>Trigger bet rule:</strong> this is the bet trigger Excel formula we created earlier, and it needs to go in column BA (BA8 for the first runner).</li>
 </ul>
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(
-    IF(
-        AND(
-           A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))&lt;Rating,
-            SecondsToOff &lt; BetTime,
-            InPlayCheck=&quot;FALSE&quot;),
-        &quot;BACK&quot;,
-        &quot;&quot;
-    ),
-&quot;&quot;)
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+    AND(
+        OR(
+             AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),
+        Overrounds&lt;UserOverround,
+        TimeTillJump&lt;UserTimeTillJump,
+        InPlay=&quot;FALSE&quot;),
+        BACKLAY,
+    &quot;&quot;
+)
 </pre></div></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(IF(AND(A8 &gt; (INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))*VLOOKUP(INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)),OddsAndMultipliers,2)),
-            INDEX(RunnerRatings,MATCH(A8,RunnerNames,0))&lt;Rating,SecondsToOff &lt; BetTime,InPlayCheck=&quot;FALSE&quot;),&quot;BACK&quot;,&quot;&quot;),&quot;&quot;)
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY = &quot;BACK&quot;, (H8 &gt; (INDEX(Ratings,MATCH(A8,RunnerName,0))))),AND(BACKLAY = &quot;LAY&quot;, (H8 &lt; (INDEX(Ratings,MATCH(A8,RunnerName,0)))))),Overrounds&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay=&quot;FALSE&quot;),BACKLAY,&quot;&quot;)
 </pre></div></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel3.jpg" /></p>
@@ -1336,20 +1310,20 @@ INDEX(RunnerRatings,MATCH(A8,RunnerNames,0)) &lt;Rating,SecondsToOff &lt; BetTim
 <p><code>=IF(A8=0,"",I8)</code></p>
 <p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel4.jpg" /></p>
 <ul>
-<li><strong>Stake:</strong> it's completely up to you what staking approach you want to take. We've kept it simple, and are just using a 'to win' strategy. Each bet aims to win whatever has been defined in cell E5 of the 'RUNNERS' tab on that runner at the curret odds. The formula divides our variable by the current available best back odds (cell I8 for the first runner) minus one to get the stake required to win what we have defined. This goes in column BC (BC8 for the first runner). We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
+<li><strong>Stake:</strong> It's completely up to you what staking approach you want to take. We've kept it simple and are just using a 'to win / to lose' strategy. Each bet aims to win whatever value has been entered in the 'SETTINGS' worksheet on that runner at the current odds if the bet type has been set to BACK. If the bet type has been changed to LAY, then the stake becomes the liability - again, easily changed in the 'SETTINGS' worksheet. We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
 </ul>
-<p><code>=IF(A8=0,"",ToWin/(I8-1))</code></p>
+<p><code>=IF(A8="","",IF(BACKLAY="BACK", stake/(I8-1), stake*(J8/(J8-1))-stake))</code></p>
 <p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsExcel5.jpg" /></p>
 <hr />
 <h3 id="-selecting-markets">- Selecting markets<a class="headerlink" href="#-selecting-markets" title="Permanent link">&para;</a></h3>
 <p>We used the Navigator menu in Cymatic Trader to navigate to the tracks we had ratings for.
 If you wanted to include all horse or greyhound races for a day you could use the 'autopilot' tool to do this more efficiently. 
 Once you've chosen the races you're interested in tick the 'autopilot' button and Gruss will automatically cycle through each market for you. </p>
-<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/CTRatingsUI2.jpg" /></p>
+<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsUI2.jpg" /></p>
 <hr />
 <h3 id="-linking-the-spreadsheet">- Linking the spreadsheet<a class="headerlink" href="#-linking-the-spreadsheet" title="Permanent link">&para;</a></h3>
 <p>Click the Excel icon in the main tool bar and then 'connect Excel' from the drop down menu. From here, you will be able to point Cymatic Trader in the direction of where your Excel sheet is located on your computer. Make sure 'Enable Trigger Commands' is selected and 'Clear status cells when selecting different market" if you are automating a series of markets. </p>
-<p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/CTRatingsUI3.jpg" /></p>
+<p><img alt="Automating a ratings based strategy with Cymatic Trader" src="../img/CTRatingsUI3.jpg" /></p>
 <hr />
 <h2 id="and-youre-set">And you're set!<a class="headerlink" href="#and-youre-set" title="Permanent link">&para;</a></h2>
 <p>Once you've set your spreadsheet set up and you're comfortable using Cymatic Trader it should only take a number of seconds to load your markets and ratings up and set your strategy running for the day. Just make sure you have all of the app settings correctly selected before you leave the bot to run, as some of them reset by default when you turn the program off.</p>

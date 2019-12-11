@@ -13,7 +13,7 @@ Bet Angel Pro's 'Guardian' feature has the capacity to let you create spreadshee
 
 We'll step through how we went about getting Bet Angel Pro to place bets using the [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/horse-racing-tips/#today). Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program to run and be able to walk away. You'll also be able to use this approach to automate using your own ratings. 
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelHubHorseRatings.png)
+![Automating a ratings based strategy with Bet Angel](./img/HubHorseRatings.png)
 
 !!! info "Resources"
     - Ratings: [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/horse-racing-tips/#today)
@@ -35,19 +35,19 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 
 Here we're using the [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/horse-racing-tips/#today) for horse racing but alternatively you can follow the same process using the [Betfair's Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) which is also available on the hub. When there are ratings made available, you will have the options to download them as a CSV or JSON file. For this tutorial, we'll go ahead and download the ratings as a CSV file. 
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelHubRatings.png)
+![Automating a ratings based strategy with Bet Angel](./img/RatingsHub.png)
 
 Once we've downloaded the ratings, we'll go ahead and open up the files in Excel and copy the contents (Excluding the column headers) from cell A2, across all applicable columns which in this example is column N. Make sure to copy all rows that has data in them. 
 
-![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsCSVData.png)
+![Automating a ratings based strategy with Bet Angel](./img/RatingsCSVData.png)
 
-Copy the ratings data over to the [customised Bet Angel template Excel sheet](./assets/BetAngel_ThoroughbredRatingsAutomation.xls) 'RATINGS' worksheet, being sure that cell A2 is selected when pasting the data. In the Excel template that we've provided, we've coloured the cells which should be populated by the ratings data as green. 
+Copy the ratings data over to the [customised Bet Angel template Excel sheet](./assets/BetAngel_ThoroughbredRatingsAutomation.xls) 'RATINGS' worksheet, being sure that cell A2 is selected when pasting the data. In the Excel template that we've provided, we've coloured the cells green where the data should be populated.
 
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsWorksheet.png)
 
 ---
-###- Writing your rules
+### - Writing your rules
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take and writing rules that suit. 
 
@@ -56,7 +56,7 @@ We're using an [customised Bet Angel template Excel sheet](./assets/BetAngel_Tho
 This is how we used Excel to implement our set of rules. 
 
 
-###- Trigger to place bet
+### - Trigger to place bet
 
 In short, we want to back or lay runners when:
 
@@ -67,7 +67,7 @@ In short, we want to back or lay runners when:
 - The event isn't in play 
 
 
-###- Using cell references to simplify formulas
+### - Using cell references to simplify formulas
 
 Throughout this tutorial, we'll be referencing certain cells with custom names that will make it easier to understand and follow the formulas as we progress. This is an especially effective method to
 keep on top of more complex strategies that require long formaulas to implement.
@@ -117,7 +117,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
 Stepping through each step:
 
-- **Checking market odds based on back or lay bet type:** Here we're checking which bet type we've chosen from the dropdown box in the 'RATINGS' worksheet (cell F5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.
+- **Checking market odds based on back or lay bet type:** Here we're checking which bet type we've chosen from the dropdown box in the 'SETTINGS' worksheet (cell I5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.
 
 ``` excel hl_lines="4 5"
 =IF(
@@ -133,7 +133,7 @@ Stepping through each step:
 )
 ```
 
-- **Back market percentage (BMP) is less than what we define (UserBMP):** Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'RATINGS' worksheet. [Additional information relating to over-rounds can be found on the Hub.](https://www.betfair.com.au/hub/understanding-over-round/)
+- **Back market percentage (Overrounds1) is less than what we define (UserOverround):** Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'RATINGS' worksheet. [Additional information relating to over-rounds can be found on the Hub.](https://www.betfair.com.au/hub/understanding-over-round/)
 
 ``` excel hl_lines="6"
 =IF(
@@ -150,7 +150,7 @@ Stepping through each step:
 ```
 
 
-- **Time until the jump is less than what we define:** Check whether the seconds left on the countdown timer are less than what we define in cell F3 in the 'RATINGS' worksheet. This one's a bit complicated, as the time is actually returned as a percentage of a 24-hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E2 of the 'SETTINGS' worksheet (named 'TimeTillJump1'), where we've already done the calculations for you. 
+- **Time until the jump is less than what we define:** Check whether the seconds left on the countdown timer are less than what we define in cell F3 in the 'SETTINGS' worksheet. This one's a bit complicated, as the time is actually returned as a percentage of a 24-hour day, which you need to convert into positive or negative seconds. [You can read about the formula here](https://www.betangel.com/forum/viewtopic.php?t=7657) or just keep it simple by referencing the value in cell E2 of the 'SETTINGS' worksheet (named 'TimeTillJump1'), where we've already done the calculations for you. 
 
 ``` excel hl_lines="7"
 =IF(
@@ -247,11 +247,10 @@ Stepping through each step:
     - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true, do this, else do this)
     - [AND statement:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true, and so is this, and so is this) - returns true or false
     - [And Or statement:](https://support.office.com/en-us/article/use-and-and-or-to-test-a-combination-of-conditions-e1ed88d7-1de3-4422-ae41-45291a69f9e1) checks that the statement meets more than one condition. If this OR that, then do the following. 
-    - [VLOOKUP:](https://support.office.com/en-us/article/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1) looking up a value from a table based on the value you pass in
     - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. 
 
 ---
-###- Preparing the spreadsheet
+### - Preparing the spreadsheet
 
 You need to copy/paste this formula into the relevant cell on each green row - we copied ours into all of the coloured cells in the sheet, just in case the fields are bigger in future events such as the Melbourne Cup. Excel is clever enough to automatically update the relative links in the formulas, so you should be able to copy/paste the same formula into each cell as long as you've got your [relative and absolute references straight](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9). 
 
@@ -280,7 +279,7 @@ You need to copy/paste this formula into the relevant cell on each green row - w
 - **Odds:** initially we were using the runner's rating as the price, but we got a bet placement error for some of the selections - eventually we realised that the odds the bet's being placed at need to be [valid Betfair 'ticks'](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements). For simplicity's sake we're now just using the currently available back odds (cell G9 for the first runner). This goes in column M (M9 for the first runner). Another option would be to create a look up table that rounded your rating to the nearest ['tick' price](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements) - if you do this, please do [send us](mailto:automation@betfair.com.au) through your formula and we'll add it to this tutorial. 
 
 !!! info "Note:" 
-    The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are no runners in column B. A similar effect to IFERROR, if Bet Angel hasn't populated cell B9 with a runner name, then dont populate this cell at all.
+    The IF statement in both the odds and stake cells is purely to keep our document clean of clutter when there are no runners in column B. A similar effect to IFERROR, if Bet Angel hasn't populated cell B9 with a runner name, then dont populate this cell at all. 
 
 ```=IF(B9="","",G9)```
 
@@ -288,14 +287,14 @@ You need to copy/paste this formula into the relevant cell on each green row - w
 
 - **Stake:** It's completely up to you what staking approach you want to take. We've kept it simple and are just using a 'to win / to lose' strategy. Each bet aims to win whatever value has been entered in the 'SETTINGS' worksheet on that runner at the current odds if the bet type has been set to BACK. If the bet type has been changed to LAY, then the stake becomes the liability - again, easily changed in the 'SETTINGS' worksheet. We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
-```=IF(B9="","",stake/(G9-1))
+```=IF(B9="","",IF(BACKLAY="BACK", stake/(G9-1),stake*(H9/(H9-1))-stake))
 ```
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel3.png)
 
 ---
 
-##- Connecting to Bet Angel
+## - Connecting to Bet Angel
 
 ### Video walk through
 
@@ -303,7 +302,7 @@ We've put together a litte video walk through to help make this process easier.
 
 <iframe width="700" height="455" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-###- Selecting markets
+### - Selecting markets
 
 We used the markets menu in the 'Guardian' tool to navigate to Australian tracks that we have ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.
 
@@ -318,7 +317,7 @@ You do this by clicking on the 'start time' column heading until the races are i
 The Excel spreadsheet used in this tutorial is created in a way that allows it to link multiple markets at the same time. Take a look at the [Betfair automating simultaneous markets tutorial](/thirdPartyTools/betAngelSimultaneousMarkets/) on the hub which will step you through the process so you can take advantage of this feature. 
 
 ---
-###- Linking the spreadsheet
+### - Linking the spreadsheet
 
 Open the 'Excel' tab in 'Guardian', then use the browse functionality to choose the spreadsheet you've been working on. From there, click on 'open workbook', then make sure you have 'connect', 'auto-bind Bet Angel sheets and 'auto-clear Bet Angel bindings' all selected. You also need to make sure that the first race has the 'Bet Angel' tab selected in the 'Excel sheet' column - from there it will then automatically update this for each race as one finishes and the next one begins. 
 
@@ -337,17 +336,17 @@ Once you've set your spreadsheet set up and you're comfortable using Bet Angel P
 
 Here are some Bet Angel features that you'll need to consider.
 
-###- Multiple bets/clearing status cells
+### - Multiple bets/clearing status cells
 The Bet Angel spreadsheet won't let a bet go on if there is a value in column 0 for the runner, the 'status' column, to avoid accidentally placing multiple bets unintentionally. As soon as a bet triggers, Bet Angel automatically changes this cell to 'PLACING', then to 'PLACED' when the bet is confirmed as having been received by Betfair. In this strategy we only want to place one bet per runner, but if you wanted to place multiple bets on a runner you'd need to have a play with the macros to clear the 'status' cells more regularly, and instead reference the number of bets placed/matched in columns T:AE. Careful here though, as the values in these columns sometimes take a little time to update, and we've had more bets go on than we intended when using these cells as our check, as bet trigger re-evaluated before columns T:AE had updated. 
 
 As we want to use each worksheet over and over again for multiple races, and the 'status' cells don't clear automatically, we've created a macro in [the Excel sheet](./assets/BetAngel_MultipleMarketRatings.xls) that auto-clears the status cells whenever a new race loads. It also clears the cells if they say 'FAILED', as we found that if there were internet network issues or similar it would fail once then not try to place the bet again. This was based on some logic we found in [a forum discussion on Bet Angel](https://www.betangel.com/forum/viewtopic.php?f=31&t=1879&start=10). If you're feeling adventurous you can have a play with the macros and edit them to suit your specific needs. 
 
-###- Turning off bet confirmation
+### - Turning off bet confirmation
 Unless you want to manually confirm each individual bet you're placing (which you definitely might want to do until you feel comfortable that the program and strategy are behaving as you expect) you'll need to go into the 'Settings' tab on the main Bet Angel Pro program, click 'Edit settings', go to the 'Behaviour' tab, and remove the tick at the top next to 'Confirm Bets?' - you can then save these settings. Bet Angel allows you to save different settings configurations as profiles. Depending what you are wanting to use Bet Angel for each time you open it up, you can select the appropriate setting profile to suit your needs without having to go through and change them every time. 
 
 ![Bet Angel settings](./img/BetAngelSettings.png)
 
-###- Editing the spreadsheet
+### - Editing the spreadsheet
 The spreadsheet really doesn't like it when you try and edit it 'live', so make sure you untick 'connect' on the Excel tab in Guardian before you make any changes, save the sheet, then tick 'connect' again once you've finished your edits. 
 
 ---

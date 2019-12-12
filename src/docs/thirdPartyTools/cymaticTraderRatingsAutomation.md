@@ -192,9 +192,9 @@ Stepping through each step:
 
 !!! info "Excel functions"
 
-    - [IF statement:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true, do this, else do this)
-    - [AND statement:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true, and so is this, and so is this) - returns true or false
-    - [And Or statement:](https://support.office.com/en-us/article/use-and-and-or-to-test-a-combination-of-conditions-e1ed88d7-1de3-4422-ae41-45291a69f9e1) checks that the statement meets more than one condition. If this OR that, then do the following. 
+    - [IF function:](https://support.office.com/en-us/article/if-function-69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) IF(if this is true, do this, else do this)
+    - [AND function:](https://support.office.com/en-us/article/and-function-5f19b2e8-e1df-4408-897a-ce285a19e9d9) AND(this is true, and so is this, and so is this) - returns true or false
+    - [AND OR function:](https://support.office.com/en-us/article/use-and-and-or-to-test-a-combination-of-conditions-e1ed88d7-1de3-4422-ae41-45291a69f9e1) checks that the statement meets more than one condition. If this OR that, then do the following. 
     - [Absolute references:](https://support.office.com/en-us/article/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9) if you're copy/pasting formulas it's important that you make links absolute when you don't want the cell being referenced to change relative to the new cell the formula is being pasted into. You do this by putting a $ in front of the parts of the reference you don't want to 'move'. 
 
 ---
@@ -243,7 +243,7 @@ You need to copy/paste the trigger formula into the relevant cells on each row i
 ![Automating a ratings based strategy with Cymatic Trader](./img/CTRatingsExcel5.jpg)
 
 ---
-###- Selecting markets
+### - Selecting markets
 
 We used the Navigator menu in Cymatic Trader to navigate to the tracks we had ratings for.
 If you wanted to include all horse or greyhound races for a day you could use the 'autopilot' tool to do this more efficiently. 
@@ -253,7 +253,7 @@ Once you've chosen the races you're interested in tick the 'autopilot' button an
 ![Automating a ratings based strategy with Cymatic Trader](./img/CTRatingsUI2.jpg)
 
 ---
-###- Linking the spreadsheet
+### - Linking the spreadsheet
 
 Click the Excel icon in the main tool bar and then 'connect Excel' from the drop down menu. From here, you will be able to point Cymatic Trader in the direction of where your Excel sheet is located on your computer. Make sure 'Enable Trigger Commands' is selected and 'Clear status cells when selecting different market" if you are automating a series of markets. 
 

@@ -10,15 +10,12 @@ nav:
         The Automation Hub: index.md
     - Tutorials: 
         - Tools Overview: thirdPartyTools/overview.md           
-            # - BF Bot Manager: thirdPartyTools/BfBotManager/BfBotManager.md
-            # - MarketFeeder Pro: thirdPartyTools/MarketFeeder/MarketFeeder.md
         - Bet Angel Professional: 
             - Overview - Bet Angel Pro: thirdPartyTools/betAngel/betAngel.md
             - Ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
             - Market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
             - Tipping automation: thirdPartyTools/betAngelTippingAutomation.md
             - Simultaneous markets: thirdPartyTools/betAngelSimultaneousMarkets.md
-           # - Bet Angel - Kelly Criterion staking: thirdPartyTools/betAngelKellyStake.md           
         - Gruss Betting Assistant:
             - Overview - Gruss: thirdPartyTools/Gruss/Gruss.md
             - Ratings automation: thirdPartyTools/grussRatingsAutomation.md

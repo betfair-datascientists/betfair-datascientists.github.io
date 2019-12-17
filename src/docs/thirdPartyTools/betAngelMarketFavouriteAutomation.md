@@ -5,7 +5,7 @@
 
 Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of backing them.
 
-Building on our [previous articles](../betAngelBetsmartRatingsAutomation/), we're using the spreadsheet functionality available in Bet Angel Pro to implement this strategy. If you haven't already we'd recommend going back and having a read of [this article](../betAngelBetsmartRatingsAutomation/), as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at automation@betfair.com.au with your feedback and opinions. 
+Building on our [previous articles](../betAngelRatingsAutomation/), we're using the spreadsheet functionality available in Bet Angel Pro to implement this strategy. If you haven't already we'd recommend going back and having a read of [this article](../betAngelRatingsAutomation/), as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at automation@betfair.com.au with your feedback and opinions. 
 
 --- 
 ## - The plan
@@ -19,7 +19,7 @@ Our approach here, and how we've set up the accompanying spreadsheet, backs the 
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
 
 ---
-###- Set up 
+### - Set up 
 
 Make sure you've downloaded and installed Bet Angel Pro, and signed in.
 
@@ -28,7 +28,7 @@ Once you open the program up click on the 'G' Guardian icon and open the Guardia
 ![Automating a market favourite strategy with Bet Angel](./img/BetAngeltipPro.png)
 
 ---
-###- Writing your rules
+### - Writing your rules
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take and writing rules that suit. 
 
@@ -37,7 +37,7 @@ We're using a [customised version of the default Bet Angel template Excel sheet]
 This is how we used Excel to implement our set of rules. 
 
 
-###- Trigger to place bet
+### - Trigger to place bet
 
 In short, we want to back runners when:
 
@@ -46,7 +46,7 @@ In short, we want to back runners when:
 - Back market percentage is less than a certain value that we choose
 - the event isn't in play 
 
-###- Using cell references to simplify formulas
+### - Using cell references to simplify formulas
 
 Throughout this tutorial, we'll be referencing certain cells with custom names that will make it easier to understand and follow the formulas as we progress. This is an especially effective method to
 keep on top of more complex strategies that require long formaulas to implement.

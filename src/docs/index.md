@@ -52,6 +52,7 @@ We’re putting together a collection of articles on how to use some of these th
     - [Market favourite automation](/thirdPartyTools/betAngelMarketFavouriteAutomation) 
     - [Tipping automation](/thirdPartyTools/betAngelTippingAutomation)
     - [Automating simultaneous markets](/thirdPartyTools/betAngelSimultaneousMarkets)
+	- [Kelly Criterion staking](/thirdPartyTools/betAngelKellyStake)
 
 - [Gruss Betting Assistant](/thirdPartyTools/Gruss/Gruss)
     - [Ratings automation](/thirdPartyTools/grussRatingsAutomation)

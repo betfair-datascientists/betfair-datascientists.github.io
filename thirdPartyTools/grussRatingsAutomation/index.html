@@ -606,8 +606,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../grussMarketFavouriteAutomation/" title="Market favourite automation" class="md-nav__link">
+      Market favourite automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../grusslSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
       Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussKellyStake/" title="Kelly Criterion staking" class="md-nav__link">
+      Kelly Criterion staking
     </a>
   </li>
 
@@ -1153,7 +1177,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p><strong>Ratings</strong> refers to the entire Column J in the 'RATINGS' worksheet</p>
 </li>
 <li>
-<p><strong>RunnerName</strong> refers to the entire column L in the 'RATINGS' worksheet</p>
+<p><strong>SelectionID</strong> refers to the entire column G in the 'RATINGS' worksheet</p>
 </li>
 <li>
 <p><strong>Overround</strong> refers to cell Y in the 'MARKET'worksheet, where the overrounds for the current market are calculated. </p>
@@ -1185,8 +1209,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
         InPlay=&quot;Not In Play&quot;,
@@ -1197,7 +1221,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),Overround&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay=&quot;Not In Play&quot;,MarketStatus&lt;&gt;&quot;Suspended&quot;),BACKLAY,&quot;&quot;)
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),Overround&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay=&quot;Not In Play&quot;,MarketStatus&lt;&gt;&quot;Suspended&quot;),BACKLAY,&quot;&quot;)
 </pre></div></div>
 </div>
 <p>Stepping through each step:</p>
@@ -1207,8 +1231,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-<span style="background-color: #ffffcc">             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-</span><span style="background-color: #ffffcc">             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+<span style="background-color: #ffffcc">             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+</span><span style="background-color: #ffffcc">             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
 </span>        Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
         InPlay=&quot;Not In Play&quot;,
@@ -1224,8 +1248,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
 <span style="background-color: #ffffcc">        Overround&lt;UserOverround,
 </span>        TimeTillJump&lt;UserTimeTillJump,
         InPlay=&quot;Not In Play&quot;,
@@ -1241,8 +1265,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
 <span style="background-color: #ffffcc">        TimeTillJump&lt;UserTimeTillJump,
 </span>        InPlay=&quot;Not In Play&quot;,
@@ -1258,8 +1282,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
 <span style="background-color: #ffffcc">        InPlay=&quot;Not In Play&quot;,
@@ -1275,8 +1299,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
         InPlay=&quot;Not In Play&quot;,
@@ -1292,8 +1316,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
         InPlay=&quot;Not In Play&quot;,
@@ -1324,8 +1348,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
         InPlay=&quot;Not In Play&quot;,
@@ -1336,7 +1360,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(A5,RunnerName,0))))),AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),Overround&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay=&quot;Not In Play&quot;,MarketStatus&lt;&gt;&quot;Suspended&quot;),BACKLAY,&quot;&quot;)
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),Overround&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay=&quot;Not In Play&quot;,MarketStatus&lt;&gt;&quot;Suspended&quot;),BACKLAY,&quot;&quot;)
 </pre></div></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Gruss" src="../img/GrussRatingsExcel1.PNG" /></p>
@@ -1418,13 +1442,13 @@ keep on top of more complex strategies that require long formaulas to implement.
           </a>
         
         
-          <a href="../grusslSimultaneousMarkets/" title="Simultaneous markets" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../grussMarketFavouriteAutomation/" title="Market favourite automation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Simultaneous markets
+                Market favourite automation
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

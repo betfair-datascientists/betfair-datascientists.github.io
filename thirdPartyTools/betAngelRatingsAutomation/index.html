@@ -660,8 +660,32 @@
 
 
   <li class="md-nav__item">
+    <a href="../grussMarketFavouriteAutomation/" title="Market favourite automation" class="md-nav__link">
+      Market favourite automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../grusslSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
       Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussKellyStake/" title="Kelly Criterion staking" class="md-nav__link">
+      Kelly Criterion staking
     </a>
   </li>
 
@@ -1263,7 +1287,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p><strong>Ratings</strong> refers to the entire Column I in the 'RATINGS' worksheet</p>
 </li>
 <li>
-<p><strong>RunnerName</strong> refers to the entire column H in the 'RATINGS' worksheet</p>
+<p><strong>SelectionID</strong> refers to the entire column G in the 'RATINGS' worksheet</p>
 </li>
 <li>
 <p><strong>Overrounds1, Overrounds2 and Overrounds3</strong> refers to cell AF8 in the 'BET ANGEL', 'BET ANGEL 2' and 'BET ANGEL 3' worksheets repectively, where the overrounds are calculated. Each worksheet needs to contain their own formula calculations as they will each be working off different markets. </p>
@@ -1292,8 +1316,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1&lt;UserOverround,
         TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -1303,18 +1327,19 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(B9,RunnerName,0))))),AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(B9,RunnerName,0)))))),Overrounds1&lt;UserOverround,TimeTillJump1&lt;UserTimeTillJump,ISBLANK(InPlay1)),BACKLAY,&quot;&quot;)
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),Overrounds1&lt;UserOverround,TimeTillJump1&lt;UserTimeTillJump,ISBLANK(InPlay1)),BACKLAY,&quot;&quot;)
 </pre></div></div>
 </div>
 <p>Stepping through each step:</p>
 <ul>
-<li><strong>Checking market odds based on back or lay bet type:</strong> Here we're checking which bet type we've chosen from the dropdown box in the 'SETTINGS' worksheet (cell I5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.</li>
+<li><strong>Checking market odds based on back or lay bet type:</strong> Here we're checking which bet type we've chosen from the dropdown box in the 'SETTINGS' worksheet (cell I5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings. 
+Instead of matching the runner name from the market to that which is defined in our ratings, we're using their selection ID instead. As the Selection ID is unique to each runner, it will help us eliminate any potential errors or issues. Because the ratings from the Betfair data scientists includes Selection ID, there's no additional work or mucking around to get this implemented. </li>
 </ul>
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-<span style="background-color: #ffffcc">             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-</span><span style="background-color: #ffffcc">             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+<span style="background-color: #ffffcc">             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+</span><span style="background-color: #ffffcc">             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
 </span>        Overrounds1&lt;UserOverround,
         TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -1329,8 +1354,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
 <span style="background-color: #ffffcc">        Overrounds1&lt;UserOverround,
 </span>        TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -1345,8 +1370,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1&lt;UserOverround,
 <span style="background-color: #ffffcc">        TimeTillJump1&lt;UserTimeTillJump,
 </span>        ISBLANK(InPlay1)),
@@ -1366,8 +1391,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1&lt;UserOverround,
         TimeTillJump1&lt;UserTimeTillJump,
 <span style="background-color: #ffffcc">        ISBLANK(InPlay1)),
@@ -1382,8 +1407,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1&lt;UserOverround,
         TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -1402,11 +1427,11 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
-<span style="background-color: #ffffcc">        Overrounds2&lt;UserOverround,
-</span><span style="background-color: #ffffcc">        TimeTillJump2&lt;UserTimeTillJump,
-</span><span style="background-color: #ffffcc">        ISBLANK(InPlay2)),
+             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
+<span style="background-color: #ffffcc">        Overrounds1&lt;UserOverround,
+</span><span style="background-color: #ffffcc">        TimeTillJump1&lt;UserTimeTillJump,
+</span><span style="background-color: #ffffcc">        ISBLANK(InPlay1)),
 </span>        BACKLAY,
     &quot;&quot;
 )
@@ -1418,11 +1443,11 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
-<span style="background-color: #ffffcc">        Overrounds3&lt;UserOverround,
-</span><span style="background-color: #ffffcc">        TimeTillJump3&lt;UserTimeTillJump,
-</span><span style="background-color: #ffffcc">        ISBLANK(InPlay3)),
+             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
+<span style="background-color: #ffffcc">        Overrounds1&lt;UserOverround,
+</span><span style="background-color: #ffffcc">        TimeTillJump1&lt;UserTimeTillJump,
+</span><span style="background-color: #ffffcc">        ISBLANK(InPlay1)),
 </span>        BACKLAY,
     &quot;&quot;
 )
@@ -1449,8 +1474,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1&lt;UserOverround,
         TimeTillJump1&lt;UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -1460,7 +1485,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </pre></div></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY=&quot;BACK&quot;,(G9&gt;(INDEX(Ratings,MATCH(B9,RunnerName,0))))),AND(BACKLAY=&quot;LAY&quot;,(G9&lt;(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),Overrounds1&lt;UserOverround,TimeTillJump1&lt;UserTimeTillJump,ISBLANK(InPlay1)),BACKLAY,&quot;&quot;)
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY = &quot;BACK&quot;, (G9 &gt; (INDEX(Ratings,MATCH(A9,SelectionID,0))))),AND(BACKLAY = &quot;LAY&quot;, (G9 &lt; (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),Overrounds1&lt;UserOverround,TimeTillJump1&lt;UserTimeTillJump,ISBLANK(InPlay1)),BACKLAY,&quot;&quot;)
 </pre></div></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Bet Angel" src="../img/BetAngelRatingsExcel1.png" /></p>

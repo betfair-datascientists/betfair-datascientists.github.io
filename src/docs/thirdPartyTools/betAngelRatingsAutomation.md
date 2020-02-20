@@ -76,7 +76,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
      - **Ratings** refers to the entire Column I in the 'RATINGS' worksheet
 
-     - **RunnerName** refers to the entire column H in the 'RATINGS' worksheet
+     - **SelectionID** refers to the entire column G in the 'RATINGS' worksheet
 
      - **Overrounds1, Overrounds2 and Overrounds3** refers to cell AF8 in the 'BET ANGEL', 'BET ANGEL 2' and 'BET ANGEL 3' worksheets repectively, where the overrounds are calculated. Each worksheet needs to contain their own formula calculations as they will each be working off different markets. 
 
@@ -99,8 +99,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(G9>(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY="LAY",(G9<(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1<UserOverround,
         TimeTillJump1<UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -108,23 +108,25 @@ keep on top of more complex strategies that require long formaulas to implement.
     ""
 )
 
+
 ```
 
 ``` excel tab="Single line"
-=IF(AND(OR(AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(B9,RunnerName,0))))),AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(B9,RunnerName,0)))))),Overrounds1<UserOverround,TimeTillJump1<UserTimeTillJump,ISBLANK(InPlay1)),BACKLAY,"")
+=IF(AND(OR(AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),Overrounds1<UserOverround,TimeTillJump1<UserTimeTillJump,ISBLANK(InPlay1)),BACKLAY,"")
 
 ```
 
 Stepping through each step:
 
-- **Checking market odds based on back or lay bet type:** Here we're checking which bet type we've chosen from the dropdown box in the 'SETTINGS' worksheet (cell I5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.
+- **Checking market odds based on back or lay bet type:** Here we're checking which bet type we've chosen from the dropdown box in the 'SETTINGS' worksheet (cell I5). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings. 
+Instead of matching the runner name from the market to that which is defined in our ratings, we're using their selection ID instead. As the Selection ID is unique to each runner, it will help us eliminate any potential errors or issues. Because the ratings from the Betfair data scientists includes Selection ID, there's no additional work or mucking around to get this implemented. 
 
 ``` excel hl_lines="4 5"
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(G9>(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY="LAY",(G9<(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1<UserOverround,
         TimeTillJump1<UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -139,8 +141,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(G9>(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY="LAY",(G9<(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1<UserOverround,
         TimeTillJump1<UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -156,8 +158,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(G9>(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY="LAY",(G9<(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1<UserOverround,
         TimeTillJump1<UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -179,8 +181,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(G9>(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY="LAY",(G9<(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1<UserOverround,
         TimeTillJump1<UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -195,8 +197,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(G9>(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY="LAY",(G9<(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1<UserOverround,
         TimeTillJump1<UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -215,11 +217,11 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
-        Overrounds2<UserOverround,
-        TimeTillJump2<UserTimeTillJump,
-        ISBLANK(InPlay2)),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
+        Overrounds1<UserOverround,
+        TimeTillJump1<UserTimeTillJump,
+        ISBLANK(InPlay1)),
         BACKLAY,
     ""
 )
@@ -231,11 +233,11 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
-        Overrounds3<UserOverround,
-        TimeTillJump3<UserTimeTillJump,
-        ISBLANK(InPlay3)),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
+        Overrounds1<UserOverround,
+        TimeTillJump1<UserTimeTillJump,
+        ISBLANK(InPlay1)),
         BACKLAY,
     ""
 )
@@ -260,8 +262,8 @@ You need to copy/paste this formula into the relevant cell on each green row - w
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(G9>(INDEX(Ratings,MATCH(B9,RunnerName,0))))),
-             AND(BACKLAY="LAY",(G9<(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),
+             AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),
+             AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),
         Overrounds1<UserOverround,
         TimeTillJump1<UserTimeTillJump,
         ISBLANK(InPlay1)),
@@ -271,7 +273,7 @@ You need to copy/paste this formula into the relevant cell on each green row - w
 ```
 
 ``` excel tab="Single line"
-=IF(AND(OR(AND(BACKLAY="BACK",(G9>(INDEX(Ratings,MATCH(B9,RunnerName,0))))),AND(BACKLAY="LAY",(G9<(INDEX(Ratings,MATCH(B9,RunnerName,0)))))),Overrounds1<UserOverround,TimeTillJump1<UserTimeTillJump,ISBLANK(InPlay1)),BACKLAY,"")
+=IF(AND(OR(AND(BACKLAY = "BACK", (G9 > (INDEX(Ratings,MATCH(A9,SelectionID,0))))),AND(BACKLAY = "LAY", (G9 < (INDEX(Ratings,MATCH(A9,SelectionID,0)))))),Overrounds1<UserOverround,TimeTillJump1<UserTimeTillJump,ISBLANK(InPlay1)),BACKLAY,"")
 ```
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsExcel1.png)

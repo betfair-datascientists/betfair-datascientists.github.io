@@ -72,7 +72,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
      - **Ratings** refers to the entire Column J in the 'RATINGS' worksheet
 
-     - **RunnerName** refers to the entire column L in the 'RATINGS' worksheet
+     - **SelectionID** refers to the entire column G in the 'RATINGS' worksheet
 
      - **Overround** refers to cell Y in the 'MARKET'worksheet, where the overrounds for the current market are calculated. 
 
@@ -97,8 +97,8 @@ keep on top of more complex strategies that require long formaulas to implement.
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround<UserOverround,
         TimeTillJump<UserTimeTillJump,
         InPlay="Not In Play",
@@ -109,7 +109,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 ```
 
 ``` excel tab="Single line"
-=IF(AND(OR(AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),Overround<UserOverround,TimeTillJump<UserTimeTillJump,InPlay="Not In Play",MarketStatus<>"Suspended"),BACKLAY,"")
+=IF(AND(OR(AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),Overround<UserOverround,TimeTillJump<UserTimeTillJump,InPlay="Not In Play",MarketStatus<>"Suspended"),BACKLAY,"")
 ```
 
 Stepping through each step:
@@ -121,8 +121,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround<UserOverround,
         TimeTillJump<UserTimeTillJump,
         InPlay="Not In Play",
@@ -140,8 +140,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround<UserOverround,
         TimeTillJump<UserTimeTillJump,
         InPlay="Not In Play",
@@ -159,8 +159,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround<UserOverround,
         TimeTillJump<UserTimeTillJump,
         InPlay="Not In Play",
@@ -177,8 +177,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround<UserOverround,
         TimeTillJump<UserTimeTillJump,
         InPlay="Not In Play",
@@ -195,8 +195,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround<UserOverround,
         TimeTillJump<UserTimeTillJump,
         InPlay="Not In Play",
@@ -213,8 +213,8 @@ Stepping through each step:
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround<UserOverround,
         TimeTillJump<UserTimeTillJump,
         InPlay="Not In Play",
@@ -242,8 +242,8 @@ You need to copy/paste these three formulas into the relevant cell on each runne
 =IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),
-             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),
+             AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround<UserOverround,
         TimeTillJump<UserTimeTillJump,
         InPlay="Not In Play",
@@ -254,7 +254,7 @@ You need to copy/paste these three formulas into the relevant cell on each runne
 ```
 
 ``` excel tab="Single line"
-=IF(AND(OR(AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(A5,RunnerName,0))))),AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(A5,RunnerName,0)))))),Overround<UserOverround,TimeTillJump<UserTimeTillJump,InPlay="Not In Play",MarketStatus<>"Suspended"),BACKLAY,"")
+=IF(AND(OR(AND(BACKLAY="BACK",(F5>(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),AND(BACKLAY="LAY",(F5<(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),Overround<UserOverround,TimeTillJump<UserTimeTillJump,InPlay="Not In Play",MarketStatus<>"Suspended"),BACKLAY,"")
 ```
 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsExcel1.PNG)

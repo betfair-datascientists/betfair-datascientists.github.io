@@ -54,7 +54,9 @@ We’re putting together a collection of articles on how to use some of these th
     - [Automating multiple simultaneous markets](/thirdPartyTools/betAngelSimultaneousMarkets)
 - [Gruss](http://gruss-software.co.uk)
     - [Ratings automation](/thirdPartyTools/grussRatingsAutomation)
+    - [Market favourite automation](/thirdPartyTools/grussMarketFavouriteAutomation)
     - [Automating multiple simultaneous markets](/thirdPartyTools/grusslSimultaneousMarkets)
+    
 - [Cymatic Trader](http://www.cymatic.co.uk/)
     - [Ratings automation](/thirdPartyTools/cymaticTraderRatingsAutomation)
 - [BF Bot Manager](https://www.bfbotmanager.com/)

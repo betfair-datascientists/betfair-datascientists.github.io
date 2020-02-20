@@ -27,7 +27,7 @@ If you're not familiar with the Kelly Criterion staking strategy, we recommend h
 
 ### - Recapping the strategy covered in the Bet Angel ratings automation tutorial
 
-We'll be using the same trigger strategy that's outlined in the [Bet Angel Ratings tutorial](../betAngelRatingsAutomation/) which uses the [thoroughbred ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). Whilst the trigger will remain unchanged, we'll need to make small tweaks to the stake column of the 'BET ANGEL' worksheet (column N) and we've added an additional option to the 'SETTINGS' worksheet which will allow you to choose either a half Kelly or full Kelly stake. If you havn't yet read our Bet Angel ratings tutorial, we highly recommend that you do so as to understand how the bet placement trigger works. The tutorial can be found [here](../betAngelRatingsAutomation/).
+We'll be using the same trigger strategy that's outlined in the [Bet Angel Ratings tutorial](../betAngelRatingsAutomation/) which uses the [thoroughbred ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). The trigger has been simplified in this tutorial and we'll need to make small tweaks to the stake column of the 'BET ANGEL' worksheet (column N). We've also added an additional option to the 'SETTINGS' worksheet which will allow you to choose either a half Kelly or full Kelly stake. If you havn't yet read our Bet Angel ratings tutorial, we highly recommend that you do so as to understand how the concept of the bet placement trigger works. The tutorial can be found [here](../betAngelRatingsAutomation/).
 
 ---
 ### - Set up 

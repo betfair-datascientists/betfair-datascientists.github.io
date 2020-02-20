@@ -56,10 +56,14 @@ We’re putting together a collection of articles on how to use some of these th
 
 - [Gruss Betting Assistant](/thirdPartyTools/Gruss/Gruss)
     - [Ratings automation](/thirdPartyTools/grussRatingsAutomation)
+    - [Market favourite automation](/thirdPartyTools/grussMarketFavouriteAutomation)
     - [Automating simultaneous markets](/thirdPartyTools/grusslSimultaneousMarkets)
+    - [Kelly Criterion staking](/thirdPartyTools/grussKellyStake)
 
 - [Cymatic Trader](/thirdPartyTools/CymaticTrader/CymaticTrader)
     - [Ratings automation](/thirdPartyTools/cymaticTraderRatingsAutomation)
+
+
 ---
 ### Data modelling 
 

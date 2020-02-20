@@ -20,10 +20,13 @@ nav:
         - Gruss Betting Assistant:
             - Overview - Gruss: thirdPartyTools/Gruss/Gruss.md
             - Ratings automation: thirdPartyTools/grussRatingsAutomation.md
+            - Market favourite automation: thirdPartyTools/grussMarketFavouriteAutomation.md
             - Simultaneous markets: thirdPartyTools/grusslSimultaneousMarkets.md
+            - Kelly Criterion staking: thirdPartyTools/grussKellyStake.md
         - Cymatic Trader: 
             - Overview - Cymatic Trader: thirdPartyTools/CymaticTrader/CymaticTrader.md
-            - Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md          
+            - Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md        
+
 
 
     - API:

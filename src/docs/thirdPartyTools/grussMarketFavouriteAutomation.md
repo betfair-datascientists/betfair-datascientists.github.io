@@ -15,7 +15,7 @@ Given that we're simply choosing our selections based on the market we don't nee
 Our approach here, and how we've set up the accompanying spreadsheet, backs the top two runners in the market two minutes out from the scheduled start time using the Betfair Starting Price. 
 
 !!! info "Resources"
-    - Rules: [here's the spreadsheet](./assets/Gruss_MarketFavAutomation.xls) we set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy and approach
+    - Rules: [here's the spreadsheet](./assets/Gruss_MarketFavAutomation.xlsx) we set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy and approach
     - Tool: [Gruss Betting Assistant](https://www.gruss-software.co.uk/)
 
 ---
@@ -30,7 +30,7 @@ Make sure you've downloaded and installed Gruss, and signed in.
 
 As with any automated strategy, one of the most important steps is deciding what logical approach you want to take and writing rules that suit. 
 
-We're using a [customised version of the default Gruss template Excel sheet](./assets/Gruss_MarketFavAutomation.xls) to implement our strategy, so it can make betting decisions based on the favourites being shown in the market. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. 
+We're using a [customised version of the default Gruss template Excel sheet](./assets/Gruss_MarketFavAutomation.xlsx) to implement our strategy, so it can make betting decisions based on the favourites being shown in the market. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. 
 
 This is how we used Excel to implement our set of rules. 
 

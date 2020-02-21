@@ -20,7 +20,7 @@ If you're not familiar with the Kelly Criterion staking strategy, we recommend h
     - Ratings: [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/horse-racing-tips/#today)
     - Before you start: [check out the Bet Angel Ratings tutorial](../betAngelRatingsAutomation/) 
     - Rules: [here's the spreadsheet for Bet Angel](./assets/BetAngel_Kelly.xls) we set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy
-    - Rules: [here's the spreadsheet for Gruss](./assets/Gruss_Kelly.xls)
+    - Rules: [here's the spreadsheet for Gruss](./assets/Gruss_Kelly.xlsx)
     - Understanding how the [Kelly Criterion staking strategy works](https://www.betfair.com.au/hub/staking-kelly-criterion/)
     - Tools: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/) and [Gruss Betting Assistant](http://www.gruss-software.co.uk/betfair-products/betfair-betting-assistant)
 
@@ -48,7 +48,7 @@ For Bet Angel users, Once you open the program up click on the 'G' Guardian icon
 ---
 ### - Writing your rules
 
-We're using a customised version of the Ratings tutorial template for [Bet Angel Professional](./assets/BetAngel_Kelly.xls) and [Gruss Betting Assistant](./assets/Gruss_Kelly.xls) to implement our staking strategy, so it can not only make betting decisions based on our ratings, but also calculate the stakes based on the Kelly Criterion staking strategy. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. 
+We're using a customised version of the Ratings tutorial template for [Bet Angel Professional](./assets/BetAngel_Kelly.xls) and [Gruss Betting Assistant](./assets/Gruss_Kelly.xlsx) to implement our staking strategy, so it can not only make betting decisions based on our ratings, but also calculate the stakes based on the Kelly Criterion staking strategy. Excel is an excellent tool, but it can take an investment of time to be able to use it effectively. 
 
 This is how we used Excel to implement our set of rules. 
 

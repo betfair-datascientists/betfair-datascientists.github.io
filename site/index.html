@@ -1,0 +1,1219 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
+      
+      
+        <link rel="canonical" href="https://betfair-datascientists.github.io/">
+      
+      
+        <meta name="author" content="Betfair Data Scientists">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="img/BetfairFavicon.ico">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>The Automation Hub - The Automation Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/application.9a8eeed6.css">
+      
+      
+    
+    
+      <script src="assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="assets/fonts/clarke-regular.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#accessing-our-api" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-header-nav__button md-logo">
+          
+            <img src="img/logo.svg" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              The Automation Hub
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      <div class="bf-nav md-flex__cell">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26"/>
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z"/>
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="." title="Home" class="md-tabs__link md-tabs__link--active">
+          Home
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="thirdPartyTools/overview/" title="Tutorials" class="md-tabs__link">
+          Tutorials
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="api/apiappkey/" title="API" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="historicData/dataSources/" title="Historic Data" class="md-tabs__link">
+          Historic Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="modelling/howToModel/" title="Modelling" class="md-tabs__link">
+          Modelling
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-nav__button md-logo">
+      
+        <img src="img/logo.svg" width="48" height="48">
+      
+    </a>
+    The Automation Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1" checked>
+    
+    <label class="md-nav__link" for="nav-1">
+      Home
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        The Automation Hub
+      </label>
+    
+    <a href="." title="The Automation Hub" class="md-nav__link md-nav__link--active">
+      The Automation Hub
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-our-api" title="Accessing our API" class="md-nav__link">
+    Accessing our API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historic-data" title="Historic Data" class="md-nav__link">
+    Historic Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-third-party-tools-for-automation" title="Using third party tools for automation" class="md-nav__link">
+    Using third party tools for automation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-modelling" title="Data modelling" class="md-nav__link">
+    Data modelling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspiration-information" title="Inspiration &amp; information" class="md-nav__link">
+    Inspiration &amp; information
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-extra-help" title="Need extra help?" class="md-nav__link">
+    Need extra help?
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/overview/" title="Tools Overview" class="md-nav__link">
+      Tools Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-2" type="checkbox" id="nav-2-2">
+    
+    <label class="md-nav__link" for="nav-2-2">
+      Bet Angel Professional
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-2">
+        Bet Angel Professional
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngel/betAngel/" title="Overview - Bet Angel Pro" class="md-nav__link">
+      Overview - Bet Angel Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngelbeginners/" title="Bet Angel - A beginner's guide" class="md-nav__link">
+      Bet Angel - A beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngelintermediate/" title="Bet Angel - An intermediate guide" class="md-nav__link">
+      Bet Angel - An intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngeladvanced/" title="Bet Angel - An advanced guide" class="md-nav__link">
+      Bet Angel - An advanced guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngelRatingsAutomation/" title="Ratings automation" class="md-nav__link">
+      Ratings automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngelMarketFavouriteAutomation/" title="Market favourite automation" class="md-nav__link">
+      Market favourite automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngelTippingAutomation/" title="Tipping automation" class="md-nav__link">
+      Tipping automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngelSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/betAngelKellyStake/" title="Kelly Criterion staking" class="md-nav__link">
+      Kelly Criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Gruss Betting Assistant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Gruss Betting Assistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/Gruss/Gruss/" title="Overview - Gruss" class="md-nav__link">
+      Overview - Gruss
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/grussRatingsAutomation/" title="Ratings automation" class="md-nav__link">
+      Ratings automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/grussMarketFavouriteAutomation/" title="Market favourite automation" class="md-nav__link">
+      Market favourite automation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/grusslSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/grussKellyStake/" title="Kelly Criterion staking" class="md-nav__link">
+      Kelly Criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-4" type="checkbox" id="nav-2-4">
+    
+    <label class="md-nav__link" for="nav-2-4">
+      Cymatic Trader
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-4">
+        Cymatic Trader
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/CymaticTrader/CymaticTrader/" title="Overview - Cymatic Trader" class="md-nav__link">
+      Overview - Cymatic Trader
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="thirdPartyTools/cymaticTraderRatingsAutomation/" title="Ratings automation" class="md-nav__link">
+      Ratings automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="api/apiappkey/" title="How to access the Betfair API" class="md-nav__link">
+      How to access the Betfair API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="api/apiRtutorial/" title="API tutorials in R" class="md-nav__link">
+      API tutorials in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="api/apiPythontutorial/" title="API tutorial in Python" class="md-nav__link">
+      API tutorial in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Historic Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Historic Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="historicData/dataSources/" title="Historic Data Sources" class="md-nav__link">
+      Historic Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
+      How to model the Australian Open
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/AusOpenRTutorial/" title="Aus Open R Tutorial" class="md-nav__link">
+      Aus Open R Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/AusOpenPythonTutorial/" title="Aus Open Python Tutorial" class="md-nav__link">
+      Aus Open Python Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/EPLmodelPart1/" title="EPL 01. Data acquisition & exploration" class="md-nav__link">
+      EPL 01. Data acquisition & exploration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/EPLmodelPart2/" title="EPL 02. Data preparation & feature engineering" class="md-nav__link">
+      EPL 02. Data preparation & feature engineering
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/EPLmodelPart3/" title="EPL 03. Model building & hyperparameter tuning" class="md-nav__link">
+      EPL 03. Model building & hyperparameter tuning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/EPLmodelPart4/" title="EPL 04. Weekly predictions" class="md-nav__link">
+      EPL 04. Weekly predictions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/AFLmodelPart1/" title="AFL 01. Data cleaning" class="md-nav__link">
+      AFL 01. Data cleaning
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/AFLmodelPart2/" title="AFL 02. Feature creation" class="md-nav__link">
+      AFL 02. Feature creation
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/AFLmodelPart3/" title="AFL 03. Modelling" class="md-nav__link">
+      AFL 03. Modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/AFLmodelPart4/" title="AFL 04. Weekly predictions" class="md-nav__link">
+      AFL 04. Weekly predictions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="modelling/brownlowModelTutorial/" title="Modelling the Brownlow Medal" class="md-nav__link">
+      Modelling the Brownlow Medal
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-our-api" title="Accessing our API" class="md-nav__link">
+    Accessing our API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historic-data" title="Historic Data" class="md-nav__link">
+    Historic Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-third-party-tools-for-automation" title="Using third party tools for automation" class="md-nav__link">
+    Using third party tools for automation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-modelling" title="Data modelling" class="md-nav__link">
+    Data modelling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspiration-information" title="Inspiration &amp; information" class="md-nav__link">
+    Inspiration &amp; information
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#need-extra-help" title="Need extra help?" class="md-nav__link">
+    Need extra help?
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1 style="display:none">The Automation Hub</h1>
+                
+                <p><img alt="The Automation Hub" src="/img/automationHubHero.gif" /></p>
+<p>Betfair is one of the only betting platforms in the world that demands winning clients. Unlike bookies, we don’t ban you when you succeed. We need you, and we want you to be able to keep improving your strategies so you win more. </p>
+<p>We're here to help you in your automation journey, and this site is dedicated to sharing the tools and resources you need to succeed in this journey. </p>
+<hr />
+<h3 id="accessing-our-api">Accessing our API<a class="headerlink" href="#accessing-our-api" title="Permanent link">&para;</a></h3>
+<p>As you may already know, Betfair has its own API to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software.</p>
+<p>There are lots of resources available to support you in accessing the API effectively:</p>
+<ul>
+<li><a href="/api/apiappkey">Creating &amp; activating your app key</a></li>
+<li><a href="https://betfairdevelopersupport.zendesk.com/hc/en-us">Developer Program knowledge base</a></li>
+<li><a href="http://developer.betfair.com">Dev Docs</a></li>
+<li><a href="https://forum.developer.betfair.com/">Developer Forum</a> where you can share your experiences and find out what's worked for other clients</li>
+<li><a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Exchange Sports API visualiser</a> for testing market-related queries</li>
+<li><a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/">Exchange Account API visualiser</a> for testing account-related queries</li>
+<li>Our Datascientists' repos for using <a href="/api/apiRtutorial">R</a> and <a href="/api/apiPythontutorial">Python</a> to access the API</li>
+<li><a href="https://github.com/betfair/API-NG-Excel-Toolkit">The UK’s Github repo</a> including libraries for other languages</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">API access</p>
+<p>Customers are able to access our API to embed it into their programs and automate their strategies
+If you're a programmer there are lots of resources around to help</p>
+</div>
+<hr />
+<h3 id="historic-data">Historic Data<a class="headerlink" href="#historic-data" title="Permanent link">&para;</a></h3>
+<p>We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the <a href="/historicData/dataSources">different data sources</a> if you’re not quite sure where to start. We’ve also shared some tips on learning to create <a href="/modelling/howToModel">predictive models using this data</a>, which link in with the models shared in the <a href="/modelling/EPLmodelPart1">modelling section</a>.</p>
+<ul>
+<li><a href="/historicData/dataSources">Betfair data sources</a></li>
+<li><a href="/historicData/usingHistoricDataSite">Accessing the official Historic Data site</a></li>
+<li><a href="https://historicdata.betfair.com/#/help">Historic Data FAQs &amp; sample data</a></li>
+<li><a href="https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf">Historic Data Specifications</a></li>
+<li><a href="https://historicdata.betfair.com/#/apidocs">API for downloading historic data files</a> (quicker than manually downloading)</li>
+<li><a href="https://github.com/betfair/historicdata">Sample code for using the historic data download API</a></li>
+<li><a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Exchange+Stream+API">The Stream API dev docs</a> are the best source of information for interpreting the data from the Historic Data site</li>
+<li><a href="https://promo.betfair.com/betfairsp/prices">Historic BSP csv files</a></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Historic Betfair data</p>
+<p>There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data</p>
+</div>
+<hr />
+<h3 id="using-third-party-tools-for-automation">Using third party tools for automation<a class="headerlink" href="#using-third-party-tools-for-automation" title="Permanent link">&para;</a></h3>
+<p>Whilst the following tools are not custom built for your approach, they do allow you to automate your betting strategies. You just set up specific betting conditions and let the third party application do the work for you. <a href="https://betangel.com">Bet Angel</a> and <a href="http://gruss-software.co.uk">Gruss Betting Assistant</a> are the most popular third party tools. </p>
+<p>We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.</p>
+<ul>
+<li>
+<p><a href="/thirdPartyTools/betAngel/betAngel">Bet Angel Professional</a></p>
+<ul>
+<li><a href="/thirdPartyTools/betAngelRatingsAutomation">Ratings automation</a></li>
+<li><a href="/thirdPartyTools/betAngelMarketFavouriteAutomation">Market favourite automation</a> </li>
+<li><a href="/thirdPartyTools/betAngelTippingAutomation">Tipping automation</a></li>
+<li><a href="/thirdPartyTools/betAngelSimultaneousMarkets">Automating simultaneous markets</a></li>
+<li><a href="/thirdPartyTools/betAngelKellyStake">Kelly Criterion staking</a></li>
+</ul>
+</li>
+<li>
+<p><a href="/thirdPartyTools/Gruss/Gruss">Gruss Betting Assistant</a></p>
+<ul>
+<li><a href="/thirdPartyTools/grussRatingsAutomation">Ratings automation</a></li>
+<li><a href="/thirdPartyTools/grussMarketFavouriteAutomation">Market favourite automation</a></li>
+<li><a href="/thirdPartyTools/grusslSimultaneousMarkets">Automating simultaneous markets</a></li>
+<li><a href="/thirdPartyTools/grussKellyStake">Kelly Criterion staking</a></li>
+</ul>
+</li>
+<li>
+<p><a href="/thirdPartyTools/CymaticTrader/CymaticTrader">Cymatic Trader</a></p>
+<ul>
+<li><a href="/thirdPartyTools/cymaticTraderRatingsAutomation">Ratings automation</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="data-modelling">Data modelling<a class="headerlink" href="#data-modelling" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="/modelling/howToModel">An intro to building a predictive model</a></li>
+<li><a href="/modelling/EPLmodelPart1">Open source predictive models</a> built by our in-house Data Scientists<ul>
+<li><a href="/modelling/howToModelTheAusOpen">Modelling the Aus Open</a></li>
+<li><a href="/modelling/EPLmodelPart1">EPL modelling series</a></li>
+<li><a href="/modelling/AFLmodelPart1">AFL modelling series</a></li>
+<li><a href="/modelling/brownlowModelTutorial">Brownlow modelling tutorial</a></li>
+</ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Predictive modelling</p>
+<p>Many of our most successful customers use predictive models as the basis for their betting strategies </p>
+</div>
+<hr />
+<h3 id="inspiration-information">Inspiration &amp; information<a class="headerlink" href="#inspiration-information" title="Permanent link">&para;</a></h3>
+<p>There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. </p>
+<ul>
+<li><a href="https://www.betfair.com.au/hub/better-betting/customer-insights/the-banker-a-quants-afl-betting-strategy/">The Banker: A Quant's AFL Betting Strategy</a></li>
+<li><a href="https://www.betfair.com.au/hub/better-betting/customer-insights/mathematician/">The Mathematician</a></li>
+<li><a href="https://www.reddit.com/r/BackAndLay/">'Back and Lay'</a> is a subreddit dedicated to discussing trading techniques</li>
+<li><a href="https://twitter.com/Betfair_Aus">Our Twitter community</a> is really active </li>
+<li><a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">Staking Plans and Strategies</a></li>
+<li><a href="https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/staking-and-money-management/">Staking and Money Management</a></li>
+</ul>
+<hr />
+<h3 id="need-extra-help">Need extra help?<a class="headerlink" href="#need-extra-help" title="Permanent link">&para;</a></h3>
+<p>If you’re looking for bespoke advice or have extra questions, please contact us at <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#117;&#116;&#111;&#109;&#97;&#116;&#105;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#97;&#117;&#116;&#111;&#109;&#97;&#116;&#105;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a>. We have a dedicated in-house resource that is here to automate your betting strategies.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+        
+          <a href="thirdPartyTools/overview/" title="Tools Overview" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Tools Overview
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="./assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/Betfair_Aus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/company/betfair-australia" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://facebook.com/betfairaustralia" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://youtube.com/user/betfairaus" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://github.com/betfair-datascientists" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+    <div class="bf-footer">
+      <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+      <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Know when to stop. Don’t go over the top. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="www.gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      <ul class="bf-links">
+        <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+        <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+        <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="assets/javascripts/application.83382bb6.js"></script>
+      
+      <script>app.initialize({version:"1.1",url:{base:"."}})</script>
+      
+        <script src="search/main.js"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

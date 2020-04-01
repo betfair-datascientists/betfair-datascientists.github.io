@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
+      <a href="#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -349,6 +349,42 @@
   <li class="md-nav__item">
     <a href="../../thirdPartyTools/betAngel/betAngel/" title="Overview - Bet Angel Pro" class="md-nav__link">
       Overview - Bet Angel Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelbeginners/" title="Bet Angel - A beginner's guide" class="md-nav__link">
+      Bet Angel - A beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelintermediate/" title="Bet Angel - An intermediate guide" class="md-nav__link">
+      Bet Angel - An intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngeladvanced/" title="Bet Angel - An advanced guide" class="md-nav__link">
+      Bet Angel - An advanced guide
     </a>
   </li>
 
@@ -1044,104 +1080,100 @@
 <h2 id="data-acquisition">Data Acquisition<a class="headerlink" href="#data-acquisition" title="Permanent link">&para;</a></h2>
 <p>We will be grabbing our data from <a href="http://www.football-data.co.uk/englandm.php">football-data.co.uk</a>, which has an enormous amount of soccer data dating back to the 90s. They also generously allow us to use it for free! However, the data is in separate CSVs based on the season. That means we would need to manually download 20 different files if we wanted the past 20 seasons. Rather than do this laborious and boring task, let's create a function which downloads the files for us, and appends them all into one big CSV.</p>
 <p>To do this, we will use BeautifulSoup, a Python library which helps to pull data from HTML and XML files. We will then define a function which collates all the data for us into one DataFrame.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Import Modules</span>
+<pre class="codehilite"><code class="language-python"># Import Modules
 
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">requests</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">bs4</span> <span style="color: #008000; font-weight: bold">import</span> BeautifulSoup
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">datetime</span>
-pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&#39;display.max_columns&#39;</span>, <span style="color: #666666">100</span>)
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #666666">%</span>matplotlib inline
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">data_preparation_functions</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-</pre></div>
+import pandas as pd
+import requests
+from bs4 import BeautifulSoup
+import datetime
+pd.set_option('display.max_columns', 100)
+import seaborn as sns
+import matplotlib.pyplot as plt
+%matplotlib inline
+from data_preparation_functions import *</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab_epl_data</span>():
-    <span style="color: #408080; font-style: italic"># Connect to football-data.co.uk</span>
-    res <span style="color: #666666">=</span> requests<span style="color: #666666">.</span>get(<span style="color: #BA2121">&quot;http://www.football-data.co.uk/englandm.php&quot;</span>)
+<pre class="codehilite"><code class="language-python">def grab_epl_data():
+    # Connect to football-data.co.uk
+    res = requests.get("http://www.football-data.co.uk/englandm.php")
 
-    <span style="color: #408080; font-style: italic"># Create a BeautifulSoup object</span>
-    soup <span style="color: #666666">=</span> BeautifulSoup(res<span style="color: #666666">.</span>content, <span style="color: #BA2121">&#39;lxml&#39;</span>)
+    # Create a BeautifulSoup object
+    soup = BeautifulSoup(res.content, 'lxml')
 
-    <span style="color: #408080; font-style: italic"># Find the tables with the links to the data in them.</span>
-    table <span style="color: #666666">=</span> soup<span style="color: #666666">.</span>find_all(<span style="color: #BA2121">&#39;table&#39;</span>, {<span style="color: #BA2121">&#39;align&#39;</span>: <span style="color: #BA2121">&#39;center&#39;</span>, <span style="color: #BA2121">&#39;cellspacing&#39;</span>: <span style="color: #BA2121">&#39;0&#39;</span>, <span style="color: #BA2121">&#39;width&#39;</span>: <span style="color: #BA2121">&#39;800&#39;</span>})[<span style="color: #666666">1</span>]
-    body <span style="color: #666666">=</span> table<span style="color: #666666">.</span>find_all(<span style="color: #BA2121">&#39;td&#39;</span>, {<span style="color: #BA2121">&#39;valign&#39;</span>: <span style="color: #BA2121">&#39;top&#39;</span>})[<span style="color: #666666">1</span>]
+    # Find the tables with the links to the data in them.
+    table = soup.find_all('table', {'align': 'center', 'cellspacing': '0', 'width': '800'})[1]
+    body = table.find_all('td', {'valign': 'top'})[1]
 
-    <span style="color: #408080; font-style: italic"># Grab the urls for the csv files</span>
-    links <span style="color: #666666">=</span> [link<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;href&#39;</span>) <span style="color: #008000; font-weight: bold">for</span> link <span style="color: #AA22FF; font-weight: bold">in</span> body<span style="color: #666666">.</span>find_all(<span style="color: #BA2121">&#39;a&#39;</span>)]
-    links_text <span style="color: #666666">=</span> [link_text<span style="color: #666666">.</span>text <span style="color: #008000; font-weight: bold">for</span> link_text <span style="color: #AA22FF; font-weight: bold">in</span> body<span style="color: #666666">.</span>find_all(<span style="color: #BA2121">&#39;a&#39;</span>)]
+    # Grab the urls for the csv files
+    links = [link.get('href') for link in body.find_all('a')]
+    links_text = [link_text.text for link_text in body.find_all('a')]
 
-    data_urls <span style="color: #666666">=</span> []
+    data_urls = []
 
-    <span style="color: #408080; font-style: italic"># Create a list of links</span>
-    prefix <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;http://www.football-data.co.uk/&#39;</span>
-    <span style="color: #008000; font-weight: bold">for</span> i, text <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">enumerate</span>(links_text):
-        <span style="color: #008000; font-weight: bold">if</span> text <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;Premier League&#39;</span>:
-            data_urls<span style="color: #666666">.</span>append(prefix <span style="color: #666666">+</span> links[i])
+    # Create a list of links
+    prefix = 'http://www.football-data.co.uk/'
+    for i, text in enumerate(links_text):
+        if text == 'Premier League':
+            data_urls.append(prefix + links[i])
 
-    <span style="color: #408080; font-style: italic"># Get rid of last 11 uls as these don&#39;t include match stats and odds, and we</span>
-    <span style="color: #408080; font-style: italic"># only want from 2005 onwards</span>
-    data_urls <span style="color: #666666">=</span> data_urls[:<span style="color: #666666">-12</span>]
+    # Get rid of last 11 uls as these don't include match stats and odds, and we
+    # only want from 2005 onwards
+    data_urls = data_urls[:-12]
 
-    df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame()
+    df = pd.DataFrame()
 
-    <span style="color: #408080; font-style: italic"># Iterate over the urls</span>
-    <span style="color: #008000; font-weight: bold">for</span> url <span style="color: #AA22FF; font-weight: bold">in</span> data_urls:
-        <span style="color: #408080; font-style: italic"># Get the season and make it a column</span>
-        season <span style="color: #666666">=</span> url<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;/&#39;</span>)[<span style="color: #666666">4</span>]
+    # Iterate over the urls
+    for url in data_urls:
+        # Get the season and make it a column
+        season = url.split('/')[4]
 
-        <span style="color: #008000; font-weight: bold">print</span>(f<span style="color: #BA2121">&quot;Getting data for season {season}&quot;</span>)
+        print(f"Getting data for season {season}")
 
-        <span style="color: #408080; font-style: italic"># Read the data from the url into a DataFrame</span>
-        temp_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>read_csv(url)
-        temp_df[<span style="color: #BA2121">&#39;season&#39;</span>] <span style="color: #666666">=</span> season
+        # Read the data from the url into a DataFrame
+        temp_df = pd.read_csv(url)
+        temp_df['season'] = season
 
-        <span style="color: #408080; font-style: italic"># Create helpful columns like Day, Month, Year, Date etc. so that our data is clean</span>
-        temp_df <span style="color: #666666">=</span> (temp_df<span style="color: #666666">.</span>dropna(axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>, thresh<span style="color: #666666">=</span>temp_df<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>]<span style="color: #666666">-30</span>)
-                          <span style="color: #666666">.</span>assign(Day<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Date<span style="color: #666666">.</span>str<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;/&#39;</span>)<span style="color: #666666">.</span>str[<span style="color: #666666">0</span>],
-                                  Month<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Date<span style="color: #666666">.</span>str<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;/&#39;</span>)<span style="color: #666666">.</span>str[<span style="color: #666666">1</span>],
-                                  Year<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Date<span style="color: #666666">.</span>str<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;/&#39;</span>)<span style="color: #666666">.</span>str[<span style="color: #666666">2</span>])
-                          <span style="color: #666666">.</span>assign(Date<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Month <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;/&#39;</span> <span style="color: #666666">+</span> df<span style="color: #666666">.</span>Day <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;/&#39;</span> <span style="color: #666666">+</span> df<span style="color: #666666">.</span>Year)
-                          <span style="color: #666666">.</span>assign(Date<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: pd<span style="color: #666666">.</span>to_datetime(df<span style="color: #666666">.</span>Date))
-                          <span style="color: #666666">.</span>dropna())
+        # Create helpful columns like Day, Month, Year, Date etc. so that our data is clean
+        temp_df = (temp_df.dropna(axis='columns', thresh=temp_df.shape[0]-30)
+                          .assign(Day=lambda df: df.Date.str.split('/').str[0],
+                                  Month=lambda df: df.Date.str.split('/').str[1],
+                                  Year=lambda df: df.Date.str.split('/').str[2])
+                          .assign(Date=lambda df: df.Month + '/' + df.Day + '/' + df.Year)
+                          .assign(Date=lambda df: pd.to_datetime(df.Date))
+                          .dropna())
 
-        <span style="color: #408080; font-style: italic"># Append the temp_df to the main df</span>
-        df <span style="color: #666666">=</span> df<span style="color: #666666">.</span>append(temp_df, sort<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+        # Append the temp_df to the main df
+        df = df.append(temp_df, sort=True)
 
-    <span style="color: #408080; font-style: italic"># Drop all NAs</span>
-    df <span style="color: #666666">=</span> df<span style="color: #666666">.</span>dropna(axis<span style="color: #666666">=1</span>)<span style="color: #666666">.</span>dropna()<span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Date&#39;</span>)
-    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Finished grabbing data.&quot;</span>)
+    # Drop all NAs
+    df = df.dropna(axis=1).dropna().sort_values(by='Date')
+    print("Finished grabbing data.")
 
-    <span style="color: #008000; font-weight: bold">return</span> df
-</pre></div>
+    return df</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df <span style="color: #666666">=</span> grab_epl_data()
-<span style="color: #408080; font-style: italic"># df.to_csv(&quot;data/epl_data.csv&quot;, index=False)</span>
+<pre class="codehilite"><code class="language-python">df = grab_epl_data()
+# df.to_csv("data/epl_data.csv", index=False)
 
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1819</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1718</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1617</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1516</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1415</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1314</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1213</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1112</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1011</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0910</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0809</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0708</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0607</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0506</span>
-    Finished grabbing data<span style="color: #666666">.</span>
-</pre></div>
+    Getting data for season 1819
+    Getting data for season 1718
+    Getting data for season 1617
+    Getting data for season 1516
+    Getting data for season 1415
+    Getting data for season 1314
+    Getting data for season 1213
+    Getting data for season 1112
+    Getting data for season 1011
+    Getting data for season 0910
+    Getting data for season 0809
+    Getting data for season 0708
+    Getting data for season 0607
+    Getting data for season 0506
+    Finished grabbing data.</code></pre>
 
 <p>Whenever we want to update our data (for example if we want the most recent Gameweek included), all we have to do is run that function and then save the data to a csv with the commented out line above.</p>
 <hr />
 <h2 id="data-exploration">Data Exploration<a class="headerlink" href="#data-exploration" title="Permanent link">&para;</a></h2>
 <p>Now that we have our data, let's explore it. Let's first look at home team win rates since 2005 to see if there is a consistent trend. To get an idea of what our data looks like, we'll look at the tail of the dataset first.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df<span style="color: #666666">.</span>tail(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python">df.tail(3)</code></pre>
 
 <table>
 <thead>
@@ -1401,20 +1433,18 @@ pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create Home Win, Draw Win and Away Win columns</span>
-df <span style="color: #666666">=</span> df<span style="color: #666666">.</span>assign(homeWin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">&gt;</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>),
-              draw<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">==</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>),
-              awayWin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">&lt;</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>))
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Create Home Win, Draw Win and Away Win columns
+df = df.assign(homeWin=lambda df: df.apply(lambda row: 1 if row.FTHG &gt; row.FTAG else 0, axis='columns'),
+              draw=lambda df: df.apply(lambda row: 1 if row.FTHG == row.FTAG else 0, axis='columns'),
+              awayWin=lambda df: df.apply(lambda row: 1 if row.FTHG &lt; row.FTAG else 0, axis='columns'))</code></pre>
 
 <h3 id="home-ground-advantage">Home Ground Advantage<a class="headerlink" href="#home-ground-advantage" title="Permanent link">&para;</a></h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>win_rates <span style="color: #666666">=</span> \
-(df<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;season&#39;</span>)
-    <span style="color: #666666">.</span>mean()
-    <span style="color: #666666">.</span>loc[:, [<span style="color: #BA2121">&#39;homeWin&#39;</span>, <span style="color: #BA2121">&#39;draw&#39;</span>, <span style="color: #BA2121">&#39;awayWin&#39;</span>]])
+<pre class="codehilite"><code class="language-python">win_rates = \
+(df.groupby('season')
+    .mean()
+    .loc[:, ['homeWin', 'draw', 'awayWin']])
 
-win_rates
-</pre></div>
+win_rates</code></pre>
 
 <table>
 <thead>
@@ -1520,45 +1550,42 @@ win_rates
 </table>
 <h3 id="findings">Findings<a class="headerlink" href="#findings" title="Permanent link">&para;</a></h3>
 <p>As we can see, winrates across home team wins, draws and away team wins are very consistent. It seems that the home team wins around 46-47% of the time, the draw happens about 25% of the time, and the away team wins about 27% of the time. Let's plot this DataFrame so that we can see the trend more easily.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Set the style</span>
-plt<span style="color: #666666">.</span>style<span style="color: #666666">.</span>use(<span style="color: #BA2121">&#39;ggplot&#39;</span>)
+<pre class="codehilite"><code class="language-python"># Set the style
+plt.style.use('ggplot')
 
-fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
-ax <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>add_subplot(<span style="color: #666666">111</span>)
+fig = plt.figure()
+ax = fig.add_subplot(111)
 
-home_line <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot(win_rates<span style="color: #666666">.</span>homeWin, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Home Win Rate&#39;</span>)
-away_line <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot(win_rates<span style="color: #666666">.</span>awayWin, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Away Win Rate&#39;</span>)
-draw_line <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot(win_rates<span style="color: #666666">.</span>draw, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Draw Win Rate&#39;</span>)
-ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;season&quot;</span>)
-ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;Win Rate&quot;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Win Rates&quot;</span>, fontsize<span style="color: #666666">=16</span>)
+home_line = ax.plot(win_rates.homeWin, label='Home Win Rate')
+away_line = ax.plot(win_rates.awayWin, label='Away Win Rate')
+draw_line = ax.plot(win_rates.draw, label='Draw Win Rate')
+ax.set_xlabel("season")
+ax.set_ylabel("Win Rate")
+plt.title("Win Rates", fontsize=16)
 
-<span style="color: #408080; font-style: italic"># Add the legend locations</span>
-home_legend <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>legend(handles<span style="color: #666666">=</span>home_line, loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;upper right&#39;</span>, bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">1</span>, <span style="color: #666666">1</span>))
-ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>gca()<span style="color: #666666">.</span>add_artist(home_legend)
-away_legend <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>legend(handles<span style="color: #666666">=</span>away_line, loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;center right&#39;</span>, bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">0.95</span>, <span style="color: #666666">0.4</span>))
-ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>gca()<span style="color: #666666">.</span>add_artist(away_legend)
-draw_legend <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>legend(handles<span style="color: #666666">=</span>draw_line, loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;center right&#39;</span>, bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">0.95</span>, <span style="color: #666666">0.06</span>))
-</pre></div>
+# Add the legend locations
+home_legend = plt.legend(handles=home_line, loc='upper right', bbox_to_anchor=(1, 1))
+ax = plt.gca().add_artist(home_legend)
+away_legend = plt.legend(handles=away_line, loc='center right', bbox_to_anchor=(0.95, 0.4))
+ax = plt.gca().add_artist(away_legend)
+draw_legend = plt.legend(handles=draw_line, loc='center right', bbox_to_anchor=(0.95, 0.06))</code></pre>
 
 <p><img alt="png" src="../img/output_10_0.png" /></p>
 <p>As we can see, the winrates are relatively stable each season, except for in 14/15 when the home win rate drops dramatically.</p>
 <p>Out of interest, let's also have a look at which team has the best home ground advantage. Let's define HGA as home win rate - away win rate. And then plot some of the big clubs' HGA against each other.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>home_win_rates <span style="color: #666666">=</span> \
-(df<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;HomeTeam&#39;</span>])
-    <span style="color: #666666">.</span>homeWin
-    <span style="color: #666666">.</span>mean())
+<pre class="codehilite"><code class="language-python">home_win_rates = \
+(df.groupby(['HomeTeam'])
+    .homeWin
+    .mean())
 
-away_win_rates <span style="color: #666666">=</span> \
-(df<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;AwayTeam&#39;</span>])
-    <span style="color: #666666">.</span>awayWin
-    <span style="color: #666666">.</span>mean())
+away_win_rates = \
+(df.groupby(['AwayTeam'])
+    .awayWin
+    .mean())
 
-hga <span style="color: #666666">=</span> (home_win_rates <span style="color: #666666">-</span> away_win_rates)<span style="color: #666666">.</span>reset_index()<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #666666">0</span>: <span style="color: #BA2121">&#39;HGA&#39;</span>})<span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;HGA&#39;</span>, ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)
-</pre></div>
+hga = (home_win_rates - away_win_rates).reset_index().rename(columns={0: 'HGA'}).sort_values(by='HGA', ascending=False)</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>hga<span style="color: #666666">.</span>head(<span style="color: #666666">10</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python">hga.head(10)</code></pre>
 
 <table>
 <thead>
@@ -1622,14 +1649,13 @@ hga <span style="color: #666666">=</span> (home_win_rates <span style="color: #6
 </tbody>
 </table>
 <p>So the club with the best HGA is Fulham - interesting. This is most likely because Fulham have won 100% of home games in 2018 so far which is skewing the mean. Let's see how the HGA for some of the big clubs based compare over seasons.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>big_clubs <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Liverpool&#39;</span>, <span style="color: #BA2121">&#39;Man City&#39;</span>, <span style="color: #BA2121">&#39;Man United&#39;</span>, <span style="color: #BA2121">&#39;Chelsea&#39;</span>, <span style="color: #BA2121">&#39;Arsenal&#39;</span>]
-home_win_rates_5 <span style="color: #666666">=</span> df[df<span style="color: #666666">.</span>HomeTeam<span style="color: #666666">.</span>isin(big_clubs)]<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>])<span style="color: #666666">.</span>homeWin<span style="color: #666666">.</span>mean()
-away_win_rates_5 <span style="color: #666666">=</span> df[df<span style="color: #666666">.</span>AwayTeam<span style="color: #666666">.</span>isin(big_clubs)]<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>])<span style="color: #666666">.</span>awayWin<span style="color: #666666">.</span>mean()
+<pre class="codehilite"><code class="language-python">big_clubs = ['Liverpool', 'Man City', 'Man United', 'Chelsea', 'Arsenal']
+home_win_rates_5 = df[df.HomeTeam.isin(big_clubs)].groupby(['HomeTeam', 'season']).homeWin.mean()
+away_win_rates_5 = df[df.AwayTeam.isin(big_clubs)].groupby(['AwayTeam', 'season']).awayWin.mean()
 
-hga_top_5 <span style="color: #666666">=</span> home_win_rates_5 <span style="color: #666666">-</span> away_win_rates_5
+hga_top_5 = home_win_rates_5 - away_win_rates_5
 
-hga_top_5<span style="color: #666666">.</span>unstack(level<span style="color: #666666">=0</span>)
-</pre></div>
+hga_top_5.unstack(level=0)</code></pre>
 
 <table>
 <thead>
@@ -1766,20 +1792,18 @@ hga_top_5<span style="color: #666666">.</span>unstack(level<span style="color: #
 </tbody>
 </table>
 <p>Now let's plot it.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sns<span style="color: #666666">.</span>lineplot(x<span style="color: #666666">=</span><span style="color: #BA2121">&#39;season&#39;</span>, y<span style="color: #666666">=</span><span style="color: #BA2121">&#39;HGA&#39;</span>, hue<span style="color: #666666">=</span><span style="color: #BA2121">&#39;team&#39;</span>, data<span style="color: #666666">=</span>hga_top_5<span style="color: #666666">.</span>reset_index()<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #666666">0</span>: <span style="color: #BA2121">&#39;HGA&#39;</span>, <span style="color: #BA2121">&#39;HomeTeam&#39;</span>: <span style="color: #BA2121">&#39;team&#39;</span>}))
-plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower center&#39;</span>, ncol<span style="color: #666666">=6</span>, bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">0.45</span>, <span style="color: #666666">-0.2</span>))
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;HGA Among the top 5 clubs&quot;</span>, fontsize<span style="color: #666666">=14</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
+<pre class="codehilite"><code class="language-python">sns.lineplot(x='season', y='HGA', hue='team', data=hga_top_5.reset_index().rename(columns={0: 'HGA', 'HomeTeam': 'team'}))
+plt.legend(loc='lower center', ncol=6, bbox_to_anchor=(0.45, -0.2))
+plt.title("HGA Among the top 5 clubs", fontsize=14)
+plt.show()</code></pre>
 
 <p><img alt="png" src="../img/output_17_0.png" /></p>
 <p>The results here seem to be quite erratic, although it seems that Arsenal consistently has a HGA above 0.</p>
 <p>Let's now look at the distributions of each of our columns. The odds columns are likely to be highly skewed, so we may have to account for this later.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> df<span style="color: #666666">.</span>select_dtypes(<span style="color: #BA2121">&#39;number&#39;</span>)<span style="color: #666666">.</span>columns:
-    sns<span style="color: #666666">.</span>distplot(df[col])
-    plt<span style="color: #666666">.</span>title(f<span style="color: #BA2121">&quot;Distribution for {col}&quot;</span>)
-    plt<span style="color: #666666">.</span>show()
-</pre></div>
+<pre class="codehilite"><code class="language-python">for col in df.select_dtypes('number').columns:
+    sns.distplot(df[col])
+    plt.title(f"Distribution for {col}")
+    plt.show()</code></pre>
 
 <p><img alt="png" src="../img/output_20_0.png" /></p>
 <p><img alt="png" src="../img/output_20_1.png" /></p>
@@ -1837,15 +1861,14 @@ plt<span style="color: #666666">.</span>show()
 <hr />
 <h2 id="exploring-referee-home-ground-bias">Exploring Referee Home Ground Bias<a class="headerlink" href="#exploring-referee-home-ground-bias" title="Permanent link">&para;</a></h2>
 <p>What may be of interest is whether certain referees are correlated with the home team winning more often. Let's explore referee home ground bias for referees for the top 10 Referees based on games.</p>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Overall Home Win Rate: {:.4}%&#39;</span><span style="color: #666666">.</span>format(df<span style="color: #666666">.</span>homeWin<span style="color: #666666">.</span>mean() <span style="color: #666666">*</span> <span style="color: #666666">100</span>))
+<p><pre class="codehilite"><code class="language-python">print('Overall Home Win Rate: {:.4}%'.format(df.homeWin.mean() * 100))
 
-<span style="color: #408080; font-style: italic"># Get the top 10 refs based on games</span>
-top_10_refs <span style="color: #666666">=</span> df<span style="color: #666666">.</span>Referee<span style="color: #666666">.</span>value_counts()<span style="color: #666666">.</span>head(<span style="color: #666666">10</span>)<span style="color: #666666">.</span>index
+# Get the top 10 refs based on games
+top_10_refs = df.Referee.value_counts().head(10).index
 
-df[df<span style="color: #666666">.</span>Referee<span style="color: #666666">.</span>isin(top_10_refs)]<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;Referee&#39;</span>)<span style="color: #666666">.</span>homeWin<span style="color: #666666">.</span>mean()<span style="color: #666666">.</span>sort_values(ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)
-</pre></div>
+df[df.Referee.isin(top_10_refs)].groupby('Referee').homeWin.mean().sort_values(ascending=False)</code></pre>
     Overall Home Win Rate: 46.55%</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Referee
+<pre class="codehilite"><code>Referee
 L Mason          0.510373
 C Foy            0.500000
 M Clattenburg    0.480000
@@ -1856,95 +1879,88 @@ M Oliver         0.466019
 H Webb           0.456604
 A Marriner       0.455516
 M Dean           0.442049
-Name: homeWin, dtype: float64
-</pre></div>
+Name: homeWin, dtype: float64</code></pre>
 
 
 <p>It seems that L Mason may be the most influenced by the home crowd. Whilst the overall home win rate is 46.5%, the home win rate when he is the Referee is 51%. However it should be noted that this doesn't mean that he causes the win through bias. It could just be that he referees the best clubs, so naturally their home win rate is high.</p>
 <hr />
 <h2 id="variable-correlation-with-margin">Variable Correlation With Margin<a class="headerlink" href="#variable-correlation-with-margin" title="Permanent link">&para;</a></h2>
 <p>Let's now explore different variables' relationships with margin. First, we'll create a margin column, then we will pick a few different variables to look at the correlations amongst each other, using a correlation heatmap.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df[<span style="color: #BA2121">&#39;margin&#39;</span>] <span style="color: #666666">=</span> df[<span style="color: #BA2121">&#39;FTHG&#39;</span>] <span style="color: #666666">-</span> df[<span style="color: #BA2121">&#39;FTAG&#39;</span>]
-</pre></div>
+<pre class="codehilite"><code class="language-python">df['margin'] = df['FTHG'] - df['FTAG']</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>stat_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;AC&#39;</span>, <span style="color: #BA2121">&#39;AF&#39;</span>, <span style="color: #BA2121">&#39;AR&#39;</span>, <span style="color: #BA2121">&#39;AS&#39;</span>, <span style="color: #BA2121">&#39;AST&#39;</span>, <span style="color: #BA2121">&#39;AY&#39;</span>, <span style="color: #BA2121">&#39;HC&#39;</span>, <span style="color: #BA2121">&#39;HF&#39;</span>, <span style="color: #BA2121">&#39;HR&#39;</span>, <span style="color: #BA2121">&#39;HS&#39;</span>, <span style="color: #BA2121">&#39;HST&#39;</span>, <span style="color: #BA2121">&#39;HTR&#39;</span>, <span style="color: #BA2121">&#39;HY&#39;</span>, <span style="color: #BA2121">&#39;margin&#39;</span>]
+<pre class="codehilite"><code class="language-python">stat_cols = ['AC', 'AF', 'AR', 'AS', 'AST', 'AY', 'HC', 'HF', 'HR', 'HS', 'HST', 'HTR', 'HY', 'margin']
 
-stat_correlations <span style="color: #666666">=</span> df[stat_cols]<span style="color: #666666">.</span>corr()
-stat_correlations[<span style="color: #BA2121">&#39;margin&#39;</span>]<span style="color: #666666">.</span>sort_values()
+stat_correlations = df[stat_cols].corr()
+stat_correlations['margin'].sort_values()
 
-    AST      <span style="color: #666666">-0.345703</span>
-    AS       <span style="color: #666666">-0.298665</span>
-    HY       <span style="color: #666666">-0.153806</span>
-    HR       <span style="color: #666666">-0.129393</span>
-    AC       <span style="color: #666666">-0.073204</span>
-    HF       <span style="color: #666666">-0.067469</span>
-    AF        <span style="color: #666666">0.005474</span>
-    AY        <span style="color: #666666">0.013746</span>
-    HC        <span style="color: #666666">0.067433</span>
-    AR        <span style="color: #666666">0.103528</span>
-    HS        <span style="color: #666666">0.275847</span>
-    HST       <span style="color: #666666">0.367591</span>
-    margin    <span style="color: #666666">1.000000</span>
-    Name: margin, dtype: float64
-</pre></div>
+    AST      -0.345703
+    AS       -0.298665
+    HY       -0.153806
+    HR       -0.129393
+    AC       -0.073204
+    HF       -0.067469
+    AF        0.005474
+    AY        0.013746
+    HC        0.067433
+    AR        0.103528
+    HS        0.275847
+    HST       0.367591
+    margin    1.000000
+    Name: margin, dtype: float64</code></pre>
 
 <p>Unsurprisingly, Home Shots on Target correlate the most with Margin, and Away Reds is also high. What is surprising is that Home Yellows has quite a strong negative correlation with margin - this may be because players will play more aggresively when they are losing to try and get the lead back, and hence receive more yellow cards.</p>
 <p>Let's now look at the heatmap between variables.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sns<span style="color: #666666">.</span>heatmap(stat_correlations, annot<span style="color: #666666">=</span><span style="color: #008000">True</span>, annot_kws<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;size&#39;</span>: <span style="color: #666666">10</span>})
-    <span style="color: #666666">&lt;</span>matplotlib<span style="color: #666666">.</span>axes<span style="color: #666666">.</span>_subplots<span style="color: #666666">.</span>AxesSubplot at <span style="color: #666666">0x220a4227048&gt;</span>
-</pre></div>
+<pre class="codehilite"><code class="language-python">sns.heatmap(stat_correlations, annot=True, annot_kws={'size': 10})
+    &lt;matplotlib.axes._subplots.AxesSubplot at 0x220a4227048&gt;</code></pre>
 
 <p><img alt="png" src="../img/output_28_1.png" /></p>
 <hr />
 <h2 id="analysing-features">Analysing Features<a class="headerlink" href="#analysing-features" title="Permanent link">&para;</a></h2>
 <p>What we are really interested in, is how our features (creating in the next tutorial), correlate with winning. We will skip ahead here and use a function to create our features for us, and then examine how the moving averages/different features correlate with winning.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a cleaned df of all of our data</span>
-pre_features_df <span style="color: #666666">=</span> create_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>)
+<pre class="codehilite"><code class="language-python"># Create a cleaned df of all of our data
+pre_features_df = create_df('data/epl_data.csv')
 
-<span style="color: #408080; font-style: italic"># Create our features</span>
-features <span style="color: #666666">=</span> create_feature_df(pre_features_df)
-    Creating <span style="color: #008000">all</span> games feature DataFrame
+# Create our features
+features = create_feature_df(pre_features_df)
+    Creating all games feature DataFrame
 
-    C:\Users\wardj\Documents\Betfair Public Github\predictive<span style="color: #666666">-</span>models\epl\data_preparation_functions<span style="color: #666666">.</span>py:<span style="color: #666666">419</span>: <span style="color: #D2413A; font-weight: bold">RuntimeWarning</span>: invalid value encountered <span style="color: #AA22FF; font-weight: bold">in</span> double_scalars
-      <span style="color: #666666">.</span>pipe(<span style="color: #008000; font-weight: bold">lambda</span> df: (df<span style="color: #666666">.</span>eloAgainst <span style="color: #666666">*</span> df[goalsForOrAgainstCol])<span style="color: #666666">.</span>sum() <span style="color: #666666">/</span> df<span style="color: #666666">.</span>eloAgainst<span style="color: #666666">.</span>sum()))
+    C:\Users\wardj\Documents\Betfair Public Github\predictive-models\epl\data_preparation_functions.py:419: RuntimeWarning: invalid value encountered in double_scalars
+      .pipe(lambda df: (df.eloAgainst * df[goalsForOrAgainstCol]).sum() / df.eloAgainst.sum()))
 
     Creating stats feature DataFrame
     Creating odds feature DataFrame
     Creating market values feature DataFrame
     Filling NAs
-    Merging stats, odds <span style="color: #AA22FF; font-weight: bold">and</span> market values into one features DataFrame
-    Complete<span style="color: #666666">.</span>
-</pre></div>
+    Merging stats, odds and market values into one features DataFrame
+    Complete.</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features <span style="color: #666666">=</span> (pre_features_df<span style="color: #666666">.</span>assign(margin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>FTHG <span style="color: #666666">-</span> df<span style="color: #666666">.</span>FTAG)
-                           <span style="color: #666666">.</span>loc[:, [<span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;margin&#39;</span>]]
-                           <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, features, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;gameId&#39;</span>]))
-</pre></div>
+<pre class="codehilite"><code class="language-python">features = (pre_features_df.assign(margin=lambda df: df.FTHG - df.FTAG)
+                           .loc[:, ['gameId', 'margin']]
+                           .pipe(pd.merge, features, on=['gameId']))</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features<span style="color: #666666">.</span>corr()<span style="color: #666666">.</span>margin<span style="color: #666666">.</span>sort_values(ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)[:<span style="color: #666666">20</span>]
+<pre class="codehilite"><code class="language-python">features.corr().margin.sort_values(ascending=False)[:20]
 
-    margin                     <span style="color: #666666">1.000000</span>
-    f_awayOdds                 <span style="color: #666666">0.413893</span>
-    f_totalMktH<span style="color: #666666">%</span>               <span style="color: #666666">0.330420</span>
-    f_defMktH<span style="color: #666666">%</span>                 <span style="color: #666666">0.325392</span>
-    f_eloAgainstAway           <span style="color: #666666">0.317853</span>
-    f_eloForHome               <span style="color: #666666">0.317853</span>
-    f_midMktH<span style="color: #666666">%</span>                 <span style="color: #666666">0.316080</span>
-    f_attMktH<span style="color: #666666">%</span>                 <span style="color: #666666">0.312262</span>
-    f_sizeOfHandicapAway       <span style="color: #666666">0.301667</span>
-    f_goalsForHome             <span style="color: #666666">0.298930</span>
-    f_wtEloGoalsForHome        <span style="color: #666666">0.297157</span>
-    f_shotsForHome             <span style="color: #666666">0.286239</span>
-    f_cornersForHome           <span style="color: #666666">0.279917</span>
-    f_gkMktH<span style="color: #666666">%</span>                  <span style="color: #666666">0.274732</span>
-    f_homeWinPc38Away          <span style="color: #666666">0.271326</span>
-    f_homeWinPc38Home          <span style="color: #666666">0.271326</span>
-    f_wtEloGoalsAgainstAway    <span style="color: #666666">0.269663</span>
-    f_goalsAgainstAway         <span style="color: #666666">0.258418</span>
-    f_cornersAgainstAway       <span style="color: #666666">0.257148</span>
-    f_drawOdds                 <span style="color: #666666">0.256807</span>
-    Name: margin, dtype: float64
-</pre></div>
+    margin                     1.000000
+    f_awayOdds                 0.413893
+    f_totalMktH%               0.330420
+    f_defMktH%                 0.325392
+    f_eloAgainstAway           0.317853
+    f_eloForHome               0.317853
+    f_midMktH%                 0.316080
+    f_attMktH%                 0.312262
+    f_sizeOfHandicapAway       0.301667
+    f_goalsForHome             0.298930
+    f_wtEloGoalsForHome        0.297157
+    f_shotsForHome             0.286239
+    f_cornersForHome           0.279917
+    f_gkMktH%                  0.274732
+    f_homeWinPc38Away          0.271326
+    f_homeWinPc38Home          0.271326
+    f_wtEloGoalsAgainstAway    0.269663
+    f_goalsAgainstAway         0.258418
+    f_cornersAgainstAway       0.257148
+    f_drawOdds                 0.256807
+    Name: margin, dtype: float64</code></pre>
 
 <p>As we can see away odds is most highly correlated to margin. This makes sense, as odds generally have most/all information included in the price. What is interesting is that elo seems to also be highly correlated, which is good news for our elo model that we made. Similarly, weighted goals and the the value of the defence relative to other teams ('defMktH%' etc.) is strongly correlated to margin.</p>
                 
@@ -2042,7 +2058,7 @@ features <span style="color: #666666">=</span> create_feature_df(pre_features_df
     
       <script src="../../assets/javascripts/application.83382bb6.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

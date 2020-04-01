@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
+      <a href="#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -349,6 +349,42 @@
   <li class="md-nav__item">
     <a href="../../thirdPartyTools/betAngel/betAngel/" title="Overview - Bet Angel Pro" class="md-nav__link">
       Overview - Bet Angel Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelbeginners/" title="Bet Angel - A beginner's guide" class="md-nav__link">
+      Bet Angel - A beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelintermediate/" title="Bet Angel - An intermediate guide" class="md-nav__link">
+      Bet Angel - An intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngeladvanced/" title="Bet Angel - An advanced guide" class="md-nav__link">
+      Bet Angel - An advanced guide
     </a>
   </li>
 
@@ -895,24 +931,22 @@
 <h2 id="data-wrangling">Data Wrangling<a class="headerlink" href="#data-wrangling" title="Permanent link">&para;</a></h2>
 <p>We will begin by utilising functions we have defined in our data_preparation_functions script to wrangle our data into a format that can be consumed by Machine Learning algorithms.</p>
 <p>A typical issue faced by aspect of modelling sport is the issue of Machine Learning algorithms requiring all features for the teams playing to be on the same row of a table, whereas when we actual calculate these features, we usually require the teams to be on separate rows as it makes it a lot easier to calculate typical features, such as <a href="https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average">expontentially weighted moving averages</a>. We will explore this issue and show how we deal with issues like these.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Import libraries</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">data_preparation_functions</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> log_loss
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LogisticRegression
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> LabelEncoder
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> StratifiedKFold, cross_val_score
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&#39;display.max_columns&#39;</span>, <span style="color: #666666">100</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Import libraries
+from data_preparation_functions import *
+from sklearn.metrics import log_loss
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import LabelEncoder
+from sklearn.model_selection import StratifiedKFold, cross_val_score
+import matplotlib.pyplot as plt
+pd.set_option('display.max_columns', 100)</code></pre>
 
 <p>We have created some functions which prepare the data for you. For thoroughly commented explanation of how the functions work, read through the data_preparation_functions.py script along side this walkthrough.</p>
 <p>Essentially, each functions wrangles the data through a similar process. It first reads in the data from a csv file, then converts the columns to datatypes that we can work with, such as converting the Date column to a datetime data type. It then adds a Game ID column, so each game is easily identifiable and joined on. We then assign the DataFrame some other columns which may be useful, such as 'Year', 'Result' and 'homeWin'. Finally, we drop redundant column and return the DataFrame.</p>
 <p>Let us now create six different DataFrames, which we will use to create features. Later, we will join these features back into one main feature DataFrame.</p>
 <h3 id="create-6-distinct-dataframes">Create 6 distinct DataFrames<a class="headerlink" href="#create-6-distinct-dataframes" title="Permanent link">&para;</a></h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># This table includes all of our data in one big DataFrame</span>
-df <span style="color: #666666">=</span> create_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>)
-df<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># This table includes all of our data in one big DataFrame
+df = create_df('data/epl_data.csv')
+df.head(3)</code></pre>
 
 <table>
 <thead>
@@ -1188,10 +1222,9 @@ df<span style="color: #666666">.</span>head(<span style="color: #666666">3</span
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># This includes only the typical soccer stats, like home corners, home shots on target etc.</span>
-stats <span style="color: #666666">=</span> create_stats_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>)
-stats<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># This includes only the typical soccer stats, like home corners, home shots on target etc.
+stats = create_stats_df('data/epl_data.csv')
+stats.head(3)</code></pre>
 
 <table>
 <thead>
@@ -1287,10 +1320,9 @@ stats<span style="color: #666666">.</span>head(<span style="color: #666666">3</s
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># This includes all of our betting related data, such as win/draw/lose odds, asian handicaps etc.</span>
-betting <span style="color: #666666">=</span> create_betting_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>)
-betting<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># This includes all of our betting related data, such as win/draw/lose odds, asian handicaps etc.
+betting = create_betting_df('data/epl_data.csv')
+betting.head(3)</code></pre>
 
 <table>
 <thead>
@@ -1482,10 +1514,9 @@ betting<span style="color: #666666">.</span>head(<span style="color: #666666">3<
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># This includes all of the team information for each game.</span>
-team_info <span style="color: #666666">=</span> create_team_info_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>)
-team_info<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># This includes all of the team information for each game.
+team_info = create_team_info_df('data/epl_data.csv')
+team_info.head(3)</code></pre>
 
 <table>
 <thead>
@@ -1537,10 +1568,9 @@ team_info<span style="color: #666666">.</span>head(<span style="color: #666666">
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Whilst the other DataFrames date back to 2005, this DataFrame has data from 2001 to 2005.</span>
-historic_games <span style="color: #666666">=</span> create_historic_games_df(<span style="color: #BA2121">&#39;data/historic_games_pre2005.csv&#39;</span>)
-historic_games<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Whilst the other DataFrames date back to 2005, this DataFrame has data from 2001 to 2005.
+historic_games = create_historic_games_df('data/historic_games_pre2005.csv')
+historic_games.head(3)</code></pre>
 
 <table>
 <thead>
@@ -1592,10 +1622,9 @@ historic_games<span style="color: #666666">.</span>head(<span style="color: #666
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># This is the historic_games DataFrame appended to the df DataFrame.</span>
-all_games <span style="color: #666666">=</span> create_all_games_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>, <span style="color: #BA2121">&#39;data/historic_games_pre2005.csv&#39;</span>)
-all_games<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># This is the historic_games DataFrame appended to the df DataFrame.
+all_games = create_all_games_df('data/epl_data.csv', 'data/historic_games_pre2005.csv')
+all_games.head(3)</code></pre>
 
 <table>
 <thead>
@@ -1677,60 +1706,57 @@ all_games<span style="color: #666666">.</span>head(<span style="color: #666666">
 <p>In short, an EMA is like a simple moving average, except it weights recent instances more than older instances based on an alpha parameter. The documentation for the pandas (emw method)[<a href="https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.ewm.html">https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.ewm.html</a>] we will be using states that we can specify alpha in a number of ways. We will specify it in terms of span, where $\alpha = 2 / (span+1), span ≥ 1 $.</p>
 <p>Let's first define a function which calculates the exponential moving average for each column in the stats DataFrame. We will then apply this function with other functions we have created, such as create_betting_features_ema, which creates moving averages of betting data.</p>
 <p>However, we must first change the structure of our data. Notice that currently each row has both the Home Team's data and the Away Team's data on a single row. This makes it difficult to calculate rolling averages, so we will restructure our DataFrames to ensure each row only contains single team's data. To do this, we will define a function, reate_multiline_df_stats.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Define a function which restructures our DataFrame</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">create_multiline_df_stats</span>(old_stats_df):
-    <span style="color: #408080; font-style: italic"># Create a list of columns we want and their mappings to more interpretable names</span>
-    home_stats_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;FTHG&#39;</span>, <span style="color: #BA2121">&#39;FTAG&#39;</span>, <span style="color: #BA2121">&#39;HTHG&#39;</span>, <span style="color: #BA2121">&#39;HTAG&#39;</span>, <span style="color: #BA2121">&#39;HS&#39;</span>, <span style="color: #BA2121">&#39;AS&#39;</span>, <span style="color: #BA2121">&#39;HST&#39;</span>, <span style="color: #BA2121">&#39;AST&#39;</span>, <span style="color: #BA2121">&#39;HF&#39;</span>, <span style="color: #BA2121">&#39;AF&#39;</span>, <span style="color: #BA2121">&#39;HC&#39;</span>, <span style="color: #BA2121">&#39;AC&#39;</span>, <span style="color: #BA2121">&#39;HY&#39;</span>, <span style="color: #BA2121">&#39;AY&#39;</span>,
-                       <span style="color: #BA2121">&#39;HR&#39;</span>, <span style="color: #BA2121">&#39;AR&#39;</span>]
+<pre class="codehilite"><code class="language-python"># Define a function which restructures our DataFrame
+def create_multiline_df_stats(old_stats_df):
+    # Create a list of columns we want and their mappings to more interpretable names
+    home_stats_cols = ['HomeTeam', 'FTHG', 'FTAG', 'HTHG', 'HTAG', 'HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HC', 'AC', 'HY', 'AY',
+                       'HR', 'AR']
 
-    away_stats_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;FTAG&#39;</span>, <span style="color: #BA2121">&#39;FTHG&#39;</span>, <span style="color: #BA2121">&#39;HTAG&#39;</span>, <span style="color: #BA2121">&#39;HTHG&#39;</span>, <span style="color: #BA2121">&#39;AS&#39;</span>, <span style="color: #BA2121">&#39;HS&#39;</span>, <span style="color: #BA2121">&#39;AST&#39;</span>, <span style="color: #BA2121">&#39;HST&#39;</span>, <span style="color: #BA2121">&#39;AF&#39;</span>, <span style="color: #BA2121">&#39;HF&#39;</span>, <span style="color: #BA2121">&#39;AC&#39;</span>, <span style="color: #BA2121">&#39;HC&#39;</span>, <span style="color: #BA2121">&#39;AY&#39;</span>, <span style="color: #BA2121">&#39;HY&#39;</span>,
-                       <span style="color: #BA2121">&#39;AR&#39;</span>, <span style="color: #BA2121">&#39;HR&#39;</span>]
+    away_stats_cols = ['AwayTeam', 'FTAG', 'FTHG', 'HTAG', 'HTHG', 'AS', 'HS', 'AST', 'HST', 'AF', 'HF', 'AC', 'HC', 'AY', 'HY',
+                       'AR', 'HR']
 
-    stats_cols_mapping <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;goalsFor&#39;</span>, <span style="color: #BA2121">&#39;goalsAgainst&#39;</span>, <span style="color: #BA2121">&#39;halfTimeGoalsFor&#39;</span>, <span style="color: #BA2121">&#39;halfTimeGoalsAgainst&#39;</span>, <span style="color: #BA2121">&#39;shotsFor&#39;</span>,
-                          <span style="color: #BA2121">&#39;shotsAgainst&#39;</span>, <span style="color: #BA2121">&#39;shotsOnTargetFor&#39;</span>, <span style="color: #BA2121">&#39;shotsOnTargetAgainst&#39;</span>, <span style="color: #BA2121">&#39;freesFor&#39;</span>, <span style="color: #BA2121">&#39;freesAgainst&#39;</span>, 
-                          <span style="color: #BA2121">&#39;cornersFor&#39;</span>, <span style="color: #BA2121">&#39;cornersAgainst&#39;</span>, <span style="color: #BA2121">&#39;yellowsFor&#39;</span>, <span style="color: #BA2121">&#39;yellowsAgainst&#39;</span>, <span style="color: #BA2121">&#39;redsFor&#39;</span>, <span style="color: #BA2121">&#39;redsAgainst&#39;</span>]
+    stats_cols_mapping = ['team', 'goalsFor', 'goalsAgainst', 'halfTimeGoalsFor', 'halfTimeGoalsAgainst', 'shotsFor',
+                          'shotsAgainst', 'shotsOnTargetFor', 'shotsOnTargetAgainst', 'freesFor', 'freesAgainst', 
+                          'cornersFor', 'cornersAgainst', 'yellowsFor', 'yellowsAgainst', 'redsFor', 'redsAgainst']
 
-    <span style="color: #408080; font-style: italic"># Create a dictionary of the old column names to new column names</span>
-    home_mapping <span style="color: #666666">=</span> {old_col: new_col <span style="color: #008000; font-weight: bold">for</span> old_col, new_col <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(home_stats_cols, stats_cols_mapping)}
-    away_mapping <span style="color: #666666">=</span> {old_col: new_col <span style="color: #008000; font-weight: bold">for</span> old_col, new_col <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(away_stats_cols, stats_cols_mapping)}
+    # Create a dictionary of the old column names to new column names
+    home_mapping = {old_col: new_col for old_col, new_col in zip(home_stats_cols, stats_cols_mapping)}
+    away_mapping = {old_col: new_col for old_col, new_col in zip(away_stats_cols, stats_cols_mapping)}
 
-    <span style="color: #408080; font-style: italic"># Put each team onto an individual row</span>
-    multi_line_stats <span style="color: #666666">=</span> (old_stats_df[[<span style="color: #BA2121">&#39;gameId&#39;</span>] <span style="color: #666666">+</span> home_stats_cols] <span style="color: #408080; font-style: italic"># Filter for only the home team columns</span>
-                    <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>home_mapping) <span style="color: #408080; font-style: italic"># Rename the columns</span>
-                    <span style="color: #666666">.</span>assign(homeGame<span style="color: #666666">=1</span>) <span style="color: #408080; font-style: italic"># Assign homeGame=1 so that we can use a general function later</span>
-                    <span style="color: #666666">.</span>append((old_stats_df[[<span style="color: #BA2121">&#39;gameId&#39;</span>] <span style="color: #666666">+</span> away_stats_cols]) <span style="color: #408080; font-style: italic"># Append the away team columns</span>
-                            <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>away_mapping) <span style="color: #408080; font-style: italic"># Rename the away team columns</span>
-                            <span style="color: #666666">.</span>assign(homeGame<span style="color: #666666">=0</span>), sort<span style="color: #666666">=</span><span style="color: #008000">True</span>)
-                    <span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;gameId&#39;</span>) <span style="color: #408080; font-style: italic"># Sort the values</span>
-                    <span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>))
-    <span style="color: #008000; font-weight: bold">return</span> multi_line_stats
-</pre></div>
+    # Put each team onto an individual row
+    multi_line_stats = (old_stats_df[['gameId'] + home_stats_cols] # Filter for only the home team columns
+                    .rename(columns=home_mapping) # Rename the columns
+                    .assign(homeGame=1) # Assign homeGame=1 so that we can use a general function later
+                    .append((old_stats_df[['gameId'] + away_stats_cols]) # Append the away team columns
+                            .rename(columns=away_mapping) # Rename the away team columns
+                            .assign(homeGame=0), sort=True)
+                    .sort_values(by='gameId') # Sort the values
+                    .reset_index(drop=True))
+    return multi_line_stats</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Define a function which creates an EMA DataFrame from the stats DataFrame</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">create_stats_features_ema</span>(stats, span):
-    <span style="color: #408080; font-style: italic"># Create a restructured DataFrames so that we can calculate EMA</span>
-    multi_line_stats <span style="color: #666666">=</span> create_multiline_df_stats(stats)
+<pre class="codehilite"><code class="language-python"># Define a function which creates an EMA DataFrame from the stats DataFrame
+def create_stats_features_ema(stats, span):
+    # Create a restructured DataFrames so that we can calculate EMA
+    multi_line_stats = create_multiline_df_stats(stats)
 
-    <span style="color: #408080; font-style: italic"># Create a copy of the DataFrame</span>
-    ema_features <span style="color: #666666">=</span> multi_line_stats[[<span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;homeGame&#39;</span>]]<span style="color: #666666">.</span>copy()
+    # Create a copy of the DataFrame
+    ema_features = multi_line_stats[['gameId', 'team', 'homeGame']].copy()
 
-    <span style="color: #408080; font-style: italic"># Get the columns that we want to create EMA for</span>
-    feature_names <span style="color: #666666">=</span> multi_line_stats<span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;homeGame&#39;</span>])<span style="color: #666666">.</span>columns
+    # Get the columns that we want to create EMA for
+    feature_names = multi_line_stats.drop(columns=['gameId', 'team', 'homeGame']).columns
 
-    <span style="color: #408080; font-style: italic"># Loop over the features</span>
-    <span style="color: #008000; font-weight: bold">for</span> feature_name <span style="color: #AA22FF; font-weight: bold">in</span> feature_names:
-        feature_ema <span style="color: #666666">=</span> (multi_line_stats<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;team&#39;</span>)[feature_name] <span style="color: #408080; font-style: italic"># Calculate the EMA</span>
-                                                  <span style="color: #666666">.</span>transform(<span style="color: #008000; font-weight: bold">lambda</span> row: row<span style="color: #666666">.</span>ewm(span<span style="color: #666666">=</span>span, min_periods<span style="color: #666666">=2</span>)
-                                                             <span style="color: #666666">.</span>mean()
-                                                             <span style="color: #666666">.</span>shift(<span style="color: #666666">1</span>))) <span style="color: #408080; font-style: italic"># Shift the data down 1 so we don&#39;t leak data</span>
-        ema_features[feature_name] <span style="color: #666666">=</span> feature_ema <span style="color: #408080; font-style: italic"># Add the new feature to the DataFrame</span>
-    <span style="color: #008000; font-weight: bold">return</span> ema_features
-</pre></div>
+    # Loop over the features
+    for feature_name in feature_names:
+        feature_ema = (multi_line_stats.groupby('team')[feature_name] # Calculate the EMA
+                                                  .transform(lambda row: row.ewm(span=span, min_periods=2)
+                                                             .mean()
+                                                             .shift(1))) # Shift the data down 1 so we don't leak data
+        ema_features[feature_name] = feature_ema # Add the new feature to the DataFrame
+    return ema_features</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Apply the function</span>
-stats_features <span style="color: #666666">=</span> create_stats_features_ema(stats, span<span style="color: #666666">=5</span>)
-stats_features<span style="color: #666666">.</span>tail()
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Apply the function
+stats_features = create_stats_features_ema(stats, span=5)
+stats_features.tail()</code></pre>
 
 <table>
 <thead>
@@ -1871,11 +1897,10 @@ stats_features<span style="color: #666666">.</span>tail()
 </tbody>
 </table>
 <p>As we can see, we now have averages for each team. Let's create a quick table to see the top 10 teams' goalsFor average EMAs since 2005.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>pd<span style="color: #666666">.</span>DataFrame(stats_features<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;team&#39;</span>)
-                           <span style="color: #666666">.</span>goalsFor
-                           <span style="color: #666666">.</span>mean()
-                           <span style="color: #666666">.</span>sort_values(ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)[:<span style="color: #666666">10</span>])
-</pre></div>
+<pre class="codehilite"><code class="language-python">pd.DataFrame(stats_features.groupby('team')
+                           .goalsFor
+                           .mean()
+                           .sort_values(ascending=False)[:10])</code></pre>
 
 <table>
 <thead>
@@ -1936,22 +1961,21 @@ stats_features<span style="color: #666666">.</span>tail()
 <p>It looks like Man United and Chelsea have been two of the best teams since 2005, based on goalsFor. Now that we have our stats features, we may be tempted to move on. However, we have arbitrarily chosen a span of 5. How do we know that this is the best value? We don't. Let's try and optimise this value. </p>
 <p>To do this, we will use a simple Logistic Regression model to create probabilistic predictions based on the stats features we created before. We will iterate a range of span values, from say, 3 to 15, and choose the value which produces a model with the lowest log loss, based on cross validation.</p>
 <p>To do this, we need to restructure our DataFrame back to how it was before.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">restructure_stats_features</span>(stats_features):
-    non_features <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;homeGame&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;gameId&#39;</span>]
+<pre class="codehilite"><code class="language-python">def restructure_stats_features(stats_features):
+    non_features = ['homeGame', 'team', 'gameId']
 
-    stats_features_restructured <span style="color: #666666">=</span> (stats_features<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;homeGame == 1&#39;</span>)
-                                    <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{col: <span style="color: #BA2121">&#39;f_&#39;</span> <span style="color: #666666">+</span> col <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;Home&#39;</span> <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> stats_features<span style="color: #666666">.</span>columns <span style="color: #008000; font-weight: bold">if</span> col <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #AA22FF; font-weight: bold">in</span> non_features})
-                                    <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;team&#39;</span>: <span style="color: #BA2121">&#39;HomeTeam&#39;</span>})
-                                    <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, (stats_features<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;homeGame == 0&#39;</span>)
-                                                        <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;team&#39;</span>: <span style="color: #BA2121">&#39;AwayTeam&#39;</span>})
-                                                        <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{col: <span style="color: #BA2121">&#39;f_&#39;</span> <span style="color: #666666">+</span> col <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;Away&#39;</span> <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> stats_features<span style="color: #666666">.</span>columns 
-                                                                         <span style="color: #008000; font-weight: bold">if</span> col <span style="color: #AA22FF; font-weight: bold">not</span> <span style="color: #AA22FF; font-weight: bold">in</span> non_features})), on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;gameId&#39;</span>])
-                                    <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, df[[<span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;result&#39;</span>]], on<span style="color: #666666">=</span><span style="color: #BA2121">&#39;gameId&#39;</span>)
-                                    <span style="color: #666666">.</span>dropna())
-    <span style="color: #008000; font-weight: bold">return</span> stats_features_restructured
+    stats_features_restructured = (stats_features.query('homeGame == 1')
+                                    .rename(columns={col: 'f_' + col + 'Home' for col in stats_features.columns if col not in non_features})
+                                    .rename(columns={'team': 'HomeTeam'})
+                                    .pipe(pd.merge, (stats_features.query('homeGame == 0')
+                                                        .rename(columns={'team': 'AwayTeam'})
+                                                        .rename(columns={col: 'f_' + col + 'Away' for col in stats_features.columns 
+                                                                         if col not in non_features})), on=['gameId'])
+                                    .pipe(pd.merge, df[['gameId', 'result']], on='gameId')
+                                    .dropna())
+    return stats_features_restructured
 
-restructure_stats_features(stats_features)<span style="color: #666666">.</span>head()
-</pre></div>
+restructure_stats_features(stats_features).head()</code></pre>
 
 <table>
 <thead>
@@ -2206,47 +2230,43 @@ restructure_stats_features(stats_features)<span style="color: #666666">.</span>h
 </tbody>
 </table>
 <p>Now let's write a function that optimises our span based on log loss of the output of a Logistic Regression model.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">optimise_alpha</span>(features):
-    le <span style="color: #666666">=</span> LabelEncoder()
-    y <span style="color: #666666">=</span> le<span style="color: #666666">.</span>fit_transform(features<span style="color: #666666">.</span>result) <span style="color: #408080; font-style: italic"># Encode the result from away, draw, home win to 0, 1, 2</span>
-    X <span style="color: #666666">=</span> features[[col <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> features<span style="color: #666666">.</span>columns <span style="color: #008000; font-weight: bold">if</span> col<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;f_&#39;</span>)]] <span style="color: #408080; font-style: italic"># Only get the features - these all start with f_</span>
-    lr <span style="color: #666666">=</span> LogisticRegression()
+<pre class="codehilite"><code class="language-python">def optimise_alpha(features):
+    le = LabelEncoder()
+    y = le.fit_transform(features.result) # Encode the result from away, draw, home win to 0, 1, 2
+    X = features[[col for col in features.columns if col.startswith('f_')]] # Only get the features - these all start with f_
+    lr = LogisticRegression()
 
-    kfold <span style="color: #666666">=</span> StratifiedKFold(n_splits<span style="color: #666666">=5</span>)
-    ave_cv_score <span style="color: #666666">=</span> cross_val_score(lr, X, y, scoring<span style="color: #666666">=</span><span style="color: #BA2121">&#39;neg_log_loss&#39;</span>, cv<span style="color: #666666">=</span>kfold)<span style="color: #666666">.</span>mean()
-    <span style="color: #008000; font-weight: bold">return</span> ave_cv_score
-</pre></div>
+    kfold = StratifiedKFold(n_splits=5)
+    ave_cv_score = cross_val_score(lr, X, y, scoring='neg_log_loss', cv=kfold).mean()
+    return ave_cv_score</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>best_score <span style="color: #666666">=</span> np<span style="color: #666666">.</span>float(<span style="color: #BA2121">&#39;inf&#39;</span>)
-best_span <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-cv_scores <span style="color: #666666">=</span> []
+<pre class="codehilite"><code class="language-python">best_score = np.float('inf')
+best_span = 0
+cv_scores = []
 
-<span style="color: #408080; font-style: italic"># Iterate over a range of spans</span>
-<span style="color: #008000; font-weight: bold">for</span> span <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>, <span style="color: #666666">120</span>, <span style="color: #666666">3</span>):
-    stats_features <span style="color: #666666">=</span> create_stats_features_ema(stats, span<span style="color: #666666">=</span>span)
-    restructured_stats_features <span style="color: #666666">=</span> restructure_stats_features(stats_features)
-    cv_score <span style="color: #666666">=</span> optimise_alpha(restructured_stats_features)
-    cv_scores<span style="color: #666666">.</span>append(cv_score)
+# Iterate over a range of spans
+for span in range(1, 120, 3):
+    stats_features = create_stats_features_ema(stats, span=span)
+    restructured_stats_features = restructure_stats_features(stats_features)
+    cv_score = optimise_alpha(restructured_stats_features)
+    cv_scores.append(cv_score)
 
-    <span style="color: #008000; font-weight: bold">if</span> cv_score <span style="color: #666666">*</span> <span style="color: #666666">-1</span> <span style="color: #666666">&lt;</span> best_score:
-        best_score <span style="color: #666666">=</span> cv_score <span style="color: #666666">*</span> <span style="color: #666666">-1</span>
-        best_span <span style="color: #666666">=</span> span
-</pre></div>
+    if cv_score * -1 &lt; best_score:
+        best_score = cv_score * -1
+        best_span = span</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>plt<span style="color: #666666">.</span>style<span style="color: #666666">.</span>use(<span style="color: #BA2121">&#39;ggplot&#39;</span>)
-plt<span style="color: #666666">.</span>plot(<span style="color: #008000">list</span>(<span style="color: #008000">range</span>(<span style="color: #666666">1</span>, <span style="color: #666666">120</span>, <span style="color: #666666">3</span>)), (pd<span style="color: #666666">.</span>Series(cv_scores)<span style="color: #666666">*-1</span>)) <span style="color: #408080; font-style: italic"># Plot our results</span>
+<pre class="codehilite"><code class="language-python">plt.style.use('ggplot')
+plt.plot(list(range(1, 120, 3)), (pd.Series(cv_scores)*-1)) # Plot our results
 
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Optimising alpha&quot;</span>)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&quot;Span&quot;</span>)
-plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&quot;Log Loss&quot;</span>)
-plt<span style="color: #666666">.</span>show()
+plt.title("Optimising alpha")
+plt.xlabel("Span")
+plt.ylabel("Log Loss")
+plt.show()
 
-<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Our lowest log loss ({:2f}) occurred at a span of {}&quot;</span><span style="color: #666666">.</span>format(best_score, best_span))
-</pre></div>
+print("Our lowest log loss ({:2f}) occurred at a span of {}".format(best_score, best_span))</code></pre>
 
 <p><img alt="png" src="../img/output_20_0_EPL.png" /></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Our lowest log loss (0.980835) occurred at a span of 55
-</pre></div>
+<pre class="codehilite"><code>Our lowest log loss (0.980835) occurred at a span of 55</code></pre>
 
 
 <p>The above method is just an example of how you can optimise hyparameters. Obviously this example has many limitations, such as attempting to optimise each statistic with the same alpha. However, for the rest of these tutorial series we will use this span value.</p>
@@ -2257,14 +2277,12 @@ plt<span style="color: #666666">.</span>show()
 <p>As part of this process we will create features which include margin weighted elo, an exponential average for asian handicap data, and odds as features.</p>
 <p>Our Elo function is essentially the same as the one we created in the AFL tutorial; if you would like to know more about Elo models please read <a href="https://www.betfair.com.au/hub/better-betting/betting-strategies/tennis/tennis-elo-modelling/">this</a> article.</p>
 <p>Note that the cell below may take a few minutes to run.</p>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create feature DataFrames</span>
-features_all_games <span style="color: #666666">=</span> create_all_games_features(all_games)
-</pre></div>
+<p><pre class="codehilite"><code class="language-python"># Create feature DataFrames
+features_all_games = create_all_games_features(all_games)</code></pre>
     C:\Users\wardj\Documents\Betfair Public Github\predictive-models\epl\data_preparation_functions.py:419: RuntimeWarning: invalid value encountered in double_scalars
       .pipe(lambda df: (df.eloAgainst * df[goalsForOrAgainstCol]).sum() / df.eloAgainst.sum()))</p>
 <p>The features_all_games df includes elo for each team, as well as their win percentage at home and away over the past 5 and 38 games. For more information on how it was calculated, read through the data_preparation_functions script.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features_all_games<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python">features_all_games.head(3)</code></pre>
 
 <table>
 <thead>
@@ -2357,10 +2375,9 @@ features_all_games <span style="color: #666666">=</span> create_all_games_featur
 </tbody>
 </table>
 <p>The features_stats df includes all the expontential weighted averages for each stat in the stats df.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create feature stats df</span>
-features_stats <span style="color: #666666">=</span> create_stats_features_ema(stats, span<span style="color: #666666">=</span>best_span)
-features_stats<span style="color: #666666">.</span>tail(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Create feature stats df
+features_stats = create_stats_features_ema(stats, span=best_span)
+features_stats.tail(3)</code></pre>
 
 <table>
 <thead>
@@ -2457,10 +2474,9 @@ features_stats<span style="color: #666666">.</span>tail(<span style="color: #666
 </tbody>
 </table>
 <p>The features_odds df includes a moving average of some of the odds data.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create feature_odds df</span>
-features_odds <span style="color: #666666">=</span> create_betting_features_ema(betting, span<span style="color: #666666">=10</span>)
-features_odds<span style="color: #666666">.</span>tail(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Create feature_odds df
+features_odds = create_betting_features_ema(betting, span=10)
+features_odds.tail(3)</code></pre>
 
 <table>
 <thead>
@@ -2509,10 +2525,9 @@ features_odds<span style="color: #666666">.</span>tail(<span style="color: #6666
 </tbody>
 </table>
 <p>The features market values has market values and the % of total market for each position. These values are in millions.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create feature market values df</span>
-features_market_values <span style="color: #666666">=</span> create_market_values_features(df) <span style="color: #408080; font-style: italic"># This creates a df with one game per row</span>
-features_market_values<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Create feature market values df
+features_market_values = create_market_values_features(df) # This creates a df with one game per row
+features_market_values.head(3)</code></pre>
 
 <table>
 <thead>
@@ -2628,33 +2643,30 @@ features_market_values<span style="color: #666666">.</span>head(<span style="col
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>all_games_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>, <span style="color: #BA2121">&#39;homeGame&#39;</span>, <span style="color: #BA2121">&#39;homeWinPc38&#39;</span>, <span style="color: #BA2121">&#39;homeWinPc5&#39;</span>, <span style="color: #BA2121">&#39;awayWinPc38&#39;</span>, <span style="color: #BA2121">&#39;awayWinPc5&#39;</span>, <span style="color: #BA2121">&#39;eloFor&#39;</span>, <span style="color: #BA2121">&#39;eloAgainst&#39;</span>, <span style="color: #BA2121">&#39;wtEloGoalsFor&#39;</span>, <span style="color: #BA2121">&#39;wtEloGoalsAgainst&#39;</span>]
+<pre class="codehilite"><code class="language-python">all_games_cols = ['Date', 'gameId', 'team', 'season', 'homeGame', 'homeWinPc38', 'homeWinPc5', 'awayWinPc38', 'awayWinPc5', 'eloFor', 'eloAgainst', 'wtEloGoalsFor', 'wtEloGoalsAgainst']
 
-<span style="color: #408080; font-style: italic"># Join the features together</span>
-features_multi_line <span style="color: #666666">=</span> (features_all_games[all_games_cols]
-                                         <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, features_stats<span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span><span style="color: #BA2121">&#39;homeGame&#39;</span>), on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>])
-                                         <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, features_odds, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>]))
-</pre></div>
+# Join the features together
+features_multi_line = (features_all_games[all_games_cols]
+                                         .pipe(pd.merge, features_stats.drop(columns='homeGame'), on=['gameId', 'team'])
+                                         .pipe(pd.merge, features_odds, on=['gameId', 'team']))</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Put each instance on an individual row</span>
-features_with_na <span style="color: #666666">=</span> put_features_on_one_line(features_multi_line)
+<pre class="codehilite"><code class="language-python"># Put each instance on an individual row
+features_with_na = put_features_on_one_line(features_multi_line)
 
-market_val_feature_names <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;attMktH%&#39;</span>, <span style="color: #BA2121">&#39;attMktA%&#39;</span>, <span style="color: #BA2121">&#39;midMktH%&#39;</span>, <span style="color: #BA2121">&#39;midMktA%&#39;</span>, <span style="color: #BA2121">&#39;defMktH%&#39;</span>, <span style="color: #BA2121">&#39;defMktA%&#39;</span>, <span style="color: #BA2121">&#39;gkMktH%&#39;</span>, <span style="color: #BA2121">&#39;gkMktA%&#39;</span>, <span style="color: #BA2121">&#39;totalMktH%&#39;</span>, <span style="color: #BA2121">&#39;totalMktA%&#39;</span>]
+market_val_feature_names = ['attMktH%', 'attMktA%', 'midMktH%', 'midMktA%', 'defMktH%', 'defMktA%', 'gkMktH%', 'gkMktA%', 'totalMktH%', 'totalMktA%']
 
-<span style="color: #408080; font-style: italic"># Merge our team values dataframe to features and result from df</span>
-features_with_na <span style="color: #666666">=</span> (features_with_na<span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, (features_market_values[market_val_feature_names <span style="color: #666666">+</span> [<span style="color: #BA2121">&#39;gameId&#39;</span>]])
-                                                      <span style="color: #666666">.</span>rename({col: <span style="color: #BA2121">&#39;f_&#39;</span> <span style="color: #666666">+</span> col <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> market_val_feature_names}), on<span style="color: #666666">=</span><span style="color: #BA2121">&#39;gameId&#39;</span>)
-                            <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, df[[<span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;result&#39;</span>, <span style="color: #BA2121">&#39;B365A&#39;</span>, <span style="color: #BA2121">&#39;B365D&#39;</span>, <span style="color: #BA2121">&#39;B365H&#39;</span>]], on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;gameId&#39;</span>]))
+# Merge our team values dataframe to features and result from df
+features_with_na = (features_with_na.pipe(pd.merge, (features_market_values[market_val_feature_names + ['gameId']])
+                                                      .rename({col: 'f_' + col for col in market_val_feature_names}), on='gameId')
+                            .pipe(pd.merge, df[['HomeTeam', 'AwayTeam', 'gameId', 'result', 'B365A', 'B365D', 'B365H']], on=['HomeTeam', 'AwayTeam', 'gameId']))
 
-<span style="color: #408080; font-style: italic"># Drop NAs from calculating the rolling averages - don&#39;t drop Win Pc 38 and Win Pc 5 columns</span>
-features <span style="color: #666666">=</span> features_with_na<span style="color: #666666">.</span>dropna(subset<span style="color: #666666">=</span>features_with_na<span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span>[col <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> features_with_na<span style="color: #666666">.</span>columns <span style="color: #008000; font-weight: bold">if</span> <span style="color: #BA2121">&#39;WinPc&#39;</span> <span style="color: #AA22FF; font-weight: bold">in</span> col])<span style="color: #666666">.</span>columns)
+# Drop NAs from calculating the rolling averages - don't drop Win Pc 38 and Win Pc 5 columns
+features = features_with_na.dropna(subset=features_with_na.drop(columns=[col for col in features_with_na.columns if 'WinPc' in col]).columns)
 
-<span style="color: #408080; font-style: italic"># Fill NAs for the Win Pc columns</span>
-features <span style="color: #666666">=</span> features<span style="color: #666666">.</span>fillna(features<span style="color: #666666">.</span>mean())
-</pre></div>
+# Fill NAs for the Win Pc columns
+features = features.fillna(features.mean())</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python">features.head(3)</code></pre>
 
 <table>
 <thead>
@@ -3082,7 +3094,7 @@ features <span style="color: #666666">=</span> features<span style="color: #6666
     
       <script src="../../assets/javascripts/application.83382bb6.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

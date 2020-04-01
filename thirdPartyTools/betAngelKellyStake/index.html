@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#bet-angel-pro-kelly-criterion-staking" tabindex="1" class="md-skip">
+      <a href="#bet-angel-pro-kelly-criterion-staking" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -353,6 +353,42 @@
   <li class="md-nav__item">
     <a href="../betAngel/betAngel/" title="Overview - Bet Angel Pro" class="md-nav__link">
       Overview - Bet Angel Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelbeginners/" title="Bet Angel - A beginner's guide" class="md-nav__link">
+      Bet Angel - A beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelintermediate/" title="Bet Angel - An intermediate guide" class="md-nav__link">
+      Bet Angel - An intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngeladvanced/" title="Bet Angel - An advanced guide" class="md-nav__link">
+      Bet Angel - An advanced guide
     </a>
   </li>
 
@@ -1149,50 +1185,42 @@ Where B is the odds you are getting -1 (because we're using decimal odds), P is 
 <ul>
 <li><strong>Column K - best available Back odds</strong> Check the runner's name in our ratings and match it with the runners listed in the market ('BET ANGEL' worksheet) and return the best available back odds from the G column</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(INDEX(&#39;Bet Angel&#39;!$E$9:$J$68,MATCH(H2,&#39;Bet Angel&#39;!$B$9:$B$68,0),3),&quot;&quot;)
-</pre></div>
+<p><pre class="codehilite"><code>=IFERROR(INDEX('Bet Angel'!$E$9:$J$68,MATCH(H2,'Bet Angel'!$B$9:$B$68,0),3),"")</code></pre>
 <img alt="Kelly staking strategy" src="../img/BetAngelKellyExcel5.png" /></p>
 <ul>
 <li><strong>Column L - Exchange odds -1</strong> Take the value returned in column K and minus 1 (because we're using decimal odds)</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(K2-1,&quot;&quot;)
-</pre></div>
+<p><pre class="codehilite"><code>=IFERROR(K2-1,"")</code></pre>
 <img alt="Kelly staking strategy" src="../img/BetAngelKellyExcel6.png" /></p>
 <ul>
 <li><strong>Column M - Probability of win %</strong> 1 divided by the rated price from column I which converts the decimal odds to a percentage probability</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR((1/I2),&quot;&quot;)
-</pre></div>
+<p><pre class="codehilite"><code>=IFERROR((1/I2),"")</code></pre>
 <img alt="Kelly staking strategy" src="../img/BetAngelKellyExcel7.png" /></p>
 <ul>
 <li><strong>Column N - Probability of loss %</strong> 1 divided by the probability of a win from column M</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(1-M2,&quot;&quot;)
-</pre></div>
+<p><pre class="codehilite"><code>=IFERROR(1-M2,"")</code></pre>
 <img alt="Kelly staking strategy" src="../img/BetAngelKellyExcel8.png" /></p>
 <ul>
 <li><strong>Column O - % of bankroll to use - Full Kelly</strong> Take the best available back odds (minus 1) from the L column, times it by the probability to win in the M column, then minus the probability to lose from the N column. Finally, divide that by the best available back odds (minus 1)</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(((L2*M2)-N2)/L2,&quot;&quot;)
-</pre></div>
+<p><pre class="codehilite"><code>=IFERROR(((L2*M2)-N2)/L2,"")</code></pre>
 <img alt="Kelly staking strategy" src="../img/BetAngelKellyExcel9.png" /></p>
 <ul>
 <li><strong>Column P - % of bankroll to use - Half Kelly</strong> Take the calculation from column O and simply divide it by 2</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(O2/2,&quot;&quot;)
-</pre></div>
+<p><pre class="codehilite"><code>=IFERROR(O2/2,"")</code></pre>
 <img alt="Kelly staking strategy" src="../img/BetAngelKellyExcel10.png" /></p>
 <ul>
 <li><strong>Column Q - Amount to bet - Full Kelly</strong> If the account balance times the percentage of the bankroll to use for half kelly stake is greater than 0, retrieve the account balance which Bet Angel populates in cell C6 of the 'BET ANGEL' worksheet and times it by the percentage of the bankroll (Column O) to use for the Full Kelly. If it's not greater than 0, then simply print 0.</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(IF(AccountBalance*P2&gt;0,AccountBalance*O2,&quot;0&quot;),&quot;&quot;)
-</pre></div>
+<p><pre class="codehilite"><code>=IFERROR(IF(AccountBalance*P2&gt;0,AccountBalance*O2,"0"),"")</code></pre>
 <img alt="Kelly staking strategy" src="../img/BetAngelKellyExcel11.png" /></p>
 <ul>
 <li><strong>Column R - Amount to bet - half Kelly</strong> If the account balance times the percentage of the bankroll to use for half Kelly stake is greater than 0, then calculate the account balance times the percentage of the bankroll. If it's not greater than 0, then simply print 0. </li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(IF(AccountBalance*P2&gt;0,AccountBalance*P2,&quot;0&quot;),&quot;&quot;)
-</pre></div>
+<p><pre class="codehilite"><code>=IFERROR(IF(AccountBalance*P2&gt;0,AccountBalance*P2,"0"),"")</code></pre>
 <img alt="Kelly staking strategy" src="../img/BetAngelKellyExcel12.png" /></p>
 <ul>
 <li><strong>Result:</strong> Once the calculations are complete, we're left with two stake values that we will be able to use with our trigger. Column Q for a full Kelly stake and column R for a half Kelly stake. In the below image examples, we have a market for Geelong with the half and full Kelly.</li>
@@ -1324,7 +1352,7 @@ Where B is the odds you are getting -1 (because we're using decimal odds), P is 
     
       <script src="../../assets/javascripts/application.83382bb6.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

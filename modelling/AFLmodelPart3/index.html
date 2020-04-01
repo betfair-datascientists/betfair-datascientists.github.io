@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#afl-modelling-walkthrough" tabindex="1" class="md-skip">
+      <a href="#afl-modelling-walkthrough" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -349,6 +349,42 @@
   <li class="md-nav__item">
     <a href="../../thirdPartyTools/betAngel/betAngel/" title="Overview - Bet Angel Pro" class="md-nav__link">
       Overview - Bet Angel Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelbeginners/" title="Bet Angel - A beginner's guide" class="md-nav__link">
+      Bet Angel - A beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelintermediate/" title="Bet Angel - An intermediate guide" class="md-nav__link">
+      Bet Angel - An intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngeladvanced/" title="Bet Angel - An advanced guide" class="md-nav__link">
+      Bet Angel - An advanced guide
     </a>
   </li>
 
@@ -889,37 +925,34 @@
 <hr />
 <h2 id="grabbing-our-dataset">Grabbing Our Dataset<a class="headerlink" href="#grabbing-our-dataset" title="Permanent link">&para;</a></h2>
 <p>First, we will import our required modules, as well as the prepare_afl_features function which we created in our afl_feature_creation script. This essentially creates some basic features for us so that we can get started on the modelling component.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Import libraries</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">afl_data_cleaning_v2</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">datetime</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn</span> <span style="color: #008000; font-weight: bold">import</span> svm, tree, linear_model, neighbors, naive_bayes, ensemble, discriminant_analysis, gaussian_process
-<span style="color: #408080; font-style: italic"># from xgboost import XGBClassifier</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> StratifiedKFold, cross_val_score, GridSearchCV, train_test_split
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LogisticRegressionCV
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.feature_selection</span> <span style="color: #008000; font-weight: bold">import</span> RFECV
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> OneHotEncoder, LabelEncoder, StandardScaler
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn</span> <span style="color: #008000; font-weight: bold">import</span> feature_selection
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn</span> <span style="color: #008000; font-weight: bold">import</span> metrics
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LogisticRegression, RidgeClassifier
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.ensemble</span> <span style="color: #008000; font-weight: bold">import</span> RandomForestClassifier
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.discriminant_analysis</span> <span style="color: #008000; font-weight: bold">import</span> LinearDiscriminantAnalysis
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.naive_bayes</span> <span style="color: #008000; font-weight: bold">import</span> GaussianNB
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">warnings</span>
-warnings<span style="color: #666666">.</span>filterwarnings(<span style="color: #BA2121">&#39;ignore&#39;</span>)
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">afl_feature_creation_v2</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">afl_data_cleaning_v2</span>
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Import libraries
+from afl_data_cleaning_v2 import *
+import datetime
+import pandas as pd
+import numpy as np
+from sklearn import svm, tree, linear_model, neighbors, naive_bayes, ensemble, discriminant_analysis, gaussian_process
+# from xgboost import XGBClassifier
+from sklearn.model_selection import StratifiedKFold, cross_val_score, GridSearchCV, train_test_split
+from sklearn.linear_model import LogisticRegressionCV
+from sklearn.feature_selection import RFECV
+import seaborn as sns
+from sklearn.preprocessing import OneHotEncoder, LabelEncoder, StandardScaler
+from sklearn import feature_selection
+from sklearn import metrics
+from sklearn.linear_model import LogisticRegression, RidgeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.naive_bayes import GaussianNB
+import warnings
+warnings.filterwarnings('ignore')
+import afl_feature_creation_v2
+import afl_data_cleaning_v2</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Grab our feature DataFrame which we created in the previous tutorial</span>
-feature_df <span style="color: #666666">=</span> afl_feature_creation_v2<span style="color: #666666">.</span>prepare_afl_features()
-afl_data <span style="color: #666666">=</span> afl_data_cleaning_v2<span style="color: #666666">.</span>prepare_afl_data()
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Grab our feature DataFrame which we created in the previous tutorial
+feature_df = afl_feature_creation_v2.prepare_afl_features()
+afl_data = afl_data_cleaning_v2.prepare_afl_data()</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>feature_df<span style="color: #666666">.</span>tail(<span style="color: #666666">3</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-python">feature_df.tail(3)</code></pre>
 
 <table>
 <thead>
@@ -1167,98 +1200,94 @@ afl_data <span style="color: #666666">=</span> afl_data_cleaning_v2<span style="
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get the result and merge to the feature_df</span>
+<pre class="codehilite"><code class="language-python"># Get the result and merge to the feature_df
 
-match_results <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&quot;data/afl_match_results.csv&quot;</span>)
-                    <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;Game&#39;</span>: <span style="color: #BA2121">&#39;game&#39;</span>})
-                    <span style="color: #666666">.</span>assign(result<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row[<span style="color: #BA2121">&#39;Home.Points&#39;</span>] <span style="color: #666666">&gt;</span> row[<span style="color: #BA2121">&#39;Away.Points&#39;</span>] <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=1</span>)))
+match_results = (pd.read_csv("data/afl_match_results.csv")
+                    .rename(columns={'Game': 'game'})
+                    .assign(result=lambda df: df.apply(lambda row: 1 if row['Home.Points'] &gt; row['Away.Points'] else 0, axis=1)))
 
-<span style="color: #408080; font-style: italic"># Merge result column to feature_df</span>
-feature_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>merge(feature_df, match_results[[<span style="color: #BA2121">&#39;game&#39;</span>, <span style="color: #BA2121">&#39;result&#39;</span>]], on<span style="color: #666666">=</span><span style="color: #BA2121">&#39;game&#39;</span>)
-</pre></div>
+# Merge result column to feature_df
+feature_df = pd.merge(feature_df, match_results[['game', 'result']], on='game')</code></pre>
 
 <hr />
 <h2 id="creating-a-training-and-testing-set">Creating a Training and Testing Set<a class="headerlink" href="#creating-a-training-and-testing-set" title="Permanent link">&para;</a></h2>
 <p>So that we don't train our data on the data that we will later test our model on, we will create separate train and test sets. For this exercise we will use the 2018 season to test how our model performs, whilst the rest of the data can be used to train the model.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create our test and train sets from our afl DataFrame; drop the columns which leak the result, duplicates, and the advanced</span>
-<span style="color: #408080; font-style: italic"># stats which don&#39;t have data until 2015</span>
+<pre class="codehilite"><code class="language-python"># Create our test and train sets from our afl DataFrame; drop the columns which leak the result, duplicates, and the advanced
+# stats which don't have data until 2015
 
-feature_columns <span style="color: #666666">=</span> [col <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> feature_df <span style="color: #008000; font-weight: bold">if</span> col<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;f_&#39;</span>)]
+feature_columns = [col for col in feature_df if col.startswith('f_')]
 
-<span style="color: #408080; font-style: italic"># Create our test set</span>
-test_x <span style="color: #666666">=</span> feature_df<span style="color: #666666">.</span>loc[feature_df<span style="color: #666666">.</span>season <span style="color: #666666">==</span> <span style="color: #666666">2018</span>, [<span style="color: #BA2121">&#39;game&#39;</span>] <span style="color: #666666">+</span> feature_columns]
-test_y <span style="color: #666666">=</span> feature_df<span style="color: #666666">.</span>loc[feature_df<span style="color: #666666">.</span>season <span style="color: #666666">==</span> <span style="color: #666666">2018</span>, <span style="color: #BA2121">&#39;result&#39;</span>]
+# Create our test set
+test_x = feature_df.loc[feature_df.season == 2018, ['game'] + feature_columns]
+test_y = feature_df.loc[feature_df.season == 2018, 'result']
 
-<span style="color: #408080; font-style: italic"># Create our train set</span>
-X <span style="color: #666666">=</span> feature_df<span style="color: #666666">.</span>loc[feature_df<span style="color: #666666">.</span>season <span style="color: #666666">!=</span> <span style="color: #666666">2018</span>, [<span style="color: #BA2121">&#39;game&#39;</span>] <span style="color: #666666">+</span> feature_columns]
-y <span style="color: #666666">=</span> feature_df<span style="color: #666666">.</span>loc[feature_df<span style="color: #666666">.</span>season <span style="color: #666666">!=</span> <span style="color: #666666">2018</span>, <span style="color: #BA2121">&#39;result&#39;</span>]
+# Create our train set
+X = feature_df.loc[feature_df.season != 2018, ['game'] + feature_columns]
+y = feature_df.loc[feature_df.season != 2018, 'result']
 
-<span style="color: #408080; font-style: italic"># Scale features</span>
-scaler <span style="color: #666666">=</span> StandardScaler()
-X[feature_columns] <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>fit_transform(X[feature_columns])
-test_x[feature_columns] <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(test_x[feature_columns])
-</pre></div>
+# Scale features
+scaler = StandardScaler()
+X[feature_columns] = scaler.fit_transform(X[feature_columns])
+test_x[feature_columns] = scaler.transform(test_x[feature_columns])</code></pre>
 
 <hr />
 <h2 id="using-cross-validation-to-find-the-best-algorithms">Using Cross Validation to Find The Best Algorithms<a class="headerlink" href="#using-cross-validation-to-find-the-best-algorithms" title="Permanent link">&para;</a></h2>
 <p>Now that we have our training set, we can run through a list of popular classifiers to determine which classifier is best for modelling our data. To do this we will create a function which uses Kfold cross-validation to find the 'best' algorithms, based on how accurate the algorithms' predictions are.</p>
 <p>This function will take in a list of classifiers, which we will define below, as well as the training set and it's outcome, and output a DataFrame with the mean and std of the accuracy of each algorithm. Let's jump into it!</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a list of standard classifiers</span>
-classifiers <span style="color: #666666">=</span> [
-    <span style="color: #408080; font-style: italic">#Ensemble Methods</span>
-    ensemble<span style="color: #666666">.</span>AdaBoostClassifier(),
-    ensemble<span style="color: #666666">.</span>BaggingClassifier(),
-    ensemble<span style="color: #666666">.</span>ExtraTreesClassifier(),
-    ensemble<span style="color: #666666">.</span>GradientBoostingClassifier(),
-    ensemble<span style="color: #666666">.</span>RandomForestClassifier(),
+<pre class="codehilite"><code class="language-python"># Create a list of standard classifiers
+classifiers = [
+    #Ensemble Methods
+    ensemble.AdaBoostClassifier(),
+    ensemble.BaggingClassifier(),
+    ensemble.ExtraTreesClassifier(),
+    ensemble.GradientBoostingClassifier(),
+    ensemble.RandomForestClassifier(),
 
-    <span style="color: #408080; font-style: italic">#Gaussian Processes</span>
-    gaussian_process<span style="color: #666666">.</span>GaussianProcessClassifier(),
+    #Gaussian Processes
+    gaussian_process.GaussianProcessClassifier(),
 
-    <span style="color: #408080; font-style: italic">#GLM</span>
-    linear_model<span style="color: #666666">.</span>LogisticRegressionCV(),
+    #GLM
+    linear_model.LogisticRegressionCV(),
 
-    <span style="color: #408080; font-style: italic">#Navies Bayes</span>
-    naive_bayes<span style="color: #666666">.</span>BernoulliNB(),
-    naive_bayes<span style="color: #666666">.</span>GaussianNB(),
+    #Navies Bayes
+    naive_bayes.BernoulliNB(),
+    naive_bayes.GaussianNB(),
 
-    <span style="color: #408080; font-style: italic">#SVM</span>
-    svm<span style="color: #666666">.</span>SVC(probability<span style="color: #666666">=</span><span style="color: #008000">True</span>),
-    svm<span style="color: #666666">.</span>NuSVC(probability<span style="color: #666666">=</span><span style="color: #008000">True</span>),
+    #SVM
+    svm.SVC(probability=True),
+    svm.NuSVC(probability=True),
 
-    <span style="color: #408080; font-style: italic">#Discriminant Analysis</span>
-    discriminant_analysis<span style="color: #666666">.</span>LinearDiscriminantAnalysis(),
-    discriminant_analysis<span style="color: #666666">.</span>QuadraticDiscriminantAnalysis(),
+    #Discriminant Analysis
+    discriminant_analysis.LinearDiscriminantAnalysis(),
+    discriminant_analysis.QuadraticDiscriminantAnalysis(),
 
-    <span style="color: #408080; font-style: italic">#xgboost: http://xgboost.readthedocs.io/en/latest/model.html</span>
-<span style="color: #408080; font-style: italic">#     XGBClassifier()    </span>
+    #xgboost: http://xgboost.readthedocs.io/en/latest/model.html
+#     XGBClassifier()    
 ]
 
-<span style="color: #408080; font-style: italic"># Define a functiom which finds the best algorithms for our modelling task</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">find_best_algorithms</span>(classifier_list, X, y):
-    <span style="color: #408080; font-style: italic"># This function is adapted from https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling</span>
-    <span style="color: #408080; font-style: italic"># Cross validate model with Kfold stratified cross validation</span>
-    kfold <span style="color: #666666">=</span> StratifiedKFold(n_splits<span style="color: #666666">=5</span>)
+# Define a functiom which finds the best algorithms for our modelling task
+def find_best_algorithms(classifier_list, X, y):
+    # This function is adapted from https://www.kaggle.com/yassineghouzam/titanic-top-4-with-ensemble-modeling
+    # Cross validate model with Kfold stratified cross validation
+    kfold = StratifiedKFold(n_splits=5)
 
-    <span style="color: #408080; font-style: italic"># Grab the cross validation scores for each algorithm</span>
-    cv_results <span style="color: #666666">=</span> [cross_val_score(classifier, X, y, scoring <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;neg_log_loss&quot;</span>, cv <span style="color: #666666">=</span> kfold) <span style="color: #008000; font-weight: bold">for</span> classifier <span style="color: #AA22FF; font-weight: bold">in</span> classifier_list]
-    cv_means <span style="color: #666666">=</span> [cv_result<span style="color: #666666">.</span>mean() <span style="color: #666666">*</span> <span style="color: #666666">-1</span> <span style="color: #008000; font-weight: bold">for</span> cv_result <span style="color: #AA22FF; font-weight: bold">in</span> cv_results]
-    cv_std <span style="color: #666666">=</span> [cv_result<span style="color: #666666">.</span>std() <span style="color: #008000; font-weight: bold">for</span> cv_result <span style="color: #AA22FF; font-weight: bold">in</span> cv_results]
-    algorithm_names <span style="color: #666666">=</span> [alg<span style="color: #666666">.</span><span style="color: #19177C">__class__</span><span style="color: #666666">.</span><span style="color: #19177C">__name__</span> <span style="color: #008000; font-weight: bold">for</span> alg <span style="color: #AA22FF; font-weight: bold">in</span> classifiers]
+    # Grab the cross validation scores for each algorithm
+    cv_results = [cross_val_score(classifier, X, y, scoring = "neg_log_loss", cv = kfold) for classifier in classifier_list]
+    cv_means = [cv_result.mean() * -1 for cv_result in cv_results]
+    cv_std = [cv_result.std() for cv_result in cv_results]
+    algorithm_names = [alg.__class__.__name__ for alg in classifiers]
 
-    <span style="color: #408080; font-style: italic"># Create a DataFrame of all the CV results</span>
-    cv_results <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame({
-        <span style="color: #BA2121">&quot;Mean Log Loss&quot;</span>: cv_means,
-        <span style="color: #BA2121">&quot;Log Loss Std&quot;</span>: cv_std,
-        <span style="color: #BA2121">&quot;Algorithm&quot;</span>: algorithm_names
+    # Create a DataFrame of all the CV results
+    cv_results = pd.DataFrame({
+        "Mean Log Loss": cv_means,
+        "Log Loss Std": cv_std,
+        "Algorithm": algorithm_names
     })
 
-    <span style="color: #008000; font-weight: bold">return</span> cv_results<span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Mean Log Loss&#39;</span>)<span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>)
-</pre></div>
+    return cv_results.sort_values(by='Mean Log Loss').reset_index(drop=True)</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>best_algos <span style="color: #666666">=</span> find_best_algorithms(classifiers, X, y)
-best_algos
-</pre></div>
+<pre class="codehilite"><code class="language-python">best_algos = find_best_algorithms(classifiers, X, y)
+best_algos</code></pre>
 
 <table>
 <thead>
@@ -1350,12 +1379,11 @@ best_algos
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Try a logistic regression model and see how it performs in terms of accuracy</span>
-kfold <span style="color: #666666">=</span> StratifiedKFold(n_splits<span style="color: #666666">=5</span>)
-cv_scores <span style="color: #666666">=</span> cross_val_score(linear_model<span style="color: #666666">.</span>LogisticRegressionCV(), X, y, scoring<span style="color: #666666">=</span><span style="color: #BA2121">&#39;accuracy&#39;</span>, cv<span style="color: #666666">=</span>kfold)
-cv_scores<span style="color: #666666">.</span>mean()
-    <span style="color: #666666">0.7452268937025035</span>
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Try a logistic regression model and see how it performs in terms of accuracy
+kfold = StratifiedKFold(n_splits=5)
+cv_scores = cross_val_score(linear_model.LogisticRegressionCV(), X, y, scoring='accuracy', cv=kfold)
+cv_scores.mean()
+    0.7452268937025035</code></pre>
 
 <h3 id="choosing-our-algorithms">Choosing Our Algorithms<a class="headerlink" href="#choosing-our-algorithms" title="Permanent link">&para;</a></h3>
 <p>As we can see from above, there are some pretty poor algorithms for predicting the winner. On the other hand, whilst attaining an accuracy of 74.5% (at the time of writing) may seem like a decent result; we must first establish a baseline to judge our performance on. In this case, we will have two baselines; the proportion of games won by the home team and what the odds predict. If we can beat the odds we have created a very powerful model.</p>
@@ -1364,12 +1392,11 @@ cv_scores<span style="color: #666666">.</span>mean()
 <hr />
 <h2 id="defining-our-baseline">Defining Our Baseline<a class="headerlink" href="#defining-our-baseline" title="Permanent link">&para;</a></h2>
 <p>As stated above, we must define our baseline so that we have a measure to beat. We will use the proportion of games won by the home team, as well as the proportion of favourites who won, based off the odds. To establish this baseline we will use our feature_df, as this has no dropped rows.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Find the percentage chance of winning at home in each season.</span>
-afl_data <span style="color: #666666">=</span> afl_data_cleaning_v2<span style="color: #666666">.</span>prepare_afl_data()
-afl_data[<span style="color: #BA2121">&#39;home_win&#39;</span>] <span style="color: #666666">=</span> afl_data<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> x[<span style="color: #BA2121">&#39;f_margin&#39;</span>] <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=1</span>)
-home_games <span style="color: #666666">=</span> afl_data[afl_data[<span style="color: #BA2121">&#39;home_game&#39;</span>] <span style="color: #666666">==</span> <span style="color: #666666">1</span>]
-home_games[[<span style="color: #BA2121">&quot;home_win&quot;</span>, <span style="color: #BA2121">&#39;season&#39;</span>]]<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;season&#39;</span>])<span style="color: #666666">.</span>mean()
-</pre></div>
+<pre class="codehilite"><code class="language-python"># Find the percentage chance of winning at home in each season.
+afl_data = afl_data_cleaning_v2.prepare_afl_data()
+afl_data['home_win'] = afl_data.apply(lambda x: 1 if x['f_margin'] &gt; 0 else 0, axis=1)
+home_games = afl_data[afl_data['home_game'] == 1]
+home_games[["home_win", 'season']].groupby(['season']).mean()</code></pre>
 
 <table>
 <thead>
@@ -1413,43 +1440,41 @@ home_games[[<span style="color: #BA2121">&quot;home_win&quot;</span>, <span styl
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Find the proportion of favourites who have won</span>
+<pre class="codehilite"><code class="language-python"># Find the proportion of favourites who have won
 
-<span style="color: #408080; font-style: italic"># Define a function which finds if the odds correctly guessed the response</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">find_odds_prediction</span>(a_row):
-    <span style="color: #008000; font-weight: bold">if</span> a_row[<span style="color: #BA2121">&#39;f_odds&#39;</span>] <span style="color: #666666">&lt;=</span> a_row[<span style="color: #BA2121">&#39;f_odds_away&#39;</span>] <span style="color: #AA22FF; font-weight: bold">and</span> a_row[<span style="color: #BA2121">&#39;home_win&#39;</span>] <span style="color: #666666">==</span> <span style="color: #666666">1</span>:
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>
-    <span style="color: #008000; font-weight: bold">elif</span> a_row[<span style="color: #BA2121">&#39;f_odds_away&#39;</span>] <span style="color: #666666">&lt;</span> a_row[<span style="color: #BA2121">&#39;f_odds&#39;</span>] <span style="color: #AA22FF; font-weight: bold">and</span> a_row[<span style="color: #BA2121">&#39;home_win&#39;</span>] <span style="color: #666666">==</span> <span style="color: #666666">0</span>:
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>
-    <span style="color: #008000; font-weight: bold">else</span>:
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>
+# Define a function which finds if the odds correctly guessed the response
+def find_odds_prediction(a_row):
+    if a_row['f_odds'] &lt;= a_row['f_odds_away'] and a_row['home_win'] == 1:
+        return 1
+    elif a_row['f_odds_away'] &lt; a_row['f_odds'] and a_row['home_win'] == 0:
+        return 1
+    else:
+        return 0
 
-<span style="color: #408080; font-style: italic"># Define a function which splits our DataFrame so each game is on one row instead of two</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get_df_on_one_line</span>(df):
-    cols_to_drop <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;date&#39;</span>, <span style="color: #BA2121">&#39;home_game&#39;</span>, <span style="color: #BA2121">&#39;opponent&#39;</span>, 
-       <span style="color: #BA2121">&#39;f_opponent_behinds&#39;</span>, <span style="color: #BA2121">&#39;f_opponent_goals&#39;</span>, <span style="color: #BA2121">&#39;f_opponent_points&#39;</span>, <span style="color: #BA2121">&#39;f_points&#39;</span>,
-       <span style="color: #BA2121">&#39;round&#39;</span>, <span style="color: #BA2121">&#39;venue&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>]
+# Define a function which splits our DataFrame so each game is on one row instead of two
+def get_df_on_one_line(df):
+    cols_to_drop = ['date', 'home_game', 'opponent', 
+       'f_opponent_behinds', 'f_opponent_goals', 'f_opponent_points', 'f_points',
+       'round', 'venue', 'season']
 
-    home_df <span style="color: #666666">=</span> df[df[<span style="color: #BA2121">&#39;home_game&#39;</span>] <span style="color: #666666">==</span> <span style="color: #666666">1</span>]<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;team&#39;</span>: <span style="color: #BA2121">&#39;home_team&#39;</span>})
-    away_df <span style="color: #666666">=</span> df[df[<span style="color: #BA2121">&#39;home_game&#39;</span>] <span style="color: #666666">==</span> <span style="color: #666666">0</span>]<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;team&#39;</span>: <span style="color: #BA2121">&#39;away_team&#39;</span>})
-    away_df <span style="color: #666666">=</span> away_df<span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span>cols_to_drop)
+    home_df = df[df['home_game'] == 1].rename(columns={'team': 'home_team'})
+    away_df = df[df['home_game'] == 0].rename(columns={'team': 'away_team'})
+    away_df = away_df.drop(columns=cols_to_drop)
 
-    <span style="color: #408080; font-style: italic"># Rename away_df columns</span>
-    away_df_renamed <span style="color: #666666">=</span> away_df<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{col: col <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;_away&#39;</span> <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> away_df<span style="color: #666666">.</span>columns <span style="color: #008000; font-weight: bold">if</span> col <span style="color: #666666">!=</span> <span style="color: #BA2121">&#39;game&#39;</span>})
-    merged_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>merge(home_df, away_df_renamed, on<span style="color: #666666">=</span><span style="color: #BA2121">&#39;game&#39;</span>)
+    # Rename away_df columns
+    away_df_renamed = away_df.rename(columns={col: col + '_away' for col in away_df.columns if col != 'game'})
+    merged_df = pd.merge(home_df, away_df_renamed, on='game')
 
-    merged_df[<span style="color: #BA2121">&#39;home_win&#39;</span>] <span style="color: #666666">=</span> merged_df<span style="color: #666666">.</span>f_margin<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>)
-    <span style="color: #008000; font-weight: bold">return</span> merged_df
+    merged_df['home_win'] = merged_df.f_margin.apply(lambda x: 1 if x &gt; 0 else 0)
+    return merged_df
 
-afl_data_one_line <span style="color: #666666">=</span> get_df_on_one_line(afl_data)
-afl_data_one_line[<span style="color: #BA2121">&#39;odds_prediction&#39;</span>] <span style="color: #666666">=</span> afl_data_one_line<span style="color: #666666">.</span>apply(find_odds_prediction, axis<span style="color: #666666">=1</span>)
-<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;The overall mean accuracy of choosing the favourite based on the odds is {}%&#39;</span><span style="color: #666666">.</span>format(
-    <span style="color: #008000">round</span>(afl_data_one_line[<span style="color: #BA2121">&#39;odds_prediction&#39;</span>]<span style="color: #666666">.</span>mean() <span style="color: #666666">*</span> <span style="color: #666666">100</span>, <span style="color: #666666">2</span>)))
-afl_data_one_line[[<span style="color: #BA2121">&quot;odds_prediction&quot;</span>, <span style="color: #BA2121">&#39;season&#39;</span>]]<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;season&#39;</span>])<span style="color: #666666">.</span>mean()
-</pre></div>
+afl_data_one_line = get_df_on_one_line(afl_data)
+afl_data_one_line['odds_prediction'] = afl_data_one_line.apply(find_odds_prediction, axis=1)
+print('The overall mean accuracy of choosing the favourite based on the odds is {}%'.format(
+    round(afl_data_one_line['odds_prediction'].mean() * 100, 2)))
+afl_data_one_line[["odds_prediction", 'season']].groupby(['season']).mean()</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>The overall mean accuracy of choosing the favourite based on the odds is 73.15%
-</pre></div>
+<pre class="codehilite"><code>The overall mean accuracy of choosing the favourite based on the odds is 73.15%</code></pre>
 
 
 <table>
@@ -1494,101 +1519,90 @@ afl_data_one_line[[<span style="color: #BA2121">&quot;odds_prediction&quot;</spa
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## Get a baseline log loss score from the odds</span>
-afl_data_one_line[<span style="color: #BA2121">&#39;odds_home_prob&#39;</span>] <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #666666">/</span> afl_data_one_line<span style="color: #666666">.</span>f_odds
-afl_data_one_line[<span style="color: #BA2121">&#39;odds_away_prob&#39;</span>] <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #666666">/</span> afl_data_one_line<span style="color: #666666">.</span>f_odds_away
-</pre></div>
+<pre class="codehilite"><code class="language-python">## Get a baseline log loss score from the odds
+afl_data_one_line['odds_home_prob'] = 1 / afl_data_one_line.f_odds
+afl_data_one_line['odds_away_prob'] = 1 / afl_data_one_line.f_odds_away</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>metrics<span style="color: #666666">.</span>log_loss(afl_data_one_line<span style="color: #666666">.</span>home_win, afl_data_one_line[[<span style="color: #BA2121">&#39;odds_away_prob&#39;</span>, <span style="color: #BA2121">&#39;odds_home_prob&#39;</span>]])
-    <span style="color: #666666">0.5375306549682837</span>
-</pre></div>
+<pre class="codehilite"><code class="language-python">metrics.log_loss(afl_data_one_line.home_win, afl_data_one_line[['odds_away_prob', 'odds_home_prob']])
+    0.5375306549682837</code></pre>
 
 <p>We can see that the odds are MUCH more accurate than just choosing the home team to win. We can also see that the mean accuracy of choosing the favourite is around 73%. That means that this is the score we need to beat. Similarly, the log loss of the odds is around 0.5385, whilst our model scores around 0.539 (at the time of writing), without hyperparamter optimisation. Let's choose only the algorithms with log losses below 0.67</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>chosen_algorithms <span style="color: #666666">=</span> best_algos<span style="color: #666666">.</span>loc[best_algos[<span style="color: #BA2121">&#39;Mean Log Loss&#39;</span>] <span style="color: #666666">&lt;</span> <span style="color: #666666">0.67</span>, <span style="color: #BA2121">&#39;Algorithm&#39;</span>]<span style="color: #666666">.</span>tolist()
+<pre class="codehilite"><code class="language-python">chosen_algorithms = best_algos.loc[best_algos['Mean Log Loss'] &lt; 0.67, 'Algorithm'].tolist()
 chosen_algorithms
-    [<span style="color: #BA2121">&#39;LogisticRegressionCV&#39;</span>,
-     <span style="color: #BA2121">&#39;LinearDiscriminantAnalysis&#39;</span>,
-     <span style="color: #BA2121">&#39;GradientBoostingClassifier&#39;</span>]
-</pre></div>
+    ['LogisticRegressionCV',
+     'LinearDiscriminantAnalysis',
+     'GradientBoostingClassifier']</code></pre>
 
 <hr />
 <h2 id="using-grid-search-to-tune-hyperparameters">Using Grid Search To Tune Hyperparameters<a class="headerlink" href="#using-grid-search-to-tune-hyperparameters" title="Permanent link">&para;</a></h2>
 <p>Now that we have our best models, we can use <a href="https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search">Grid Search</a> to optimise our hyperparameters. Grid search basically involves searching through a range of different algorithm hyperparameters, and choosing those which result in the best score from some metrics, which in our case is accuracy. Let's do this for the algorithms which have hyperparameters which can be tuned. Note that if you are running this on your own computer it may take up to 10 minutes.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Define a function which optimises the hyperparameters of our chosen algorithms</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">optimise_hyperparameters</span>(train_x, train_y, algorithms, parameters):
-    kfold <span style="color: #666666">=</span> StratifiedKFold(n_splits<span style="color: #666666">=5</span>)
-    best_estimators <span style="color: #666666">=</span> []
+<pre class="codehilite"><code class="language-python"># Define a function which optimises the hyperparameters of our chosen algorithms
+def optimise_hyperparameters(train_x, train_y, algorithms, parameters):
+    kfold = StratifiedKFold(n_splits=5)
+    best_estimators = []
 
-    <span style="color: #008000; font-weight: bold">for</span> alg, params <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(algorithms, parameters):
-        gs <span style="color: #666666">=</span> GridSearchCV(alg, param_grid<span style="color: #666666">=</span>params, cv<span style="color: #666666">=</span>kfold, scoring<span style="color: #666666">=</span><span style="color: #BA2121">&#39;neg_log_loss&#39;</span>, verbose<span style="color: #666666">=1</span>)
-        gs<span style="color: #666666">.</span>fit(train_x, train_y)
-        best_estimators<span style="color: #666666">.</span>append(gs<span style="color: #666666">.</span>best_estimator_)
-    <span style="color: #008000; font-weight: bold">return</span> best_estimators
+    for alg, params in zip(algorithms, parameters):
+        gs = GridSearchCV(alg, param_grid=params, cv=kfold, scoring='neg_log_loss', verbose=1)
+        gs.fit(train_x, train_y)
+        best_estimators.append(gs.best_estimator_)
+    return best_estimators
 
-<span style="color: #408080; font-style: italic"># Define our parameters to run a grid search over</span>
-lr_grid <span style="color: #666666">=</span> {
-    <span style="color: #BA2121">&quot;C&quot;</span>: [<span style="color: #666666">0.0001</span>, <span style="color: #666666">0.001</span>, <span style="color: #666666">0.01</span>, <span style="color: #666666">0.05</span>, <span style="color: #666666">0.2</span>, <span style="color: #666666">0.5</span>],
-    <span style="color: #BA2121">&quot;solver&quot;</span>: [<span style="color: #BA2121">&quot;newton-cg&quot;</span>, <span style="color: #BA2121">&quot;lbfgs&quot;</span>, <span style="color: #BA2121">&quot;liblinear&quot;</span>]
+# Define our parameters to run a grid search over
+lr_grid = {
+    "C": [0.0001, 0.001, 0.01, 0.05, 0.2, 0.5],
+    "solver": ["newton-cg", "lbfgs", "liblinear"]
 }
 
-<span style="color: #408080; font-style: italic"># Add our algorithms and parameters to lists to be used in our function</span>
-alg_list <span style="color: #666666">=</span> [LogisticRegression()]
-param_list <span style="color: #666666">=</span> [lr_grid]
-</pre></div>
+# Add our algorithms and parameters to lists to be used in our function
+alg_list = [LogisticRegression()]
+param_list = [lr_grid]</code></pre>
 
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Find the best estimators, then add our other estimators which don&#39;t need optimisation</span>
-best_estimators <span style="color: #666666">=</span> optimise_hyperparameters(X, y, alg_list, param_list)
-</pre></div>
+<p><pre class="codehilite"><code class="language-python"># Find the best estimators, then add our other estimators which don't need optimisation
+best_estimators = optimise_hyperparameters(X, y, alg_list, param_list)</code></pre>
     Fitting 5 folds for each of 18 candidates, totalling 90 fits</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>[Parallel(n_jobs=1)]: Done  90 out of  90 | elapsed:    5.2s finished
-</pre></div>
+<pre class="codehilite"><code>[Parallel(n_jobs=1)]: Done  90 out of  90 | elapsed:    5.2s finished</code></pre>
 
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>lr_best_params <span style="color: #666666">=</span> best_estimators[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>get_params()
+<pre class="codehilite"><code class="language-python">lr_best_params = best_estimators[0].get_params()
 lr_best_params
-    {<span style="color: #BA2121">&#39;C&#39;</span>: <span style="color: #666666">0.01</span>,
-     <span style="color: #BA2121">&#39;class_weight&#39;</span>: <span style="color: #008000">None</span>,
-     <span style="color: #BA2121">&#39;dual&#39;</span>: <span style="color: #008000">False</span>,
-     <span style="color: #BA2121">&#39;fit_intercept&#39;</span>: <span style="color: #008000">True</span>,
-     <span style="color: #BA2121">&#39;intercept_scaling&#39;</span>: <span style="color: #666666">1</span>,
-     <span style="color: #BA2121">&#39;max_iter&#39;</span>: <span style="color: #666666">100</span>,
-     <span style="color: #BA2121">&#39;multi_class&#39;</span>: <span style="color: #BA2121">&#39;ovr&#39;</span>,
-     <span style="color: #BA2121">&#39;n_jobs&#39;</span>: <span style="color: #666666">1</span>,
-     <span style="color: #BA2121">&#39;penalty&#39;</span>: <span style="color: #BA2121">&#39;l2&#39;</span>,
-     <span style="color: #BA2121">&#39;random_state&#39;</span>: <span style="color: #008000">None</span>,
-     <span style="color: #BA2121">&#39;solver&#39;</span>: <span style="color: #BA2121">&#39;newton-cg&#39;</span>,
-     <span style="color: #BA2121">&#39;tol&#39;</span>: <span style="color: #666666">0.0001</span>,
-     <span style="color: #BA2121">&#39;verbose&#39;</span>: <span style="color: #666666">0</span>,
-     <span style="color: #BA2121">&#39;warm_start&#39;</span>: <span style="color: #008000">False</span>}
-</pre></div>
+    {'C': 0.01,
+     'class_weight': None,
+     'dual': False,
+     'fit_intercept': True,
+     'intercept_scaling': 1,
+     'max_iter': 100,
+     'multi_class': 'ovr',
+     'n_jobs': 1,
+     'penalty': 'l2',
+     'random_state': None,
+     'solver': 'newton-cg',
+     'tol': 0.0001,
+     'verbose': 0,
+     'warm_start': False}</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>kfold <span style="color: #666666">=</span> StratifiedKFold(n_splits<span style="color: #666666">=10</span>)
-cv_scores <span style="color: #666666">=</span> cross_val_score(linear_model<span style="color: #666666">.</span>LogisticRegression(<span style="color: #666666">**</span>lr_best_params), X, y, scoring<span style="color: #666666">=</span><span style="color: #BA2121">&#39;neg_log_loss&#39;</span>, cv<span style="color: #666666">=</span>kfold)
-cv_scores<span style="color: #666666">.</span>mean()
-    <span style="color: #666666">-0.528741673153639</span>
-</pre></div>
+<pre class="codehilite"><code class="language-python">kfold = StratifiedKFold(n_splits=10)
+cv_scores = cross_val_score(linear_model.LogisticRegression(**lr_best_params), X, y, scoring='neg_log_loss', cv=kfold)
+cv_scores.mean()
+    -0.528741673153639</code></pre>
 
 <p>In the next iteration of this tutorial we will also optimise an XGB model and hopefully outperform our logistic regression model.</p>
 <hr />
 <h2 id="creating-predictions-for-the-2018-season">Creating Predictions for the 2018 Season<a class="headerlink" href="#creating-predictions-for-the-2018-season" title="Permanent link">&para;</a></h2>
 <p>Now that we have an optimised logistic regression model, let's see how it performs on predicting the 2018 season.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>lr <span style="color: #666666">=</span> LogisticRegression(<span style="color: #666666">**</span>lr_best_params)
-lr<span style="color: #666666">.</span>fit(X, y)
-final_predictions <span style="color: #666666">=</span> lr<span style="color: #666666">.</span>predict(test_x)
+<pre class="codehilite"><code class="language-python">lr = LogisticRegression(**lr_best_params)
+lr.fit(X, y)
+final_predictions = lr.predict(test_x)
 
-accuracy <span style="color: #666666">=</span> (final_predictions <span style="color: #666666">==</span> test_y)<span style="color: #666666">.</span>mean() <span style="color: #666666">*</span> <span style="color: #666666">100</span>
+accuracy = (final_predictions == test_y).mean() * 100
 
-<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Our accuracy in predicting the 2018 season is: {:.2f}%&quot;</span><span style="color: #666666">.</span>format(accuracy))
-</pre></div>
+print("Our accuracy in predicting the 2018 season is: {:.2f}%".format(accuracy))</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Our accuracy in predicting the 2018 season is: 67.68%
-</pre></div>
+<pre class="codehilite"><code>Our accuracy in predicting the 2018 season is: 67.68%</code></pre>
 
 
 <p>Now let's have a look at all the games which we incorrectly predicted.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>game_ids <span style="color: #666666">=</span> test_x[(final_predictions <span style="color: #666666">!=</span> test_y)]<span style="color: #666666">.</span>game
-afl_data_one_line<span style="color: #666666">.</span>loc[afl_data_one_line<span style="color: #666666">.</span>game<span style="color: #666666">.</span>isin(game_ids), [<span style="color: #BA2121">&#39;date&#39;</span>, <span style="color: #BA2121">&#39;home_team&#39;</span>, <span style="color: #BA2121">&#39;opponent&#39;</span>, <span style="color: #BA2121">&#39;f_odds&#39;</span>, <span style="color: #BA2121">&#39;f_odds_away&#39;</span>, <span style="color: #BA2121">&#39;f_margin&#39;</span>]]
-</pre></div>
+<pre class="codehilite"><code class="language-python">game_ids = test_x[(final_predictions != test_y)].game
+afl_data_one_line.loc[afl_data_one_line.game.isin(game_ids), ['date', 'home_team', 'opponent', 'f_odds', 'f_odds_away', 'f_margin']]</code></pre>
 
 <table>
 <thead>
@@ -2155,12 +2169,11 @@ afl_data_one_line<span style="color: #666666">.</span>loc[afl_data_one_line<span
 </tbody>
 </table>
 <p>Very interesting! Most of the games we got wrong were upsets. Let's have a look at the games we incorrectly predicted that weren't upsets.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>(afl_data_one_line<span style="color: #666666">.</span>loc[afl_data_one_line<span style="color: #666666">.</span>game<span style="color: #666666">.</span>isin(game_ids), [<span style="color: #BA2121">&#39;date&#39;</span>, <span style="color: #BA2121">&#39;home_team&#39;</span>, <span style="color: #BA2121">&#39;opponent&#39;</span>, <span style="color: #BA2121">&#39;f_odds&#39;</span>, <span style="color: #BA2121">&#39;f_odds_away&#39;</span>, <span style="color: #BA2121">&#39;f_margin&#39;</span>]]
-    <span style="color: #666666">.</span>assign(home_favourite<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>f_odds <span style="color: #666666">&lt;</span> row<span style="color: #666666">.</span>f_odds_away <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=1</span>))
-    <span style="color: #666666">.</span>assign(upset<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>home_favourite <span style="color: #666666">==</span> <span style="color: #666666">1</span> <span style="color: #AA22FF; font-weight: bold">and</span> row<span style="color: #666666">.</span>f_margin <span style="color: #666666">&lt;</span> <span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">else</span> 
-                                      (<span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>home_favourite <span style="color: #666666">==</span> <span style="color: #666666">0</span> <span style="color: #AA22FF; font-weight: bold">and</span> row<span style="color: #666666">.</span>f_margin <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>), axis<span style="color: #666666">=1</span>))
-    <span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;upset == 0&#39;</span>))
-</pre></div>
+<pre class="codehilite"><code class="language-python">(afl_data_one_line.loc[afl_data_one_line.game.isin(game_ids), ['date', 'home_team', 'opponent', 'f_odds', 'f_odds_away', 'f_margin']]
+    .assign(home_favourite=lambda df: df.apply(lambda row: 1 if row.f_odds &lt; row.f_odds_away else 0, axis=1))
+    .assign(upset=lambda df: df.apply(lambda row: 1 if row.home_favourite == 1 and row.f_margin &lt; 0 else 
+                                      (1 if row.home_favourite == 0 and row.f_margin &gt; 0 else 0), axis=1))
+    .query('upset == 0'))</code></pre>
 
 <table>
 <thead>
@@ -2367,18 +2380,15 @@ afl_data_one_line<span style="color: #666666">.</span>loc[afl_data_one_line<span
 </tbody>
 </table>
 <p>Let's now look at our model's log loss for the 2018 season compared to the odds.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>predictions_probs <span style="color: #666666">=</span> lr<span style="color: #666666">.</span>predict_proba(test_x)
-</pre></div>
+<pre class="codehilite"><code class="language-python">predictions_probs = lr.predict_proba(test_x)</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>metrics<span style="color: #666666">.</span>log_loss(test_y, predictions_probs)
-    <span style="color: #666666">0.584824211055384</span>
-</pre></div>
+<pre class="codehilite"><code class="language-python">metrics.log_loss(test_y, predictions_probs)
+    0.584824211055384</code></pre>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>test_x_unscaled <span style="color: #666666">=</span> feature_df<span style="color: #666666">.</span>loc[feature_df<span style="color: #666666">.</span>season <span style="color: #666666">==</span> <span style="color: #666666">2018</span>, [<span style="color: #BA2121">&#39;game&#39;</span>] <span style="color: #666666">+</span> feature_columns]
+<pre class="codehilite"><code class="language-python">test_x_unscaled = feature_df.loc[feature_df.season == 2018, ['game'] + feature_columns]
 
-metrics<span style="color: #666666">.</span>log_loss(test_y, test_x_unscaled[[<span style="color: #BA2121">&#39;f_current_odds_prob_away&#39;</span>, <span style="color: #BA2121">&#39;f_current_odds_prob&#39;</span>]])
-    <span style="color: #666666">0.5545776633924343</span>
-</pre></div>
+metrics.log_loss(test_y, test_x_unscaled[['f_current_odds_prob_away', 'f_current_odds_prob']])
+    0.5545776633924343</code></pre>
 
 <p>So whilst our model performs decently, it doesn't beat the odds in terms of log loss. That's okay, it's still a decent start. In future iterations we can implement other algorithms and create new features which may improve performance.</p>
 <hr />
@@ -2479,7 +2489,7 @@ metrics<span style="color: #666666">.</span>log_loss(test_y, test_x_unscaled[[<s
     
       <script src="../../assets/javascripts/application.83382bb6.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

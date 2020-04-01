@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#betfair-api-tutorials-in-r" tabindex="1" class="md-skip">
+      <a href="#betfair-api-tutorials-in-r" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -349,6 +349,42 @@
   <li class="md-nav__item">
     <a href="../../thirdPartyTools/betAngel/betAngel/" title="Overview - Bet Angel Pro" class="md-nav__link">
       Overview - Bet Angel Pro
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelbeginners/" title="Bet Angel - A beginner's guide" class="md-nav__link">
+      Bet Angel - A beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngelintermediate/" title="Bet Angel - An intermediate guide" class="md-nav__link">
+      Bet Angel - An intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../thirdPartyTools/betAngeladvanced/" title="Bet Angel - An advanced guide" class="md-nav__link">
+      Bet Angel - An advanced guide
     </a>
   </li>
 
@@ -1069,279 +1105,270 @@
 <hr />
 <h3 id="required-packages">Required Packages<a class="headerlink" href="#required-packages" title="Permanent link">&para;</a></h3>
 <p>Two R packages are required:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">library</span>(tidyverse)
-<span style="color: #008000; font-weight: bold">library</span>(abettor)
-</pre></div>
+<pre class="codehilite"><code class="language-r">library(tidyverse)
+library(abettor)</code></pre>
 
 <p>The <a href="https://github.com/phillc73/abettor">abettor package can be downloaded here</a>. For an in-depth understanding of the package, have a read of the documentation. Instructions are also provided in the sample code.</p>
 <hr />
 <h3 id="login-to-betfair">Login to Betfair<a class="headerlink" href="#login-to-betfair" title="Permanent link">&para;</a></h3>
 <p>To login to Betfair, replace the following dummy username, password and app key with your own.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>abettor<span style="color: #666666">::</span>loginBF(username <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;betfair_username&quot;</span>,
-                 password <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;betfair_password&quot;</span>,
-                 applicationKey <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;betfair_app_key&quot;</span>)
-</pre></div>
+<pre class="codehilite"><code class="language-r">abettor::loginBF(username = "betfair_username",
+                 password = "betfair_password",
+                 applicationKey = "betfair_app_key")</code></pre>
 
 <p>If you don't have a live app key for the API yet <a href="../../api/apiappkey">take a look at this page</a>.</p>
 <hr />
 <h3 id="finding-event-ids">Finding Event IDs<a class="headerlink" href="#finding-event-ids" title="Permanent link">&para;</a></h3>
 <p>In order to find data for specific markets, you will first need to know the event ID. This is easily achieved with the <a href="https://github.com/phillc73/abettor">abettor package</a>. </p>
 <p>To find the event IDs of events in the next 60 days:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>abettor<span style="color: #666666">::</span>listEventTypes(toDate <span style="color: #666666">=</span> (<span style="color: #008000">format</span>(<span style="color: #008000">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)))
-</pre></div>
+<pre class="codehilite"><code class="language-r">abettor::listEventTypes(toDate = (format(Sys.time() + 86400 * 60, "%Y-%m-%dT%TZ")))</code></pre>
 
 <p>This will return a DataFrame of the following structure:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>eventType.id    eventType.name  marketCount
-<span style="color: #666666">1</span>   Soccer  <span style="color: #666666">1193</span>
-<span style="color: #666666">2</span>   Tennis  <span style="color: #666666">2184</span>
-<span style="color: #666666">7522</span>    Basketball  <span style="color: #666666">1</span>
-<span style="color: #666666">4</span>   Cricket <span style="color: #666666">37</span>
-<span style="color: #666666">7</span>   Horse Racing    <span style="color: #666666">509</span>
-<span style="color: #666666">61420</span>   Australian Rules    <span style="color: #666666">31</span>
-<span style="color: #666666">4339</span>    Greyhound Racing    <span style="color: #666666">527</span>
-</pre></div>
+<pre class="codehilite"><code class="language-r">eventType.id    eventType.name  marketCount
+1   Soccer  1193
+2   Tennis  2184
+7522    Basketball  1
+4   Cricket 37
+7   Horse Racing    509
+61420   Australian Rules    31
+4339    Greyhound Racing    527</code></pre>
 
 <hr />
 <h3 id="finding-competition-ids">Finding Competition IDs<a class="headerlink" href="#finding-competition-ids" title="Permanent link">&para;</a></h3>
 <p>Once you have the event ID, the next logical step is to find the competition IDs for the event you want to get data for. For example, if you want to find the competition IDs for Australian Rules, you would use the following</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>abettor<span style="color: #666666">::</span>listCompetitions(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">61420</span>,  <span style="color: #408080; font-style: italic">## AFL is eventTypeId 61420,</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #008000">format</span>(<span style="color: #008000">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">180</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 180 days</span>
-)
-</pre></div>
+<pre class="codehilite"><code class="language-r">abettor::listCompetitions(
+  eventTypeIds = 61420,  ## AFL is eventTypeId 61420,
+  toDate = (format(Sys.time() + 86400 * 180, "%Y-%m-%dT%TZ")) ## Look ahead until the next 180 days
+)</code></pre>
 
 <p>This will return the following structured DataFrame:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>competition.id  competition.name    marketCount competitionRegion
-<span style="color: #666666">11516633</span>    Brownlow Medal <span style="color: #666666">2018</span> <span style="color: #666666">3</span>   AUS
-<span style="color: #666666">11897406</span>    AFL <span style="color: #666666">78</span>  AUS
-</pre></div>
+<pre class="codehilite"><code class="language-r">competition.id  competition.name    marketCount competitionRegion
+11516633    Brownlow Medal 2018 3   AUS
+11897406    AFL 78  AUS</code></pre>
 
 <hr />
 <h3 id="finding-specific-markets">Finding Specific Markets<a class="headerlink" href="#finding-specific-markets" title="Permanent link">&para;</a></h3>
 <p>The next logical step is to find the market that you are interested in. Furthering our example above, if you want the Match Odds for all Australian Rules games over the next 60 days, simply use the Competition ID from above in the following.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>abettor<span style="color: #666666">::</span>listMarketCatalogue(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">61420</span>,
-  marketTypeCodes <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;MATCH_ODDS&quot;</span>, <span style="color: #408080; font-style: italic">## Restrict our search to Match Odds only, not other markets for the same match</span>
-  competitionIds <span style="color: #666666">=</span> <span style="color: #666666">11897406</span>,
-  toDate <span style="color: #666666">=</span> (<span style="color: #008000">format</span>(<span style="color: #008000">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>))
-</pre></div>
+<pre class="codehilite"><code class="language-r">abettor::listMarketCatalogue(
+  eventTypeIds = 61420,
+  marketTypeCodes = "MATCH_ODDS", ## Restrict our search to Match Odds only, not other markets for the same match
+  competitionIds = 11897406,
+  toDate = (format(Sys.time() + 86400 * 60, "%Y-%m-%dT%TZ"))</code></pre>
 
 <p>This returns a large DataFrame object with each market, participants and associated odds.</p>
 <hr />
 <h2 id="get-world-cup-odds-tutorial">Get World Cup Odds Tutorial<a class="headerlink" href="#get-world-cup-odds-tutorial" title="Permanent link">&para;</a></h2>
 <p>This tutorial walks you through the process of retrieving exchange odds for all the matches from the 2018 FIFA World Cup 2018. This can be modified for other sports and uses.</p>
 <p>You can run this script in R.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">### FIFA World Cup Datathon</span>
-<span style="color: #408080; font-style: italic">### Betfair API Tutorial</span>
-<span style="color: #408080; font-style: italic">###</span>
-<span style="color: #408080; font-style: italic">### This script allows you to access the Betfair</span>
-<span style="color: #408080; font-style: italic">### API and retrive exchange odds for all the </span>
-<span style="color: #408080; font-style: italic">### matches from the upcoming FIFA World Cup 2018</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<pre class="codehilite"><code class="language-r">###################################################
+### FIFA World Cup Datathon
+### Betfair API Tutorial
+###
+### This script allows you to access the Betfair
+### API and retrive exchange odds for all the 
+### matches from the upcoming FIFA World Cup 2018
+###################################################
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">### Setup</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+### Setup
+###################################################
 
-<span style="color: #408080; font-style: italic">## Loading required packages</span>
-<span style="color: #008000; font-weight: bold">library</span>(tidyverse) <span style="color: #408080; font-style: italic">## package for general data manipulation - https://www.tidyverse.org/</span>
-<span style="color: #008000; font-weight: bold">library</span>(abettor) <span style="color: #408080; font-style: italic">## wrapper package for the Betfair API - https://github.com/phillc73/abettor</span>
+## Loading required packages
+library(tidyverse) ## package for general data manipulation - https://www.tidyverse.org/
+library(abettor) ## wrapper package for the Betfair API - https://github.com/phillc73/abettor
 
-<span style="color: #408080; font-style: italic">## Enter your Betfair API Credentials below</span>
-betfair_username <span style="color: #666666">&lt;-</span> <span style="color: #BA2121">&quot;&quot;</span>
-betfair_password <span style="color: #666666">&lt;-</span> <span style="color: #BA2121">&quot;&quot;</span>
-betfair_app_key <span style="color: #666666">&lt;-</span> <span style="color: #BA2121">&quot;&quot;</span>
+## Enter your Betfair API Credentials below
+betfair_username &lt;- ""
+betfair_password &lt;- ""
+betfair_app_key &lt;- ""
 
-<span style="color: #408080; font-style: italic">## Login to Betfair - should return &quot;SUCCESS:&quot; on successful login</span>
-betfair_login <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span>loginBF(username <span style="color: #666666">=</span> betfair_username,
-                                  password <span style="color: #666666">=</span> betfair_password,
-                                  applicationKey <span style="color: #666666">=</span> betfair_app_key)
+## Login to Betfair - should return "SUCCESS:" on successful login
+betfair_login &lt;- abettor::loginBF(username = betfair_username,
+                                  password = betfair_password,
+                                  applicationKey = betfair_app_key)
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Retrieving all soccer competitions for </span>
-<span style="color: #408080; font-style: italic">## which markets are currently alive</span>
-<span style="color: #408080; font-style: italic">## on the Betfair Exchange</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+## Retrieving all soccer competitions for 
+## which markets are currently alive
+## on the Betfair Exchange
+###################################################
 
-all_soccer_markets <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span>listCompetitions(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">1</span>,  <span style="color: #408080; font-style: italic">## Soccer is eventTypeId 1,</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #008000">format</span>(<span style="color: #008000">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 60 days</span>
+all_soccer_markets &lt;- abettor::listCompetitions(
+  eventTypeIds = 1,  ## Soccer is eventTypeId 1,
+  toDate = (format(Sys.time() + 86400 * 60, "%Y-%m-%dT%TZ")) ## Look ahead until the next 60 days
   )
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Retrieving the competition id</span>
-<span style="color: #408080; font-style: italic">## for the 2018 World Cup </span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+## Retrieving the competition id
+## for the 2018 World Cup 
+###################################################
 
-world_cup_competition_id <span style="color: #666666">&lt;-</span> all_soccer_markets <span style="color: #666666">%&gt;%</span>
-  dplyr<span style="color: #666666">::</span>pull(competition) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting the variable competition which is a nested data frame</span>
-  dplyr<span style="color: #666666">::</span>filter(name <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;2018 FIFA World Cup&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Filtering for the competition we need</span>
-  dplyr<span style="color: #666666">::</span>pull(id) <span style="color: #408080; font-style: italic">## Extracting the id for the competition we need</span>
+world_cup_competition_id &lt;- all_soccer_markets %&gt;%
+  dplyr::pull(competition) %&gt;% ## Extracting the variable competition which is a nested data frame
+  dplyr::filter(name == "2018 FIFA World Cup") %&gt;% ## Filtering for the competition we need
+  dplyr::pull(id) ## Extracting the id for the competition we need
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Obtaining all markets that are currently </span>
-<span style="color: #408080; font-style: italic">## alive on the Betfair Exchange that belong to</span>
-<span style="color: #408080; font-style: italic">## Competition ID that is mapped to the World Cup </span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+## Obtaining all markets that are currently 
+## alive on the Betfair Exchange that belong to
+## Competition ID that is mapped to the World Cup 
+###################################################
 
-all_world_cup_markets <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span>listMarketCatalogue(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #408080; font-style: italic">## Soccer is eventTypeId 1</span>
-  marketTypeCodes <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;MATCH_ODDS&quot;</span>, <span style="color: #408080; font-style: italic">## Restrict our search to Match Odds only, not other markets for the same match</span>
-  competitionIds <span style="color: #666666">=</span> world_cup_competition_id, <span style="color: #408080; font-style: italic">## Restrict our search to World Cup matches only</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #008000">format</span>(<span style="color: #008000">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 60 days</span>
+all_world_cup_markets &lt;- abettor::listMarketCatalogue(
+  eventTypeIds = 1, ## Soccer is eventTypeId 1
+  marketTypeCodes = "MATCH_ODDS", ## Restrict our search to Match Odds only, not other markets for the same match
+  competitionIds = world_cup_competition_id, ## Restrict our search to World Cup matches only
+  toDate = (format(Sys.time() + 86400 * 60, "%Y-%m-%dT%TZ")) ## Look ahead until the next 60 days
 )
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Obtaining the current odds on the Betfair</span>
-<span style="color: #408080; font-style: italic">## Exchange for all the markets that were </span>
-<span style="color: #408080; font-style: italic">## obtained in the previous step (World Cup Matches)</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+## Obtaining the current odds on the Betfair
+## Exchange for all the markets that were 
+## obtained in the previous step (World Cup Matches)
+###################################################
 
-<span style="color: #408080; font-style: italic">## Creating a vector/array of all market ids</span>
-all_world_cup_markets_market_ids <span style="color: #666666">&lt;-</span> all_world_cup_markets <span style="color: #666666">%&gt;%</span>
+## Creating a vector/array of all market ids
+all_world_cup_markets_market_ids &lt;- all_world_cup_markets %&gt;%
   pull(marketId)
 
-<span style="color: #408080; font-style: italic">## This function takes in a single market id and returns </span>
-<span style="color: #408080; font-style: italic">## the current live odds on the Betfair Exchange for that market</span>
-fetch_odds <span style="color: #666666">&lt;-</span> <span style="color: #008000; font-weight: bold">function</span>(market_id) {
+## This function takes in a single market id and returns 
+## the current live odds on the Betfair Exchange for that market
+fetch_odds &lt;- function(market_id) {
 
-  <span style="color: #408080; font-style: italic">## Retrieving market odds for a single market</span>
-  odds <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span>listMarketBook(marketIds <span style="color: #666666">=</span> market_id, <span style="color: #408080; font-style: italic">##Runs listMarketBook for given market_id</span>
-                                  priceData <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;EX_BEST_OFFERS&quot;</span> <span style="color: #408080; font-style: italic">##Fetching the top 3 odds, EX_ALL_OFFERS fetches the entire depth of prices</span>
-                                  ) <span style="color: #666666">%&gt;%</span>
-    pull(runners) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting the runners field which has details of odds</span>
-    <span style="color: #008000">as.data.frame</span>() <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Converting to data frame from list</span>
-    select(lastPriceTraded) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting team and last matched odds</span>
-    mutate(market_id <span style="color: #666666">=</span> market_id) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Padding market id to the data to make it unique to this match</span>
-    bind_cols(<span style="color: #B00040">data.frame</span>(outcome <span style="color: #666666">=</span> <span style="color: #B00040">c</span>(<span style="color: #BA2121">&quot;o_1&quot;</span>,<span style="color: #BA2121">&quot;o_2&quot;</span>,<span style="color: #BA2121">&quot;o_3&quot;</span>))) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Creating outcome order to maintain consistency</span>
-    spread(outcome, lastPriceTraded) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Reshaping data to make it 1 row per match</span>
-    rename(team_1_odds <span style="color: #666666">=</span> o_1,
-           team_2_odds <span style="color: #666666">=</span> o_2,
-           draw_odds <span style="color: #666666">=</span> o_3) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">##Renaming columns such that all matches can be combined into one data frame</span>
-    select(market_id, team_1_odds, draw_odds, team_2_odds) <span style="color: #408080; font-style: italic">## Ordering columns in the right order</span>
+  ## Retrieving market odds for a single market
+  odds &lt;- abettor::listMarketBook(marketIds = market_id, ##Runs listMarketBook for given market_id
+                                  priceData = "EX_BEST_OFFERS" ##Fetching the top 3 odds, EX_ALL_OFFERS fetches the entire depth of prices
+                                  ) %&gt;%
+    pull(runners) %&gt;% ## Extracting the runners field which has details of odds
+    as.data.frame() %&gt;% ## Converting to data frame from list
+    select(lastPriceTraded) %&gt;% ## Extracting team and last matched odds
+    mutate(market_id = market_id) %&gt;% ## Padding market id to the data to make it unique to this match
+    bind_cols(data.frame(outcome = c("o_1","o_2","o_3"))) %&gt;% ## Creating outcome order to maintain consistency
+    spread(outcome, lastPriceTraded) %&gt;% ## Reshaping data to make it 1 row per match
+    rename(team_1_odds = o_1,
+           team_2_odds = o_2,
+           draw_odds = o_3) %&gt;% ##Renaming columns such that all matches can be combined into one data frame
+    select(market_id, team_1_odds, draw_odds, team_2_odds) ## Ordering columns in the right order
 
-  <span style="color: #008000; font-weight: bold">return</span>(odds)
+  return(odds)
 }
 
-<span style="color: #408080; font-style: italic">## The code below maps (or loops) each market id in the vector we created</span>
-<span style="color: #408080; font-style: italic">## above through the fetch_odds function and retrives the market odds </span>
-<span style="color: #408080; font-style: italic">## into a single data frame</span>
-world_cup_market_odds <span style="color: #666666">&lt;-</span> map_df(<span style="color: #666666">.</span>x <span style="color: #666666">=</span> all_world_cup_markets_market_ids, <span style="color: #408080; font-style: italic">##Iterate over market ids</span>
-                                <span style="color: #666666">.</span>f <span style="color: #666666">=</span> fetch_odds <span style="color: #408080; font-style: italic">## through function fetch_odds</span>
-                                ) <span style="color: #666666">%&gt;%</span>
-  bind_cols(all_world_cup_markets <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Merge with event names to identify which match odds it is</span>
-              pull(event) <span style="color: #666666">%&gt;%</span>
-              select(name)) <span style="color: #666666">%&gt;%</span> 
-  mutate(team_1 <span style="color: #666666">=</span> <span style="color: #008000">gsub</span>(<span style="color: #BA2121">&quot; v .*&quot;</span>,<span style="color: #BA2121">&quot;&quot;</span>,name), <span style="color: #408080; font-style: italic">## Extracting team 1 from match name</span>
-         team_2 <span style="color: #666666">=</span> <span style="color: #008000">gsub</span>(<span style="color: #BA2121">&quot;.* v &quot;</span>, <span style="color: #BA2121">&quot;&quot;</span>, name)) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracing team 2 from match name</span>
-  select(team_1, team_2, team_1_odds, draw_odds, team_2_odds) <span style="color: #408080; font-style: italic">## Extracting columns that we need</span>
+## The code below maps (or loops) each market id in the vector we created
+## above through the fetch_odds function and retrives the market odds 
+## into a single data frame
+world_cup_market_odds &lt;- map_df(.x = all_world_cup_markets_market_ids, ##Iterate over market ids
+                                .f = fetch_odds ## through function fetch_odds
+                                ) %&gt;%
+  bind_cols(all_world_cup_markets %&gt;% ## Merge with event names to identify which match odds it is
+              pull(event) %&gt;%
+              select(name)) %&gt;% 
+  mutate(team_1 = gsub(" v .*","",name), ## Extracting team 1 from match name
+         team_2 = gsub(".* v ", "", name)) %&gt;% ## Extracing team 2 from match name
+  select(team_1, team_2, team_1_odds, draw_odds, team_2_odds) ## Extracting columns that we need
 
-<span style="color: #408080; font-style: italic">## Writing output to csv file</span>
-write_csv(world_cup_market_odds, <span style="color: #BA2121">&quot;world_cup_market_odds.csv&quot;</span>)
-</pre></div>
+## Writing output to csv file
+write_csv(world_cup_market_odds, "world_cup_market_odds.csv")</code></pre>
 
 <hr />
 <h2 id="afl-odds-puller-tutorial">AFL Odds PulleR Tutorial<a class="headerlink" href="#afl-odds-puller-tutorial" title="Permanent link">&para;</a></h2>
 <p>This tutorial walks you through the process of retrieving exchange odds for the the next round of Australian Rules.</p>
 <p>You can run this script in R.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">### AFL Model</span>
-<span style="color: #408080; font-style: italic">### Betfair API Odds GrabbR</span>
-<span style="color: #408080; font-style: italic">###</span>
-<span style="color: #408080; font-style: italic">### This script allows you to access the Betfair</span>
-<span style="color: #408080; font-style: italic">### API and retrive exchange odds for all the </span>
-<span style="color: #408080; font-style: italic">### matches for the upcoming round of AFL games</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<pre class="codehilite"><code class="language-r">###################################################
+### AFL Model
+### Betfair API Odds GrabbR
+###
+### This script allows you to access the Betfair
+### API and retrive exchange odds for all the 
+### matches for the upcoming round of AFL games
+###################################################
 
-<span style="color: #408080; font-style: italic">## Loading required packages</span>
-<span style="color: #008000; font-weight: bold">library</span>(tidyverse) <span style="color: #408080; font-style: italic">## package for general data manipulation - https://www.tidyverse.org/</span>
-<span style="color: #008000; font-weight: bold">library</span>(abettor) <span style="color: #408080; font-style: italic">## wrapper package for the Betfair API - https://github.com/phillc73/abettor</span>
+## Loading required packages
+library(tidyverse) ## package for general data manipulation - https://www.tidyverse.org/
+library(abettor) ## wrapper package for the Betfair API - https://github.com/phillc73/abettor
 
-<span style="color: #408080; font-style: italic">## Login to Betfair - should return &quot;SUCCESS:&quot; on successful login</span>
-betfair_login <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span>loginBF(username <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;your_username&#39;</span>,
-                                  password <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;your_password&#39;</span>,
-                                  applicationKey <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;your_betfair_app_key&quot;</span>)
+## Login to Betfair - should return "SUCCESS:" on successful login
+betfair_login &lt;- abettor::loginBF(username = 'your_username',
+                                  password = 'your_password',
+                                  applicationKey = "your_betfair_app_key")
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Retrieving all AFL competitions for </span>
-<span style="color: #408080; font-style: italic">## which markets are currently alive</span>
-<span style="color: #408080; font-style: italic">## on the Betfair Exchange</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+## Retrieving all AFL competitions for 
+## which markets are currently alive
+## on the Betfair Exchange
+###################################################
 
-all_afl_markets <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span>listCompetitions(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">61420</span>,  <span style="color: #408080; font-style: italic">## AFL is eventTypeId 61420,</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #008000">format</span>(<span style="color: #008000">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">180</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 180 days</span>
+all_afl_markets &lt;- abettor::listCompetitions(
+  eventTypeIds = 61420,  ## AFL is eventTypeId 61420,
+  toDate = (format(Sys.time() + 86400 * 180, "%Y-%m-%dT%TZ")) ## Look ahead until the next 180 days
 )
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Retrieving the competition id</span>
-<span style="color: #408080; font-style: italic">## for the regular AFL season</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+## Retrieving the competition id
+## for the regular AFL season
+###################################################
 
-afl_competition_id <span style="color: #666666">&lt;-</span> all_afl_markets <span style="color: #666666">%&gt;%</span>
-  dplyr<span style="color: #666666">::</span>pull(competition) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting the variable competition which is a nested data frame</span>
-  dplyr<span style="color: #666666">::</span>filter(name <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;AFL&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Filtering for the competition we need</span>
-  dplyr<span style="color: #666666">::</span>pull(id) <span style="color: #408080; font-style: italic">## Extracting the id for the competition we need</span>
+afl_competition_id &lt;- all_afl_markets %&gt;%
+  dplyr::pull(competition) %&gt;% ## Extracting the variable competition which is a nested data frame
+  dplyr::filter(name == "AFL") %&gt;% ## Filtering for the competition we need
+  dplyr::pull(id) ## Extracting the id for the competition we need
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Obtaining all markets that are currently </span>
-<span style="color: #408080; font-style: italic">## alive on the Betfair Exchange that belong to</span>
-<span style="color: #408080; font-style: italic">## Competition ID that is mapped to the AFL</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+## Obtaining all markets that are currently 
+## alive on the Betfair Exchange that belong to
+## Competition ID that is mapped to the AFL
+###################################################
 
-all_afl_markets <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span>listMarketCatalogue(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">61420</span>, <span style="color: #408080; font-style: italic">## AFL is eventTypeId 61420</span>
-  marketTypeCodes <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;MATCH_ODDS&quot;</span>, <span style="color: #408080; font-style: italic">## Restrict our search to Match Odds only, not other markets for the same match</span>
-  competitionIds <span style="color: #666666">=</span> afl_competition_id, <span style="color: #408080; font-style: italic">## Restrict our search to AFL Matches Only</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #008000">format</span>(<span style="color: #008000">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 60 days</span>
+all_afl_markets &lt;- abettor::listMarketCatalogue(
+  eventTypeIds = 61420, ## AFL is eventTypeId 61420
+  marketTypeCodes = "MATCH_ODDS", ## Restrict our search to Match Odds only, not other markets for the same match
+  competitionIds = afl_competition_id, ## Restrict our search to AFL Matches Only
+  toDate = (format(Sys.time() + 86400 * 60, "%Y-%m-%dT%TZ")) ## Look ahead until the next 60 days
 )
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Obtaining the current odds on the Betfair</span>
-<span style="color: #408080; font-style: italic">## Exchange for all the markets that were </span>
-<span style="color: #408080; font-style: italic">## obtained in the previous step</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+###################################################
+## Obtaining the current odds on the Betfair
+## Exchange for all the markets that were 
+## obtained in the previous step
+###################################################
 
-<span style="color: #408080; font-style: italic">## Creating a vector/array of all market ids</span>
-all_afl_markets_market_ids <span style="color: #666666">&lt;-</span> all_afl_markets <span style="color: #666666">%&gt;%</span>
+## Creating a vector/array of all market ids
+all_afl_markets_market_ids &lt;- all_afl_markets %&gt;%
   pull(marketId)
 
-<span style="color: #408080; font-style: italic">## This function takes in a single market id and returns </span>
-<span style="color: #408080; font-style: italic">## the current live odds on the Betfair Exchange for that market</span>
-fetch_odds <span style="color: #666666">&lt;-</span> <span style="color: #008000; font-weight: bold">function</span>(market_id) {
+## This function takes in a single market id and returns 
+## the current live odds on the Betfair Exchange for that market
+fetch_odds &lt;- function(market_id) {
 
-  <span style="color: #408080; font-style: italic">## Retrieving market odds for a single market</span>
-  odds <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span>listMarketBook(marketIds <span style="color: #666666">=</span> market_id, <span style="color: #408080; font-style: italic">##Runs listMarketBook for given market_id</span>
-                                  priceData <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;EX_BEST_OFFERS&quot;</span> <span style="color: #408080; font-style: italic">##Fetching the top 3 odds, EX_ALL_OFFERS fetches the entire depth of prices</span>
-  ) <span style="color: #666666">%&gt;%</span>
-    pull(runners) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting the runners field which has details of odds</span>
-    <span style="color: #008000">as.data.frame</span>() <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Converting to data frame from list</span>
-    select(lastPriceTraded) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting team and last matched odds</span>
-    mutate(market_id <span style="color: #666666">=</span> market_id) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Padding market id to the data to make it unique to this match</span>
-    bind_cols(<span style="color: #B00040">data.frame</span>(outcome <span style="color: #666666">=</span> <span style="color: #B00040">c</span>(<span style="color: #BA2121">&quot;o_1&quot;</span>,<span style="color: #BA2121">&quot;o_2&quot;</span>))) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Creating outcome order to maintain consistency</span>
-    spread(outcome, lastPriceTraded) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Reshaping data to make it 1 row per match</span>
-    rename(team_1_odds <span style="color: #666666">=</span> o_1,
-           team_2_odds <span style="color: #666666">=</span> o_2) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">##Renaming columns such that all matches can be combined into one data frame</span>
-    select(market_id, team_1_odds, team_2_odds) <span style="color: #408080; font-style: italic">## Ordering columns in the right order</span>
+  ## Retrieving market odds for a single market
+  odds &lt;- abettor::listMarketBook(marketIds = market_id, ##Runs listMarketBook for given market_id
+                                  priceData = "EX_BEST_OFFERS" ##Fetching the top 3 odds, EX_ALL_OFFERS fetches the entire depth of prices
+  ) %&gt;%
+    pull(runners) %&gt;% ## Extracting the runners field which has details of odds
+    as.data.frame() %&gt;% ## Converting to data frame from list
+    select(lastPriceTraded) %&gt;% ## Extracting team and last matched odds
+    mutate(market_id = market_id) %&gt;% ## Padding market id to the data to make it unique to this match
+    bind_cols(data.frame(outcome = c("o_1","o_2"))) %&gt;% ## Creating outcome order to maintain consistency
+    spread(outcome, lastPriceTraded) %&gt;% ## Reshaping data to make it 1 row per match
+    rename(team_1_odds = o_1,
+           team_2_odds = o_2) %&gt;% ##Renaming columns such that all matches can be combined into one data frame
+    select(market_id, team_1_odds, team_2_odds) ## Ordering columns in the right order
 
-  <span style="color: #008000; font-weight: bold">return</span>(odds)
+  return(odds)
 }
 
-<span style="color: #408080; font-style: italic">## The code below maps (or loops) each market id in the vector we created</span>
-<span style="color: #408080; font-style: italic">## above through the fetch_odds function and retrives the market odds </span>
-<span style="color: #408080; font-style: italic">## into a single data frame</span>
-afl_market_odds <span style="color: #666666">&lt;-</span> map_df(<span style="color: #666666">.</span>x <span style="color: #666666">=</span> all_afl_markets_market_ids, <span style="color: #408080; font-style: italic">##Iterate over market ids</span>
-                                <span style="color: #666666">.</span>f <span style="color: #666666">=</span> fetch_odds <span style="color: #408080; font-style: italic">## through function fetch_odds</span>
-) <span style="color: #666666">%&gt;%</span>
-  bind_cols(all_afl_markets <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Merge with event names to identify which match odds it is</span>
-              pull(event) <span style="color: #666666">%&gt;%</span>
-              select(name)) <span style="color: #666666">%&gt;%</span> 
-  mutate(team_1 <span style="color: #666666">=</span> <span style="color: #008000">gsub</span>(<span style="color: #BA2121">&quot; v .*&quot;</span>,<span style="color: #BA2121">&quot;&quot;</span>,name), <span style="color: #408080; font-style: italic">## Extracting team 1 from match name</span>
-         team_2 <span style="color: #666666">=</span> <span style="color: #008000">gsub</span>(<span style="color: #BA2121">&quot;.* v &quot;</span>, <span style="color: #BA2121">&quot;&quot;</span>, name)) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracing team 2 from match name</span>
-  select(team_1, team_2, team_1_odds, team_2_odds) <span style="color: #408080; font-style: italic">## Extracting columns that we need</span>
+## The code below maps (or loops) each market id in the vector we created
+## above through the fetch_odds function and retrives the market odds 
+## into a single data frame
+afl_market_odds &lt;- map_df(.x = all_afl_markets_market_ids, ##Iterate over market ids
+                                .f = fetch_odds ## through function fetch_odds
+) %&gt;%
+  bind_cols(all_afl_markets %&gt;% ## Merge with event names to identify which match odds it is
+              pull(event) %&gt;%
+              select(name)) %&gt;% 
+  mutate(team_1 = gsub(" v .*","",name), ## Extracting team 1 from match name
+         team_2 = gsub(".* v ", "", name)) %&gt;% ## Extracing team 2 from match name
+  select(team_1, team_2, team_1_odds, team_2_odds) ## Extracting columns that we need
 
-<span style="color: #408080; font-style: italic">## Writing output to csv file</span>
-write_csv(afl_market_odds, <span style="color: #BA2121">&quot;weekly_afl_odds.csv&quot;</span>)
-</pre></div>
+## Writing output to csv file
+write_csv(afl_market_odds, "weekly_afl_odds.csv")</code></pre>
                 
                   
                 
@@ -1437,7 +1464,7 @@ write_csv(afl_market_odds, <span style="color: #BA2121">&quot;weekly_afl_odds.cs
     
       <script src="../../assets/javascripts/application.83382bb6.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

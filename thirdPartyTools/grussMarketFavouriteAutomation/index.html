@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
     
     
       
@@ -46,12 +46,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.9a8eeed6.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.834e7605.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.dd00d4b7.js"></script>
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#gruss-betting-assistant-market-favourite-automation" tabindex="1" class="md-skip">
+      <a href="../../#gruss-betting-assistant-market-favourite-automation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1228,115 +1228,122 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
-        InPlay1="Not In Play",
-        MarketStatus1&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre></div>
+        InPlay1=&quot;Not In Play&quot;,
+        MarketStatus1&lt;&gt;&quot;Suspended&quot;),
+    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
-        (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)-RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,TimeTillJump1 &lt; MaxTime,TimeTillJump1 &gt; MinTime,Overrounds1&lt;UserOverrounds,InPlay1="Not In Play",MarketStatus1&lt;&gt;"Suspended"),"BACK-SP","")
-</code></pre></div>
+        (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)-RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,TimeTillJump1 &lt; MaxTime,TimeTillJump1 &gt; MinTime,Overrounds1&lt;UserOverrounds,InPlay1=&quot;Not In Play&quot;,MarketStatus1&lt;&gt;&quot;Suspended&quot;),&quot;BACK-SP&quot;,&quot;&quot;)
+</pre></div></div>
 </div>
 <p>Stepping through each step:</p>
 <ul>
 <li><strong>Finding the top two selections in the market:</strong> check each runner to see if they're one of the two market favourites - We're doing this by going through the best available to back (column F) price for each runner, ranking them in order (which sorts them from highest to lowest - which is the opposite of what we want) then subtracting that rank number from the total number of selections available to inverse the order. Finally, we plus one to the resulting rank - if we didn't do this then you'd have a rank order that started at 0, not 1, and we thought that would just confuse matters!</li>
 </ul>
 <p>Once it's established what each selection's rank is, we then check if that rank is less than three, and if it is we know that the runner in question is one of the top two in the market, based on the current available to back prices.</p>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
-        (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
-        -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
-        TimeTillJump1 &lt; MaxTime,
+<span style="background-color: #ffffcc">        (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
+</span><span style="background-color: #ffffcc">        -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
+</span>        TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
-        InPlay1="Not In Play",
-        MarketStatus1&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre>
+        InPlay1=&quot;Not In Play&quot;,
+        MarketStatus1&lt;&gt;&quot;Suspended&quot;),
+    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div>
 
 <ul>
 <li><strong>TimeTillJump1 &lt; MaxTime and &gt; MinTime:</strong> check whether the seconds left on the countdown are smaller than what is defined in cell C3 and greater than cell E3 in the 'SETTINGS' worksheet (named 'MinTime' and 'MaxTime' respectively). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. We'll keep it simple by referencing the value in cell C9 (named 'TimeTillJump1') in the 'SETTINGS' worksheet, where we've already done the calculations for you.</li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
-        TimeTillJump1 &lt; MaxTime,
-        TimeTillJump1 &gt; MinTime,
-        Overrounds1&lt;UserOverrounds,
-        InPlay1="Not In Play",
-        MarketStatus1&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre>
+<span style="background-color: #ffffcc">        TimeTillJump1 &lt; MaxTime,
+</span><span style="background-color: #ffffcc">        TimeTillJump1 &gt; MinTime,
+</span>        Overrounds1&lt;UserOverrounds,
+        InPlay1=&quot;Not In Play&quot;,
+        MarketStatus1&lt;&gt;&quot;Suspended&quot;),
+    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div>
 
 <ul>
 <li><strong>Overrounds1 &lt; UserOverrounds:</strong> checking whether the market overrounds are less than the specific value that is specified in cell C4 of the 'SETTINGS' worksheet</li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
-        Overrounds1&lt;UserOverrounds,
-        InPlay1="Not In Play",
-        MarketStatus1&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre>
+<span style="background-color: #ffffcc">        Overrounds1&lt;UserOverrounds,
+</span>        InPlay1=&quot;Not In Play&quot;,
+        MarketStatus1&lt;&gt;&quot;Suspended&quot;),
+    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div>
 
 <ul>
 <li><strong>InPlay1:</strong> checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. InPlay refers to E2 in the 'MARKET' worksheet, if this cell displays "Not In Play" as a value, it's safe to place bets. </li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
-        InPlay1="Not In Play",
-        MarketStatus1&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre>
+<span style="background-color: #ffffcc">        InPlay1=&quot;Not In Play&quot;,
+</span>        MarketStatus1&lt;&gt;&quot;Suspended&quot;),
+    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div>
 
 <ul>
 <li><strong>MarketStatus1:</strong> checks whether the event is suspended, by checking if Gruss has populated cell F2 in the "MARKET" worksheet with "Suspended". If the cell has any other value, it's safe to place bets. </li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
-        InPlay1="Not In Play",
-        MarketStatus1&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre>
+        InPlay1=&quot;Not In Play&quot;,
+<span style="background-color: #ffffcc">        MarketStatus1&lt;&gt;&quot;Suspended&quot;),
+</span>    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div>
 
 <ul>
 <li><strong>Result:</strong> if the statement above is true, the formula returns 'BACK-SP', at which point the bet will trigger, taking BSP. If any of the previous conditions are not met, then no bet will be placed and the cell will remin blank. </li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
-        InPlay1="Not In Play",
-        MarketStatus1&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre>
+        InPlay1=&quot;Not In Play&quot;,
+        MarketStatus1&lt;&gt;&quot;Suspended&quot;),
+<span style="background-color: #ffffcc">    &quot;BACK-SP&quot;,
+</span><span style="background-color: #ffffcc">    &quot;&quot;)
+</span></pre></div>
 
 <div class="admonition info">
 <p class="admonition-title">updating the trigger for 'MARKET 2' and 'MARKET 3' worksheets</p>
@@ -1345,32 +1352,34 @@ keep on top of more complex strategies that require long formaulas to implement.
 <ul>
 <li><strong>Trigger for 'MARKET 2' worksheet:</strong> Note that Overrounds has been changed to Overrounds2, TimeTillJump1 to TimeTillJump2 and InPlay1 to InPlay2</li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
-        TimeTillJump2 &lt; MaxTime,
-        TimeTillJump2 &gt; MinTime,
-        Overrounds2&lt;UserOverrounds,
-        InPlay2="Not In Play",
-        MarketStatus2&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre>
+<span style="background-color: #ffffcc">        TimeTillJump2 &lt; MaxTime,
+</span><span style="background-color: #ffffcc">        TimeTillJump2 &gt; MinTime,
+</span><span style="background-color: #ffffcc">        Overrounds2&lt;UserOverrounds,
+</span><span style="background-color: #ffffcc">        InPlay2=&quot;Not In Play&quot;,
+</span><span style="background-color: #ffffcc">        MarketStatus2&lt;&gt;&quot;Suspended&quot;),
+</span>    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div>
 
 <ul>
 <li><strong>Trigger for 'MARKET 3' worksheet:</strong> Note that Overrounds has been changed to Overrounds3, TimeTillJump1 to TimeTillJump3 and InPlay1 to InPlay3</li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
-        TimeTillJump3 &lt; MaxTime,
-        TimeTillJump3 &gt; MinTime,
-        Overrounds3&lt;UserOverrounds,
-        InPlay3="Not In Play",
-        MarketStatus3&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre>
+<span style="background-color: #ffffcc">        TimeTillJump3 &lt; MaxTime,
+</span><span style="background-color: #ffffcc">        TimeTillJump3 &gt; MinTime,
+</span><span style="background-color: #ffffcc">        Overrounds3&lt;UserOverrounds,
+</span><span style="background-color: #ffffcc">        InPlay3=&quot;Not In Play&quot;,
+</span><span style="background-color: #ffffcc">        MarketStatus3&lt;&gt;&quot;Suspended&quot;),
+</span>    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div>
 
 <div class="admonition info">
 <p class="admonition-title">Excel functions</p>
@@ -1391,20 +1400,22 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Multi line</label>
-<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         (COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)
         -RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
-        InPlay1="Not In Play",
-        MarketStatus1&lt;&gt;"Suspended"),
-    "BACK-SP",
-    "")</code></pre></div>
+        InPlay1=&quot;Not In Play&quot;,
+        MarketStatus1&lt;&gt;&quot;Suspended&quot;),
+    &quot;BACK-SP&quot;,
+    &quot;&quot;)
+</pre></div></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND((COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)-RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,TimeTillJump1 &lt; MaxTime,TimeTillJump1 &gt; MinTime,Overrounds1&lt;UserOverrounds,InPlay1="Not In Play",MarketStatus1&lt;&gt;"Suspended"),"BACK-SP","")</code></pre></div>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND((COUNT($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50)-RANK(F5,($F$5,$F$6,$F$7,$F$8,$F$9,$F$10,$F$11,$F$12,$F$13,$F$14,$F$15,$F$16,$F$17,$F$18,$F$19,$F$20,$F$21,$F$22,$F$23,$F$24,$F$25,$F$26,$F$27,$F$28,$F$29,$F$30,$F$31,$F$32,$F$33,$F$34,$F$35,$F$36,$F$37,$F$38,$F$39,$F$40,$F$41,$F$42,$F$43,$F$44,$F$45,$F$46,$F$47,$F$48,$F$49,$F$50))+1) &lt; Fav+1,TimeTillJump1 &lt; MaxTime,TimeTillJump1 &gt; MinTime,Overrounds1&lt;UserOverrounds,InPlay1=&quot;Not In Play&quot;,MarketStatus1&lt;&gt;&quot;Suspended&quot;),&quot;BACK-SP&quot;,&quot;&quot;)
+</pre></div></div>
 </div>
 <p><img alt="Automating a market favourite strategy with Gruss" src="../img/GrussMarketFav1.png" /></p>
 <ul>
@@ -1538,7 +1549,7 @@ keep on top of more complex strategies that require long formaulas to implement.
     <div class="bf-footer">
       <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
       <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Know when to stop. Don’t go over the top. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="www.gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Know when to stop. Don’t go over the top. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
       <ul class="bf-links">
         <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
         <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
@@ -1548,13 +1559,15 @@ keep on top of more complex strategies that require long formaulas to implement.
       </ul>
     </div>
   </div>
+  <script src="https://js.adsrvr.org/up_loader.1.1.0.js"></script>
+  <script>ttd_dom_ready(function(){"function"==typeof TTDUniversalPixelApi&&(new TTDUniversalPixelApi).init("y12d1ir",["8ml4f17"],"https://insight.adsrvr.org/track/up")})</script>
 </footer>
       
     </div>
     
-      <script src="../../assets/javascripts/application.83382bb6.js"></script>
+      <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

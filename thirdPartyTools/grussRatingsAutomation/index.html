@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
     
     
       
@@ -46,12 +46,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.9a8eeed6.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.834e7605.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.dd00d4b7.js"></script>
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#gruss-betting-assistant-ratings-automation" tabindex="1" class="md-skip">
+      <a href="../../#gruss-betting-assistant-ratings-automation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1242,118 +1242,126 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
 <label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
-             AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
-        InPlay="Not In Play",
-        MarketStatus&lt;&gt;"Suspended"),
+        InPlay=&quot;Not In Play&quot;,
+        MarketStatus&lt;&gt;&quot;Suspended&quot;),
         BACKLAY,
-    ""
-)</code></pre></div>
+    &quot;&quot;
+)
+</pre></div></div>
 <input name="__tabs_1" type="radio" id="__tab_1_1" />
 <label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND(OR(AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),Overround&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay="Not In Play",MarketStatus&lt;&gt;"Suspended"),BACKLAY,"")</code></pre></div>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),Overround&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay=&quot;Not In Play&quot;,MarketStatus&lt;&gt;&quot;Suspended&quot;),BACKLAY,&quot;&quot;)
+</pre></div></div>
 </div>
 <p>Stepping through each step:</p>
 <ul>
 <li><strong>Checking market odds based on back or lay bet type:</strong> Here we're checking which bet type we've chosen from the dropdown box in the 'SETTINGS' worksheet (cell D6). If a BACK bet has been selected, the best available back bet must greater than our ratings that have been defined for that particular runner in the 'RATINGS' worksheet. On the flip side, if a LAY bet has been selected, then the best available back bet must be less than our ratings.</li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
-             AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
-        Overround&lt;UserOverround,
+<span style="background-color: #ffffcc">             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+</span><span style="background-color: #ffffcc">             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
+</span>        Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
-        InPlay="Not In Play",
-        MarketStatus&lt;&gt;"Suspended"),
+        InPlay=&quot;Not In Play&quot;,
+        MarketStatus&lt;&gt;&quot;Suspended&quot;),
         BACKLAY,
-    ""
-)</code></pre>
+    &quot;&quot;
+)
+</pre></div>
 
 <ul>
 <li><strong>Back market percentage (Overround) is less than what we define (UserOverround):</strong> Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'RATINGS' worksheet. <a href="https://www.betfair.com.au/hub/understanding-over-round/">Additional information relating to over-rounds can be found on the Hub.</a></li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
-             AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
-        Overround&lt;UserOverround,
-        TimeTillJump&lt;UserTimeTillJump,
-        InPlay="Not In Play",
-        MarketStatus&lt;&gt;"Suspended"),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
+<span style="background-color: #ffffcc">        Overround&lt;UserOverround,
+</span>        TimeTillJump&lt;UserTimeTillJump,
+        InPlay=&quot;Not In Play&quot;,
+        MarketStatus&lt;&gt;&quot;Suspended&quot;),
         BACKLAY,
-    ""
-)</code></pre>
+    &quot;&quot;
+)
+</pre></div>
 
 <ul>
 <li><strong>Time until the jump is less than what we define:</strong> Check whether the seconds left on the countdown timer are less than what we define in cell C4 in the 'SETTINGS' worksheet. This one's a bit complicated, as the time is actually returned as a percentage of a 24-hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E2 of the 'SETTINGS' worksheet (named 'TimeTillJump1'), where we've already done the calculations for you. </li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
-             AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
-        TimeTillJump&lt;UserTimeTillJump,
-        InPlay="Not In Play",
-        MarketStatus&lt;&gt;"Suspended"),
+<span style="background-color: #ffffcc">        TimeTillJump&lt;UserTimeTillJump,
+</span>        InPlay=&quot;Not In Play&quot;,
+        MarketStatus&lt;&gt;&quot;Suspended&quot;),
         BACKLAY,
-    ""
-)</code></pre>
+    &quot;&quot;
+)
+</pre></div>
 
 <ul>
 <li><strong>Not in play:</strong> checking whether the event has gone in play - as odds change so much in the run we only want to use this strategy pre-play. If cell E2 in the 'MARKET' worksheet has a 'Not In Play' flag, it's safe to place bets. </li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
-             AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
-        InPlay="Not In Play",
-        MarketStatus&lt;&gt;"Suspended"),
+<span style="background-color: #ffffcc">        InPlay=&quot;Not In Play&quot;,
+</span>        MarketStatus&lt;&gt;&quot;Suspended&quot;),
         BACKLAY,
-    ""
-)</code></pre>
+    &quot;&quot;
+)
+</pre></div>
 
 <ul>
 <li><strong>Market Status</strong> checking whether the event has been suspended - if there is any flag other than 'Suspended' in cell F2 of the 'MARKET' worksheet, it's safe to place bets.</li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
-             AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
-        InPlay="Not In Play",
-        MarketStatus&lt;&gt;"Suspended"),
-        BACKLAY,
-    ""
-)</code></pre>
+        InPlay=&quot;Not In Play&quot;,
+<span style="background-color: #ffffcc">        MarketStatus&lt;&gt;&quot;Suspended&quot;),
+</span>        BACKLAY,
+    &quot;&quot;
+)
+</pre></div>
 
 <ul>
 <li><strong>Result:</strong> if the statement above is true, the formula returns either a "BACK" or "LAY" depending on what has been selected from the 'SETTINGS' worksheet, at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
 </ul>
-<pre class="codehilite"><code class="language-excel">=IF(
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
-             AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
-        InPlay="Not In Play",
-        MarketStatus&lt;&gt;"Suspended"),
-        BACKLAY,
-    ""
-)</code></pre>
+        InPlay=&quot;Not In Play&quot;,
+        MarketStatus&lt;&gt;&quot;Suspended&quot;),
+<span style="background-color: #ffffcc">        BACKLAY,
+</span>    &quot;&quot;
+)
+</pre></div>
 
 <div class="admonition info">
 <p class="admonition-title">Excel functions</p>
@@ -1373,21 +1381,23 @@ keep on top of more complex strategies that require long formaulas to implement.
 <div class="superfences-tabs">
 <input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
 <label for="__tab_2_0">Multi line</label>
-<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
     AND(
         OR(
-             AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
-             AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
+             AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),
+             AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),
         Overround&lt;UserOverround,
         TimeTillJump&lt;UserTimeTillJump,
-        InPlay="Not In Play",
-        MarketStatus&lt;&gt;"Suspended"),
+        InPlay=&quot;Not In Play&quot;,
+        MarketStatus&lt;&gt;&quot;Suspended&quot;),
         BACKLAY,
-    ""
-)</code></pre></div>
+    &quot;&quot;
+)
+</pre></div></div>
 <input name="__tabs_2" type="radio" id="__tab_2_1" />
 <label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><pre class="codehilite"><code class="language-excel">=IF(AND(OR(AND(BACKLAY="BACK",(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),AND(BACKLAY="LAY",(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),Overround&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay="Not In Play",MarketStatus&lt;&gt;"Suspended"),BACKLAY,"")</code></pre></div>
+<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(OR(AND(BACKLAY=&quot;BACK&quot;,(F5&gt;(INDEX(Ratings,MATCH(Y5,SelectionID,0))))),AND(BACKLAY=&quot;LAY&quot;,(F5&lt;(INDEX(Ratings,MATCH(Y5,SelectionID,0)))))),Overround&lt;UserOverround,TimeTillJump&lt;UserTimeTillJump,InPlay=&quot;Not In Play&quot;,MarketStatus&lt;&gt;&quot;Suspended&quot;),BACKLAY,&quot;&quot;)
+</pre></div></div>
 </div>
 <p><img alt="Automating a ratings based strategy with Gruss" src="../img/GrussRatingsExcel1.PNG" /></p>
 <ul>
@@ -1512,7 +1522,7 @@ keep on top of more complex strategies that require long formaulas to implement.
     <div class="bf-footer">
       <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
       <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Know when to stop. Don’t go over the top. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="www.gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Know when to stop. Don’t go over the top. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
       <ul class="bf-links">
         <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
         <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
@@ -1522,13 +1532,15 @@ keep on top of more complex strategies that require long formaulas to implement.
       </ul>
     </div>
   </div>
+  <script src="https://js.adsrvr.org/up_loader.1.1.0.js"></script>
+  <script>ttd_dom_ready(function(){"function"==typeof TTDUniversalPixelApi&&(new TTDUniversalPixelApi).init("y12d1ir",["8ml4f17"],"https://insight.adsrvr.org/track/up")})</script>
 </footer>
       
     </div>
     
-      <script src="../../assets/javascripts/application.83382bb6.js"></script>
+      <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

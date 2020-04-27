@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.1, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
     
     
       
@@ -46,12 +46,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.9a8eeed6.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.834e7605.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.dd00d4b7.js"></script>
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#modelling-the-brownlow" tabindex="1" class="md-skip">
+      <a href="../../#modelling-the-brownlow" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1020,27 +1020,29 @@
                 <h1 id="modelling-the-brownlow">Modelling the Brownlow<a class="headerlink" href="#modelling-the-brownlow" title="Permanent link">&para;</a></h1>
 <p>This walkthrough will provide a brief, yet effective tutorial on how to model the Brownlow medal. We will use data from 2010 to 2018, which includes Supercoach points and other useful stats.</p>
 <p>The output will be the number of votes predicted for each player in each match, and we will aggregate these to create aggregates for each team and for the whole competition. No doubt we'll have Mitchell right up the top, and if we don't, then we know we've done something wrong!</p>
-<pre class="codehilite"><code class="language-python"># Import modules libraries
-import pandas as pd
-import h2o
-from h2o.automl import H2OAutoML
-import numpy as np
-from sklearn.preprocessing import StandardScaler
-import os
-import pickle
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Import modules libraries</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">h2o</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">h2o.automl</span> <span style="color: #008000; font-weight: bold">import</span> H2OAutoML
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> StandardScaler
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
 
-# Change notebook settings
-pd.options.display.max_columns = None
-pd.options.display.max_rows = 300
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = "all"</code></pre>
+<span style="color: #408080; font-style: italic"># Change notebook settings</span>
+pd<span style="color: #666666">.</span>options<span style="color: #666666">.</span>display<span style="color: #666666">.</span>max_columns <span style="color: #666666">=</span> <span style="color: #008000">None</span>
+pd<span style="color: #666666">.</span>options<span style="color: #666666">.</span>display<span style="color: #666666">.</span>max_rows <span style="color: #666666">=</span> <span style="color: #666666">300</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">IPython.core.interactiveshell</span> <span style="color: #008000; font-weight: bold">import</span> InteractiveShell
+InteractiveShell<span style="color: #666666">.</span>ast_node_interactivity <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;all&quot;</span>
+</pre></div>
 
 <hr />
 <h2 id="eda-read-in-the-data">EDA - Read in the data<a class="headerlink" href="#eda-read-in-the-data" title="Permanent link">&para;</a></h2>
 <p>I have collated this data using the fitzRoy R package and merging the afltables dataset with the footywire dataset, so that we can Supercoach and other advanced stats with Brownlow votes. Let's read in the data and have a sneak peak at what it looks like.</p>
-<pre class="codehilite"><code class="language-python">brownlow_data = pd.read_csv('data/afl_brownlow_data.csv')
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>brownlow_data <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/afl_brownlow_data.csv&#39;</span>)
 
-brownlow_data.tail(3)</code></pre>
+brownlow_data<span style="color: #666666">.</span>tail(<span style="color: #666666">3</span>)
+</pre></div>
 
 <table>
 <thead>
@@ -1226,84 +1228,89 @@ brownlow_data.tail(3)</code></pre>
 </table>
 <p>It looks like we've got about 76,000 rows of data and have stats like hitouts, clangers, effective disposals etc. Let's explore some certain scenarios. Using my domain knowledge of footy, I can hypothesise that if a player kicks 5 goals, he is pretty likely to poll votes. Similarly, if a player gets 30 possessions and 2+ goals, he is also probably likely to poll votes. Let's have a look at the mean votes for players for both of these situations. </p>
 <h3 id="exploring-votes-if-a-bag-is-kicked-5-goals">Exploring votes if a bag is kicked (5+ goals)<a class="headerlink" href="#exploring-votes-if-a-bag-is-kicked-5-goals" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python">brownlow_data.query('G &gt;= 5').groupby('season').brownlow_votes.mean()
-print("Mean votes is a player has kicked a bag:", brownlow_data.query('G &gt;= 5').brownlow_votes.mean())
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>brownlow_data<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;G &gt;= 5&#39;</span>)<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;season&#39;</span>)<span style="color: #666666">.</span>brownlow_votes<span style="color: #666666">.</span>mean()
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Mean votes is a player has kicked a bag:&quot;</span>, brownlow_data<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;G &gt;= 5&#39;</span>)<span style="color: #666666">.</span>brownlow_votes<span style="color: #666666">.</span>mean())
 
     season
-    2010    1.420455
-    2011    1.313433
-    2012    1.413333
-    2013    1.253731
-    2014    1.915254
-    2015    1.765625
-    2016    1.788732
-    2017    2.098361
-    2018    0.000000
+    <span style="color: #666666">2010</span>    <span style="color: #666666">1.420455</span>
+    <span style="color: #666666">2011</span>    <span style="color: #666666">1.313433</span>
+    <span style="color: #666666">2012</span>    <span style="color: #666666">1.413333</span>
+    <span style="color: #666666">2013</span>    <span style="color: #666666">1.253731</span>
+    <span style="color: #666666">2014</span>    <span style="color: #666666">1.915254</span>
+    <span style="color: #666666">2015</span>    <span style="color: #666666">1.765625</span>
+    <span style="color: #666666">2016</span>    <span style="color: #666666">1.788732</span>
+    <span style="color: #666666">2017</span>    <span style="color: #666666">2.098361</span>
+    <span style="color: #666666">2018</span>    <span style="color: #666666">0.000000</span>
     Name: brownlow_votes, dtype: float64
 
-    Mean votes is a player has kicked a bag: 1.4708818635607321</code></pre>
+    Mean votes <span style="color: #AA22FF; font-weight: bold">is</span> a player has kicked a bag: <span style="color: #666666">1.4708818635607321</span>
+</pre></div>
 
 <h3 id="exploring-votes-if-the-player-has-30-possies-2-goals">Exploring votes if the player has 30+ possies &amp; 2+ goals<a class="headerlink" href="#exploring-votes-if-the-player-has-30-possies-2-goals" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python">brownlow_data.query('G &gt;= 2 and D &gt;= 30').groupby('season').brownlow_votes.mean()
-print("Mean votes if a player has 30 possies and kicks 2+ goals:", brownlow_data.query('G &gt;= 2 and D &gt;= 30').brownlow_votes.mean())
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>brownlow_data<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;G &gt;= 2 and D &gt;= 30&#39;</span>)<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;season&#39;</span>)<span style="color: #666666">.</span>brownlow_votes<span style="color: #666666">.</span>mean()
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Mean votes if a player has 30 possies and kicks 2+ goals:&quot;</span>, brownlow_data<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;G &gt;= 2 and D &gt;= 30&#39;</span>)<span style="color: #666666">.</span>brownlow_votes<span style="color: #666666">.</span>mean())
 
     season
-    2010    1.826923
-    2011    1.756410
-    2012    2.118421
-    2013    2.000000
-    2014    2.253731
-    2015    2.047619
-    2016    2.103448
-    2017    2.050000
-    2018    0.000000
+    <span style="color: #666666">2010</span>    <span style="color: #666666">1.826923</span>
+    <span style="color: #666666">2011</span>    <span style="color: #666666">1.756410</span>
+    <span style="color: #666666">2012</span>    <span style="color: #666666">2.118421</span>
+    <span style="color: #666666">2013</span>    <span style="color: #666666">2.000000</span>
+    <span style="color: #666666">2014</span>    <span style="color: #666666">2.253731</span>
+    <span style="color: #666666">2015</span>    <span style="color: #666666">2.047619</span>
+    <span style="color: #666666">2016</span>    <span style="color: #666666">2.103448</span>
+    <span style="color: #666666">2017</span>    <span style="color: #666666">2.050000</span>
+    <span style="color: #666666">2018</span>    <span style="color: #666666">0.000000</span>
     Name: brownlow_votes, dtype: float64
 
-    Mean votes if a player has 30 possies and kicks 2+ goals: 1.8741379310344828</code></pre>
+    Mean votes <span style="color: #008000; font-weight: bold">if</span> a player has <span style="color: #666666">30</span> possies <span style="color: #AA22FF; font-weight: bold">and</span> kicks <span style="color: #666666">2+</span> goals: <span style="color: #666666">1.8741379310344828</span>
+</pre></div>
 
 <p>As suspected, the average votes for these two situations is 1.87! That's huge. Let's get an idea of the average votes for each player. It should be around 6/44, as there are always 6 votes per match and around 44 players per match.</p>
-<pre class="codehilite"><code class="language-python">brownlow_data.brownlow_votes.mean()
-    0.12347341475121326</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>brownlow_data<span style="color: #666666">.</span>brownlow_votes<span style="color: #666666">.</span>mean()
+    <span style="color: #666666">0.12347341475121326</span>
+</pre></div>
 
 <p>So the average vote is 0.12. Let's see how this changes is the player is a captain. I have collected data on if players are captains from wikipedia and collated it into a csv. Let's load this in and create a "Is the player captain" feature, then check the average votes for captains.</p>
 <h3 id="create-is-player-captain-feature">Create Is Player Captain Feature<a class="headerlink" href="#create-is-player-captain-feature" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python">captains = pd.read_csv('data/captains.csv').set_index('player')
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>captains <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/captains.csv&#39;</span>)<span style="color: #666666">.</span>set_index(<span style="color: #BA2121">&#39;player&#39;</span>)
 
-def is_captain_for_that_season(captains_df, player, year):
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">is_captain_for_that_season</span>(captains_df, player, year):
 
-    if player in captains_df.index:
-        # Get years they were captain
-        seasons = captains_df.loc[player].season.split('-')
-        if len(seasons) == 1:
-            seasons_captain = list(map(int, seasons))
-        elif len(seasons) == 2:
-            if seasons[1] == '':
-                seasons_captain = list(range(int(seasons[0]), 2019))
-            else:
-                seasons_captain = list(range(int(seasons[0]), int(seasons[1]) + 1))
+    <span style="color: #008000; font-weight: bold">if</span> player <span style="color: #AA22FF; font-weight: bold">in</span> captains_df<span style="color: #666666">.</span>index:
+        <span style="color: #408080; font-style: italic"># Get years they were captain</span>
+        seasons <span style="color: #666666">=</span> captains_df<span style="color: #666666">.</span>loc[player]<span style="color: #666666">.</span>season<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;-&#39;</span>)
+        <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">len</span>(seasons) <span style="color: #666666">==</span> <span style="color: #666666">1</span>:
+            seasons_captain <span style="color: #666666">=</span> <span style="color: #008000">list</span>(<span style="color: #008000">map</span>(<span style="color: #008000">int</span>, seasons))
+        <span style="color: #008000; font-weight: bold">elif</span> <span style="color: #008000">len</span>(seasons) <span style="color: #666666">==</span> <span style="color: #666666">2</span>:
+            <span style="color: #008000; font-weight: bold">if</span> seasons[<span style="color: #666666">1</span>] <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;&#39;</span>:
+                seasons_captain <span style="color: #666666">=</span> <span style="color: #008000">list</span>(<span style="color: #008000">range</span>(<span style="color: #008000">int</span>(seasons[<span style="color: #666666">0</span>]), <span style="color: #666666">2019</span>))
+            <span style="color: #008000; font-weight: bold">else</span>:
+                seasons_captain <span style="color: #666666">=</span> <span style="color: #008000">list</span>(<span style="color: #008000">range</span>(<span style="color: #008000">int</span>(seasons[<span style="color: #666666">0</span>]), <span style="color: #008000">int</span>(seasons[<span style="color: #666666">1</span>]) <span style="color: #666666">+</span> <span style="color: #666666">1</span>))
 
-        if year in seasons_captain:
-            return 1
-    return 0
+        <span style="color: #008000; font-weight: bold">if</span> year <span style="color: #AA22FF; font-weight: bold">in</span> seasons_captain:
+            <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>
 
-brownlow_data['is_captain'] = brownlow_data.apply(lambda x: is_captain_for_that_season(captains, x.player, x.season), axis='columns')</code></pre>
+brownlow_data[<span style="color: #BA2121">&#39;is_captain&#39;</span>] <span style="color: #666666">=</span> brownlow_data<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> x: is_captain_for_that_season(captains, x<span style="color: #666666">.</span>player, x<span style="color: #666666">.</span>season), axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>)
+</pre></div>
 
-<pre class="codehilite"><code class="language-python">brownlow_data.query('is_captain == 1').groupby('season').brownlow_votes.mean()
-print("Mean votes if a player is captain:", brownlow_data.query('is_captain == 1').brownlow_votes.mean())
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>brownlow_data<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;is_captain == 1&#39;</span>)<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;season&#39;</span>)<span style="color: #666666">.</span>brownlow_votes<span style="color: #666666">.</span>mean()
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Mean votes if a player is captain:&quot;</span>, brownlow_data<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;is_captain == 1&#39;</span>)<span style="color: #666666">.</span>brownlow_votes<span style="color: #666666">.</span>mean())
 
     season
-    2010    0.408497
-    2011    0.429936
-    2012    0.274194
-    2013    0.438725
-    2014    0.519663
-    2015    0.447222
-    2016    0.347826
-    2017    0.425806
-    2018    0.000000
+    <span style="color: #666666">2010</span>    <span style="color: #666666">0.408497</span>
+    <span style="color: #666666">2011</span>    <span style="color: #666666">0.429936</span>
+    <span style="color: #666666">2012</span>    <span style="color: #666666">0.274194</span>
+    <span style="color: #666666">2013</span>    <span style="color: #666666">0.438725</span>
+    <span style="color: #666666">2014</span>    <span style="color: #666666">0.519663</span>
+    <span style="color: #666666">2015</span>    <span style="color: #666666">0.447222</span>
+    <span style="color: #666666">2016</span>    <span style="color: #666666">0.347826</span>
+    <span style="color: #666666">2017</span>    <span style="color: #666666">0.425806</span>
+    <span style="color: #666666">2018</span>    <span style="color: #666666">0.000000</span>
     Name: brownlow_votes, dtype: float64
 
-    Mean votes if a player is captain: 0.36661698956780925</code></pre>
+    Mean votes <span style="color: #008000; font-weight: bold">if</span> a player <span style="color: #AA22FF; font-weight: bold">is</span> captain: <span style="color: #666666">0.36661698956780925</span>
+</pre></div>
 
 <p>This is significantly higher than if they aren't captain. What would be interesting is to look at the average difference in votes between when they were captain and when they weren't, to try and find if there is a 'captain bias' in brownlow votes. Go ahead and try. For now, we're going to move onto feature creation</p>
 <hr />
@@ -1317,29 +1324,31 @@ print("Mean votes if a player is captain:", brownlow_data.query('is_captain == 1
 </ul>
 <p>First we will make features of ratios. What is important is not how many of a certain stat a player has, but how much of that stat a player has <em>relative</em> to everyone else in the same match. It doesn't matter if Dusty Martin has 31 possessions if Tom Mitchell has had 50 - Mitchell is probably more likely to poll (assuming all else is equal). So rather than using the actual number of possessions for example, we can divide these possessions by the total amount of possessions in the game. To do this we'll use pandas groupby and transform methods.</p>
 <h3 id="create-ratios-as-features">Create Ratios As Features<a class="headerlink" href="#create-ratios-as-features" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python">%%time
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">%%</span>time
 
-# Get a list of stats of which to create ratios for
-ratio_cols = ['CP', 'UP', 'ED', 'DE', 'CM', 'GA', 'MI5', 'one_perc', 'BO', 'TOG', 
-               'K', 'HB', 'D', 'M', 'G', 'B', 'T', 'HO', 'I50', 'CL', 'CG', 'R50', 
-               'FF', 'FA', 'AF', 'SC']
+<span style="color: #408080; font-style: italic"># Get a list of stats of which to create ratios for</span>
+ratio_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;CP&#39;</span>, <span style="color: #BA2121">&#39;UP&#39;</span>, <span style="color: #BA2121">&#39;ED&#39;</span>, <span style="color: #BA2121">&#39;DE&#39;</span>, <span style="color: #BA2121">&#39;CM&#39;</span>, <span style="color: #BA2121">&#39;GA&#39;</span>, <span style="color: #BA2121">&#39;MI5&#39;</span>, <span style="color: #BA2121">&#39;one_perc&#39;</span>, <span style="color: #BA2121">&#39;BO&#39;</span>, <span style="color: #BA2121">&#39;TOG&#39;</span>, 
+               <span style="color: #BA2121">&#39;K&#39;</span>, <span style="color: #BA2121">&#39;HB&#39;</span>, <span style="color: #BA2121">&#39;D&#39;</span>, <span style="color: #BA2121">&#39;M&#39;</span>, <span style="color: #BA2121">&#39;G&#39;</span>, <span style="color: #BA2121">&#39;B&#39;</span>, <span style="color: #BA2121">&#39;T&#39;</span>, <span style="color: #BA2121">&#39;HO&#39;</span>, <span style="color: #BA2121">&#39;I50&#39;</span>, <span style="color: #BA2121">&#39;CL&#39;</span>, <span style="color: #BA2121">&#39;CG&#39;</span>, <span style="color: #BA2121">&#39;R50&#39;</span>, 
+               <span style="color: #BA2121">&#39;FF&#39;</span>, <span style="color: #BA2121">&#39;FA&#39;</span>, <span style="color: #BA2121">&#39;AF&#39;</span>, <span style="color: #BA2121">&#39;SC&#39;</span>]
 
-# Create a ratios df
-ratios = (brownlow_data.copy()
-          .loc[:, ['match_id'] + ratio_cols]
-          .groupby('match_id')
-          .transform(lambda x: x / x.sum()))
+<span style="color: #408080; font-style: italic"># Create a ratios df</span>
+ratios <span style="color: #666666">=</span> (brownlow_data<span style="color: #666666">.</span>copy()
+          <span style="color: #666666">.</span>loc[:, [<span style="color: #BA2121">&#39;match_id&#39;</span>] <span style="color: #666666">+</span> ratio_cols]
+          <span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;match_id&#39;</span>)
+          <span style="color: #666666">.</span>transform(<span style="color: #008000; font-weight: bold">lambda</span> x: x <span style="color: #666666">/</span> x<span style="color: #666666">.</span>sum()))
 
-feature_cols = ['date', 'season', 'round', 'venue', 'ID', 'match_id', 'player', 'jumper_no', 'team', 
-                'opposition', 'status', 'team_score', 'opposition_score', 'margin', 'brownlow_votes']
+feature_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;date&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>, <span style="color: #BA2121">&#39;round&#39;</span>, <span style="color: #BA2121">&#39;venue&#39;</span>, <span style="color: #BA2121">&#39;ID&#39;</span>, <span style="color: #BA2121">&#39;match_id&#39;</span>, <span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;jumper_no&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, 
+                <span style="color: #BA2121">&#39;opposition&#39;</span>, <span style="color: #BA2121">&#39;status&#39;</span>, <span style="color: #BA2121">&#39;team_score&#39;</span>, <span style="color: #BA2121">&#39;opposition_score&#39;</span>, <span style="color: #BA2121">&#39;margin&#39;</span>, <span style="color: #BA2121">&#39;brownlow_votes&#39;</span>]
 
-# Create a features df - join the ratios to this df
-features = (brownlow_data[feature_cols].copy()
-               .join(ratios))
+<span style="color: #408080; font-style: italic"># Create a features df - join the ratios to this df</span>
+features <span style="color: #666666">=</span> (brownlow_data[feature_cols]<span style="color: #666666">.</span>copy()
+               <span style="color: #666666">.</span>join(ratios))
 
-    Wall time: 11.3 s</code></pre>
+    Wall time: <span style="color: #666666">11.3</span> s
+</pre></div>
 
-<pre class="codehilite"><code class="language-python">features.head()</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features<span style="color: #666666">.</span>head()
+</pre></div>
 
 <table>
 <thead>
@@ -1612,58 +1621,64 @@ features = (brownlow_data[feature_cols].copy()
 </tbody>
 </table>
 <h3 id="kicked-a-bag-feature">Kicked A Bag Feature<a class="headerlink" href="#kicked-a-bag-feature" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python">features['kicked_a_bag'] = brownlow_data.G.apply(lambda x: 1 if x &gt;= 5 else 0)</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features[<span style="color: #BA2121">&#39;kicked_a_bag&#39;</span>] <span style="color: #666666">=</span> brownlow_data<span style="color: #666666">.</span>G<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">&gt;=</span> <span style="color: #666666">5</span> <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>)
+</pre></div>
 
 <h3 id="is-captain-feature">Is Captain Feature<a class="headerlink" href="#is-captain-feature" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python">features['is_captain'] = features.apply(lambda x: is_captain_for_that_season(captains, x.player, x.season), axis='columns')</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features[<span style="color: #BA2121">&#39;is_captain&#39;</span>] <span style="color: #666666">=</span> features<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> x: is_captain_for_that_season(captains, x<span style="color: #666666">.</span>player, x<span style="color: #666666">.</span>season), axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>)
+</pre></div>
 
 <h3 id="won-the-game-feature">Won the Game Feature<a class="headerlink" href="#won-the-game-feature" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python">features['team_won'] = np.where(features.margin &gt; 0, 1, 0)</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features[<span style="color: #BA2121">&#39;team_won&#39;</span>] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>where(features<span style="color: #666666">.</span>margin <span style="color: #666666">&gt;</span> <span style="color: #666666">0</span>, <span style="color: #666666">1</span>, <span style="color: #666666">0</span>)
+</pre></div>
 
 <h3 id="30-2-goals-feature">30+ &amp; 2+ Goals Feature<a class="headerlink" href="#30-2-goals-feature" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python">features['got_30_possies_2_goals'] = np.where((brownlow_data.G &gt;= 2) &amp; (brownlow_data.D &gt;= 30), 1, 0)</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features[<span style="color: #BA2121">&#39;got_30_possies_2_goals&#39;</span>] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>where((brownlow_data<span style="color: #666666">.</span>G <span style="color: #666666">&gt;=</span> <span style="color: #666666">2</span>) <span style="color: #666666">&amp;</span> (brownlow_data<span style="color: #666666">.</span>D <span style="color: #666666">&gt;=</span> <span style="color: #666666">30</span>), <span style="color: #666666">1</span>, <span style="color: #666666">0</span>)
+</pre></div>
 
 <h3 id="previous-top-10-finish-feature">Previous Top 10 Finish Feature<a class="headerlink" href="#previous-top-10-finish-feature" title="Permanent link">&para;</a></h3>
 <p>I have a strong feeling that past performance may be a predictor of future performance in the brownlow. For example, last year Dusty Martin won the Brownlow. The umpires may have a bias towards Dusty this year because he is known to be on their radar as being a good player. Let's create a feature which is categorical and is 1 if the player has previously finished in the top 10. Let's create a function for this and then apply it to the afltables dataset, which has data back to 1897. We will then create a lookup table for the top 10 for each season and merge this table with our current features df.</p>
-<pre class="codehilite"><code class="language-python">afltables = pd.read_csv('data/afltables_stats.csv').query('Season &gt;= 2000')
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>afltables <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/afltables_stats.csv&#39;</span>)<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;Season &gt;= 2000&#39;</span>)
 
-def replace_special_characters(name):
-    name = name.replace("'", "").replace("-", " ").lower()
-    name_split = name.split()
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">replace_special_characters</span>(name):
+    name <span style="color: #666666">=</span> name<span style="color: #666666">.</span>replace(<span style="color: #BA2121">&quot;&#39;&quot;</span>, <span style="color: #BA2121">&quot;&quot;</span>)<span style="color: #666666">.</span>replace(<span style="color: #BA2121">&quot;-&quot;</span>, <span style="color: #BA2121">&quot; &quot;</span>)<span style="color: #666666">.</span>lower()
+    name_split <span style="color: #666666">=</span> name<span style="color: #666666">.</span>split()
 
-    if len(name_split) &gt; 2:
-        first_name = name_split[0]
-        last_name = name_split[-1]
-        name = first_name + ' ' + last_name
+    <span style="color: #008000; font-weight: bold">if</span> <span style="color: #008000">len</span>(name_split) <span style="color: #666666">&gt;</span> <span style="color: #666666">2</span>:
+        first_name <span style="color: #666666">=</span> name_split[<span style="color: #666666">0</span>]
+        last_name <span style="color: #666666">=</span> name_split[<span style="color: #666666">-1</span>]
+        name <span style="color: #666666">=</span> first_name <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; &#39;</span> <span style="color: #666666">+</span> last_name
 
-    name_split_2 = name.split()
-    name = name_split_2[0][0] + ' ' + name_split_2[1]
-    return name.title()
+    name_split_2 <span style="color: #666666">=</span> name<span style="color: #666666">.</span>split()
+    name <span style="color: #666666">=</span> name_split_2[<span style="color: #666666">0</span>][<span style="color: #666666">0</span>] <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; &#39;</span> <span style="color: #666666">+</span> name_split_2[<span style="color: #666666">1</span>]
+    <span style="color: #008000; font-weight: bold">return</span> name<span style="color: #666666">.</span>title()
 
-afltables = (afltables.assign(player=lambda df: df['First.name'] + ' ' + df.Surname)
-                .assign(player=lambda df: df.player.apply(replace_special_characters))
-                .rename(columns={'Brownlow.Votes': 'brownlow_votes', 'Season': 'season', 'Playing.for': 'team'}))</code></pre>
+afltables <span style="color: #666666">=</span> (afltables<span style="color: #666666">.</span>assign(player<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df[<span style="color: #BA2121">&#39;First.name&#39;</span>] <span style="color: #666666">+</span> <span style="color: #BA2121">&#39; &#39;</span> <span style="color: #666666">+</span> df<span style="color: #666666">.</span>Surname)
+                <span style="color: #666666">.</span>assign(player<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>player<span style="color: #666666">.</span>apply(replace_special_characters))
+                <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;Brownlow.Votes&#39;</span>: <span style="color: #BA2121">&#39;brownlow_votes&#39;</span>, <span style="color: #BA2121">&#39;Season&#39;</span>: <span style="color: #BA2121">&#39;season&#39;</span>, <span style="color: #BA2121">&#39;Playing.for&#39;</span>: <span style="color: #BA2121">&#39;team&#39;</span>}))
+</pre></div>
 
-<pre class="codehilite"><code class="language-python">### Create Top 10 rank look up table
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">### Create Top 10 rank look up table</span>
 
-brownlow_votes_yearly = (afltables.groupby(['season', 'player', 'team'], as_index=False)
-                                  .brownlow_votes
-                                  .sum())
+brownlow_votes_yearly <span style="color: #666666">=</span> (afltables<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;season&#39;</span>, <span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>], as_index<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+                                  <span style="color: #666666">.</span>brownlow_votes
+                                  <span style="color: #666666">.</span>sum())
 
-brownlow_votes_yearly['yearly_rank'] = (brownlow_votes_yearly.groupby('season')
-                                                             .brownlow_votes
-                                                             .rank(method='max', ascending=False))
+brownlow_votes_yearly[<span style="color: #BA2121">&#39;yearly_rank&#39;</span>] <span style="color: #666666">=</span> (brownlow_votes_yearly<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;season&#39;</span>)
+                                                             <span style="color: #666666">.</span>brownlow_votes
+                                                             <span style="color: #666666">.</span>rank(method<span style="color: #666666">=</span><span style="color: #BA2121">&#39;max&#39;</span>, ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>))
 
-# Filter to only get a dataframe since 2000 and only the top 10 players from each season
-brownlow_votes_top_10 = brownlow_votes_yearly.query('yearly_rank &lt; 11 &amp; season &gt;= 2000')
+<span style="color: #408080; font-style: italic"># Filter to only get a dataframe since 2000 and only the top 10 players from each season</span>
+brownlow_votes_top_10 <span style="color: #666666">=</span> brownlow_votes_yearly<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;yearly_rank &lt; 11 &amp; season &gt;= 2000&#39;</span>)
 
-brownlow_votes_top_10.head(3)
+brownlow_votes_top_10<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
 
-def how_many_times_top_10(top_10_df, player, year):
-    times = len(top_10_df[(top_10_df.player == player) &amp; (top_10_df.season &lt; year)])
-    return times
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">how_many_times_top_10</span>(top_10_df, player, year):
+    times <span style="color: #666666">=</span> <span style="color: #008000">len</span>(top_10_df[(top_10_df<span style="color: #666666">.</span>player <span style="color: #666666">==</span> player) <span style="color: #666666">&amp;</span> (top_10_df<span style="color: #666666">.</span>season <span style="color: #666666">&lt;</span> year)])
+    <span style="color: #008000; font-weight: bold">return</span> times
 
-features['times_in_top_10'] = features.apply(lambda x: how_many_times_top_10(brownlow_votes_top_10, x.player, x.season), axis=1) </code></pre>
+features[<span style="color: #BA2121">&#39;times_in_top_10&#39;</span>] <span style="color: #666666">=</span> features<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> x: how_many_times_top_10(brownlow_votes_top_10, x<span style="color: #666666">.</span>player, x<span style="color: #666666">.</span>season), axis<span style="color: #666666">=1</span>) 
+</pre></div>
 
 <table>
 <thead>
@@ -1704,26 +1719,27 @@ features['times_in_top_10'] = features.apply(lambda x: how_many_times_top_10(bro
 </tbody>
 </table>
 <h3 id="average-brownlow-votes-per-game-last-season-feature">Average Brownlow Votes Per Game Last Season Feature<a class="headerlink" href="#average-brownlow-votes-per-game-last-season-feature" title="Permanent link">&para;</a></h3>
-<pre class="codehilite"><code class="language-python"># Create a brownlow votes lookup table
-brownlow_votes_lookup_table = (brownlow_data.groupby(['player', 'team', 'season'], as_index=False)
-                                    .brownlow_votes
-                                    .mean()
-                                    .assign(next_season=lambda df: df.season + 1)
-                                    .rename(columns={
-                                        'brownlow_votes': 'ave_votes_last_season'
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a brownlow votes lookup table</span>
+brownlow_votes_lookup_table <span style="color: #666666">=</span> (brownlow_data<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>], as_index<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+                                    <span style="color: #666666">.</span>brownlow_votes
+                                    <span style="color: #666666">.</span>mean()
+                                    <span style="color: #666666">.</span>assign(next_season<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>season <span style="color: #666666">+</span> <span style="color: #666666">1</span>)
+                                    <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{
+                                        <span style="color: #BA2121">&#39;brownlow_votes&#39;</span>: <span style="color: #BA2121">&#39;ave_votes_last_season&#39;</span>
                                     }))
 
-# Have a look at Cripps to check if it's working
-brownlow_votes_lookup_table[brownlow_votes_lookup_table.player == 'P Cripps']
+<span style="color: #408080; font-style: italic"># Have a look at Cripps to check if it&#39;s working</span>
+brownlow_votes_lookup_table[brownlow_votes_lookup_table<span style="color: #666666">.</span>player <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;P Cripps&#39;</span>]
 
-# Merge it to our features df
-features_with_votes_last_season = (pd.merge(features, brownlow_votes_lookup_table.drop(columns='season'),
+<span style="color: #408080; font-style: italic"># Merge it to our features df</span>
+features_with_votes_last_season <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>merge(features, brownlow_votes_lookup_table<span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span><span style="color: #BA2121">&#39;season&#39;</span>),
 
-                                             left_on=['player', 'team', 'season'], 
-                                             right_on=['player', 'team', 'next_season'],
-                                             how='left')
-                                  .drop(columns=['next_season'])
-                                  .fillna(0))</code></pre>
+                                             left_on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>], 
+                                             right_on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;next_season&#39;</span>],
+                                             how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>)
+                                  <span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;next_season&#39;</span>])
+                                  <span style="color: #666666">.</span>fillna(<span style="color: #666666">0</span>))
+</pre></div>
 
 <table>
 <thead>
@@ -1785,85 +1801,86 @@ features_with_votes_last_season = (pd.merge(features, brownlow_votes_lookup_tabl
 <p>The metric we will use for loss in Mean Absolute Error (MAE).</p>
 <p>As we are using regression, some values are negative. We will convert these negative values to 0 as it doesn't make sense to poll negative brownlow votes. Similarly, some matches won't predict exactly 6 votes, so we will scale these predictions so that we predict exactly 6 votes for each match.</p>
 <p>So that you don't have to train these models yourself, I have saved the models and we will load them in. If you are keen to train the models yourself, simply uncomment out the code below and run the cell. To bulk uncomment, highlight the rows and press ctrl + '/'</p>
-<pre class="codehilite"><code class="language-python">h2o.init()
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>h2o<span style="color: #666666">.</span>init()
 
-# Uncomment the code below if you want to train the models yourself - otherwise, we will load them in the load cell from disk
+<span style="color: #408080; font-style: italic"># Uncomment the code below if you want to train the models yourself - otherwise, we will load them in the load cell from disk</span>
 
-## Join to our features df
+<span style="color: #408080; font-style: italic">## Join to our features df</span>
 
-# aml_yearly_model_objects = {}
-# yearly_predictions_dfs = {}
+<span style="color: #408080; font-style: italic"># aml_yearly_model_objects = {}</span>
+<span style="color: #408080; font-style: italic"># yearly_predictions_dfs = {}</span>
 
-# feature_cols = ['margin', 'CP', 'UP', 'ED', 'DE',
-#        'CM', 'GA', 'MI5', 'one_perc', 'BO', 'TOG', 'K', 'HB', 'D', 'M', 'G',
-#        'B', 'T', 'HO', 'I50', 'CL', 'CG', 'R50', 'FF', 'FA', 'AF', 'SC']
+<span style="color: #408080; font-style: italic"># feature_cols = [&#39;margin&#39;, &#39;CP&#39;, &#39;UP&#39;, &#39;ED&#39;, &#39;DE&#39;,</span>
+<span style="color: #408080; font-style: italic">#        &#39;CM&#39;, &#39;GA&#39;, &#39;MI5&#39;, &#39;one_perc&#39;, &#39;BO&#39;, &#39;TOG&#39;, &#39;K&#39;, &#39;HB&#39;, &#39;D&#39;, &#39;M&#39;, &#39;G&#39;,</span>
+<span style="color: #408080; font-style: italic">#        &#39;B&#39;, &#39;T&#39;, &#39;HO&#39;, &#39;I50&#39;, &#39;CL&#39;, &#39;CG&#39;, &#39;R50&#39;, &#39;FF&#39;, &#39;FA&#39;, &#39;AF&#39;, &#39;SC&#39;]</span>
 
-# for year in range(2011, 2018):
-#     # Filter the data to only include past data
-#     train_historic = brownlow_data[brownlow_data.season &lt; year].copy()
+<span style="color: #408080; font-style: italic"># for year in range(2011, 2018):</span>
+<span style="color: #408080; font-style: italic">#     # Filter the data to only include past data</span>
+<span style="color: #408080; font-style: italic">#     train_historic = brownlow_data[brownlow_data.season &lt; year].copy()</span>
 
-#     # Convert to an h2o frame
-#     train_h2o_historic = h2o.H2OFrame(train_historic)
+<span style="color: #408080; font-style: italic">#     # Convert to an h2o frame</span>
+<span style="color: #408080; font-style: italic">#     train_h2o_historic = h2o.H2OFrame(train_historic)</span>
 
-#     # Create an AutoML object
-#     aml = H2OAutoML(max_runtime_secs=30,
-#                    balance_classes=True,
-#                    seed=42)
+<span style="color: #408080; font-style: italic">#     # Create an AutoML object</span>
+<span style="color: #408080; font-style: italic">#     aml = H2OAutoML(max_runtime_secs=30,</span>
+<span style="color: #408080; font-style: italic">#                    balance_classes=True,</span>
+<span style="color: #408080; font-style: italic">#                    seed=42)</span>
 
-#     # Train the model
-#     aml.train(y='brownlow_votes', x=feature_cols, training_frame=train_h2o_historic)
+<span style="color: #408080; font-style: italic">#     # Train the model</span>
+<span style="color: #408080; font-style: italic">#     aml.train(y=&#39;brownlow_votes&#39;, x=feature_cols, training_frame=train_h2o_historic)</span>
 
-#     # save the model
-#     model_path = h2o.save_model(model=aml.leader, path="models", force=True)
+<span style="color: #408080; font-style: italic">#     # save the model</span>
+<span style="color: #408080; font-style: italic">#     model_path = h2o.save_model(model=aml.leader, path=&quot;models&quot;, force=True)</span>
 
-#     # Get model id
-#     model_name = aml.leaderboard[0, 'model_id']
+<span style="color: #408080; font-style: italic">#     # Get model id</span>
+<span style="color: #408080; font-style: italic">#     model_name = aml.leaderboard[0, &#39;model_id&#39;]</span>
 
-#     # Rename the model on disk
-#     os.rename(f'models/{model_name}', f'models/yearly_model_{year}')
+<span style="color: #408080; font-style: italic">#     # Rename the model on disk</span>
+<span style="color: #408080; font-style: italic">#     os.rename(f&#39;models/{model_name}&#39;, f&#39;models/yearly_model_{year}&#39;)</span>
 
-#     # Append the best model to a list
-#     aml_yearly_model_objects[year] = aml.leader
+<span style="color: #408080; font-style: italic">#     # Append the best model to a list</span>
+<span style="color: #408080; font-style: italic">#     aml_yearly_model_objects[year] = aml.leader</span>
 
-#     # Make predictions on test set for that year
-#     test_historic = brownlow_data[brownlow_data.season == year].copy()
-#     test_h2o_historic = h2o.H2OFrame(test_historic)
+<span style="color: #408080; font-style: italic">#     # Make predictions on test set for that year</span>
+<span style="color: #408080; font-style: italic">#     test_historic = brownlow_data[brownlow_data.season == year].copy()</span>
+<span style="color: #408080; font-style: italic">#     test_h2o_historic = h2o.H2OFrame(test_historic)</span>
 
-#     preds = aml.predict(test_h2o_historic).as_data_frame()
-#     test_historic['predicted_votes'] = preds.values
+<span style="color: #408080; font-style: italic">#     preds = aml.predict(test_h2o_historic).as_data_frame()</span>
+<span style="color: #408080; font-style: italic">#     test_historic[&#39;predicted_votes&#39;] = preds.values</span>
 
-#     # Convert negative predictions to 0
-#     test_historic['predicted_votes_neg_to_0'] = test_historic.predicted_votes.apply(lambda x: 0 if x &lt; 0 else x)
+<span style="color: #408080; font-style: italic">#     # Convert negative predictions to 0</span>
+<span style="color: #408080; font-style: italic">#     test_historic[&#39;predicted_votes_neg_to_0&#39;] = test_historic.predicted_votes.apply(lambda x: 0 if x &lt; 0 else x)</span>
 
-#     # Create a total match votes column - which calculates the number of votes predicted in each game when the predictions 
-#     # are unscaled
-#     test_historic['unscaled_match_votes'] = test_historic.groupby('match_id').predicted_votes_neg_to_0.transform('sum')
+<span style="color: #408080; font-style: italic">#     # Create a total match votes column - which calculates the number of votes predicted in each game when the predictions </span>
+<span style="color: #408080; font-style: italic">#     # are unscaled</span>
+<span style="color: #408080; font-style: italic">#     test_historic[&#39;unscaled_match_votes&#39;] = test_historic.groupby(&#39;match_id&#39;).predicted_votes_neg_to_0.transform(&#39;sum&#39;)</span>
 
-#     # Scale predictions
-#     test_historic['predicted_votes_scaled'] = test_historic.predicted_votes_neg_to_0 / test_historic.unscaled_match_votes * 6
+<span style="color: #408080; font-style: italic">#     # Scale predictions</span>
+<span style="color: #408080; font-style: italic">#     test_historic[&#39;predicted_votes_scaled&#39;] = test_historic.predicted_votes_neg_to_0 / test_historic.unscaled_match_votes * 6</span>
 
-#     # Aggregate the predictions
-#     test_grouped = (test_historic.groupby(['player', 'team'], as_index=False)
-#                                  .sum()
-#                                  .sort_values(by='brownlow_votes', ascending=False)
-#                                  .assign(mae=lambda df: abs(df.predicted_votes_scaled - df.brownlow_votes)))
+<span style="color: #408080; font-style: italic">#     # Aggregate the predictions</span>
+<span style="color: #408080; font-style: italic">#     test_grouped = (test_historic.groupby([&#39;player&#39;, &#39;team&#39;], as_index=False)</span>
+<span style="color: #408080; font-style: italic">#                                  .sum()</span>
+<span style="color: #408080; font-style: italic">#                                  .sort_values(by=&#39;brownlow_votes&#39;, ascending=False)</span>
+<span style="color: #408080; font-style: italic">#                                  .assign(mae=lambda df: abs(df.predicted_votes_scaled - df.brownlow_votes)))</span>
 
-#     test_grouped['error'] = test_grouped.predicted_votes_scaled - test_grouped.brownlow_votes
-#     test_grouped['next_year'] = year + 1
+<span style="color: #408080; font-style: italic">#     test_grouped[&#39;error&#39;] = test_grouped.predicted_votes_scaled - test_grouped.brownlow_votes</span>
+<span style="color: #408080; font-style: italic">#     test_grouped[&#39;next_year&#39;] = year + 1</span>
 
-#     # Add this years predictions df to a dictionary to use later
-#     yearly_predictions_dfs[year] = test_grouped
+<span style="color: #408080; font-style: italic">#     # Add this years predictions df to a dictionary to use later</span>
+<span style="color: #408080; font-style: italic">#     yearly_predictions_dfs[year] = test_grouped</span>
 
-# preds_errors = None
+<span style="color: #408080; font-style: italic"># preds_errors = None</span>
 
-# for key, value in yearly_predictions_dfs.items():
-#     if preds_errors is None:
-#         preds_errors = value[['player', 'season', 'next_year', 'brownlow_votes', 'predicted_votes_scaled', 'error']]
-#     else:
-#         preds_errors = preds_errors.append(value[['player', 'season', 'next_year', 'brownlow_votes', 'predicted_votes_scaled', 'error']], sort=True)
+<span style="color: #408080; font-style: italic"># for key, value in yearly_predictions_dfs.items():</span>
+<span style="color: #408080; font-style: italic">#     if preds_errors is None:</span>
+<span style="color: #408080; font-style: italic">#         preds_errors = value[[&#39;player&#39;, &#39;season&#39;, &#39;next_year&#39;, &#39;brownlow_votes&#39;, &#39;predicted_votes_scaled&#39;, &#39;error&#39;]]</span>
+<span style="color: #408080; font-style: italic">#     else:</span>
+<span style="color: #408080; font-style: italic">#         preds_errors = preds_errors.append(value[[&#39;player&#39;, &#39;season&#39;, &#39;next_year&#39;, &#39;brownlow_votes&#39;, &#39;predicted_votes_scaled&#39;, &#39;error&#39;]], sort=True)</span>
 
-# with open('data/prediction_errors_df.pickle', 'wb') as handle:
-#     pickle.dump(yearly_predicted_errors, handle)</code></pre>
+<span style="color: #408080; font-style: italic"># with open(&#39;data/prediction_errors_df.pickle&#39;, &#39;wb&#39;) as handle:</span>
+<span style="color: #408080; font-style: italic">#     pickle.dump(yearly_predicted_errors, handle)</span>
+</pre></div>
 
 <p>Checking whether there is an H2O instance running at <a href="http://localhost:54321">http://localhost:54321</a>. connected.   </p>
 <table>
@@ -1936,12 +1953,13 @@ features_with_votes_last_season = (pd.merge(features, brownlow_votes_lookup_tabl
 </tr>
 </tbody>
 </table>
-<pre class="codehilite"><code class="language-python"># Load predictions error df    
-with open('data/prediction_errors_df.pickle', 'rb') as handle:
-    preds_errors = pickle.load(handle)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Load predictions error df    </span>
+<span style="color: #008000; font-weight: bold">with</span> <span style="color: #008000">open</span>(<span style="color: #BA2121">&#39;data/prediction_errors_df.pickle&#39;</span>, <span style="color: #BA2121">&#39;rb&#39;</span>) <span style="color: #008000; font-weight: bold">as</span> handle:
+    preds_errors <span style="color: #666666">=</span> pickle<span style="color: #666666">.</span>load(handle)
 
-# Look at last years predictions
-preds_errors.query('next_year == 2018').sort_values(by='brownlow_votes', ascending=False).head(20)</code></pre>
+<span style="color: #408080; font-style: italic"># Look at last years predictions</span>
+preds_errors<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;next_year == 2018&#39;</span>)<span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;brownlow_votes&#39;</span>, ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)<span style="color: #666666">.</span>head(<span style="color: #666666">20</span>)
+</pre></div>
 
 <table>
 <thead>
@@ -2139,42 +2157,46 @@ preds_errors.query('next_year == 2018').sort_values(by='brownlow_votes', ascendi
 </tbody>
 </table>
 <p>Look at that! A simply Machine Learning ensemble model, using AutoML predicted last year's winner! That's impressive. As we can see it also predicted Bontempelli would only score 11.26, when he actually scored 19 - a huge discrepency. Let's use this as a feature.</p>
-<pre class="codehilite"><code class="language-python">features_with_historic_perf_relative_to_model = \
-    (features_with_votes_last_season.pipe(pd.merge, preds_errors[['player', 'next_year', 'error']],
-                                          left_on=['player', 'season'],
-                                          right_on=['player', 'next_year'],
-                                          how='left')
-                                     .fillna(0)
-                                     .rename(columns={'error': 'error_last_season'})
-                                     .drop_duplicates(subset=['player', 'round', 'SC']))</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features_with_historic_perf_relative_to_model <span style="color: #666666">=</span> \
+    (features_with_votes_last_season<span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, preds_errors[[<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;next_year&#39;</span>, <span style="color: #BA2121">&#39;error&#39;</span>]],
+                                          left_on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>],
+                                          right_on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;next_year&#39;</span>],
+                                          how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>)
+                                     <span style="color: #666666">.</span>fillna(<span style="color: #666666">0</span>)
+                                     <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;error&#39;</span>: <span style="color: #BA2121">&#39;error_last_season&#39;</span>})
+                                     <span style="color: #666666">.</span>drop_duplicates(subset<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;round&#39;</span>, <span style="color: #BA2121">&#39;SC&#39;</span>]))
+</pre></div>
 
 <hr />
 <h2 id="filtering-the-data-to-only-include-the-top-20-sc-for-each-match">Filtering the data to only include the top 20 SC for each match<a class="headerlink" href="#filtering-the-data-to-only-include-the-top-20-sc-for-each-match" title="Permanent link">&para;</a></h2>
 <p>Logically, it is extremely unlikely that a player will poll votes if their Supercoach score is not in the top 20 players. By eliminating the other 20+ players, we can reduce the noise in the data, as we are almost certain the players won't poll from the bottom half. Let's explore how many players poll if they're not in the top 20, and then filter our df if this number is not significant.</p>
-<pre class="codehilite"><code class="language-python"># Find number of players who vote when in top 15 SC
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Find number of players who vote when in top 15 SC</span>
 
-brownlow_data['SC_rank_match'] = brownlow_data.groupby('match_id').SC.rank(method='max', ascending=False)
+brownlow_data[<span style="color: #BA2121">&#39;SC_rank_match&#39;</span>] <span style="color: #666666">=</span> brownlow_data<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;match_id&#39;</span>)<span style="color: #666666">.</span>SC<span style="color: #666666">.</span>rank(method<span style="color: #666666">=</span><span style="color: #BA2121">&#39;max&#39;</span>, ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)
 
-brownlow_data.query('SC_rank_match &gt; 20 and season &gt; 2014').brownlow_votes.value_counts()
+brownlow_data<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;SC_rank_match &gt; 20 and season &gt; 2014&#39;</span>)<span style="color: #666666">.</span>brownlow_votes<span style="color: #666666">.</span>value_counts()
 
-    0.0    18330
-    1.0       14
-    2.0        8
-    3.0        2
-    Name: brownlow_votes, dtype: int64</code></pre>
+    <span style="color: #666666">0.0</span>    <span style="color: #666666">18330</span>
+    <span style="color: #666666">1.0</span>       <span style="color: #666666">14</span>
+    <span style="color: #666666">2.0</span>        <span style="color: #666666">8</span>
+    <span style="color: #666666">3.0</span>        <span style="color: #666666">2</span>
+    Name: brownlow_votes, dtype: int64
+</pre></div>
 
 <p>Since 2014, there have only been 24 players who have voted and not been in the top 20 SC.</p>
-<pre class="codehilite"><code class="language-python">features_with_sc_rank = features_with_historic_perf_relative_to_model.copy()
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features_with_sc_rank <span style="color: #666666">=</span> features_with_historic_perf_relative_to_model<span style="color: #666666">.</span>copy()
 
-features_with_sc_rank['SC_rank_match'] = features_with_sc_rank.groupby('match_id').SC.rank(method='max', ascending=False)
+features_with_sc_rank[<span style="color: #BA2121">&#39;SC_rank_match&#39;</span>] <span style="color: #666666">=</span> features_with_sc_rank<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;match_id&#39;</span>)<span style="color: #666666">.</span>SC<span style="color: #666666">.</span>rank(method<span style="color: #666666">=</span><span style="color: #BA2121">&#39;max&#39;</span>, ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)
 
-# Filter out rows with a SC rank of below 20
-features_with_sc_rank_filtered = features_with_sc_rank.query('SC_rank_match &lt;= 20')</code></pre>
+<span style="color: #408080; font-style: italic"># Filter out rows with a SC rank of below 20</span>
+features_with_sc_rank_filtered <span style="color: #666666">=</span> features_with_sc_rank<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;SC_rank_match &lt;= 20&#39;</span>)
+</pre></div>
 
-<pre class="codehilite"><code class="language-python"># Filter out 2010 and 2011 as we used these seasons to create historic model performance features
-features_last_before_train = features_with_sc_rank_filtered.query('season != 2010 and season != 2011').reset_index(drop=True)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Filter out 2010 and 2011 as we used these seasons to create historic model performance features</span>
+features_last_before_train <span style="color: #666666">=</span> features_with_sc_rank_filtered<span style="color: #666666">.</span>query(<span style="color: #BA2121">&#39;season != 2010 and season != 2011&#39;</span>)<span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>)
 
-features_last_before_train.head(3)</code></pre>
+features_last_before_train<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
+</pre></div>
 
 <table>
 <thead>
@@ -2397,82 +2419,88 @@ features_last_before_train.head(3)</code></pre>
 <hr />
 <h2 id="modeling-the-2017-brownlow">Modeling The 2017 Brownlow<a class="headerlink" href="#modeling-the-2017-brownlow" title="Permanent link">&para;</a></h2>
 <p>Now that we have all of our features, we can simply create a training set (2012-2016), and a test set (2017), and make our predictions for last year! We will use AutoML for this process again. Again, rather than waiting for the model to train, I will save the model so you can simply load it in. We will also scale our features. We can then see how our model went in predicting last year's brownlow, creating a baseline for this years' predictions. We will then predict this year's vote count.</p>
-<pre class="codehilite"><code class="language-python">train_baseline = features_last_before_train.query("season &lt; 2017")
-holdout = features_last_before_train.query("season == 2017")
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>train_baseline <span style="color: #666666">=</span> features_last_before_train<span style="color: #666666">.</span>query(<span style="color: #BA2121">&quot;season &lt; 2017&quot;</span>)
+holdout <span style="color: #666666">=</span> features_last_before_train<span style="color: #666666">.</span>query(<span style="color: #BA2121">&quot;season == 2017&quot;</span>)
 
-scale_cols = ['team_score', 'opposition_score', 'margin', 'CP', 'UP', 'ED', 'DE',
-       'CM', 'GA', 'MI5', 'one_perc', 'BO', 'K', 'HB', 'D', 'M', 'G',
-       'B', 'T', 'HO', 'I50', 'CL', 'CG', 'R50', 'FF', 'FA', 'AF', 'SC']
+scale_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;team_score&#39;</span>, <span style="color: #BA2121">&#39;opposition_score&#39;</span>, <span style="color: #BA2121">&#39;margin&#39;</span>, <span style="color: #BA2121">&#39;CP&#39;</span>, <span style="color: #BA2121">&#39;UP&#39;</span>, <span style="color: #BA2121">&#39;ED&#39;</span>, <span style="color: #BA2121">&#39;DE&#39;</span>,
+       <span style="color: #BA2121">&#39;CM&#39;</span>, <span style="color: #BA2121">&#39;GA&#39;</span>, <span style="color: #BA2121">&#39;MI5&#39;</span>, <span style="color: #BA2121">&#39;one_perc&#39;</span>, <span style="color: #BA2121">&#39;BO&#39;</span>, <span style="color: #BA2121">&#39;K&#39;</span>, <span style="color: #BA2121">&#39;HB&#39;</span>, <span style="color: #BA2121">&#39;D&#39;</span>, <span style="color: #BA2121">&#39;M&#39;</span>, <span style="color: #BA2121">&#39;G&#39;</span>,
+       <span style="color: #BA2121">&#39;B&#39;</span>, <span style="color: #BA2121">&#39;T&#39;</span>, <span style="color: #BA2121">&#39;HO&#39;</span>, <span style="color: #BA2121">&#39;I50&#39;</span>, <span style="color: #BA2121">&#39;CL&#39;</span>, <span style="color: #BA2121">&#39;CG&#39;</span>, <span style="color: #BA2121">&#39;R50&#39;</span>, <span style="color: #BA2121">&#39;FF&#39;</span>, <span style="color: #BA2121">&#39;FA&#39;</span>, <span style="color: #BA2121">&#39;AF&#39;</span>, <span style="color: #BA2121">&#39;SC&#39;</span>]
 
-other_feature_cols = ['is_captain', 'kicked_a_bag', 'team_won', 'got_30_possies_2_goals', 'times_in_top_10', 
-                      'ave_votes_last_season', 'error_last_season', 'SC_rank_match']
+other_feature_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;is_captain&#39;</span>, <span style="color: #BA2121">&#39;kicked_a_bag&#39;</span>, <span style="color: #BA2121">&#39;team_won&#39;</span>, <span style="color: #BA2121">&#39;got_30_possies_2_goals&#39;</span>, <span style="color: #BA2121">&#39;times_in_top_10&#39;</span>, 
+                      <span style="color: #BA2121">&#39;ave_votes_last_season&#39;</span>, <span style="color: #BA2121">&#39;error_last_season&#39;</span>, <span style="color: #BA2121">&#39;SC_rank_match&#39;</span>]
 
-all_feature_cols = scale_cols + other_feature_cols
+all_feature_cols <span style="color: #666666">=</span> scale_cols <span style="color: #666666">+</span> other_feature_cols
 
-# Scale features
-scaler = StandardScaler()
+<span style="color: #408080; font-style: italic"># Scale features</span>
+scaler <span style="color: #666666">=</span> StandardScaler()
 
-train_baseline_scaled = train_baseline.copy()
-train_baseline_scaled[scale_cols] = scaler.fit_transform(train_baseline[scale_cols])
+train_baseline_scaled <span style="color: #666666">=</span> train_baseline<span style="color: #666666">.</span>copy()
+train_baseline_scaled[scale_cols] <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>fit_transform(train_baseline[scale_cols])
 
-holdout_scaled = holdout.copy()
-holdout_scaled[scale_cols] = scaler.transform(holdout[scale_cols])
+holdout_scaled <span style="color: #666666">=</span> holdout<span style="color: #666666">.</span>copy()
+holdout_scaled[scale_cols] <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(holdout[scale_cols])
 
-# Convert categorical columns to categoricals
-train_baseline_h2o = h2o.H2OFrame(train_baseline_scaled)
-holdout_h2o = h2o.H2OFrame(holdout_scaled)
+<span style="color: #408080; font-style: italic"># Convert categorical columns to categoricals</span>
+train_baseline_h2o <span style="color: #666666">=</span> h2o<span style="color: #666666">.</span>H2OFrame(train_baseline_scaled)
+holdout_h2o <span style="color: #666666">=</span> h2o<span style="color: #666666">.</span>H2OFrame(holdout_scaled)
 
-for col in ['is_captain', 'kicked_a_bag', 'team_won', 'got_30_possies_2_goals']:
-    train_baseline_h2o[col] = train_baseline_h2o[col].asfactor()
-    holdout_h2o[col] = holdout_h2o[col].asfactor()</code></pre>
+<span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #BA2121">&#39;is_captain&#39;</span>, <span style="color: #BA2121">&#39;kicked_a_bag&#39;</span>, <span style="color: #BA2121">&#39;team_won&#39;</span>, <span style="color: #BA2121">&#39;got_30_possies_2_goals&#39;</span>]:
+    train_baseline_h2o[col] <span style="color: #666666">=</span> train_baseline_h2o[col]<span style="color: #666666">.</span>asfactor()
+    holdout_h2o[col] <span style="color: #666666">=</span> holdout_h2o[col]<span style="color: #666666">.</span>asfactor()
+</pre></div>
 
-<pre class="codehilite"><code>C:\Users\wardj\AppData\Local\Continuum\anaconda3\lib\site-packages\h2o\utils\shared_utils.py:177: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>C:\Users\wardj\AppData\Local\Continuum\anaconda3\lib\site-packages\h2o\utils\shared_utils.py:177: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
   data = _handle_python_lists(python_obj.as_matrix().tolist(), -1)[1]
 
 Parse progress: |█████████████████████████████████████████████████████████| 100%
-Parse progress: |█████████████████████████████████████████████████████████| 100%</code></pre>
+Parse progress: |█████████████████████████████████████████████████████████| 100%
+</pre></div>
 
 
 <p>Below I have commented out training and saving the 2017 model. Rather than training it again, we will just load it in. Uncomment this part out if you want to train it yourself.</p>
-<pre class="codehilite"><code class="language-python"># aml_2017_model = H2OAutoML(max_runtime_secs = 60*3,
-#                    balance_classes=True,
-#                    seed=42)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># aml_2017_model = H2OAutoML(max_runtime_secs = 60*3,</span>
+<span style="color: #408080; font-style: italic">#                    balance_classes=True,</span>
+<span style="color: #408080; font-style: italic">#                    seed=42)</span>
 
-# aml_2017_model.train(y='brownlow_votes', x=all_feature_cols, training_frame=train_baseline_h2o)</code></pre>
+<span style="color: #408080; font-style: italic"># aml_2017_model.train(y=&#39;brownlow_votes&#39;, x=all_feature_cols, training_frame=train_baseline_h2o)</span>
+</pre></div>
 
-<pre class="codehilite"><code class="language-python"># save the model
-# model_path = h2o.save_model(model=aml_2017_model.leader, path="models", force=True)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># save the model</span>
+<span style="color: #408080; font-style: italic"># model_path = h2o.save_model(model=aml_2017_model.leader, path=&quot;models&quot;, force=True)</span>
 
-# Get model id
-# model_name = aml_2017_model.leaderboard[0, 'model_id']
+<span style="color: #408080; font-style: italic"># Get model id</span>
+<span style="color: #408080; font-style: italic"># model_name = aml_2017_model.leaderboard[0, &#39;model_id&#39;]</span>
 
-# Rename the model on disk
-# os.rename(f'models/{model_name}', f'models/brownlow_2017_model_v1')
+<span style="color: #408080; font-style: italic"># Rename the model on disk</span>
+<span style="color: #408080; font-style: italic"># os.rename(f&#39;models/{model_name}&#39;, f&#39;models/brownlow_2017_model_v1&#39;)</span>
 
-# Load model in
-aml_2017_model = h2o.load_model('models/brownlow_2017_model_v1')</code></pre>
+<span style="color: #408080; font-style: italic"># Load model in</span>
+aml_2017_model <span style="color: #666666">=</span> h2o<span style="color: #666666">.</span>load_model(<span style="color: #BA2121">&#39;models/brownlow_2017_model_v1&#39;</span>)
+</pre></div>
 
-<p><pre class="codehilite"><code class="language-python"># Predict the 2017 brownlow count
-preds_final_2017_model = aml_2017_model.predict(holdout_h2o)
+<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Predict the 2017 brownlow count</span>
+preds_final_2017_model <span style="color: #666666">=</span> aml_2017_model<span style="color: #666666">.</span>predict(holdout_h2o)
 
-# Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total
-holdout = (holdout.assign(predicted_votes=preds_final_2017_model.as_data_frame().values)
-                  .assign(predicted_votes_neg_to_0=lambda df: df.predicted_votes.apply(lambda x: 0 if x &lt;0 else x))
-                  .assign(unscaled_match_votes=lambda df: df.groupby('match_id').predicted_votes_neg_to_0.transform('sum'))
-                  .assign(predicted_votes_scaled=lambda df: df.predicted_votes_neg_to_0 / df.unscaled_match_votes * 6))
+<span style="color: #408080; font-style: italic"># Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total</span>
+holdout <span style="color: #666666">=</span> (holdout<span style="color: #666666">.</span>assign(predicted_votes<span style="color: #666666">=</span>preds_final_2017_model<span style="color: #666666">.</span>as_data_frame()<span style="color: #666666">.</span>values)
+                  <span style="color: #666666">.</span>assign(predicted_votes_neg_to_0<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>predicted_votes<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">&lt;0</span> <span style="color: #008000; font-weight: bold">else</span> x))
+                  <span style="color: #666666">.</span>assign(unscaled_match_votes<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;match_id&#39;</span>)<span style="color: #666666">.</span>predicted_votes_neg_to_0<span style="color: #666666">.</span>transform(<span style="color: #BA2121">&#39;sum&#39;</span>))
+                  <span style="color: #666666">.</span>assign(predicted_votes_scaled<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>predicted_votes_neg_to_0 <span style="color: #666666">/</span> df<span style="color: #666666">.</span>unscaled_match_votes <span style="color: #666666">*</span> <span style="color: #666666">6</span>))
 
-# Create an aggregate votes df and show the average SC points and goals scored
-agg_predictions_2017 = (holdout.groupby(['player', 'team'], as_index=False)
-                        .agg({
-                            'brownlow_votes': sum,
-                            'predicted_votes_scaled': sum,
-                            'SC': 'mean',
-                            'G': 'mean'})
-                        .sort_values(by='brownlow_votes', ascending=False)
-                        .assign(mae=lambda df: abs(df.brownlow_votes - df.predicted_votes_scaled))
-                        .reset_index(drop=True))</code></pre>
+<span style="color: #408080; font-style: italic"># Create an aggregate votes df and show the average SC points and goals scored</span>
+agg_predictions_2017 <span style="color: #666666">=</span> (holdout<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>], as_index<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+                        <span style="color: #666666">.</span>agg({
+                            <span style="color: #BA2121">&#39;brownlow_votes&#39;</span>: <span style="color: #008000">sum</span>,
+                            <span style="color: #BA2121">&#39;predicted_votes_scaled&#39;</span>: <span style="color: #008000">sum</span>,
+                            <span style="color: #BA2121">&#39;SC&#39;</span>: <span style="color: #BA2121">&#39;mean&#39;</span>,
+                            <span style="color: #BA2121">&#39;G&#39;</span>: <span style="color: #BA2121">&#39;mean&#39;</span>})
+                        <span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;brownlow_votes&#39;</span>, ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+                        <span style="color: #666666">.</span>assign(mae<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: <span style="color: #008000">abs</span>(df<span style="color: #666666">.</span>brownlow_votes <span style="color: #666666">-</span> df<span style="color: #666666">.</span>predicted_votes_scaled))
+                        <span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>))
+</pre></div>
     stackedensemble prediction progress: |████████████████████████████████████| 100%</p>
-<pre class="codehilite"><code class="language-python">agg_predictions_2017.head(15)</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>agg_predictions_2017<span style="color: #666666">.</span>head(<span style="color: #666666">15</span>)
+</pre></div>
 
 <table>
 <thead>
@@ -2641,9 +2669,10 @@ agg_predictions_2017 = (holdout.groupby(['player', 'team'], as_index=False)
 </tbody>
 </table>
 <p>So whilst our model predicted Dangerfield to win, it was pretty damn accurate! Let's find the MAE for the top 100, 50, 25, and 10, and then compare it to 2018's MAE in week, when the Brownlow has been counted.</p>
-<p><pre class="codehilite"><code class="language-python">for top_x in [10, 25, 50, 100]:
-    temp_mae = round(agg_predictions_2017.iloc[:top_x].mae.mean(), 3)
-    print(f"The Average Mean Absolute Error for the top {top_x} is {temp_mae}")</code></pre>
+<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> top_x <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #666666">10</span>, <span style="color: #666666">25</span>, <span style="color: #666666">50</span>, <span style="color: #666666">100</span>]:
+    temp_mae <span style="color: #666666">=</span> <span style="color: #008000">round</span>(agg_predictions_2017<span style="color: #666666">.</span>iloc[:top_x]<span style="color: #666666">.</span>mae<span style="color: #666666">.</span>mean(), <span style="color: #666666">3</span>)
+    <span style="color: #008000; font-weight: bold">print</span>(f<span style="color: #BA2121">&quot;The Average Mean Absolute Error for the top {top_x} is {temp_mae}&quot;</span>)
+</pre></div>
     The Average Mean Absolute Error for the top 10 is 3.216
     The Average Mean Absolute Error for the top 25 is 2.931
     The Average Mean Absolute Error for the top 50 is 3.15
@@ -2651,77 +2680,85 @@ agg_predictions_2017 = (holdout.groupby(['player', 'team'], as_index=False)
 <hr />
 <h2 id="modelling-this-years-brownlow">Modelling This Year's Brownlow<a class="headerlink" href="#modelling-this-years-brownlow" title="Permanent link">&para;</a></h2>
 <p>Let's now predict this year's vote count. These predictions will be on the front page of the GitHub.</p>
-<pre class="codehilite"><code class="language-python">train = features_last_before_train.query("season &lt; 2018")
-test = features_last_before_train.query("season == 2018")
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>train <span style="color: #666666">=</span> features_last_before_train<span style="color: #666666">.</span>query(<span style="color: #BA2121">&quot;season &lt; 2018&quot;</span>)
+test <span style="color: #666666">=</span> features_last_before_train<span style="color: #666666">.</span>query(<span style="color: #BA2121">&quot;season == 2018&quot;</span>)
 
-# Scale features
-scaler = StandardScaler()
+<span style="color: #408080; font-style: italic"># Scale features</span>
+scaler <span style="color: #666666">=</span> StandardScaler()
 
-train_scaled = train.copy()
-train_scaled[scale_cols] = scaler.fit_transform(train[scale_cols])
+train_scaled <span style="color: #666666">=</span> train<span style="color: #666666">.</span>copy()
+train_scaled[scale_cols] <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>fit_transform(train[scale_cols])
 
-test_scaled = test.copy()
-test_scaled[scale_cols] = scaler.transform(test[scale_cols])</code></pre>
+test_scaled <span style="color: #666666">=</span> test<span style="color: #666666">.</span>copy()
+test_scaled[scale_cols] <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(test[scale_cols])
+</pre></div>
 
-<pre class="codehilite"><code class="language-python"># Convert categorical columns to categoricals
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Convert categorical columns to categoricals</span>
 
-train_h2o = h2o.H2OFrame(train_scaled)
-test_h2o = h2o.H2OFrame(test_scaled)
+train_h2o <span style="color: #666666">=</span> h2o<span style="color: #666666">.</span>H2OFrame(train_scaled)
+test_h2o <span style="color: #666666">=</span> h2o<span style="color: #666666">.</span>H2OFrame(test_scaled)
 
-for col in ['is_captain', 'kicked_a_bag', 'team_won', 'got_30_possies_2_goals']:
-    train_h2o[col] = train_h2o[col].asfactor()
-    test_h2o[col] = test_h2o[col].asfactor()</code></pre>
+<span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> [<span style="color: #BA2121">&#39;is_captain&#39;</span>, <span style="color: #BA2121">&#39;kicked_a_bag&#39;</span>, <span style="color: #BA2121">&#39;team_won&#39;</span>, <span style="color: #BA2121">&#39;got_30_possies_2_goals&#39;</span>]:
+    train_h2o[col] <span style="color: #666666">=</span> train_h2o[col]<span style="color: #666666">.</span>asfactor()
+    test_h2o[col] <span style="color: #666666">=</span> test_h2o[col]<span style="color: #666666">.</span>asfactor()
+</pre></div>
 
-<pre class="codehilite"><code>C:\Users\wardj\AppData\Local\Continuum\anaconda3\lib\site-packages\h2o\utils\shared_utils.py:177: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>C:\Users\wardj\AppData\Local\Continuum\anaconda3\lib\site-packages\h2o\utils\shared_utils.py:177: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
   data = _handle_python_lists(python_obj.as_matrix().tolist(), -1)[1]
 
 Parse progress: |█████████████████████████████████████████████████████████| 100%
-Parse progress: |█████████████████████████████████████████████████████████| 100%</code></pre>
+Parse progress: |█████████████████████████████████████████████████████████| 100%
+</pre></div>
 
 
-<pre class="codehilite"><code class="language-python"># Train the model - this part is commented out as we will just load our model from disk
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Train the model - this part is commented out as we will just load our model from disk</span>
 
-# aml = H2OAutoML(max_runtime_secs = 60*3,
-#                    balance_classes=True,
-#                    seed=42)
+<span style="color: #408080; font-style: italic"># aml = H2OAutoML(max_runtime_secs = 60*3,</span>
+<span style="color: #408080; font-style: italic">#                    balance_classes=True,</span>
+<span style="color: #408080; font-style: italic">#                    seed=42)</span>
 
-# aml.train(y='brownlow_votes', x=all_feature_cols, training_frame=train_h2o)</code></pre>
+<span style="color: #408080; font-style: italic"># aml.train(y=&#39;brownlow_votes&#39;, x=all_feature_cols, training_frame=train_h2o)</span>
+</pre></div>
 
-<pre class="codehilite"><code class="language-python"># # save the model
-# model_path = h2o.save_model(model=aml.leader, path="models", force=True)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># # save the model</span>
+<span style="color: #408080; font-style: italic"># model_path = h2o.save_model(model=aml.leader, path=&quot;models&quot;, force=True)</span>
 
-# # Get model id
-# model_name = aml.leaderboard[0, 'model_id']
+<span style="color: #408080; font-style: italic"># # Get model id</span>
+<span style="color: #408080; font-style: italic"># model_name = aml.leaderboard[0, &#39;model_id&#39;]</span>
 
-# # Rename the model on disk
-# os.rename(f'models/{model_name}', f'models/brownlow_2018_model_v1')
+<span style="color: #408080; font-style: italic"># # Rename the model on disk</span>
+<span style="color: #408080; font-style: italic"># os.rename(f&#39;models/{model_name}&#39;, f&#39;models/brownlow_2018_model_v1&#39;)</span>
 
-# Load model in
-aml = h2o.load_model('models/brownlow_2018_model_v1')</code></pre>
+<span style="color: #408080; font-style: italic"># Load model in</span>
+aml <span style="color: #666666">=</span> h2o<span style="color: #666666">.</span>load_model(<span style="color: #BA2121">&#39;models/brownlow_2018_model_v1&#39;</span>)
+</pre></div>
 
-<pre class="codehilite"><code class="language-python"># Predict the 2018 brownlow count
-preds_final_2018_model = aml.predict(test_h2o)
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Predict the 2018 brownlow count</span>
+preds_final_2018_model <span style="color: #666666">=</span> aml<span style="color: #666666">.</span>predict(test_h2o)
 
-# Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total
-test = (test.assign(predicted_votes=preds_final_2018_model.as_data_frame().values)
-                  .assign(predicted_votes_neg_to_0=lambda df: df.predicted_votes.apply(lambda x: 0 if x &lt;0 else x))
-                  .assign(unscaled_match_votes=lambda df: df.groupby('match_id').predicted_votes_neg_to_0.transform('sum'))
-                  .assign(predicted_votes_scaled=lambda df: df.predicted_votes_neg_to_0 / df.unscaled_match_votes * 6))
+<span style="color: #408080; font-style: italic"># Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total</span>
+test <span style="color: #666666">=</span> (test<span style="color: #666666">.</span>assign(predicted_votes<span style="color: #666666">=</span>preds_final_2018_model<span style="color: #666666">.</span>as_data_frame()<span style="color: #666666">.</span>values)
+                  <span style="color: #666666">.</span>assign(predicted_votes_neg_to_0<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>predicted_votes<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> x: <span style="color: #666666">0</span> <span style="color: #008000; font-weight: bold">if</span> x <span style="color: #666666">&lt;0</span> <span style="color: #008000; font-weight: bold">else</span> x))
+                  <span style="color: #666666">.</span>assign(unscaled_match_votes<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;match_id&#39;</span>)<span style="color: #666666">.</span>predicted_votes_neg_to_0<span style="color: #666666">.</span>transform(<span style="color: #BA2121">&#39;sum&#39;</span>))
+                  <span style="color: #666666">.</span>assign(predicted_votes_scaled<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>predicted_votes_neg_to_0 <span style="color: #666666">/</span> df<span style="color: #666666">.</span>unscaled_match_votes <span style="color: #666666">*</span> <span style="color: #666666">6</span>))
 
-# Create an aggregate votes df and show the average SC points and goals scored
-agg_predictions_2018 = (test.groupby(['player', 'team'], as_index=False)
-                        .agg({
-                            'predicted_votes_scaled': sum,
-                            'match_id': 'count'}) # shows how many games they played
-                        .sort_values(by='predicted_votes_scaled', ascending=False)
-                        .reset_index(drop=True))</code></pre>
+<span style="color: #408080; font-style: italic"># Create an aggregate votes df and show the average SC points and goals scored</span>
+agg_predictions_2018 <span style="color: #666666">=</span> (test<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>], as_index<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+                        <span style="color: #666666">.</span>agg({
+                            <span style="color: #BA2121">&#39;predicted_votes_scaled&#39;</span>: <span style="color: #008000">sum</span>,
+                            <span style="color: #BA2121">&#39;match_id&#39;</span>: <span style="color: #BA2121">&#39;count&#39;</span>}) <span style="color: #408080; font-style: italic"># shows how many games they played</span>
+                        <span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;predicted_votes_scaled&#39;</span>, ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)
+                        <span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>))
+</pre></div>
 
-<pre class="codehilite"><code>stackedensemble prediction progress: |████████████████████████████████████| 100%</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>stackedensemble prediction progress: |████████████████████████████████████| 100%
+</pre></div>
 
 
-<pre class="codehilite"><code class="language-python"># Show the top 25 predictions
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Show the top 25 predictions</span>
 
-agg_predictions_2018.head(25)</code></pre>
+agg_predictions_2018<span style="color: #666666">.</span>head(<span style="color: #666666">25</span>)
+</pre></div>
 
 <table>
 <thead>
@@ -2911,7 +2948,8 @@ agg_predictions_2018.head(25)</code></pre>
 </tr>
 </tbody>
 </table>
-<pre class="codehilite"><code class="language-python">print(agg_predictions_2018.head(15))</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(agg_predictions_2018<span style="color: #666666">.</span>head(<span style="color: #666666">15</span>))
+</pre></div>
 
 <table>
 <thead>
@@ -3016,7 +3054,8 @@ agg_predictions_2018.head(25)</code></pre>
 </tbody>
 </table>
 <p>Now that we have the top 25, let's also look at the top 3 from each team.</p>
-<pre class="codehilite"><code class="language-python">agg_predictions_2018.sort_values(by=['team', 'predicted_votes_scaled'], ascending=[True, False]).groupby('team').head(3)</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>agg_predictions_2018<span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;predicted_votes_scaled&#39;</span>], ascending<span style="color: #666666">=</span>[<span style="color: #008000">True</span>, <span style="color: #008000">False</span>])<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;team&#39;</span>)<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
+</pre></div>
 
 <table>
 <thead>
@@ -3410,7 +3449,8 @@ agg_predictions_2018.head(25)</code></pre>
 </tbody>
 </table>
 <p>If you're looking for a round by round breakdown, just have a look at the test dataframe.</p>
-<pre class="codehilite"><code class="language-python">test[['date', 'round', 'player', 'team', 'opposition', 'margin', 'SC', 'predicted_votes_scaled']].tail(25)</code></pre>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>test[[<span style="color: #BA2121">&#39;date&#39;</span>, <span style="color: #BA2121">&#39;round&#39;</span>, <span style="color: #BA2121">&#39;player&#39;</span>, <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;opposition&#39;</span>, <span style="color: #BA2121">&#39;margin&#39;</span>, <span style="color: #BA2121">&#39;SC&#39;</span>, <span style="color: #BA2121">&#39;predicted_votes_scaled&#39;</span>]]<span style="color: #666666">.</span>tail(<span style="color: #666666">25</span>)
+</pre></div>
 
 <table>
 <thead>
@@ -3770,7 +3810,7 @@ agg_predictions_2018.head(25)</code></pre>
     <div class="bf-footer">
       <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
       <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Know when to stop. Don’t go over the top. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="www.gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br>Think! About your choices. Know when to stop. Don’t go over the top. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
       <ul class="bf-links">
         <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
         <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
@@ -3780,13 +3820,15 @@ agg_predictions_2018.head(25)</code></pre>
       </ul>
     </div>
   </div>
+  <script src="https://js.adsrvr.org/up_loader.1.1.0.js"></script>
+  <script>ttd_dom_ready(function(){"function"==typeof TTDUniversalPixelApi&&(new TTDUniversalPixelApi).init("y12d1ir",["8ml4f17"],"https://insight.adsrvr.org/track/up")})</script>
 </footer>
       
     </div>
     
-      <script src="../../assets/javascripts/application.83382bb6.js"></script>
+      <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.1",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#betfair-api-tutorial-in-python" tabindex="1" class="md-skip">
+      <a href="#betfair-api-tutorial-in-python" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1346,35 +1346,33 @@
 <p>Now we're finally ready to log in and use the API. First, we create an APIClient object and then log in. To log in, we'll need to specify where we put our certs. In this example, I'll put them in a folder named 'certs', on my desktop.</p>
 <p>You'll also need to change the <code>username</code>, <code>password</code> and <code>app_key</code> variables to your own.</p>
 <p><strong><code>In [206]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Import libraries</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">betfairlightweight</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">betfairlightweight</span> <span style="color: #008000; font-weight: bold">import</span> filters
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">datetime</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">json</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Import libraries</span>
+<span class="kn">import</span> <span class="nn">betfairlightweight</span>
+<span class="kn">from</span> <span class="nn">betfairlightweight</span> <span class="kn">import</span> <span class="n">filters</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
-<span style="color: #408080; font-style: italic"># Change this certs path to wherever you&#39;re storing your certificates</span>
-certs_path <span style="color: #666666">=</span> <span style="color: #BA2121">r&#39;C:\Users\wardj\Desktop\certs&#39;</span>
+<span class="c1"># Change this certs path to wherever you&#39;re storing your certificates</span>
+<span class="n">certs_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\wardj\Desktop\certs&#39;</span>
 
-<span style="color: #408080; font-style: italic"># Change these login details to your own</span>
-my_username <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;your_username&quot;</span>
-my_password <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;your_password&quot;</span>
-my_app_key <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;your_app_key&quot;</span>
+<span class="c1"># Change these login details to your own</span>
+<span class="n">my_username</span> <span class="o">=</span> <span class="s2">&quot;your_username&quot;</span>
+<span class="n">my_password</span> <span class="o">=</span> <span class="s2">&quot;your_password&quot;</span>
+<span class="n">my_app_key</span> <span class="o">=</span> <span class="s2">&quot;your_app_key&quot;</span>
 
-trading <span style="color: #666666">=</span> betfairlightweight<span style="color: #666666">.</span>APIClient(username<span style="color: #666666">=</span>my_username,
-                                       password<span style="color: #666666">=</span>my_password,
-                                       app_key<span style="color: #666666">=</span>my_app_key,
-                                       certs<span style="color: #666666">=</span>certs_path)
+<span class="n">trading</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">APIClient</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">my_username</span><span class="p">,</span>
+                                       <span class="n">password</span><span class="o">=</span><span class="n">my_password</span><span class="p">,</span>
+                                       <span class="n">app_key</span><span class="o">=</span><span class="n">my_app_key</span><span class="p">,</span>
+                                       <span class="n">certs</span><span class="o">=</span><span class="n">certs_path</span><span class="p">)</span>
 
-trading<span style="color: #666666">.</span>login()
-</pre></div>
-
+<span class="n">trading</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+</code></pre></div>
 <p><strong><code>Out[206]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #666666">&lt;</span>LoginResource<span style="color: #666666">&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">&lt;</span><span class="n">LoginResource</span><span class="o">&gt;</span>
+</code></pre></div>
 <h3 id="get-event-ids">Get Event IDs<a class="headerlink" href="#get-event-ids" title="Permanent link">&para;</a></h3>
 <p>Betfair's API has a number of operations. For example, if you want to list the market book for a market, you would use the listMarketBook operation. These endpoints are shown in the <a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a> and in the docs. They are also listed below:</p>
 <h4 id="sports-api">Sports API<a class="headerlink" href="#sports-api" title="Permanent link">&para;</a></h4>
@@ -1400,17 +1398,16 @@ trading<span style="color: #666666">.</span>login()
 <p>The Account Operations API operations/endpoints <a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/">can be found here</a>.</p>
 <p>First we need to grab the 'Event Type Id'. Each sport has a different ID. Below we will find the ids for all sports by requesting the event_type_ids without a filter.</p>
 <p><strong><code>In [43]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Grab all event type ids. This will return a list which we will iterate over to print out the id and the name of the sport</span>
-event_types <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_event_types()
+<div class="highlight"><pre><span></span><code><span class="c1"># Grab all event type ids. This will return a list which we will iterate over to print out the id and the name of the sport</span>
+<span class="n">event_types</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_event_types</span><span class="p">()</span>
 
-sport_ids <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame({
-    <span style="color: #BA2121">&#39;Sport&#39;</span>: [event_type_object<span style="color: #666666">.</span>event_type<span style="color: #666666">.</span>name <span style="color: #008000; font-weight: bold">for</span> event_type_object <span style="color: #AA22FF; font-weight: bold">in</span> event_types],
-    <span style="color: #BA2121">&#39;ID&#39;</span>: [event_type_object<span style="color: #666666">.</span>event_type<span style="color: #666666">.</span>id <span style="color: #008000; font-weight: bold">for</span> event_type_object <span style="color: #AA22FF; font-weight: bold">in</span> event_types]
-})<span style="color: #666666">.</span>set_index(<span style="color: #BA2121">&#39;Sport&#39;</span>)<span style="color: #666666">.</span>sort_index()
+<span class="n">sport_ids</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Sport&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_type_object</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">event_type_object</span> <span class="ow">in</span> <span class="n">event_types</span><span class="p">],</span>
+    <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_type_object</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">event_type_object</span> <span class="ow">in</span> <span class="n">event_types</span><span class="p">]</span>
+<span class="p">})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Sport&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
 
-sport_ids
-</pre></div>
-
+<span class="n">sport_ids</span>
+</code></pre></div>
 <p><strong><code>Out[43]:</code></strong></p>
 <table>
 <thead>
@@ -1540,52 +1537,49 @@ sport_ids
 </table>
 <p>If we just wanted to get the event id for horse racing, we could use the filter function from <code>betfairlightweight</code> as shown in the examples and below.</p>
 <p><strong><code>In [50]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Filter for just horse racing</span>
-horse_racing_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>market_filter(text_query<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Horse Racing&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="c1"># Filter for just horse racing</span>
+<span class="n">horse_racing_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">text_query</span><span class="o">=</span><span class="s1">&#39;Horse Racing&#39;</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># This returns a list</span>
-horse_racing_event_type <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_event_types(
-    <span style="color: #008000">filter</span><span style="color: #666666">=</span>horse_racing_filter)
+<span class="c1"># This returns a list</span>
+<span class="n">horse_racing_event_type</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_event_types</span><span class="p">(</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="n">horse_racing_filter</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Get the first element of the list</span>
-horse_racing_event_type <span style="color: #666666">=</span> horse_racing_event_type[<span style="color: #666666">0</span>]
+<span class="c1"># Get the first element of the list</span>
+<span class="n">horse_racing_event_type</span> <span class="o">=</span> <span class="n">horse_racing_event_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-horse_racing_event_type_id <span style="color: #666666">=</span> horse_racing_event_type<span style="color: #666666">.</span>event_type<span style="color: #666666">.</span>id
-<span style="color: #008000; font-weight: bold">print</span>(f<span style="color: #BA2121">&quot;The event type id for horse racing is {horse_racing_event_type_id}&quot;</span>)
+<span class="n">horse_racing_event_type_id</span> <span class="o">=</span> <span class="n">horse_racing_event_type</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">id</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The event type id for horse racing is </span><span class="si">{</span><span class="n">horse_racing_event_type_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-The event <span style="color: #008000">type</span> <span style="color: #008000">id</span> <span style="color: #008000; font-weight: bold">for</span> horse racing <span style="color: #AA22FF; font-weight: bold">is</span> <span style="color: #666666">7</span>
-</pre></div>
-
+<span class="n">The</span> <span class="n">event</span> <span class="nb">type</span> <span class="nb">id</span> <span class="k">for</span> <span class="n">horse</span> <span class="n">racing</span> <span class="ow">is</span> <span class="mi">7</span>
+</code></pre></div>
 <h3 id="get-competition-ids">Get Competition IDs<a class="headerlink" href="#get-competition-ids" title="Permanent link">&para;</a></h3>
 <p>Sometimes you may want to get markets based on the competition. An example may be the Brownlow medal, or the EPL. Let's have a look at all the soccer competitions over the next week and filter to only get the EPL Competition ID.</p>
 <p><strong><code>In [90]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get a datetime object in a week and convert to string</span>
-datetime_in_a_week <span style="color: #666666">=</span> (datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>utcnow() <span style="color: #666666">+</span> datetime<span style="color: #666666">.</span>timedelta(weeks<span style="color: #666666">=1</span>))<span style="color: #666666">.</span>strftime(<span style="color: #BA2121">&quot;%Y-%m-</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">T%TZ&quot;</span>)
+<div class="highlight"><pre><span></span><code><span class="c1"># Get a datetime object in a week and convert to string</span>
+<span class="n">datetime_in_a_week</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%TZ&quot;</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Create a competition filter</span>
-competition_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>market_filter(
-    event_type_ids<span style="color: #666666">=</span>[<span style="color: #666666">1</span>], <span style="color: #408080; font-style: italic"># Soccer&#39;s event type id is 1</span>
-    market_start_time<span style="color: #666666">=</span>{
-        <span style="color: #BA2121">&#39;to&#39;</span>: datetime_in_a_week
-    })
+<span class="c1"># Create a competition filter</span>
+<span class="n">competition_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
+    <span class="n">event_type_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="c1"># Soccer&#39;s event type id is 1</span>
+    <span class="n">market_start_time</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="n">datetime_in_a_week</span>
+    <span class="p">})</span>
 
-<span style="color: #408080; font-style: italic"># Get a list of competitions for soccer</span>
-competitions <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_competitions(
-    <span style="color: #008000">filter</span><span style="color: #666666">=</span>competition_filter
-)
+<span class="c1"># Get a list of competitions for soccer</span>
+<span class="n">competitions</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_competitions</span><span class="p">(</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="n">competition_filter</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Iterate over the competitions and create a dataframe of competitions and competition ids</span>
-soccer_competitions <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame({
-    <span style="color: #BA2121">&#39;Competition&#39;</span>: [competition_object<span style="color: #666666">.</span>competition<span style="color: #666666">.</span>name <span style="color: #008000; font-weight: bold">for</span> competition_object <span style="color: #AA22FF; font-weight: bold">in</span> competitions],
-    <span style="color: #BA2121">&#39;ID&#39;</span>: [competition_object<span style="color: #666666">.</span>competition<span style="color: #666666">.</span>id <span style="color: #008000; font-weight: bold">for</span> competition_object <span style="color: #AA22FF; font-weight: bold">in</span> competitions]
-})
-</pre></div>
-
+<span class="c1"># Iterate over the competitions and create a dataframe of competitions and competition ids</span>
+<span class="n">soccer_competitions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Competition&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">competition_object</span><span class="o">.</span><span class="n">competition</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">competition_object</span> <span class="ow">in</span> <span class="n">competitions</span><span class="p">],</span>
+    <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">competition_object</span><span class="o">.</span><span class="n">competition</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">competition_object</span> <span class="ow">in</span> <span class="n">competitions</span><span class="p">]</span>
+<span class="p">})</span>
+</code></pre></div>
 <p><strong><code>In [94]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get the English Premier League Competition ID</span>
-soccer_competitions[soccer_competitions<span style="color: #666666">.</span>Competition<span style="color: #666666">.</span>str<span style="color: #666666">.</span>contains(<span style="color: #BA2121">&#39;English Premier&#39;</span>)]
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the English Premier League Competition ID</span>
+<span class="n">soccer_competitions</span><span class="p">[</span><span class="n">soccer_competitions</span><span class="o">.</span><span class="n">Competition</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;English Premier&#39;</span><span class="p">)]</span>
+</code></pre></div>
 <p><strong><code>Out[94]:</code></strong></p>
 <table>
 <thead>
@@ -1606,45 +1600,42 @@ soccer_competitions[soccer_competitions<span style="color: #666666">.</span>Comp
 <h3 id="get-upcoming-events">Get Upcoming Events<a class="headerlink" href="#get-upcoming-events" title="Permanent link">&para;</a></h3>
 <p>Say you want to get all the upcoming events for Thoroughbreads for the next 24 hours. We will use the <code>listEvents</code> operation for this. First, as before, we define a market filter, and then using the betting method from our trading object which we defined earlier.</p>
 <p><strong><code>In [207]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Define a market filter</span>
-thoroughbreds_event_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>market_filter(
-    event_type_ids<span style="color: #666666">=</span>[horse_racing_event_type_id],
-    market_countries<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;AU&#39;</span>],
-    market_start_time<span style="color: #666666">=</span>{
-        <span style="color: #BA2121">&#39;to&#39;</span>: (datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>utcnow() <span style="color: #666666">+</span> datetime<span style="color: #666666">.</span>timedelta(days<span style="color: #666666">=1</span>))<span style="color: #666666">.</span>strftime(<span style="color: #BA2121">&quot;%Y-%m-</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">T%TZ&quot;</span>)
-    }
-)
+<div class="highlight"><pre><span></span><code><span class="c1"># Define a market filter</span>
+<span class="n">thoroughbreds_event_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
+    <span class="n">event_type_ids</span><span class="o">=</span><span class="p">[</span><span class="n">horse_racing_event_type_id</span><span class="p">],</span>
+    <span class="n">market_countries</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">],</span>
+    <span class="n">market_start_time</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%TZ&quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Print the filter</span>
-thoroughbreds_event_filter
-</pre></div>
-
+<span class="c1"># Print the filter</span>
+<span class="n">thoroughbreds_event_filter</span>
+</code></pre></div>
 <p><strong><code>Out[207]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>{<span style="color: #BA2121">&#39;eventTypeIds&#39;</span>: [<span style="color: #BA2121">&#39;7&#39;</span>],
- <span style="color: #BA2121">&#39;marketCountries&#39;</span>: [<span style="color: #BA2121">&#39;AU&#39;</span>],
- <span style="color: #BA2121">&#39;marketStartTime&#39;</span>: {<span style="color: #BA2121">&#39;to&#39;</span>: <span style="color: #BA2121">&#39;2018-10-26T22:25:00Z&#39;</span>}}
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;eventTypeIds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;7&#39;</span><span class="p">],</span>
+ <span class="s1">&#39;marketCountries&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">],</span>
+ <span class="s1">&#39;marketStartTime&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-10-26T22:25:00Z&#39;</span><span class="p">}}</span>
+</code></pre></div>
 <p><strong><code>In [208]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get a list of all thoroughbred events as objects</span>
-aus_thoroughbred_events <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_events(
-    <span style="color: #008000">filter</span><span style="color: #666666">=</span>thoroughbreds_event_filter
-)
+<div class="highlight"><pre><span></span><code><span class="c1"># Get a list of all thoroughbred events as objects</span>
+<span class="n">aus_thoroughbred_events</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_events</span><span class="p">(</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="n">thoroughbreds_event_filter</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Create a DataFrame with all the events by iterating over each event object</span>
-aus_thoroughbred_events_today <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame({
-    <span style="color: #BA2121">&#39;Event Name&#39;</span>: [event_object<span style="color: #666666">.</span>event<span style="color: #666666">.</span>name <span style="color: #008000; font-weight: bold">for</span> event_object <span style="color: #AA22FF; font-weight: bold">in</span> aus_thoroughbred_events],
-    <span style="color: #BA2121">&#39;Event ID&#39;</span>: [event_object<span style="color: #666666">.</span>event<span style="color: #666666">.</span>id <span style="color: #008000; font-weight: bold">for</span> event_object <span style="color: #AA22FF; font-weight: bold">in</span> aus_thoroughbred_events],
-    <span style="color: #BA2121">&#39;Event Venue&#39;</span>: [event_object<span style="color: #666666">.</span>event<span style="color: #666666">.</span>venue <span style="color: #008000; font-weight: bold">for</span> event_object <span style="color: #AA22FF; font-weight: bold">in</span> aus_thoroughbred_events],
-    <span style="color: #BA2121">&#39;Country Code&#39;</span>: [event_object<span style="color: #666666">.</span>event<span style="color: #666666">.</span>country_code <span style="color: #008000; font-weight: bold">for</span> event_object <span style="color: #AA22FF; font-weight: bold">in</span> aus_thoroughbred_events],
-    <span style="color: #BA2121">&#39;Time Zone&#39;</span>: [event_object<span style="color: #666666">.</span>event<span style="color: #666666">.</span>time_zone <span style="color: #008000; font-weight: bold">for</span> event_object <span style="color: #AA22FF; font-weight: bold">in</span> aus_thoroughbred_events],
-    <span style="color: #BA2121">&#39;Open Date&#39;</span>: [event_object<span style="color: #666666">.</span>event<span style="color: #666666">.</span>open_date <span style="color: #008000; font-weight: bold">for</span> event_object <span style="color: #AA22FF; font-weight: bold">in</span> aus_thoroughbred_events],
-    <span style="color: #BA2121">&#39;Market Count&#39;</span>: [event_object<span style="color: #666666">.</span>market_count <span style="color: #008000; font-weight: bold">for</span> event_object <span style="color: #AA22FF; font-weight: bold">in</span> aus_thoroughbred_events]
-})
+<span class="c1"># Create a DataFrame with all the events by iterating over each event object</span>
+<span class="n">aus_thoroughbred_events_today</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Event Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+    <span class="s1">&#39;Event ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+    <span class="s1">&#39;Event Venue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">venue</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+    <span class="s1">&#39;Country Code&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">country_code</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+    <span class="s1">&#39;Time Zone&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">time_zone</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+    <span class="s1">&#39;Open Date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">open_date</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+    <span class="s1">&#39;Market Count&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">market_count</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">]</span>
+<span class="p">})</span>
 
-aus_thoroughbred_events_today
-</pre></div>
-
+<span class="n">aus_thoroughbred_events_today</span>
+</code></pre></div>
 <p><strong><code>Out[208]:</code></strong></p>
 <table>
 <thead>
@@ -1805,22 +1796,21 @@ aus_thoroughbred_events_today
 <h3 id="get-market-types">Get Market Types<a class="headerlink" href="#get-market-types" title="Permanent link">&para;</a></h3>
 <p>Say we want to know what market types a certain event is offering. To do this, we use the <code>listMarketTypes</code> operation. Let's take the Moonee Valley event from above (ID: 28971066). As this is a horse race we would expect that it would have Win and Place markets.</p>
 <p><strong><code>In [209]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Define a market filter</span>
-market_types_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>market_filter(event_ids<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;28971066&#39;</span>])
+<div class="highlight"><pre><span></span><code><span class="c1"># Define a market filter</span>
+<span class="n">market_types_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
 
-<span style="color: #408080; font-style: italic"># Request market types</span>
-market_types <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_market_types(
-        <span style="color: #008000">filter</span><span style="color: #666666">=</span>market_types_filter
-)
+<span class="c1"># Request market types</span>
+<span class="n">market_types</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_types</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="o">=</span><span class="n">market_types_filter</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Create a DataFrame of market types</span>
-market_types_mooney_valley <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame({
-    <span style="color: #BA2121">&#39;Market Type&#39;</span>: [market_type_object<span style="color: #666666">.</span>market_type <span style="color: #008000; font-weight: bold">for</span> market_type_object <span style="color: #AA22FF; font-weight: bold">in</span> market_types],
-})
+<span class="c1"># Create a DataFrame of market types</span>
+<span class="n">market_types_mooney_valley</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Market Type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">market_type_object</span><span class="o">.</span><span class="n">market_type</span> <span class="k">for</span> <span class="n">market_type_object</span> <span class="ow">in</span> <span class="n">market_types</span><span class="p">],</span>
+<span class="p">})</span>
 
-market_types_mooney_valley
-</pre></div>
-
+<span class="n">market_types_mooney_valley</span>
+</code></pre></div>
 <p><strong><code>Out[209]:</code></strong></p>
 <table>
 <thead>
@@ -1850,24 +1840,23 @@ market_types_mooney_valley
 <p>For a more comprehensive understanding of the options for filters and what we can request, please have a look at the <a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a>. The options listed under market filter should be put into a filter, whilst the others should be arguments to the relevant operation function in <code>betfairlightweight</code>.</p>
 <p>For example, if we want all the markets for Moonee Valley, we should use the following filters and arguments.</p>
 <p><strong><code>In [210]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>market_catalogue_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>market_filter(event_ids<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;28971066&#39;</span>])
+<div class="highlight"><pre><span></span><code><span class="n">market_catalogue_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
 
-market_catalogues <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_market_catalogue(
-    <span style="color: #008000">filter</span><span style="color: #666666">=</span>market_catalogue_filter,
-    max_results<span style="color: #666666">=</span><span style="color: #BA2121">&#39;100&#39;</span>,
-    sort<span style="color: #666666">=</span><span style="color: #BA2121">&#39;FIRST_TO_START&#39;</span>
-)
+<span class="n">market_catalogues</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_catalogue</span><span class="p">(</span>
+    <span class="nb">filter</span><span class="o">=</span><span class="n">market_catalogue_filter</span><span class="p">,</span>
+    <span class="n">max_results</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span>
+    <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;FIRST_TO_START&#39;</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Create a DataFrame for each market catalogue</span>
-market_types_mooney_valley <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame({
-    <span style="color: #BA2121">&#39;Market Name&#39;</span>: [market_cat_object<span style="color: #666666">.</span>market_name <span style="color: #008000; font-weight: bold">for</span> market_cat_object <span style="color: #AA22FF; font-weight: bold">in</span> market_catalogues],
-    <span style="color: #BA2121">&#39;Market ID&#39;</span>: [market_cat_object<span style="color: #666666">.</span>market_id <span style="color: #008000; font-weight: bold">for</span> market_cat_object <span style="color: #AA22FF; font-weight: bold">in</span> market_catalogues],
-    <span style="color: #BA2121">&#39;Total Matched&#39;</span>: [market_cat_object<span style="color: #666666">.</span>total_matched <span style="color: #008000; font-weight: bold">for</span> market_cat_object <span style="color: #AA22FF; font-weight: bold">in</span> market_catalogues],
-})
+<span class="c1"># Create a DataFrame for each market catalogue</span>
+<span class="n">market_types_mooney_valley</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Market Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">market_cat_object</span><span class="o">.</span><span class="n">market_name</span> <span class="k">for</span> <span class="n">market_cat_object</span> <span class="ow">in</span> <span class="n">market_catalogues</span><span class="p">],</span>
+    <span class="s1">&#39;Market ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">market_cat_object</span><span class="o">.</span><span class="n">market_id</span> <span class="k">for</span> <span class="n">market_cat_object</span> <span class="ow">in</span> <span class="n">market_catalogues</span><span class="p">],</span>
+    <span class="s1">&#39;Total Matched&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">market_cat_object</span><span class="o">.</span><span class="n">total_matched</span> <span class="k">for</span> <span class="n">market_cat_object</span> <span class="ow">in</span> <span class="n">market_catalogues</span><span class="p">],</span>
+<span class="p">})</span>
 
-market_types_mooney_valley
-</pre></div>
-
+<span class="n">market_types_mooney_valley</span>
+</code></pre></div>
 <p><strong><code>Out[210]:</code></strong></p>
 <table>
 <thead>
@@ -2003,76 +1992,74 @@ market_types_mooney_valley
 <h3 id="get-market-books">Get Market Books<a class="headerlink" href="#get-market-books" title="Permanent link">&para;</a></h3>
 <p>If we then want to get the prices available/last traded for a market, we should use the <code>listMarketBook</code> operation. Let's Look at the market book for Moonee Valley R7. We will need to define a function which processes the runner books and collates the data into a DataFrame.</p>
 <p><strong><code>In [212]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">process_runner_books</span>(runner_books):
-    <span style="color: #BA2121; font-style: italic">&#39;&#39;&#39;</span>
-<span style="color: #BA2121; font-style: italic">    This function processes the runner books and returns a DataFrame with the best back/lay prices + vol for each runner</span>
-<span style="color: #BA2121; font-style: italic">    :param runner_books:</span>
-<span style="color: #BA2121; font-style: italic">    :return:</span>
-<span style="color: #BA2121; font-style: italic">    &#39;&#39;&#39;</span>
-    best_back_prices <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>ex<span style="color: #666666">.</span>available_to_back[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>price
-                        <span style="color: #008000; font-weight: bold">if</span> runner_book<span style="color: #666666">.</span>ex<span style="color: #666666">.</span>available_to_back[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>price
-                        <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">1.01</span>
-                        <span style="color: #008000; font-weight: bold">for</span> runner_book
-                        <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
-    best_back_sizes <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>ex<span style="color: #666666">.</span>available_to_back[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>size
-                       <span style="color: #008000; font-weight: bold">if</span> runner_book<span style="color: #666666">.</span>ex<span style="color: #666666">.</span>available_to_back[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>size
-                       <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">1.01</span>
-                       <span style="color: #008000; font-weight: bold">for</span> runner_book
-                       <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">process_runner_books</span><span class="p">(</span><span class="n">runner_books</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This function processes the runner books and returns a DataFrame with the best back/lay prices + vol for each runner</span>
+<span class="sd">    :param runner_books:</span>
+<span class="sd">    :return:</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">best_back_prices</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span>
+                        <span class="k">if</span> <span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span>
+                        <span class="k">else</span> <span class="mf">1.01</span>
+                        <span class="k">for</span> <span class="n">runner_book</span>
+                        <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+    <span class="n">best_back_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+                       <span class="k">if</span> <span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+                       <span class="k">else</span> <span class="mf">1.01</span>
+                       <span class="k">for</span> <span class="n">runner_book</span>
+                       <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
 
-    best_lay_prices <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>ex<span style="color: #666666">.</span>available_to_lay[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>price
-                       <span style="color: #008000; font-weight: bold">if</span> runner_book<span style="color: #666666">.</span>ex<span style="color: #666666">.</span>available_to_lay[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>price
-                       <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">1000.0</span>
-                       <span style="color: #008000; font-weight: bold">for</span> runner_book
-                       <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
-    best_lay_sizes <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>ex<span style="color: #666666">.</span>available_to_lay[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>size
-                      <span style="color: #008000; font-weight: bold">if</span> runner_book<span style="color: #666666">.</span>ex<span style="color: #666666">.</span>available_to_lay[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>size
-                      <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">1.01</span>
-                      <span style="color: #008000; font-weight: bold">for</span> runner_book
-                      <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
+    <span class="n">best_lay_prices</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_lay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span>
+                       <span class="k">if</span> <span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_lay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span>
+                       <span class="k">else</span> <span class="mf">1000.0</span>
+                       <span class="k">for</span> <span class="n">runner_book</span>
+                       <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+    <span class="n">best_lay_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_lay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+                      <span class="k">if</span> <span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_lay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+                      <span class="k">else</span> <span class="mf">1.01</span>
+                      <span class="k">for</span> <span class="n">runner_book</span>
+                      <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
 
-    selection_ids <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>selection_id <span style="color: #008000; font-weight: bold">for</span> runner_book <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
-    last_prices_traded <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>last_price_traded <span style="color: #008000; font-weight: bold">for</span> runner_book <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
-    total_matched <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>total_matched <span style="color: #008000; font-weight: bold">for</span> runner_book <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
-    statuses <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>status <span style="color: #008000; font-weight: bold">for</span> runner_book <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
-    scratching_datetimes <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>removal_date <span style="color: #008000; font-weight: bold">for</span> runner_book <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
-    adjustment_factors <span style="color: #666666">=</span> [runner_book<span style="color: #666666">.</span>adjustment_factor <span style="color: #008000; font-weight: bold">for</span> runner_book <span style="color: #AA22FF; font-weight: bold">in</span> runner_books]
+    <span class="n">selection_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">selection_id</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+    <span class="n">last_prices_traded</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">last_price_traded</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+    <span class="n">total_matched</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">total_matched</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+    <span class="n">statuses</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">status</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+    <span class="n">scratching_datetimes</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">removal_date</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+    <span class="n">adjustment_factors</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">adjustment_factor</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
 
-    df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame({
-        <span style="color: #BA2121">&#39;Selection ID&#39;</span>: selection_ids,
-        <span style="color: #BA2121">&#39;Best Back Price&#39;</span>: best_back_prices,
-        <span style="color: #BA2121">&#39;Best Back Size&#39;</span>: best_back_sizes,
-        <span style="color: #BA2121">&#39;Best Lay Price&#39;</span>: best_lay_prices,
-        <span style="color: #BA2121">&#39;Best Lay Size&#39;</span>: best_lay_sizes,
-        <span style="color: #BA2121">&#39;Last Price Traded&#39;</span>: last_prices_traded,
-        <span style="color: #BA2121">&#39;Total Matched&#39;</span>: total_matched,
-        <span style="color: #BA2121">&#39;Status&#39;</span>: statuses,
-        <span style="color: #BA2121">&#39;Removal Date&#39;</span>: scratching_datetimes,
-        <span style="color: #BA2121">&#39;Adjustment Factor&#39;</span>: adjustment_factors
-    })
-    <span style="color: #008000; font-weight: bold">return</span> df
-</pre></div>
-
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;Selection ID&#39;</span><span class="p">:</span> <span class="n">selection_ids</span><span class="p">,</span>
+        <span class="s1">&#39;Best Back Price&#39;</span><span class="p">:</span> <span class="n">best_back_prices</span><span class="p">,</span>
+        <span class="s1">&#39;Best Back Size&#39;</span><span class="p">:</span> <span class="n">best_back_sizes</span><span class="p">,</span>
+        <span class="s1">&#39;Best Lay Price&#39;</span><span class="p">:</span> <span class="n">best_lay_prices</span><span class="p">,</span>
+        <span class="s1">&#39;Best Lay Size&#39;</span><span class="p">:</span> <span class="n">best_lay_sizes</span><span class="p">,</span>
+        <span class="s1">&#39;Last Price Traded&#39;</span><span class="p">:</span> <span class="n">last_prices_traded</span><span class="p">,</span>
+        <span class="s1">&#39;Total Matched&#39;</span><span class="p">:</span> <span class="n">total_matched</span><span class="p">,</span>
+        <span class="s1">&#39;Status&#39;</span><span class="p">:</span> <span class="n">statuses</span><span class="p">,</span>
+        <span class="s1">&#39;Removal Date&#39;</span><span class="p">:</span> <span class="n">scratching_datetimes</span><span class="p">,</span>
+        <span class="s1">&#39;Adjustment Factor&#39;</span><span class="p">:</span> <span class="n">adjustment_factors</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div>
 <p><strong><code>In [213]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a price filter. Get all traded and offer data</span>
-price_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>price_projection(
-    price_data<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;EX_BEST_OFFERS&#39;</span>]
-)
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a price filter. Get all traded and offer data</span>
+<span class="n">price_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">price_projection</span><span class="p">(</span>
+    <span class="n">price_data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EX_BEST_OFFERS&#39;</span><span class="p">]</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Request market books</span>
-market_books <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_market_book(
-    market_ids<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;1.150038686&#39;</span>],
-    price_projection<span style="color: #666666">=</span>price_filter
-)
+<span class="c1"># Request market books</span>
+<span class="n">market_books</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_book</span><span class="p">(</span>
+    <span class="n">market_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1.150038686&#39;</span><span class="p">],</span>
+    <span class="n">price_projection</span><span class="o">=</span><span class="n">price_filter</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Grab the first market book from the returned list as we only requested one market </span>
-market_book <span style="color: #666666">=</span> market_books[<span style="color: #666666">0</span>]
+<span class="c1"># Grab the first market book from the returned list as we only requested one market </span>
+<span class="n">market_book</span> <span class="o">=</span> <span class="n">market_books</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-runners_df <span style="color: #666666">=</span> process_runner_books(market_book<span style="color: #666666">.</span>runners)
+<span class="n">runners_df</span> <span class="o">=</span> <span class="n">process_runner_books</span><span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">runners</span><span class="p">)</span>
 
-runners_df
-</pre></div>
-
+<span class="n">runners_df</span>
+</code></pre></div>
 <p><strong><code>Out[213]:</code></strong></p>
 <table>
 <thead>
@@ -2297,124 +2284,115 @@ runners_df
 <p>To place an order we use the <code>placeOrders</code> operation. A handy component of <code>placeOrders</code> is that you can send your strategy along with the runner that you want to back, so it is extremely easy to analyse how your strategy performed later. Let's place a 5 dollar back bet on the favourite at $7 call this strategy <code>'back_the_fav'</code>.</p>
 <p>Note that if you are placing a limit order you must specify a price which is allowed by Betfair. For example, the price 6.3 isn't allowed, whereas 6.4 is, as prices go up by 20c increments at that price range. You can read about <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">tick points here</a>.</p>
 <p><strong><code>In [232]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get the favourite&#39;s price and selection id</span>
-fav_selection_id <span style="color: #666666">=</span> runners_df<span style="color: #666666">.</span>loc[runners_df[<span style="color: #BA2121">&#39;Best Back Price&#39;</span>]<span style="color: #666666">.</span>idxmin(), <span style="color: #BA2121">&#39;Selection ID&#39;</span>]
-fav_price <span style="color: #666666">=</span> runners_df<span style="color: #666666">.</span>loc[runners_df[<span style="color: #BA2121">&#39;Best Back Price&#39;</span>]<span style="color: #666666">.</span>idxmin(), <span style="color: #BA2121">&#39;Best Back Price&#39;</span>]
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the favourite&#39;s price and selection id</span>
+<span class="n">fav_selection_id</span> <span class="o">=</span> <span class="n">runners_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;Best Back Price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(),</span> <span class="s1">&#39;Selection ID&#39;</span><span class="p">]</span>
+<span class="n">fav_price</span> <span class="o">=</span> <span class="n">runners_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;Best Back Price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(),</span> <span class="s1">&#39;Best Back Price&#39;</span><span class="p">]</span>
+</code></pre></div>
 <p><strong><code>In [276]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Define a limit order filter</span>
-limit_order_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>limit_order(
-    size<span style="color: #666666">=5</span>, 
-    price<span style="color: #666666">=7</span>,
-    persistence_type<span style="color: #666666">=</span><span style="color: #BA2121">&#39;LAPSE&#39;</span>
-)
+<div class="highlight"><pre><span></span><code><span class="c1"># Define a limit order filter</span>
+<span class="n">limit_order_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">limit_order</span><span class="p">(</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+    <span class="n">price</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">persistence_type</span><span class="o">=</span><span class="s1">&#39;LAPSE&#39;</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Define an instructions filter</span>
-instructions_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>place_instruction(
-    selection_id<span style="color: #666666">=</span><span style="color: #008000">str</span>(fav_selection_id),
-    order_type<span style="color: #666666">=</span><span style="color: #BA2121">&quot;LIMIT&quot;</span>,
-    side<span style="color: #666666">=</span><span style="color: #BA2121">&quot;BACK&quot;</span>,
-    limit_order<span style="color: #666666">=</span>limit_order_filter
-)
+<span class="c1"># Define an instructions filter</span>
+<span class="n">instructions_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">place_instruction</span><span class="p">(</span>
+    <span class="n">selection_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">fav_selection_id</span><span class="p">),</span>
+    <span class="n">order_type</span><span class="o">=</span><span class="s2">&quot;LIMIT&quot;</span><span class="p">,</span>
+    <span class="n">side</span><span class="o">=</span><span class="s2">&quot;BACK&quot;</span><span class="p">,</span>
+    <span class="n">limit_order</span><span class="o">=</span><span class="n">limit_order_filter</span>
+<span class="p">)</span>
 
-instructions_filter
-</pre></div>
-
+<span class="n">instructions_filter</span>
+</code></pre></div>
 <p><strong><code>Out[276]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>{<span style="color: #BA2121">&#39;limitOrder&#39;</span>: {<span style="color: #BA2121">&#39;persistenceType&#39;</span>: <span style="color: #BA2121">&#39;LAPSE&#39;</span>, <span style="color: #BA2121">&#39;price&#39;</span>: <span style="color: #666666">7</span>, <span style="color: #BA2121">&#39;size&#39;</span>: <span style="color: #666666">5</span>},
- <span style="color: #BA2121">&#39;orderType&#39;</span>: <span style="color: #BA2121">&#39;LIMIT&#39;</span>,
- <span style="color: #BA2121">&#39;selectionId&#39;</span>: <span style="color: #BA2121">&#39;21283271&#39;</span>,
- <span style="color: #BA2121">&#39;side&#39;</span>: <span style="color: #BA2121">&#39;BACK&#39;</span>}
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;limitOrder&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;persistenceType&#39;</span><span class="p">:</span> <span class="s1">&#39;LAPSE&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+ <span class="s1">&#39;orderType&#39;</span><span class="p">:</span> <span class="s1">&#39;LIMIT&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;selectionId&#39;</span><span class="p">:</span> <span class="s1">&#39;21283271&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;side&#39;</span><span class="p">:</span> <span class="s1">&#39;BACK&#39;</span><span class="p">}</span>
+</code></pre></div>
 <p><strong><code>In [277]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Place the order</span>
-order <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>place_orders(
-    market_id<span style="color: #666666">=</span><span style="color: #BA2121">&#39;1.150038686&#39;</span>, <span style="color: #408080; font-style: italic"># The market id we obtained from before</span>
-    customer_strategy_ref<span style="color: #666666">=</span><span style="color: #BA2121">&#39;back_the_fav&#39;</span>,
-    instructions<span style="color: #666666">=</span>[instructions_filter] <span style="color: #408080; font-style: italic"># This must be a list</span>
-)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Place the order</span>
+<span class="n">order</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">place_orders</span><span class="p">(</span>
+    <span class="n">market_id</span><span class="o">=</span><span class="s1">&#39;1.150038686&#39;</span><span class="p">,</span> <span class="c1"># The market id we obtained from before</span>
+    <span class="n">customer_strategy_ref</span><span class="o">=</span><span class="s1">&#39;back_the_fav&#39;</span><span class="p">,</span>
+    <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="n">instructions_filter</span><span class="p">]</span> <span class="c1"># This must be a list</span>
+<span class="p">)</span>
+</code></pre></div>
 <p>Now that we've placed the other, we can check if the order placing was a success and if any has been matched.</p>
 <p><strong><code>In [306]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>order<span style="color: #666666">.</span><span style="color: #19177C">__dict__</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">order</span><span class="o">.</span><span class="vm">__dict__</span>
+</code></pre></div>
 <p><strong><code>Out[306]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>{<span style="color: #BA2121">&#39;_data&#39;</span>: {<span style="color: #BA2121">&#39;instructionReports&#39;</span>: [{<span style="color: #BA2121">&#39;averagePriceMatched&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;betId&#39;</span>: <span style="color: #BA2121">&#39;142384852665&#39;</span>,
-    <span style="color: #BA2121">&#39;instruction&#39;</span>: {<span style="color: #BA2121">&#39;limitOrder&#39;</span>: {<span style="color: #BA2121">&#39;persistenceType&#39;</span>: <span style="color: #BA2121">&#39;LAPSE&#39;</span>,
-      <span style="color: #BA2121">&#39;price&#39;</span>: <span style="color: #666666">7.0</span>,
-      <span style="color: #BA2121">&#39;size&#39;</span>: <span style="color: #666666">5.0</span>},
-     <span style="color: #BA2121">&#39;orderType&#39;</span>: <span style="color: #BA2121">&#39;LIMIT&#39;</span>,
-     <span style="color: #BA2121">&#39;selectionId&#39;</span>: <span style="color: #666666">21283271</span>,
-     <span style="color: #BA2121">&#39;side&#39;</span>: <span style="color: #BA2121">&#39;BACK&#39;</span>},
-    <span style="color: #BA2121">&#39;orderStatus&#39;</span>: <span style="color: #BA2121">&#39;EXECUTABLE&#39;</span>,
-    <span style="color: #BA2121">&#39;placedDate&#39;</span>: <span style="color: #BA2121">&#39;2018-10-26T00:46:46.000Z&#39;</span>,
-    <span style="color: #BA2121">&#39;sizeMatched&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;status&#39;</span>: <span style="color: #BA2121">&#39;SUCCESS&#39;</span>}],
-  <span style="color: #BA2121">&#39;marketId&#39;</span>: <span style="color: #BA2121">&#39;1.150038686&#39;</span>,
-  <span style="color: #BA2121">&#39;status&#39;</span>: <span style="color: #BA2121">&#39;SUCCESS&#39;</span>},
- <span style="color: #BA2121">&#39;_datetime_created&#39;</span>: datetime<span style="color: #666666">.</span>datetime(<span style="color: #666666">2018</span>, <span style="color: #666666">10</span>, <span style="color: #666666">26</span>, <span style="color: #666666">0</span>, <span style="color: #666666">46</span>, <span style="color: #666666">46</span>, <span style="color: #666666">455349</span>),
- <span style="color: #BA2121">&#39;_datetime_updated&#39;</span>: datetime<span style="color: #666666">.</span>datetime(<span style="color: #666666">2018</span>, <span style="color: #666666">10</span>, <span style="color: #666666">26</span>, <span style="color: #666666">0</span>, <span style="color: #666666">46</span>, <span style="color: #666666">46</span>, <span style="color: #666666">455349</span>),
- <span style="color: #BA2121">&#39;customer_ref&#39;</span>: <span style="color: #008000">None</span>,
- <span style="color: #BA2121">&#39;elapsed_time&#39;</span>: <span style="color: #666666">1.484069</span>,
- <span style="color: #BA2121">&#39;error_code&#39;</span>: <span style="color: #008000">None</span>,
- <span style="color: #BA2121">&#39;market_id&#39;</span>: <span style="color: #BA2121">&#39;1.150038686&#39;</span>,
- <span style="color: #BA2121">&#39;place_instruction_reports&#39;</span>: [<span style="color: #666666">&lt;</span>betfairlightweight<span style="color: #666666">.</span>resources<span style="color: #666666">.</span>bettingresources<span style="color: #666666">.</span>PlaceOrderInstructionReports at <span style="color: #666666">0x23e0f7952e8&gt;</span>],
- <span style="color: #BA2121">&#39;status&#39;</span>: <span style="color: #BA2121">&#39;SUCCESS&#39;</span>}
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="s1">&#39;_data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;instructionReports&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;averagePriceMatched&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;betId&#39;</span><span class="p">:</span> <span class="s1">&#39;142384852665&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;instruction&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;limitOrder&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;persistenceType&#39;</span><span class="p">:</span> <span class="s1">&#39;LAPSE&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span>
+      <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">},</span>
+     <span class="s1">&#39;orderType&#39;</span><span class="p">:</span> <span class="s1">&#39;LIMIT&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;selectionId&#39;</span><span class="p">:</span> <span class="mi">21283271</span><span class="p">,</span>
+     <span class="s1">&#39;side&#39;</span><span class="p">:</span> <span class="s1">&#39;BACK&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;orderStatus&#39;</span><span class="p">:</span> <span class="s1">&#39;EXECUTABLE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;placedDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-10-26T00:46:46.000Z&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sizeMatched&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">}],</span>
+  <span class="s1">&#39;marketId&#39;</span><span class="p">:</span> <span class="s1">&#39;1.150038686&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">},</span>
+ <span class="s1">&#39;_datetime_created&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">455349</span><span class="p">),</span>
+ <span class="s1">&#39;_datetime_updated&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">455349</span><span class="p">),</span>
+ <span class="s1">&#39;customer_ref&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;elapsed_time&#39;</span><span class="p">:</span> <span class="mf">1.484069</span><span class="p">,</span>
+ <span class="s1">&#39;error_code&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;market_id&#39;</span><span class="p">:</span> <span class="s1">&#39;1.150038686&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;place_instruction_reports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">betfairlightweight</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">bettingresources</span><span class="o">.</span><span class="n">PlaceOrderInstructionReports</span> <span class="n">at</span> <span class="mh">0x23e0f7952e8</span><span class="o">&gt;</span><span class="p">],</span>
+ <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">}</span>
+</code></pre></div>
 <p>As we can see, the status is <code>'SUCCESS'</code>, whilst the <code>sizeMatched</code> is 0. Let's now look at our current orders.</p>
 <h3 id="get-current-orders">Get Current Orders<a class="headerlink" href="#get-current-orders" title="Permanent link">&para;</a></h3>
 <p>To get our current orders, we need to use the <code>listCurrentOrders</code> operation. We can then use either the bet id, the market id, or the bet strategy to filter our orders.</p>
 <p><strong><code>In [311]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_current_orders(customer_strategy_refs<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;back_the_fav&#39;</span>])<span style="color: #666666">.</span><span style="color: #19177C">__dict__</span>
-Out[<span style="color: #666666">311</span>]:
-{<span style="color: #BA2121">&#39;_data&#39;</span>: {<span style="color: #BA2121">&#39;currentOrders&#39;</span>: [{<span style="color: #BA2121">&#39;averagePriceMatched&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;betId&#39;</span>: <span style="color: #BA2121">&#39;142384852665&#39;</span>,
-    <span style="color: #BA2121">&#39;bspLiability&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;customerStrategyRef&#39;</span>: <span style="color: #BA2121">&#39;back_the_fav&#39;</span>,
-    <span style="color: #BA2121">&#39;handicap&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;marketId&#39;</span>: <span style="color: #BA2121">&#39;1.150038686&#39;</span>,
-    <span style="color: #BA2121">&#39;orderType&#39;</span>: <span style="color: #BA2121">&#39;LIMIT&#39;</span>,
-    <span style="color: #BA2121">&#39;persistenceType&#39;</span>: <span style="color: #BA2121">&#39;LAPSE&#39;</span>,
-    <span style="color: #BA2121">&#39;placedDate&#39;</span>: <span style="color: #BA2121">&#39;2018-10-26T00:46:46.000Z&#39;</span>,
-    <span style="color: #BA2121">&#39;priceSize&#39;</span>: {<span style="color: #BA2121">&#39;price&#39;</span>: <span style="color: #666666">7.0</span>, <span style="color: #BA2121">&#39;size&#39;</span>: <span style="color: #666666">5.0</span>},
-    <span style="color: #BA2121">&#39;regulatorCode&#39;</span>: <span style="color: #BA2121">&#39;MALTA LOTTERIES AND GAMBLING AUTHORITY&#39;</span>,
-    <span style="color: #BA2121">&#39;selectionId&#39;</span>: <span style="color: #666666">21283271</span>,
-    <span style="color: #BA2121">&#39;side&#39;</span>: <span style="color: #BA2121">&#39;BACK&#39;</span>,
-    <span style="color: #BA2121">&#39;sizeCancelled&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;sizeLapsed&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;sizeMatched&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;sizeRemaining&#39;</span>: <span style="color: #666666">5.0</span>,
-    <span style="color: #BA2121">&#39;sizeVoided&#39;</span>: <span style="color: #666666">0.0</span>,
-    <span style="color: #BA2121">&#39;status&#39;</span>: <span style="color: #BA2121">&#39;EXECUTABLE&#39;</span>}],
-  <span style="color: #BA2121">&#39;moreAvailable&#39;</span>: <span style="color: #008000">False</span>},
- <span style="color: #BA2121">&#39;_datetime_created&#39;</span>: datetime<span style="color: #666666">.</span>datetime(<span style="color: #666666">2018</span>, <span style="color: #666666">10</span>, <span style="color: #666666">26</span>, <span style="color: #666666">2</span>, <span style="color: #666666">14</span>, <span style="color: #666666">56</span>, <span style="color: #666666">84036</span>),
- <span style="color: #BA2121">&#39;_datetime_updated&#39;</span>: datetime<span style="color: #666666">.</span>datetime(<span style="color: #666666">2018</span>, <span style="color: #666666">10</span>, <span style="color: #666666">26</span>, <span style="color: #666666">2</span>, <span style="color: #666666">14</span>, <span style="color: #666666">56</span>, <span style="color: #666666">84036</span>),
- <span style="color: #BA2121">&#39;elapsed_time&#39;</span>: <span style="color: #666666">1.327456</span>,
- <span style="color: #BA2121">&#39;more_available&#39;</span>: <span style="color: #008000">False</span>,
- <span style="color: #BA2121">&#39;orders&#39;</span>: [<span style="color: #666666">&lt;</span>betfairlightweight<span style="color: #666666">.</span>resources<span style="color: #666666">.</span>bettingresources<span style="color: #666666">.</span>CurrentOrder at <span style="color: #666666">0x23e0e7acd30&gt;</span>],
- <span style="color: #BA2121">&#39;publish_time&#39;</span>: <span style="color: #008000">None</span>,
- <span style="color: #BA2121">&#39;streaming_unique_id&#39;</span>: <span style="color: #008000">None</span>,
- <span style="color: #BA2121">&#39;streaming_update&#39;</span>: <span style="color: #008000">None</span>}
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_current_orders</span><span class="p">(</span><span class="n">customer_strategy_refs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;back_the_fav&#39;</span><span class="p">])</span><span class="o">.</span><span class="vm">__dict__</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">311</span><span class="p">]:</span>
+<span class="p">{</span><span class="s1">&#39;_data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;currentOrders&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;averagePriceMatched&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;betId&#39;</span><span class="p">:</span> <span class="s1">&#39;142384852665&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bspLiability&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;customerStrategyRef&#39;</span><span class="p">:</span> <span class="s1">&#39;back_the_fav&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;handicap&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;marketId&#39;</span><span class="p">:</span> <span class="s1">&#39;1.150038686&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;orderType&#39;</span><span class="p">:</span> <span class="s1">&#39;LIMIT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;persistenceType&#39;</span><span class="p">:</span> <span class="s1">&#39;LAPSE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;placedDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-10-26T00:46:46.000Z&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;priceSize&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">},</span>
+    <span class="s1">&#39;regulatorCode&#39;</span><span class="p">:</span> <span class="s1">&#39;MALTA LOTTERIES AND GAMBLING AUTHORITY&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;selectionId&#39;</span><span class="p">:</span> <span class="mi">21283271</span><span class="p">,</span>
+    <span class="s1">&#39;side&#39;</span><span class="p">:</span> <span class="s1">&#39;BACK&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sizeCancelled&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;sizeLapsed&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;sizeMatched&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;sizeRemaining&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s1">&#39;sizeVoided&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;EXECUTABLE&#39;</span><span class="p">}],</span>
+  <span class="s1">&#39;moreAvailable&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+ <span class="s1">&#39;_datetime_created&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">84036</span><span class="p">),</span>
+ <span class="s1">&#39;_datetime_updated&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">84036</span><span class="p">),</span>
+ <span class="s1">&#39;elapsed_time&#39;</span><span class="p">:</span> <span class="mf">1.327456</span><span class="p">,</span>
+ <span class="s1">&#39;more_available&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;orders&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">betfairlightweight</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">bettingresources</span><span class="o">.</span><span class="n">CurrentOrder</span> <span class="n">at</span> <span class="mh">0x23e0e7acd30</span><span class="o">&gt;</span><span class="p">],</span>
+ <span class="s1">&#39;publish_time&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;streaming_unique_id&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;streaming_update&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+</code></pre></div>
 <p>As we can see, we have one order which is unmatched for our strategy <code>'back_the_fav'</code></p>
 <h3 id="cancelling-orders">Cancelling Orders<a class="headerlink" href="#cancelling-orders" title="Permanent link">&para;</a></h3>
 <p>Let's now cancel this bet. To do this, we will use the <code>cancelOrders</code> operation. If you pass in a market ID it will cancel all orders for that specific market ID, like you can do on the website.</p>
 <p><strong><code>In [312]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>cancelled_order <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>cancel_orders(market_id<span style="color: #666666">=</span><span style="color: #BA2121">&#39;1.150038686&#39;</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">cancelled_order</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">cancel_orders</span><span class="p">(</span><span class="n">market_id</span><span class="o">=</span><span class="s1">&#39;1.150038686&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong><code>In [328]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a DataFrame to view the instruction report</span>
-pd<span style="color: #666666">.</span>Series(cancelled_order<span style="color: #666666">.</span>cancel_instruction_reports[<span style="color: #666666">0</span>]<span style="color: #666666">.</span><span style="color: #19177C">__dict__</span>)<span style="color: #666666">.</span>to_frame()<span style="color: #666666">.</span>T
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a DataFrame to view the instruction report</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cancelled_order</span><span class="o">.</span><span class="n">cancel_instruction_reports</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</code></pre></div>
 <p><strong><code>Out[328]:</code></strong></p>
 <table>
 <thead>
@@ -2449,16 +2427,14 @@ Alternatively, we can use the <code>getAccountStatement</code> operation from th
 <p>Let's now use both Sports API operations based on our previous orders and then compare it to the <code>getAccountStatement</code> operation.</p>
 <h3 id="get-cleared-orders">Get Cleared Orders<a class="headerlink" href="#get-cleared-orders" title="Permanent link">&para;</a></h3>
 <p><strong><code>In [346]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># listClearedOrders</span>
-cleared_orders <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_cleared_orders(bet_status<span style="color: #666666">=</span><span style="color: #BA2121">&quot;SETTLED&quot;</span>,
-                                                    market_ids<span style="color: #666666">=</span>[<span style="color: #BA2121">&quot;1.150038686&quot;</span>])
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># listClearedOrders</span>
+<span class="n">cleared_orders</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_cleared_orders</span><span class="p">(</span><span class="n">bet_status</span><span class="o">=</span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span>
+                                                    <span class="n">market_ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;1.150038686&quot;</span><span class="p">])</span>
+</code></pre></div>
 <p><strong><code>In [371]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a DataFrame from the orders</span>
-pd<span style="color: #666666">.</span>DataFrame(cleared_orders<span style="color: #666666">.</span>_data[<span style="color: #BA2121">&#39;clearedOrders&#39;</span>])
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a DataFrame from the orders</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cleared_orders</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;clearedOrders&#39;</span><span class="p">])</span>
+</code></pre></div>
 <p><strong><code>Out[371]:</code></strong></p>
 <table>
 <thead>
@@ -2537,18 +2513,16 @@ pd<span style="color: #666666">.</span>DataFrame(cleared_orders<span style="colo
 <p>Now let's find the Profit and Loss for the market. To do this we will use the <code>listMarketProfitAndLoss</code> operation. Note that this function only works with market IDs, and once the website clears the market, the operation will no longer work. However the market is generally up for about a minute after the race, so if your strategy is automated, you can check once if your bet is settled and if it is, hit the <code>getMarketProfitAndLoss</code> endpoint.</p>
 <p>Because of this, we will check a different market ID to the example above.</p>
 <p><strong><code>In [406]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get the profit/loss - this returns a list</span>
-pl <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>betting<span style="color: #666666">.</span>list_market_profit_and_loss(market_ids<span style="color: #666666">=</span>[<span style="color: #BA2121">&quot;1.150318913&quot;</span>], 
-                                                 include_bsp_bets<span style="color: #666666">=</span><span style="color: #BA2121">&#39;true&#39;</span>, 
-                                                 include_settled_bets<span style="color: #666666">=</span><span style="color: #BA2121">&#39;true&#39;</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the profit/loss - this returns a list</span>
+<span class="n">pl</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_profit_and_loss</span><span class="p">(</span><span class="n">market_ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;1.150318913&quot;</span><span class="p">],</span> 
+                                                 <span class="n">include_bsp_bets</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> 
+                                                 <span class="n">include_settled_bets</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong><code>In [410]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a profit/loss DataFrame</span>
-pl_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(pl[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>_data[<span style="color: #BA2121">&#39;profitAndLosses&#39;</span>])<span style="color: #666666">.</span>assign(marketId<span style="color: #666666">=</span>pl[<span style="color: #666666">0</span>]<span style="color: #666666">.</span>market_id)
-pl_df
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a profit/loss DataFrame</span>
+<span class="n">pl_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;profitAndLosses&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">marketId</span><span class="o">=</span><span class="n">pl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">market_id</span><span class="p">)</span>
+<span class="n">pl_df</span>
+</code></pre></div>
 <p><strong><code>Out[410]:</code></strong></p>
 <table>
 <thead>
@@ -2607,20 +2581,18 @@ pl_df
 <h3 id="get-account-statement">Get Account Statement<a class="headerlink" href="#get-account-statement" title="Permanent link">&para;</a></h3>
 <p>Another method is to use the <code>getAccountStatement</code>, which provides an overview of all your bets over a certain time period. You can then filter this for specific dates if you wish.</p>
 <p><strong><code>In [428]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Define a date filter - get all bets for the past 4 days</span>
-four_days_ago <span style="color: #666666">=</span> (datetime<span style="color: #666666">.</span>datetime<span style="color: #666666">.</span>utcnow() <span style="color: #666666">-</span> datetime<span style="color: #666666">.</span>timedelta(days<span style="color: #666666">=4</span>))<span style="color: #666666">.</span>strftime(<span style="color: #BA2121">&quot;%Y-%m-</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121">T%TZ&quot;</span>)
-acct_statement_date_filter <span style="color: #666666">=</span> <span style="color: #BA2121">`betfairlightweight`</span><span style="color: #666666">.</span>filters<span style="color: #666666">.</span>time_range(from_<span style="color: #666666">=</span>four_days_ago)
+<div class="highlight"><pre><span></span><code><span class="c1"># Define a date filter - get all bets for the past 4 days</span>
+<span class="n">four_days_ago</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%TZ&quot;</span><span class="p">)</span>
+<span class="n">acct_statement_date_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">time_range</span><span class="p">(</span><span class="n">from_</span><span class="o">=</span><span class="n">four_days_ago</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Request account statement</span>
-account_statement <span style="color: #666666">=</span> trading<span style="color: #666666">.</span>account<span style="color: #666666">.</span>get_account_statement(item_date_range<span style="color: #666666">=</span>acct_statement_date_filter)
-</pre></div>
-
+<span class="c1"># Request account statement</span>
+<span class="n">account_statement</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">get_account_statement</span><span class="p">(</span><span class="n">item_date_range</span><span class="o">=</span><span class="n">acct_statement_date_filter</span><span class="p">)</span>
+</code></pre></div>
 <p><strong><code>In [450]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create df of recent transactions</span>
-recent_transactions <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(account_statement<span style="color: #666666">.</span>_data[<span style="color: #BA2121">&#39;accountStatement&#39;</span>])
-recent_transactions
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Create df of recent transactions</span>
+<span class="n">recent_transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">account_statement</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;accountStatement&#39;</span><span class="p">])</span>
+<span class="n">recent_transactions</span>
+</code></pre></div>
 <p><strong><code>Out[450]:</code></strong></p>
 <table>
 <thead>
@@ -2669,17 +2641,15 @@ recent_transactions
 </tbody>
 </table>
 <p><strong><code>In [468]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create df of itemClassData - iterate over the account statement list and convert to json so that the DataFrame function</span>
-<span style="color: #408080; font-style: italic"># can read it correctly</span>
-class_data <span style="color: #666666">=</span> [json<span style="color: #666666">.</span>loads(account_statement<span style="color: #666666">.</span>account_statement[i]<span style="color: #666666">.</span>item_class_data[<span style="color: #BA2121">&#39;unknownStatementItem&#39;</span>]) 
-              <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #008000">len</span>(account_statement<span style="color: #666666">.</span>account_statement))]
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Create df of itemClassData - iterate over the account statement list and convert to json so that the DataFrame function</span>
+<span class="c1"># can read it correctly</span>
+<span class="n">class_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">account_statement</span><span class="o">.</span><span class="n">account_statement</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">item_class_data</span><span class="p">[</span><span class="s1">&#39;unknownStatementItem&#39;</span><span class="p">])</span> 
+              <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">account_statement</span><span class="o">.</span><span class="n">account_statement</span><span class="p">))]</span>
+</code></pre></div>
 <p><strong><code>In [471]:</code></strong></p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>class_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(class_data)
-class_df
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">class_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">class_data</span><span class="p">)</span>
+<span class="n">class_df</span>
+</code></pre></div>
 <p><strong><code>Out [471]:</code></strong></p>
 <table>
 <thead>
@@ -2869,7 +2839,7 @@ class_df
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#afl-modelling-walkthrough" tabindex="1" class="md-skip">
+      <a href="#afl-modelling-walkthrough" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -921,60 +921,57 @@
                 <h1 id="afl-modelling-walkthrough">AFL Modelling Walkthrough<a class="headerlink" href="#afl-modelling-walkthrough" title="Permanent link">&para;</a></h1>
 <h1 id="04-weekly-predictions">04. Weekly Predictions<a class="headerlink" href="#04-weekly-predictions" title="Permanent link">&para;</a></h1>
 <p>Now that we have explored different algorithms for modelling, we can implement our chosen model and predict this week's AFL games! All you need to do is run the afl_modelling script each Thursday or Friday to predict the following week's games.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Import Modules</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">afl_feature_creation_v2</span> <span style="color: #008000; font-weight: bold">import</span> prepare_afl_features
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">afl_data_cleaning_v2</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">afl_feature_creation_v2</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">afl_modelling_v2</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">datetime</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&#39;display.max_columns&#39;</span>, <span style="color: #008000">None</span>)
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LogisticRegression
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> StandardScaler
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">warnings</span>
-warnings<span style="color: #666666">.</span>filterwarnings(<span style="color: #BA2121">&#39;ignore&#39;</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Import Modules</span>
+<span class="kn">from</span> <span class="nn">afl_feature_creation_v2</span> <span class="kn">import</span> <span class="n">prepare_afl_features</span>
+<span class="kn">import</span> <span class="nn">afl_data_cleaning_v2</span>
+<span class="kn">import</span> <span class="nn">afl_feature_creation_v2</span>
+<span class="kn">import</span> <span class="nn">afl_modelling_v2</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="creating-the-features-for-this-weekends-games">Creating The Features For This Weekend's Games<a class="headerlink" href="#creating-the-features-for-this-weekends-games" title="Permanent link">&para;</a></h2>
 <p>To actually predict this weekend's games, we need to create the same features that we have created in the previous tutorials for the games that will be played this weekend. This includes all the rolling averages, efficiency features, elo features etc. So the majority of this tutorial will be using previously defined functions to create features for the following weekend's games.</p>
 <h3 id="create-next-weeks-dataframe">Create Next Week's DataFrame<a class="headerlink" href="#create-next-weeks-dataframe" title="Permanent link">&para;</a></h3>
 <p>Let's first get our cleaned afl_data dataset, as well as the odds for next weekend and the 2018 fixture.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Grab the cleaned AFL dataset and the column order</span>
-afl_data <span style="color: #666666">=</span> afl_data_cleaning_v2<span style="color: #666666">.</span>prepare_afl_data()
-ordered_cols <span style="color: #666666">=</span> afl_data<span style="color: #666666">.</span>columns
+<div class="highlight"><pre><span></span><code><span class="c1"># Grab the cleaned AFL dataset and the column order</span>
+<span class="n">afl_data</span> <span class="o">=</span> <span class="n">afl_data_cleaning_v2</span><span class="o">.</span><span class="n">prepare_afl_data</span><span class="p">()</span>
+<span class="n">ordered_cols</span> <span class="o">=</span> <span class="n">afl_data</span><span class="o">.</span><span class="n">columns</span>
 
-<span style="color: #408080; font-style: italic"># Define a function which grabs the odds for each game for the following weekend</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get_next_week_odds</span>(path):
-    <span style="color: #408080; font-style: italic"># Get next week&#39;s odds</span>
-    next_week_odds <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>read_csv(path)
-    next_week_odds <span style="color: #666666">=</span> next_week_odds<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&quot;team_1&quot;</span>: <span style="color: #BA2121">&quot;home_team&quot;</span>, 
-                                                <span style="color: #BA2121">&quot;team_2&quot;</span>: <span style="color: #BA2121">&quot;away_team&quot;</span>, 
-                                                <span style="color: #BA2121">&quot;team_1_odds&quot;</span>: <span style="color: #BA2121">&quot;odds&quot;</span>, 
-                                                <span style="color: #BA2121">&quot;team_2_odds&quot;</span>: <span style="color: #BA2121">&quot;odds_away&quot;</span>
-                                               })
-    <span style="color: #008000; font-weight: bold">return</span> next_week_odds
+<span class="c1"># Define a function which grabs the odds for each game for the following weekend</span>
+<span class="k">def</span> <span class="nf">get_next_week_odds</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="c1"># Get next week&#39;s odds</span>
+    <span class="n">next_week_odds</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+    <span class="n">next_week_odds</span> <span class="o">=</span> <span class="n">next_week_odds</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;team_1&quot;</span><span class="p">:</span> <span class="s2">&quot;home_team&quot;</span><span class="p">,</span> 
+                                                <span class="s2">&quot;team_2&quot;</span><span class="p">:</span> <span class="s2">&quot;away_team&quot;</span><span class="p">,</span> 
+                                                <span class="s2">&quot;team_1_odds&quot;</span><span class="p">:</span> <span class="s2">&quot;odds&quot;</span><span class="p">,</span> 
+                                                <span class="s2">&quot;team_2_odds&quot;</span><span class="p">:</span> <span class="s2">&quot;odds_away&quot;</span>
+                                               <span class="p">})</span>
+    <span class="k">return</span> <span class="n">next_week_odds</span>
 
-<span style="color: #408080; font-style: italic"># Import the fixture</span>
-<span style="color: #408080; font-style: italic"># Define a function which gets the fixture and cleans it up</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get_fixture</span>(path):
-    <span style="color: #408080; font-style: italic"># Get the afl fixture</span>
-    fixture <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>read_csv(path)
+<span class="c1"># Import the fixture</span>
+<span class="c1"># Define a function which gets the fixture and cleans it up</span>
+<span class="k">def</span> <span class="nf">get_fixture</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
+    <span class="c1"># Get the afl fixture</span>
+    <span class="n">fixture</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
 
-    <span style="color: #408080; font-style: italic"># Replace team names and reformat</span>
-    fixture <span style="color: #666666">=</span> fixture<span style="color: #666666">.</span>replace({<span style="color: #BA2121">&#39;Brisbane Lions&#39;</span>: <span style="color: #BA2121">&#39;Brisbane&#39;</span>, <span style="color: #BA2121">&#39;Footscray&#39;</span>: <span style="color: #BA2121">&#39;Western Bulldogs&#39;</span>})
-    fixture[<span style="color: #BA2121">&#39;Date&#39;</span>] <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>to_datetime(fixture[<span style="color: #BA2121">&#39;Date&#39;</span>])<span style="color: #666666">.</span>dt<span style="color: #666666">.</span>date<span style="color: #666666">.</span>astype(<span style="color: #008000">str</span>)
-    fixture <span style="color: #666666">=</span> fixture<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&quot;Home.Team&quot;</span>: <span style="color: #BA2121">&quot;home_team&quot;</span>, <span style="color: #BA2121">&quot;Away.Team&quot;</span>: <span style="color: #BA2121">&quot;away_team&quot;</span>})
-    <span style="color: #008000; font-weight: bold">return</span> fixture
+    <span class="c1"># Replace team names and reformat</span>
+    <span class="n">fixture</span> <span class="o">=</span> <span class="n">fixture</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Brisbane Lions&#39;</span><span class="p">:</span> <span class="s1">&#39;Brisbane&#39;</span><span class="p">,</span> <span class="s1">&#39;Footscray&#39;</span><span class="p">:</span> <span class="s1">&#39;Western Bulldogs&#39;</span><span class="p">})</span>
+    <span class="n">fixture</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">fixture</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">fixture</span> <span class="o">=</span> <span class="n">fixture</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Home.Team&quot;</span><span class="p">:</span> <span class="s2">&quot;home_team&quot;</span><span class="p">,</span> <span class="s2">&quot;Away.Team&quot;</span><span class="p">:</span> <span class="s2">&quot;away_team&quot;</span><span class="p">})</span>
+    <span class="k">return</span> <span class="n">fixture</span>
 
-next_week_odds <span style="color: #666666">=</span> get_next_week_odds(<span style="color: #BA2121">&quot;data/weekly_odds.csv&quot;</span>)
-fixture <span style="color: #666666">=</span> get_fixture(<span style="color: #BA2121">&quot;data/afl_fixture_2018.csv&quot;</span>)
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fixture<span style="color: #666666">.</span>tail()
-</pre></div>
-
+<span class="n">next_week_odds</span> <span class="o">=</span> <span class="n">get_next_week_odds</span><span class="p">(</span><span class="s2">&quot;data/weekly_odds.csv&quot;</span><span class="p">)</span>
+<span class="n">fixture</span> <span class="o">=</span> <span class="n">get_fixture</span><span class="p">(</span><span class="s2">&quot;data/afl_fixture_2018.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fixture</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1041,9 +1038,8 @@ fixture <span style="color: #666666">=</span> get_fixture(<span style="color: #B
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>next_week_odds
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">next_week_odds</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1065,58 +1061,56 @@ fixture <span style="color: #666666">=</span> get_fixture(<span style="color: #B
 </tbody>
 </table>
 <p>Now that we have these DataFrames, we will define a function which combines the fixture and next week's odds to create a single DataFrame for the games over the next 7 days. To use this function we will need Game IDs for next week. So we will create another function which creates Game IDs by using the Game ID from the last game played and adding 1 to it.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Define a function which creates game IDs for this week&#39;s footy games</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">create_next_weeks_game_ids</span>(afl_data):
-    odds <span style="color: #666666">=</span> get_next_week_odds(<span style="color: #BA2121">&quot;data/weekly_odds.csv&quot;</span>)
+<div class="highlight"><pre><span></span><code><span class="c1"># Define a function which creates game IDs for this week&#39;s footy games</span>
+<span class="k">def</span> <span class="nf">create_next_weeks_game_ids</span><span class="p">(</span><span class="n">afl_data</span><span class="p">):</span>
+    <span class="n">odds</span> <span class="o">=</span> <span class="n">get_next_week_odds</span><span class="p">(</span><span class="s2">&quot;data/weekly_odds.csv&quot;</span><span class="p">)</span>
 
-    <span style="color: #408080; font-style: italic"># Get last week&#39;s Game ID</span>
-    last_afl_data_game <span style="color: #666666">=</span> afl_data[<span style="color: #BA2121">&#39;game&#39;</span>]<span style="color: #666666">.</span>iloc[<span style="color: #666666">-1</span>]
+    <span class="c1"># Get last week&#39;s Game ID</span>
+    <span class="n">last_afl_data_game</span> <span class="o">=</span> <span class="n">afl_data</span><span class="p">[</span><span class="s1">&#39;game&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
-    <span style="color: #408080; font-style: italic"># Create Game IDs for next week</span>
-    game_ids <span style="color: #666666">=</span> [(i<span style="color: #666666">+1</span>) <span style="color: #666666">+</span> last_afl_data_game <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(odds<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>])]
-    <span style="color: #008000; font-weight: bold">return</span> game_ids
+    <span class="c1"># Create Game IDs for next week</span>
+    <span class="n">game_ids</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">last_afl_data_game</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">odds</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+    <span class="k">return</span> <span class="n">game_ids</span>
 
-<span style="color: #408080; font-style: italic"># Define a function which creates this week&#39;s footy game DataFrame</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">get_next_week_df</span>(afl_data):
-    <span style="color: #408080; font-style: italic"># Get the fixture and the odds for next week&#39;s footy games</span>
-    fixture <span style="color: #666666">=</span> get_fixture(<span style="color: #BA2121">&quot;data/afl_fixture_2018.csv&quot;</span>)
-    next_week_odds <span style="color: #666666">=</span> get_next_week_odds(<span style="color: #BA2121">&quot;data/weekly_odds.csv&quot;</span>)
-    next_week_odds[<span style="color: #BA2121">&#39;game&#39;</span>] <span style="color: #666666">=</span> create_next_weeks_game_ids(afl_data)
+<span class="c1"># Define a function which creates this week&#39;s footy game DataFrame</span>
+<span class="k">def</span> <span class="nf">get_next_week_df</span><span class="p">(</span><span class="n">afl_data</span><span class="p">):</span>
+    <span class="c1"># Get the fixture and the odds for next week&#39;s footy games</span>
+    <span class="n">fixture</span> <span class="o">=</span> <span class="n">get_fixture</span><span class="p">(</span><span class="s2">&quot;data/afl_fixture_2018.csv&quot;</span><span class="p">)</span>
+    <span class="n">next_week_odds</span> <span class="o">=</span> <span class="n">get_next_week_odds</span><span class="p">(</span><span class="s2">&quot;data/weekly_odds.csv&quot;</span><span class="p">)</span>
+    <span class="n">next_week_odds</span><span class="p">[</span><span class="s1">&#39;game&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_next_weeks_game_ids</span><span class="p">(</span><span class="n">afl_data</span><span class="p">)</span>
 
-    <span style="color: #408080; font-style: italic"># Get today&#39;s date and next week&#39;s date and create a DataFrame for next week&#39;s games</span>
-<span style="color: #408080; font-style: italic">#     todays_date = datetime.datetime.today().strftime(&#39;%Y-%m-%d&#39;)</span>
+    <span class="c1"># Get today&#39;s date and next week&#39;s date and create a DataFrame for next week&#39;s games</span>
+<span class="c1">#     todays_date = datetime.datetime.today().strftime(&#39;%Y-%m-%d&#39;)</span>
 
-<span style="color: #408080; font-style: italic">#     date_in_7_days = (datetime.datetime.today() + datetime.timedelta(days=7)).strftime(&#39;%Y-%m-%d&#39;)</span>
-    todays_date <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;2018-09-27&#39;</span>
-    date_in_7_days <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;2018-10-04&#39;</span>
-    fixture <span style="color: #666666">=</span> fixture[(fixture[<span style="color: #BA2121">&#39;Date&#39;</span>] <span style="color: #666666">&gt;=</span> todays_date) <span style="color: #666666">&amp;</span> (fixture[<span style="color: #BA2121">&#39;Date&#39;</span>] <span style="color: #666666">&lt;</span> date_in_7_days)]<span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;Season.Game&#39;</span>])
-    next_week_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>merge(fixture, next_week_odds, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;home_team&#39;</span>, <span style="color: #BA2121">&#39;away_team&#39;</span>])
+<span class="c1">#     date_in_7_days = (datetime.datetime.today() + datetime.timedelta(days=7)).strftime(&#39;%Y-%m-%d&#39;)</span>
+    <span class="n">todays_date</span> <span class="o">=</span> <span class="s1">&#39;2018-09-27&#39;</span>
+    <span class="n">date_in_7_days</span> <span class="o">=</span> <span class="s1">&#39;2018-10-04&#39;</span>
+    <span class="n">fixture</span> <span class="o">=</span> <span class="n">fixture</span><span class="p">[(</span><span class="n">fixture</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">todays_date</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">fixture</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">date_in_7_days</span><span class="p">)]</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Season.Game&#39;</span><span class="p">])</span>
+    <span class="n">next_week_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">fixture</span><span class="p">,</span> <span class="n">next_week_odds</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;home_team&#39;</span><span class="p">,</span> <span class="s1">&#39;away_team&#39;</span><span class="p">])</span>
 
-    <span style="color: #408080; font-style: italic"># Split the DataFrame onto two rows for each game</span>
-    h_df <span style="color: #666666">=</span> (next_week_df[[<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;game&#39;</span>, <span style="color: #BA2121">&#39;home_team&#39;</span>, <span style="color: #BA2121">&#39;away_team&#39;</span>, <span style="color: #BA2121">&#39;odds&#39;</span>, <span style="color: #BA2121">&#39;Season&#39;</span>, <span style="color: #BA2121">&#39;Round&#39;</span>, <span style="color: #BA2121">&#39;Venue&#39;</span>]]
-               <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;home_team&#39;</span>: <span style="color: #BA2121">&#39;team&#39;</span>, <span style="color: #BA2121">&#39;away_team&#39;</span>: <span style="color: #BA2121">&#39;opponent&#39;</span>})
-               <span style="color: #666666">.</span>assign(home_game<span style="color: #666666">=1</span>))
+    <span class="c1"># Split the DataFrame onto two rows for each game</span>
+    <span class="n">h_df</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_week_df</span><span class="p">[[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="s1">&#39;home_team&#39;</span><span class="p">,</span> <span class="s1">&#39;away_team&#39;</span><span class="p">,</span> <span class="s1">&#39;odds&#39;</span><span class="p">,</span> <span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="s1">&#39;Round&#39;</span><span class="p">,</span> <span class="s1">&#39;Venue&#39;</span><span class="p">]]</span>
+               <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;home_team&#39;</span><span class="p">:</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;away_team&#39;</span><span class="p">:</span> <span class="s1">&#39;opponent&#39;</span><span class="p">})</span>
+               <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">home_game</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
 
-    a_df <span style="color: #666666">=</span> (next_week_df[[<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;game&#39;</span>, <span style="color: #BA2121">&#39;home_team&#39;</span>, <span style="color: #BA2121">&#39;away_team&#39;</span>, <span style="color: #BA2121">&#39;odds_away&#39;</span>, <span style="color: #BA2121">&#39;Season&#39;</span>, <span style="color: #BA2121">&#39;Round&#39;</span>, <span style="color: #BA2121">&#39;Venue&#39;</span>]]
-                <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;odds_away&#39;</span>: <span style="color: #BA2121">&#39;odds&#39;</span>, <span style="color: #BA2121">&#39;home_team&#39;</span>: <span style="color: #BA2121">&#39;opponent&#39;</span>, <span style="color: #BA2121">&#39;away_team&#39;</span>: <span style="color: #BA2121">&#39;team&#39;</span>})
-                <span style="color: #666666">.</span>assign(home_game<span style="color: #666666">=0</span>))
+    <span class="n">a_df</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_week_df</span><span class="p">[[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="s1">&#39;home_team&#39;</span><span class="p">,</span> <span class="s1">&#39;away_team&#39;</span><span class="p">,</span> <span class="s1">&#39;odds_away&#39;</span><span class="p">,</span> <span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="s1">&#39;Round&#39;</span><span class="p">,</span> <span class="s1">&#39;Venue&#39;</span><span class="p">]]</span>
+                <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;odds_away&#39;</span><span class="p">:</span> <span class="s1">&#39;odds&#39;</span><span class="p">,</span> <span class="s1">&#39;home_team&#39;</span><span class="p">:</span> <span class="s1">&#39;opponent&#39;</span><span class="p">,</span> <span class="s1">&#39;away_team&#39;</span><span class="p">:</span> <span class="s1">&#39;team&#39;</span><span class="p">})</span>
+                <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">home_game</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 
-    next_week <span style="color: #666666">=</span> a_df<span style="color: #666666">.</span>append(h_df)<span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;game&#39;</span>)<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{
-        <span style="color: #BA2121">&#39;Date&#39;</span>: <span style="color: #BA2121">&#39;date&#39;</span>,
-        <span style="color: #BA2121">&#39;Season&#39;</span>: <span style="color: #BA2121">&#39;season&#39;</span>,
-        <span style="color: #BA2121">&#39;Round&#39;</span>: <span style="color: #BA2121">&#39;round&#39;</span>,
-        <span style="color: #BA2121">&#39;Venue&#39;</span>: <span style="color: #BA2121">&#39;venue&#39;</span>
-    })
-    next_week[<span style="color: #BA2121">&#39;date&#39;</span>] <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>to_datetime(next_week<span style="color: #666666">.</span>date)
-    next_week[<span style="color: #BA2121">&#39;round&#39;</span>] <span style="color: #666666">=</span> afl_data[<span style="color: #BA2121">&#39;round&#39;</span>]<span style="color: #666666">.</span>iloc[<span style="color: #666666">-1</span>] <span style="color: #666666">+</span> <span style="color: #666666">1</span>
-    <span style="color: #008000; font-weight: bold">return</span> next_week
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>next_week_df <span style="color: #666666">=</span> get_next_week_df(afl_data)
-game_ids_next_round <span style="color: #666666">=</span> create_next_weeks_game_ids(afl_data)
-next_week_df
-</pre></div>
-
+    <span class="n">next_week</span> <span class="o">=</span> <span class="n">a_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">h_df</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;Date&#39;</span><span class="p">:</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Season&#39;</span><span class="p">:</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Round&#39;</span><span class="p">:</span> <span class="s1">&#39;round&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;Venue&#39;</span><span class="p">:</span> <span class="s1">&#39;venue&#39;</span>
+    <span class="p">})</span>
+    <span class="n">next_week</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">next_week</span><span class="o">.</span><span class="n">date</span><span class="p">)</span>
+    <span class="n">next_week</span><span class="p">[</span><span class="s1">&#39;round&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">afl_data</span><span class="p">[</span><span class="s1">&#39;round&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">next_week</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">next_week_df</span> <span class="o">=</span> <span class="n">get_next_week_df</span><span class="p">(</span><span class="n">afl_data</span><span class="p">)</span>
+<span class="n">game_ids_next_round</span> <span class="o">=</span> <span class="n">create_next_weeks_game_ids</span><span class="p">(</span><span class="n">afl_data</span><span class="p">)</span>
+<span class="n">next_week_df</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1159,9 +1153,8 @@ next_week_df
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fixture<span style="color: #666666">.</span>tail()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">fixture</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1230,23 +1223,20 @@ next_week_df
 </table>
 <h3 id="create-each-feature">Create Each Feature<a class="headerlink" href="#create-each-feature" title="Permanent link">&para;</a></h3>
 <p>Now let's append next week's DataFrame to our afl_data, match_results and odds DataFrames and then create all the features we used in the <a href="/modelling/AFLmodelPart2">AFL Feature Creation Tutorial</a>. We need to append the games and then feed them into our function so that we can create features for upcoming games.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Append next week&#39;s games to our afl_data DataFrame</span>
-afl_data <span style="color: #666666">=</span> afl_data<span style="color: #666666">.</span>append(next_week_df)<span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+<div class="highlight"><pre><span></span><code><span class="c1"># Append next week&#39;s games to our afl_data DataFrame</span>
+<span class="n">afl_data</span> <span class="o">=</span> <span class="n">afl_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_week_df</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Append next week&#39;s games to match results (we need to do this for our feature creation to run)</span>
-match_results <span style="color: #666666">=</span> afl_data_cleaning_v2<span style="color: #666666">.</span>get_cleaned_match_results()<span style="color: #666666">.</span>append(next_week_df)
+<span class="c1"># Append next week&#39;s games to match results (we need to do this for our feature creation to run)</span>
+<span class="n">match_results</span> <span class="o">=</span> <span class="n">afl_data_cleaning_v2</span><span class="o">.</span><span class="n">get_cleaned_match_results</span><span class="p">()</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_week_df</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Append next week&#39;s games to odds</span>
-odds <span style="color: #666666">=</span> (afl_data_cleaning_v2<span style="color: #666666">.</span>get_cleaned_odds()<span style="color: #666666">.</span>pipe(<span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>append(next_week_df[df<span style="color: #666666">.</span>columns]))
-       <span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features_df <span style="color: #666666">=</span> afl_feature_creation_v2<span style="color: #666666">.</span>prepare_afl_features(afl_data<span style="color: #666666">=</span>afl_data, match_results<span style="color: #666666">=</span>match_results, odds<span style="color: #666666">=</span>odds)
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features_df<span style="color: #666666">.</span>tail()
-</pre></div>
-
+<span class="c1"># Append next week&#39;s games to odds</span>
+<span class="n">odds</span> <span class="o">=</span> <span class="p">(</span><span class="n">afl_data_cleaning_v2</span><span class="o">.</span><span class="n">get_cleaned_odds</span><span class="p">()</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_week_df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]))</span>
+       <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">features_df</span> <span class="o">=</span> <span class="n">afl_feature_creation_v2</span><span class="o">.</span><span class="n">prepare_afl_features</span><span class="p">(</span><span class="n">afl_data</span><span class="o">=</span><span class="n">afl_data</span><span class="p">,</span> <span class="n">match_results</span><span class="o">=</span><span class="n">match_results</span><span class="p">,</span> <span class="n">odds</span><span class="o">=</span><span class="n">odds</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">features_df</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1628,67 +1618,63 @@ odds <span style="color: #666666">=</span> (afl_data_cleaning_v2<span style="col
 <hr />
 <h2 id="create-predictions-for-the-upcoming-round">Create Predictions For the Upcoming Round<a class="headerlink" href="#create-predictions-for-the-upcoming-round" title="Permanent link">&para;</a></h2>
 <p>Now that we have our features, we can use our model that we created in <a href="/modelling/AFLmodelPart3">part 3</a> to predict the next round. First we need to filter our features_df into a training df and a df with next round's features/matches. Then we can use the model created in the last tutorial to create predictions. For simplicity, I have hardcoded the parameters we used in the last tutorial.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get the train df by only taking the games IDs which aren&#39;t in the next week df</span>
-train_df <span style="color: #666666">=</span> features_df[<span style="color: #666666">~</span>features_df<span style="color: #666666">.</span>game<span style="color: #666666">.</span>isin(next_week_df<span style="color: #666666">.</span>game)]
+<div class="highlight"><pre><span></span><code><span class="c1"># Get the train df by only taking the games IDs which aren&#39;t in the next week df</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="o">~</span><span class="n">features_df</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">next_week_df</span><span class="o">.</span><span class="n">game</span><span class="p">)]</span>
 
-<span style="color: #408080; font-style: italic"># Get the result and merge to the feature_df</span>
-match_results <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&quot;data/afl_match_results.csv&quot;</span>)
-                    <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;Game&#39;</span>: <span style="color: #BA2121">&#39;game&#39;</span>})
-                    <span style="color: #666666">.</span>assign(result<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row[<span style="color: #BA2121">&#39;Home.Points&#39;</span>] <span style="color: #666666">&gt;</span> row[<span style="color: #BA2121">&#39;Away.Points&#39;</span>] <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=1</span>)))
+<span class="c1"># Get the result and merge to the feature_df</span>
+<span class="n">match_results</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/afl_match_results.csv&quot;</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Game&#39;</span><span class="p">:</span> <span class="s1">&#39;game&#39;</span><span class="p">})</span>
+                    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Home.Points&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Away.Points&#39;</span><span class="p">]</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
 
-train_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>merge(train_df,  match_results[[<span style="color: #BA2121">&#39;game&#39;</span>, <span style="color: #BA2121">&#39;result&#39;</span>]], on<span style="color: #666666">=</span><span style="color: #BA2121">&#39;game&#39;</span>)
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span>  <span class="n">match_results</span><span class="p">[[</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="s1">&#39;result&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">)</span>
 
-train_x <span style="color: #666666">=</span> train_df<span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;result&#39;</span>])
-train_y <span style="color: #666666">=</span> train_df<span style="color: #666666">.</span>result
+<span class="n">train_x</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;result&#39;</span><span class="p">])</span>
+<span class="n">train_y</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">result</span>
 
-next_round_x <span style="color: #666666">=</span> features_df[features_df<span style="color: #666666">.</span>game<span style="color: #666666">.</span>isin(next_week_df<span style="color: #666666">.</span>game)]
-</pre></div>
+<span class="n">next_round_x</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="n">features_df</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">next_week_df</span><span class="o">.</span><span class="n">game</span><span class="p">)]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Fit out logistic regression model - note that our predictions come out in the order of [away_team_prob, home_team_prob]</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Fit out logistic regression model - note that our predictions come out in the order of [away_team_prob, home_team_prob]</span>
+<span class="n">lr_best_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="mf">0.01</span><span class="p">,</span>
+ <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;dual&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+ <span class="s1">&#39;fit_intercept&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+ <span class="s1">&#39;intercept_scaling&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">&#39;max_iter&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
+ <span class="s1">&#39;multi_class&#39;</span><span class="p">:</span> <span class="s1">&#39;ovr&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;n_jobs&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+ <span class="s1">&#39;penalty&#39;</span><span class="p">:</span> <span class="s1">&#39;l2&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;random_state&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+ <span class="s1">&#39;solver&#39;</span><span class="p">:</span> <span class="s1">&#39;newton-cg&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;tol&#39;</span><span class="p">:</span> <span class="mf">0.0001</span><span class="p">,</span>
+ <span class="s1">&#39;verbose&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+ <span class="s1">&#39;warm_start&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">}</span>
 
-lr_best_params <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;C&#39;</span>: <span style="color: #666666">0.01</span>,
- <span style="color: #BA2121">&#39;class_weight&#39;</span>: <span style="color: #008000">None</span>,
- <span style="color: #BA2121">&#39;dual&#39;</span>: <span style="color: #008000">False</span>,
- <span style="color: #BA2121">&#39;fit_intercept&#39;</span>: <span style="color: #008000">True</span>,
- <span style="color: #BA2121">&#39;intercept_scaling&#39;</span>: <span style="color: #666666">1</span>,
- <span style="color: #BA2121">&#39;max_iter&#39;</span>: <span style="color: #666666">100</span>,
- <span style="color: #BA2121">&#39;multi_class&#39;</span>: <span style="color: #BA2121">&#39;ovr&#39;</span>,
- <span style="color: #BA2121">&#39;n_jobs&#39;</span>: <span style="color: #666666">1</span>,
- <span style="color: #BA2121">&#39;penalty&#39;</span>: <span style="color: #BA2121">&#39;l2&#39;</span>,
- <span style="color: #BA2121">&#39;random_state&#39;</span>: <span style="color: #008000">None</span>,
- <span style="color: #BA2121">&#39;solver&#39;</span>: <span style="color: #BA2121">&#39;newton-cg&#39;</span>,
- <span style="color: #BA2121">&#39;tol&#39;</span>: <span style="color: #666666">0.0001</span>,
- <span style="color: #BA2121">&#39;verbose&#39;</span>: <span style="color: #666666">0</span>,
- <span style="color: #BA2121">&#39;warm_start&#39;</span>: <span style="color: #008000">False</span>}
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">train_df</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;f_&#39;</span><span class="p">)]</span>
 
-feature_cols <span style="color: #666666">=</span> [col <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> train_df <span style="color: #008000; font-weight: bold">if</span> col<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;f_&#39;</span>)]
+<span class="c1"># Scale features</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">train_x</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_x</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">])</span>
+<span class="n">next_round_x</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">next_round_x</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">])</span>
 
-<span style="color: #408080; font-style: italic"># Scale features</span>
-scaler <span style="color: #666666">=</span> StandardScaler()
-train_x[feature_cols] <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>fit_transform(train_x[feature_cols])
-next_round_x[feature_cols] <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(next_round_x[feature_cols])
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="o">**</span><span class="n">lr_best_params</span><span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">],</span> <span class="n">train_y</span><span class="p">)</span>
+<span class="n">prediction_probs</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">next_round_x</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">])</span>
 
-lr <span style="color: #666666">=</span> LogisticRegression(<span style="color: #666666">**</span>lr_best_params)
-lr<span style="color: #666666">.</span>fit(train_x[feature_cols], train_y)
-prediction_probs <span style="color: #666666">=</span> lr<span style="color: #666666">.</span>predict_proba(next_round_x[feature_cols])
-
-modelled_home_odds <span style="color: #666666">=</span> [<span style="color: #666666">1/</span>i[<span style="color: #666666">1</span>] <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> prediction_probs]
-modelled_away_odds <span style="color: #666666">=</span> [<span style="color: #666666">1/</span>i[<span style="color: #666666">0</span>] <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> prediction_probs]
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a predictions df</span>
-preds_df <span style="color: #666666">=</span> (next_round_x[[<span style="color: #BA2121">&#39;date&#39;</span>, <span style="color: #BA2121">&#39;home_team&#39;</span>, <span style="color: #BA2121">&#39;away_team&#39;</span>, <span style="color: #BA2121">&#39;venue&#39;</span>, <span style="color: #BA2121">&#39;game&#39;</span>]]<span style="color: #666666">.</span>copy()
-               <span style="color: #666666">.</span>assign(modelled_home_odds<span style="color: #666666">=</span>modelled_home_odds,
-                      modelled_away_odds<span style="color: #666666">=</span>modelled_away_odds)
-               <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, next_week_odds, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;home_team&#39;</span>, <span style="color: #BA2121">&#39;away_team&#39;</span>])
-               <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, features_df[[<span style="color: #BA2121">&#39;game&#39;</span>, <span style="color: #BA2121">&#39;f_elo_home&#39;</span>, <span style="color: #BA2121">&#39;f_elo_away&#39;</span>]], on<span style="color: #666666">=</span><span style="color: #BA2121">&#39;game&#39;</span>)
-               <span style="color: #666666">.</span>drop(columns<span style="color: #666666">=</span><span style="color: #BA2121">&#39;game&#39;</span>)
-           )
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>preds_df
-</pre></div>
-
+<span class="n">modelled_home_odds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prediction_probs</span><span class="p">]</span>
+<span class="n">modelled_away_odds</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="o">/</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prediction_probs</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a predictions df</span>
+<span class="n">preds_df</span> <span class="o">=</span> <span class="p">(</span><span class="n">next_round_x</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;home_team&#39;</span><span class="p">,</span> <span class="s1">&#39;away_team&#39;</span><span class="p">,</span> <span class="s1">&#39;venue&#39;</span><span class="p">,</span> <span class="s1">&#39;game&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+               <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">modelled_home_odds</span><span class="o">=</span><span class="n">modelled_home_odds</span><span class="p">,</span>
+                      <span class="n">modelled_away_odds</span><span class="o">=</span><span class="n">modelled_away_odds</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span> <span class="n">next_week_odds</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;home_team&#39;</span><span class="p">,</span> <span class="s1">&#39;away_team&#39;</span><span class="p">])</span>
+               <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span> <span class="n">features_df</span><span class="p">[[</span><span class="s1">&#39;game&#39;</span><span class="p">,</span> <span class="s1">&#39;f_elo_home&#39;</span><span class="p">,</span> <span class="s1">&#39;f_elo_away&#39;</span><span class="p">]],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">)</span>
+               <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;game&#39;</span><span class="p">)</span>
+           <span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">preds_df</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1722,16 +1708,14 @@ preds_df <span style="color: #666666">=</span> (next_round_x[[<span style="color
 </tbody>
 </table>
 <p>Alternatively, if you want to generate predictions using a script which uses all the above code, just run the following:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(afl_modelling_v2<span style="color: #666666">.</span>create_predictions())
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>        date   home_team    away_team venue  modelled_home_odds  \
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">afl_modelling_v2</span><span class="o">.</span><span class="n">create_predictions</span><span class="p">())</span>
+</code></pre></div>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%; margin: 0;"><span></span><code>        date   home_team    away_team venue  modelled_home_odds  \
 0 2018-09-29  West Coast  Collingwood   MCG            2.326826
 
    modelled_away_odds  odds  odds_away   f_elo_home   f_elo_away  
 0            1.753679  2.34       1.75  1591.348723  1562.924273
-</pre></div>
-
+</code></pre></div>
 
 <hr />
 <h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
@@ -1833,7 +1817,7 @@ preds_df <span style="color: #666666">=</span> (next_round_x[[<span style="color
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

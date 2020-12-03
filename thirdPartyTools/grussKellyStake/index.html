@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#gruss-betting-assistant-kelly-criterion-staking" tabindex="1" class="md-skip">
+      <a href="#gruss-betting-assistant-kelly-criterion-staking" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1227,50 +1227,50 @@ Where B is the odds you are getting -1 (because we're using decimal odds), P is 
 <ul>
 <li><strong>Column K - best available Back odds</strong> Check the runner's name in our ratings and match it with the runners listed in the market ('MARKET' worksheet) and return the best available back odds from the G column</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(INDEX(Market!$B$5:$M$50,MATCH(H2,Market!$A$5:$A$50,0),5),&quot;&quot;)
-</pre></div>
+<p><div class="highlight"><pre><span></span><code>=IFERROR(INDEX(Market!$B$5:$M$50,MATCH(H2,Market!$A$5:$A$50,0),5),&quot;&quot;)
+</code></pre></div>
 <img alt="Automating a staking based strategy with Gruss" src="../img/BetAngelKellyExcel5.png" /></p>
 <ul>
 <li><strong>Column L - Exchange odds -1</strong> Take the value returned in column K and minus 1 (because we're using decimal odds)</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(K2-1,&quot;&quot;)
-</pre></div>
+<p><div class="highlight"><pre><span></span><code>=IFERROR(K2-1,&quot;&quot;)
+</code></pre></div>
 <img alt="Automating a staking based strategy with Gruss" src="../img/BetAngelKellyExcel6.png" /></p>
 <ul>
 <li><strong>Column M - Probability of win %</strong> 1 divided by the rated price from column I which converts the decimal odds to a percentage probability</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR((1/I2),&quot;&quot;)
-</pre></div>
+<p><div class="highlight"><pre><span></span><code>=IFERROR((1/I2),&quot;&quot;)
+</code></pre></div>
 <img alt="Automating a staking based strategy with Gruss" src="../img/BetAngelKellyExcel7.png" /></p>
 <ul>
 <li><strong>Column N - Probability of loss %</strong> 1 divided by the probability of a win from column M</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(1-M2,&quot;&quot;)
-</pre></div>
+<p><div class="highlight"><pre><span></span><code>=IFERROR(1-M2,&quot;&quot;)
+</code></pre></div>
 <img alt="Automating a staking based strategy with Gruss" src="../img/BetAngelKellyExcel8.png" /></p>
 <ul>
 <li><strong>Column O - % of bankroll to use - Full Kelly</strong> Take the best available back odds (minus 1) from the L column, times it by the probability to win in the M column, then minus the probability to lose from the N column. Finally, divide that by the best available back odds (minus 1)</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(((L2*M2)-N2)/L2,&quot;&quot;)
-</pre></div>
+<p><div class="highlight"><pre><span></span><code>=IFERROR(((L2*M2)-N2)/L2,&quot;&quot;)
+</code></pre></div>
 <img alt="Automating a staking based strategy with Grussy" src="../img/BetAngelKellyExcel9.png" /></p>
 <ul>
 <li><strong>Column P - % of bankroll to use - Half Kelly</strong> Take the calculation from column O and simply divide it by 2</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(O2/2,&quot;&quot;)
-</pre></div>
+<p><div class="highlight"><pre><span></span><code>=IFERROR(O2/2,&quot;&quot;)
+</code></pre></div>
 <img alt="Automating a staking based strategy with Gruss" src="../img/BetAngelKellyExcel10.png" /></p>
 <ul>
 <li><strong>Column Q - Amount to bet - Full Kelly</strong> If the account balance times the percentage of the bankroll to use for half kelly stake is greater than 0, retrieve the account balance which Gruss populates in cell I2 of the 'MARKET' worksheet and times it by the percentage of the bankroll (Column O) to use for the Full Kelly. If it's not greater than 0, then simply print 0.</li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(IF(AccountBalance*P2&gt;0,AccountBalance*O2,&quot;0&quot;),&quot;&quot;)
-</pre></div>
+<p><div class="highlight"><pre><span></span><code>=IFERROR(IF(AccountBalance*P2&gt;0,AccountBalance*O2,&quot;0&quot;),&quot;&quot;)
+</code></pre></div>
 <img alt="Automating a staking based strategy with Gruss" src="../img/BetAngelKellyExcel11.png" /></p>
 <ul>
 <li><strong>Column R - Amount to bet - half Kelly</strong> If the account balance times the percentage of the bankroll to use for half Kelly stake is greater than 0, then calculate the account balance times the percentage of the bankroll. If it's not greater than 0, then simply print 0. </li>
 </ul>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IFERROR(IF(AccountBalance*P2&gt;0,AccountBalance*P2,&quot;0&quot;),&quot;&quot;)
-</pre></div>
+<p><div class="highlight"><pre><span></span><code>=IFERROR(IF(AccountBalance*P2&gt;0,AccountBalance*P2,&quot;0&quot;),&quot;&quot;)
+</code></pre></div>
 <img alt="Automating a staking based strategy with Gruss" src="../img/BetAngelKellyExcel12.png" /></p>
 <ul>
 <li><strong>Result:</strong> Once the calculations are complete, we're left with two stake values that we will be able to use with our trigger. Column Q for a full Kelly stake and column R for a half Kelly stake. In the below image examples, we have a market for Geelong with the half and full Kelly.</li>
@@ -1429,7 +1429,7 @@ Where B is the odds you are getting -1 (because we're using decimal odds), P is 
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

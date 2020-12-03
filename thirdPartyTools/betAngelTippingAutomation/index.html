@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#bet-angel-pro-tipping-automation" tabindex="1" class="md-skip">
+      <a href="#bet-angel-pro-tipping-automation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1244,53 +1244,46 @@ keep on top of more complex strategies that require long formaulas to implement.
 </ul>
 </div>
 <p><strong>This is our trigger for the 'BET ANGEL' worksheet:</strong></p>
-<div class="superfences-tabs">
-<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
-<label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<p>``` excel tab="Multi line"
+=IF(
    AND(
       COUNTIF(RunnerName,B9)&gt;0,
       TimeTillJump1&lt;UserTimeTillJump,
       Overrounds1&lt;UserOverround,
       ISBLANK(InPlay1)),
       INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
-    &quot;&quot;
+    ""
 )
-</pre></div></div>
-<input name="__tabs_1" type="radio" id="__tab_1_1" />
-<label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(COUNTIF(RunnerName,B9)&gt;0,TimeTillJump1&lt;UserTimeTillJump,Overrounds1&lt;UserOverround,ISBLANK(InPlay1)),INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),&quot;&quot;)
-</pre></div></div>
-</div>
+<div class="highlight"><pre><span></span><code>``` excel tab=&quot;Single line&quot;
+=IF(AND(COUNTIF(RunnerName,B9)&gt;0,TimeTillJump1&lt;UserTimeTillJump,Overrounds1&lt;UserOverround,ISBLANK(InPlay1)),INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),&quot;&quot;)
+</code></pre></div></p>
 <p>Stepping through each step:</p>
 <ul>
 <li><strong>Checking whether the runner is to have a bet placed:</strong> Here the trigger is checking the list of runners in the 'TIPS' worksheet so it can decide whether we want a bet to be placed or not. If the name does appear in our list, then it returns a TRUE flag and continues with the next trigger condition. If the name is not in the list, then no bet will be placed. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
    AND(
-<span style="background-color: #ffffcc">      COUNTIF(RunnerName,B9)&gt;0,
+<span class="hll">      COUNTIF(RunnerName,B9)&gt;0,
 </span>      TimeTillJump1&lt;UserTimeTillJump,
       Overrounds1&lt;UserOverround,
       ISBLANK(InPlay1)),
       INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
     &quot;&quot;
 )
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>Time until the jump is less than what we define:</strong> Check whether the seconds left on the countdown timer are less than what we define in cell H2 in the 'SETTINGS' worksheet. This one's a bit complicated, as the time is actually returned as a percentage of a 24-hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E9 of the 'SETTINGS' worksheet (named 'TimeTillJump1'), where we've already done the calculations for you. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
    AND(
       COUNTIF(RunnerName,B9)&gt;0,
-<span style="background-color: #ffffcc">      TimeTillJump1&lt;UserTimeTillJump,
+<span class="hll">      TimeTillJump1&lt;UserTimeTillJump,
 </span>      Overrounds1&lt;UserOverround,
       ISBLANK(InPlay1)),
       INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
     &quot;&quot;
 )
-</pre></div>
-
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Calculating the time until the jump for multiple markets at the same time</p>
 <p>One thing to be aware of here is that because we're wanting to follow up to three markets in our excel workbook, we need to have three instances of the time conversion formula - One for each possible market that we may want to link into our Excel file. These formulas are located in the 'SETTINGS' worksheet on columns C, D and E.</p>
@@ -1299,45 +1292,42 @@ keep on top of more complex strategies that require long formaulas to implement.
 <ul>
 <li><strong>Back market percentage (Overrounds1) is less than what we define (UserOverround):</strong> Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'SETTINGS' worksheet. <a href="https://www.betfair.com.au/hub/understanding-over-round/">Additional information relating to over-rounds can be found on the Hub.</a></li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
    AND(
       COUNTIF(RunnerName,B9)&gt;0,
       TimeTillJump1&lt;UserTimeTillJump,
-<span style="background-color: #ffffcc">      Overrounds1&lt;UserOverround,
+<span class="hll">      Overrounds1&lt;UserOverround,
 </span>      ISBLANK(InPlay1)),
       INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
     &quot;&quot;
 )
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>Not in play:</strong> checking whether the event has gone in play - as odds change so much in the run we only want to use this strategy pre-play. If this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
    AND(
       COUNTIF(RunnerName,B9)&gt;0,
       TimeTillJump1&lt;UserTimeTillJump,
       Overrounds1&lt;UserOverround,
-<span style="background-color: #ffffcc">      ISBLANK(InPlay1)),
+<span class="hll">      ISBLANK(InPlay1)),
 </span>      INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
     &quot;&quot;
 )
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>Result:</strong> if the statement above is true, check whether BACK or LAY has been selected in column B of the 'TIPS' worksheet for that runner. Whatever has been specified, trigger that bet type. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
    AND(
       COUNTIF(RunnerName,B9)&gt;0,
       TimeTillJump1&lt;UserTimeTillJump,
       Overrounds1&lt;UserOverround,
       ISBLANK(InPlay1)),
-<span style="background-color: #ffffcc">      INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
+<span class="hll">      INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
 </span>    &quot;&quot;
 )
-</pre></div>
-
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">updating the trigger for 'BET ANGEL 2' and 'Bet ANGEL 3' worksheets</p>
 <p>You will need to ensure that the reference names for Overrounds, TimeTillJump and InPlay are changed so that they are referencing the cells that are applicable for those specific worksheets. Forgetting to do this can lead to the automation working off information from the wrong market.  </p>
@@ -1345,31 +1335,29 @@ keep on top of more complex strategies that require long formaulas to implement.
 <ul>
 <li><strong>Trigger for 'BET ANGEL 2' worksheet:</strong> Note that Overrounds has been changed to Overrounds2, TimeTillJump1 to TimeTillJump2 and InPlay1 to InPlay2</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
    AND(
       COUNTIF(RunnerName,B9)&gt;0,
       TimeTillJump2&lt;UserTimeTillJump,
       Overrounds2&lt;UserOverround,
       ISBLANK(InPlay2)),
-<span style="background-color: #ffffcc">      INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
+<span class="hll">      INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
 </span>    &quot;&quot;
 )
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>Trigger for 'BET ANGEL 3' worksheet:</strong> Note that Overrounds has been changed to Overrounds3, TimeTillJump1 to TimeTillJump3 and InPlay1 to InPlay3</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
    AND(
       COUNTIF(RunnerName,B9)&gt;0,
       TimeTillJump3&lt;UserTimeTillJump,
       Overrounds3&lt;UserOverround,
       ISBLANK(InPlay3)),
-<span style="background-color: #ffffcc">      INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
+<span class="hll">      INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
 </span>    &quot;&quot;
 )
-</pre></div>
-
+</code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">Excel functions</p>
 <ul>
@@ -1384,24 +1372,19 @@ keep on top of more complex strategies that require long formaulas to implement.
 <ul>
 <li><strong>Trigger bet rule:</strong> this is the bet trigger Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).</li>
 </ul>
-<div class="superfences-tabs">
-<input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
-<label for="__tab_2_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<p>``` excel tab="Multi line"
+=IF(
    AND(
       COUNTIF(RunnerName,B9)&gt;0,
       TimeTillJump3&lt;UserTimeTillJump,
       Overrounds3&lt;UserOverround,
       ISBLANK(InPlay3)),
       INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),
-    &quot;&quot;
+    ""
 )
-</pre></div></div>
-<input name="__tabs_2" type="radio" id="__tab_2_1" />
-<label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND(COUNTIF(RunnerName,B9)&gt;0,TimeTillJump3&lt;UserTimeTillJump,Overrounds3&lt;UserOverround,ISBLANK(InPlay3)),INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),&quot;&quot;)
-</pre></div></div>
-</div>
+<div class="highlight"><pre><span></span><code>``` excel tab=&quot;Single line&quot;
+=IF(AND(COUNTIF(RunnerName,B9)&gt;0,TimeTillJump3&lt;UserTimeTillJump,Overrounds3&lt;UserOverround,ISBLANK(InPlay3)),INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2),&quot;&quot;)
+</code></pre></div></p>
 <p><img alt="Automating your tipping with Bet Angel" src="../img/BetAngelTippingExcel1.png" /></p>
 <ul>
 <li><strong>Odds:</strong> Because we will be taking the BSP, we want to ensure that the initial bets that we place are not matched so that the "TAKE_SP_ALL" command can trigger for the global command. To do this, it checks the bet type for that particular runner. If it is Backing, then place odds at 1000 and if its going to be a lay bet, then set odds at 1.01</li>
@@ -1420,8 +1403,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 <h2 id="-connecting-to-bet-angel">- Connecting to Bet Angel<a class="headerlink" href="#-connecting-to-bet-angel" title="Permanent link">&para;</a></h2>
 <h3 id="video-walk-through">Video walk through<a class="headerlink" href="#video-walk-through" title="Permanent link">&para;</a></h3>
 <p>We've put together a litte video walk through to help make this process easier. </p>
-<iframe width="700" height="455" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<p><iframe width="700" height="455" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <h3 id="-selecting-markets">- Selecting markets<a class="headerlink" href="#-selecting-markets" title="Permanent link">&para;</a></h3>
 <p>We used the markets menu in the 'Guardian' tool to navigate to Australian tracks that we have ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.</p>
 <p>Once you've chosen the races you're interested in, click the 'add' button and you'll see them appear in the main body of the screen. </p>
@@ -1542,7 +1524,7 @@ keep on top of more complex strategies that require long formaulas to implement.
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

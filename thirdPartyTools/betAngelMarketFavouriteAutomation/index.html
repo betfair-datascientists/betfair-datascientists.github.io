@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#bet-angel-pro-market-favourite-automation" tabindex="1" class="md-skip">
+      <a href="#bet-angel-pro-market-favourite-automation" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1308,96 +1308,86 @@ keep on top of more complex strategies that require long formaulas to implement.
 </ul>
 </div>
 <p><strong>This is our trigger on Excel formula:</strong></p>
-<div class="superfences-tabs">
-<input name="__tabs_1" type="radio" id="__tab_1_0" checked="checked" />
-<label for="__tab_1_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<p>``` excel tab="Multi line"
+=IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        (COUNT(<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>9,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>11,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>13,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>15,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>17,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>19,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>21,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>23,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>25,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>27,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>29,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>31,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>33,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>35,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>37,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>39,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>41,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>43,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>45,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>47,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>49,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>51,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>53,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>55,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>57,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>59,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>61,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>63,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>65,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>67)-RANK(G9,(<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>9,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>11,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>13,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>15,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>17,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>19,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>21,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>23,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>25,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>27,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>29,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>31,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>33,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>35,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>37,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>39,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>41,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>43,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>45,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>47,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>49,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>51,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>53,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>55,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>57,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>59,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>61,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>63,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>65,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>67))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
         ISBLANK(InPlay1)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div></div>
-<input name="__tabs_1" type="radio" id="__tab_1_1" />
-<label for="__tab_1_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump1 &lt; MaxTime,TimeTillJump1 &gt; MinTime,Overrounds1&lt;UserOverrounds,ISBLANK(InPlay1)),&quot;BACK&quot;,&quot;&quot;)
-</pre></div></div>
-</div>
+    "BACK",
+"")</p>
+<div class="highlight"><pre><span></span><code>``` excel tab=&quot;Single line&quot;
+=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump1 &lt; MaxTime,TimeTillJump1 &gt; MinTime,Overrounds1&lt;UserOverrounds,ISBLANK(InPlay1)),&quot;BACK&quot;,&quot;&quot;)
+</code></pre></div>
 <p>Stepping through each step:</p>
 <ul>
 <li><strong>Finding the top two selections in the market:</strong> check each runner to see if they're one of the two market favourites - We're doing this by going through the best available to back (column G) price for each runner, ranking them in order (which sorts them from highest to lowest - which is the opposite of what we want) then subtracting that rank number from the total number of selections available to inverse the order. Finally, we plus one to the resulting rank - if we didn't do this then you'd have a rank order that started at 0, not 1, and we thought that would just confuse matters!</li>
 </ul>
 <p>Once it's established what each selection's rank is, we then check if that rank is less than three, and if it is we know that the runner in question is one of the top two in the market, based on the current available to back prices.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
     AND(
-<span style="background-color: #ffffcc">        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+<span class="hll">        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
 </span>        TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
         ISBLANK(InPlay1)),
     &quot;BACK&quot;,
 &quot;&quot;)
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>TimeTillJump1 &lt; MaxTime and &gt; MinTime:</strong> check whether the seconds left on the countdown are smaller than what is defined in cell C2 and greater than cell E2 in the 'OPTIONS' worksheet (named 'MinTime' and 'MaxTime' respectively), as we need to both place the bet and then convert it to a BSP bet before the off (more on this later). This one's a bit complicated, as the time is actually returned as a percentage of a 24 hour day, which you need to convert into positive or negative seconds. <a href="https://www.betangel.com/forum/viewtopic.php?t=7657">You can read about the formula here</a> or just keep it simple by referencing the value in cell E4 (named 'TimeTillJump1')in the 'SETTINGS' worksheet, where we've already done the calculations for you.</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
-<span style="background-color: #ffffcc">        TimeTillJump1 &lt; MaxTime,
-</span><span style="background-color: #ffffcc">        TimeTillJump1 &gt; MinTime,
+<span class="hll">        TimeTillJump1 &lt; MaxTime,
+</span><span class="hll">        TimeTillJump1 &gt; MinTime,
 </span>        Overrounds1&lt;UserOverrounds,
         ISBLANK(InPlay1)),
     &quot;BACK&quot;,
 &quot;&quot;)
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>Overrounds1 &lt; UserOverrounds:</strong> checking whether the market overrounds are less than the specific value that is specified in cell C3 of the 'OPTIONS' worksheet</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
-<span style="background-color: #ffffcc">        Overrounds1&lt;UserOverrounds,
+<span class="hll">        Overrounds1&lt;UserOverrounds,
 </span>        ISBLANK(InPlay1)),
     &quot;BACK&quot;,
 &quot;&quot;)
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>InPlay1:</strong> checking whether the event has gone in play, as this is purely a pre-play strategy, though you could certainly take a similar approach to in-play markets. InPlay refers to G1 in the 'BET ANGEL' worksheet, if this cell is blank it means it's not displaying the 'in-play' flag, so it's safe to place bets. </li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
-<span style="background-color: #ffffcc">        ISBLANK(InPlay1)),
+<span class="hll">        ISBLANK(InPlay1)),
 </span>    &quot;BACK&quot;,
 &quot;&quot;)
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>Result:</strong> if the statement above is true, the formula returns 'BACK', at which point the bet will trigger, otherwise the cell will remain blank and no bet will be placed.</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
         ISBLANK(InPlay1)),
-<span style="background-color: #ffffcc">    &quot;BACK&quot;,
-</span><span style="background-color: #ffffcc">&quot;&quot;)
-</span></pre></div>
-
+<span class="hll">    &quot;BACK&quot;,
+</span><span class="hll">&quot;&quot;)
+</span></code></pre></div>
 <div class="admonition info">
 <p class="admonition-title">updating the trigger for 'BET ANGEL 2' and 'Bet ANGEL 3' worksheets</p>
 <p>You will need to ensure that the reference names for Overrounds, TimeTillJump and InPlay are changed so that they are referencing the cells that are applicable for those specific worksheets. Forgetting to do this can lead to the automation working off information from the wrong market.  </p>
@@ -1405,43 +1395,41 @@ keep on top of more complex strategies that require long formaulas to implement.
 <ul>
 <li><strong>Trigger for 'BET ANGEL 2' worksheet:</strong> Note that Overrounds has been changed to Overrounds2, TimeTillJump1 to TimeTillJump2 and InPlay1 to InPlay2</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
         TimeTillJump2 &lt; MaxTime,
-<span style="background-color: #ffffcc">        TimeTillJump2 &gt; MinTime,
-</span><span style="background-color: #ffffcc">        Overrounds2&lt;UserOverrounds,
-</span><span style="background-color: #ffffcc">        ISBLANK(InPlay2)),
-</span><span style="background-color: #ffffcc">    &quot;BACK&quot;,
+<span class="hll">        TimeTillJump2 &gt; MinTime,
+</span><span class="hll">        Overrounds2&lt;UserOverrounds,
+</span><span class="hll">        ISBLANK(InPlay2)),
+</span><span class="hll">    &quot;BACK&quot;,
 </span>&quot;&quot;)
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>Trigger for 'BET ANGEL 3' worksheet:</strong> Note that Overrounds has been changed to Overrounds3, TimeTillJump1 to TimeTillJump3 and InPlay1 to InPlay3</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<div class="highlight"><pre><span></span><code>=IF(
     AND(
         (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
         TimeTillJump2 &lt; MaxTime,
-<span style="background-color: #ffffcc">        TimeTillJump2 &gt; MinTime,
-</span><span style="background-color: #ffffcc">        Overrounds2&lt;UserOverrounds,
-</span><span style="background-color: #ffffcc">        ISBLANK(InPlay2)),
-</span><span style="background-color: #ffffcc">    &quot;BACK&quot;,
+<span class="hll">        TimeTillJump2 &gt; MinTime,
+</span><span class="hll">        Overrounds2&lt;UserOverrounds,
+</span><span class="hll">        ISBLANK(InPlay2)),
+</span><span class="hll">    &quot;BACK&quot;,
 </span>&quot;&quot;)
-</pre></div>
-
+</code></pre></div>
 <ul>
 <li><strong>Convert bets to Betfair Starting Price:</strong> Bet Angel Pro doesn't offer the option to place straight BSP bets, so  we've got around that here by placing the bets initially at odds of 1000 (which won't get matched for short favourites), and then at certain amount of seconds from the scheduled start using what Bet Angel calls a 'Global Command' to convert all unmatched bets to BSP. The exact number of seconds can be easily changed by updating cell C5 from the 'OPTIONS' worksheet. This formula goes in cell L6 of the 'BET ANGEL' worksheet, and once it's triggered the bets will automatically convert. Remember, just like the main trigger, each worksheet's global command will need to be updated to reference its respective TimeTillJump calculation. </li>
 </ul>
 <p>-- 'BET ANGEL' worksheet global command formula
-    <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="background-color: #ffffcc">=IF(TimeTillJump1 &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
-</span></pre></div></p>
+    <div class="highlight"><pre><span></span><code><span class="hll">=IF(TimeTillJump1 &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
+</span></code></pre></div></p>
 <p>-- 'BET ANGEL 2' worksheet global command formula
-    <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="background-color: #ffffcc">=IF(TimeTillJump2 &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
-</span></pre></div></p>
+    <div class="highlight"><pre><span></span><code><span class="hll">=IF(TimeTillJump2 &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
+</span></code></pre></div></p>
 <p>-- 'BET ANGEL 3' worksheet global command formula
-    <div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="background-color: #ffffcc">=IF(TimeTillJump3 &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
-</span></pre></div></p>
+    <div class="highlight"><pre><span></span><code><span class="hll">=IF(TimeTillJump3 &lt; TakeSP, &quot;TAKE_SP_ALL&quot;, &quot;&quot;)
+</span></code></pre></div></p>
 <div class="admonition info">
 <p class="admonition-title">Excel functions</p>
 <ul>
@@ -1458,24 +1446,19 @@ keep on top of more complex strategies that require long formaulas to implement.
 <ul>
 <li><strong>Trigger bet rule:</strong> this is the bet trigger Excel formula we created earlier, and it needs to go in column L (L9 for the first runner).</li>
 </ul>
-<div class="superfences-tabs">
-<input name="__tabs_2" type="radio" id="__tab_2_0" checked="checked" />
-<label for="__tab_2_0">Multi line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(
+<p>``` excel tab="Multi line"
+=IF(
     AND(
-        (COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,
+        (COUNT(<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>9,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>11,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>13,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>15,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>17,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>19,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>21,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>23,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>25,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>27,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>29,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>31,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>33,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>35,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>37,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>39,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>41,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>43,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>45,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>47,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>49,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>51,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>53,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>55,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>57,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>59,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>61,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>63,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>65,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>67)-RANK(G9,(<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>9,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>11,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>13,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>15,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>17,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>19,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>21,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>23,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>25,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>27,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>29,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>31,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>33,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>35,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>37,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>39,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>41,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>43,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>45,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>47,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>49,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>51,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>53,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>55,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>57,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>59,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>61,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>63,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>65,<span><span class="MathJax_Preview">G</span><script type="math/tex">G</script></span>67))+1) &lt; Fav+1,
         TimeTillJump1 &lt; MaxTime,
         TimeTillJump1 &gt; MinTime,
         Overrounds1&lt;UserOverrounds,
         ISBLANK(InPlay1)),
-    &quot;BACK&quot;,
-&quot;&quot;)
-</pre></div></div>
-<input name="__tabs_2" type="radio" id="__tab_2_1" />
-<label for="__tab_2_1">Single line</label>
-<div class="superfences-content"><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump1 &lt; MaxTime,TimeTillJump1 &gt; MinTime,Overrounds1&lt;UserOverrounds,ISBLANK(InPlay1)),&quot;BACK&quot;,&quot;&quot;)
-</pre></div></div>
-</div>
+    "BACK",
+"")
+<div class="highlight"><pre><span></span><code>``` excel tab=&quot;Single line&quot;
+=IF(AND((COUNT($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67)-RANK(G9,($G$9,$G$11,$G$13,$G$15,$G$17,$G$19,$G$21,$G$23,$G$25,$G$27,$G$29,$G$31,$G$33,$G$35,$G$37,$G$39,$G$41,$G$43,$G$45,$G$47,$G$49,$G$51,$G$53,$G$55,$G$57,$G$59,$G$61,$G$63,$G$65,$G$67))+1) &lt; Fav+1,TimeTillJump1 &lt; MaxTime,TimeTillJump1 &gt; MinTime,Overrounds1&lt;UserOverrounds,ISBLANK(InPlay1)),&quot;BACK&quot;,&quot;&quot;)
+</code></pre></div></p>
 <p><img alt="Automating a market favourite strategy with Bet Angel" src="../img/BetAngelMarketFavouriteExcel1.png" /></p>
 <ul>
 <li><strong>Odds:</strong> as we said we're putting the bet up initially at odds of 1000, so this is a simple one. </li>
@@ -1501,8 +1484,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p>The process is effectively the same from here on as for our previously automated strategy, but we've included it here just in case you want a refresher or are new to Bet Angel Pro.</p>
 <h3 id="-video-walk-through">- Video walk through<a class="headerlink" href="#-video-walk-through" title="Permanent link">&para;</a></h3>
 <p>We've put together a litte video walk through to help make this process easier. </p>
-<iframe width="700" height="455" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+<p><iframe width="700" height="455" src="https://www.youtube.com/embed/xKfNEpyE3KE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 <hr />
 <h3 id="-selecting-markets">- Selecting markets<a class="headerlink" href="#-selecting-markets" title="Permanent link">&para;</a></h3>
 <p>We used the markets menu in the Guardian tool to navigate to the tracks we have ratings for, then multi-selected all the win markets by holding down the control key and clicking on the different markets.</p>
@@ -1639,7 +1621,7 @@ keep on top of more complex strategies that require long formaulas to implement.
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

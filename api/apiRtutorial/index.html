@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#betfair-api-tutorials-in-r" tabindex="1" class="md-skip">
+      <a href="#betfair-api-tutorials-in-r" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1105,279 +1105,271 @@
 <hr />
 <h3 id="required-packages">Required Packages<a class="headerlink" href="#required-packages" title="Permanent link">&para;</a></h3>
 <p>Two R packages are required:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">library</span>(tidyverse)
-<span style="color: #0000FF">library</span>(abettor)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">abettor</span><span class="p">)</span>
+</code></pre></div>
 <p>The <a href="https://github.com/phillc73/abettor">abettor package can be downloaded here</a>. For an in-depth understanding of the package, have a read of the documentation. Instructions are also provided in the sample code.</p>
 <hr />
 <h3 id="login-to-betfair">Login to Betfair<a class="headerlink" href="#login-to-betfair" title="Permanent link">&para;</a></h3>
 <p>To login to Betfair, replace the following dummy username, password and app key with your own.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>abettor<span style="color: #666666">::</span><span style="color: #0000FF">loginBF</span>(username <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;betfair_username&quot;</span>,
-                 password <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;betfair_password&quot;</span>,
-                 applicationKey <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;betfair_app_key&quot;</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">abettor</span><span class="o">::</span><span class="nf">loginBF</span><span class="p">(</span><span class="n">username</span> <span class="o">=</span> <span class="s">&quot;betfair_username&quot;</span><span class="p">,</span>
+                 <span class="n">password</span> <span class="o">=</span> <span class="s">&quot;betfair_password&quot;</span><span class="p">,</span>
+                 <span class="n">applicationKey</span> <span class="o">=</span> <span class="s">&quot;betfair_app_key&quot;</span><span class="p">)</span>
+</code></pre></div>
 <p>If you don't have a live app key for the API yet <a href="../../api/apiappkey">take a look at this page</a>.</p>
 <hr />
 <h3 id="finding-event-ids">Finding Event IDs<a class="headerlink" href="#finding-event-ids" title="Permanent link">&para;</a></h3>
 <p>In order to find data for specific markets, you will first need to know the event ID. This is easily achieved with the <a href="https://github.com/phillc73/abettor">abettor package</a>. </p>
 <p>To find the event IDs of events in the next 60 days:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>abettor<span style="color: #666666">::</span><span style="color: #0000FF">listEventTypes</span>(toDate <span style="color: #666666">=</span> (<span style="color: #0000FF">format</span>(<span style="color: #0000FF">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)))
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">abettor</span><span class="o">::</span><span class="nf">listEventTypes</span><span class="p">(</span><span class="n">toDate</span> <span class="o">=</span> <span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span> <span class="o">+</span> <span class="m">86400</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%dT%TZ&quot;</span><span class="p">)))</span>
+</code></pre></div>
 <p>This will return a DataFrame of the following structure:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>eventType.id    eventType.name  marketCount
-<span style="color: #666666">1</span>   Soccer  <span style="color: #666666">1193</span>
-<span style="color: #666666">2</span>   Tennis  <span style="color: #666666">2184</span>
-<span style="color: #666666">7522</span>    Basketball  <span style="color: #666666">1</span>
-<span style="color: #666666">4</span>   Cricket <span style="color: #666666">37</span>
-<span style="color: #666666">7</span>   Horse Racing    <span style="color: #666666">509</span>
-<span style="color: #666666">61420</span>   Australian Rules    <span style="color: #666666">31</span>
-<span style="color: #666666">4339</span>    Greyhound Racing    <span style="color: #666666">527</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">eventType.id</span>    <span class="n">eventType.name</span>  <span class="n">marketCount</span>
+<span class="m">1</span>   <span class="n">Soccer</span>  <span class="m">1193</span>
+<span class="m">2</span>   <span class="n">Tennis</span>  <span class="m">2184</span>
+<span class="m">7522</span>    <span class="n">Basketball</span>  <span class="m">1</span>
+<span class="m">4</span>   <span class="n">Cricket</span> <span class="m">37</span>
+<span class="m">7</span>   <span class="n">Horse</span> <span class="n">Racing</span>    <span class="m">509</span>
+<span class="m">61420</span>   <span class="n">Australian</span> <span class="n">Rules</span>    <span class="m">31</span>
+<span class="m">4339</span>    <span class="n">Greyhound</span> <span class="n">Racing</span>    <span class="m">527</span>
+</code></pre></div>
 <hr />
 <h3 id="finding-competition-ids">Finding Competition IDs<a class="headerlink" href="#finding-competition-ids" title="Permanent link">&para;</a></h3>
 <p>Once you have the event ID, the next logical step is to find the competition IDs for the event you want to get data for. For example, if you want to find the competition IDs for Australian Rules, you would use the following</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>abettor<span style="color: #666666">::</span><span style="color: #0000FF">listCompetitions</span>(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">61420</span>,  <span style="color: #408080; font-style: italic">## AFL is eventTypeId 61420,</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #0000FF">format</span>(<span style="color: #0000FF">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">180</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 180 days</span>
-)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">abettor</span><span class="o">::</span><span class="nf">listCompetitions</span><span class="p">(</span>
+  <span class="n">eventTypeIds</span> <span class="o">=</span> <span class="m">61420</span><span class="p">,</span>  <span class="c1">## AFL is eventTypeId 61420,</span>
+  <span class="n">toDate</span> <span class="o">=</span> <span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span> <span class="o">+</span> <span class="m">86400</span> <span class="o">*</span> <span class="m">180</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%dT%TZ&quot;</span><span class="p">))</span> <span class="c1">## Look ahead until the next 180 days</span>
+<span class="p">)</span>
+</code></pre></div>
 <p>This will return the following structured DataFrame:</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>competition.id  competition.name    marketCount competitionRegion
-<span style="color: #666666">11516633</span>    Brownlow Medal <span style="color: #666666">2018</span> <span style="color: #666666">3</span>   AUS
-<span style="color: #666666">11897406</span>    AFL <span style="color: #666666">78</span>  AUS
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">competition.id</span>  <span class="n">competition.name</span>    <span class="n">marketCount</span> <span class="n">competitionRegion</span>
+<span class="m">11516633</span>    <span class="n">Brownlow</span> <span class="n">Medal</span> <span class="m">2018</span> <span class="m">3</span>   <span class="n">AUS</span>
+<span class="m">11897406</span>    <span class="n">AFL</span> <span class="m">78</span>  <span class="n">AUS</span>
+</code></pre></div>
 <hr />
 <h3 id="finding-specific-markets">Finding Specific Markets<a class="headerlink" href="#finding-specific-markets" title="Permanent link">&para;</a></h3>
 <p>The next logical step is to find the market that you are interested in. Furthering our example above, if you want the Match Odds for all Australian Rules games over the next 60 days, simply use the Competition ID from above in the following.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>abettor<span style="color: #666666">::</span><span style="color: #0000FF">listMarketCatalogue</span>(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">61420</span>,
-  marketTypeCodes <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;MATCH_ODDS&quot;</span>, <span style="color: #408080; font-style: italic">## Restrict our search to Match Odds only, not other markets for the same match</span>
-  competitionIds <span style="color: #666666">=</span> <span style="color: #666666">11897406</span>,
-  toDate <span style="color: #666666">=</span> (<span style="color: #0000FF">format</span>(<span style="color: #0000FF">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>))
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">abettor</span><span class="o">::</span><span class="nf">listMarketCatalogue</span><span class="p">(</span>
+  <span class="n">eventTypeIds</span> <span class="o">=</span> <span class="m">61420</span><span class="p">,</span>
+  <span class="n">marketTypeCodes</span> <span class="o">=</span> <span class="s">&quot;MATCH_ODDS&quot;</span><span class="p">,</span> <span class="c1">## Restrict our search to Match Odds only, not other markets for the same match</span>
+  <span class="n">competitionIds</span> <span class="o">=</span> <span class="m">11897406</span><span class="p">,</span>
+  <span class="n">toDate</span> <span class="o">=</span> <span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span> <span class="o">+</span> <span class="m">86400</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%dT%TZ&quot;</span><span class="p">))</span>
+</code></pre></div>
 <p>This returns a large DataFrame object with each market, participants and associated odds.</p>
 <hr />
 <h2 id="get-world-cup-odds-tutorial">Get World Cup Odds Tutorial<a class="headerlink" href="#get-world-cup-odds-tutorial" title="Permanent link">&para;</a></h2>
 <p>This tutorial walks you through the process of retrieving exchange odds for all the matches from the 2018 FIFA World Cup 2018. This can be modified for other sports and uses.</p>
 <p>You can run this script in R.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">### FIFA World Cup Datathon</span>
-<span style="color: #408080; font-style: italic">### Betfair API Tutorial</span>
-<span style="color: #408080; font-style: italic">###</span>
-<span style="color: #408080; font-style: italic">### This script allows you to access the Betfair</span>
-<span style="color: #408080; font-style: italic">### API and retrive exchange odds for all the </span>
-<span style="color: #408080; font-style: italic">### matches from the upcoming FIFA World Cup 2018</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<div class="highlight"><pre><span></span><code><span class="c1">###################################################</span>
+<span class="c1">### FIFA World Cup Datathon</span>
+<span class="c1">### Betfair API Tutorial</span>
+<span class="c1">###</span>
+<span class="c1">### This script allows you to access the Betfair</span>
+<span class="c1">### API and retrive exchange odds for all the </span>
+<span class="c1">### matches from the upcoming FIFA World Cup 2018</span>
+<span class="c1">###################################################</span>
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">### Setup</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="c1">###################################################</span>
+<span class="c1">### Setup</span>
+<span class="c1">###################################################</span>
 
-<span style="color: #408080; font-style: italic">## Loading required packages</span>
-<span style="color: #0000FF">library</span>(tidyverse) <span style="color: #408080; font-style: italic">## package for general data manipulation - https://www.tidyverse.org/</span>
-<span style="color: #0000FF">library</span>(abettor) <span style="color: #408080; font-style: italic">## wrapper package for the Betfair API - https://github.com/phillc73/abettor</span>
+<span class="c1">## Loading required packages</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span> <span class="c1">## package for general data manipulation - https://www.tidyverse.org/</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">abettor</span><span class="p">)</span> <span class="c1">## wrapper package for the Betfair API - https://github.com/phillc73/abettor</span>
 
-<span style="color: #408080; font-style: italic">## Enter your Betfair API Credentials below</span>
-betfair_username <span style="color: #666666">&lt;-</span> <span style="color: #BA2121">&quot;&quot;</span>
-betfair_password <span style="color: #666666">&lt;-</span> <span style="color: #BA2121">&quot;&quot;</span>
-betfair_app_key <span style="color: #666666">&lt;-</span> <span style="color: #BA2121">&quot;&quot;</span>
+<span class="c1">## Enter your Betfair API Credentials below</span>
+<span class="n">betfair_username</span> <span class="o">&lt;-</span> <span class="s">&quot;&quot;</span>
+<span class="n">betfair_password</span> <span class="o">&lt;-</span> <span class="s">&quot;&quot;</span>
+<span class="n">betfair_app_key</span> <span class="o">&lt;-</span> <span class="s">&quot;&quot;</span>
 
-<span style="color: #408080; font-style: italic">## Login to Betfair - should return &quot;SUCCESS:&quot; on successful login</span>
-betfair_login <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span><span style="color: #0000FF">loginBF</span>(username <span style="color: #666666">=</span> betfair_username,
-                                  password <span style="color: #666666">=</span> betfair_password,
-                                  applicationKey <span style="color: #666666">=</span> betfair_app_key)
+<span class="c1">## Login to Betfair - should return &quot;SUCCESS:&quot; on successful login</span>
+<span class="n">betfair_login</span> <span class="o">&lt;-</span> <span class="n">abettor</span><span class="o">::</span><span class="nf">loginBF</span><span class="p">(</span><span class="n">username</span> <span class="o">=</span> <span class="n">betfair_username</span><span class="p">,</span>
+                                  <span class="n">password</span> <span class="o">=</span> <span class="n">betfair_password</span><span class="p">,</span>
+                                  <span class="n">applicationKey</span> <span class="o">=</span> <span class="n">betfair_app_key</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Retrieving all soccer competitions for </span>
-<span style="color: #408080; font-style: italic">## which markets are currently alive</span>
-<span style="color: #408080; font-style: italic">## on the Betfair Exchange</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="c1">###################################################</span>
+<span class="c1">## Retrieving all soccer competitions for </span>
+<span class="c1">## which markets are currently alive</span>
+<span class="c1">## on the Betfair Exchange</span>
+<span class="c1">###################################################</span>
 
-all_soccer_markets <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span><span style="color: #0000FF">listCompetitions</span>(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">1</span>,  <span style="color: #408080; font-style: italic">## Soccer is eventTypeId 1,</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #0000FF">format</span>(<span style="color: #0000FF">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 60 days</span>
-  )
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Retrieving the competition id</span>
-<span style="color: #408080; font-style: italic">## for the 2018 World Cup </span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="n">all_soccer_markets</span> <span class="o">&lt;-</span> <span class="n">abettor</span><span class="o">::</span><span class="nf">listCompetitions</span><span class="p">(</span>
+  <span class="n">eventTypeIds</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>  <span class="c1">## Soccer is eventTypeId 1,</span>
+  <span class="n">toDate</span> <span class="o">=</span> <span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span> <span class="o">+</span> <span class="m">86400</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%dT%TZ&quot;</span><span class="p">))</span> <span class="c1">## Look ahead until the next 60 days</span>
+  <span class="p">)</span>
+<span class="c1">###################################################</span>
+<span class="c1">## Retrieving the competition id</span>
+<span class="c1">## for the 2018 World Cup </span>
+<span class="c1">###################################################</span>
 
-world_cup_competition_id <span style="color: #666666">&lt;-</span> all_soccer_markets <span style="color: #666666">%&gt;%</span>
-  dplyr<span style="color: #666666">::</span><span style="color: #0000FF">pull</span>(competition) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting the variable competition which is a nested data frame</span>
-  dplyr<span style="color: #666666">::</span><span style="color: #0000FF">filter</span>(name <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;2018 FIFA World Cup&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Filtering for the competition we need</span>
-  dplyr<span style="color: #666666">::</span><span style="color: #0000FF">pull</span>(id) <span style="color: #408080; font-style: italic">## Extracting the id for the competition we need</span>
+<span class="n">world_cup_competition_id</span> <span class="o">&lt;-</span> <span class="n">all_soccer_markets</span> <span class="o">%&gt;%</span>
+  <span class="n">dplyr</span><span class="o">::</span><span class="nf">pull</span><span class="p">(</span><span class="n">competition</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Extracting the variable competition which is a nested data frame</span>
+  <span class="n">dplyr</span><span class="o">::</span><span class="nf">filter</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;2018 FIFA World Cup&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Filtering for the competition we need</span>
+  <span class="n">dplyr</span><span class="o">::</span><span class="nf">pull</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="c1">## Extracting the id for the competition we need</span>
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Obtaining all markets that are currently </span>
-<span style="color: #408080; font-style: italic">## alive on the Betfair Exchange that belong to</span>
-<span style="color: #408080; font-style: italic">## Competition ID that is mapped to the World Cup </span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="c1">###################################################</span>
+<span class="c1">## Obtaining all markets that are currently </span>
+<span class="c1">## alive on the Betfair Exchange that belong to</span>
+<span class="c1">## Competition ID that is mapped to the World Cup </span>
+<span class="c1">###################################################</span>
 
-all_world_cup_markets <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span><span style="color: #0000FF">listMarketCatalogue</span>(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">1</span>, <span style="color: #408080; font-style: italic">## Soccer is eventTypeId 1</span>
-  marketTypeCodes <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;MATCH_ODDS&quot;</span>, <span style="color: #408080; font-style: italic">## Restrict our search to Match Odds only, not other markets for the same match</span>
-  competitionIds <span style="color: #666666">=</span> world_cup_competition_id, <span style="color: #408080; font-style: italic">## Restrict our search to World Cup matches only</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #0000FF">format</span>(<span style="color: #0000FF">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 60 days</span>
-)
+<span class="n">all_world_cup_markets</span> <span class="o">&lt;-</span> <span class="n">abettor</span><span class="o">::</span><span class="nf">listMarketCatalogue</span><span class="p">(</span>
+  <span class="n">eventTypeIds</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span> <span class="c1">## Soccer is eventTypeId 1</span>
+  <span class="n">marketTypeCodes</span> <span class="o">=</span> <span class="s">&quot;MATCH_ODDS&quot;</span><span class="p">,</span> <span class="c1">## Restrict our search to Match Odds only, not other markets for the same match</span>
+  <span class="n">competitionIds</span> <span class="o">=</span> <span class="n">world_cup_competition_id</span><span class="p">,</span> <span class="c1">## Restrict our search to World Cup matches only</span>
+  <span class="n">toDate</span> <span class="o">=</span> <span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span> <span class="o">+</span> <span class="m">86400</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%dT%TZ&quot;</span><span class="p">))</span> <span class="c1">## Look ahead until the next 60 days</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Obtaining the current odds on the Betfair</span>
-<span style="color: #408080; font-style: italic">## Exchange for all the markets that were </span>
-<span style="color: #408080; font-style: italic">## obtained in the previous step (World Cup Matches)</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="c1">###################################################</span>
+<span class="c1">## Obtaining the current odds on the Betfair</span>
+<span class="c1">## Exchange for all the markets that were </span>
+<span class="c1">## obtained in the previous step (World Cup Matches)</span>
+<span class="c1">###################################################</span>
 
-<span style="color: #408080; font-style: italic">## Creating a vector/array of all market ids</span>
-all_world_cup_markets_market_ids <span style="color: #666666">&lt;-</span> all_world_cup_markets <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">pull</span>(marketId)
+<span class="c1">## Creating a vector/array of all market ids</span>
+<span class="n">all_world_cup_markets_market_ids</span> <span class="o">&lt;-</span> <span class="n">all_world_cup_markets</span> <span class="o">%&gt;%</span>
+  <span class="nf">pull</span><span class="p">(</span><span class="n">marketId</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic">## This function takes in a single market id and returns </span>
-<span style="color: #408080; font-style: italic">## the current live odds on the Betfair Exchange for that market</span>
-fetch_odds <span style="color: #666666">&lt;-</span> <span style="color: #0000FF">function</span>(market_id) {
+<span class="c1">## This function takes in a single market id and returns </span>
+<span class="c1">## the current live odds on the Betfair Exchange for that market</span>
+<span class="n">fetch_odds</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">market_id</span><span class="p">)</span> <span class="p">{</span>
 
-  <span style="color: #408080; font-style: italic">## Retrieving market odds for a single market</span>
-  odds <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span><span style="color: #0000FF">listMarketBook</span>(marketIds <span style="color: #666666">=</span> market_id, <span style="color: #408080; font-style: italic">##Runs listMarketBook for given market_id</span>
-                                  priceData <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;EX_BEST_OFFERS&quot;</span> <span style="color: #408080; font-style: italic">##Fetching the top 3 odds, EX_ALL_OFFERS fetches the entire depth of prices</span>
-                                  ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">pull</span>(runners) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting the runners field which has details of odds</span>
-    <span style="color: #0000FF">as.data.frame</span>() <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Converting to data frame from list</span>
-    <span style="color: #0000FF">select</span>(lastPriceTraded) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting team and last matched odds</span>
-    <span style="color: #0000FF">mutate</span>(market_id <span style="color: #666666">=</span> market_id) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Padding market id to the data to make it unique to this match</span>
-    <span style="color: #0000FF">bind_cols</span>(<span style="color: #0000FF">data.frame</span>(outcome <span style="color: #666666">=</span> <span style="color: #0000FF">c</span>(<span style="color: #BA2121">&quot;o_1&quot;</span>,<span style="color: #BA2121">&quot;o_2&quot;</span>,<span style="color: #BA2121">&quot;o_3&quot;</span>))) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Creating outcome order to maintain consistency</span>
-    <span style="color: #0000FF">spread</span>(outcome, lastPriceTraded) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Reshaping data to make it 1 row per match</span>
-    <span style="color: #0000FF">rename</span>(team_1_odds <span style="color: #666666">=</span> o_1,
-           team_2_odds <span style="color: #666666">=</span> o_2,
-           draw_odds <span style="color: #666666">=</span> o_3) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">##Renaming columns such that all matches can be combined into one data frame</span>
-    <span style="color: #0000FF">select</span>(market_id, team_1_odds, draw_odds, team_2_odds) <span style="color: #408080; font-style: italic">## Ordering columns in the right order</span>
+  <span class="c1">## Retrieving market odds for a single market</span>
+  <span class="n">odds</span> <span class="o">&lt;-</span> <span class="n">abettor</span><span class="o">::</span><span class="nf">listMarketBook</span><span class="p">(</span><span class="n">marketIds</span> <span class="o">=</span> <span class="n">market_id</span><span class="p">,</span> <span class="c1">##Runs listMarketBook for given market_id</span>
+                                  <span class="n">priceData</span> <span class="o">=</span> <span class="s">&quot;EX_BEST_OFFERS&quot;</span> <span class="c1">##Fetching the top 3 odds, EX_ALL_OFFERS fetches the entire depth of prices</span>
+                                  <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">pull</span><span class="p">(</span><span class="n">runners</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Extracting the runners field which has details of odds</span>
+    <span class="nf">as.data.frame</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1">## Converting to data frame from list</span>
+    <span class="nf">select</span><span class="p">(</span><span class="n">lastPriceTraded</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Extracting team and last matched odds</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">market_id</span> <span class="o">=</span> <span class="n">market_id</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Padding market id to the data to make it unique to this match</span>
+    <span class="nf">bind_cols</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">outcome</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;o_1&quot;</span><span class="p">,</span><span class="s">&quot;o_2&quot;</span><span class="p">,</span><span class="s">&quot;o_3&quot;</span><span class="p">)))</span> <span class="o">%&gt;%</span> <span class="c1">## Creating outcome order to maintain consistency</span>
+    <span class="nf">spread</span><span class="p">(</span><span class="n">outcome</span><span class="p">,</span> <span class="n">lastPriceTraded</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Reshaping data to make it 1 row per match</span>
+    <span class="nf">rename</span><span class="p">(</span><span class="n">team_1_odds</span> <span class="o">=</span> <span class="n">o_1</span><span class="p">,</span>
+           <span class="n">team_2_odds</span> <span class="o">=</span> <span class="n">o_2</span><span class="p">,</span>
+           <span class="n">draw_odds</span> <span class="o">=</span> <span class="n">o_3</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">##Renaming columns such that all matches can be combined into one data frame</span>
+    <span class="nf">select</span><span class="p">(</span><span class="n">market_id</span><span class="p">,</span> <span class="n">team_1_odds</span><span class="p">,</span> <span class="n">draw_odds</span><span class="p">,</span> <span class="n">team_2_odds</span><span class="p">)</span> <span class="c1">## Ordering columns in the right order</span>
 
-  <span style="color: #0000FF">return</span>(odds)
-}
+  <span class="nf">return</span><span class="p">(</span><span class="n">odds</span><span class="p">)</span>
+<span class="p">}</span>
 
-<span style="color: #408080; font-style: italic">## The code below maps (or loops) each market id in the vector we created</span>
-<span style="color: #408080; font-style: italic">## above through the fetch_odds function and retrives the market odds </span>
-<span style="color: #408080; font-style: italic">## into a single data frame</span>
-world_cup_market_odds <span style="color: #666666">&lt;-</span> <span style="color: #0000FF">map_df</span>(.x <span style="color: #666666">=</span> all_world_cup_markets_market_ids, <span style="color: #408080; font-style: italic">##Iterate over market ids</span>
-                                .f <span style="color: #666666">=</span> fetch_odds <span style="color: #408080; font-style: italic">## through function fetch_odds</span>
-                                ) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">bind_cols</span>(all_world_cup_markets <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Merge with event names to identify which match odds it is</span>
-              <span style="color: #0000FF">pull</span>(event) <span style="color: #666666">%&gt;%</span>
-              <span style="color: #0000FF">select</span>(name)) <span style="color: #666666">%&gt;%</span> 
-  <span style="color: #0000FF">mutate</span>(team_1 <span style="color: #666666">=</span> <span style="color: #0000FF">gsub</span>(<span style="color: #BA2121">&quot; v .*&quot;</span>,<span style="color: #BA2121">&quot;&quot;</span>,name), <span style="color: #408080; font-style: italic">## Extracting team 1 from match name</span>
-         team_2 <span style="color: #666666">=</span> <span style="color: #0000FF">gsub</span>(<span style="color: #BA2121">&quot;.* v &quot;</span>, <span style="color: #BA2121">&quot;&quot;</span>, name)) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracing team 2 from match name</span>
-  <span style="color: #0000FF">select</span>(team_1, team_2, team_1_odds, draw_odds, team_2_odds) <span style="color: #408080; font-style: italic">## Extracting columns that we need</span>
+<span class="c1">## The code below maps (or loops) each market id in the vector we created</span>
+<span class="c1">## above through the fetch_odds function and retrives the market odds </span>
+<span class="c1">## into a single data frame</span>
+<span class="n">world_cup_market_odds</span> <span class="o">&lt;-</span> <span class="nf">map_df</span><span class="p">(</span><span class="n">.x</span> <span class="o">=</span> <span class="n">all_world_cup_markets_market_ids</span><span class="p">,</span> <span class="c1">##Iterate over market ids</span>
+                                <span class="n">.f</span> <span class="o">=</span> <span class="n">fetch_odds</span> <span class="c1">## through function fetch_odds</span>
+                                <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">bind_cols</span><span class="p">(</span><span class="n">all_world_cup_markets</span> <span class="o">%&gt;%</span> <span class="c1">## Merge with event names to identify which match odds it is</span>
+              <span class="nf">pull</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="o">%&gt;%</span>
+              <span class="nf">select</span><span class="p">(</span><span class="n">name</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">team_1</span> <span class="o">=</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot; v .*&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">),</span> <span class="c1">## Extracting team 1 from match name</span>
+         <span class="n">team_2</span> <span class="o">=</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;.* v &quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1">## Extracing team 2 from match name</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">team_1</span><span class="p">,</span> <span class="n">team_2</span><span class="p">,</span> <span class="n">team_1_odds</span><span class="p">,</span> <span class="n">draw_odds</span><span class="p">,</span> <span class="n">team_2_odds</span><span class="p">)</span> <span class="c1">## Extracting columns that we need</span>
 
-<span style="color: #408080; font-style: italic">## Writing output to csv file</span>
-<span style="color: #0000FF">write_csv</span>(world_cup_market_odds, <span style="color: #BA2121">&quot;world_cup_market_odds.csv&quot;</span>)
-</pre></div>
-
+<span class="c1">## Writing output to csv file</span>
+<span class="nf">write_csv</span><span class="p">(</span><span class="n">world_cup_market_odds</span><span class="p">,</span> <span class="s">&quot;world_cup_market_odds.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="afl-odds-puller-tutorial">AFL Odds PulleR Tutorial<a class="headerlink" href="#afl-odds-puller-tutorial" title="Permanent link">&para;</a></h2>
 <p>This tutorial walks you through the process of retrieving exchange odds for the the next round of Australian Rules.</p>
 <p>You can run this script in R.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">### AFL Model</span>
-<span style="color: #408080; font-style: italic">### Betfair API Odds GrabbR</span>
-<span style="color: #408080; font-style: italic">###</span>
-<span style="color: #408080; font-style: italic">### This script allows you to access the Betfair</span>
-<span style="color: #408080; font-style: italic">### API and retrive exchange odds for all the </span>
-<span style="color: #408080; font-style: italic">### matches for the upcoming round of AFL games</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<div class="highlight"><pre><span></span><code><span class="c1">###################################################</span>
+<span class="c1">### AFL Model</span>
+<span class="c1">### Betfair API Odds GrabbR</span>
+<span class="c1">###</span>
+<span class="c1">### This script allows you to access the Betfair</span>
+<span class="c1">### API and retrive exchange odds for all the </span>
+<span class="c1">### matches for the upcoming round of AFL games</span>
+<span class="c1">###################################################</span>
 
-<span style="color: #408080; font-style: italic">## Loading required packages</span>
-<span style="color: #0000FF">library</span>(tidyverse) <span style="color: #408080; font-style: italic">## package for general data manipulation - https://www.tidyverse.org/</span>
-<span style="color: #0000FF">library</span>(abettor) <span style="color: #408080; font-style: italic">## wrapper package for the Betfair API - https://github.com/phillc73/abettor</span>
+<span class="c1">## Loading required packages</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span> <span class="c1">## package for general data manipulation - https://www.tidyverse.org/</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">abettor</span><span class="p">)</span> <span class="c1">## wrapper package for the Betfair API - https://github.com/phillc73/abettor</span>
 
-<span style="color: #408080; font-style: italic">## Login to Betfair - should return &quot;SUCCESS:&quot; on successful login</span>
-betfair_login <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span><span style="color: #0000FF">loginBF</span>(username <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;your_username&#39;</span>,
-                                  password <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;your_password&#39;</span>,
-                                  applicationKey <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;your_betfair_app_key&quot;</span>)
+<span class="c1">## Login to Betfair - should return &quot;SUCCESS:&quot; on successful login</span>
+<span class="n">betfair_login</span> <span class="o">&lt;-</span> <span class="n">abettor</span><span class="o">::</span><span class="nf">loginBF</span><span class="p">(</span><span class="n">username</span> <span class="o">=</span> <span class="s">&#39;your_username&#39;</span><span class="p">,</span>
+                                  <span class="n">password</span> <span class="o">=</span> <span class="s">&#39;your_password&#39;</span><span class="p">,</span>
+                                  <span class="n">applicationKey</span> <span class="o">=</span> <span class="s">&quot;your_betfair_app_key&quot;</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Retrieving all AFL competitions for </span>
-<span style="color: #408080; font-style: italic">## which markets are currently alive</span>
-<span style="color: #408080; font-style: italic">## on the Betfair Exchange</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="c1">###################################################</span>
+<span class="c1">## Retrieving all AFL competitions for </span>
+<span class="c1">## which markets are currently alive</span>
+<span class="c1">## on the Betfair Exchange</span>
+<span class="c1">###################################################</span>
 
-all_afl_markets <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span><span style="color: #0000FF">listCompetitions</span>(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">61420</span>,  <span style="color: #408080; font-style: italic">## AFL is eventTypeId 61420,</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #0000FF">format</span>(<span style="color: #0000FF">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">180</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 180 days</span>
-)
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Retrieving the competition id</span>
-<span style="color: #408080; font-style: italic">## for the regular AFL season</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="n">all_afl_markets</span> <span class="o">&lt;-</span> <span class="n">abettor</span><span class="o">::</span><span class="nf">listCompetitions</span><span class="p">(</span>
+  <span class="n">eventTypeIds</span> <span class="o">=</span> <span class="m">61420</span><span class="p">,</span>  <span class="c1">## AFL is eventTypeId 61420,</span>
+  <span class="n">toDate</span> <span class="o">=</span> <span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span> <span class="o">+</span> <span class="m">86400</span> <span class="o">*</span> <span class="m">180</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%dT%TZ&quot;</span><span class="p">))</span> <span class="c1">## Look ahead until the next 180 days</span>
+<span class="p">)</span>
+<span class="c1">###################################################</span>
+<span class="c1">## Retrieving the competition id</span>
+<span class="c1">## for the regular AFL season</span>
+<span class="c1">###################################################</span>
 
-afl_competition_id <span style="color: #666666">&lt;-</span> all_afl_markets <span style="color: #666666">%&gt;%</span>
-  dplyr<span style="color: #666666">::</span><span style="color: #0000FF">pull</span>(competition) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting the variable competition which is a nested data frame</span>
-  dplyr<span style="color: #666666">::</span><span style="color: #0000FF">filter</span>(name <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;AFL&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Filtering for the competition we need</span>
-  dplyr<span style="color: #666666">::</span><span style="color: #0000FF">pull</span>(id) <span style="color: #408080; font-style: italic">## Extracting the id for the competition we need</span>
+<span class="n">afl_competition_id</span> <span class="o">&lt;-</span> <span class="n">all_afl_markets</span> <span class="o">%&gt;%</span>
+  <span class="n">dplyr</span><span class="o">::</span><span class="nf">pull</span><span class="p">(</span><span class="n">competition</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Extracting the variable competition which is a nested data frame</span>
+  <span class="n">dplyr</span><span class="o">::</span><span class="nf">filter</span><span class="p">(</span><span class="n">name</span> <span class="o">==</span> <span class="s">&quot;AFL&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Filtering for the competition we need</span>
+  <span class="n">dplyr</span><span class="o">::</span><span class="nf">pull</span><span class="p">(</span><span class="n">id</span><span class="p">)</span> <span class="c1">## Extracting the id for the competition we need</span>
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Obtaining all markets that are currently </span>
-<span style="color: #408080; font-style: italic">## alive on the Betfair Exchange that belong to</span>
-<span style="color: #408080; font-style: italic">## Competition ID that is mapped to the AFL</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="c1">###################################################</span>
+<span class="c1">## Obtaining all markets that are currently </span>
+<span class="c1">## alive on the Betfair Exchange that belong to</span>
+<span class="c1">## Competition ID that is mapped to the AFL</span>
+<span class="c1">###################################################</span>
 
-all_afl_markets <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span><span style="color: #0000FF">listMarketCatalogue</span>(
-  eventTypeIds <span style="color: #666666">=</span> <span style="color: #666666">61420</span>, <span style="color: #408080; font-style: italic">## AFL is eventTypeId 61420</span>
-  marketTypeCodes <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;MATCH_ODDS&quot;</span>, <span style="color: #408080; font-style: italic">## Restrict our search to Match Odds only, not other markets for the same match</span>
-  competitionIds <span style="color: #666666">=</span> afl_competition_id, <span style="color: #408080; font-style: italic">## Restrict our search to AFL Matches Only</span>
-  toDate <span style="color: #666666">=</span> (<span style="color: #0000FF">format</span>(<span style="color: #0000FF">Sys.time</span>() <span style="color: #666666">+</span> <span style="color: #666666">86400</span> <span style="color: #666666">*</span> <span style="color: #666666">60</span>, <span style="color: #BA2121">&quot;%Y-%m-%dT%TZ&quot;</span>)) <span style="color: #408080; font-style: italic">## Look ahead until the next 60 days</span>
-)
+<span class="n">all_afl_markets</span> <span class="o">&lt;-</span> <span class="n">abettor</span><span class="o">::</span><span class="nf">listMarketCatalogue</span><span class="p">(</span>
+  <span class="n">eventTypeIds</span> <span class="o">=</span> <span class="m">61420</span><span class="p">,</span> <span class="c1">## AFL is eventTypeId 61420</span>
+  <span class="n">marketTypeCodes</span> <span class="o">=</span> <span class="s">&quot;MATCH_ODDS&quot;</span><span class="p">,</span> <span class="c1">## Restrict our search to Match Odds only, not other markets for the same match</span>
+  <span class="n">competitionIds</span> <span class="o">=</span> <span class="n">afl_competition_id</span><span class="p">,</span> <span class="c1">## Restrict our search to AFL Matches Only</span>
+  <span class="n">toDate</span> <span class="o">=</span> <span class="p">(</span><span class="nf">format</span><span class="p">(</span><span class="nf">Sys.time</span><span class="p">()</span> <span class="o">+</span> <span class="m">86400</span> <span class="o">*</span> <span class="m">60</span><span class="p">,</span> <span class="s">&quot;%Y-%m-%dT%TZ&quot;</span><span class="p">))</span> <span class="c1">## Look ahead until the next 60 days</span>
+<span class="p">)</span>
 
-<span style="color: #408080; font-style: italic">###################################################</span>
-<span style="color: #408080; font-style: italic">## Obtaining the current odds on the Betfair</span>
-<span style="color: #408080; font-style: italic">## Exchange for all the markets that were </span>
-<span style="color: #408080; font-style: italic">## obtained in the previous step</span>
-<span style="color: #408080; font-style: italic">###################################################</span>
+<span class="c1">###################################################</span>
+<span class="c1">## Obtaining the current odds on the Betfair</span>
+<span class="c1">## Exchange for all the markets that were </span>
+<span class="c1">## obtained in the previous step</span>
+<span class="c1">###################################################</span>
 
-<span style="color: #408080; font-style: italic">## Creating a vector/array of all market ids</span>
-all_afl_markets_market_ids <span style="color: #666666">&lt;-</span> all_afl_markets <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">pull</span>(marketId)
+<span class="c1">## Creating a vector/array of all market ids</span>
+<span class="n">all_afl_markets_market_ids</span> <span class="o">&lt;-</span> <span class="n">all_afl_markets</span> <span class="o">%&gt;%</span>
+  <span class="nf">pull</span><span class="p">(</span><span class="n">marketId</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic">## This function takes in a single market id and returns </span>
-<span style="color: #408080; font-style: italic">## the current live odds on the Betfair Exchange for that market</span>
-fetch_odds <span style="color: #666666">&lt;-</span> <span style="color: #0000FF">function</span>(market_id) {
+<span class="c1">## This function takes in a single market id and returns </span>
+<span class="c1">## the current live odds on the Betfair Exchange for that market</span>
+<span class="n">fetch_odds</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">market_id</span><span class="p">)</span> <span class="p">{</span>
 
-  <span style="color: #408080; font-style: italic">## Retrieving market odds for a single market</span>
-  odds <span style="color: #666666">&lt;-</span> abettor<span style="color: #666666">::</span><span style="color: #0000FF">listMarketBook</span>(marketIds <span style="color: #666666">=</span> market_id, <span style="color: #408080; font-style: italic">##Runs listMarketBook for given market_id</span>
-                                  priceData <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;EX_BEST_OFFERS&quot;</span> <span style="color: #408080; font-style: italic">##Fetching the top 3 odds, EX_ALL_OFFERS fetches the entire depth of prices</span>
-  ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">pull</span>(runners) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting the runners field which has details of odds</span>
-    <span style="color: #0000FF">as.data.frame</span>() <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Converting to data frame from list</span>
-    <span style="color: #0000FF">select</span>(lastPriceTraded) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracting team and last matched odds</span>
-    <span style="color: #0000FF">mutate</span>(market_id <span style="color: #666666">=</span> market_id) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Padding market id to the data to make it unique to this match</span>
-    <span style="color: #0000FF">bind_cols</span>(<span style="color: #0000FF">data.frame</span>(outcome <span style="color: #666666">=</span> <span style="color: #0000FF">c</span>(<span style="color: #BA2121">&quot;o_1&quot;</span>,<span style="color: #BA2121">&quot;o_2&quot;</span>))) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Creating outcome order to maintain consistency</span>
-    <span style="color: #0000FF">spread</span>(outcome, lastPriceTraded) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Reshaping data to make it 1 row per match</span>
-    <span style="color: #0000FF">rename</span>(team_1_odds <span style="color: #666666">=</span> o_1,
-           team_2_odds <span style="color: #666666">=</span> o_2) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">##Renaming columns such that all matches can be combined into one data frame</span>
-    <span style="color: #0000FF">select</span>(market_id, team_1_odds, team_2_odds) <span style="color: #408080; font-style: italic">## Ordering columns in the right order</span>
+  <span class="c1">## Retrieving market odds for a single market</span>
+  <span class="n">odds</span> <span class="o">&lt;-</span> <span class="n">abettor</span><span class="o">::</span><span class="nf">listMarketBook</span><span class="p">(</span><span class="n">marketIds</span> <span class="o">=</span> <span class="n">market_id</span><span class="p">,</span> <span class="c1">##Runs listMarketBook for given market_id</span>
+                                  <span class="n">priceData</span> <span class="o">=</span> <span class="s">&quot;EX_BEST_OFFERS&quot;</span> <span class="c1">##Fetching the top 3 odds, EX_ALL_OFFERS fetches the entire depth of prices</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">pull</span><span class="p">(</span><span class="n">runners</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Extracting the runners field which has details of odds</span>
+    <span class="nf">as.data.frame</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1">## Converting to data frame from list</span>
+    <span class="nf">select</span><span class="p">(</span><span class="n">lastPriceTraded</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Extracting team and last matched odds</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">market_id</span> <span class="o">=</span> <span class="n">market_id</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Padding market id to the data to make it unique to this match</span>
+    <span class="nf">bind_cols</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">outcome</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;o_1&quot;</span><span class="p">,</span><span class="s">&quot;o_2&quot;</span><span class="p">)))</span> <span class="o">%&gt;%</span> <span class="c1">## Creating outcome order to maintain consistency</span>
+    <span class="nf">spread</span><span class="p">(</span><span class="n">outcome</span><span class="p">,</span> <span class="n">lastPriceTraded</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">## Reshaping data to make it 1 row per match</span>
+    <span class="nf">rename</span><span class="p">(</span><span class="n">team_1_odds</span> <span class="o">=</span> <span class="n">o_1</span><span class="p">,</span>
+           <span class="n">team_2_odds</span> <span class="o">=</span> <span class="n">o_2</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1">##Renaming columns such that all matches can be combined into one data frame</span>
+    <span class="nf">select</span><span class="p">(</span><span class="n">market_id</span><span class="p">,</span> <span class="n">team_1_odds</span><span class="p">,</span> <span class="n">team_2_odds</span><span class="p">)</span> <span class="c1">## Ordering columns in the right order</span>
 
-  <span style="color: #0000FF">return</span>(odds)
-}
+  <span class="nf">return</span><span class="p">(</span><span class="n">odds</span><span class="p">)</span>
+<span class="p">}</span>
 
-<span style="color: #408080; font-style: italic">## The code below maps (or loops) each market id in the vector we created</span>
-<span style="color: #408080; font-style: italic">## above through the fetch_odds function and retrives the market odds </span>
-<span style="color: #408080; font-style: italic">## into a single data frame</span>
-afl_market_odds <span style="color: #666666">&lt;-</span> <span style="color: #0000FF">map_df</span>(.x <span style="color: #666666">=</span> all_afl_markets_market_ids, <span style="color: #408080; font-style: italic">##Iterate over market ids</span>
-                                .f <span style="color: #666666">=</span> fetch_odds <span style="color: #408080; font-style: italic">## through function fetch_odds</span>
-) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">bind_cols</span>(all_afl_markets <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Merge with event names to identify which match odds it is</span>
-              <span style="color: #0000FF">pull</span>(event) <span style="color: #666666">%&gt;%</span>
-              <span style="color: #0000FF">select</span>(name)) <span style="color: #666666">%&gt;%</span> 
-  <span style="color: #0000FF">mutate</span>(team_1 <span style="color: #666666">=</span> <span style="color: #0000FF">gsub</span>(<span style="color: #BA2121">&quot; v .*&quot;</span>,<span style="color: #BA2121">&quot;&quot;</span>,name), <span style="color: #408080; font-style: italic">## Extracting team 1 from match name</span>
-         team_2 <span style="color: #666666">=</span> <span style="color: #0000FF">gsub</span>(<span style="color: #BA2121">&quot;.* v &quot;</span>, <span style="color: #BA2121">&quot;&quot;</span>, name)) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic">## Extracing team 2 from match name</span>
-  <span style="color: #0000FF">select</span>(team_1, team_2, team_1_odds, team_2_odds) <span style="color: #408080; font-style: italic">## Extracting columns that we need</span>
+<span class="c1">## The code below maps (or loops) each market id in the vector we created</span>
+<span class="c1">## above through the fetch_odds function and retrives the market odds </span>
+<span class="c1">## into a single data frame</span>
+<span class="n">afl_market_odds</span> <span class="o">&lt;-</span> <span class="nf">map_df</span><span class="p">(</span><span class="n">.x</span> <span class="o">=</span> <span class="n">all_afl_markets_market_ids</span><span class="p">,</span> <span class="c1">##Iterate over market ids</span>
+                                <span class="n">.f</span> <span class="o">=</span> <span class="n">fetch_odds</span> <span class="c1">## through function fetch_odds</span>
+<span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">bind_cols</span><span class="p">(</span><span class="n">all_afl_markets</span> <span class="o">%&gt;%</span> <span class="c1">## Merge with event names to identify which match odds it is</span>
+              <span class="nf">pull</span><span class="p">(</span><span class="n">event</span><span class="p">)</span> <span class="o">%&gt;%</span>
+              <span class="nf">select</span><span class="p">(</span><span class="n">name</span><span class="p">))</span> <span class="o">%&gt;%</span> 
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">team_1</span> <span class="o">=</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot; v .*&quot;</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="n">name</span><span class="p">),</span> <span class="c1">## Extracting team 1 from match name</span>
+         <span class="n">team_2</span> <span class="o">=</span> <span class="nf">gsub</span><span class="p">(</span><span class="s">&quot;.* v &quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1">## Extracing team 2 from match name</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">team_1</span><span class="p">,</span> <span class="n">team_2</span><span class="p">,</span> <span class="n">team_1_odds</span><span class="p">,</span> <span class="n">team_2_odds</span><span class="p">)</span> <span class="c1">## Extracting columns that we need</span>
 
-<span style="color: #408080; font-style: italic">## Writing output to csv file</span>
-<span style="color: #0000FF">write_csv</span>(afl_market_odds, <span style="color: #BA2121">&quot;weekly_afl_odds.csv&quot;</span>)
-</pre></div>
+<span class="c1">## Writing output to csv file</span>
+<span class="nf">write_csv</span><span class="p">(</span><span class="n">afl_market_odds</span><span class="p">,</span> <span class="s">&quot;weekly_afl_odds.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
                 
                   
                 
@@ -1475,7 +1467,7 @@ afl_market_odds <span style="color: #666666">&lt;-</span> <span style="color: #0
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

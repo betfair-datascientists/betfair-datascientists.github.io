@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
+      <a href="#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1080,105 +1080,101 @@
 <h2 id="data-acquisition">Data Acquisition<a class="headerlink" href="#data-acquisition" title="Permanent link">&para;</a></h2>
 <p>We will be grabbing our data from <a href="http://www.football-data.co.uk/englandm.php">football-data.co.uk</a>, which has an enormous amount of soccer data dating back to the 90s. They also generously allow us to use it for free! However, the data is in separate CSVs based on the season. That means we would need to manually download 20 different files if we wanted the past 20 seasons. Rather than do this laborious and boring task, let's create a function which downloads the files for us, and appends them all into one big CSV.</p>
 <p>To do this, we will use BeautifulSoup, a Python library which helps to pull data from HTML and XML files. We will then define a function which collates all the data for us into one DataFrame.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Import Modules</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Import Modules</span>
 
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">requests</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">bs4</span> <span style="color: #008000; font-weight: bold">import</span> BeautifulSoup
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">datetime</span>
-pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&#39;display.max_columns&#39;</span>, <span style="color: #666666">100</span>)
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #666666">%</span>matplotlib inline
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">data_preparation_functions</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-</pre></div>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">from</span> <span class="nn">data_preparation_functions</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">grab_epl_data</span><span class="p">():</span>
+    <span class="c1"># Connect to football-data.co.uk</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://www.football-data.co.uk/englandm.php&quot;</span><span class="p">)</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">grab_epl_data</span>():
-    <span style="color: #408080; font-style: italic"># Connect to football-data.co.uk</span>
-    res <span style="color: #666666">=</span> requests<span style="color: #666666">.</span>get(<span style="color: #BA2121">&quot;http://www.football-data.co.uk/englandm.php&quot;</span>)
+    <span class="c1"># Create a BeautifulSoup object</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
 
-    <span style="color: #408080; font-style: italic"># Create a BeautifulSoup object</span>
-    soup <span style="color: #666666">=</span> BeautifulSoup(res<span style="color: #666666">.</span>content, <span style="color: #BA2121">&#39;lxml&#39;</span>)
+    <span class="c1"># Find the tables with the links to the data in them.</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;align&#39;</span><span class="p">:</span> <span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="s1">&#39;cellspacing&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="s1">&#39;800&#39;</span><span class="p">})[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">body</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;td&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;valign&#39;</span><span class="p">:</span> <span class="s1">&#39;top&#39;</span><span class="p">})[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span style="color: #408080; font-style: italic"># Find the tables with the links to the data in them.</span>
-    table <span style="color: #666666">=</span> soup<span style="color: #666666">.</span>find_all(<span style="color: #BA2121">&#39;table&#39;</span>, {<span style="color: #BA2121">&#39;align&#39;</span>: <span style="color: #BA2121">&#39;center&#39;</span>, <span style="color: #BA2121">&#39;cellspacing&#39;</span>: <span style="color: #BA2121">&#39;0&#39;</span>, <span style="color: #BA2121">&#39;width&#39;</span>: <span style="color: #BA2121">&#39;800&#39;</span>})[<span style="color: #666666">1</span>]
-    body <span style="color: #666666">=</span> table<span style="color: #666666">.</span>find_all(<span style="color: #BA2121">&#39;td&#39;</span>, {<span style="color: #BA2121">&#39;valign&#39;</span>: <span style="color: #BA2121">&#39;top&#39;</span>})[<span style="color: #666666">1</span>]
+    <span class="c1"># Grab the urls for the csv files</span>
+    <span class="n">links</span> <span class="o">=</span> <span class="p">[</span><span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span>
+    <span class="n">links_text</span> <span class="o">=</span> <span class="p">[</span><span class="n">link_text</span><span class="o">.</span><span class="n">text</span> <span class="k">for</span> <span class="n">link_text</span> <span class="ow">in</span> <span class="n">body</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span>
 
-    <span style="color: #408080; font-style: italic"># Grab the urls for the csv files</span>
-    links <span style="color: #666666">=</span> [link<span style="color: #666666">.</span>get(<span style="color: #BA2121">&#39;href&#39;</span>) <span style="color: #008000; font-weight: bold">for</span> link <span style="color: #AA22FF; font-weight: bold">in</span> body<span style="color: #666666">.</span>find_all(<span style="color: #BA2121">&#39;a&#39;</span>)]
-    links_text <span style="color: #666666">=</span> [link_text<span style="color: #666666">.</span>text <span style="color: #008000; font-weight: bold">for</span> link_text <span style="color: #AA22FF; font-weight: bold">in</span> body<span style="color: #666666">.</span>find_all(<span style="color: #BA2121">&#39;a&#39;</span>)]
+    <span class="n">data_urls</span> <span class="o">=</span> <span class="p">[]</span>
 
-    data_urls <span style="color: #666666">=</span> []
+    <span class="c1"># Create a list of links</span>
+    <span class="n">prefix</span> <span class="o">=</span> <span class="s1">&#39;http://www.football-data.co.uk/&#39;</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">links_text</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">text</span> <span class="o">==</span> <span class="s1">&#39;Premier League&#39;</span><span class="p">:</span>
+            <span class="n">data_urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prefix</span> <span class="o">+</span> <span class="n">links</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 
-    <span style="color: #408080; font-style: italic"># Create a list of links</span>
-    prefix <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;http://www.football-data.co.uk/&#39;</span>
-    <span style="color: #008000; font-weight: bold">for</span> i, text <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">enumerate</span>(links_text):
-        <span style="color: #008000; font-weight: bold">if</span> text <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;Premier League&#39;</span>:
-            data_urls<span style="color: #666666">.</span>append(prefix <span style="color: #666666">+</span> links[i])
+    <span class="c1"># Get rid of last 11 uls as these don&#39;t include match stats and odds, and we</span>
+    <span class="c1"># only want from 2005 onwards</span>
+    <span class="n">data_urls</span> <span class="o">=</span> <span class="n">data_urls</span><span class="p">[:</span><span class="o">-</span><span class="mi">12</span><span class="p">]</span>
 
-    <span style="color: #408080; font-style: italic"># Get rid of last 11 uls as these don&#39;t include match stats and odds, and we</span>
-    <span style="color: #408080; font-style: italic"># only want from 2005 onwards</span>
-    data_urls <span style="color: #666666">=</span> data_urls[:<span style="color: #666666">-12</span>]
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
 
-    df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame()
+    <span class="c1"># Iterate over the urls</span>
+    <span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">data_urls</span><span class="p">:</span>
+        <span class="c1"># Get the season and make it a column</span>
+        <span class="n">season</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)[</span><span class="mi">4</span><span class="p">]</span>
 
-    <span style="color: #408080; font-style: italic"># Iterate over the urls</span>
-    <span style="color: #008000; font-weight: bold">for</span> url <span style="color: #AA22FF; font-weight: bold">in</span> data_urls:
-        <span style="color: #408080; font-style: italic"># Get the season and make it a column</span>
-        season <span style="color: #666666">=</span> url<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;/&#39;</span>)[<span style="color: #666666">4</span>]
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Getting data for season </span><span class="si">{</span><span class="n">season</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span style="color: #008000; font-weight: bold">print</span>(f<span style="color: #BA2121">&quot;Getting data for season {season}&quot;</span>)
+        <span class="c1"># Read the data from the url into a DataFrame</span>
+        <span class="n">temp_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">temp_df</span><span class="p">[</span><span class="s1">&#39;season&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">season</span>
 
-        <span style="color: #408080; font-style: italic"># Read the data from the url into a DataFrame</span>
-        temp_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>read_csv(url)
-        temp_df[<span style="color: #BA2121">&#39;season&#39;</span>] <span style="color: #666666">=</span> season
+        <span class="c1"># Create helpful columns like Day, Month, Year, Date etc. so that our data is clean</span>
+        <span class="n">temp_df</span> <span class="o">=</span> <span class="p">(</span><span class="n">temp_df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="n">thresh</span><span class="o">=</span><span class="n">temp_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">30</span><span class="p">)</span>
+                          <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Day</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                  <span class="n">Month</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                                  <span class="n">Year</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+                          <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">Month</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">Day</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">Year</span><span class="p">)</span>
+                          <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">))</span>
+                          <span class="o">.</span><span class="n">dropna</span><span class="p">())</span>
 
-        <span style="color: #408080; font-style: italic"># Create helpful columns like Day, Month, Year, Date etc. so that our data is clean</span>
-        temp_df <span style="color: #666666">=</span> (temp_df<span style="color: #666666">.</span>dropna(axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>, thresh<span style="color: #666666">=</span>temp_df<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>]<span style="color: #666666">-30</span>)
-                          <span style="color: #666666">.</span>assign(Day<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Date<span style="color: #666666">.</span>str<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;/&#39;</span>)<span style="color: #666666">.</span>str[<span style="color: #666666">0</span>],
-                                  Month<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Date<span style="color: #666666">.</span>str<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;/&#39;</span>)<span style="color: #666666">.</span>str[<span style="color: #666666">1</span>],
-                                  Year<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Date<span style="color: #666666">.</span>str<span style="color: #666666">.</span>split(<span style="color: #BA2121">&#39;/&#39;</span>)<span style="color: #666666">.</span>str[<span style="color: #666666">2</span>])
-                          <span style="color: #666666">.</span>assign(Date<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Month <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;/&#39;</span> <span style="color: #666666">+</span> df<span style="color: #666666">.</span>Day <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;/&#39;</span> <span style="color: #666666">+</span> df<span style="color: #666666">.</span>Year)
-                          <span style="color: #666666">.</span>assign(Date<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: pd<span style="color: #666666">.</span>to_datetime(df<span style="color: #666666">.</span>Date))
-                          <span style="color: #666666">.</span>dropna())
+        <span class="c1"># Append the temp_df to the main df</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_df</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-        <span style="color: #408080; font-style: italic"># Append the temp_df to the main df</span>
-        df <span style="color: #666666">=</span> df<span style="color: #666666">.</span>append(temp_df, sort<span style="color: #666666">=</span><span style="color: #008000">True</span>)
+    <span class="c1"># Drop all NAs</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Finished grabbing data.&quot;</span><span class="p">)</span>
 
-    <span style="color: #408080; font-style: italic"># Drop all NAs</span>
-    df <span style="color: #666666">=</span> df<span style="color: #666666">.</span>dropna(axis<span style="color: #666666">=1</span>)<span style="color: #666666">.</span>dropna()<span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Date&#39;</span>)
-    <span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Finished grabbing data.&quot;</span>)
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">grab_epl_data</span><span class="p">()</span>
+<span class="c1"># df.to_csv(&quot;data/epl_data.csv&quot;, index=False)</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> df
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df <span style="color: #666666">=</span> grab_epl_data()
-<span style="color: #408080; font-style: italic"># df.to_csv(&quot;data/epl_data.csv&quot;, index=False)</span>
-
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1819</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1718</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1617</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1516</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1415</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1314</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1213</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1112</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">1011</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0910</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0809</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0708</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0607</span>
-    Getting data <span style="color: #008000; font-weight: bold">for</span> season <span style="color: #666666">0506</span>
-    Finished grabbing data<span style="color: #666666">.</span>
-</pre></div>
-
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1819</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1718</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1617</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1516</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1415</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1314</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1213</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1112</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">1011</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">0910</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">0809</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">0708</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">0607</span>
+    <span class="n">Getting</span> <span class="n">data</span> <span class="k">for</span> <span class="n">season</span> <span class="mi">0506</span>
+    <span class="n">Finished</span> <span class="n">grabbing</span> <span class="n">data</span><span class="o">.</span>
+</code></pre></div>
 <p>Whenever we want to update our data (for example if we want the most recent Gameweek included), all we have to do is run that function and then save the data to a csv with the commented out line above.</p>
 <hr />
 <h2 id="data-exploration">Data Exploration<a class="headerlink" href="#data-exploration" title="Permanent link">&para;</a></h2>
 <p>Now that we have our data, let's explore it. Let's first look at home team win rates since 2005 to see if there is a consistent trend. To get an idea of what our data looks like, we'll look at the tail of the dataset first.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df<span style="color: #666666">.</span>tail(<span style="color: #666666">3</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1437,21 +1433,19 @@ pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create Home Win, Draw Win and Away Win columns</span>
-df <span style="color: #666666">=</span> df<span style="color: #666666">.</span>assign(homeWin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">&gt;</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>),
-              draw<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">==</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>),
-              awayWin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">&lt;</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=</span><span style="color: #BA2121">&#39;columns&#39;</span>))
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Create Home Win, Draw Win and Away Win columns</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">homeWin</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">FTHG</span> <span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">FTAG</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">),</span>
+              <span class="n">draw</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">FTHG</span> <span class="o">==</span> <span class="n">row</span><span class="o">.</span><span class="n">FTAG</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">),</span>
+              <span class="n">awayWin</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">FTHG</span> <span class="o">&lt;</span> <span class="n">row</span><span class="o">.</span><span class="n">FTAG</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">))</span>
+</code></pre></div>
 <h3 id="home-ground-advantage">Home Ground Advantage<a class="headerlink" href="#home-ground-advantage" title="Permanent link">&para;</a></h3>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>win_rates <span style="color: #666666">=</span> \
-(df<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;season&#39;</span>)
-    <span style="color: #666666">.</span>mean()
-    <span style="color: #666666">.</span>loc[:, [<span style="color: #BA2121">&#39;homeWin&#39;</span>, <span style="color: #BA2121">&#39;draw&#39;</span>, <span style="color: #BA2121">&#39;awayWin&#39;</span>]])
+<div class="highlight"><pre><span></span><code><span class="n">win_rates</span> <span class="o">=</span> \
+<span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;homeWin&#39;</span><span class="p">,</span> <span class="s1">&#39;draw&#39;</span><span class="p">,</span> <span class="s1">&#39;awayWin&#39;</span><span class="p">]])</span>
 
-win_rates
-</pre></div>
-
+<span class="n">win_rates</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1556,46 +1550,43 @@ win_rates
 </table>
 <h3 id="findings">Findings<a class="headerlink" href="#findings" title="Permanent link">&para;</a></h3>
 <p>As we can see, winrates across home team wins, draws and away team wins are very consistent. It seems that the home team wins around 46-47% of the time, the draw happens about 25% of the time, and the away team wins about 27% of the time. Let's plot this DataFrame so that we can see the trend more easily.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Set the style</span>
-plt<span style="color: #666666">.</span>style<span style="color: #666666">.</span>use(<span style="color: #BA2121">&#39;ggplot&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="c1"># Set the style</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
 
-fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure()
-ax <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>add_subplot(<span style="color: #666666">111</span>)
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
 
-home_line <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot(win_rates<span style="color: #666666">.</span>homeWin, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Home Win Rate&#39;</span>)
-away_line <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot(win_rates<span style="color: #666666">.</span>awayWin, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Away Win Rate&#39;</span>)
-draw_line <span style="color: #666666">=</span> ax<span style="color: #666666">.</span>plot(win_rates<span style="color: #666666">.</span>draw, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Draw Win Rate&#39;</span>)
-ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">&quot;season&quot;</span>)
-ax<span style="color: #666666">.</span>set_ylabel(<span style="color: #BA2121">&quot;Win Rate&quot;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Win Rates&quot;</span>, fontsize<span style="color: #666666">=16</span>)
+<span class="n">home_line</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">win_rates</span><span class="o">.</span><span class="n">homeWin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Home Win Rate&#39;</span><span class="p">)</span>
+<span class="n">away_line</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">win_rates</span><span class="o">.</span><span class="n">awayWin</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Away Win Rate&#39;</span><span class="p">)</span>
+<span class="n">draw_line</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">win_rates</span><span class="o">.</span><span class="n">draw</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Draw Win Rate&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;season&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Win Rate&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Win Rates&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Add the legend locations</span>
-home_legend <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>legend(handles<span style="color: #666666">=</span>home_line, loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;upper right&#39;</span>, bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">1</span>, <span style="color: #666666">1</span>))
-ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>gca()<span style="color: #666666">.</span>add_artist(home_legend)
-away_legend <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>legend(handles<span style="color: #666666">=</span>away_line, loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;center right&#39;</span>, bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">0.95</span>, <span style="color: #666666">0.4</span>))
-ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>gca()<span style="color: #666666">.</span>add_artist(away_legend)
-draw_legend <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>legend(handles<span style="color: #666666">=</span>draw_line, loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;center right&#39;</span>, bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">0.95</span>, <span style="color: #666666">0.06</span>))
-</pre></div>
-
+<span class="c1"># Add the legend locations</span>
+<span class="n">home_legend</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">home_line</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">home_legend</span><span class="p">)</span>
+<span class="n">away_legend</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">away_line</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">add_artist</span><span class="p">(</span><span class="n">away_legend</span><span class="p">)</span>
+<span class="n">draw_legend</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">draw_line</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center right&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.95</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">))</span>
+</code></pre></div>
 <p><img alt="png" src="../img/output_10_0.png" /></p>
 <p>As we can see, the winrates are relatively stable each season, except for in 14/15 when the home win rate drops dramatically.</p>
 <p>Out of interest, let's also have a look at which team has the best home ground advantage. Let's define HGA as home win rate - away win rate. And then plot some of the big clubs' HGA against each other.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>home_win_rates <span style="color: #666666">=</span> \
-(df<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;HomeTeam&#39;</span>])
-    <span style="color: #666666">.</span>homeWin
-    <span style="color: #666666">.</span>mean())
+<div class="highlight"><pre><span></span><code><span class="n">home_win_rates</span> <span class="o">=</span> \
+<span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;HomeTeam&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">homeWin</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
-away_win_rates <span style="color: #666666">=</span> \
-(df<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;AwayTeam&#39;</span>])
-    <span style="color: #666666">.</span>awayWin
-    <span style="color: #666666">.</span>mean())
+<span class="n">away_win_rates</span> <span class="o">=</span> \
+<span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;AwayTeam&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">awayWin</span>
+    <span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
-hga <span style="color: #666666">=</span> (home_win_rates <span style="color: #666666">-</span> away_win_rates)<span style="color: #666666">.</span>reset_index()<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #666666">0</span>: <span style="color: #BA2121">&#39;HGA&#39;</span>})<span style="color: #666666">.</span>sort_values(by<span style="color: #666666">=</span><span style="color: #BA2121">&#39;HGA&#39;</span>, ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>hga<span style="color: #666666">.</span>head(<span style="color: #666666">10</span>)
-</pre></div>
-
+<span class="n">hga</span> <span class="o">=</span> <span class="p">(</span><span class="n">home_win_rates</span> <span class="o">-</span> <span class="n">away_win_rates</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;HGA&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;HGA&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">hga</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1658,15 +1649,14 @@ hga <span style="color: #666666">=</span> (home_win_rates <span style="color: #6
 </tbody>
 </table>
 <p>So the club with the best HGA is Fulham - interesting. This is most likely because Fulham have won 100% of home games in 2018 so far which is skewing the mean. Let's see how the HGA for some of the big clubs based compare over seasons.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>big_clubs <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Liverpool&#39;</span>, <span style="color: #BA2121">&#39;Man City&#39;</span>, <span style="color: #BA2121">&#39;Man United&#39;</span>, <span style="color: #BA2121">&#39;Chelsea&#39;</span>, <span style="color: #BA2121">&#39;Arsenal&#39;</span>]
-home_win_rates_5 <span style="color: #666666">=</span> df[df<span style="color: #666666">.</span>HomeTeam<span style="color: #666666">.</span>isin(big_clubs)]<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>])<span style="color: #666666">.</span>homeWin<span style="color: #666666">.</span>mean()
-away_win_rates_5 <span style="color: #666666">=</span> df[df<span style="color: #666666">.</span>AwayTeam<span style="color: #666666">.</span>isin(big_clubs)]<span style="color: #666666">.</span>groupby([<span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>])<span style="color: #666666">.</span>awayWin<span style="color: #666666">.</span>mean()
+<div class="highlight"><pre><span></span><code><span class="n">big_clubs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Liverpool&#39;</span><span class="p">,</span> <span class="s1">&#39;Man City&#39;</span><span class="p">,</span> <span class="s1">&#39;Man United&#39;</span><span class="p">,</span> <span class="s1">&#39;Chelsea&#39;</span><span class="p">,</span> <span class="s1">&#39;Arsenal&#39;</span><span class="p">]</span>
+<span class="n">home_win_rates_5</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">HomeTeam</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">big_clubs</span><span class="p">)]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;HomeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">homeWin</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">away_win_rates_5</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">AwayTeam</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">big_clubs</span><span class="p">)]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;AwayTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">awayWin</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
-hga_top_5 <span style="color: #666666">=</span> home_win_rates_5 <span style="color: #666666">-</span> away_win_rates_5
+<span class="n">hga_top_5</span> <span class="o">=</span> <span class="n">home_win_rates_5</span> <span class="o">-</span> <span class="n">away_win_rates_5</span>
 
-hga_top_5<span style="color: #666666">.</span>unstack(level<span style="color: #666666">=0</span>)
-</pre></div>
-
+<span class="n">hga_top_5</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1802,21 +1792,19 @@ hga_top_5<span style="color: #666666">.</span>unstack(level<span style="color: #
 </tbody>
 </table>
 <p>Now let's plot it.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sns<span style="color: #666666">.</span>lineplot(x<span style="color: #666666">=</span><span style="color: #BA2121">&#39;season&#39;</span>, y<span style="color: #666666">=</span><span style="color: #BA2121">&#39;HGA&#39;</span>, hue<span style="color: #666666">=</span><span style="color: #BA2121">&#39;team&#39;</span>, data<span style="color: #666666">=</span>hga_top_5<span style="color: #666666">.</span>reset_index()<span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{<span style="color: #666666">0</span>: <span style="color: #BA2121">&#39;HGA&#39;</span>, <span style="color: #BA2121">&#39;HomeTeam&#39;</span>: <span style="color: #BA2121">&#39;team&#39;</span>}))
-plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower center&#39;</span>, ncol<span style="color: #666666">=6</span>, bbox_to_anchor<span style="color: #666666">=</span>(<span style="color: #666666">0.45</span>, <span style="color: #666666">-0.2</span>))
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;HGA Among the top 5 clubs&quot;</span>, fontsize<span style="color: #666666">=14</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;HGA&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">hga_top_5</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;HGA&#39;</span><span class="p">,</span> <span class="s1">&#39;HomeTeam&#39;</span><span class="p">:</span> <span class="s1">&#39;team&#39;</span><span class="p">}))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower center&#39;</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;HGA Among the top 5 clubs&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
 <p><img alt="png" src="../img/output_17_0.png" /></p>
 <p>The results here seem to be quite erratic, although it seems that Arsenal consistently has a HGA above 0.</p>
 <p>Let's now look at the distributions of each of our columns. The odds columns are likely to be highly skewed, so we may have to account for this later.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> df<span style="color: #666666">.</span>select_dtypes(<span style="color: #BA2121">&#39;number&#39;</span>)<span style="color: #666666">.</span>columns:
-    sns<span style="color: #666666">.</span>distplot(df[col])
-    plt<span style="color: #666666">.</span>title(f<span style="color: #BA2121">&quot;Distribution for {col}&quot;</span>)
-    plt<span style="color: #666666">.</span>show()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="s1">&#39;number&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Distribution for </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
 <p><img alt="png" src="../img/output_20_0.png" /></p>
 <p><img alt="png" src="../img/output_20_1.png" /></p>
 <p><img alt="png" src="../img/output_20_2.png" /></p>
@@ -1873,15 +1861,15 @@ plt<span style="color: #666666">.</span>show()
 <hr />
 <h2 id="exploring-referee-home-ground-bias">Exploring Referee Home Ground Bias<a class="headerlink" href="#exploring-referee-home-ground-bias" title="Permanent link">&para;</a></h2>
 <p>What may be of interest is whether certain referees are correlated with the home team winning more often. Let's explore referee home ground bias for referees for the top 10 Referees based on games.</p>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Overall Home Win Rate: {:.4}%&#39;</span><span style="color: #666666">.</span>format(df<span style="color: #666666">.</span>homeWin<span style="color: #666666">.</span>mean() <span style="color: #666666">*</span> <span style="color: #666666">100</span>))
+<p><div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Overall Home Win Rate: </span><span class="si">{:.4}</span><span class="s1">%&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">homeWin</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
 
-<span style="color: #408080; font-style: italic"># Get the top 10 refs based on games</span>
-top_10_refs <span style="color: #666666">=</span> df<span style="color: #666666">.</span>Referee<span style="color: #666666">.</span>value_counts()<span style="color: #666666">.</span>head(<span style="color: #666666">10</span>)<span style="color: #666666">.</span>index
+<span class="c1"># Get the top 10 refs based on games</span>
+<span class="n">top_10_refs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">Referee</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">index</span>
 
-df[df<span style="color: #666666">.</span>Referee<span style="color: #666666">.</span>isin(top_10_refs)]<span style="color: #666666">.</span>groupby(<span style="color: #BA2121">&#39;Referee&#39;</span>)<span style="color: #666666">.</span>homeWin<span style="color: #666666">.</span>mean()<span style="color: #666666">.</span>sort_values(ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)
-</pre></div>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">Referee</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top_10_refs</span><span class="p">)]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Referee&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">homeWin</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
     Overall Home Win Rate: 46.55%</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Referee
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%; margin: 0;"><span></span><code>Referee
 L Mason          0.510373
 C Foy            0.500000
 M Clattenburg    0.480000
@@ -1893,95 +1881,88 @@ H Webb           0.456604
 A Marriner       0.455516
 M Dean           0.442049
 Name: homeWin, dtype: float64
-</pre></div>
-
+</code></pre></div>
 
 <p>It seems that L Mason may be the most influenced by the home crowd. Whilst the overall home win rate is 46.5%, the home win rate when he is the Referee is 51%. However it should be noted that this doesn't mean that he causes the win through bias. It could just be that he referees the best clubs, so naturally their home win rate is high.</p>
 <hr />
 <h2 id="variable-correlation-with-margin">Variable Correlation With Margin<a class="headerlink" href="#variable-correlation-with-margin" title="Permanent link">&para;</a></h2>
 <p>Let's now explore different variables' relationships with margin. First, we'll create a margin column, then we will pick a few different variables to look at the correlations amongst each other, using a correlation heatmap.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df[<span style="color: #BA2121">&#39;margin&#39;</span>] <span style="color: #666666">=</span> df[<span style="color: #BA2121">&#39;FTHG&#39;</span>] <span style="color: #666666">-</span> df[<span style="color: #BA2121">&#39;FTAG&#39;</span>]
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;FTHG&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;FTAG&#39;</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">stat_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;AC&#39;</span><span class="p">,</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span> <span class="s1">&#39;AR&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;AST&#39;</span><span class="p">,</span> <span class="s1">&#39;AY&#39;</span><span class="p">,</span> <span class="s1">&#39;HC&#39;</span><span class="p">,</span> <span class="s1">&#39;HF&#39;</span><span class="p">,</span> <span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s1">&#39;HS&#39;</span><span class="p">,</span> <span class="s1">&#39;HST&#39;</span><span class="p">,</span> <span class="s1">&#39;HTR&#39;</span><span class="p">,</span> <span class="s1">&#39;HY&#39;</span><span class="p">,</span> <span class="s1">&#39;margin&#39;</span><span class="p">]</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>stat_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;AC&#39;</span>, <span style="color: #BA2121">&#39;AF&#39;</span>, <span style="color: #BA2121">&#39;AR&#39;</span>, <span style="color: #BA2121">&#39;AS&#39;</span>, <span style="color: #BA2121">&#39;AST&#39;</span>, <span style="color: #BA2121">&#39;AY&#39;</span>, <span style="color: #BA2121">&#39;HC&#39;</span>, <span style="color: #BA2121">&#39;HF&#39;</span>, <span style="color: #BA2121">&#39;HR&#39;</span>, <span style="color: #BA2121">&#39;HS&#39;</span>, <span style="color: #BA2121">&#39;HST&#39;</span>, <span style="color: #BA2121">&#39;HTR&#39;</span>, <span style="color: #BA2121">&#39;HY&#39;</span>, <span style="color: #BA2121">&#39;margin&#39;</span>]
+<span class="n">stat_correlations</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">stat_cols</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<span class="n">stat_correlations</span><span class="p">[</span><span class="s1">&#39;margin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
 
-stat_correlations <span style="color: #666666">=</span> df[stat_cols]<span style="color: #666666">.</span>corr()
-stat_correlations[<span style="color: #BA2121">&#39;margin&#39;</span>]<span style="color: #666666">.</span>sort_values()
-
-    AST      <span style="color: #666666">-0.345703</span>
-    AS       <span style="color: #666666">-0.298665</span>
-    HY       <span style="color: #666666">-0.153806</span>
-    HR       <span style="color: #666666">-0.129393</span>
-    AC       <span style="color: #666666">-0.073204</span>
-    HF       <span style="color: #666666">-0.067469</span>
-    AF        <span style="color: #666666">0.005474</span>
-    AY        <span style="color: #666666">0.013746</span>
-    HC        <span style="color: #666666">0.067433</span>
-    AR        <span style="color: #666666">0.103528</span>
-    HS        <span style="color: #666666">0.275847</span>
-    HST       <span style="color: #666666">0.367591</span>
-    margin    <span style="color: #666666">1.000000</span>
-    Name: margin, dtype: float64
-</pre></div>
-
+    <span class="n">AST</span>      <span class="o">-</span><span class="mf">0.345703</span>
+    <span class="n">AS</span>       <span class="o">-</span><span class="mf">0.298665</span>
+    <span class="n">HY</span>       <span class="o">-</span><span class="mf">0.153806</span>
+    <span class="n">HR</span>       <span class="o">-</span><span class="mf">0.129393</span>
+    <span class="n">AC</span>       <span class="o">-</span><span class="mf">0.073204</span>
+    <span class="n">HF</span>       <span class="o">-</span><span class="mf">0.067469</span>
+    <span class="n">AF</span>        <span class="mf">0.005474</span>
+    <span class="n">AY</span>        <span class="mf">0.013746</span>
+    <span class="n">HC</span>        <span class="mf">0.067433</span>
+    <span class="n">AR</span>        <span class="mf">0.103528</span>
+    <span class="n">HS</span>        <span class="mf">0.275847</span>
+    <span class="n">HST</span>       <span class="mf">0.367591</span>
+    <span class="n">margin</span>    <span class="mf">1.000000</span>
+    <span class="n">Name</span><span class="p">:</span> <span class="n">margin</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
 <p>Unsurprisingly, Home Shots on Target correlate the most with Margin, and Away Reds is also high. What is surprising is that Home Yellows has quite a strong negative correlation with margin - this may be because players will play more aggresively when they are losing to try and get the lead back, and hence receive more yellow cards.</p>
 <p>Let's now look at the heatmap between variables.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>sns<span style="color: #666666">.</span>heatmap(stat_correlations, annot<span style="color: #666666">=</span><span style="color: #008000">True</span>, annot_kws<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;size&#39;</span>: <span style="color: #666666">10</span>})
-    <span style="color: #666666">&lt;</span>matplotlib<span style="color: #666666">.</span>axes<span style="color: #666666">.</span>_subplots<span style="color: #666666">.</span>AxesSubplot at <span style="color: #666666">0x220a4227048&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">stat_correlations</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">annot_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>
+    <span class="o">&lt;</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">_subplots</span><span class="o">.</span><span class="n">AxesSubplot</span> <span class="n">at</span> <span class="mh">0x220a4227048</span><span class="o">&gt;</span>
+</code></pre></div>
 <p><img alt="png" src="../img/output_28_1.png" /></p>
 <hr />
 <h2 id="analysing-features">Analysing Features<a class="headerlink" href="#analysing-features" title="Permanent link">&para;</a></h2>
 <p>What we are really interested in, is how our features (creating in the next tutorial), correlate with winning. We will skip ahead here and use a function to create our features for us, and then examine how the moving averages/different features correlate with winning.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a cleaned df of all of our data</span>
-pre_features_df <span style="color: #666666">=</span> create_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>)
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a cleaned df of all of our data</span>
+<span class="n">pre_features_df</span> <span class="o">=</span> <span class="n">create_df</span><span class="p">(</span><span class="s1">&#39;data/epl_data.csv&#39;</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Create our features</span>
-features <span style="color: #666666">=</span> create_feature_df(pre_features_df)
-    Creating <span style="color: #008000">all</span> games feature DataFrame
+<span class="c1"># Create our features</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">create_feature_df</span><span class="p">(</span><span class="n">pre_features_df</span><span class="p">)</span>
+    <span class="n">Creating</span> <span class="nb">all</span> <span class="n">games</span> <span class="n">feature</span> <span class="n">DataFrame</span>
 
-    C:\Users\wardj\Documents\Betfair Public Github\predictive<span style="color: #666666">-</span>models\epl\data_preparation_functions<span style="color: #666666">.</span>py:<span style="color: #666666">419</span>: <span style="color: #D2413A; font-weight: bold">RuntimeWarning</span>: invalid value encountered <span style="color: #AA22FF; font-weight: bold">in</span> double_scalars
-      <span style="color: #666666">.</span>pipe(<span style="color: #008000; font-weight: bold">lambda</span> df: (df<span style="color: #666666">.</span>eloAgainst <span style="color: #666666">*</span> df[goalsForOrAgainstCol])<span style="color: #666666">.</span>sum() <span style="color: #666666">/</span> df<span style="color: #666666">.</span>eloAgainst<span style="color: #666666">.</span>sum()))
+    <span class="n">C</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">wardj</span>\<span class="n">Documents</span>\<span class="n">Betfair</span> <span class="n">Public</span> <span class="n">Github</span>\<span class="n">predictive</span><span class="o">-</span><span class="n">models</span>\<span class="n">epl</span>\<span class="n">data_preparation_functions</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">419</span><span class="p">:</span> <span class="ne">RuntimeWarning</span><span class="p">:</span> <span class="n">invalid</span> <span class="n">value</span> <span class="n">encountered</span> <span class="ow">in</span> <span class="n">double_scalars</span>
+      <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">eloAgainst</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="n">goalsForOrAgainstCol</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">eloAgainst</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
 
-    Creating stats feature DataFrame
-    Creating odds feature DataFrame
-    Creating market values feature DataFrame
-    Filling NAs
-    Merging stats, odds <span style="color: #AA22FF; font-weight: bold">and</span> market values into one features DataFrame
-    Complete<span style="color: #666666">.</span>
-</pre></div>
+    <span class="n">Creating</span> <span class="n">stats</span> <span class="n">feature</span> <span class="n">DataFrame</span>
+    <span class="n">Creating</span> <span class="n">odds</span> <span class="n">feature</span> <span class="n">DataFrame</span>
+    <span class="n">Creating</span> <span class="n">market</span> <span class="n">values</span> <span class="n">feature</span> <span class="n">DataFrame</span>
+    <span class="n">Filling</span> <span class="n">NAs</span>
+    <span class="n">Merging</span> <span class="n">stats</span><span class="p">,</span> <span class="n">odds</span> <span class="ow">and</span> <span class="n">market</span> <span class="n">values</span> <span class="n">into</span> <span class="n">one</span> <span class="n">features</span> <span class="n">DataFrame</span>
+    <span class="n">Complete</span><span class="o">.</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">features</span> <span class="o">=</span> <span class="p">(</span><span class="n">pre_features_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">FTHG</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">FTAG</span><span class="p">)</span>
+                           <span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;gameId&#39;</span><span class="p">,</span> <span class="s1">&#39;margin&#39;</span><span class="p">]]</span>
+                           <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;gameId&#39;</span><span class="p">]))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">features</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span><span class="o">.</span><span class="n">margin</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">20</span><span class="p">]</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features <span style="color: #666666">=</span> (pre_features_df<span style="color: #666666">.</span>assign(margin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>FTHG <span style="color: #666666">-</span> df<span style="color: #666666">.</span>FTAG)
-                           <span style="color: #666666">.</span>loc[:, [<span style="color: #BA2121">&#39;gameId&#39;</span>, <span style="color: #BA2121">&#39;margin&#39;</span>]]
-                           <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, features, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;gameId&#39;</span>]))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features<span style="color: #666666">.</span>corr()<span style="color: #666666">.</span>margin<span style="color: #666666">.</span>sort_values(ascending<span style="color: #666666">=</span><span style="color: #008000">False</span>)[:<span style="color: #666666">20</span>]
-
-    margin                     <span style="color: #666666">1.000000</span>
-    f_awayOdds                 <span style="color: #666666">0.413893</span>
-    f_totalMktH<span style="color: #666666">%</span>               <span style="color: #666666">0.330420</span>
-    f_defMktH<span style="color: #666666">%</span>                 <span style="color: #666666">0.325392</span>
-    f_eloAgainstAway           <span style="color: #666666">0.317853</span>
-    f_eloForHome               <span style="color: #666666">0.317853</span>
-    f_midMktH<span style="color: #666666">%</span>                 <span style="color: #666666">0.316080</span>
-    f_attMktH<span style="color: #666666">%</span>                 <span style="color: #666666">0.312262</span>
-    f_sizeOfHandicapAway       <span style="color: #666666">0.301667</span>
-    f_goalsForHome             <span style="color: #666666">0.298930</span>
-    f_wtEloGoalsForHome        <span style="color: #666666">0.297157</span>
-    f_shotsForHome             <span style="color: #666666">0.286239</span>
-    f_cornersForHome           <span style="color: #666666">0.279917</span>
-    f_gkMktH<span style="color: #666666">%</span>                  <span style="color: #666666">0.274732</span>
-    f_homeWinPc38Away          <span style="color: #666666">0.271326</span>
-    f_homeWinPc38Home          <span style="color: #666666">0.271326</span>
-    f_wtEloGoalsAgainstAway    <span style="color: #666666">0.269663</span>
-    f_goalsAgainstAway         <span style="color: #666666">0.258418</span>
-    f_cornersAgainstAway       <span style="color: #666666">0.257148</span>
-    f_drawOdds                 <span style="color: #666666">0.256807</span>
-    Name: margin, dtype: float64
-</pre></div>
-
+    <span class="n">margin</span>                     <span class="mf">1.000000</span>
+    <span class="n">f_awayOdds</span>                 <span class="mf">0.413893</span>
+    <span class="n">f_totalMktH</span><span class="o">%</span>               <span class="mf">0.330420</span>
+    <span class="n">f_defMktH</span><span class="o">%</span>                 <span class="mf">0.325392</span>
+    <span class="n">f_eloAgainstAway</span>           <span class="mf">0.317853</span>
+    <span class="n">f_eloForHome</span>               <span class="mf">0.317853</span>
+    <span class="n">f_midMktH</span><span class="o">%</span>                 <span class="mf">0.316080</span>
+    <span class="n">f_attMktH</span><span class="o">%</span>                 <span class="mf">0.312262</span>
+    <span class="n">f_sizeOfHandicapAway</span>       <span class="mf">0.301667</span>
+    <span class="n">f_goalsForHome</span>             <span class="mf">0.298930</span>
+    <span class="n">f_wtEloGoalsForHome</span>        <span class="mf">0.297157</span>
+    <span class="n">f_shotsForHome</span>             <span class="mf">0.286239</span>
+    <span class="n">f_cornersForHome</span>           <span class="mf">0.279917</span>
+    <span class="n">f_gkMktH</span><span class="o">%</span>                  <span class="mf">0.274732</span>
+    <span class="n">f_homeWinPc38Away</span>          <span class="mf">0.271326</span>
+    <span class="n">f_homeWinPc38Home</span>          <span class="mf">0.271326</span>
+    <span class="n">f_wtEloGoalsAgainstAway</span>    <span class="mf">0.269663</span>
+    <span class="n">f_goalsAgainstAway</span>         <span class="mf">0.258418</span>
+    <span class="n">f_cornersAgainstAway</span>       <span class="mf">0.257148</span>
+    <span class="n">f_drawOdds</span>                 <span class="mf">0.256807</span>
+    <span class="n">Name</span><span class="p">:</span> <span class="n">margin</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+</code></pre></div>
 <p>As we can see away odds is most highly correlated to margin. This makes sense, as odds generally have most/all information included in the price. What is interesting is that elo seems to also be highly correlated, which is good news for our elo model that we made. Similarly, weighted goals and the the value of the defence relative to other teams ('defMktH%' etc.) is strongly correlated to margin.</p>
                 
                   
@@ -2080,7 +2061,7 @@ features <span style="color: #666666">=</span> create_feature_df(pre_features_df
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

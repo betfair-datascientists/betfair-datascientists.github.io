@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
+      <a href="#epl-machine-learning-walkthrough" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -930,23 +930,20 @@
 <h2 id="obtaining-weekly-odds-game-info-using-betfairs-api">Obtaining Weekly Odds / Game Info Using Betfair's API<a class="headerlink" href="#obtaining-weekly-odds-game-info-using-betfairs-api" title="Permanent link">&para;</a></h2>
 <p>The first thing we need to do to create weekly predictions is get both the games being played this week, as well as match odds from Betfair to be used as features.</p>
 <p>To make this process easier, I have created a csv file with the fixture for the 2018/19 season. Let's load that now.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## Import libraries</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">weekly_prediction_functions</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">data_preparation_functions</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> log_loss, confusion_matrix
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">warnings</span>
-warnings<span style="color: #666666">.</span>filterwarnings(<span style="color: #BA2121">&#39;ignore&#39;</span>)
-pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&#39;display.max_columns&#39;</span>, <span style="color: #666666">100</span>)
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fixture <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/fixture.csv&#39;</span>)
-              <span style="color: #666666">.</span>assign(Date<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: pd<span style="color: #666666">.</span>to_datetime(df<span style="color: #666666">.</span>Date)))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fixture<span style="color: #666666">.</span>head()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1">## Import libraries</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">weekly_prediction_functions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">data_preparation_functions</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">log_loss</span><span class="p">,</span> <span class="n">confusion_matrix</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fixture</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/fixture.csv&#39;</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">)))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">fixture</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1028,12 +1025,10 @@ pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&
 <p>Now we are going to connect to the API and retrieve game level information for the next week. To do this, we will use an R script. If you are not familiar with R, don't worry, it is relatively simple to read through. For this, we will run the script weekly_game_info_puller.R. Go ahead and run that script now.</p>
 <p>Note that for this step, you will require a Betfair API App Key. If you don't have one, visit <a href="../../api/apiappkey">this page and follow the instructions</a>.</p>
 <p>I will upload an updated weekly file, so you can follow along regardless of if you have an App Key or not. Let's load that file in now.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>game_info <span style="color: #666666">=</span> create_game_info_df(<span style="color: #BA2121">&quot;data/weekly_game_info.csv&quot;</span>)
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>game_info<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">game_info</span> <span class="o">=</span> <span class="n">create_game_info_df</span><span class="p">(</span><span class="s2">&quot;data/weekly_game_info.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">game_info</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1121,15 +1116,13 @@ pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&
 </tbody>
 </table>
 <p>Finally, we will use the API to grab the weekly odds. This R script is also provided, but I have also included the weekly odds csv for convenience.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>odds <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/weekly_epl_odds.csv&#39;</span>)
-           <span style="color: #666666">.</span>replace({
-                <span style="color: #BA2121">&#39;Man Utd&#39;</span>: <span style="color: #BA2121">&#39;Man United&#39;</span>,
-                <span style="color: #BA2121">&#39;C Palace&#39;</span>: <span style="color: #BA2121">&#39;Crystal Palace&#39;</span>}))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>odds<span style="color: #666666">.</span>head(<span style="color: #666666">3</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">odds</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/weekly_epl_odds.csv&#39;</span><span class="p">)</span>
+           <span class="o">.</span><span class="n">replace</span><span class="p">({</span>
+                <span class="s1">&#39;Man Utd&#39;</span><span class="p">:</span> <span class="s1">&#39;Man United&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;C Palace&#39;</span><span class="p">:</span> <span class="s1">&#39;Crystal Palace&#39;</span><span class="p">}))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">odds</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1171,12 +1164,10 @@ pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&
 <hr />
 <h2 id="data-wrangling-this-weeks-game-info-into-our-feature-set">Data Wrangling This Week's Game Info Into Our Feature Set<a class="headerlink" href="#data-wrangling-this-weeks-game-info-into-our-feature-set" title="Permanent link">&para;</a></h2>
 <p>Now we have the arduous task of wrangling all of this info into a feature set that we can use to predict this week's games. Luckily our functions we created earlier should work if we just append the non-features to our main dataframe.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df <span style="color: #666666">=</span> create_df(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>)
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df<span style="color: #666666">.</span>head()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">create_df</span><span class="p">(</span><span class="s1">&#39;data/epl_data.csv&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1586,40 +1577,35 @@ pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&
 </tbody>
 </table>
 <p>Now we need to specify which game week we would like to predict. We will then filter the fixture for this game week and append this info to the main DataFrame</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>round_to_predict <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #008000">input</span>(<span style="color: #BA2121">&quot;Which game week would you like to predict? Please input next week&#39;s Game Week</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">&quot;</span>))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Which game week would you like to predict? Please input next week&#39;s Game Week
+<div class="highlight"><pre><span></span><code><span class="n">round_to_predict</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Which game week would you like to predict? Please input next week&#39;s Game Week</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">))</span>
+</code></pre></div>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%; margin: 0;"><span></span><code>Which game week would you like to predict? Please input next week&#39;s Game Week
 4
-</pre></div>
+</code></pre></div>
 
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>future_predictions <span style="color: #666666">=</span> (fixture<span style="color: #666666">.</span>loc[fixture[<span style="color: #BA2121">&#39;round&#39;</span>] <span style="color: #666666">==</span> round_to_predict, [<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>]]
-                             <span style="color: #666666">.</span>pipe(pd<span style="color: #666666">.</span>merge, odds, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>])
-                             <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{
-                                 <span style="color: #BA2121">&#39;f_homeOdds&#39;</span>: <span style="color: #BA2121">&#39;B365H&#39;</span>,
-                                 <span style="color: #BA2121">&#39;f_awayOdds&#39;</span>: <span style="color: #BA2121">&#39;B365A&#39;</span>,
-                                 <span style="color: #BA2121">&#39;f_drawOdds&#39;</span>: <span style="color: #BA2121">&#39;B365D&#39;</span>})
-                             <span style="color: #666666">.</span>assign(season<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>season<span style="color: #666666">.</span>astype(<span style="color: #008000">str</span>)))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df_including_future_games <span style="color: #666666">=</span> (pd<span style="color: #666666">.</span>read_csv(<span style="color: #BA2121">&#39;data/epl_data.csv&#39;</span>, dtype<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;season&#39;</span>: <span style="color: #008000">str</span>})
-                <span style="color: #666666">.</span>assign(Date<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: pd<span style="color: #666666">.</span>to_datetime(df<span style="color: #666666">.</span>Date))
-                <span style="color: #666666">.</span>pipe(<span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>dropna(thresh<span style="color: #666666">=</span><span style="color: #008000">len</span>(df) <span style="color: #666666">-</span> <span style="color: #666666">2</span>, axis<span style="color: #666666">=1</span>))  <span style="color: #408080; font-style: italic"># Drop cols with NAs</span>
-                <span style="color: #666666">.</span>dropna(axis<span style="color: #666666">=0</span>)  <span style="color: #408080; font-style: italic"># Drop rows with NAs</span>
-                <span style="color: #666666">.</span>sort_values(<span style="color: #BA2121">&#39;Date&#39;</span>)
-                <span style="color: #666666">.</span>append(future_predictions, sort<span style="color: #666666">=</span><span style="color: #008000">True</span>)
-                <span style="color: #666666">.</span>reset_index(drop<span style="color: #666666">=</span><span style="color: #008000">True</span>)
-                <span style="color: #666666">.</span>assign(gameId<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: <span style="color: #008000">list</span>(df<span style="color: #666666">.</span>index <span style="color: #666666">+</span> <span style="color: #666666">1</span>),
-                            Year<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>Date<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: row<span style="color: #666666">.</span>year),
-                            homeWin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">&gt;</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=1</span>),
-                            awayWin<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTAG <span style="color: #666666">&gt;</span> row<span style="color: #666666">.</span>FTHG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">0</span>, axis<span style="color: #666666">=1</span>),
-                            result<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">lambda</span> df: df<span style="color: #666666">.</span>apply(<span style="color: #008000; font-weight: bold">lambda</span> row: <span style="color: #BA2121">&#39;home&#39;</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">&gt;</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> (<span style="color: #BA2121">&#39;draw&#39;</span> <span style="color: #008000; font-weight: bold">if</span> row<span style="color: #666666">.</span>FTHG <span style="color: #666666">==</span> row<span style="color: #666666">.</span>FTAG <span style="color: #008000; font-weight: bold">else</span> <span style="color: #BA2121">&#39;away&#39;</span>), axis<span style="color: #666666">=1</span>)))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df_including_future_games<span style="color: #666666">.</span>tail(<span style="color: #666666">12</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">future_predictions</span> <span class="o">=</span> <span class="p">(</span><span class="n">fixture</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">fixture</span><span class="p">[</span><span class="s1">&#39;round&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">round_to_predict</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;HomeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;AwayTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">]]</span>
+                             <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span> <span class="n">odds</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;HomeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;AwayTeam&#39;</span><span class="p">])</span>
+                             <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+                                 <span class="s1">&#39;f_homeOdds&#39;</span><span class="p">:</span> <span class="s1">&#39;B365H&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;f_awayOdds&#39;</span><span class="p">:</span> <span class="s1">&#39;B365A&#39;</span><span class="p">,</span>
+                                 <span class="s1">&#39;f_drawOdds&#39;</span><span class="p">:</span> <span class="s1">&#39;B365D&#39;</span><span class="p">})</span>
+                             <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">season</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">season</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_including_future_games</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/epl_data.csv&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;season&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">})</span>
+                <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">Date</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="p">))</span>
+                <span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">thresh</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># Drop cols with NAs</span>
+                <span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Drop rows with NAs</span>
+                <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">future_predictions</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">gameId</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                            <span class="n">Year</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">Date</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span><span class="o">.</span><span class="n">year</span><span class="p">),</span>
+                            <span class="n">homeWin</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">FTHG</span> <span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">FTAG</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                            <span class="n">awayWin</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">FTAG</span> <span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">FTHG</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                            <span class="n">result</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;home&#39;</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">FTHG</span> <span class="o">&gt;</span> <span class="n">row</span><span class="o">.</span><span class="n">FTAG</span> <span class="k">else</span> <span class="p">(</span><span class="s1">&#39;draw&#39;</span> <span class="k">if</span> <span class="n">row</span><span class="o">.</span><span class="n">FTHG</span> <span class="o">==</span> <span class="n">row</span><span class="o">.</span><span class="n">FTAG</span> <span class="k">else</span> <span class="s1">&#39;away&#39;</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_including_future_games</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2501,52 +2487,45 @@ pd<span style="color: #666666">.</span>set_option(<span style="color: #BA2121">&
 <hr />
 <h2 id="predicting-next-gameweeks-results">Predicting Next Gameweek's Results<a class="headerlink" href="#predicting-next-gameweeks-results" title="Permanent link">&para;</a></h2>
 <p>Now that we have our feature DataFrame, all we need to do is split the feature DataFrame up into a training set and next week's games, then use the model we tuned in the last tutorial to create predictions!</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>features <span style="color: #666666">=</span> create_feature_df(df<span style="color: #666666">=</span>df_including_future_games)
+<div class="highlight"><pre><span></span><code><span class="n">features</span> <span class="o">=</span> <span class="n">create_feature_df</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df_including_future_games</span><span class="p">)</span>
 
-    Creating <span style="color: #008000">all</span> games feature DataFrame
-    Creating stats feature DataFrame
-    Creating odds feature DataFrame
-    Creating market values feature DataFrame
-    Filling NAs
-    Merging stats, odds <span style="color: #AA22FF; font-weight: bold">and</span> market values into one features DataFrame
-    Complete<span style="color: #666666">.</span>
-</pre></div>
+    <span class="n">Creating</span> <span class="nb">all</span> <span class="n">games</span> <span class="n">feature</span> <span class="n">DataFrame</span>
+    <span class="n">Creating</span> <span class="n">stats</span> <span class="n">feature</span> <span class="n">DataFrame</span>
+    <span class="n">Creating</span> <span class="n">odds</span> <span class="n">feature</span> <span class="n">DataFrame</span>
+    <span class="n">Creating</span> <span class="n">market</span> <span class="n">values</span> <span class="n">feature</span> <span class="n">DataFrame</span>
+    <span class="n">Filling</span> <span class="n">NAs</span>
+    <span class="n">Merging</span> <span class="n">stats</span><span class="p">,</span> <span class="n">odds</span> <span class="ow">and</span> <span class="n">market</span> <span class="n">values</span> <span class="n">into</span> <span class="n">one</span> <span class="n">features</span> <span class="n">DataFrame</span>
+    <span class="n">Complete</span><span class="o">.</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a feature DataFrame for this week&#39;s games.</span>
+<span class="n">production_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">future_predictions</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;HomeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;AwayTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Create a training DataFrame</span>
+<span class="n">training_df</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="o">~</span><span class="n">features</span><span class="o">.</span><span class="n">gameId</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">production_df</span><span class="o">.</span><span class="n">gameId</span><span class="p">)]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">training_df</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;f_&#39;</span><span class="p">)]</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a feature DataFrame for this week&#39;s games.</span>
-production_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>merge(future_predictions, features, on<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;season&#39;</span>])
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create a training DataFrame</span>
-training_df <span style="color: #666666">=</span> features[<span style="color: #666666">~</span>features<span style="color: #666666">.</span>gameId<span style="color: #666666">.</span>isin(production_df<span style="color: #666666">.</span>gameId)]
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>feature_names <span style="color: #666666">=</span> [col <span style="color: #008000; font-weight: bold">for</span> col <span style="color: #AA22FF; font-weight: bold">in</span> training_df <span style="color: #008000; font-weight: bold">if</span> col<span style="color: #666666">.</span>startswith(<span style="color: #BA2121">&#39;f_&#39;</span>)]
-
-le <span style="color: #666666">=</span> LabelEncoder()
-train_y <span style="color: #666666">=</span> le<span style="color: #666666">.</span>fit_transform(training_df<span style="color: #666666">.</span>result)
-train_x <span style="color: #666666">=</span> training_df[feature_names]
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>lr <span style="color: #666666">=</span> LogisticRegression(C<span style="color: #666666">=0.01</span>, solver<span style="color: #666666">=</span><span style="color: #BA2121">&#39;liblinear&#39;</span>)
-lr<span style="color: #666666">.</span>fit(train_x, train_y)
-predicted_probs <span style="color: #666666">=</span> lr<span style="color: #666666">.</span>predict_proba(production_df[feature_names])
-predicted_odds <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #666666">/</span> predicted_probs
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Assign the modelled odds to our predictions df</span>
-predictions_df <span style="color: #666666">=</span> (production_df<span style="color: #666666">.</span>loc[:, [<span style="color: #BA2121">&#39;Date&#39;</span>, <span style="color: #BA2121">&#39;HomeTeam&#39;</span>, <span style="color: #BA2121">&#39;AwayTeam&#39;</span>, <span style="color: #BA2121">&#39;B365H&#39;</span>, <span style="color: #BA2121">&#39;B365D&#39;</span>, <span style="color: #BA2121">&#39;B365A&#39;</span>]]
-                               <span style="color: #666666">.</span>assign(homeModelledOdds<span style="color: #666666">=</span>[i[<span style="color: #666666">2</span>] <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> predicted_odds],
-                                      drawModelledOdds<span style="color: #666666">=</span>[i[<span style="color: #666666">1</span>] <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> predicted_odds],
-                                      awayModelledOdds<span style="color: #666666">=</span>[i[<span style="color: #666666">0</span>] <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> predicted_odds])
-                               <span style="color: #666666">.</span>rename(columns<span style="color: #666666">=</span>{
-                                   <span style="color: #BA2121">&#39;B365H&#39;</span>: <span style="color: #BA2121">&#39;BetfairHomeOdds&#39;</span>,
-                                   <span style="color: #BA2121">&#39;B365D&#39;</span>: <span style="color: #BA2121">&#39;BetfairDrawOdds&#39;</span>,
-                                   <span style="color: #BA2121">&#39;B365A&#39;</span>: <span style="color: #BA2121">&#39;BetfairAwayOdds&#39;</span>}))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>predictions_df
-</pre></div>
-
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">train_y</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">training_df</span><span class="o">.</span><span class="n">result</span><span class="p">)</span>
+<span class="n">train_x</span> <span class="o">=</span> <span class="n">training_df</span><span class="p">[</span><span class="n">feature_names</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">)</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+<span class="n">predicted_probs</span> <span class="o">=</span> <span class="n">lr</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">production_df</span><span class="p">[</span><span class="n">feature_names</span><span class="p">])</span>
+<span class="n">predicted_odds</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">predicted_probs</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Assign the modelled odds to our predictions df</span>
+<span class="n">predictions_df</span> <span class="o">=</span> <span class="p">(</span><span class="n">production_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="s1">&#39;HomeTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;AwayTeam&#39;</span><span class="p">,</span> <span class="s1">&#39;B365H&#39;</span><span class="p">,</span> <span class="s1">&#39;B365D&#39;</span><span class="p">,</span> <span class="s1">&#39;B365A&#39;</span><span class="p">]]</span>
+                               <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">homeModelledOdds</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">predicted_odds</span><span class="p">],</span>
+                                      <span class="n">drawModelledOdds</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">predicted_odds</span><span class="p">],</span>
+                                      <span class="n">awayModelledOdds</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">predicted_odds</span><span class="p">])</span>
+                               <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+                                   <span class="s1">&#39;B365H&#39;</span><span class="p">:</span> <span class="s1">&#39;BetfairHomeOdds&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B365D&#39;</span><span class="p">:</span> <span class="s1">&#39;BetfairDrawOdds&#39;</span><span class="p">,</span>
+                                   <span class="s1">&#39;B365A&#39;</span><span class="p">:</span> <span class="s1">&#39;BetfairAwayOdds&#39;</span><span class="p">}))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">predictions_df</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2783,7 +2762,7 @@ predictions_df <span style="color: #666666">=</span> (production_df<span style="
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

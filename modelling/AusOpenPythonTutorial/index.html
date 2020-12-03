@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#australian-open-datathon-r-tutorial" tabindex="1" class="md-skip">
+      <a href="#australian-open-datathon-r-tutorial" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1273,68 +1273,64 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <li>Outputs the final predictions for the submissions</li>
 <li>Load the data and required packages</li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>import numpy as np
-import pandas as pd
-import os
-import gc
-import sys
-import warnings
-<span style="color: #0000FF">warnings.filterwarnings</span>(<span style="color: #BA2121">&#39;ignore&#39;</span>)
-import h2o
-from h2o.automl import H2OAutoML
+<div class="highlight"><pre><span></span><code><span class="n">import</span> <span class="n">numpy</span> <span class="n">as</span> <span class="n">np</span>
+<span class="n">import</span> <span class="n">pandas</span> <span class="n">as</span> <span class="n">pd</span>
+<span class="n">import</span> <span class="n">os</span>
+<span class="n">import</span> <span class="n">gc</span>
+<span class="n">import</span> <span class="n">sys</span>
+<span class="n">import</span> <span class="n">warnings</span>
+<span class="nf">warnings.filterwarnings</span><span class="p">(</span><span class="s">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">import</span> <span class="n">h2o</span>
+<span class="n">from</span> <span class="n">h2o.automl</span> <span class="n">import</span> <span class="n">H2OAutoML</span>
 
 
-pd.options.display.max_columns <span style="color: #666666">=</span> <span style="color: #666666">999</span>
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># We are loading both the mens and womens match csvs</span>
-df_atp <span style="color: #666666">=</span> <span style="color: #0000FF">pd.read_csv</span>(<span style="color: #BA2121">&quot;data/ATP_matches.csv&quot;</span>)
-df_wta <span style="color: #666666">=</span> <span style="color: #0000FF">pd.read_csv</span>(<span style="color: #BA2121">&quot;data/WTA_matches.csv&quot;</span>)
-</pre></div>
-
+<span class="n">pd.options.display.max_columns</span> <span class="o">=</span> <span class="m">999</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># We are loading both the mens and womens match csvs</span>
+<span class="n">df_atp</span> <span class="o">=</span> <span class="nf">pd.read_csv</span><span class="p">(</span><span class="s">&quot;data/ATP_matches.csv&quot;</span><span class="p">)</span>
+<span class="n">df_wta</span> <span class="o">=</span> <span class="nf">pd.read_csv</span><span class="p">(</span><span class="s">&quot;data/WTA_matches.csv&quot;</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="data-preprocessing">Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permanent link">&para;</a></h2>
 <p>Filter the matches to hard and indoor hard only due to the fact that Australian Open is on hard surface and we want the models to train specifically for hard surfaces matches</p>
 <p>Convert the columns in both datasets to the correct types. For example, we want to make sure the date columns are in the datetime format and numerial columns are either interger or floats. This will help reduce the memory in use and make the feature engineering process easier</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">### Include hard and indoor hard only</span>
-df_atp <span style="color: #666666">=</span> df_atp.loc<span style="color: #0000FF">[df_atp.Court_Surface.isin</span>([<span style="color: #BA2121">&#39;Hard&#39;</span>,<span style="color: #BA2121">&#39;Indoor Hard&#39;</span>])]
-df_wta <span style="color: #666666">=</span> df_wta.loc<span style="color: #0000FF">[df_wta.Court_Surface.isin</span>([<span style="color: #BA2121">&#39;Hard&#39;</span>,<span style="color: #BA2121">&#39;Indoor Hard&#39;</span>])]
+<div class="highlight"><pre><span></span><code><span class="c1">### Include hard and indoor hard only</span>
+<span class="n">df_atp</span> <span class="o">=</span> <span class="n">df_atp.loc</span><span class="p">[</span><span class="nf">df_atp.Court_Surface.isin</span><span class="p">([</span><span class="s">&#39;Hard&#39;</span><span class="p">,</span><span class="s">&#39;Indoor Hard&#39;</span><span class="p">])]</span>
+<span class="n">df_wta</span> <span class="o">=</span> <span class="n">df_wta.loc</span><span class="p">[</span><span class="nf">df_wta.Court_Surface.isin</span><span class="p">([</span><span class="s">&#39;Hard&#39;</span><span class="p">,</span><span class="s">&#39;Indoor Hard&#39;</span><span class="p">])]</span>
 
-<span style="color: #408080; font-style: italic">### Exclude qualifying rounds</span>
-df_atp <span style="color: #666666">=</span> df_atp.loc[df_atp.Round_Description <span style="color: #666666">!=</span> <span style="color: #BA2121">&#39;Qualifying&#39;</span>]
-df_wta <span style="color: #666666">=</span> df_wta.loc[df_wta.Round_Description <span style="color: #666666">!=</span> <span style="color: #BA2121">&#39;Qualifying&#39;</span>]
+<span class="c1">### Exclude qualifying rounds</span>
+<span class="n">df_atp</span> <span class="o">=</span> <span class="n">df_atp.loc</span><span class="p">[</span><span class="n">df_atp.Round_Description</span> <span class="o">!=</span> <span class="s">&#39;Qualifying&#39;</span><span class="p">]</span>
+<span class="n">df_wta</span> <span class="o">=</span> <span class="n">df_wta.loc</span><span class="p">[</span><span class="n">df_wta.Round_Description</span> <span class="o">!=</span> <span class="s">&#39;Qualifying&#39;</span><span class="p">]</span>
 
-<span style="color: #408080; font-style: italic"># Store the shape of the data for reference check later</span>
-atp_shape <span style="color: #666666">=</span> df_atp.shape
-wta_shape <span style="color: #666666">=</span> df_wta.shape
-</pre></div>
+<span class="c1"># Store the shape of the data for reference check later</span>
+<span class="n">atp_shape</span> <span class="o">=</span> <span class="n">df_atp.shape</span>
+<span class="n">wta_shape</span> <span class="o">=</span> <span class="n">df_wta.shape</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">numeric_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Winner_Rank&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_Rank&#39;</span><span class="p">,</span> <span class="s">&#39;Retirement_Ind&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Winner_Sets_Won&#39;</span><span class="p">,</span> <span class="s">&#39;Winner_Games_Won&#39;</span><span class="p">,</span> <span class="s">&#39;Winner_Aces&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Winner_DoubleFaults&#39;</span><span class="p">,</span> <span class="s">&#39;Winner_FirstServes_Won&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Winner_FirstServes_In&#39;</span><span class="p">,</span> <span class="s">&#39;Winner_SecondServes_Won&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Winner_SecondServes_In&#39;</span><span class="p">,</span> <span class="s">&#39;Winner_BreakPoints_Won&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Winner_BreakPoints&#39;</span><span class="p">,</span> <span class="s">&#39;Winner_ReturnPoints_Won&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Winner_ReturnPoints_Faced&#39;</span><span class="p">,</span> <span class="s">&#39;Winner_TotalPoints_Won&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_Sets_Won&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Loser_Games_Won&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_Aces&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_DoubleFaults&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Loser_FirstServes_Won&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_FirstServes_In&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Loser_SecondServes_Won&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_SecondServes_In&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Loser_BreakPoints_Won&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_BreakPoints&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_ReturnPoints_Won&#39;</span><span class="p">,</span>
+                   <span class="s">&#39;Loser_ReturnPoints_Faced&#39;</span><span class="p">,</span> <span class="s">&#39;Loser_TotalPoints_Won&#39;</span><span class="p">]</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>numeric_columns <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Winner_Rank&#39;</span>, <span style="color: #BA2121">&#39;Loser_Rank&#39;</span>, <span style="color: #BA2121">&#39;Retirement_Ind&#39;</span>,
-                   <span style="color: #BA2121">&#39;Winner_Sets_Won&#39;</span>, <span style="color: #BA2121">&#39;Winner_Games_Won&#39;</span>, <span style="color: #BA2121">&#39;Winner_Aces&#39;</span>,
-                   <span style="color: #BA2121">&#39;Winner_DoubleFaults&#39;</span>, <span style="color: #BA2121">&#39;Winner_FirstServes_Won&#39;</span>,
-                   <span style="color: #BA2121">&#39;Winner_FirstServes_In&#39;</span>, <span style="color: #BA2121">&#39;Winner_SecondServes_Won&#39;</span>,
-                   <span style="color: #BA2121">&#39;Winner_SecondServes_In&#39;</span>, <span style="color: #BA2121">&#39;Winner_BreakPoints_Won&#39;</span>,
-                   <span style="color: #BA2121">&#39;Winner_BreakPoints&#39;</span>, <span style="color: #BA2121">&#39;Winner_ReturnPoints_Won&#39;</span>,
-                   <span style="color: #BA2121">&#39;Winner_ReturnPoints_Faced&#39;</span>, <span style="color: #BA2121">&#39;Winner_TotalPoints_Won&#39;</span>, <span style="color: #BA2121">&#39;Loser_Sets_Won&#39;</span>,
-                   <span style="color: #BA2121">&#39;Loser_Games_Won&#39;</span>, <span style="color: #BA2121">&#39;Loser_Aces&#39;</span>, <span style="color: #BA2121">&#39;Loser_DoubleFaults&#39;</span>,
-                   <span style="color: #BA2121">&#39;Loser_FirstServes_Won&#39;</span>, <span style="color: #BA2121">&#39;Loser_FirstServes_In&#39;</span>,
-                   <span style="color: #BA2121">&#39;Loser_SecondServes_Won&#39;</span>, <span style="color: #BA2121">&#39;Loser_SecondServes_In&#39;</span>,
-                   <span style="color: #BA2121">&#39;Loser_BreakPoints_Won&#39;</span>, <span style="color: #BA2121">&#39;Loser_BreakPoints&#39;</span>, <span style="color: #BA2121">&#39;Loser_ReturnPoints_Won&#39;</span>,
-                   <span style="color: #BA2121">&#39;Loser_ReturnPoints_Faced&#39;</span>, <span style="color: #BA2121">&#39;Loser_TotalPoints_Won&#39;</span>]
+<span class="n">text_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Winner&#39;</span><span class="p">,</span> <span class="s">&#39;Loser&#39;</span><span class="p">,</span>  <span class="s">&#39;Tournament&#39;</span><span class="p">,</span> <span class="s">&#39;Court_Surface&#39;</span><span class="p">,</span><span class="s">&#39;Round_Description&#39;</span><span class="p">]</span> 
 
-text_columns <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Winner&#39;</span>, <span style="color: #BA2121">&#39;Loser&#39;</span>,  <span style="color: #BA2121">&#39;Tournament&#39;</span>, <span style="color: #BA2121">&#39;Court_Surface&#39;</span>,<span style="color: #BA2121">&#39;Round_Description&#39;</span>] 
+<span class="n">date_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">]</span>
 
-date_columns <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>]
-
-<span style="color: #408080; font-style: italic"># we set the **erros** to coerce so any non-numerical values (text,special characters) will return an NA</span>
-df_atp[numeric_columns] <span style="color: #666666">=</span> df_atp[numeric_columns<span style="color: #0000FF">].apply</span>(pd.to_numeric,errors <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;coerce&#39;</span>)
-df_wta[numeric_columns] <span style="color: #666666">=</span> df_wta[numeric_columns<span style="color: #0000FF">].apply</span>(pd.to_numeric,errors <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;coerce&#39;</span>)
+<span class="c1"># we set the **erros** to coerce so any non-numerical values (text,special characters) will return an NA</span>
+<span class="n">df_atp</span><span class="p">[</span><span class="n">numeric_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_atp</span><span class="p">[</span><span class="n">numeric_columns</span><span class="p">]</span><span class="nf">.apply</span><span class="p">(</span><span class="n">pd.to_numeric</span><span class="p">,</span><span class="n">errors</span> <span class="o">=</span> <span class="s">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">df_wta</span><span class="p">[</span><span class="n">numeric_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_wta</span><span class="p">[</span><span class="n">numeric_columns</span><span class="p">]</span><span class="nf">.apply</span><span class="p">(</span><span class="n">pd.to_numeric</span><span class="p">,</span><span class="n">errors</span> <span class="o">=</span> <span class="s">&#39;coerce&#39;</span><span class="p">)</span>
 
 
-df_atp[date_columns] <span style="color: #666666">=</span> df_atp[date_columns<span style="color: #0000FF">].apply</span>(pd.to_datetime) 
-df_wta[date_columns] <span style="color: #666666">=</span> df_wta[date_columns<span style="color: #0000FF">].apply</span>(pd.to_datetime)
-</pre></div>
-
+<span class="n">df_atp</span><span class="p">[</span><span class="n">date_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_atp</span><span class="p">[</span><span class="n">date_columns</span><span class="p">]</span><span class="nf">.apply</span><span class="p">(</span><span class="n">pd.to_datetime</span><span class="p">)</span> 
+<span class="n">df_wta</span><span class="p">[</span><span class="n">date_columns</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_wta</span><span class="p">[</span><span class="n">date_columns</span><span class="p">]</span><span class="nf">.apply</span><span class="p">(</span><span class="n">pd.to_datetime</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="feature-engineering">Feature Engineering<a class="headerlink" href="#feature-engineering" title="Permanent link">&para;</a></h2>
 <p>The raw datasets are constructed in a way that each row will have the seperate stats for both the winner and loser of that match. However, we want to reshape the data so that each row we will only have one player randomly selected from the winner/loser columns and the features are the difference between opponents statistics (Difference of Averages), such as the difference between average first serve % in a single column rather than Player 1’s first serve % and Player 2’s first serve % in two separate columns.</p>
@@ -1354,55 +1350,53 @@ df_wta[date_columns] <span style="color: #666666">=</span> df_wta[date_columns<s
 </ul>
 <hr />
 <h2 id="convert-the-raw-dataframes-into-long-format">Convert the raw dataframes into long format:<a class="headerlink" href="#convert-the-raw-dataframes-into-long-format" title="Permanent link">&para;</a></h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Before we split the dataframe into winner and loser, we want to create a feature that captures the total number of games the match takes.</span>
-<span style="color: #408080; font-style: italic"># We have to do it before the split or we will lose this information</span>
-df_atp[<span style="color: #BA2121">&#39;Total_Games&#39;</span>] <span style="color: #666666">=</span> df_atp.Winner_Games_Won <span style="color: #666666">+</span> df_atp.Loser_Games_Won
-df_wta[<span style="color: #BA2121">&#39;Total_Games&#39;</span>] <span style="color: #666666">=</span> df_wta.Winner_Games_Won <span style="color: #666666">+</span> df_wta.Loser_Games_Won
+<div class="highlight"><pre><span></span><code><span class="c1"># Before we split the dataframe into winner and loser, we want to create a feature that captures the total number of games the match takes.</span>
+<span class="c1"># We have to do it before the split or we will lose this information</span>
+<span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;Total_Games&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_atp.Winner_Games_Won</span> <span class="o">+</span> <span class="n">df_atp.Loser_Games_Won</span>
+<span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;Total_Games&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_wta.Winner_Games_Won</span> <span class="o">+</span> <span class="n">df_wta.Loser_Games_Won</span>
 
 
-<span style="color: #408080; font-style: italic"># Get the column names for the winner and loser stats</span>
-winner_cols <span style="color: #666666">=</span> [col for col in df_atp.columns if <span style="color: #0000FF">col.startswith</span>(<span style="color: #BA2121">&#39;Winner&#39;</span>)]
-loser_cols <span style="color: #666666">=</span> [col for col in df_atp.columns if <span style="color: #0000FF">col.startswith</span>(<span style="color: #BA2121">&#39;Loser&#39;</span>)]
+<span class="c1"># Get the column names for the winner and loser stats</span>
+<span class="n">winner_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="n">for</span> <span class="n">col</span> <span class="n">in</span> <span class="n">df_atp.columns</span> <span class="n">if</span> <span class="nf">col.startswith</span><span class="p">(</span><span class="s">&#39;Winner&#39;</span><span class="p">)]</span>
+<span class="n">loser_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="n">for</span> <span class="n">col</span> <span class="n">in</span> <span class="n">df_atp.columns</span> <span class="n">if</span> <span class="nf">col.startswith</span><span class="p">(</span><span class="s">&#39;Loser&#39;</span><span class="p">)]</span>
 
-<span style="color: #408080; font-style: italic"># create a winner dataframe to store the winner stats and a loser dataframe for the losers</span>
-<span style="color: #408080; font-style: italic"># In addition to the winner and loser columns, we are adding common columns as well (e.g. tournamnt dates)</span>
-common_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Total_Games&#39;</span>,<span style="color: #BA2121">&#39;Tournament&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>, <span style="color: #BA2121">&#39;Court_Surface&#39;</span>,<span style="color: #BA2121">&#39;Round_Description&#39;</span>]
-df_winner_atp <span style="color: #666666">=</span> df_atp[winner_cols <span style="color: #666666">+</span> common_cols]
-df_loser_atp <span style="color: #666666">=</span> df_atp[loser_cols <span style="color: #666666">+</span> common_cols]
-df_winner_wta <span style="color: #666666">=</span> df_wta[winner_cols <span style="color: #666666">+</span> common_cols]
-df_loser_wta <span style="color: #666666">=</span> df_wta[loser_cols <span style="color: #666666">+</span> common_cols]
+<span class="c1"># create a winner dataframe to store the winner stats and a loser dataframe for the losers</span>
+<span class="c1"># In addition to the winner and loser columns, we are adding common columns as well (e.g. tournamnt dates)</span>
+<span class="n">common_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Total_Games&#39;</span><span class="p">,</span><span class="s">&#39;Tournament&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">,</span> <span class="s">&#39;Court_Surface&#39;</span><span class="p">,</span><span class="s">&#39;Round_Description&#39;</span><span class="p">]</span>
+<span class="n">df_winner_atp</span> <span class="o">=</span> <span class="n">df_atp</span><span class="p">[</span><span class="n">winner_cols</span> <span class="o">+</span> <span class="n">common_cols</span><span class="p">]</span>
+<span class="n">df_loser_atp</span> <span class="o">=</span> <span class="n">df_atp</span><span class="p">[</span><span class="n">loser_cols</span> <span class="o">+</span> <span class="n">common_cols</span><span class="p">]</span>
+<span class="n">df_winner_wta</span> <span class="o">=</span> <span class="n">df_wta</span><span class="p">[</span><span class="n">winner_cols</span> <span class="o">+</span> <span class="n">common_cols</span><span class="p">]</span>
+<span class="n">df_loser_wta</span> <span class="o">=</span> <span class="n">df_wta</span><span class="p">[</span><span class="n">loser_cols</span> <span class="o">+</span> <span class="n">common_cols</span><span class="p">]</span>
 
-<span style="color: #408080; font-style: italic"># Create a new column to show whether the player has won or not. </span>
-df_winner_atp[<span style="color: #BA2121">&quot;won&quot;</span>] <span style="color: #666666">=</span> <span style="color: #666666">1</span>
-df_loser_atp[<span style="color: #BA2121">&quot;won&quot;</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span class="c1"># Create a new column to show whether the player has won or not. </span>
+<span class="n">df_winner_atp</span><span class="p">[</span><span class="s">&quot;won&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="m">1</span>
+<span class="n">df_loser_atp</span><span class="p">[</span><span class="s">&quot;won&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="m">0</span>
 
-df_winner_wta[<span style="color: #BA2121">&quot;won&quot;</span>] <span style="color: #666666">=</span> <span style="color: #666666">1</span>
-df_loser_wta[<span style="color: #BA2121">&quot;won&quot;</span>] <span style="color: #666666">=</span> <span style="color: #666666">0</span>
-
-
-<span style="color: #408080; font-style: italic"># Rename the columns for the winner and loser data frames so we can append them later on.</span>
-<span style="color: #408080; font-style: italic"># We will rename the Winner_ / Loser_ columns to Player_</span>
-
-new_column_names <span style="color: #666666">=</span> <span style="color: #0000FF">[col.replace</span>(<span style="color: #BA2121">&#39;Winner&#39;</span>,<span style="color: #BA2121">&#39;Player&#39;</span>) for col in winner_cols]
-
-df_winner_atp.columns <span style="color: #666666">=</span> new_column_names <span style="color: #666666">+</span> common_cols <span style="color: #666666">+</span> [<span style="color: #BA2121">&#39;won&#39;</span>]
-
-<span style="color: #408080; font-style: italic"># They all should be the same</span>
-df_loser_atp.columns  <span style="color: #666666">=</span> df_winner_atp.columns
-df_winner_wta.columns  <span style="color: #666666">=</span> df_winner_atp.columns
-df_loser_wta.columns  <span style="color: #666666">=</span> df_winner_atp.columns
+<span class="n">df_winner_wta</span><span class="p">[</span><span class="s">&quot;won&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="m">1</span>
+<span class="n">df_loser_wta</span><span class="p">[</span><span class="s">&quot;won&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="m">0</span>
 
 
-<span style="color: #408080; font-style: italic"># append the winner and loser dataframes </span>
+<span class="c1"># Rename the columns for the winner and loser data frames so we can append them later on.</span>
+<span class="c1"># We will rename the Winner_ / Loser_ columns to Player_</span>
 
-df_long_atp<span style="color: #666666">=</span> <span style="color: #0000FF">df_winner_atp.append</span>(df_loser_atp)
-df_long_wta<span style="color: #666666">=</span> <span style="color: #0000FF">df_winner_wta.append</span>(df_loser_wta)
-</pre></div>
+<span class="n">new_column_names</span> <span class="o">=</span> <span class="p">[</span><span class="nf">col.replace</span><span class="p">(</span><span class="s">&#39;Winner&#39;</span><span class="p">,</span><span class="s">&#39;Player&#39;</span><span class="p">)</span> <span class="n">for</span> <span class="n">col</span> <span class="n">in</span> <span class="n">winner_cols</span><span class="p">]</span>
 
+<span class="n">df_winner_atp.columns</span> <span class="o">=</span> <span class="n">new_column_names</span> <span class="o">+</span> <span class="n">common_cols</span> <span class="o">+</span> <span class="p">[</span><span class="s">&#39;won&#39;</span><span class="p">]</span>
+
+<span class="c1"># They all should be the same</span>
+<span class="n">df_loser_atp.columns</span>  <span class="o">=</span> <span class="n">df_winner_atp.columns</span>
+<span class="n">df_winner_wta.columns</span>  <span class="o">=</span> <span class="n">df_winner_atp.columns</span>
+<span class="n">df_loser_wta.columns</span>  <span class="o">=</span> <span class="n">df_winner_atp.columns</span>
+
+
+<span class="c1"># append the winner and loser dataframes </span>
+
+<span class="n">df_long_atp</span><span class="o">=</span> <span class="nf">df_winner_atp.append</span><span class="p">(</span><span class="n">df_loser_atp</span><span class="p">)</span>
+<span class="n">df_long_wta</span><span class="o">=</span> <span class="nf">df_winner_wta.append</span><span class="p">(</span><span class="n">df_loser_wta</span><span class="p">)</span>
+</code></pre></div>
 <p>So now our dataframes are in long format and should looks like this</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">df_long_atp.head</span>()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">df_long_atp.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1559,37 +1553,35 @@ df_long_wta<span style="color: #666666">=</span> <span style="color: #0000FF">df
 <li><code>Player_BreakPoints_Per_Return_Game</code></li>
 <li><code>Player_Game_Win_Percentage</code></li>
 </ul>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Here, we will define a function so we can apply it to both atp and wta dataframes</span>
-def <span style="color: #0000FF">get_new_features</span>(df)<span style="color: #666666">:</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Here, we will define a function so we can apply it to both atp and wta dataframes</span>
+<span class="n">def</span> <span class="nf">get_new_features</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">:</span>
 
-    <span style="color: #408080; font-style: italic"># Input: </span>
-<span style="color: #408080; font-style: italic">#     df: dataframe to get the data from</span>
+    <span class="c1"># Input: </span>
+<span class="c1">#     df: dataframe to get the data from</span>
 
-     <span style="color: #408080; font-style: italic"># Return: the df with the new features</span>
-
-
-    <span style="color: #408080; font-style: italic"># Point Win ratio when serving</span>
-    df[<span style="color: #BA2121">&#39;Player_Serve_Win_Ratio&#39;</span>] <span style="color: #666666">=</span> (df.Player_FirstServes_Won <span style="color: #666666">+</span> df.Player_SecondServes_Won <span style="color: #666666">-</span> df.Player_DoubleFaults) \
-                                  <span style="color: #666666">/</span>(df.Player_FirstServes_In <span style="color: #666666">+</span> df.Player_SecondServes_In <span style="color: #666666">+</span> df.Player_DoubleFaults)
-    <span style="color: #408080; font-style: italic"># Point win ratio when returning</span>
-    df[<span style="color: #BA2121">&#39;Player_Return_Win_Ratio&#39;</span>] <span style="color: #666666">=</span> df.Player_ReturnPoints_Won <span style="color: #666666">/</span> df.Player_ReturnPoints_Faced
-    <span style="color: #408080; font-style: italic"># Breakpoints per receiving game</span>
-    df[<span style="color: #BA2121">&#39;Player_BreakPoints_Per_Return_Game&#39;</span>] <span style="color: #666666">=</span> df.Player_BreakPoints<span style="color: #666666">/</span>df.Total_Games  
-    df[<span style="color: #BA2121">&#39;Player_Game_Win_Percentage&#39;</span>] <span style="color: #666666">=</span> df.Player_Games_Won<span style="color: #666666">/</span>df.Total_Games
-
-    return df
+     <span class="c1"># Return: the df with the new features</span>
 
 
-<span style="color: #408080; font-style: italic"># Apply the function we just created to the long dataframes</span>
-df_long_atp <span style="color: #666666">=</span> <span style="color: #0000FF">get_new_features</span>(df_long_atp)
-df_long_wta <span style="color: #666666">=</span> <span style="color: #0000FF">get_new_features</span>(df_long_wta)
-</pre></div>
+    <span class="c1"># Point Win ratio when serving</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Player_Serve_Win_Ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df.Player_FirstServes_Won</span> <span class="o">+</span> <span class="n">df.Player_SecondServes_Won</span> <span class="o">-</span> <span class="n">df.Player_DoubleFaults</span><span class="p">)</span> \
+                                  <span class="o">/</span><span class="p">(</span><span class="n">df.Player_FirstServes_In</span> <span class="o">+</span> <span class="n">df.Player_SecondServes_In</span> <span class="o">+</span> <span class="n">df.Player_DoubleFaults</span><span class="p">)</span>
+    <span class="c1"># Point win ratio when returning</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Player_Return_Win_Ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df.Player_ReturnPoints_Won</span> <span class="o">/</span> <span class="n">df.Player_ReturnPoints_Faced</span>
+    <span class="c1"># Breakpoints per receiving game</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Player_BreakPoints_Per_Return_Game&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df.Player_BreakPoints</span><span class="o">/</span><span class="n">df.Total_Games</span>  
+    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Player_Game_Win_Percentage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df.Player_Games_Won</span><span class="o">/</span><span class="n">df.Total_Games</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># The long table should have exactly twice of the rows of the original data</span>
-assert df_long_atp.shape[0] <span style="color: #666666">==</span> atp_shape[0]<span style="color: #666666">*2</span>
-assert df_long_wta.shape[0] <span style="color: #666666">==</span> wta_shape[0]<span style="color: #666666">*2</span>
-</pre></div>
+    <span class="n">return</span> <span class="n">df</span>
 
+
+<span class="c1"># Apply the function we just created to the long dataframes</span>
+<span class="n">df_long_atp</span> <span class="o">=</span> <span class="nf">get_new_features</span><span class="p">(</span><span class="n">df_long_atp</span><span class="p">)</span>
+<span class="n">df_long_wta</span> <span class="o">=</span> <span class="nf">get_new_features</span><span class="p">(</span><span class="n">df_long_wta</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># The long table should have exactly twice of the rows of the original data</span>
+<span class="n">assert</span> <span class="n">df_long_atp.shape</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">atp_shape</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="o">*</span><span class="m">2</span>
+<span class="n">assert</span> <span class="n">df_long_wta.shape</span><span class="p">[</span><span class="m">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">wta_shape</span><span class="p">[</span><span class="m">0</span><span class="p">]</span><span class="o">*</span><span class="m">2</span>
+</code></pre></div>
 <hr />
 <h2 id="take-the-rolling-average-for-each-player-and-each-match">Take the rolling average for each player and each match<a class="headerlink" href="#take-the-rolling-average-for-each-player-and-each-match" title="Permanent link">&para;</a></h2>
 <p>To train our models, we cannot simply use the player stats for that current match. In fact, we wont be able to use any stats from the same tournament. The logic behind this is that when we try to predict the results in 2019, we would not know the stats of any of the matches in the Australian Open 2019 tournament. As a result, we will use the players' past performance. Here, we will do a rolling average of the most recent 15 matches before the tournament.</p>
@@ -1599,26 +1591,24 @@ assert df_long_wta.shape[0] <span style="color: #666666">==</span> wta_shape[0]<
 <li>Loop through the dates from point 1, for each date, we filter the data to only include matches before that date and take the most recent 15 games</li>
 <li>Take the average of those 15 games</li>
 </ol>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># the two tournaments we will be using for training and thus the feature generation</span>
-tournaments <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;U.S. Open, New York&#39;</span>,<span style="color: #BA2121">&#39;Australian Open, Melbourne&#39;</span>]
+<div class="highlight"><pre><span></span><code><span class="c1"># the two tournaments we will be using for training and thus the feature generation</span>
+<span class="n">tournaments</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;U.S. Open, New York&#39;</span><span class="p">,</span><span class="s">&#39;Australian Open, Melbourne&#39;</span><span class="p">]</span>
 
-<span style="color: #408080; font-style: italic"># Store the dates for the loops </span>
-tournament_dates_atp <span style="color: #666666">=</span> df_atp.loc<span style="color: #0000FF">[df_atp.Tournament.isin</span>(tournaments)<span style="color: #0000FF">].groupby</span>([<span style="color: #BA2121">&#39;Tournament&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>]) \
-<span style="color: #0000FF">.size</span>()<span style="color: #0000FF">.reset_index</span>()[[<span style="color: #BA2121">&#39;Tournament&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>]]
+<span class="c1"># Store the dates for the loops </span>
+<span class="n">tournament_dates_atp</span> <span class="o">=</span> <span class="n">df_atp.loc</span><span class="p">[</span><span class="nf">df_atp.Tournament.isin</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)]</span><span class="nf">.groupby</span><span class="p">([</span><span class="s">&#39;Tournament&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">])</span> \
+<span class="nf">.size</span><span class="p">()</span><span class="nf">.reset_index</span><span class="p">()[[</span><span class="s">&#39;Tournament&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">]]</span>
 
-tournament_dates_wta <span style="color: #666666">=</span> df_wta.loc<span style="color: #0000FF">[df_wta.Tournament.isin</span>(tournaments)<span style="color: #0000FF">].groupby</span>([<span style="color: #BA2121">&#39;Tournament&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>]) \
-<span style="color: #0000FF">.size</span>()<span style="color: #0000FF">.reset_index</span>()[[<span style="color: #BA2121">&#39;Tournament&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>]]
+<span class="n">tournament_dates_wta</span> <span class="o">=</span> <span class="n">df_wta.loc</span><span class="p">[</span><span class="nf">df_wta.Tournament.isin</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)]</span><span class="nf">.groupby</span><span class="p">([</span><span class="s">&#39;Tournament&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">])</span> \
+<span class="nf">.size</span><span class="p">()</span><span class="nf">.reset_index</span><span class="p">()[[</span><span class="s">&#39;Tournament&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">]]</span>
 
 
-<span style="color: #408080; font-style: italic"># We are adding one more date for the final prediction</span>
-tournament_dates_atp.loc[<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Australian Open, Melbourne&#39;</span>,<span style="color: #0000FF">pd.to_datetime</span>(<span style="color: #BA2121">&#39;2019-01-15&#39;</span>)]
-tournament_dates_wta.loc[<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Australian Open, Melbourne&#39;</span>,<span style="color: #0000FF">pd.to_datetime</span>(<span style="color: #BA2121">&#39;2019-01-15&#39;</span>)]
-</pre></div>
-
+<span class="c1"># We are adding one more date for the final prediction</span>
+<span class="n">tournament_dates_atp.loc</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Australian Open, Melbourne&#39;</span><span class="p">,</span><span class="nf">pd.to_datetime</span><span class="p">(</span><span class="s">&#39;2019-01-15&#39;</span><span class="p">)]</span>
+<span class="n">tournament_dates_wta.loc</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Australian Open, Melbourne&#39;</span><span class="p">,</span><span class="nf">pd.to_datetime</span><span class="p">(</span><span class="s">&#39;2019-01-15&#39;</span><span class="p">)]</span>
+</code></pre></div>
 <p>Following are the dates for each tournament</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>tournament_dates_atp
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">tournament_dates_atp</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1689,9 +1679,8 @@ tournament_dates_wta.loc[<span style="color: #666666">-1</span>] <span style="co
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>tournament_dates_wta
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">tournament_dates_wta</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1747,65 +1736,62 @@ tournament_dates_wta.loc[<span style="color: #666666">-1</span>] <span style="co
 </tbody>
 </table>
 <p>They look fine but it is interesting that for men's, we have two more years of data from 2012 to 2013</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Let&#39;s define a function to calculate the rolling averages</span>
-def <span style="color: #0000FF">get_rolling_features </span>(df, date_df<span style="color: #666666">=</span>None,rolling_cols <span style="color: #666666">=</span> None, last_cols<span style="color: #666666">=</span> None)<span style="color: #666666">:</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Let&#39;s define a function to calculate the rolling averages</span>
+<span class="n">def</span> <span class="nf">get_rolling_features </span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">date_df</span><span class="o">=</span><span class="n">None</span><span class="p">,</span><span class="n">rolling_cols</span> <span class="o">=</span> <span class="n">None</span><span class="p">,</span> <span class="n">last_cols</span><span class="o">=</span> <span class="n">None</span><span class="p">)</span><span class="o">:</span>
 
-    <span style="color: #408080; font-style: italic"># Input: </span>
-<span style="color: #408080; font-style: italic">#     df: dataframe to get the data from</span>
-<span style="color: #408080; font-style: italic">#     date_df: dataframe that has the start dates for each tournament</span>
-<span style="color: #408080; font-style: italic">#     rolling_cols: columns to get the rolling averages</span>
-<span style="color: #408080; font-style: italic">#     last_cols: columns to get the last value (most recent)</span>
+    <span class="c1"># Input: </span>
+<span class="c1">#     df: dataframe to get the data from</span>
+<span class="c1">#     date_df: dataframe that has the start dates for each tournament</span>
+<span class="c1">#     rolling_cols: columns to get the rolling averages</span>
+<span class="c1">#     last_cols: columns to get the last value (most recent)</span>
 
-     <span style="color: #408080; font-style: italic"># Return: the df with the new features</span>
-
-
-    <span style="color: #408080; font-style: italic"># Sort the data by player and dates so the most recent matches are at the bottom</span>
-    df <span style="color: #666666">=</span> <span style="color: #0000FF">df.sort_values</span>([<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>,<span style="color: #BA2121">&#39;Tournament&#39;</span>], ascending<span style="color: #666666">=</span>True)
-
-    <span style="color: #408080; font-style: italic"># For each tournament, get the rolling averages of that player&#39;s past matches before the tournament start date</span>
-    for index, tournament_date in <span style="color: #0000FF">enumerate</span>(date_df.Tournament_Date)<span style="color: #666666">:</span>
-        <span style="color: #408080; font-style: italic"># create a temp df to store the interim results</span>
-        df_temp <span style="color: #666666">=</span> df.loc[df.Tournament_Date <span style="color: #666666">&lt;</span> tournament_date]
-
-        <span style="color: #408080; font-style: italic"># for ranks, we only take the last one. (comment this out if want to take avg of rank)</span>
-        df_temp_last <span style="color: #666666">=</span> <span style="color: #0000FF">df_temp.groupby</span>(<span style="color: #BA2121">&#39;Player&#39;</span>)[last_cols<span style="color: #0000FF">].last</span>()<span style="color: #0000FF">.reset_index</span>()
-
-        <span style="color: #408080; font-style: italic"># take the most recent 15 matches for the rolling average</span>
-        df_temp <span style="color: #666666">=</span> <span style="color: #0000FF">df_temp.groupby</span>(<span style="color: #BA2121">&#39;Player&#39;</span>)[rolling_cols<span style="color: #0000FF">].rolling</span>(<span style="color: #666666">15</span>, min_periods<span style="color: #666666">=1</span>)<span style="color: #0000FF">.mean</span>()<span style="color: #0000FF">.reset_index</span>()
-        df_temp <span style="color: #666666">=</span> <span style="color: #0000FF">df_temp.groupby</span>(<span style="color: #BA2121">&#39;Player&#39;</span>)<span style="color: #0000FF">.tail</span>(<span style="color: #666666">1</span>) <span style="color: #408080; font-style: italic"># take the last row of the above</span>
-
-        df_temp<span style="color: #666666">=</span> <span style="color: #0000FF">df_temp.merge</span>(df_temp_last, on<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Player&#39;</span>, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>)
-
-        if index <span style="color: #666666">==0:</span>
-            df_result <span style="color: #666666">=</span> df_temp
-            df_result[<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>] <span style="color: #666666">=</span> tournament_date <span style="color: #408080; font-style: italic"># so we know which tournament this feature is for</span>
-        else<span style="color: #666666">:</span>
-            df_temp[<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>] <span style="color: #666666">=</span> tournament_date
-            df_result <span style="color: #666666">=</span> <span style="color: #0000FF">df_result.append</span>(df_temp)
-
-    <span style="color: #0000FF">df_result.drop</span>(<span style="color: #BA2121">&#39;level_1&#39;</span>, axis<span style="color: #666666">=1</span>,inplace<span style="color: #666666">=</span>True)
-
-    return df_result
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># columns we are applying the rolling averages on</span>
-rolling_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player_Serve_Win_Ratio&#39;</span>, <span style="color: #BA2121">&#39;Player_Return_Win_Ratio&#39;</span>,
-               <span style="color: #BA2121">&#39;Player_BreakPoints_Per_Return_Game&#39;</span>, <span style="color: #BA2121">&#39;Player_Game_Win_Percentage&#39;</span>]
-
-<span style="color: #408080; font-style: italic"># columns we are taking the most recent values on</span>
-<span style="color: #408080; font-style: italic"># For the player rank, we think we can just use the latest rank (before the tournament starts) </span>
-<span style="color: #408080; font-style: italic"># as it should refect the most recent performance of the player</span>
-last_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player_Rank&#39;</span>]
+     <span class="c1"># Return: the df with the new features</span>
 
 
-<span style="color: #408080; font-style: italic"># Apply the rolling average function to the long dataframes (it will take a few mins to run)</span>
-df_rolling_atp <span style="color: #666666">=</span> <span style="color: #0000FF">get_rolling_features </span>(df_long_atp, tournament_dates_atp, rolling_cols, last_cols<span style="color: #666666">=</span> last_cols )
-df_rolling_wta <span style="color: #666666">=</span> <span style="color: #0000FF">get_rolling_features </span>(df_long_wta, tournament_dates_wta, rolling_cols, last_cols<span style="color: #666666">=</span> last_cols)
-</pre></div>
+    <span class="c1"># Sort the data by player and dates so the most recent matches are at the bottom</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="nf">df.sort_values</span><span class="p">([</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">,</span><span class="s">&#39;Tournament&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">df_rolling_atp.head</span>(<span style="color: #666666">2</span>)
-</pre></div>
+    <span class="c1"># For each tournament, get the rolling averages of that player&#39;s past matches before the tournament start date</span>
+    <span class="n">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">tournament_date</span> <span class="n">in</span> <span class="nf">enumerate</span><span class="p">(</span><span class="n">date_df.Tournament_Date</span><span class="p">)</span><span class="o">:</span>
+        <span class="c1"># create a temp df to store the interim results</span>
+        <span class="n">df_temp</span> <span class="o">=</span> <span class="n">df.loc</span><span class="p">[</span><span class="n">df.Tournament_Date</span> <span class="o">&lt;</span> <span class="n">tournament_date</span><span class="p">]</span>
 
+        <span class="c1"># for ranks, we only take the last one. (comment this out if want to take avg of rank)</span>
+        <span class="n">df_temp_last</span> <span class="o">=</span> <span class="nf">df_temp.groupby</span><span class="p">(</span><span class="s">&#39;Player&#39;</span><span class="p">)[</span><span class="n">last_cols</span><span class="p">]</span><span class="nf">.last</span><span class="p">()</span><span class="nf">.reset_index</span><span class="p">()</span>
+
+        <span class="c1"># take the most recent 15 matches for the rolling average</span>
+        <span class="n">df_temp</span> <span class="o">=</span> <span class="nf">df_temp.groupby</span><span class="p">(</span><span class="s">&#39;Player&#39;</span><span class="p">)[</span><span class="n">rolling_cols</span><span class="p">]</span><span class="nf">.rolling</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="n">min_periods</span><span class="o">=</span><span class="m">1</span><span class="p">)</span><span class="nf">.mean</span><span class="p">()</span><span class="nf">.reset_index</span><span class="p">()</span>
+        <span class="n">df_temp</span> <span class="o">=</span> <span class="nf">df_temp.groupby</span><span class="p">(</span><span class="s">&#39;Player&#39;</span><span class="p">)</span><span class="nf">.tail</span><span class="p">(</span><span class="m">1</span><span class="p">)</span> <span class="c1"># take the last row of the above</span>
+
+        <span class="n">df_temp</span><span class="o">=</span> <span class="nf">df_temp.merge</span><span class="p">(</span><span class="n">df_temp_last</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s">&#39;Player&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">)</span>
+
+        <span class="n">if</span> <span class="n">index</span> <span class="o">==</span><span class="m">0</span><span class="o">:</span>
+            <span class="n">df_result</span> <span class="o">=</span> <span class="n">df_temp</span>
+            <span class="n">df_result</span><span class="p">[</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tournament_date</span> <span class="c1"># so we know which tournament this feature is for</span>
+        <span class="n">else</span><span class="o">:</span>
+            <span class="n">df_temp</span><span class="p">[</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tournament_date</span>
+            <span class="n">df_result</span> <span class="o">=</span> <span class="nf">df_result.append</span><span class="p">(</span><span class="n">df_temp</span><span class="p">)</span>
+
+    <span class="nf">df_result.drop</span><span class="p">(</span><span class="s">&#39;level_1&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="n">inplace</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
+
+    <span class="n">return</span> <span class="n">df_result</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># columns we are applying the rolling averages on</span>
+<span class="n">rolling_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player_Serve_Win_Ratio&#39;</span><span class="p">,</span> <span class="s">&#39;Player_Return_Win_Ratio&#39;</span><span class="p">,</span>
+               <span class="s">&#39;Player_BreakPoints_Per_Return_Game&#39;</span><span class="p">,</span> <span class="s">&#39;Player_Game_Win_Percentage&#39;</span><span class="p">]</span>
+
+<span class="c1"># columns we are taking the most recent values on</span>
+<span class="c1"># For the player rank, we think we can just use the latest rank (before the tournament starts) </span>
+<span class="c1"># as it should refect the most recent performance of the player</span>
+<span class="n">last_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player_Rank&#39;</span><span class="p">]</span>
+
+
+<span class="c1"># Apply the rolling average function to the long dataframes (it will take a few mins to run)</span>
+<span class="n">df_rolling_atp</span> <span class="o">=</span> <span class="nf">get_rolling_features </span><span class="p">(</span><span class="n">df_long_atp</span><span class="p">,</span> <span class="n">tournament_dates_atp</span><span class="p">,</span> <span class="n">rolling_cols</span><span class="p">,</span> <span class="n">last_cols</span><span class="o">=</span> <span class="n">last_cols</span> <span class="p">)</span>
+<span class="n">df_rolling_wta</span> <span class="o">=</span> <span class="nf">get_rolling_features </span><span class="p">(</span><span class="n">df_long_wta</span><span class="p">,</span> <span class="n">tournament_dates_wta</span><span class="p">,</span> <span class="n">rolling_cols</span><span class="p">,</span> <span class="n">last_cols</span><span class="o">=</span> <span class="n">last_cols</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nf">df_rolling_atp.head</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1839,9 +1825,8 @@ df_rolling_wta <span style="color: #666666">=</span> <span style="color: #0000FF
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">df_rolling_wta.head</span>(<span style="color: #666666">2</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">df_rolling_wta.head</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1886,96 +1871,91 @@ df_rolling_wta <span style="color: #666666">=</span> <span style="color: #0000FF
 <li>We will join the features to the player 1 and 2. The join will be on the player names and the tournament date (tournament_index in the feature dataframes)</li>
 <li>For players who do not have any history, we will fill the stats by zeros and rank by 999</li>
 </ol>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Randomise the match_wide dataset so the first player is not always the winner</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Randomise the match_wide dataset so the first player is not always the winner</span>
 
-<span style="color: #408080; font-style: italic"># set a seed so the random number is reproducable</span>
-<span style="color: #0000FF">np.random.seed</span>(<span style="color: #666666">2</span>)
+<span class="c1"># set a seed so the random number is reproducable</span>
+<span class="nf">np.random.seed</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># randomise a number 0/1 with 50% chance each</span>
-<span style="color: #408080; font-style: italic"># if 0 then take the winner, 1 then take loser</span>
+<span class="c1"># randomise a number 0/1 with 50% chance each</span>
+<span class="c1"># if 0 then take the winner, 1 then take loser</span>
 
-df_atp[<span style="color: #BA2121">&#39;random_number&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">np.random.randint</span>(<span style="color: #666666">2</span>, size<span style="color: #666666">=</span><span style="color: #0000FF">len</span>(df_atp))
-df_atp[<span style="color: #BA2121">&#39;randomised_player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">np.where</span>(df_atp[<span style="color: #BA2121">&#39;random_number&#39;</span>]<span style="color: #666666">==0</span>,df_atp[<span style="color: #BA2121">&#39;Winner&#39;</span>],df_atp[<span style="color: #BA2121">&#39;Loser&#39;</span>])
-df_atp[<span style="color: #BA2121">&#39;randomised_player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">np.where</span>(df_atp[<span style="color: #BA2121">&#39;random_number&#39;</span>]<span style="color: #666666">==0</span>,df_atp[<span style="color: #BA2121">&#39;Loser&#39;</span>],df_atp[<span style="color: #BA2121">&#39;Winner&#39;</span>])
+<span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;random_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">np.random.randint</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nf">len</span><span class="p">(</span><span class="n">df_atp</span><span class="p">))</span>
+<span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;randomised_player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">np.where</span><span class="p">(</span><span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;random_number&#39;</span><span class="p">]</span><span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;Winner&#39;</span><span class="p">],</span><span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;Loser&#39;</span><span class="p">])</span>
+<span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;randomised_player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">np.where</span><span class="p">(</span><span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;random_number&#39;</span><span class="p">]</span><span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;Loser&#39;</span><span class="p">],</span><span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;Winner&#39;</span><span class="p">])</span>
 
-df_wta[<span style="color: #BA2121">&#39;random_number&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">np.random.randint</span>(<span style="color: #666666">2</span>, size<span style="color: #666666">=</span><span style="color: #0000FF">len</span>(df_wta))
-df_wta[<span style="color: #BA2121">&#39;randomised_player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">np.where</span>(df_wta[<span style="color: #BA2121">&#39;random_number&#39;</span>]<span style="color: #666666">==0</span>,df_wta[<span style="color: #BA2121">&#39;Winner&#39;</span>],df_wta[<span style="color: #BA2121">&#39;Loser&#39;</span>])
-df_wta[<span style="color: #BA2121">&#39;randomised_player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">np.where</span>(df_wta[<span style="color: #BA2121">&#39;random_number&#39;</span>]<span style="color: #666666">==0</span>,df_wta[<span style="color: #BA2121">&#39;Loser&#39;</span>],df_wta[<span style="color: #BA2121">&#39;Winner&#39;</span>])
+<span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;random_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">np.random.randint</span><span class="p">(</span><span class="m">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nf">len</span><span class="p">(</span><span class="n">df_wta</span><span class="p">))</span>
+<span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;randomised_player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">np.where</span><span class="p">(</span><span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;random_number&#39;</span><span class="p">]</span><span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;Winner&#39;</span><span class="p">],</span><span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;Loser&#39;</span><span class="p">])</span>
+<span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;randomised_player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">np.where</span><span class="p">(</span><span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;random_number&#39;</span><span class="p">]</span><span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;Loser&#39;</span><span class="p">],</span><span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;Winner&#39;</span><span class="p">])</span>
 
-<span style="color: #408080; font-style: italic"># set the target (win/loss) based on the new randomise number</span>
-df_atp[<span style="color: #BA2121">&#39;player_1_win&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">np.where</span>(df_atp[<span style="color: #BA2121">&#39;random_number&#39;</span>]<span style="color: #666666">==0</span>,<span style="color: #666666">1</span>,<span style="color: #666666">0</span>)
-df_wta[<span style="color: #BA2121">&#39;player_1_win&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">np.where</span>(df_wta[<span style="color: #BA2121">&#39;random_number&#39;</span>]<span style="color: #666666">==0</span>,<span style="color: #666666">1</span>,<span style="color: #666666">0</span>)
+<span class="c1"># set the target (win/loss) based on the new randomise number</span>
+<span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;player_1_win&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">np.where</span><span class="p">(</span><span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;random_number&#39;</span><span class="p">]</span><span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
+<span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;player_1_win&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">np.where</span><span class="p">(</span><span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;random_number&#39;</span><span class="p">]</span><span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
 
 
-<span style="color: #0000FF">print </span>(<span style="color: #BA2121">&#39;After shuffling, the win rate for player 1 for the mens is {}%&#39;</span><span style="color: #0000FF">.format</span>(df_atp[<span style="color: #BA2121">&#39;player_1_win&#39;</span><span style="color: #0000FF">].mean</span>()<span style="color: #666666">*100</span>))
-<span style="color: #0000FF">print </span>(<span style="color: #BA2121">&#39;After shuffling, the win rate for player 1 for the womens is {}%&#39;</span><span style="color: #0000FF">.format</span>(df_wta[<span style="color: #BA2121">&#39;player_1_win&#39;</span><span style="color: #0000FF">].mean</span>()<span style="color: #666666">*100</span>))
-</pre></div>
-
+<span class="nf">print </span><span class="p">(</span><span class="s">&#39;After shuffling, the win rate for player 1 for the mens is {}%&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;player_1_win&#39;</span><span class="p">]</span><span class="nf">.mean</span><span class="p">()</span><span class="o">*</span><span class="m">100</span><span class="p">))</span>
+<span class="nf">print </span><span class="p">(</span><span class="s">&#39;After shuffling, the win rate for player 1 for the womens is {}%&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;player_1_win&#39;</span><span class="p">]</span><span class="nf">.mean</span><span class="p">()</span><span class="o">*</span><span class="m">100</span><span class="p">))</span>
+</code></pre></div>
 <p>After shuffling, the win rate for player 1 for the mens is 49.64798919857267%
 After shuffling, the win rate for player 1 for the womens is 49.697671426733564%
 The win rates are close enough to 50%. So we are good to go</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># To get our dataframes ready for model training, we will exclude other tournaments from the data now because we have gotten the rolling averages from them and </span>
-<span style="color: #408080; font-style: italic"># for training, we only need US and Australian Open matches</span>
-df_atp <span style="color: #666666">=</span> df_atp.loc<span style="color: #0000FF">[df_atp.Tournament.isin</span>(tournaments)]
-df_wta <span style="color: #666666">=</span> df_wta.loc<span style="color: #0000FF">[df_wta.Tournament.isin</span>(tournaments)]
+<div class="highlight"><pre><span></span><code><span class="c1"># To get our dataframes ready for model training, we will exclude other tournaments from the data now because we have gotten the rolling averages from them and </span>
+<span class="c1"># for training, we only need US and Australian Open matches</span>
+<span class="n">df_atp</span> <span class="o">=</span> <span class="n">df_atp.loc</span><span class="p">[</span><span class="nf">df_atp.Tournament.isin</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)]</span>
+<span class="n">df_wta</span> <span class="o">=</span> <span class="n">df_wta.loc</span><span class="p">[</span><span class="nf">df_wta.Tournament.isin</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)]</span>
 
-<span style="color: #408080; font-style: italic"># now we can remove other stats columns because we will be using the differences</span>
-cols_to_keep <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Winner&#39;</span>,<span style="color: #BA2121">&#39;Loser&#39;</span>,<span style="color: #BA2121">&#39;Tournament&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>,
-                    <span style="color: #BA2121">&#39;player_1_win&#39;</span>,<span style="color: #BA2121">&#39;randomised_player_1&#39;</span>,
-                    <span style="color: #BA2121">&#39;randomised_player_2&#39;</span>]
+<span class="c1"># now we can remove other stats columns because we will be using the differences</span>
+<span class="n">cols_to_keep</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Winner&#39;</span><span class="p">,</span><span class="s">&#39;Loser&#39;</span><span class="p">,</span><span class="s">&#39;Tournament&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">,</span>
+                    <span class="s">&#39;player_1_win&#39;</span><span class="p">,</span><span class="s">&#39;randomised_player_1&#39;</span><span class="p">,</span>
+                    <span class="s">&#39;randomised_player_2&#39;</span><span class="p">]</span>
 
-df_atp <span style="color: #666666">=</span> df_atp[cols_to_keep]
-df_wta <span style="color: #666666">=</span> df_wta[cols_to_keep]
+<span class="n">df_atp</span> <span class="o">=</span> <span class="n">df_atp</span><span class="p">[</span><span class="n">cols_to_keep</span><span class="p">]</span>
+<span class="n">df_wta</span> <span class="o">=</span> <span class="n">df_wta</span><span class="p">[</span><span class="n">cols_to_keep</span><span class="p">]</span>
 
 
-<span style="color: #408080; font-style: italic"># Here, we are joining the rolling average dataframes to the individual matches. </span>
-<span style="color: #408080; font-style: italic"># We need to do it twice. One for player 1 and one for player 2</span>
+<span class="c1"># Here, we are joining the rolling average dataframes to the individual matches. </span>
+<span class="c1"># We need to do it twice. One for player 1 and one for player 2</span>
 
-<span style="color: #408080; font-style: italic"># Get the rolling features for player 1</span>
-df_atp <span style="color: #666666">=</span> <span style="color: #0000FF">df_atp.merge</span>(df_rolling_atp, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>,
-                      left_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;randomised_player_1&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>],
-                      right_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>],
-                      validate <span style="color: #666666">=</span><span style="color: #BA2121">&#39;m:1&#39;</span>)
+<span class="c1"># Get the rolling features for player 1</span>
+<span class="n">df_atp</span> <span class="o">=</span> <span class="nf">df_atp.merge</span><span class="p">(</span><span class="n">df_rolling_atp</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                      <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;randomised_player_1&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">],</span>
+                      <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">],</span>
+                      <span class="n">validate</span> <span class="o">=</span><span class="s">&#39;m:1&#39;</span><span class="p">)</span>
 
-df_wta <span style="color: #666666">=</span> <span style="color: #0000FF">df_wta.merge</span>(df_rolling_wta, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>,
-                      left_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;randomised_player_1&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>],
-                      right_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>],
-                      validate <span style="color: #666666">=</span><span style="color: #BA2121">&#39;m:1&#39;</span>)
+<span class="n">df_wta</span> <span class="o">=</span> <span class="nf">df_wta.merge</span><span class="p">(</span><span class="n">df_rolling_wta</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                      <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;randomised_player_1&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">],</span>
+                      <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">],</span>
+                      <span class="n">validate</span> <span class="o">=</span><span class="s">&#39;m:1&#39;</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Get the rolling features for player 2</span>
-<span style="color: #408080; font-style: italic"># we will use &#39;_p1&#39; to denote player 1 and &#39;_p2&#39; for player 2</span>
-df_atp <span style="color: #666666">=</span> <span style="color: #0000FF">df_atp.merge</span>(df_rolling_atp, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>,
-                      left_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;randomised_player_2&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>],
-                      right_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>],
-                      validate <span style="color: #666666">=</span><span style="color: #BA2121">&#39;m:1&#39;</span>,
-                      suffixes<span style="color: #666666">=</span>(<span style="color: #BA2121">&#39;_p1&#39;</span>,<span style="color: #BA2121">&#39;_p2&#39;</span>))
+<span class="c1"># Get the rolling features for player 2</span>
+<span class="c1"># we will use &#39;_p1&#39; to denote player 1 and &#39;_p2&#39; for player 2</span>
+<span class="n">df_atp</span> <span class="o">=</span> <span class="nf">df_atp.merge</span><span class="p">(</span><span class="n">df_rolling_atp</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                      <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;randomised_player_2&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">],</span>
+                      <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">],</span>
+                      <span class="n">validate</span> <span class="o">=</span><span class="s">&#39;m:1&#39;</span><span class="p">,</span>
+                      <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;_p1&#39;</span><span class="p">,</span><span class="s">&#39;_p2&#39;</span><span class="p">))</span>
 
-df_wta <span style="color: #666666">=</span> <span style="color: #0000FF">df_wta.merge</span>(df_rolling_wta, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>,
-                      left_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;randomised_player_2&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>],
-                      right_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>],
-                      validate <span style="color: #666666">=</span><span style="color: #BA2121">&#39;m:1&#39;</span>,
-                      suffixes<span style="color: #666666">=</span>(<span style="color: #BA2121">&#39;_p1&#39;</span>,<span style="color: #BA2121">&#39;_p2&#39;</span>))
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># How many players do not have previous match history</span>
-<span style="color: #0000FF">print</span>(<span style="color: #BA2121">&#39;{} player_1s do Not have previous match history before the tournament&#39;</span><span style="color: #0000FF">.format</span>(df_atp.loc<span style="color: #0000FF">[df_atp.Player_p1.isna</span>(),<span style="color: #BA2121">&#39;randomised_player_1&#39;</span><span style="color: #0000FF">].nunique</span>()))
-<span style="color: #0000FF">print</span>(<span style="color: #BA2121">&#39;{} player_2s do Not have previous match history before the tournament&#39;</span><span style="color: #0000FF">.format</span>(df_atp.loc<span style="color: #0000FF">[df_atp.Player_p2.isna</span>(),<span style="color: #BA2121">&#39;randomised_player_2&#39;</span><span style="color: #0000FF">].nunique</span>()))
-</pre></div>
-
+<span class="n">df_wta</span> <span class="o">=</span> <span class="nf">df_wta.merge</span><span class="p">(</span><span class="n">df_rolling_wta</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                      <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;randomised_player_2&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">],</span>
+                      <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">],</span>
+                      <span class="n">validate</span> <span class="o">=</span><span class="s">&#39;m:1&#39;</span><span class="p">,</span>
+                      <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;_p1&#39;</span><span class="p">,</span><span class="s">&#39;_p2&#39;</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># How many players do not have previous match history</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;{} player_1s do Not have previous match history before the tournament&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_atp.loc</span><span class="p">[</span><span class="nf">df_atp.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;randomised_player_1&#39;</span><span class="p">]</span><span class="nf">.nunique</span><span class="p">()))</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;{} player_2s do Not have previous match history before the tournament&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_atp.loc</span><span class="p">[</span><span class="nf">df_atp.Player_p2.isna</span><span class="p">(),</span><span class="s">&#39;randomised_player_2&#39;</span><span class="p">]</span><span class="nf">.nunique</span><span class="p">()))</span>
+</code></pre></div>
 <p>59 player_1s do Not have previous match history before the tournament
 56 player_2s do Not have previous match history before the tournament</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># How many players do not have previous match history</span>
-<span style="color: #0000FF">print</span>(<span style="color: #BA2121">&#39;{} player_1s do Not have previous match history before the tournament&#39;</span><span style="color: #0000FF">.format</span>(df_wta.loc<span style="color: #0000FF">[df_wta.Player_p1.isna</span>(),<span style="color: #BA2121">&#39;randomised_player_1&#39;</span><span style="color: #0000FF">].nunique</span>()))
-<span style="color: #0000FF">print</span>(<span style="color: #BA2121">&#39;{} player_2s do Not have previous match history before the tournament&#39;</span><span style="color: #0000FF">.format</span>(df_wta.loc<span style="color: #0000FF">[df_wta.Player_p2.isna</span>(),<span style="color: #BA2121">&#39;randomised_player_2&#39;</span><span style="color: #0000FF">].nunique</span>()))
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># How many players do not have previous match history</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;{} player_1s do Not have previous match history before the tournament&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_wta.loc</span><span class="p">[</span><span class="nf">df_wta.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;randomised_player_1&#39;</span><span class="p">]</span><span class="nf">.nunique</span><span class="p">()))</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;{} player_2s do Not have previous match history before the tournament&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_wta.loc</span><span class="p">[</span><span class="nf">df_wta.Player_p2.isna</span><span class="p">(),</span><span class="s">&#39;randomised_player_2&#39;</span><span class="p">]</span><span class="nf">.nunique</span><span class="p">()))</span>
+</code></pre></div>
 <p>41 player_1s do Not have previous match history before the tournament
 37 player_2s do Not have previous match history before the tournament</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Most of the missing are for the early years which makes sense as we dont have enough history for them</span>
-df_wta.loc<span style="color: #0000FF">[df_wta.Player_p1.isna</span>(),<span style="color: #BA2121">&#39;Tournament_Date&#39;</span><span style="color: #0000FF">].value_counts</span>()
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>2014-01-13    29
+<div class="highlight"><pre><span></span><code><span class="c1"># Most of the missing are for the early years which makes sense as we dont have enough history for them</span>
+<span class="n">df_wta.loc</span><span class="p">[</span><span class="nf">df_wta.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">]</span><span class="nf">.value_counts</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2014-01-13    29
 2014-08-25     7
 2015-08-31     5
 2015-01-19     3
@@ -1983,12 +1963,10 @@ df_wta.loc<span style="color: #0000FF">[df_wta.Player_p1.isna</span>(),<span sty
 2018-01-15     3
 2018-08-27     3
 Name: Tournament_Date, dtype: int64
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df_atp.loc<span style="color: #0000FF">[df_atp.Player_p1.isna</span>(),<span style="color: #BA2121">&#39;Tournament_Date&#39;</span><span style="color: #0000FF">].value_counts</span>()
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>2012-01-16    29
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">df_atp.loc</span><span class="p">[</span><span class="nf">df_atp.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">]</span><span class="nf">.value_counts</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>2012-01-16    29
 2012-08-27     9
 2014-01-13     5
 2013-08-26     5
@@ -2001,73 +1979,69 @@ Name: Tournament_Date, dtype: int64
 2016-08-29     2
 2015-01-19     1
 Name: Tournament_Date, dtype: int64
-</pre></div>
-
+</code></pre></div>
 <p>Now we have gotten the rolling averages for both player 1 and 2. What we need to do next is to simply calculat their difference.</p>
 <p>To calculate the difference, we need to:</p>
 <ol>
 <li>Split the dataframes into two new dataframes: Player 1 and Player 2</li>
 <li>Take the difference between the two dataframes</li>
 </ol>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>def <span style="color: #0000FF">get_player_difference</span>(df, diff_cols <span style="color: #666666">=</span> None)<span style="color: #666666">:</span>
+<div class="highlight"><pre><span></span><code><span class="n">def</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">diff_cols</span> <span class="o">=</span> <span class="n">None</span><span class="p">)</span><span class="o">:</span>
 
-        <span style="color: #408080; font-style: italic"># Input: </span>
-<span style="color: #408080; font-style: italic">#     df: dataframe to get the data from</span>
-<span style="color: #408080; font-style: italic">#     diff_cols: columns we take the difference on. For example is diff_cols = win rate. This function will calculate the </span>
-<span style="color: #408080; font-style: italic">#                difference of the win rates between player 1 and player 2</span>
+        <span class="c1"># Input: </span>
+<span class="c1">#     df: dataframe to get the data from</span>
+<span class="c1">#     diff_cols: columns we take the difference on. For example is diff_cols = win rate. This function will calculate the </span>
+<span class="c1">#                difference of the win rates between player 1 and player 2</span>
 
-     <span style="color: #408080; font-style: italic"># Return: the df with the new features</span>
+     <span class="c1"># Return: the df with the new features</span>
 
-    p1_cols <span style="color: #666666">=</span> [i <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;_p1&#39;</span> for i in diff_cols] <span style="color: #408080; font-style: italic"># column names for player 1 stats</span>
-    p2_cols <span style="color: #666666">=</span> [i <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;_p2&#39;</span> for i in diff_cols] <span style="color: #408080; font-style: italic"># column names for player 2 stats</span>
-
-
-    <span style="color: #408080; font-style: italic"># For any missing values, we will fill them by zeros except the ranking where we will use 999</span>
-    df[<span style="color: #BA2121">&#39;Player_Rank_p1&#39;</span>] <span style="color: #666666">=</span> df[<span style="color: #BA2121">&#39;Player_Rank_p1&#39;</span><span style="color: #0000FF">].fillna</span>(<span style="color: #666666">999</span>)
-    df[p1_cols] <span style="color: #666666">=</span> df[p1_cols<span style="color: #0000FF">].fillna</span>(<span style="color: #666666">0</span>)
-
-    df[<span style="color: #BA2121">&#39;Player_Rank_p2&#39;</span>] <span style="color: #666666">=</span> df[<span style="color: #BA2121">&#39;Player_Rank_p2&#39;</span><span style="color: #0000FF">].fillna</span>(<span style="color: #666666">999</span>)
-    df[p2_cols] <span style="color: #666666">=</span> df[p2_cols<span style="color: #0000FF">].fillna</span>(<span style="color: #666666">0</span>)
+    <span class="n">p1_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="s">&#39;_p1&#39;</span> <span class="n">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">diff_cols</span><span class="p">]</span> <span class="c1"># column names for player 1 stats</span>
+    <span class="n">p2_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="s">&#39;_p2&#39;</span> <span class="n">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">diff_cols</span><span class="p">]</span> <span class="c1"># column names for player 2 stats</span>
 
 
-    new_column_name <span style="color: #666666">=</span> [i <span style="color: #666666">+</span> <span style="color: #BA2121">&#39;_diff&#39;</span> for i in diff_cols]
+    <span class="c1"># For any missing values, we will fill them by zeros except the ranking where we will use 999</span>
+    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Player_Rank_p1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Player_Rank_p1&#39;</span><span class="p">]</span><span class="nf">.fillna</span><span class="p">(</span><span class="m">999</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">p1_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">p1_cols</span><span class="p">]</span><span class="nf">.fillna</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
 
-    <span style="color: #408080; font-style: italic"># Take the difference</span>
-    df_p1 <span style="color: #666666">=</span> df[p1_cols]
-    df_p2 <span style="color: #666666">=</span> df[p2_cols]
+    <span class="n">df</span><span class="p">[</span><span class="s">&#39;Player_Rank_p2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s">&#39;Player_Rank_p2&#39;</span><span class="p">]</span><span class="nf">.fillna</span><span class="p">(</span><span class="m">999</span><span class="p">)</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">p2_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">p2_cols</span><span class="p">]</span><span class="nf">.fillna</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>
 
-    df_p1.columns<span style="color: #666666">=</span>new_column_name
-    df_p2.columns<span style="color: #666666">=</span>new_column_name
 
-    df_diff <span style="color: #666666">=</span> df_p1 <span style="color: #666666">-</span> df_p2
-    df_diff.columns <span style="color: #666666">=</span> new_column_name
+    <span class="n">new_column_name</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="s">&#39;_diff&#39;</span> <span class="n">for</span> <span class="n">i</span> <span class="n">in</span> <span class="n">diff_cols</span><span class="p">]</span>
 
-    <span style="color: #408080; font-style: italic"># drop the p1 and p2 columns because We have the differences now</span>
-    <span style="color: #0000FF">df.drop</span>(p1_cols <span style="color: #666666">+</span> p2_cols, axis<span style="color: #666666">=1</span>, inplace<span style="color: #666666">=</span>True)
+    <span class="c1"># Take the difference</span>
+    <span class="n">df_p1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">p1_cols</span><span class="p">]</span>
+    <span class="n">df_p2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">p2_cols</span><span class="p">]</span>
 
-    <span style="color: #408080; font-style: italic"># Concat the df_diff and raw_df</span>
-    df <span style="color: #666666">=</span> <span style="color: #0000FF">pd.concat</span>([df, df_diff], axis<span style="color: #666666">=1</span>)
+    <span class="n">df_p1.columns</span><span class="o">=</span><span class="n">new_column_name</span>
+    <span class="n">df_p2.columns</span><span class="o">=</span><span class="n">new_column_name</span>
 
-    return df,new_column_name
-</pre></div>
+    <span class="n">df_diff</span> <span class="o">=</span> <span class="n">df_p1</span> <span class="o">-</span> <span class="n">df_p2</span>
+    <span class="n">df_diff.columns</span> <span class="o">=</span> <span class="n">new_column_name</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>diff_cols <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player_Serve_Win_Ratio&#39;</span>,
-            <span style="color: #BA2121">&#39;Player_Return_Win_Ratio&#39;</span>,
-            <span style="color: #BA2121">&#39;Player_BreakPoints_Per_Return_Game&#39;</span>,
-            <span style="color: #BA2121">&#39;Player_Game_Win_Percentage&#39;</span>,<span style="color: #BA2121">&#39;Player_Rank&#39;</span>]
+    <span class="c1"># drop the p1 and p2 columns because We have the differences now</span>
+    <span class="nf">df.drop</span><span class="p">(</span><span class="n">p1_cols</span> <span class="o">+</span> <span class="n">p2_cols</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="n">True</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Apply the function and get the difference between player 1 and 2</span>
-df_atp,_ <span style="color: #666666">=</span> <span style="color: #0000FF">get_player_difference</span>(df_atp,diff_cols<span style="color: #666666">=</span>diff_cols)
-df_wta,_ <span style="color: #666666">=</span> <span style="color: #0000FF">get_player_difference</span>(df_wta,diff_cols<span style="color: #666666">=</span>diff_cols)
+    <span class="c1"># Concat the df_diff and raw_df</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="nf">pd.concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">df_diff</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Make a copy of the dataframes in case we need to come back to check the values</span>
-df_atp_final <span style="color: #666666">=</span> <span style="color: #0000FF">df_atp.copy</span>()
-df_wta_final <span style="color: #666666">=</span> <span style="color: #0000FF">df_wta.copy</span>()
-</pre></div>
+    <span class="n">return</span> <span class="n">df</span><span class="p">,</span><span class="n">new_column_name</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">diff_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player_Serve_Win_Ratio&#39;</span><span class="p">,</span>
+            <span class="s">&#39;Player_Return_Win_Ratio&#39;</span><span class="p">,</span>
+            <span class="s">&#39;Player_BreakPoints_Per_Return_Game&#39;</span><span class="p">,</span>
+            <span class="s">&#39;Player_Game_Win_Percentage&#39;</span><span class="p">,</span><span class="s">&#39;Player_Rank&#39;</span><span class="p">]</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">df_atp_final.head</span>()
-</pre></div>
+<span class="c1"># Apply the function and get the difference between player 1 and 2</span>
+<span class="n">df_atp</span><span class="p">,</span>_ <span class="o">=</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df_atp</span><span class="p">,</span><span class="n">diff_cols</span><span class="o">=</span><span class="n">diff_cols</span><span class="p">)</span>
+<span class="n">df_wta</span><span class="p">,</span>_ <span class="o">=</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df_wta</span><span class="p">,</span><span class="n">diff_cols</span><span class="o">=</span><span class="n">diff_cols</span><span class="p">)</span>
 
+<span class="c1"># Make a copy of the dataframes in case we need to come back to check the values</span>
+<span class="n">df_atp_final</span> <span class="o">=</span> <span class="nf">df_atp.copy</span><span class="p">()</span>
+<span class="n">df_wta_final</span> <span class="o">=</span> <span class="nf">df_wta.copy</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nf">df_atp_final.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2188,17 +2162,15 @@ df_wta_final <span style="color: #666666">=</span> <span style="color: #0000FF">
 <p>For training, we will use all available data from the second year (too many missing values in the first year) up until 2017.</p>
 <p>For validation, we will test the model on the 2018 Australian Open data</p>
 <p>This setup allows us to 'mimic' the final prediction (using historical matches to predict 2019 results)</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df_train_atp <span style="color: #666666">=</span> df_atp_final.loc<span style="color: #0000FF">[</span>(df_atp_final.Tournament_Date <span style="color: #666666">!=</span> <span style="color: #BA2121">&#39;2018-01-15&#39;</span>) <span style="color: #408080; font-style: italic"># excluding Aus Open 2018, and</span>
-                                <span style="color: #666666">&amp;</span> (df_atp_final.Tournament_Date <span style="color: #666666">&gt;</span> <span style="color: #BA2121">&#39;2012-01-16&#39;</span>)] <span style="color: #408080; font-style: italic"># excluding first year</span>
-df_valid_atp <span style="color: #666666">=</span> df_atp_final.loc[df_atp_final.Tournament_Date <span style="color: #666666">==</span> <span style="color: #BA2121">&#39;2018-01-15&#39;</span>] <span style="color: #408080; font-style: italic"># Australian Open 2018 only</span>
+<div class="highlight"><pre><span></span><code><span class="n">df_train_atp</span> <span class="o">=</span> <span class="n">df_atp_final.loc</span><span class="p">[(</span><span class="n">df_atp_final.Tournament_Date</span> <span class="o">!=</span> <span class="s">&#39;2018-01-15&#39;</span><span class="p">)</span> <span class="c1"># excluding Aus Open 2018, and</span>
+                                <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_atp_final.Tournament_Date</span> <span class="o">&gt;</span> <span class="s">&#39;2012-01-16&#39;</span><span class="p">)]</span> <span class="c1"># excluding first year</span>
+<span class="n">df_valid_atp</span> <span class="o">=</span> <span class="n">df_atp_final.loc</span><span class="p">[</span><span class="n">df_atp_final.Tournament_Date</span> <span class="o">==</span> <span class="s">&#39;2018-01-15&#39;</span><span class="p">]</span> <span class="c1"># Australian Open 2018 only</span>
 
-df_train_wta <span style="color: #666666">=</span> df_wta_final.loc<span style="color: #0000FF">[</span>(df_wta_final.Tournament_Date <span style="color: #666666">!=</span> <span style="color: #BA2121">&#39;2018-01-15&#39;</span>) <span style="color: #408080; font-style: italic"># excluding Aus Open 2018, and</span>
-                                <span style="color: #666666">&amp;</span> (df_wta_final.Tournament_Date <span style="color: #666666">&gt;</span> <span style="color: #BA2121">&#39;2014-01-13&#39;</span>)] <span style="color: #408080; font-style: italic"># excluding first year</span>
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">df_train_atp.head</span>()
-</pre></div>
-
+<span class="n">df_train_wta</span> <span class="o">=</span> <span class="n">df_wta_final.loc</span><span class="p">[(</span><span class="n">df_wta_final.Tournament_Date</span> <span class="o">!=</span> <span class="s">&#39;2018-01-15&#39;</span><span class="p">)</span> <span class="c1"># excluding Aus Open 2018, and</span>
+                                <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_wta_final.Tournament_Date</span> <span class="o">&gt;</span> <span class="s">&#39;2014-01-13&#39;</span><span class="p">)]</span> <span class="c1"># excluding first year</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nf">df_train_atp.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2313,47 +2285,45 @@ df_train_wta <span style="color: #666666">=</span> df_wta_final.loc<span style="
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># target variable</span>
-target<span style="color: #666666">=</span> <span style="color: #BA2121">&#39;player_1_win&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># target variable</span>
+<span class="n">target</span><span class="o">=</span> <span class="s">&#39;player_1_win&#39;</span>
 
-<span style="color: #408080; font-style: italic"># features being fed into the models</span>
-feats <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player_Serve_Win_Ratio_diff&#39;</span>,
-         <span style="color: #BA2121">&#39;Player_Return_Win_Ratio_diff&#39;</span>,
-         <span style="color: #BA2121">&#39;Player_BreakPoints_Per_Return_Game_diff&#39;</span>,
-         <span style="color: #BA2121">&#39;Player_Game_Win_Percentage_diff&#39;</span>,
-         <span style="color: #BA2121">&#39;Player_Rank_diff&#39;</span>]
+<span class="c1"># features being fed into the models</span>
+<span class="n">feats</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player_Serve_Win_Ratio_diff&#39;</span><span class="p">,</span>
+         <span class="s">&#39;Player_Return_Win_Ratio_diff&#39;</span><span class="p">,</span>
+         <span class="s">&#39;Player_BreakPoints_Per_Return_Game_diff&#39;</span><span class="p">,</span>
+         <span class="s">&#39;Player_Game_Win_Percentage_diff&#39;</span><span class="p">,</span>
+         <span class="s">&#39;Player_Rank_diff&#39;</span><span class="p">]</span>
 
-<span style="color: #0000FF">print</span>(feats)
-</pre></div>
-
+<span class="nf">print</span><span class="p">(</span><span class="n">feats</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="h2o-model-for-atp">H2O model for ATP<a class="headerlink" href="#h2o-model-for-atp" title="Permanent link">&para;</a></h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">h2o.init</span>()
+<div class="highlight"><pre><span></span><code><span class="nf">h2o.init</span><span class="p">()</span>
 
-<span style="color: #408080; font-style: italic"># Convert to an h2o frame</span>
-df_train_atp_h2o <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.H2OFrame</span>(df_train_atp)
-df_valid_atp_h2o <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.H2OFrame</span>(df_valid_atp)
+<span class="c1"># Convert to an h2o frame</span>
+<span class="n">df_train_atp_h2o</span> <span class="o">=</span> <span class="nf">h2o.H2OFrame</span><span class="p">(</span><span class="n">df_train_atp</span><span class="p">)</span>
+<span class="n">df_valid_atp_h2o</span> <span class="o">=</span> <span class="nf">h2o.H2OFrame</span><span class="p">(</span><span class="n">df_valid_atp</span><span class="p">)</span>
 
 
-<span style="color: #408080; font-style: italic"># For binary classification, response should be a factor</span>
-df_train_atp_h2o[target] <span style="color: #666666">=</span> df_train_atp_h2o[target<span style="color: #0000FF">].asfactor</span>()
-df_valid_atp_h2o[target] <span style="color: #666666">=</span> df_valid_atp_h2o[target<span style="color: #0000FF">].asfactor</span>()
+<span class="c1"># For binary classification, response should be a factor</span>
+<span class="n">df_train_atp_h2o</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_train_atp_h2o</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="nf">.asfactor</span><span class="p">()</span>
+<span class="n">df_valid_atp_h2o</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_valid_atp_h2o</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="nf">.asfactor</span><span class="p">()</span>
 
-<span style="color: #408080; font-style: italic"># Run AutoML for 20 base models (limited to 1 hour max runtime by default)</span>
-aml_atp <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.automl.H2OAutoML</span>(max_runtime_secs<span style="color: #666666">=300</span>,
-                           max_models<span style="color: #666666">=100</span>,
-                           stopping_metric<span style="color: #666666">=</span><span style="color: #BA2121">&#39;logloss&#39;</span>,
-                           sort_metric<span style="color: #666666">=</span><span style="color: #BA2121">&#39;logloss&#39;</span>,
-                           balance_classes<span style="color: #666666">=</span>True,
-                           seed<span style="color: #666666">=183</span>
-                          )
-<span style="color: #0000FF">aml_atp.train</span>(x<span style="color: #666666">=</span>feats, y<span style="color: #666666">=</span>target, training_frame<span style="color: #666666">=</span>df_train_atp_h2o,validation_frame<span style="color: #666666">=</span>df_valid_atp_h2o)
+<span class="c1"># Run AutoML for 20 base models (limited to 1 hour max runtime by default)</span>
+<span class="n">aml_atp</span> <span class="o">=</span> <span class="nf">h2o.automl.H2OAutoML</span><span class="p">(</span><span class="n">max_runtime_secs</span><span class="o">=</span><span class="m">300</span><span class="p">,</span>
+                           <span class="n">max_models</span><span class="o">=</span><span class="m">100</span><span class="p">,</span>
+                           <span class="n">stopping_metric</span><span class="o">=</span><span class="s">&#39;logloss&#39;</span><span class="p">,</span>
+                           <span class="n">sort_metric</span><span class="o">=</span><span class="s">&#39;logloss&#39;</span><span class="p">,</span>
+                           <span class="n">balance_classes</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
+                           <span class="n">seed</span><span class="o">=</span><span class="m">183</span>
+                          <span class="p">)</span>
+<span class="nf">aml_atp.train</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">feats</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">training_frame</span><span class="o">=</span><span class="n">df_train_atp_h2o</span><span class="p">,</span><span class="n">validation_frame</span><span class="o">=</span><span class="n">df_valid_atp_h2o</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># View the AutoML Leaderboard</span>
-lb <span style="color: #666666">=</span> aml_atp.leaderboard
-<span style="color: #0000FF">lb.head</span>()
-</pre></div>
-
+<span class="c1"># View the AutoML Leaderboard</span>
+<span class="n">lb</span> <span class="o">=</span> <span class="n">aml_atp.leaderboard</span>
+<span class="nf">lb.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2448,33 +2418,31 @@ lb <span style="color: #666666">=</span> aml_atp.leaderboard
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>H2O model for WTA
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">H2O</span> <span class="n">model</span> <span class="n">for</span> <span class="n">WTA</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Convert to an h2o frame</span>
+<span class="n">df_train_wta_h2o</span> <span class="o">=</span> <span class="nf">h2o.H2OFrame</span><span class="p">(</span><span class="n">df_train_wta</span><span class="p">)</span>
+<span class="n">df_valid_wta_h2o</span> <span class="o">=</span> <span class="nf">h2o.H2OFrame</span><span class="p">(</span><span class="n">df_valid_wta</span><span class="p">)</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Convert to an h2o frame</span>
-df_train_wta_h2o <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.H2OFrame</span>(df_train_wta)
-df_valid_wta_h2o <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.H2OFrame</span>(df_valid_wta)
 
+<span class="c1"># For binary classification, response should be a factor</span>
+<span class="n">df_train_wta_h2o</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_train_wta_h2o</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="nf">.asfactor</span><span class="p">()</span>
+<span class="n">df_valid_wta_h2o</span><span class="p">[</span><span class="n">target</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_valid_wta_h2o</span><span class="p">[</span><span class="n">target</span><span class="p">]</span><span class="nf">.asfactor</span><span class="p">()</span>
 
-<span style="color: #408080; font-style: italic"># For binary classification, response should be a factor</span>
-df_train_wta_h2o[target] <span style="color: #666666">=</span> df_train_wta_h2o[target<span style="color: #0000FF">].asfactor</span>()
-df_valid_wta_h2o[target] <span style="color: #666666">=</span> df_valid_wta_h2o[target<span style="color: #0000FF">].asfactor</span>()
+<span class="c1"># Run AutoML for 20 base models (limited to 1 hour max runtime by default)</span>
+<span class="n">aml_wta</span> <span class="o">=</span> <span class="nf">h2o.automl.H2OAutoML</span><span class="p">(</span><span class="n">max_runtime_secs</span><span class="o">=</span><span class="m">300</span><span class="p">,</span>
+                           <span class="n">max_models</span><span class="o">=</span><span class="m">100</span><span class="p">,</span>
+                           <span class="n">stopping_metric</span><span class="o">=</span><span class="s">&#39;logloss&#39;</span><span class="p">,</span>
+                           <span class="n">sort_metric</span><span class="o">=</span><span class="s">&#39;logloss&#39;</span><span class="p">,</span>
+                           <span class="n">balance_classes</span><span class="o">=</span><span class="n">True</span><span class="p">,</span>
+                           <span class="n">seed</span><span class="o">=</span><span class="m">183</span>
+                          <span class="p">)</span>
+<span class="nf">aml_wta.train</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">feats</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">target</span><span class="p">,</span> <span class="n">training_frame</span><span class="o">=</span><span class="n">df_train_wta_h2o</span><span class="p">,</span><span class="n">validation_frame</span><span class="o">=</span><span class="n">df_valid_wta_h2o</span><span class="p">)</span>
 
-<span style="color: #408080; font-style: italic"># Run AutoML for 20 base models (limited to 1 hour max runtime by default)</span>
-aml_wta <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.automl.H2OAutoML</span>(max_runtime_secs<span style="color: #666666">=300</span>,
-                           max_models<span style="color: #666666">=100</span>,
-                           stopping_metric<span style="color: #666666">=</span><span style="color: #BA2121">&#39;logloss&#39;</span>,
-                           sort_metric<span style="color: #666666">=</span><span style="color: #BA2121">&#39;logloss&#39;</span>,
-                           balance_classes<span style="color: #666666">=</span>True,
-                           seed<span style="color: #666666">=183</span>
-                          )
-<span style="color: #0000FF">aml_wta.train</span>(x<span style="color: #666666">=</span>feats, y<span style="color: #666666">=</span>target, training_frame<span style="color: #666666">=</span>df_train_wta_h2o,validation_frame<span style="color: #666666">=</span>df_valid_wta_h2o)
-
-<span style="color: #408080; font-style: italic"># View the AutoML Leaderboard</span>
-lb <span style="color: #666666">=</span> aml_wta.leaderboard
-<span style="color: #0000FF">lb.head</span>()
-</pre></div>
-
+<span class="c1"># View the AutoML Leaderboard</span>
+<span class="n">lb</span> <span class="o">=</span> <span class="n">aml_wta.leaderboard</span>
+<span class="nf">lb.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2572,13 +2540,11 @@ lb <span style="color: #666666">=</span> aml_wta.leaderboard
 <hr />
 <h2 id="use-the-models-to-predict-and-make-submissions">Use the models to predict and make submissions<a class="headerlink" href="#use-the-models-to-predict-and-make-submissions" title="Permanent link">&para;</a></h2>
 <p>Now let's use the models we just created to make the submissions</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df_predict_atp <span style="color: #666666">=</span> <span style="color: #0000FF">pd.read_csv</span>(<span style="color: #BA2121">&quot;data/men_dummy_submission_file.csv&quot;</span>)
-df_predict_wta <span style="color: #666666">=</span> <span style="color: #0000FF">pd.read_csv</span>(<span style="color: #BA2121">&quot;data/women_dummy_submission_file.csv&quot;</span>, encoding<span style="color: #666666">=</span><span style="color: #BA2121">&#39;latin1&#39;</span>) <span style="color: #408080; font-style: italic"># for womens, there are some names need a different encoding</span>
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">df_predict_wta.head</span>(<span style="color: #666666">2</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">df_predict_atp</span> <span class="o">=</span> <span class="nf">pd.read_csv</span><span class="p">(</span><span class="s">&quot;data/men_dummy_submission_file.csv&quot;</span><span class="p">)</span>
+<span class="n">df_predict_wta</span> <span class="o">=</span> <span class="nf">pd.read_csv</span><span class="p">(</span><span class="s">&quot;data/women_dummy_submission_file.csv&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s">&#39;latin1&#39;</span><span class="p">)</span> <span class="c1"># for womens, there are some names need a different encoding</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nf">df_predict_wta.head</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2603,68 +2569,65 @@ df_predict_wta <span style="color: #666666">=</span> <span style="color: #0000FF
 <hr />
 <h2 id="get-the-features-for-the-predict-df">Get the features for the predict df<a class="headerlink" href="#get-the-features-for-the-predict-df" title="Permanent link">&para;</a></h2>
 <p>We need to join the features to the 2019 players</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Before we join the features by the names and the dates, we need to convert any non-english characters to english first</span>
-translationTable <span style="color: #666666">=</span> <span style="color: #0000FF">str.maketrans</span>(<span style="color: #BA2121">&quot;éàèùâêîôûçñá&quot;</span>, <span style="color: #BA2121">&quot;eaeuaeioucna&quot;</span>)
+<div class="highlight"><pre><span></span><code><span class="c1"># Before we join the features by the names and the dates, we need to convert any non-english characters to english first</span>
+<span class="n">translationTable</span> <span class="o">=</span> <span class="nf">str.maketrans</span><span class="p">(</span><span class="s">&quot;éàèùâêîôûçñá&quot;</span><span class="p">,</span> <span class="s">&quot;eaeuaeioucna&quot;</span><span class="p">)</span>
 
 
-df_predict_atp[<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">df_predict_atp.player_1.apply</span>(lambda x<span style="color: #666666">:</span> <span style="color: #0000FF">x.translate</span>(translationTable))
-df_predict_atp[<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">df_predict_atp.player_2.apply</span>(lambda x<span style="color: #666666">:</span> <span style="color: #0000FF">x.translate</span>(translationTable))
-df_predict_wta[<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">df_predict_wta.player_1.apply</span>(lambda x<span style="color: #666666">:</span> <span style="color: #0000FF">x.translate</span>(translationTable))
-df_predict_wta[<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">df_predict_wta.player_2.apply</span>(lambda x<span style="color: #666666">:</span> <span style="color: #0000FF">x.translate</span>(translationTable))
+<span class="n">df_predict_atp</span><span class="p">[</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">df_predict_atp.player_1.apply</span><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="nf">x.translate</span><span class="p">(</span><span class="n">translationTable</span><span class="p">))</span>
+<span class="n">df_predict_atp</span><span class="p">[</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">df_predict_atp.player_2.apply</span><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="nf">x.translate</span><span class="p">(</span><span class="n">translationTable</span><span class="p">))</span>
+<span class="n">df_predict_wta</span><span class="p">[</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">df_predict_wta.player_1.apply</span><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="nf">x.translate</span><span class="p">(</span><span class="n">translationTable</span><span class="p">))</span>
+<span class="n">df_predict_wta</span><span class="p">[</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">df_predict_wta.player_2.apply</span><span class="p">(</span><span class="n">lambda</span> <span class="n">x</span><span class="o">:</span> <span class="nf">x.translate</span><span class="p">(</span><span class="n">translationTable</span><span class="p">))</span>
 
 
-<span style="color: #408080; font-style: italic"># Also we need to convert the names into lower cases </span>
-df_predict_atp[<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span>df_predict_atp[<span style="color: #BA2121">&#39;player_1&#39;</span><span style="color: #0000FF">].str.lower</span>() 
-df_predict_atp[<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span>df_predict_atp[<span style="color: #BA2121">&#39;player_2&#39;</span><span style="color: #0000FF">].str.lower</span>() 
-df_predict_wta[<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span>df_predict_wta[<span style="color: #BA2121">&#39;player_1&#39;</span><span style="color: #0000FF">].str.lower</span>() 
-df_predict_wta[<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span>df_predict_wta[<span style="color: #BA2121">&#39;player_2&#39;</span><span style="color: #0000FF">].str.lower</span>() 
+<span class="c1"># Also we need to convert the names into lower cases </span>
+<span class="n">df_predict_atp</span><span class="p">[</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df_predict_atp</span><span class="p">[</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span><span class="nf">.str.lower</span><span class="p">()</span> 
+<span class="n">df_predict_atp</span><span class="p">[</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df_predict_atp</span><span class="p">[</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span><span class="nf">.str.lower</span><span class="p">()</span> 
+<span class="n">df_predict_wta</span><span class="p">[</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df_predict_wta</span><span class="p">[</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span><span class="nf">.str.lower</span><span class="p">()</span> 
+<span class="n">df_predict_wta</span><span class="p">[</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">df_predict_wta</span><span class="p">[</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span><span class="nf">.str.lower</span><span class="p">()</span> 
 
-df_rolling_atp[<span style="color: #BA2121">&#39;Player&#39;</span>] <span style="color: #666666">=</span> df_rolling_atp[<span style="color: #BA2121">&#39;Player&#39;</span><span style="color: #0000FF">].str.lower</span>() 
-df_rolling_wta[<span style="color: #BA2121">&#39;Player&#39;</span>] <span style="color: #666666">=</span> df_rolling_wta[<span style="color: #BA2121">&#39;Player&#39;</span><span style="color: #0000FF">].str.lower</span>() 
-
-
-<span style="color: #408080; font-style: italic"># Lastly, some players have slightly difference names in the submission data and the match data. So we are editing them here manually</span>
-df_predict_atp.loc[df_predict_atp.player_1<span style="color: #666666">==</span><span style="color: #BA2121">&#39;jaume munar&#39;</span>,<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;jaume antoni munar clar&#39;</span>
-df_predict_atp.loc[df_predict_atp.player_2<span style="color: #666666">==</span><span style="color: #BA2121">&#39;jaume munar&#39;</span>,<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;jaume antoni munar clar&#39;</span>
-
-df_predict_wta.loc[df_predict_wta.player_1<span style="color: #666666">==</span><span style="color: #BA2121">&#39;daria kasatkina&#39;</span>,<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;darya kasatkina&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_2<span style="color: #666666">==</span><span style="color: #BA2121">&#39;daria kasatkina&#39;</span>,<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;darya kasatkina&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_1<span style="color: #666666">==</span><span style="color: #BA2121">&#39;lesia tsurenko&#39;</span>,<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;lesya tsurenko&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_2<span style="color: #666666">==</span><span style="color: #BA2121">&#39;lesia tsurenko&#39;</span>,<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;lesya tsurenko&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_1<span style="color: #666666">==</span><span style="color: #BA2121">&#39;danielle collins&#39;</span>,<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;danielle rose collins&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_2<span style="color: #666666">==</span><span style="color: #BA2121">&#39;danielle collins&#39;</span>,<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;danielle rose collins&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_1<span style="color: #666666">==</span><span style="color: #BA2121">&#39;anna karolina schmiedlova&#39;</span>,<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;anna schmiedlova&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_2<span style="color: #666666">==</span><span style="color: #BA2121">&#39;anna karolina schmiedlova&#39;</span>,<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;anna schmiedlova&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_1<span style="color: #666666">==</span><span style="color: #BA2121">&#39;georgina garcia perez&#39;</span>,<span style="color: #BA2121">&#39;player_1&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;georgina garcia-perez&#39;</span>
-df_predict_wta.loc[df_predict_wta.player_2<span style="color: #666666">==</span><span style="color: #BA2121">&#39;georgina garcia perez&#39;</span>,<span style="color: #BA2121">&#39;player_2&#39;</span>] <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;georgina garcia-perez&#39;</span>
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># create and tournament date column and set it to 2019 so we can join the lastest features</span>
-df_predict_atp[<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">pd.to_datetime</span>(<span style="color: #BA2121">&#39;2019-01-15&#39;</span>)
-df_predict_wta[<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>] <span style="color: #666666">=</span> <span style="color: #0000FF">pd.to_datetime</span>(<span style="color: #BA2121">&#39;2019-01-15&#39;</span>)
-
-<span style="color: #408080; font-style: italic"># Get the rolling features for player 1</span>
-df_predict_atp <span style="color: #666666">=</span> <span style="color: #0000FF">df_predict_atp.merge</span>(df_rolling_atp, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>,
-                     left_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;player_1&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>],
-                     right_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>],validate <span style="color: #666666">=</span><span style="color: #BA2121">&#39;m:1&#39;</span>)
-df_predict_wta <span style="color: #666666">=</span> <span style="color: #0000FF">df_predict_wta.merge</span>(df_rolling_wta, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>,
-                     left_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;player_1&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>],
-                     right_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>],validate <span style="color: #666666">=</span><span style="color: #BA2121">&#39;m:1&#39;</span>)
+<span class="n">df_rolling_atp</span><span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_rolling_atp</span><span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">]</span><span class="nf">.str.lower</span><span class="p">()</span> 
+<span class="n">df_rolling_wta</span><span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_rolling_wta</span><span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">]</span><span class="nf">.str.lower</span><span class="p">()</span> 
 
 
-<span style="color: #408080; font-style: italic"># Get the rolling features for player 2</span>
-<span style="color: #408080; font-style: italic"># For duplicate columns, we will use &#39;_p1&#39; to denote player 1 and &#39;_p2&#39; for player 2</span>
-df_predict_atp <span style="color: #666666">=</span> <span style="color: #0000FF">df_predict_atp.merge</span>(df_rolling_atp, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>,
-                     left_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;player_2&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>],
-                     right_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>],validate <span style="color: #666666">=</span><span style="color: #BA2121">&#39;m:1&#39;</span>,suffixes<span style="color: #666666">=</span>(<span style="color: #BA2121">&#39;_p1&#39;</span>,<span style="color: #BA2121">&#39;_p2&#39;</span>))
-df_predict_wta <span style="color: #666666">=</span> <span style="color: #0000FF">df_predict_wta.merge</span>(df_rolling_wta, how<span style="color: #666666">=</span><span style="color: #BA2121">&#39;left&#39;</span>,
-                     left_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;player_2&#39;</span>,<span style="color: #BA2121">&#39;Tournament_Date&#39;</span>],
-                     right_on <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;Player&#39;</span>,<span style="color: #BA2121">&#39;tournament_date_index&#39;</span>],validate <span style="color: #666666">=</span><span style="color: #BA2121">&#39;m:1&#39;</span>,suffixes<span style="color: #666666">=</span>(<span style="color: #BA2121">&#39;_p1&#39;</span>,<span style="color: #BA2121">&#39;_p2&#39;</span>))
-</pre></div>
+<span class="c1"># Lastly, some players have slightly difference names in the submission data and the match data. So we are editing them here manually</span>
+<span class="n">df_predict_atp.loc</span><span class="p">[</span><span class="n">df_predict_atp.player_1</span><span class="o">==</span><span class="s">&#39;jaume munar&#39;</span><span class="p">,</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;jaume antoni munar clar&#39;</span>
+<span class="n">df_predict_atp.loc</span><span class="p">[</span><span class="n">df_predict_atp.player_2</span><span class="o">==</span><span class="s">&#39;jaume munar&#39;</span><span class="p">,</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;jaume antoni munar clar&#39;</span>
 
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">df_predict_atp.head</span>(<span style="color: #666666">2</span>)
-</pre></div>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_1</span><span class="o">==</span><span class="s">&#39;daria kasatkina&#39;</span><span class="p">,</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;darya kasatkina&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_2</span><span class="o">==</span><span class="s">&#39;daria kasatkina&#39;</span><span class="p">,</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;darya kasatkina&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_1</span><span class="o">==</span><span class="s">&#39;lesia tsurenko&#39;</span><span class="p">,</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;lesya tsurenko&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_2</span><span class="o">==</span><span class="s">&#39;lesia tsurenko&#39;</span><span class="p">,</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;lesya tsurenko&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_1</span><span class="o">==</span><span class="s">&#39;danielle collins&#39;</span><span class="p">,</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;danielle rose collins&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_2</span><span class="o">==</span><span class="s">&#39;danielle collins&#39;</span><span class="p">,</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;danielle rose collins&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_1</span><span class="o">==</span><span class="s">&#39;anna karolina schmiedlova&#39;</span><span class="p">,</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;anna schmiedlova&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_2</span><span class="o">==</span><span class="s">&#39;anna karolina schmiedlova&#39;</span><span class="p">,</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;anna schmiedlova&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_1</span><span class="o">==</span><span class="s">&#39;georgina garcia perez&#39;</span><span class="p">,</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;georgina garcia-perez&#39;</span>
+<span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="n">df_predict_wta.player_2</span><span class="o">==</span><span class="s">&#39;georgina garcia perez&#39;</span><span class="p">,</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s">&#39;georgina garcia-perez&#39;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># create and tournament date column and set it to 2019 so we can join the lastest features</span>
+<span class="n">df_predict_atp</span><span class="p">[</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">pd.to_datetime</span><span class="p">(</span><span class="s">&#39;2019-01-15&#39;</span><span class="p">)</span>
+<span class="n">df_predict_wta</span><span class="p">[</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nf">pd.to_datetime</span><span class="p">(</span><span class="s">&#39;2019-01-15&#39;</span><span class="p">)</span>
 
+<span class="c1"># Get the rolling features for player 1</span>
+<span class="n">df_predict_atp</span> <span class="o">=</span> <span class="nf">df_predict_atp.merge</span><span class="p">(</span><span class="n">df_rolling_atp</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                     <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;player_1&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">],</span>
+                     <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">],</span><span class="n">validate</span> <span class="o">=</span><span class="s">&#39;m:1&#39;</span><span class="p">)</span>
+<span class="n">df_predict_wta</span> <span class="o">=</span> <span class="nf">df_predict_wta.merge</span><span class="p">(</span><span class="n">df_rolling_wta</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                     <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;player_1&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">],</span>
+                     <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">],</span><span class="n">validate</span> <span class="o">=</span><span class="s">&#39;m:1&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># Get the rolling features for player 2</span>
+<span class="c1"># For duplicate columns, we will use &#39;_p1&#39; to denote player 1 and &#39;_p2&#39; for player 2</span>
+<span class="n">df_predict_atp</span> <span class="o">=</span> <span class="nf">df_predict_atp.merge</span><span class="p">(</span><span class="n">df_rolling_atp</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                     <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;player_2&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">],</span>
+                     <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">],</span><span class="n">validate</span> <span class="o">=</span><span class="s">&#39;m:1&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;_p1&#39;</span><span class="p">,</span><span class="s">&#39;_p2&#39;</span><span class="p">))</span>
+<span class="n">df_predict_wta</span> <span class="o">=</span> <span class="nf">df_predict_wta.merge</span><span class="p">(</span><span class="n">df_rolling_wta</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s">&#39;left&#39;</span><span class="p">,</span>
+                     <span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;player_2&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">],</span>
+                     <span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player&#39;</span><span class="p">,</span><span class="s">&#39;tournament_date_index&#39;</span><span class="p">],</span><span class="n">validate</span> <span class="o">=</span><span class="s">&#39;m:1&#39;</span><span class="p">,</span><span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s">&#39;_p1&#39;</span><span class="p">,</span><span class="s">&#39;_p2&#39;</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nf">df_predict_atp.head</span><span class="p">(</span><span class="m">2</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2731,53 +2694,45 @@ df_predict_wta <span style="color: #666666">=</span> <span style="color: #0000FF
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># How many players do not have previous match history</span>
-<span style="color: #0000FF">print</span>(<span style="color: #BA2121">&#39;{} player_1s do Not have previous match history before the tournament in the mens&#39;</span><span style="color: #0000FF">.format</span>(df_predict_atp.loc<span style="color: #0000FF">[df_predict_atp.Player_p1.isna</span>(),<span style="color: #BA2121">&#39;player_1&#39;</span><span style="color: #0000FF">].nunique</span>()))
-<span style="color: #0000FF">print</span>(<span style="color: #BA2121">&#39;{} player_2s do Not have previous match history before the tournament in the mens&#39;</span><span style="color: #0000FF">.format</span>(df_predict_atp.loc<span style="color: #0000FF">[df_predict_atp.Player_p2.isna</span>(),<span style="color: #BA2121">&#39;player_2&#39;</span><span style="color: #0000FF">].nunique</span>()))
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># How many players do not have previous match history</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;{} player_1s do Not have previous match history before the tournament in the mens&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_predict_atp.loc</span><span class="p">[</span><span class="nf">df_predict_atp.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span><span class="nf">.nunique</span><span class="p">()))</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;{} player_2s do Not have previous match history before the tournament in the mens&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_predict_atp.loc</span><span class="p">[</span><span class="nf">df_predict_atp.Player_p2.isna</span><span class="p">(),</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span><span class="nf">.nunique</span><span class="p">()))</span>
+</code></pre></div>
 <p>3 player_1s do Not have previous match history before the tournament in the mens
 3 player_2s do Not have previous match history before the tournament in the mens</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># How many players do not have previous match history</span>
-<span style="color: #0000FF">print</span>(<span style="color: #BA2121">&#39;{} player_1s do Not have previous match history before the tournament in the womens&#39;</span><span style="color: #0000FF">.format</span>(df_predict_wta.loc<span style="color: #0000FF">[df_predict_wta.Player_p1.isna</span>(),<span style="color: #BA2121">&#39;player_1&#39;</span><span style="color: #0000FF">].nunique</span>()))
-<span style="color: #0000FF">print</span>(<span style="color: #BA2121">&#39;{} player_2s do Not have previous match history before the tournament in the womens&#39;</span><span style="color: #0000FF">.format</span>(df_predict_wta.loc<span style="color: #0000FF">[df_predict_wta.Player_p2.isna</span>(),<span style="color: #BA2121">&#39;player_2&#39;</span><span style="color: #0000FF">].nunique</span>()))
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># How many players do not have previous match history</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;{} player_1s do Not have previous match history before the tournament in the womens&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="nf">df_predict_wta.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span><span class="nf">.nunique</span><span class="p">()))</span>
+<span class="nf">print</span><span class="p">(</span><span class="s">&#39;{} player_2s do Not have previous match history before the tournament in the womens&#39;</span><span class="nf">.format</span><span class="p">(</span><span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="nf">df_predict_wta.Player_p2.isna</span><span class="p">(),</span><span class="s">&#39;player_2&#39;</span><span class="p">]</span><span class="nf">.nunique</span><span class="p">()))</span>
+</code></pre></div>
 <p>0 player_1s do Not have previous match history before the tournament in the womens
 0 player_2s do Not have previous match history before the tournament in the womens</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">print</span>(df_predict_atp.loc<span style="color: #0000FF">[df_predict_atp.Player_p1.isna</span>(),<span style="color: #BA2121">&#39;player_1&#39;</span><span style="color: #0000FF">].unique</span>()<span style="color: #0000FF">.tolist</span>())
-[<span style="color: #BA2121">&#39;christian garin&#39;</span>, <span style="color: #BA2121">&#39;pedro sousa&#39;</span>, <span style="color: #BA2121">&#39;hugo dellien&#39;</span>]
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">print</span>(df_predict_wta.loc<span style="color: #0000FF">[df_predict_wta.Player_p1.isna</span>(),<span style="color: #BA2121">&#39;player_1&#39;</span><span style="color: #0000FF">].unique</span>()<span style="color: #0000FF">.tolist</span>())
-[]
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">print</span><span class="p">(</span><span class="n">df_predict_atp.loc</span><span class="p">[</span><span class="nf">df_predict_atp.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span><span class="nf">.unique</span><span class="p">()</span><span class="nf">.tolist</span><span class="p">())</span>
+<span class="p">[</span><span class="s">&#39;christian garin&#39;</span><span class="p">,</span> <span class="s">&#39;pedro sousa&#39;</span><span class="p">,</span> <span class="s">&#39;hugo dellien&#39;</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nf">print</span><span class="p">(</span><span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="nf">df_predict_wta.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span><span class="nf">.unique</span><span class="p">()</span><span class="nf">.tolist</span><span class="p">())</span>
+<span class="p">[]</span>
+</code></pre></div>
 <p>We will do the differencing again for the prediction dataframes exactly like what we did for training</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Apply the function and get the difference between player 1 and 2</span>
-df_predict_atp,_ <span style="color: #666666">=</span> <span style="color: #0000FF">get_player_difference</span>(df_predict_atp,diff_cols<span style="color: #666666">=</span>diff_cols)
-df_predict_wta,_ <span style="color: #666666">=</span> <span style="color: #0000FF">get_player_difference</span>(df_predict_wta,diff_cols<span style="color: #666666">=</span>diff_cols)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Apply the function and get the difference between player 1 and 2</span>
+<span class="n">df_predict_atp</span><span class="p">,</span>_ <span class="o">=</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df_predict_atp</span><span class="p">,</span><span class="n">diff_cols</span><span class="o">=</span><span class="n">diff_cols</span><span class="p">)</span>
+<span class="n">df_predict_wta</span><span class="p">,</span>_ <span class="o">=</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df_predict_wta</span><span class="p">,</span><span class="n">diff_cols</span><span class="o">=</span><span class="n">diff_cols</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="make-the-prediction">Make the prediction<a class="headerlink" href="#make-the-prediction" title="Permanent link">&para;</a></h2>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df_predict_atp_h2o <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.H2OFrame</span>(df_predict_atp[feats])
-df_predict_wta_h2o <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.H2OFrame</span>(df_predict_wta[feats])
+<div class="highlight"><pre><span></span><code><span class="n">df_predict_atp_h2o</span> <span class="o">=</span> <span class="nf">h2o.H2OFrame</span><span class="p">(</span><span class="n">df_predict_atp</span><span class="p">[</span><span class="n">feats</span><span class="p">])</span>
+<span class="n">df_predict_wta_h2o</span> <span class="o">=</span> <span class="nf">h2o.H2OFrame</span><span class="p">(</span><span class="n">df_predict_wta</span><span class="p">[</span><span class="n">feats</span><span class="p">])</span>
 
-atp_preds <span style="color: #666666">=</span> <span style="color: #0000FF">aml_atp.predict</span>(df_predict_atp_h2o)[<span style="color: #BA2121">&#39;p1&#39;</span><span style="color: #0000FF">].as_data_frame</span>()
-wta_preds <span style="color: #666666">=</span> <span style="color: #0000FF">aml_wta.predict</span>(df_predict_wta_h2o)[<span style="color: #BA2121">&#39;p1&#39;</span><span style="color: #0000FF">].as_data_frame</span>()
+<span class="n">atp_preds</span> <span class="o">=</span> <span class="nf">aml_atp.predict</span><span class="p">(</span><span class="n">df_predict_atp_h2o</span><span class="p">)[</span><span class="s">&#39;p1&#39;</span><span class="p">]</span><span class="nf">.as_data_frame</span><span class="p">()</span>
+<span class="n">wta_preds</span> <span class="o">=</span> <span class="nf">aml_wta.predict</span><span class="p">(</span><span class="n">df_predict_wta_h2o</span><span class="p">)[</span><span class="s">&#39;p1&#39;</span><span class="p">]</span><span class="nf">.as_data_frame</span><span class="p">()</span>
 
-df_predict_atp[<span style="color: #BA2121">&#39;player_1_win_probability&#39;</span>] <span style="color: #666666">=</span> atp_preds
-df_predict_wta[<span style="color: #BA2121">&#39;player_1_win_probability&#39;</span>] <span style="color: #666666">=</span> wta_preds
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>atp_submission <span style="color: #666666">=</span> df_predict_atp[[<span style="color: #BA2121">&#39;player_1&#39;</span>,<span style="color: #BA2121">&#39;player_2&#39;</span>,<span style="color: #BA2121">&#39;player_1_win_probability&#39;</span>]]
-wta_submission <span style="color: #666666">=</span> df_predict_wta[[<span style="color: #BA2121">&#39;player_1&#39;</span>,<span style="color: #BA2121">&#39;player_2&#39;</span>,<span style="color: #BA2121">&#39;player_1_win_probability&#39;</span>]]
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">atp_submission.head</span>()
-</pre></div>
-
+<span class="n">df_predict_atp</span><span class="p">[</span><span class="s">&#39;player_1_win_probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">atp_preds</span>
+<span class="n">df_predict_wta</span><span class="p">[</span><span class="s">&#39;player_1_win_probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">wta_preds</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">atp_submission</span> <span class="o">=</span> <span class="n">df_predict_atp</span><span class="p">[[</span><span class="s">&#39;player_1&#39;</span><span class="p">,</span><span class="s">&#39;player_2&#39;</span><span class="p">,</span><span class="s">&#39;player_1_win_probability&#39;</span><span class="p">]]</span>
+<span class="n">wta_submission</span> <span class="o">=</span> <span class="n">df_predict_wta</span><span class="p">[[</span><span class="s">&#39;player_1&#39;</span><span class="p">,</span><span class="s">&#39;player_2&#39;</span><span class="p">,</span><span class="s">&#39;player_1_win_probability&#39;</span><span class="p">]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nf">atp_submission.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2814,9 +2769,8 @@ wta_submission <span style="color: #666666">=</span> df_predict_wta[[<span style
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">wta_submission.head</span>()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">wta_submission.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2854,10 +2808,9 @@ wta_submission <span style="color: #666666">=</span> df_predict_wta[[<span style
 </tbody>
 </table>
 <p>Let's look at who has the highest win rate from our models</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">atp_submission.groupby</span>(<span style="color: #BA2121">&#39;player_1&#39;</span>)[<span style="color: #BA2121">&#39;player_1_win_probability&#39;</span><span style="color: #0000FF">].mean</span>() \
-<span style="color: #0000FF">.reset_index</span>()<span style="color: #0000FF">.sort_values</span>(<span style="color: #BA2121">&#39;player_1_win_probability&#39;</span>,ascending<span style="color: #666666">=</span>False)<span style="color: #0000FF">.head</span>()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">atp_submission.groupby</span><span class="p">(</span><span class="s">&#39;player_1&#39;</span><span class="p">)[</span><span class="s">&#39;player_1_win_probability&#39;</span><span class="p">]</span><span class="nf">.mean</span><span class="p">()</span> \
+<span class="nf">.reset_index</span><span class="p">()</span><span class="nf">.sort_values</span><span class="p">(</span><span class="s">&#39;player_1_win_probability&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="n">False</span><span class="p">)</span><span class="nf">.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2888,10 +2841,9 @@ wta_submission <span style="color: #666666">=</span> df_predict_wta[[<span style
 </tr>
 </tbody>
 </table>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">wta_submission.groupby</span>(<span style="color: #BA2121">&#39;player_1&#39;</span>)[<span style="color: #BA2121">&#39;player_1_win_probability&#39;</span><span style="color: #0000FF">].mean</span>() \
-<span style="color: #0000FF">.reset_index</span>()<span style="color: #0000FF">.sort_values</span>(<span style="color: #BA2121">&#39;player_1_win_probability&#39;</span>,ascending<span style="color: #666666">=</span>False)<span style="color: #0000FF">.head</span>()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">wta_submission.groupby</span><span class="p">(</span><span class="s">&#39;player_1&#39;</span><span class="p">)[</span><span class="s">&#39;player_1_win_probability&#39;</span><span class="p">]</span><span class="nf">.mean</span><span class="p">()</span> \
+<span class="nf">.reset_index</span><span class="p">()</span><span class="nf">.sort_values</span><span class="p">(</span><span class="s">&#39;player_1_win_probability&#39;</span><span class="p">,</span><span class="n">ascending</span><span class="o">=</span><span class="n">False</span><span class="p">)</span><span class="nf">.head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2923,13 +2875,11 @@ wta_submission <span style="color: #666666">=</span> df_predict_wta[[<span style
 </tbody>
 </table>
 <p>Now we can output the predictions as csvs</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">atp_submission.to_csv</span>(<span style="color: #BA2121">&#39;submission/atp_submission_python.csv&#39;</span>,index<span style="color: #666666">=</span>False)
-<span style="color: #0000FF">wta_submission.to_csv</span>(<span style="color: #BA2121">&#39;submission/wta_submission_pthon.csv&#39;</span>,index<span style="color: #666666">=</span>False)
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>atp_submission.shape
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">atp_submission.to_csv</span><span class="p">(</span><span class="s">&#39;submission/atp_submission_python.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">False</span><span class="p">)</span>
+<span class="nf">wta_submission.to_csv</span><span class="p">(</span><span class="s">&#39;submission/wta_submission_pthon.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="n">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">atp_submission.shape</span>
+</code></pre></div>
 <p>(16256, 3)</p>
                 
                   
@@ -3028,7 +2978,7 @@ wta_submission <span style="color: #666666">=</span> df_predict_wta[[<span style
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

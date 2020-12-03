@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
     
     
       
@@ -78,7 +78,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../../#australian-open-datathon-r-tutorial" tabindex="1" class="md-skip">
+      <a href="#australian-open-datathon-r-tutorial" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -1170,29 +1170,28 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <h2 id="exploring-the-data">Exploring the Data<a class="headerlink" href="#exploring-the-data" title="Permanent link">&para;</a></h2>
 <p>First we need to get an idea of what the data looks like. Let's read the men's data in and get an idea of what it looks like. Note that you will need to install all the packages listed below unless you already have them.</p>
 <p>Note that for this tutorial I will be using <code>dplyr</code>, if you are not familiar with the syntax I encourage you to read up on <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">the basics</a>.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Import libraries</span>
-<span style="color: #0000FF">library</span>(dplyr)
-<span style="color: #0000FF">library</span>(readr)
-<span style="color: #0000FF">library</span>(tidyr)
-<span style="color: #0000FF">library</span>(RcppRoll)
-<span style="color: #0000FF">library</span>(tidyselect)
-<span style="color: #0000FF">library</span>(lubridate)
-<span style="color: #0000FF">library</span>(stringr)
-<span style="color: #0000FF">library</span>(zoo)
-<span style="color: #0000FF">library</span>(purrr)
-<span style="color: #0000FF">library</span>(h2o)
-<span style="color: #0000FF">library</span>(DT)
-mens <span style="color: #666666">=</span> readr<span style="color: #666666">::</span><span style="color: #0000FF">read_csv</span>(<span style="color: #BA2121">&#39;data/ATP_matches.csv&#39;</span>, na <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;.&quot;</span>) <span style="color: #408080; font-style: italic"># NAs are indicated by .</span>
-mens <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">datatable</span>(rownames <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">FALSE</span>, extensions <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Scroller&#39;</span>, 
-            options <span style="color: #666666">=</span> <span style="color: #0000FF">list</span>(dom <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;t&quot;</span>, 
-            scrollY <span style="color: #666666">=</span> <span style="color: #666666">450</span>,
-            scroller <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>,
-            scrollX <span style="color: #666666">=</span> <span style="color: #666666">600</span>,
-            fixedColumns <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">formatRound</span>(columns<span style="color: #666666">=</span><span style="color: #0000FF">pluck</span>(., <span style="color: #BA2121">&quot;x&quot;</span>, <span style="color: #BA2121">&quot;data&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">colnames</span>(), digits<span style="color: #666666">=3</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Import libraries</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">RcppRoll</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">tidyselect</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">h2o</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">DT</span><span class="p">)</span>
+<span class="n">mens</span> <span class="o">=</span> <span class="n">readr</span><span class="o">::</span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/ATP_matches.csv&#39;</span><span class="p">,</span> <span class="n">na</span> <span class="o">=</span> <span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="c1"># NAs are indicated by .</span>
+<span class="n">mens</span> <span class="o">%&gt;%</span>
+  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> 
+            <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+            <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+            <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+            <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2629,56 +2628,54 @@ mens <span style="color: #666666">%&gt;%</span>
 <p>To avoid this problem, let's reshape the data from wide to long, then shuffle the data. For this, we will define a function, <code>split_winner_loser_columns</code>, which splits the raw dataframe into two dataframes, appends them together, and then shuffles the data.</p>
 <p>Let's also remove all Grass and Clay matches from our data, as we will be modelling the Australian Open which is a hardcourt surface.</p>
 <p>Additionally, we will add a few columns, such as <code>Match_Id</code> and <code>Total_Games</code>. These will be useful later.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>split_winner_loser_columns <span style="color: #666666">&lt;-</span> <span style="color: #0000FF">function</span>(df) {
-  <span style="color: #408080; font-style: italic"># This function splits the raw data into two dataframes and appends them together then shuffles them</span>
-  <span style="color: #408080; font-style: italic"># This output is a dataframe with only one player&#39;s stats on each row (i.e. in long format)</span>
+<div class="highlight"><pre><span></span><code><span class="n">split_winner_loser_columns</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1"># This function splits the raw data into two dataframes and appends them together then shuffles them</span>
+  <span class="c1"># This output is a dataframe with only one player&#39;s stats on each row (i.e. in long format)</span>
 
-  <span style="color: #408080; font-style: italic"># Grab a df with only the Winner&#39;s stats</span>
-  winner <span style="color: #666666">=</span> df <span style="color: #666666">%&gt;%</span> 
-    <span style="color: #0000FF">select</span>(<span style="color: #666666">-</span><span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Loser&quot;</span>)) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Select only the Winner columns + extra game info columns as a df</span>
-    <span style="color: #0000FF">rename_at</span>( <span style="color: #408080; font-style: italic"># Rename all columns containing &quot;Winner&quot; to &quot;Player&quot; </span>
-      <span style="color: #0000FF">vars</span>(<span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Winner&quot;</span>)),
-      <span style="color: #666666">~</span><span style="color: #0000FF">str_replace</span>(., <span style="color: #BA2121">&quot;Winner&quot;</span>, <span style="color: #BA2121">&quot;Player&quot;</span>)
-    ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">mutate</span>(Winner <span style="color: #666666">=</span> <span style="color: #666666">1</span>) <span style="color: #408080; font-style: italic"># Create a target column</span>
+  <span class="c1"># Grab a df with only the Winner&#39;s stats</span>
+  <span class="n">winner</span> <span class="o">=</span> <span class="n">df</span> <span class="o">%&gt;%</span> 
+    <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Loser&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># Select only the Winner columns + extra game info columns as a df</span>
+    <span class="nf">rename_at</span><span class="p">(</span> <span class="c1"># Rename all columns containing &quot;Winner&quot; to &quot;Player&quot; </span>
+      <span class="nf">vars</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Winner&quot;</span><span class="p">)),</span>
+      <span class="o">~</span><span class="nf">str_replace</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;Winner&quot;</span><span class="p">,</span> <span class="s">&quot;Player&quot;</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">Winner</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="c1"># Create a target column</span>
 
-  <span style="color: #408080; font-style: italic"># Repeat the process with the loser&#39;s stats</span>
-  loser <span style="color: #666666">=</span> df <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">select</span>(<span style="color: #666666">-</span><span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Winner&quot;</span>)) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">rename_at</span>(
-      <span style="color: #0000FF">vars</span>(<span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Loser&quot;</span>)),
-      <span style="color: #666666">~</span><span style="color: #0000FF">str_replace</span>(., <span style="color: #BA2121">&quot;Loser&quot;</span>, <span style="color: #BA2121">&quot;Player&quot;</span>)
-    ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">mutate</span>(Winner <span style="color: #666666">=</span> <span style="color: #666666">0</span>)
+  <span class="c1"># Repeat the process with the loser&#39;s stats</span>
+  <span class="n">loser</span> <span class="o">=</span> <span class="n">df</span> <span class="o">%&gt;%</span>
+    <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Winner&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+    <span class="nf">rename_at</span><span class="p">(</span>
+      <span class="nf">vars</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Loser&quot;</span><span class="p">)),</span>
+      <span class="o">~</span><span class="nf">str_replace</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;Loser&quot;</span><span class="p">,</span> <span class="s">&quot;Player&quot;</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">Winner</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
 
-  <span style="color: #0000FF">set.seed</span>(<span style="color: #666666">183</span>) <span style="color: #408080; font-style: italic"># Set seed to replicate results - 183 is the most games played in a tennis match (Isner-Mahut)</span>
+  <span class="nf">set.seed</span><span class="p">(</span><span class="m">183</span><span class="p">)</span> <span class="c1"># Set seed to replicate results - 183 is the most games played in a tennis match (Isner-Mahut)</span>
 
-  <span style="color: #408080; font-style: italic"># Create a df that appends both the Winner and loser df together</span>
-  combined_df <span style="color: #666666">=</span> winner <span style="color: #666666">%&gt;%</span> 
-    <span style="color: #0000FF">rbind</span>(loser) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Append the loser df to the Winner df</span>
-    <span style="color: #0000FF">slice</span>(<span style="color: #0000FF">sample</span>(<span style="color: #666666">1:</span><span style="color: #0000FF">n</span>())) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Randomise row order</span>
-    <span style="color: #0000FF">arrange</span>(Match_Id) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Arrange by Match_Id</span>
-    <span style="color: #0000FF">return</span>()
-}
-</pre></div>
-
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Read in men and womens data; randomise the data to avoid result leakage</span>
-mens <span style="color: #666666">=</span> readr<span style="color: #666666">::</span><span style="color: #0000FF">read_csv</span>(<span style="color: #BA2121">&#39;data/ATP_matches.csv&#39;</span>, na <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;.&quot;</span>) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">filter</span>(Court_Surface <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;Hard&quot;</span> <span style="color: #666666">|</span> Court_Surface <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;Indoor Hard&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Filter to only use hardcourt games</span>
-  <span style="color: #0000FF">mutate</span>(Match_Id <span style="color: #666666">=</span> <span style="color: #0000FF">row_number</span>(), <span style="color: #408080; font-style: italic"># Add a match ID column to be used as a key</span>
-         Tournament_Date <span style="color: #666666">=</span> <span style="color: #0000FF">dmy</span>(Tournament_Date), <span style="color: #408080; font-style: italic"># Change Tournament to datetime</span>
-         Total_Games <span style="color: #666666">=</span> Winner_Games_Won <span style="color: #666666">+</span> Loser_Games_Won) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Add a total games played column</span>
-  <span style="color: #0000FF">split_winner_loser_columns</span>() <span style="color: #408080; font-style: italic"># Change the dataframe from wide to long</span>
-mens <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">datatable</span>(rownames <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">FALSE</span>, extensions <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Scroller&#39;</span>, 
-            options <span style="color: #666666">=</span> <span style="color: #0000FF">list</span>(dom <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;t&quot;</span>, 
-            scrollY <span style="color: #666666">=</span> <span style="color: #666666">450</span>,
-            scroller <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>,
-            scrollX <span style="color: #666666">=</span> <span style="color: #666666">600</span>,
-            fixedColumns <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">formatRound</span>(columns<span style="color: #666666">=</span><span style="color: #0000FF">pluck</span>(., <span style="color: #BA2121">&quot;x&quot;</span>, <span style="color: #BA2121">&quot;data&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">colnames</span>(), digits<span style="color: #666666">=3</span>)
-</pre></div>
-
+  <span class="c1"># Create a df that appends both the Winner and loser df together</span>
+  <span class="n">combined_df</span> <span class="o">=</span> <span class="n">winner</span> <span class="o">%&gt;%</span> 
+    <span class="nf">rbind</span><span class="p">(</span><span class="n">loser</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Append the loser df to the Winner df</span>
+    <span class="nf">slice</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">n</span><span class="p">()))</span> <span class="o">%&gt;%</span> <span class="c1"># Randomise row order</span>
+    <span class="nf">arrange</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Arrange by Match_Id</span>
+    <span class="nf">return</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Read in men and womens data; randomise the data to avoid result leakage</span>
+<span class="n">mens</span> <span class="o">=</span> <span class="n">readr</span><span class="o">::</span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/ATP_matches.csv&#39;</span><span class="p">,</span> <span class="n">na</span> <span class="o">=</span> <span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">Court_Surface</span> <span class="o">==</span> <span class="s">&quot;Hard&quot;</span> <span class="o">|</span> <span class="n">Court_Surface</span> <span class="o">==</span> <span class="s">&quot;Indoor Hard&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Filter to only use hardcourt games</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">Match_Id</span> <span class="o">=</span> <span class="nf">row_number</span><span class="p">(),</span> <span class="c1"># Add a match ID column to be used as a key</span>
+         <span class="n">Tournament_Date</span> <span class="o">=</span> <span class="nf">dmy</span><span class="p">(</span><span class="n">Tournament_Date</span><span class="p">),</span> <span class="c1"># Change Tournament to datetime</span>
+         <span class="n">Total_Games</span> <span class="o">=</span> <span class="n">Winner_Games_Won</span> <span class="o">+</span> <span class="n">Loser_Games_Won</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Add a total games played column</span>
+  <span class="nf">split_winner_loser_columns</span><span class="p">()</span> <span class="c1"># Change the dataframe from wide to long</span>
+<span class="n">mens</span> <span class="o">%&gt;%</span>
+  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> 
+            <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+            <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+            <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+            <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2852,40 +2849,38 @@ mens <span style="color: #666666">%&gt;%</span>
 <p>Thinking about the dynamics of tennis, we know that players often will matches by "breaking" the opponent's serve (i.e. winning a game when the opponent is serving). This is especially important in mens tennis. Let's create a feature called <code>F_Player_BreakPoints_Per_Game</code>, which is the number of breakpoints a player gets per game that they play (even though they can only get breakpoints every second game, we will use total games). Let's also create a feature called <code>F_Player_Return_Win_Ratio</code> which is the proportion of points won when returning.</p>
 <p>Similarly, "holding" serve is important (i.e. winning a game when you are serving). Let's create a feature called <code>F_Player_Serve_Win_Ratio</code> which is the proportion of points won when serving.</p>
 <p>Finally, you only win a set of tennis by winning more sets than your opponent. To win a set, you need to win games. Let's create a feature called <code>F_Player_Game_Win_Percentage</code> which is the propotion of games that a player wins.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>add_ratio_features <span style="color: #666666">&lt;-</span> <span style="color: #0000FF">function</span>(df) {
-  <span style="color: #408080; font-style: italic"># This function adds ratio features to a long df</span>
-  df <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">mutate</span>(
-      <span style="color: #408080; font-style: italic"># Point Win ratio when serving</span>
-      F_Player_Serve_Win_Ratio <span style="color: #666666">=</span> (Player_FirstServes_Won <span style="color: #666666">+</span> Player_SecondServes_Won <span style="color: #666666">-</span> Player_DoubleFaults) <span style="color: #666666">/</span> 
-        (Player_FirstServes_In <span style="color: #666666">+</span> Player_SecondServes_In <span style="color: #666666">+</span> Player_DoubleFaults), 
-      <span style="color: #408080; font-style: italic"># Point win ratio when returning</span>
-      F_Player_Return_Win_Ratio <span style="color: #666666">=</span> Player_ReturnPoints_Won <span style="color: #666666">/</span> Player_ReturnPoints_Faced, 
-      <span style="color: #408080; font-style: italic"># Breakpoints per receiving game</span>
-      F_Player_BreakPoints_Per_Game <span style="color: #666666">=</span> Player_BreakPoints <span style="color: #666666">/</span> Total_Games, 
-      F_Player_Game_Win_Percentage <span style="color: #666666">=</span> Player_Games_Won <span style="color: #666666">/</span> Total_Games
-    ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">mutate_at</span>(
-      <span style="color: #0000FF">vars</span>(<span style="color: #0000FF">colnames</span>(.), <span style="color: #666666">-</span><span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Rank&quot;</span>), <span style="color: #666666">-</span>Tournament_Date), <span style="color: #408080; font-style: italic"># Replace all NAs with0 apart from Rank, Date</span>
-      <span style="color: #666666">~</span><span style="color: #0000FF">ifelse</span>(<span style="color: #0000FF">is.na</span>(.), <span style="color: #666666">0</span>, .)
-    ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">return</span>()
-}
-mens <span style="color: #666666">=</span> mens <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">add_ratio_features</span>() <span style="color: #408080; font-style: italic"># Add features</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">add_ratio_features</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1"># This function adds ratio features to a long df</span>
+  <span class="n">df</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span>
+      <span class="c1"># Point Win ratio when serving</span>
+      <span class="n">F_Player_Serve_Win_Ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">Player_FirstServes_Won</span> <span class="o">+</span> <span class="n">Player_SecondServes_Won</span> <span class="o">-</span> <span class="n">Player_DoubleFaults</span><span class="p">)</span> <span class="o">/</span> 
+        <span class="p">(</span><span class="n">Player_FirstServes_In</span> <span class="o">+</span> <span class="n">Player_SecondServes_In</span> <span class="o">+</span> <span class="n">Player_DoubleFaults</span><span class="p">),</span> 
+      <span class="c1"># Point win ratio when returning</span>
+      <span class="n">F_Player_Return_Win_Ratio</span> <span class="o">=</span> <span class="n">Player_ReturnPoints_Won</span> <span class="o">/</span> <span class="n">Player_ReturnPoints_Faced</span><span class="p">,</span> 
+      <span class="c1"># Breakpoints per receiving game</span>
+      <span class="n">F_Player_BreakPoints_Per_Game</span> <span class="o">=</span> <span class="n">Player_BreakPoints</span> <span class="o">/</span> <span class="n">Total_Games</span><span class="p">,</span> 
+      <span class="n">F_Player_Game_Win_Percentage</span> <span class="o">=</span> <span class="n">Player_Games_Won</span> <span class="o">/</span> <span class="n">Total_Games</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate_at</span><span class="p">(</span>
+      <span class="nf">vars</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">.</span><span class="p">),</span> <span class="o">-</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Rank&quot;</span><span class="p">),</span> <span class="o">-</span><span class="n">Tournament_Date</span><span class="p">),</span> <span class="c1"># Replace all NAs with0 apart from Rank, Date</span>
+      <span class="o">~</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">.</span><span class="p">),</span> <span class="m">0</span><span class="p">,</span> <span class="n">.</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">return</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="n">mens</span> <span class="o">=</span> <span class="n">mens</span> <span class="o">%&gt;%</span>
+  <span class="nf">add_ratio_features</span><span class="p">()</span> <span class="c1"># Add features</span>
+</code></pre></div>
 <p>Now that we have added our features, we need to create rolling averages for them. We cannot simply use current match statistics, as they will leak the result to the model. Instead, we need to use past match statistics to predict future matches. Here we will use a rolling mean with a window of 15. If the player hasn't played 15 games, we will instead use a cumulative mean. We will also lag the result so as to not leak the result.</p>
 <p>This next chunk of code simply takes all the columns starting with F_ and calculates these means.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>mens <span style="color: #666666">=</span> mens <span style="color: #666666">%&gt;%</span> 
-  <span style="color: #0000FF">group_by</span>(Player) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Group by player</span>
-  <span style="color: #0000FF">mutate_at</span>( <span style="color: #408080; font-style: italic"># Create a rolling mean with window 15 for each player. </span>
-    <span style="color: #0000FF">vars</span>(<span style="color: #0000FF">starts_with</span>(<span style="color: #BA2121">&quot;F_&quot;</span>)), <span style="color: #408080; font-style: italic"># If the player hasn&#39;t played 15 games, use a cumulative mean</span>
-    <span style="color: #666666">~</span><span style="color: #0000FF">coalesce</span>(<span style="color: #0000FF">rollmean</span>(., k <span style="color: #666666">=</span> <span style="color: #666666">15</span>, align <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;right&quot;</span>, fill <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">NA_real_</span>), <span style="color: #0000FF">cummean</span>(.)) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">lag</span>()
-  ) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">ungroup</span>()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">mens</span> <span class="o">=</span> <span class="n">mens</span> <span class="o">%&gt;%</span> 
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Group by player</span>
+  <span class="nf">mutate_at</span><span class="p">(</span> <span class="c1"># Create a rolling mean with window 15 for each player. </span>
+    <span class="nf">vars</span><span class="p">(</span><span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;F_&quot;</span><span class="p">)),</span> <span class="c1"># If the player hasn&#39;t played 15 games, use a cumulative mean</span>
+    <span class="o">~</span><span class="nf">coalesce</span><span class="p">(</span><span class="nf">rollmean</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s">&quot;right&quot;</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="kc">NA_real_</span><span class="p">),</span> <span class="nf">cummean</span><span class="p">(</span><span class="n">.</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="nf">lag</span><span class="p">()</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">ungroup</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="creating-a-training-feature-matrix">Creating a Training Feature Matrix<a class="headerlink" href="#creating-a-training-feature-matrix" title="Permanent link">&para;</a></h2>
 <p>In predictive modelling language - features are data metrics we use to predict an outcome or target variable. We have several choices to make before we get to the prediction phase. What are the features? How do we structure the outcome variable? What does each row mean? Do we use all data or just a subset? We narrowed it down to two options</p>
@@ -2897,90 +2892,88 @@ Doing Option 1 would mean we have a lot more data to build a strong model, but i
 <p>However, we also need to train our model in the same way that will be used to predict the 2019 Australian Open. When predicting the 2<sup>nd</sup> round, we won't have data from the 1<sup>st</sup> round. So we will need to build our training feature matrix with this in mind. We should extract features for a player from past games at the start of the tournament and apply them to every matchup that that player plays.</p>
 <p>To do this, we will create a function, <code>extract_latest_features_for_tournament</code>, which maps over our feature dataframe for the dates in the first round of a tournament and grabs features.</p>
 <p>First, we need the Australian Open and US Open results - let's grab these and then apply our function.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get Australian Open and US Open Results</span>
-aus_us_open_results <span style="color: #666666">=</span> 
-  mens <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">filter</span>((Tournament <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;Australian Open, Melbourne&quot;</span> <span style="color: #666666">|</span> Tournament <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;U.S. Open, New York&quot;</span>)
-         <span style="color: #666666">&amp;</span> Round_Description <span style="color: #666666">!=</span> <span style="color: #BA2121">&quot;Qualifying&quot;</span> <span style="color: #666666">&amp;</span> Tournament_Date <span style="color: #666666">!=</span> <span style="color: #BA2121">&quot;2012-01-16&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Filter out qualifiers</span>
-  <span style="color: #0000FF">select</span>(Match_Id, Player, Tournament, Tournament_Date, Round_Description, Winner)
-<span style="color: #408080; font-style: italic"># Create a function which extracts features for each tournament</span>
-extract_latest_features_for_tournament <span style="color: #666666">=</span> <span style="color: #0000FF">function</span>(df, dte) {
+<div class="highlight"><pre><span></span><code><span class="c1"># Get Australian Open and US Open Results</span>
+<span class="n">aus_us_open_results</span> <span class="o">=</span> 
+  <span class="n">mens</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">((</span><span class="n">Tournament</span> <span class="o">==</span> <span class="s">&quot;Australian Open, Melbourne&quot;</span> <span class="o">|</span> <span class="n">Tournament</span> <span class="o">==</span> <span class="s">&quot;U.S. Open, New York&quot;</span><span class="p">)</span>
+         <span class="o">&amp;</span> <span class="n">Round_Description</span> <span class="o">!=</span> <span class="s">&quot;Qualifying&quot;</span> <span class="o">&amp;</span> <span class="n">Tournament_Date</span> <span class="o">!=</span> <span class="s">&quot;2012-01-16&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Filter out qualifiers</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="n">Player</span><span class="p">,</span> <span class="n">Tournament</span><span class="p">,</span> <span class="n">Tournament_Date</span><span class="p">,</span> <span class="n">Round_Description</span><span class="p">,</span> <span class="n">Winner</span><span class="p">)</span>
+<span class="c1"># Create a function which extracts features for each tournament</span>
+<span class="n">extract_latest_features_for_tournament</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dte</span><span class="p">)</span> <span class="p">{</span>
 
-  df <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Filter for the 1st round</span>
-    <span style="color: #0000FF">filter</span>(Tournament_Date <span style="color: #666666">==</span> dte, Round_Description <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;First Round&quot;</span>, Tournament_Date <span style="color: #666666">!=</span> <span style="color: #BA2121">&quot;2012-01-16&quot;</span>) <span style="color: #666666">%&gt;%</span> 
-    <span style="color: #0000FF">group_by</span>(Player) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Group by player</span>
-    <span style="color: #0000FF">select_at</span>(
-      <span style="color: #0000FF">vars</span>(Match_Id, <span style="color: #0000FF">starts_with</span>(<span style="color: #BA2121">&quot;F_&quot;</span>), Player_Rank) <span style="color: #408080; font-style: italic"># Grab the players&#39; features</span>
-    ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">rename</span>(F_Player_Rank <span style="color: #666666">=</span> Player_Rank) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">ungroup</span>() <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">mutate</span>(Feature_Date <span style="color: #666666">=</span> dte) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">select</span>(Player, Feature_Date, <span style="color: #0000FF">everything</span>())
-}
-<span style="color: #408080; font-style: italic"># Create a feature matrix in long format</span>
-feature_matrix_long <span style="color: #666666">=</span> 
-  aus_us_open_results <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">distinct</span>(Tournament_Date) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Pull all Tournament Dates</span>
-  <span style="color: #0000FF">pull</span>() <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">map_dfr</span>(
-    <span style="color: #666666">~</span><span style="color: #0000FF">extract_latest_features_for_tournament</span>(mens, .) <span style="color: #408080; font-style: italic"># Get the features</span>
-  ) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">filter</span>(Feature_Date <span style="color: #666666">!=</span> <span style="color: #BA2121">&quot;2012-01-16&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Filter out the first Aus Open</span>
-  <span style="color: #0000FF">mutate_at</span>( <span style="color: #408080; font-style: italic"># Replace NAs with the mean</span>
-    <span style="color: #0000FF">vars</span>(<span style="color: #0000FF">starts_with</span>(<span style="color: #BA2121">&quot;F_&quot;</span>)),
-    <span style="color: #666666">~</span><span style="color: #0000FF">ifelse</span>(<span style="color: #0000FF">is.na</span>(.), <span style="color: #0000FF">mean</span>(., na.rm <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>), .)
-  )
-</pre></div>
-
+  <span class="n">df</span> <span class="o">%&gt;%</span> <span class="c1"># Filter for the 1st round</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="n">Tournament_Date</span> <span class="o">==</span> <span class="n">dte</span><span class="p">,</span> <span class="n">Round_Description</span> <span class="o">==</span> <span class="s">&quot;First Round&quot;</span><span class="p">,</span> <span class="n">Tournament_Date</span> <span class="o">!=</span> <span class="s">&quot;2012-01-16&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+    <span class="nf">group_by</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Group by player</span>
+    <span class="nf">select_at</span><span class="p">(</span>
+      <span class="nf">vars</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;F_&quot;</span><span class="p">),</span> <span class="n">Player_Rank</span><span class="p">)</span> <span class="c1"># Grab the players&#39; features</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">rename</span><span class="p">(</span><span class="n">F_Player_Rank</span> <span class="o">=</span> <span class="n">Player_Rank</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+    <span class="nf">mutate</span><span class="p">(</span><span class="n">Feature_Date</span> <span class="o">=</span> <span class="n">dte</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">select</span><span class="p">(</span><span class="n">Player</span><span class="p">,</span> <span class="n">Feature_Date</span><span class="p">,</span> <span class="nf">everything</span><span class="p">())</span>
+<span class="p">}</span>
+<span class="c1"># Create a feature matrix in long format</span>
+<span class="n">feature_matrix_long</span> <span class="o">=</span> 
+  <span class="n">aus_us_open_results</span> <span class="o">%&gt;%</span>
+  <span class="nf">distinct</span><span class="p">(</span><span class="n">Tournament_Date</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Pull all Tournament Dates</span>
+  <span class="nf">pull</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">map_dfr</span><span class="p">(</span>
+    <span class="o">~</span><span class="nf">extract_latest_features_for_tournament</span><span class="p">(</span><span class="n">mens</span><span class="p">,</span> <span class="n">.</span><span class="p">)</span> <span class="c1"># Get the features</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">Feature_Date</span> <span class="o">!=</span> <span class="s">&quot;2012-01-16&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Filter out the first Aus Open</span>
+  <span class="nf">mutate_at</span><span class="p">(</span> <span class="c1"># Replace NAs with the mean</span>
+    <span class="nf">vars</span><span class="p">(</span><span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;F_&quot;</span><span class="p">)),</span>
+    <span class="o">~</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">.</span><span class="p">),</span> <span class="nf">mean</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="n">.</span><span class="p">)</span>
+  <span class="p">)</span>
+</code></pre></div>
 <p>Now that we have a feature matrix in long format, we need to convert it to wide format so that the features are on the same row. To do this we will define a function <code>gather_df</code>, which converts the dataframe from long to wide.
 Let's also join the results to the matrix and convert the <code>Winner</code> column to a factor. Finally, we will take the difference of player1 and player2's features, so as to reduce the dimensionality of the model.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>gather_df <span style="color: #666666">&lt;-</span> <span style="color: #0000FF">function</span>(df) {
-  <span style="color: #408080; font-style: italic"># This function puts the df back into its original format of each row containing stats for both players</span>
-  df <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">arrange</span>(Match_Id) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">filter</span>(<span style="color: #0000FF">row_number</span>() <span style="color: #666666">%%</span> <span style="color: #666666">2</span> <span style="color: #666666">!=</span> <span style="color: #666666">0</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Filter for every 2nd row, starting at the 1st index. e.g. 1, 3, 5</span>
-    <span style="color: #0000FF">rename_at</span>( <span style="color: #408080; font-style: italic"># Rename columns to player_1</span>
-      <span style="color: #0000FF">vars</span>(<span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Player&quot;</span>)),
-      <span style="color: #666666">~</span><span style="color: #0000FF">str_replace</span>(., <span style="color: #BA2121">&quot;Player&quot;</span>, <span style="color: #BA2121">&quot;player_1&quot;</span>)
-    ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">inner_join</span>(df <span style="color: #666666">%&gt;%</span>
-                 <span style="color: #0000FF">filter</span>(<span style="color: #0000FF">row_number</span>() <span style="color: #666666">%%</span> <span style="color: #666666">2</span> <span style="color: #666666">==</span> <span style="color: #666666">0</span>) <span style="color: #666666">%&gt;%</span>
-                 <span style="color: #0000FF">rename_at</span>(
-                   <span style="color: #0000FF">vars</span>(<span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Player&quot;</span>)), <span style="color: #408080; font-style: italic"># Rename columns to player_2</span>
-                   <span style="color: #666666">~</span><span style="color: #0000FF">str_replace</span>(., <span style="color: #BA2121">&quot;Player&quot;</span>, <span style="color: #BA2121">&quot;player_2&quot;</span>)
-                 ) <span style="color: #666666">%&gt;%</span>
-                 <span style="color: #0000FF">select</span>(Match_Id, <span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Player&quot;</span>)),
-               by<span style="color: #666666">=</span><span style="color: #0000FF">c</span>(<span style="color: #BA2121">&#39;Match_Id&#39;</span>)
-    ) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">select</span>(Match_Id, player_1, player_2, Winner, <span style="color: #0000FF">everything</span>()) <span style="color: #666666">%&gt;%</span>
-    <span style="color: #0000FF">return</span>()
-}
-<span style="color: #408080; font-style: italic"># Joining results to features</span>
-feature_matrix_wide <span style="color: #666666">=</span> aus_us_open_results <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">inner_join</span>(feature_matrix_long <span style="color: #666666">%&gt;%</span> 
-               <span style="color: #0000FF">select</span>(<span style="color: #666666">-</span>Match_Id), 
-             by <span style="color: #666666">=</span> <span style="color: #0000FF">c</span>(<span style="color: #BA2121">&quot;Player&quot;</span>, <span style="color: #BA2121">&quot;Tournament_Date&quot;</span> <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Feature_Date&quot;</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">gather_df</span>() <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">mutate</span>(
-    F_Serve_Win_Ratio_Diff <span style="color: #666666">=</span> F_player_1_Serve_Win_Ratio <span style="color: #666666">-</span> F_player_2_Serve_Win_Ratio,
-    F_Return_Win_Ratio_Diff <span style="color: #666666">=</span> F_player_1_Return_Win_Ratio <span style="color: #666666">-</span> F_player_2_Return_Win_Ratio,
-    F_Game_Win_Percentage_Diff <span style="color: #666666">=</span> F_player_1_Game_Win_Percentage <span style="color: #666666">-</span> F_player_2_Game_Win_Percentage,
-    F_BreakPoints_Per_Game_Diff <span style="color: #666666">=</span> F_player_1_BreakPoints_Per_Game <span style="color: #666666">-</span> F_player_2_BreakPoints_Per_Game,
-    F_Rank_Diff <span style="color: #666666">=</span> (F_player_1_Rank <span style="color: #666666">-</span> F_player_2_Rank),
-    Winner <span style="color: #666666">=</span> <span style="color: #0000FF">as.factor</span>(Winner)
-  ) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">select</span>(Match_Id, player_1, player_2, Tournament, Tournament_Date, Round_Description, Winner, <span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Diff&quot;</span>))
-train <span style="color: #666666">=</span> feature_matrix_wide
-train <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">datatable</span>(rownames <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">FALSE</span>, extensions <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Scroller&#39;</span>, 
-            options <span style="color: #666666">=</span> <span style="color: #0000FF">list</span>(dom <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;t&quot;</span>, 
-            scrollY <span style="color: #666666">=</span> <span style="color: #666666">450</span>,
-            scroller <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>,
-            scrollX <span style="color: #666666">=</span> <span style="color: #666666">600</span>,
-            fixedColumns <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">formatRound</span>(columns<span style="color: #666666">=</span><span style="color: #0000FF">pluck</span>(., <span style="color: #BA2121">&quot;x&quot;</span>, <span style="color: #BA2121">&quot;data&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">colnames</span>(), digits<span style="color: #666666">=3</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">gather_df</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1"># This function puts the df back into its original format of each row containing stats for both players</span>
+  <span class="n">df</span> <span class="o">%&gt;%</span>
+    <span class="nf">arrange</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">filter</span><span class="p">(</span><span class="nf">row_number</span><span class="p">()</span> <span class="o">%%</span> <span class="m">2</span> <span class="o">!=</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Filter for every 2nd row, starting at the 1st index. e.g. 1, 3, 5</span>
+    <span class="nf">rename_at</span><span class="p">(</span> <span class="c1"># Rename columns to player_1</span>
+      <span class="nf">vars</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">)),</span>
+      <span class="o">~</span><span class="nf">str_replace</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;Player&quot;</span><span class="p">,</span> <span class="s">&quot;player_1&quot;</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">inner_join</span><span class="p">(</span><span class="n">df</span> <span class="o">%&gt;%</span>
+                 <span class="nf">filter</span><span class="p">(</span><span class="nf">row_number</span><span class="p">()</span> <span class="o">%%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span>
+                 <span class="nf">rename_at</span><span class="p">(</span>
+                   <span class="nf">vars</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">)),</span> <span class="c1"># Rename columns to player_2</span>
+                   <span class="o">~</span><span class="nf">str_replace</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;Player&quot;</span><span class="p">,</span> <span class="s">&quot;player_2&quot;</span><span class="p">)</span>
+                 <span class="p">)</span> <span class="o">%&gt;%</span>
+                 <span class="nf">select</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">)),</span>
+               <span class="n">by</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Match_Id&#39;</span><span class="p">)</span>
+    <span class="p">)</span> <span class="o">%&gt;%</span>
+    <span class="nf">select</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="n">Winner</span><span class="p">,</span> <span class="nf">everything</span><span class="p">())</span> <span class="o">%&gt;%</span>
+    <span class="nf">return</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="c1"># Joining results to features</span>
+<span class="n">feature_matrix_wide</span> <span class="o">=</span> <span class="n">aus_us_open_results</span> <span class="o">%&gt;%</span>
+  <span class="nf">inner_join</span><span class="p">(</span><span class="n">feature_matrix_long</span> <span class="o">%&gt;%</span> 
+               <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">Match_Id</span><span class="p">),</span> 
+             <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">,</span> <span class="s">&quot;Tournament_Date&quot;</span> <span class="o">=</span> <span class="s">&quot;Feature_Date&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">gather_df</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">F_Serve_Win_Ratio_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Serve_Win_Ratio</span> <span class="o">-</span> <span class="n">F_player_2_Serve_Win_Ratio</span><span class="p">,</span>
+    <span class="n">F_Return_Win_Ratio_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Return_Win_Ratio</span> <span class="o">-</span> <span class="n">F_player_2_Return_Win_Ratio</span><span class="p">,</span>
+    <span class="n">F_Game_Win_Percentage_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Game_Win_Percentage</span> <span class="o">-</span> <span class="n">F_player_2_Game_Win_Percentage</span><span class="p">,</span>
+    <span class="n">F_BreakPoints_Per_Game_Diff</span> <span class="o">=</span> <span class="n">F_player_1_BreakPoints_Per_Game</span> <span class="o">-</span> <span class="n">F_player_2_BreakPoints_Per_Game</span><span class="p">,</span>
+    <span class="n">F_Rank_Diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">F_player_1_Rank</span> <span class="o">-</span> <span class="n">F_player_2_Rank</span><span class="p">),</span>
+    <span class="n">Winner</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">Winner</span><span class="p">)</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="n">Tournament</span><span class="p">,</span> <span class="n">Tournament_Date</span><span class="p">,</span> <span class="n">Round_Description</span><span class="p">,</span> <span class="n">Winner</span><span class="p">,</span> <span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Diff&quot;</span><span class="p">))</span>
+<span class="n">train</span> <span class="o">=</span> <span class="n">feature_matrix_wide</span>
+<span class="n">train</span> <span class="o">%&gt;%</span>
+  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> 
+            <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+            <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+            <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+            <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3090,74 +3083,71 @@ train <span style="color: #666666">%&gt;%</span>
 <p>Now that we have our training set, <code>train</code>, we need to create a feature matrix to create predictions on. To do this, we need to generate features again. We could simply append a player list to our raw dataframe, create a mock date and then use the <code>extract_latest_features_for_tournament</code> function that we used before. 
 Instead, we're going to create a lookup table for each unique player in the 2019 Australian Open. We will need to get their last 15 games and then find the mean for each feature so that our features are the same.</p>
 <p>Let's first explore what the dummy submission file looks like, then use it to get the unique players.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #0000FF">read_csv</span>(<span style="color: #BA2121">&#39;data/men_dummy_submission_file.csv&#39;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">glimpse</span>()
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">glimpse</span><span class="p">()</span>
+</code></pre></div>
 <p>As we can see, the dummy submission file contains every potential match up for the Open. This will be updated a few days before the Open starts with the actual players playing. Let's now create the lookup feature table.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Get a vector of unique players in this years&#39; open using the dummy submission file</span>
-unique_players <span style="color: #666666">=</span> <span style="color: #0000FF">read_csv</span>(<span style="color: #BA2121">&#39;data/men_dummy_submission_file.csv&#39;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">pull</span>(player_1) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">unique</span>()
-<span style="color: #408080; font-style: italic"># Get the last 15 games played for each unique player and find their features</span>
-lookup_feature_table <span style="color: #666666">=</span> <span style="color: #0000FF">read_csv</span>(<span style="color: #BA2121">&#39;data/ATP_matches.csv&#39;</span>, na <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;.&quot;</span>) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">filter</span>(Court_Surface <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;Hard&quot;</span> <span style="color: #666666">|</span> Court_Surface <span style="color: #666666">==</span> <span style="color: #BA2121">&quot;Indoor Hard&quot;</span>) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">mutate</span>(Match_Id <span style="color: #666666">=</span> <span style="color: #0000FF">row_number</span>(), <span style="color: #408080; font-style: italic"># Add a match ID column to be used as a key</span>
-         Tournament_Date <span style="color: #666666">=</span> <span style="color: #0000FF">dmy</span>(Tournament_Date), <span style="color: #408080; font-style: italic"># Change Tournament to datetime</span>
-         Total_Games <span style="color: #666666">=</span> Winner_Games_Won <span style="color: #666666">+</span> Loser_Games_Won) <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Add a total games played column</span>
-  <span style="color: #408080; font-style: italic"># clean_missing_data() %&gt;% # Clean missing data</span>
-  <span style="color: #0000FF">split_winner_loser_columns</span>() <span style="color: #666666">%&gt;%</span> <span style="color: #408080; font-style: italic"># Change the dataframe from wide to long</span>
-  <span style="color: #0000FF">add_ratio_features</span>() <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">filter</span>(Player <span style="color: #666666">%in%</span> unique_players) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">group_by</span>(Player) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">top_n</span>(<span style="color: #666666">15</span>, Match_Id) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">summarise</span>(
-    F_Player_Serve_Win_Ratio <span style="color: #666666">=</span> <span style="color: #0000FF">mean</span>(F_Player_Serve_Win_Ratio),
-    F_Player_Return_Win_Ratio <span style="color: #666666">=</span> <span style="color: #0000FF">mean</span>(F_Player_Return_Win_Ratio),
-    F_Player_BreakPoints_Per_Game <span style="color: #666666">=</span> <span style="color: #0000FF">mean</span>(F_Player_BreakPoints_Per_Game),
-    F_Player_Game_Win_Percentage <span style="color: #666666">=</span> <span style="color: #0000FF">mean</span>(F_Player_Game_Win_Percentage),
-    F_Player_Rank <span style="color: #666666">=</span> <span style="color: #0000FF">last</span>(Player_Rank)
-  )
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Get a vector of unique players in this years&#39; open using the dummy submission file</span>
+<span class="n">unique_players</span> <span class="o">=</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">pull</span><span class="p">(</span><span class="n">player_1</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">unique</span><span class="p">()</span>
+<span class="c1"># Get the last 15 games played for each unique player and find their features</span>
+<span class="n">lookup_feature_table</span> <span class="o">=</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/ATP_matches.csv&#39;</span><span class="p">,</span> <span class="n">na</span> <span class="o">=</span> <span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">Court_Surface</span> <span class="o">==</span> <span class="s">&quot;Hard&quot;</span> <span class="o">|</span> <span class="n">Court_Surface</span> <span class="o">==</span> <span class="s">&quot;Indoor Hard&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span><span class="n">Match_Id</span> <span class="o">=</span> <span class="nf">row_number</span><span class="p">(),</span> <span class="c1"># Add a match ID column to be used as a key</span>
+         <span class="n">Tournament_Date</span> <span class="o">=</span> <span class="nf">dmy</span><span class="p">(</span><span class="n">Tournament_Date</span><span class="p">),</span> <span class="c1"># Change Tournament to datetime</span>
+         <span class="n">Total_Games</span> <span class="o">=</span> <span class="n">Winner_Games_Won</span> <span class="o">+</span> <span class="n">Loser_Games_Won</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Add a total games played column</span>
+  <span class="c1"># clean_missing_data() %&gt;% # Clean missing data</span>
+  <span class="nf">split_winner_loser_columns</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1"># Change the dataframe from wide to long</span>
+  <span class="nf">add_ratio_features</span><span class="p">()</span> <span class="o">%&gt;%</span>
+  <span class="nf">filter</span><span class="p">(</span><span class="n">Player</span> <span class="o">%in%</span> <span class="n">unique_players</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">top_n</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="n">Match_Id</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">summarise</span><span class="p">(</span>
+    <span class="n">F_Player_Serve_Win_Ratio</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">F_Player_Serve_Win_Ratio</span><span class="p">),</span>
+    <span class="n">F_Player_Return_Win_Ratio</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">F_Player_Return_Win_Ratio</span><span class="p">),</span>
+    <span class="n">F_Player_BreakPoints_Per_Game</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">F_Player_BreakPoints_Per_Game</span><span class="p">),</span>
+    <span class="n">F_Player_Game_Win_Percentage</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">F_Player_Game_Win_Percentage</span><span class="p">),</span>
+    <span class="n">F_Player_Rank</span> <span class="o">=</span> <span class="nf">last</span><span class="p">(</span><span class="n">Player_Rank</span><span class="p">)</span>
+  <span class="p">)</span>
+</code></pre></div>
 <p>Now let's create features for every single combination. To do this we'll join our <code>lookup_feature_table</code> to the <code>player_1</code> and <code>player_2</code> columns in the <code>dummy_submission_file</code>.</p>
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Create feature matrix for the Australian Open for all player 1s</span>
-features_player_1 <span style="color: #666666">=</span> <span style="color: #0000FF">read_csv</span>(<span style="color: #BA2121">&#39;data/men_dummy_submission_file.csv&#39;</span>) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">select</span>(player_1) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">inner_join</span>(lookup_feature_table, by<span style="color: #666666">=</span><span style="color: #0000FF">c</span>(<span style="color: #BA2121">&quot;player_1&quot;</span> <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Player&quot;</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">rename</span>(F_player_1_Serve_Win_Ratio <span style="color: #666666">=</span> F_Player_Serve_Win_Ratio,
-         F_player_1_Return_Win_Ratio <span style="color: #666666">=</span> F_Player_Return_Win_Ratio,
-         F_player_1_BreakPoints_Per_Game <span style="color: #666666">=</span> F_Player_BreakPoints_Per_Game,
-         F_player_1_Game_Win_Percentage <span style="color: #666666">=</span> F_Player_Game_Win_Percentage,
-         F_player_1_Rank <span style="color: #666666">=</span> F_Player_Rank)
-<span style="color: #408080; font-style: italic"># Create feature matrix for the Australian Open for all player 2s</span>
-features_player_2 <span style="color: #666666">=</span> <span style="color: #0000FF">read_csv</span>(<span style="color: #BA2121">&#39;data/men_dummy_submission_file.csv&#39;</span>) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">select</span>(player_2) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">inner_join</span>(lookup_feature_table, by<span style="color: #666666">=</span><span style="color: #0000FF">c</span>(<span style="color: #BA2121">&quot;player_2&quot;</span> <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Player&quot;</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">rename</span>(F_player_2_Serve_Win_Ratio <span style="color: #666666">=</span> F_Player_Serve_Win_Ratio,
-         F_player_2_Return_Win_Ratio <span style="color: #666666">=</span> F_Player_Return_Win_Ratio,
-         F_player_2_BreakPoints_Per_Game <span style="color: #666666">=</span> F_Player_BreakPoints_Per_Game,
-         F_player_2_Game_Win_Percentage <span style="color: #666666">=</span> F_Player_Game_Win_Percentage,
-         F_player_2_Rank <span style="color: #666666">=</span> F_Player_Rank)
-<span style="color: #408080; font-style: italic"># Join the two dfs together and subtract features to create Difference features</span>
-aus_open_2019_features <span style="color: #666666">=</span> features_player_1 <span style="color: #666666">%&gt;%</span> 
-  <span style="color: #0000FF">bind_cols</span>(features_player_2) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">select</span>(player_1, player_2, <span style="color: #0000FF">everything</span>()) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">mutate</span>(
-    F_Serve_Win_Ratio_Diff <span style="color: #666666">=</span> F_player_1_Serve_Win_Ratio <span style="color: #666666">-</span> F_player_2_Serve_Win_Ratio,
-    F_Return_Win_Ratio_Diff <span style="color: #666666">=</span> F_player_1_Return_Win_Ratio <span style="color: #666666">-</span> F_player_2_Return_Win_Ratio,
-    F_Game_Win_Percentage_Diff <span style="color: #666666">=</span> F_player_1_Game_Win_Percentage <span style="color: #666666">-</span> F_player_2_Game_Win_Percentage,
-    F_BreakPoints_Per_Game_Diff <span style="color: #666666">=</span> F_player_1_BreakPoints_Per_Game <span style="color: #666666">-</span> F_player_2_BreakPoints_Per_Game,
-    F_Rank_Diff <span style="color: #666666">=</span> (F_player_1_Rank <span style="color: #666666">-</span> F_player_2_Rank)
-  ) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">select</span>(player_1, player_2, <span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Diff&quot;</span>))
-aus_open_2019_features  <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">datatable</span>(rownames <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">FALSE</span>, extensions <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Scroller&#39;</span>, 
-            options <span style="color: #666666">=</span> <span style="color: #0000FF">list</span>(dom <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;t&quot;</span>,
-                          scrollY <span style="color: #666666">=</span> <span style="color: #666666">450</span>,
-                          scroller <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>,
-                          scrollX <span style="color: #666666">=</span> <span style="color: #666666">600</span>,
-                          fixedColumns <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">formatRound</span>(columns<span style="color: #666666">=</span><span style="color: #0000FF">pluck</span>(., <span style="color: #BA2121">&quot;x&quot;</span>, <span style="color: #BA2121">&quot;data&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">colnames</span>(), digits<span style="color: #666666">=3</span>)
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="c1"># Create feature matrix for the Australian Open for all player 1s</span>
+<span class="n">features_player_1</span> <span class="o">=</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">player_1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">inner_join</span><span class="p">(</span><span class="n">lookup_feature_table</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;player_1&quot;</span> <span class="o">=</span> <span class="s">&quot;Player&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">rename</span><span class="p">(</span><span class="n">F_player_1_Serve_Win_Ratio</span> <span class="o">=</span> <span class="n">F_Player_Serve_Win_Ratio</span><span class="p">,</span>
+         <span class="n">F_player_1_Return_Win_Ratio</span> <span class="o">=</span> <span class="n">F_Player_Return_Win_Ratio</span><span class="p">,</span>
+         <span class="n">F_player_1_BreakPoints_Per_Game</span> <span class="o">=</span> <span class="n">F_Player_BreakPoints_Per_Game</span><span class="p">,</span>
+         <span class="n">F_player_1_Game_Win_Percentage</span> <span class="o">=</span> <span class="n">F_Player_Game_Win_Percentage</span><span class="p">,</span>
+         <span class="n">F_player_1_Rank</span> <span class="o">=</span> <span class="n">F_Player_Rank</span><span class="p">)</span>
+<span class="c1"># Create feature matrix for the Australian Open for all player 2s</span>
+<span class="n">features_player_2</span> <span class="o">=</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">player_2</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">inner_join</span><span class="p">(</span><span class="n">lookup_feature_table</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;player_2&quot;</span> <span class="o">=</span> <span class="s">&quot;Player&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">rename</span><span class="p">(</span><span class="n">F_player_2_Serve_Win_Ratio</span> <span class="o">=</span> <span class="n">F_Player_Serve_Win_Ratio</span><span class="p">,</span>
+         <span class="n">F_player_2_Return_Win_Ratio</span> <span class="o">=</span> <span class="n">F_Player_Return_Win_Ratio</span><span class="p">,</span>
+         <span class="n">F_player_2_BreakPoints_Per_Game</span> <span class="o">=</span> <span class="n">F_Player_BreakPoints_Per_Game</span><span class="p">,</span>
+         <span class="n">F_player_2_Game_Win_Percentage</span> <span class="o">=</span> <span class="n">F_Player_Game_Win_Percentage</span><span class="p">,</span>
+         <span class="n">F_player_2_Rank</span> <span class="o">=</span> <span class="n">F_Player_Rank</span><span class="p">)</span>
+<span class="c1"># Join the two dfs together and subtract features to create Difference features</span>
+<span class="n">aus_open_2019_features</span> <span class="o">=</span> <span class="n">features_player_1</span> <span class="o">%&gt;%</span> 
+  <span class="nf">bind_cols</span><span class="p">(</span><span class="n">features_player_2</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="nf">everything</span><span class="p">())</span> <span class="o">%&gt;%</span>
+  <span class="nf">mutate</span><span class="p">(</span>
+    <span class="n">F_Serve_Win_Ratio_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Serve_Win_Ratio</span> <span class="o">-</span> <span class="n">F_player_2_Serve_Win_Ratio</span><span class="p">,</span>
+    <span class="n">F_Return_Win_Ratio_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Return_Win_Ratio</span> <span class="o">-</span> <span class="n">F_player_2_Return_Win_Ratio</span><span class="p">,</span>
+    <span class="n">F_Game_Win_Percentage_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Game_Win_Percentage</span> <span class="o">-</span> <span class="n">F_player_2_Game_Win_Percentage</span><span class="p">,</span>
+    <span class="n">F_BreakPoints_Per_Game_Diff</span> <span class="o">=</span> <span class="n">F_player_1_BreakPoints_Per_Game</span> <span class="o">-</span> <span class="n">F_player_2_BreakPoints_Per_Game</span><span class="p">,</span>
+    <span class="n">F_Rank_Diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">F_player_1_Rank</span> <span class="o">-</span> <span class="n">F_player_2_Rank</span><span class="p">)</span>
+  <span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Diff&quot;</span><span class="p">))</span>
+<span class="n">aus_open_2019_features</span>  <span class="o">%&gt;%</span>
+  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span>
+                          <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+                          <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+                          <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+                          <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3231,51 +3221,51 @@ aus_open_2019_features  <span style="color: #666666">%&gt;%</span>
 <h2 id="generating-2019-australian-open-predictions">Generating 2019 Australian Open Predictions<a class="headerlink" href="#generating-2019-australian-open-predictions" title="Permanent link">&para;</a></h2>
 <p>Now that we have our features, we can finally train our model and generate predictions for the 2019 Australian Open. Due to its simplicity, we will use h2o's Auto Machine Learning function <code>h2o.automl</code>. This will train a heap of different models and optimise the hyperparameters, as well as creating stacked ensembles automatically for us. We will use optimising by log loss.</p>
 <p>First, we must create h2o frames for our training and feature dataframes. Then we will run <code>h2o.automl</code>. Note that we can set the <code>max_runtime_secs</code> parameter. As this is a notebook, I have set it for 30 seconds - but I suggest you give it 10 minutes to create the best model. We can then create our predictions and assign them back to our <code>aus_open_2019_features</code> dataframe. Finally, we will group_by player and find the best player, on average.</p>
-<p><div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">## Setup H2O</span>
-<span style="color: #0000FF">h2o.init</span>(ip <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;localhost&quot;</span>,
-         port <span style="color: #666666">=</span> <span style="color: #666666">54321</span>,
-         enable_assertions <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>,
-         nthreads <span style="color: #666666">=</span> <span style="color: #666666">2</span>,
-         max_mem_size <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;24g&quot;</span>
+<p><div class="highlight"><pre><span></span><code><span class="c1">## Setup H2O</span>
+<span class="nf">h2o.init</span><span class="p">(</span><span class="n">ip</span> <span class="o">=</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
+         <span class="n">port</span> <span class="o">=</span> <span class="m">54321</span><span class="p">,</span>
+         <span class="n">enable_assertions</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+         <span class="n">nthreads</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+         <span class="n">max_mem_size</span> <span class="o">=</span> <span class="s">&quot;24g&quot;</span>
 
-)
-<span style="color: #408080; font-style: italic">## Sending file to h2o</span>
-train_h2o <span style="color: #666666">=</span> feature_matrix_wide <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">select</span>(<span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Diff&quot;</span>), Winner) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">as.h2o</span>(destination_frame <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;train_h2o&quot;</span>)
-aus_open_2019_features_h2o <span style="color: #666666">=</span> aus_open_2019_features <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">select</span>(<span style="color: #0000FF">contains</span>(<span style="color: #BA2121">&quot;Diff&quot;</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">as.h2o</span>(destination_frame <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;aus_open_2019_features_h2o&quot;</span>)
-<span style="color: #408080; font-style: italic">## Running Auto ML </span>
-mens_model <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.automl</span>(y <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;Winner&quot;</span>,
-                        training_frame <span style="color: #666666">=</span> train_h2o,
-                        max_runtime_secs <span style="color: #666666">=</span> <span style="color: #666666">30</span>,
-                        max_models <span style="color: #666666">=</span> <span style="color: #666666">100</span>,
-                        stopping_metric <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;logloss&quot;</span>,
-                        sort_metric <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;logloss&quot;</span>,
-                        balance_classes <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>,
-                        seed <span style="color: #666666">=</span> <span style="color: #666666">183</span>) <span style="color: #408080; font-style: italic"># Set seed to replicate results - 183 is the most games played in a tennis match (Isner-Mahut)</span>
-<span style="color: #408080; font-style: italic">## Predictions on test frame</span>
-predictions <span style="color: #666666">=</span> <span style="color: #0000FF">h2o.predict</span>(mens_model<span style="color: #666666">@</span>leader, aus_open_2019_features_h2o) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">as.data.frame</span>()
-aus_open_2019_features<span style="color: #666666">$</span>prob_player_1 <span style="color: #666666">=</span> predictions<span style="color: #666666">$</span>p1
-aus_open_2019_features<span style="color: #666666">$</span>prob_player_2 <span style="color: #666666">=</span> predictions<span style="color: #666666">$</span>p0
-<span style="color: #0000FF">h2o.shutdown</span>(prompt <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">FALSE</span>)
-</pre></div>
+<span class="p">)</span>
+<span class="c1">## Sending file to h2o</span>
+<span class="n">train_h2o</span> <span class="o">=</span> <span class="n">feature_matrix_wide</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Diff&quot;</span><span class="p">),</span> <span class="n">Winner</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">as.h2o</span><span class="p">(</span><span class="n">destination_frame</span> <span class="o">=</span> <span class="s">&quot;train_h2o&quot;</span><span class="p">)</span>
+<span class="n">aus_open_2019_features_h2o</span> <span class="o">=</span> <span class="n">aus_open_2019_features</span> <span class="o">%&gt;%</span>
+  <span class="nf">select</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Diff&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">as.h2o</span><span class="p">(</span><span class="n">destination_frame</span> <span class="o">=</span> <span class="s">&quot;aus_open_2019_features_h2o&quot;</span><span class="p">)</span>
+<span class="c1">## Running Auto ML </span>
+<span class="n">mens_model</span> <span class="o">=</span> <span class="nf">h2o.automl</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Winner&quot;</span><span class="p">,</span>
+                        <span class="n">training_frame</span> <span class="o">=</span> <span class="n">train_h2o</span><span class="p">,</span>
+                        <span class="n">max_runtime_secs</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span>
+                        <span class="n">max_models</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span>
+                        <span class="n">stopping_metric</span> <span class="o">=</span> <span class="s">&quot;logloss&quot;</span><span class="p">,</span>
+                        <span class="n">sort_metric</span> <span class="o">=</span> <span class="s">&quot;logloss&quot;</span><span class="p">,</span>
+                        <span class="n">balance_classes</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+                        <span class="n">seed</span> <span class="o">=</span> <span class="m">183</span><span class="p">)</span> <span class="c1"># Set seed to replicate results - 183 is the most games played in a tennis match (Isner-Mahut)</span>
+<span class="c1">## Predictions on test frame</span>
+<span class="n">predictions</span> <span class="o">=</span> <span class="nf">h2o.predict</span><span class="p">(</span><span class="n">mens_model</span><span class="o">@</span><span class="n">leader</span><span class="p">,</span> <span class="n">aus_open_2019_features_h2o</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">as.data.frame</span><span class="p">()</span>
+<span class="n">aus_open_2019_features</span><span class="o">$</span><span class="n">prob_player_1</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">$</span><span class="n">p1</span>
+<span class="n">aus_open_2019_features</span><span class="o">$</span><span class="n">prob_player_2</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">$</span><span class="n">p0</span>
+<span class="nf">h2o.shutdown</span><span class="p">(</span><span class="n">prompt</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
 Now let's find the best player by taking the mean of the prediction probability by player.
-<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>aus_open_2019_features <span style="color: #666666">%&gt;%</span> 
-  <span style="color: #0000FF">select</span>(player_1, <span style="color: #0000FF">starts_with</span>(<span style="color: #BA2121">&quot;F_&quot;</span>), prob_player_1) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">group_by</span>(player_1) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">summarise_all</span>(mean) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">arrange</span>(<span style="color: #0000FF">desc</span>(prob_player_1)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">datatable</span>(rownames <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">FALSE</span>, extensions <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;Scroller&#39;</span>, 
-            options <span style="color: #666666">=</span> <span style="color: #0000FF">list</span>(dom <span style="color: #666666">=</span> <span style="color: #BA2121">&quot;t&quot;</span>,
-                          scrollY <span style="color: #666666">=</span> <span style="color: #666666">450</span>,
-                          scroller <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>,
-                          scrollX <span style="color: #666666">=</span> <span style="color: #666666">600</span>,
-                          fixedColumns <span style="color: #666666">=</span> <span style="color: #008000; font-weight: bold">TRUE</span>)) <span style="color: #666666">%&gt;%</span>
-  <span style="color: #0000FF">formatRound</span>(columns<span style="color: #666666">=</span><span style="color: #0000FF">pluck</span>(., <span style="color: #BA2121">&quot;x&quot;</span>, <span style="color: #BA2121">&quot;data&quot;</span>) <span style="color: #666666">%&gt;%</span> <span style="color: #0000FF">colnames</span>(), digits<span style="color: #666666">=3</span>)
-</pre></div></p>
+<div class="highlight"><pre><span></span><code><span class="n">aus_open_2019_features</span> <span class="o">%&gt;%</span> 
+  <span class="nf">select</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;F_&quot;</span><span class="p">),</span> <span class="n">prob_player_1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">group_by</span><span class="p">(</span><span class="n">player_1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">summarise_all</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">prob_player_1</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span>
+                          <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+                          <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+                          <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+                          <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -3937,7 +3927,7 @@ Now let's find the best player by taking the mean of the prediction probability 
     
       <script src="../../assets/javascripts/application.72d6715c.js"></script>
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../search/main.js"></script>
       

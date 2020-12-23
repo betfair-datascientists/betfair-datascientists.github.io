@@ -3,7 +3,7 @@ button[data-md-color-accent] {
   width: 13rem;
   margin-bottom: 0.4rem;
   padding: 2.4rem 0.8rem 0.4rem;
-  transition: background-color 0.25s, opacity          0.25s;
+  transition: background-color 0.25s, opacity          0.25s;
   border-radius: 0.2rem;
   color: white;
   font-size: 1.28rem;
@@ -1173,4 +1173,4 @@ button[data-md-color-accent="deep-orange"] {
     [data-md-color-primary="white"] .md-search__input::placeholder {
       color: rgba(0, 0, 0, 0.54); } }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24tcGFsZXR0ZS4yMjkxNTEyNi5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24tcGFsZXR0ZS4zY2FkZmI4Ny5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

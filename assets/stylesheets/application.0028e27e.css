@@ -423,7 +423,7 @@ hr {
   top: 0;
   width: 0;
   height: 0;
-  transition: width   0s 0.25s, height  0s 0.25s, opacity 0.25s;
+  transition: width   0s 0.25s, height  0s 0.25s, opacity 0.25s;
   background-color: rgba(0, 0, 0, 0.54);
   opacity: 0;
   z-index: 3; }
@@ -490,7 +490,7 @@ hr {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden; }
   .md-clipboard::before {
-    transition: color   0.25s, opacity 0.25s;
+    transition: color   0.25s, opacity 0.25s;
     color: rgba(0, 0, 0, 0.07);
     content: "\E14D"; }
     pre:hover .md-clipboard::before,
@@ -577,7 +577,7 @@ hr {
   right: 0;
   left: 0;
   height: 4.8rem;
-  transition: background-color 0.25s, color 0.25s;
+  transition: background-color 0.25s, color 0.25s;
   box-shadow: none;
   z-index: 2;
   -webkit-backface-visibility: hidden;
@@ -586,7 +586,7 @@ hr {
     transition: none;
     box-shadow: none; }
   .md-header[data-md-state="shadow"] {
-    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
+    transition: background-color 0.25s, color 0.25s, box-shadow 0.25s;
     box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.1), 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2); }
 
 .md-header-nav {
@@ -672,9 +672,9 @@ hr {
       pointer-events: none;
       -webkit-transform: translateY(1.25rem);
               transform: translateY(1.25rem);
-      transition: opacity   0.1s 0s, -webkit-transform 0s   0.4s;
-      transition: transform 0s   0.4s, opacity   0.1s 0s;
-      transition: transform 0s   0.4s, opacity   0.1s 0s, -webkit-transform 0s   0.4s;
+      transition: opacity   0.1s 0s, -webkit-transform 0s   0.4s;
+      transition: transform 0s   0.4s, opacity   0.1s 0s;
+      transition: transform 0s   0.4s, opacity   0.1s 0s, -webkit-transform 0s   0.4s;
       opacity: 0; }
     .md-hero--expand .md-hero__inner {
       margin-bottom: 2.4rem; }
@@ -1211,9 +1211,9 @@ hr {
     .md-tabs[data-md-state="hidden"] .md-tabs__link {
       -webkit-transform: translateY(50%);
               transform: translateY(50%);
-      transition: color     0.25s, opacity   0.1s, -webkit-transform 0s 0.4s;
-      transition: color     0.25s, transform 0s 0.4s, opacity   0.1s;
-      transition: color     0.25s, transform 0s 0.4s, opacity   0.1s, -webkit-transform 0s 0.4s;
+      transition: color     0.25s, opacity   0.1s, -webkit-transform 0s 0.4s;
+      transition: color     0.25s, transform 0s 0.4s, opacity   0.1s;
+      transition: color     0.25s, transform 0s 0.4s, opacity   0.1s, -webkit-transform 0s 0.4s;
       opacity: 0; }
 
 .md-typeset .admonition, .md-typeset details {
@@ -1688,9 +1688,9 @@ hr {
   display: inline-block;
   -webkit-transform: translateX(0.5rem);
           transform: translateX(0.5rem);
-  transition: color     0.25s, opacity   0.125s 0.125s, -webkit-transform 0.25s  0.125s;
-  transition: transform 0.25s  0.125s, color     0.25s, opacity   0.125s 0.125s;
-  transition: transform 0.25s  0.125s, color     0.25s, opacity   0.125s 0.125s, -webkit-transform 0.25s  0.125s;
+  transition: color     0.25s, opacity   0.125s 0.125s, -webkit-transform 0.25s  0.125s;
+  transition: transform 0.25s  0.125s, color     0.25s, opacity   0.125s 0.125s;
+  transition: transform 0.25s  0.125s, color     0.25s, opacity   0.125s 0.125s, -webkit-transform 0.25s  0.125s;
   color: rgba(0, 0, 0, 0.26);
   font-size: 0;
   opacity: 0;
@@ -1711,9 +1711,9 @@ hr {
   margin-left: 1rem;
   -webkit-transform: translate(0, 0.5rem);
           transform: translate(0, 0.5rem);
-  transition: color     0.25s, opacity   0.125s 0.25s, -webkit-transform 0.25s  0.25s;
-  transition: transform 0.25s  0.25s, color     0.25s, opacity   0.125s 0.25s;
-  transition: transform 0.25s  0.25s, color     0.25s, opacity   0.125s 0.25s, -webkit-transform 0.25s  0.25s;
+  transition: color     0.25s, opacity   0.125s 0.25s, -webkit-transform 0.25s  0.25s;
+  transition: transform 0.25s  0.25s, color     0.25s, opacity   0.125s 0.25s;
+  transition: transform 0.25s  0.25s, color     0.25s, opacity   0.125s 0.25s, -webkit-transform 0.25s  0.25s;
   opacity: 0; }
   [dir="rtl"] .md-typeset .headerlink {
     margin-right: 1rem;
@@ -2114,9 +2114,9 @@ hr {
       height: 3.6rem;
       -webkit-transform-origin: center;
               transform-origin: center;
-      transition: opacity   0.2s 0.2s, -webkit-transform 0.3s 0.1s;
-      transition: transform 0.3s 0.1s, opacity   0.2s 0.2s;
-      transition: transform 0.3s 0.1s, opacity   0.2s 0.2s, -webkit-transform 0.3s 0.1s;
+      transition: opacity   0.2s 0.2s, -webkit-transform 0.3s 0.1s;
+      transition: transform 0.3s 0.1s, opacity   0.2s 0.2s;
+      transition: transform 0.3s 0.1s, opacity   0.2s 0.2s, -webkit-transform 0.3s 0.1s;
       border-radius: 2rem;
       background-color: white;
       overflow: hidden;
@@ -2125,9 +2125,9 @@ hr {
         right: 0.4rem;
         left: initial; }
       [data-md-toggle="search"]:checked ~ .md-header .md-search__overlay {
-        transition: opacity   0.1s, -webkit-transform 0.4s;
-        transition: transform 0.4s, opacity   0.1s;
-        transition: transform 0.4s, opacity   0.1s, -webkit-transform 0.4s;
+        transition: opacity   0.1s, -webkit-transform 0.4s;
+        transition: transform 0.4s, opacity   0.1s;
+        transition: transform 0.4s, opacity   0.1s, -webkit-transform 0.4s;
         opacity: 1; }
   .md-search__inner {
     position: fixed;
@@ -2182,7 +2182,7 @@ hr {
     [data-md-toggle="drawer"]:checked ~ .md-overlay {
       width: 100%;
       height: 100%;
-      transition: width   0s, height  0s, opacity 0.25s;
+      transition: width   0s, height  0s, opacity 0.25s;
       opacity: 1; }
     .bf-nav {
       min-width: 80px; }
@@ -2396,7 +2396,7 @@ hr {
       left: 0;
       width: 0;
       height: 0;
-      transition: width   0s 0.25s, height  0s 0.25s, opacity 0.25s;
+      transition: width   0s 0.25s, height  0s 0.25s, opacity 0.25s;
       background-color: rgba(0, 0, 0, 0.54);
       cursor: pointer; }
       [dir="rtl"] .md-search__overlay {
@@ -2405,7 +2405,7 @@ hr {
       [data-md-toggle="search"]:checked ~ .md-header .md-search__overlay {
         width: 100%;
         height: 100%;
-        transition: width   0s, height  0s, opacity 0.25s;
+        transition: width   0s, height  0s, opacity 0.25s;
         opacity: 1; }
   .md-search__inner {
     position: relative;
@@ -2606,4 +2606,4 @@ hr {
         max-height: 5rem;
         -webkit-line-clamp: 3; } }
 
-/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uODM0ZTc2MDUuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc3NldHMvc3R5bGVzaGVldHMvYXBwbGljYXRpb24uMDAyOGUyN2UuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

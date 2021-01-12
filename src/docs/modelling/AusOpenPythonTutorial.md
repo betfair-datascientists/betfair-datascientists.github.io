@@ -8,32 +8,10 @@ The metric used to determine the winner will be log loss, based on the actual ma
 
 For a detailed outline of the task, the prizes, and to sign up, click [here](https://www.betfair.com.au/hub/australian-open-datathon/).
 
-How an outline of our methodoly and thought process, read [this](/modelling/howToModelTheAusOpen) article.
-
-### Prizes
-|Place|Prize|Place|Prize|
-|-|-|-|-|
-|1|$5000|9|$500|
-|2|$3000|10|$500|
-|3|$2000|11|$200|
-|4|$1000|12|$200|
-|5|$750|13|$200|
-|6|$500|14|$200|
-|7|$500|15|$200|
-|8|$500|Total|$15250|
-
-### Submission
-* To submit your model, email your final submission to datathon@betfair.com.au. Note that you don't need to email your code, just your predictions in the format that we have specified
-* No submissions will be accepted prior to the Australian Open qualifying matches being completed and the final draw list being shared with registered participants (12 January 2019)
-* Submissions need to include all potential match ups during the Australian Open, i.e. all possible combinations for each men's and women's tournaments (this will be provided after the draw is announced and the Australian Open qualifying matches are completed (Jan 12th 2019))
-* Submissions must follow the format outlined above and shown in the 'Dummy Submission File'. Any submissions that are not in the correct format will not be accepted.
-* Submissions need to include the player names for the hypothetical match up and the probability of the first player winning
-i.e. player_1,player_2,probability_of_player_1_winning,
-* Submissions must be in a csv format
-* Only two models will be accepted per participant (one model for the men's draw, one model for the women's draw)
+How an outline of our methodology and thought process, read [this](/modelling/howToModelTheAusOpen) article.
 
 ### Intention
-This notebook will demostrate how to:
+This notebook will demonstrate how to:
 
 - Process the raw data sets
 - Produce simple features
@@ -63,10 +41,10 @@ df_wta = pd.read_csv("data/WTA_matches.csv")
 ```
 
 ---
-## Data preprocessing
+## Data pre-processing
 Filter the matches to hard and indoor hard only due to the fact that Australian Open is on hard surface and we want the models to train specifically for hard surfaces matches
 
-Convert the columns in both datasets to the correct types. For example, we want to make sure the date columns are in the datetime format and numerial columns are either interger or floats. This will help reduce the memory in use and make the feature engineering process easier
+Convert the columns in both datasets to the correct types. For example, we want to make sure the date columns are in the datetime format and numerical columns are either integer or floats. This will help reduce the memory in use and make the feature engineering process easier
 
 ``` r
 ### Include hard and indoor hard only
@@ -119,7 +97,7 @@ A typical row of the transformed data will look like this – For a match betwee
 
 The steps we take are:
 
-- Convert the raw dataframes into long format:
+- Convert the raw data frames into long format:
 - Create some new features
 - Take the rolling average for each player and each match
     Since we will be only training our models on US Open and Australian Open, we will only be creating features for those matches. However, the rolling average will take into account any hard surface matches before those tournaments
@@ -127,10 +105,10 @@ The steps we take are:
 - Calculate the difference of averages for each match in the data frames
 
 ---
-## Convert the raw dataframes into long format:
+## Convert the raw data frames into long format:
 
 ``` r
-# Before we split the dataframe into winner and loser, we want to create a feature that captures the total number of games the match takes.
+# Before we split the data frame into winner and loser, we want to create a feature that captures the total number of games the match takes.
 # We have to do it before the split or we will lose this information
 df_atp['Total_Games'] = df_atp.Winner_Games_Won + df_atp.Loser_Games_Won
 df_wta['Total_Games'] = df_wta.Winner_Games_Won + df_wta.Loser_Games_Won
@@ -140,7 +118,7 @@ df_wta['Total_Games'] = df_wta.Winner_Games_Won + df_wta.Loser_Games_Won
 winner_cols = [col for col in df_atp.columns if col.startswith('Winner')]
 loser_cols = [col for col in df_atp.columns if col.startswith('Loser')]
 
-# create a winner dataframe to store the winner stats and a loser dataframe for the losers
+# create a winner data frame to store the winner stats and a loser data frame for the losers
 # In addition to the winner and loser columns, we are adding common columns as well (e.g. tournamnt dates)
 common_cols = ['Total_Games','Tournament','Tournament_Date', 'Court_Surface','Round_Description']
 df_winner_atp = df_atp[winner_cols + common_cols]
@@ -169,13 +147,13 @@ df_winner_wta.columns  = df_winner_atp.columns
 df_loser_wta.columns  = df_winner_atp.columns
 
 
-# append the winner and loser dataframes 
+# append the winner and loser data frames 
 
 df_long_atp= df_winner_atp.append(df_loser_atp)
 df_long_wta= df_winner_wta.append(df_loser_wta)
 ```
 
-So now our dataframes are in long format and should looks like this
+So now our data frames are in long format and should looks like this
 
 ``` r
 df_long_atp.head()
@@ -205,11 +183,11 @@ So the four new features we will create are:
 - `Player_Game_Win_Percentage`
 
 ``` r
-# Here, we will define a function so we can apply it to both atp and wta dataframes
+# Here, we will define a function so we can apply it to both atp and wta data frames
 def get_new_features(df):
 
     # Input: 
-#     df: dataframe to get the data from
+#     df: data frame to get the data from
 
      # Return: the df with the new features
     
@@ -226,7 +204,7 @@ def get_new_features(df):
     return df
 
 
-# Apply the function we just created to the long dataframes
+# Apply the function we just created to the long data frames
 df_long_atp = get_new_features(df_long_atp)
 df_long_wta = get_new_features(df_long_wta)
 ```
@@ -313,8 +291,8 @@ They look fine but it is interesting that for men's, we have two more years of d
 def get_rolling_features (df, date_df=None,rolling_cols = None, last_cols= None):
     
     # Input: 
-#     df: dataframe to get the data from
-#     date_df: dataframe that has the start dates for each tournament
+#     df: data frame to get the data from
+#     date_df: data frame that has the start dates for each tournament
 #     rolling_cols: columns to get the rolling averages
 #     last_cols: columns to get the last value (most recent)
 
@@ -361,7 +339,7 @@ rolling_cols = ['Player_Serve_Win_Ratio', 'Player_Return_Win_Ratio',
 last_cols = ['Player_Rank']
 
 
-# Apply the rolling average function to the long dataframes (it will take a few mins to run)
+# Apply the rolling average function to the long data frames (it will take a few mins to run)
 df_rolling_atp = get_rolling_features (df_long_atp, tournament_dates_atp, rolling_cols, last_cols= last_cols )
 df_rolling_wta = get_rolling_features (df_long_wta, tournament_dates_wta, rolling_cols, last_cols= last_cols)
 ```
@@ -394,7 +372,7 @@ Steps:
 
 1. We will create a random number for each player which only return 0 or 1
 2. If it is zero, we will assign the winner to player 1 and loser to player 2
-3. We will join the features to the player 1 and 2. The join will be on the player names and the tournament date (tournament_index in the feature dataframes)
+3. We will join the features to the player 1 and 2. The join will be on the player names and the tournament date (tournament_index in the feature data frames)
 4. For players who do not have any history, we will fill the stats by zeros and rank by 999
 
 ``` r
@@ -428,7 +406,7 @@ After shuffling, the win rate for player 1 for the womens is 49.697671426733564%
 The win rates are close enough to 50%. So we are good to go
 
 ``` r
-# To get our dataframes ready for model training, we will exclude other tournaments from the data now because we have gotten the rolling averages from them and 
+# To get our data frames ready for model training, we will exclude other tournaments from the data now because we have gotten the rolling averages from them and 
 # for training, we only need US and Australian Open matches
 df_atp = df_atp.loc[df_atp.Tournament.isin(tournaments)]
 df_wta = df_wta.loc[df_wta.Tournament.isin(tournaments)]
@@ -442,7 +420,7 @@ df_atp = df_atp[cols_to_keep]
 df_wta = df_wta[cols_to_keep]
 
 
-# Here, we are joining the rolling average dataframes to the individual matches. 
+# Here, we are joining the rolling average data frames to the individual matches. 
 # We need to do it twice. One for player 1 and one for player 2
 
 # Get the rolling features for player 1
@@ -525,18 +503,18 @@ df_atp.loc[df_atp.Player_p1.isna(),'Tournament_Date'].value_counts()
 Name: Tournament_Date, dtype: int64
 ```
 
-Now we have gotten the rolling averages for both player 1 and 2. What we need to do next is to simply calculat their difference.
+Now we have gotten the rolling averages for both player 1 and 2. What we need to do next is to simply calculate their difference.
 
 To calculate the difference, we need to:
 
-1. Split the dataframes into two new dataframes: Player 1 and Player 2
-2. Take the difference between the two dataframes
+1. Split the data frames into two new data frames: Player 1 and Player 2
+2. Take the difference between the two data frames
 
 ``` r
 def get_player_difference(df, diff_cols = None):
         
         # Input: 
-#     df: dataframe to get the data from
+#     df: data frame to get the data from
 #     diff_cols: columns we take the difference on. For example is diff_cols = win rate. This function will calculate the 
 #                difference of the win rates between player 1 and player 2
 
@@ -585,7 +563,7 @@ diff_cols = ['Player_Serve_Win_Ratio',
 df_atp,_ = get_player_difference(df_atp,diff_cols=diff_cols)
 df_wta,_ = get_player_difference(df_wta,diff_cols=diff_cols)
 
-# Make a copy of the dataframes in case we need to come back to check the values
+# Make a copy of the data frames in case we need to come back to check the values
 df_atp_final = df_atp.copy()
 df_wta_final = df_wta.copy()
 ```
@@ -852,7 +830,7 @@ print(df_predict_wta.loc[df_predict_wta.Player_p1.isna(),'player_1'].unique().to
 []
 ```
 
-We will do the differencing again for the prediction dataframes exactly like what we did for training
+We will do the differencing again for the prediction data frames exactly like what we did for training
 
 ``` r
 # Apply the function and get the difference between player 1 and 2

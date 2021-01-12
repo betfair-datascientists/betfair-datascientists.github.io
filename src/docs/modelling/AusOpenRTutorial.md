@@ -8,29 +8,7 @@ The metric used to determine the winner will be log loss, based on the actual ma
 
 For a detailed outline of the task, the prizes, and to sign up, click [here](https://www.betfair.com.au/hub/australian-open-datathon/).
 
-How an outline of our methodoly and thought process, read [this](/modelling/howToModelTheAusOpen) article.
-
-### Prizes
-|Place|Prize|Place|Prize|
-|-|-|-|-|
-|1|$5000|9|$500|
-|2|$3000|10|$500|
-|3|$2000|11|$200|
-|4|$1000|12|$200|
-|5|$750|13|$200|
-|6|$500|14|$200|
-|7|$500|15|$200|
-|8|$500|Total|$15250|
-
-### Submission
-* To submit your model, email your final submission to datathon@betfair.com.au. Note that you don't need to email your code, just your predictions in the format that we have specified
-* No submissions will be accepted prior to the Australian Open qualifying matches being completed and the final draw list being shared with registered participants (12 January 2019)
-* Submissions need to include all potential match ups during the Australian Open, i.e. all possible combinations for each men's and women's tournaments (this will be provided after the draw is announced and the Australian Open qualifying matches are completed (Jan 12th 2019))
-* Submissions must follow the format outlined above and shown in the 'Dummy Submission File'. Any submissions that are not in the correct format will not be accepted.
-* Submissions need to include the player names for the hypothetical match up and the probability of the first player winning
-i.e. player_1,player_2,probability_of_player_1_winning,
-* Submissions must be in a csv format
-* Only two models will be accepted per participant (one model for the men's draw, one model for the women's draw)
+How an outline of our methodology and thought process, read [this](/modelling/howToModelTheAusOpen) article.
 
 ---
 ## Exploring the Data
@@ -128,7 +106,7 @@ mens %>%
 
 As we can see, we have a `Winner` column, a `Loser` column, as well as other columns detailing the match details, and other columns which have the stats for that match. As we have a `Winner` column, if we use the current data structure to train a model we will leak the result. The model will simply learn that the actual winner comes from the `Winner` column, rather than learning from other features that we can create, such as `First Serve %`.
 
-To avoid this problem, let's reshape the data from wide to long, then shuffle the data. For this, we will define a function, `split_winner_loser_columns`, which splits the raw dataframe into two dataframes, appends them together, and then shuffles the data.
+To avoid this problem, let's reshape the data from wide to long, then shuffle the data. For this, we will define a function, `split_winner_loser_columns`, which splits the raw data frame into two data frames, appends them together, and then shuffles the data.
 
 Let's also remove all Grass and Clay matches from our data, as we will be modelling the Australian Open which is a hardcourt surface.
 
@@ -136,8 +114,8 @@ Additionally, we will add a few columns, such as `Match_Id` and `Total_Games`. T
 
 ``` r
 split_winner_loser_columns <- function(df) {
-  # This function splits the raw data into two dataframes and appends them together then shuffles them
-  # This output is a dataframe with only one player's stats on each row (i.e. in long format)
+  # This function splits the raw data into two data frames and appends them together then shuffles them
+  # This output is a data frame with only one player's stats on each row (i.e. in long format)
   
   # Grab a df with only the Winner's stats
   winner = df %>% 
@@ -175,7 +153,7 @@ mens = readr::read_csv('data/ATP_matches.csv', na = ".") %>%
   mutate(Match_Id = row_number(), # Add a match ID column to be used as a key
          Tournament_Date = dmy(Tournament_Date), # Change Tournament to datetime
          Total_Games = Winner_Games_Won + Loser_Games_Won) %>% # Add a total games played column
-  split_winner_loser_columns() # Change the dataframe from wide to long
+  split_winner_loser_columns() # Change the data frame from wide to long
 mens %>%
   datatable(rownames = FALSE, extensions = 'Scroller', 
             options = list(dom = "t", 
@@ -257,7 +235,7 @@ We have decided to go with an option that combines strengths from both approache
 
 However, we also need to train our model in the same way that will be used to predict the 2019 Australian Open. When predicting the 2nd round, we won't have data from the 1st round. So we will need to build our training feature matrix with this in mind. We should extract features for a player from past games at the start of the tournament and apply them to every matchup that that player plays.
 
-To do this, we will create a function, `extract_latest_features_for_tournament`, which maps over our feature dataframe for the dates in the first round of a tournament and grabs features.
+To do this, we will create a function, `extract_latest_features_for_tournament`, which maps over our feature data frame for the dates in the first round of a tournament and grabs features.
 
 First, we need the Australian Open and US Open results - let's grab these and then apply our function.
 
@@ -297,7 +275,7 @@ feature_matrix_long =
   )
 ```
 
-Now that we have a feature matrix in long format, we need to convert it to wide format so that the features are on the same row. To do this we will define a function `gather_df`, which converts the dataframe from long to wide.
+Now that we have a feature matrix in long format, we need to convert it to wide format so that the features are on the same row. To do this we will define a function `gather_df`, which converts the data frame from long to wide.
 Let's also join the results to the matrix and convert the `Winner` column to a factor. Finally, we will take the difference of player1 and player2's features, so as to reduce the dimensionality of the model.
 
 ``` r
@@ -359,7 +337,7 @@ train %>%
 
 ---
 ## Creating the Feature Matrix for the 2019 Australian Open
-Now that we have our training set, `train`, we need to create a feature matrix to create predictions on. To do this, we need to generate features again. We could simply append a player list to our raw dataframe, create a mock date and then use the `extract_latest_features_for_tournament` function that we used before. 
+Now that we have our training set, `train`, we need to create a feature matrix to create predictions on. To do this, we need to generate features again. We could simply append a player list to our raw data frame, create a mock date and then use the `extract_latest_features_for_tournament` function that we used before. 
 Instead, we're going to create a lookup table for each unique player in the 2019 Australian Open. We will need to get their last 15 games and then find the mean for each feature so that our features are the same.
 
 Let's first explore what the dummy submission file looks like, then use it to get the unique players.
@@ -380,7 +358,7 @@ lookup_feature_table = read_csv('data/ATP_matches.csv', na = ".") %>%
          Tournament_Date = dmy(Tournament_Date), # Change Tournament to datetime
          Total_Games = Winner_Games_Won + Loser_Games_Won) %>% # Add a total games played column
   # clean_missing_data() %>% # Clean missing data
-  split_winner_loser_columns() %>% # Change the dataframe from wide to long
+  split_winner_loser_columns() %>% # Change the data frame from wide to long
   add_ratio_features() %>%
   filter(Player %in% unique_players) %>%
   group_by(Player) %>%
@@ -450,7 +428,7 @@ aus_open_2019_features  %>%
 ## Generating 2019 Australian Open Predictions
 Now that we have our features, we can finally train our model and generate predictions for the 2019 Australian Open. Due to its simplicity, we will use h2o's Auto Machine Learning function `h2o.automl`. This will train a heap of different models and optimise the hyperparameters, as well as creating stacked ensembles automatically for us. We will use optimising by log loss.
 
-First, we must create h2o frames for our training and feature dataframes. Then we will run `h2o.automl`. Note that we can set the `max_runtime_secs` parameter. As this is a notebook, I have set it for 30 seconds - but I suggest you give it 10 minutes to create the best model. We can then create our predictions and assign them back to our `aus_open_2019_features` dataframe. Finally, we will group_by player and find the best player, on average.
+First, we must create h2o frames for our training and feature data frames. Then we will run `h2o.automl`. Note that we can set the `max_runtime_secs` parameter. As this is a notebook, I have set it for 30 seconds - but I suggest you give it 10 minutes to create the best model. We can then create our predictions and assign them back to our `aus_open_2019_features` data frame. Finally, we will group_by player and find the best player, on average.
 
 ``` r
 ## Setup H2O

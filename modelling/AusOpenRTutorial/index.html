@@ -791,20 +791,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prizes" title="Prizes" class="md-nav__link">
-    Prizes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#submission" title="Submission" class="md-nav__link">
-    Submission
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1016,20 +1002,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prizes" title="Prizes" class="md-nav__link">
-    Prizes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#submission" title="Submission" class="md-nav__link">
-    Submission
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1093,79 +1065,7 @@
 <p>This notebook will outline how the Betfair Data Scientists went about modelling the Australian Open for Betfair's Australian Open Datathon. The task is simple: we ask you to predict the winner of every possible Australian Open matchup using data which we provide.</p>
 <p>The metric used to determine the winner will be log loss, based on the actual matchups that happen in the Open. For more information on log loss, click <a href="http://wiki.fast.ai/index.php/Log_Loss">here</a>.</p>
 <p>For a detailed outline of the task, the prizes, and to sign up, click <a href="https://www.betfair.com.au/hub/australian-open-datathon/">here</a>.</p>
-<p>How an outline of our methodoly and thought process, read <a href="/modelling/howToModelTheAusOpen">this</a> article.</p>
-<h3 id="prizes">Prizes<a class="headerlink" href="#prizes" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Place</th>
-<th>Prize</th>
-<th>Place</th>
-<th>Prize</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>$5000</td>
-<td>9</td>
-<td>$500</td>
-</tr>
-<tr>
-<td>2</td>
-<td>$3000</td>
-<td>10</td>
-<td>$500</td>
-</tr>
-<tr>
-<td>3</td>
-<td>$2000</td>
-<td>11</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>4</td>
-<td>$1000</td>
-<td>12</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>5</td>
-<td>$750</td>
-<td>13</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>6</td>
-<td>$500</td>
-<td>14</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>7</td>
-<td>$500</td>
-<td>15</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>8</td>
-<td>$500</td>
-<td>Total</td>
-<td>$15250</td>
-</tr>
-</tbody>
-</table>
-<h3 id="submission">Submission<a class="headerlink" href="#submission" title="Permanent link">&para;</a></h3>
-<ul>
-<li>To submit your model, email your final submission to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#97;&#116;&#97;&#116;&#104;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#100;&#97;&#116;&#97;&#116;&#104;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a>. Note that you don't need to email your code, just your predictions in the format that we have specified</li>
-<li>No submissions will be accepted prior to the Australian Open qualifying matches being completed and the final draw list being shared with registered participants (12 January 2019)</li>
-<li>Submissions need to include all potential match ups during the Australian Open, i.e. all possible combinations for each men's and women's tournaments (this will be provided after the draw is announced and the Australian Open qualifying matches are completed (Jan 12<sup>th</sup> 2019))</li>
-<li>Submissions must follow the format outlined above and shown in the 'Dummy Submission File'. Any submissions that are not in the correct format will not be accepted.</li>
-<li>Submissions need to include the player names for the hypothetical match up and the probability of the first player winning
-i.e. player_1,player_2,probability_of_player_1_winning,</li>
-<li>Submissions must be in a csv format</li>
-<li>Only two models will be accepted per participant (one model for the men's draw, one model for the women's draw)</li>
-</ul>
+<p>How an outline of our methodology and thought process, read <a href="/modelling/howToModelTheAusOpen">this</a> article.</p>
 <hr />
 <h2 id="exploring-the-data">Exploring the Data<a class="headerlink" href="#exploring-the-data" title="Permanent link">&para;</a></h2>
 <p>First we need to get an idea of what the data looks like. Let's read the men's data in and get an idea of what it looks like. Note that you will need to install all the packages listed below unless you already have them.</p>
@@ -2625,12 +2525,12 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 </tbody>
 </table>
 <p>As we can see, we have a <code>Winner</code> column, a <code>Loser</code> column, as well as other columns detailing the match details, and other columns which have the stats for that match. As we have a <code>Winner</code> column, if we use the current data structure to train a model we will leak the result. The model will simply learn that the actual winner comes from the <code>Winner</code> column, rather than learning from other features that we can create, such as <code>First Serve %</code>.</p>
-<p>To avoid this problem, let's reshape the data from wide to long, then shuffle the data. For this, we will define a function, <code>split_winner_loser_columns</code>, which splits the raw dataframe into two dataframes, appends them together, and then shuffles the data.</p>
+<p>To avoid this problem, let's reshape the data from wide to long, then shuffle the data. For this, we will define a function, <code>split_winner_loser_columns</code>, which splits the raw data frame into two data frames, appends them together, and then shuffles the data.</p>
 <p>Let's also remove all Grass and Clay matches from our data, as we will be modelling the Australian Open which is a hardcourt surface.</p>
 <p>Additionally, we will add a few columns, such as <code>Match_Id</code> and <code>Total_Games</code>. These will be useful later.</p>
 <div class="highlight"><pre><span></span><code><span class="n">split_winner_loser_columns</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1"># This function splits the raw data into two dataframes and appends them together then shuffles them</span>
-  <span class="c1"># This output is a dataframe with only one player&#39;s stats on each row (i.e. in long format)</span>
+  <span class="c1"># This function splits the raw data into two data frames and appends them together then shuffles them</span>
+  <span class="c1"># This output is a data frame with only one player&#39;s stats on each row (i.e. in long format)</span>
 
   <span class="c1"># Grab a df with only the Winner&#39;s stats</span>
   <span class="n">winner</span> <span class="o">=</span> <span class="n">df</span> <span class="o">%&gt;%</span> 
@@ -2666,7 +2566,7 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
   <span class="nf">mutate</span><span class="p">(</span><span class="n">Match_Id</span> <span class="o">=</span> <span class="nf">row_number</span><span class="p">(),</span> <span class="c1"># Add a match ID column to be used as a key</span>
          <span class="n">Tournament_Date</span> <span class="o">=</span> <span class="nf">dmy</span><span class="p">(</span><span class="n">Tournament_Date</span><span class="p">),</span> <span class="c1"># Change Tournament to datetime</span>
          <span class="n">Total_Games</span> <span class="o">=</span> <span class="n">Winner_Games_Won</span> <span class="o">+</span> <span class="n">Loser_Games_Won</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Add a total games played column</span>
-  <span class="nf">split_winner_loser_columns</span><span class="p">()</span> <span class="c1"># Change the dataframe from wide to long</span>
+  <span class="nf">split_winner_loser_columns</span><span class="p">()</span> <span class="c1"># Change the data frame from wide to long</span>
 <span class="n">mens</span> <span class="o">%&gt;%</span>
   <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
             <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> 
@@ -2890,7 +2790,7 @@ Doing Option 1 would mean we have a lot more data to build a strong model, but i
 <p>Doing Option 2 fits better from that angle but leaves us with very few matches to train our model on.</p>
 <p>We have decided to go with an option that combines strengths from both approaches, by training the model on matches from the Aus Open and the US Open because both grand slams are played on the same surface - hard court.</p>
 <p>However, we also need to train our model in the same way that will be used to predict the 2019 Australian Open. When predicting the 2<sup>nd</sup> round, we won't have data from the 1<sup>st</sup> round. So we will need to build our training feature matrix with this in mind. We should extract features for a player from past games at the start of the tournament and apply them to every matchup that that player plays.</p>
-<p>To do this, we will create a function, <code>extract_latest_features_for_tournament</code>, which maps over our feature dataframe for the dates in the first round of a tournament and grabs features.</p>
+<p>To do this, we will create a function, <code>extract_latest_features_for_tournament</code>, which maps over our feature data frame for the dates in the first round of a tournament and grabs features.</p>
 <p>First, we need the Australian Open and US Open results - let's grab these and then apply our function.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Get Australian Open and US Open Results</span>
 <span class="n">aus_us_open_results</span> <span class="o">=</span> 
@@ -2926,7 +2826,7 @@ Doing Option 1 would mean we have a lot more data to build a strong model, but i
     <span class="o">~</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">.</span><span class="p">),</span> <span class="nf">mean</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="n">.</span><span class="p">)</span>
   <span class="p">)</span>
 </code></pre></div>
-<p>Now that we have a feature matrix in long format, we need to convert it to wide format so that the features are on the same row. To do this we will define a function <code>gather_df</code>, which converts the dataframe from long to wide.
+<p>Now that we have a feature matrix in long format, we need to convert it to wide format so that the features are on the same row. To do this we will define a function <code>gather_df</code>, which converts the data frame from long to wide.
 Let's also join the results to the matrix and convert the <code>Winner</code> column to a factor. Finally, we will take the difference of player1 and player2's features, so as to reduce the dimensionality of the model.</p>
 <div class="highlight"><pre><span></span><code><span class="n">gather_df</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1"># This function puts the df back into its original format of each row containing stats for both players</span>
@@ -3080,7 +2980,7 @@ Let's also join the results to the matrix and convert the <code>Winner</code> co
 </table>
 <hr />
 <h2 id="creating-the-feature-matrix-for-the-2019-australian-open">Creating the Feature Matrix for the 2019 Australian Open<a class="headerlink" href="#creating-the-feature-matrix-for-the-2019-australian-open" title="Permanent link">&para;</a></h2>
-<p>Now that we have our training set, <code>train</code>, we need to create a feature matrix to create predictions on. To do this, we need to generate features again. We could simply append a player list to our raw dataframe, create a mock date and then use the <code>extract_latest_features_for_tournament</code> function that we used before. 
+<p>Now that we have our training set, <code>train</code>, we need to create a feature matrix to create predictions on. To do this, we need to generate features again. We could simply append a player list to our raw data frame, create a mock date and then use the <code>extract_latest_features_for_tournament</code> function that we used before. 
 Instead, we're going to create a lookup table for each unique player in the 2019 Australian Open. We will need to get their last 15 games and then find the mean for each feature so that our features are the same.</p>
 <p>Let's first explore what the dummy submission file looks like, then use it to get the unique players.</p>
 <div class="highlight"><pre><span></span><code><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">glimpse</span><span class="p">()</span>
@@ -3095,7 +2995,7 @@ Instead, we're going to create a lookup table for each unique player in the 2019
          <span class="n">Tournament_Date</span> <span class="o">=</span> <span class="nf">dmy</span><span class="p">(</span><span class="n">Tournament_Date</span><span class="p">),</span> <span class="c1"># Change Tournament to datetime</span>
          <span class="n">Total_Games</span> <span class="o">=</span> <span class="n">Winner_Games_Won</span> <span class="o">+</span> <span class="n">Loser_Games_Won</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Add a total games played column</span>
   <span class="c1"># clean_missing_data() %&gt;% # Clean missing data</span>
-  <span class="nf">split_winner_loser_columns</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1"># Change the dataframe from wide to long</span>
+  <span class="nf">split_winner_loser_columns</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1"># Change the data frame from wide to long</span>
   <span class="nf">add_ratio_features</span><span class="p">()</span> <span class="o">%&gt;%</span>
   <span class="nf">filter</span><span class="p">(</span><span class="n">Player</span> <span class="o">%in%</span> <span class="n">unique_players</span><span class="p">)</span> <span class="o">%&gt;%</span>
   <span class="nf">group_by</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span> <span class="o">%&gt;%</span>
@@ -3220,7 +3120,7 @@ Instead, we're going to create a lookup table for each unique player in the 2019
 <hr />
 <h2 id="generating-2019-australian-open-predictions">Generating 2019 Australian Open Predictions<a class="headerlink" href="#generating-2019-australian-open-predictions" title="Permanent link">&para;</a></h2>
 <p>Now that we have our features, we can finally train our model and generate predictions for the 2019 Australian Open. Due to its simplicity, we will use h2o's Auto Machine Learning function <code>h2o.automl</code>. This will train a heap of different models and optimise the hyperparameters, as well as creating stacked ensembles automatically for us. We will use optimising by log loss.</p>
-<p>First, we must create h2o frames for our training and feature dataframes. Then we will run <code>h2o.automl</code>. Note that we can set the <code>max_runtime_secs</code> parameter. As this is a notebook, I have set it for 30 seconds - but I suggest you give it 10 minutes to create the best model. We can then create our predictions and assign them back to our <code>aus_open_2019_features</code> dataframe. Finally, we will group_by player and find the best player, on average.</p>
+<p>First, we must create h2o frames for our training and feature data frames. Then we will run <code>h2o.automl</code>. Note that we can set the <code>max_runtime_secs</code> parameter. As this is a notebook, I have set it for 30 seconds - but I suggest you give it 10 minutes to create the best model. We can then create our predictions and assign them back to our <code>aus_open_2019_features</code> data frame. Finally, we will group_by player and find the best player, on average.</p>
 <p><div class="highlight"><pre><span></span><code><span class="c1">## Setup H2O</span>
 <span class="nf">h2o.init</span><span class="p">(</span><span class="n">ip</span> <span class="o">=</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
          <span class="n">port</span> <span class="o">=</span> <span class="m">54321</span><span class="p">,</span>

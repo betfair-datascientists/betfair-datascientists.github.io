@@ -804,20 +804,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#prizes" title="Prizes" class="md-nav__link">
-    Prizes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#submission" title="Submission" class="md-nav__link">
-    Submission
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#intention" title="Intention" class="md-nav__link">
     Intention
   </a>
@@ -830,8 +816,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-preprocessing" title="Data preprocessing" class="md-nav__link">
-    Data preprocessing
+  <a href="#data-pre-processing" title="Data pre-processing" class="md-nav__link">
+    Data pre-processing
   </a>
   
 </li>
@@ -844,8 +830,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#convert-the-raw-dataframes-into-long-format" title="Convert the raw dataframes into long format:" class="md-nav__link">
-    Convert the raw dataframes into long format:
+  <a href="#convert-the-raw-data-frames-into-long-format" title="Convert the raw data frames into long format:" class="md-nav__link">
+    Convert the raw data frames into long format:
   </a>
   
 </li>
@@ -1066,20 +1052,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#prizes" title="Prizes" class="md-nav__link">
-    Prizes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#submission" title="Submission" class="md-nav__link">
-    Submission
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#intention" title="Intention" class="md-nav__link">
     Intention
   </a>
@@ -1092,8 +1064,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-preprocessing" title="Data preprocessing" class="md-nav__link">
-    Data preprocessing
+  <a href="#data-pre-processing" title="Data pre-processing" class="md-nav__link">
+    Data pre-processing
   </a>
   
 </li>
@@ -1106,8 +1078,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#convert-the-raw-dataframes-into-long-format" title="Convert the raw dataframes into long format:" class="md-nav__link">
-    Convert the raw dataframes into long format:
+  <a href="#convert-the-raw-data-frames-into-long-format" title="Convert the raw data frames into long format:" class="md-nav__link">
+    Convert the raw data frames into long format:
   </a>
   
 </li>
@@ -1191,81 +1163,9 @@
 <p>This notebook will outline how the Betfair Data Scientists went about modelling the Australian Open for Betfair's Australian Open Datathon. The task is simple: we ask you to predict the winner of every possible Australian Open matchup using data which we provide.</p>
 <p>The metric used to determine the winner will be log loss, based on the actual matchups that happen in the Open. For more information on log loss, click <a href="http://wiki.fast.ai/index.php/Log_Loss">here</a>.</p>
 <p>For a detailed outline of the task, the prizes, and to sign up, click <a href="https://www.betfair.com.au/hub/australian-open-datathon/">here</a>.</p>
-<p>How an outline of our methodoly and thought process, read <a href="/modelling/howToModelTheAusOpen">this</a> article.</p>
-<h3 id="prizes">Prizes<a class="headerlink" href="#prizes" title="Permanent link">&para;</a></h3>
-<table>
-<thead>
-<tr>
-<th>Place</th>
-<th>Prize</th>
-<th>Place</th>
-<th>Prize</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>$5000</td>
-<td>9</td>
-<td>$500</td>
-</tr>
-<tr>
-<td>2</td>
-<td>$3000</td>
-<td>10</td>
-<td>$500</td>
-</tr>
-<tr>
-<td>3</td>
-<td>$2000</td>
-<td>11</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>4</td>
-<td>$1000</td>
-<td>12</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>5</td>
-<td>$750</td>
-<td>13</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>6</td>
-<td>$500</td>
-<td>14</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>7</td>
-<td>$500</td>
-<td>15</td>
-<td>$200</td>
-</tr>
-<tr>
-<td>8</td>
-<td>$500</td>
-<td>Total</td>
-<td>$15250</td>
-</tr>
-</tbody>
-</table>
-<h3 id="submission">Submission<a class="headerlink" href="#submission" title="Permanent link">&para;</a></h3>
-<ul>
-<li>To submit your model, email your final submission to <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#100;&#97;&#116;&#97;&#116;&#104;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#100;&#97;&#116;&#97;&#116;&#104;&#111;&#110;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a>. Note that you don't need to email your code, just your predictions in the format that we have specified</li>
-<li>No submissions will be accepted prior to the Australian Open qualifying matches being completed and the final draw list being shared with registered participants (12 January 2019)</li>
-<li>Submissions need to include all potential match ups during the Australian Open, i.e. all possible combinations for each men's and women's tournaments (this will be provided after the draw is announced and the Australian Open qualifying matches are completed (Jan 12<sup>th</sup> 2019))</li>
-<li>Submissions must follow the format outlined above and shown in the 'Dummy Submission File'. Any submissions that are not in the correct format will not be accepted.</li>
-<li>Submissions need to include the player names for the hypothetical match up and the probability of the first player winning
-i.e. player_1,player_2,probability_of_player_1_winning,</li>
-<li>Submissions must be in a csv format</li>
-<li>Only two models will be accepted per participant (one model for the men's draw, one model for the women's draw)</li>
-</ul>
+<p>How an outline of our methodology and thought process, read <a href="/modelling/howToModelTheAusOpen">this</a> article.</p>
 <h3 id="intention">Intention<a class="headerlink" href="#intention" title="Permanent link">&para;</a></h3>
-<p>This notebook will demostrate how to:</p>
+<p>This notebook will demonstrate how to:</p>
 <ul>
 <li>Process the raw data sets</li>
 <li>Produce simple features</li>
@@ -1291,9 +1191,9 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <span class="n">df_wta</span> <span class="o">=</span> <span class="nf">pd.read_csv</span><span class="p">(</span><span class="s">&quot;data/WTA_matches.csv&quot;</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h2 id="data-preprocessing">Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Permanent link">&para;</a></h2>
+<h2 id="data-pre-processing">Data pre-processing<a class="headerlink" href="#data-pre-processing" title="Permanent link">&para;</a></h2>
 <p>Filter the matches to hard and indoor hard only due to the fact that Australian Open is on hard surface and we want the models to train specifically for hard surfaces matches</p>
-<p>Convert the columns in both datasets to the correct types. For example, we want to make sure the date columns are in the datetime format and numerial columns are either interger or floats. This will help reduce the memory in use and make the feature engineering process easier</p>
+<p>Convert the columns in both datasets to the correct types. For example, we want to make sure the date columns are in the datetime format and numerical columns are either integer or floats. This will help reduce the memory in use and make the feature engineering process easier</p>
 <div class="highlight"><pre><span></span><code><span class="c1">### Include hard and indoor hard only</span>
 <span class="n">df_atp</span> <span class="o">=</span> <span class="n">df_atp.loc</span><span class="p">[</span><span class="nf">df_atp.Court_Surface.isin</span><span class="p">([</span><span class="s">&#39;Hard&#39;</span><span class="p">,</span><span class="s">&#39;Indoor Hard&#39;</span><span class="p">])]</span>
 <span class="n">df_wta</span> <span class="o">=</span> <span class="n">df_wta.loc</span><span class="p">[</span><span class="nf">df_wta.Court_Surface.isin</span><span class="p">([</span><span class="s">&#39;Hard&#39;</span><span class="p">,</span><span class="s">&#39;Indoor Hard&#39;</span><span class="p">])]</span>
@@ -1338,7 +1238,7 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <p>A typical row of the transformed data will look like this – For a match between Player A – Roger Federer and Player B – Rafael Nadal, we will have a bunch of features like the difference in first serve %, difference in ELO rating etc. The target variable will be whether or not Player A wins (1=Player A wins and 0=lose).</p>
 <p>The steps we take are:</p>
 <ul>
-<li>Convert the raw dataframes into long format:</li>
+<li>Convert the raw data frames into long format:</li>
 <li>Create some new features</li>
 <li>
 <p>Take the rolling average for each player and each match
@@ -1349,8 +1249,8 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 </li>
 </ul>
 <hr />
-<h2 id="convert-the-raw-dataframes-into-long-format">Convert the raw dataframes into long format:<a class="headerlink" href="#convert-the-raw-dataframes-into-long-format" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="c1"># Before we split the dataframe into winner and loser, we want to create a feature that captures the total number of games the match takes.</span>
+<h2 id="convert-the-raw-data-frames-into-long-format">Convert the raw data frames into long format:<a class="headerlink" href="#convert-the-raw-data-frames-into-long-format" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># Before we split the data frame into winner and loser, we want to create a feature that captures the total number of games the match takes.</span>
 <span class="c1"># We have to do it before the split or we will lose this information</span>
 <span class="n">df_atp</span><span class="p">[</span><span class="s">&#39;Total_Games&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_atp.Winner_Games_Won</span> <span class="o">+</span> <span class="n">df_atp.Loser_Games_Won</span>
 <span class="n">df_wta</span><span class="p">[</span><span class="s">&#39;Total_Games&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_wta.Winner_Games_Won</span> <span class="o">+</span> <span class="n">df_wta.Loser_Games_Won</span>
@@ -1360,7 +1260,7 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <span class="n">winner_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="n">for</span> <span class="n">col</span> <span class="n">in</span> <span class="n">df_atp.columns</span> <span class="n">if</span> <span class="nf">col.startswith</span><span class="p">(</span><span class="s">&#39;Winner&#39;</span><span class="p">)]</span>
 <span class="n">loser_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="n">for</span> <span class="n">col</span> <span class="n">in</span> <span class="n">df_atp.columns</span> <span class="n">if</span> <span class="nf">col.startswith</span><span class="p">(</span><span class="s">&#39;Loser&#39;</span><span class="p">)]</span>
 
-<span class="c1"># create a winner dataframe to store the winner stats and a loser dataframe for the losers</span>
+<span class="c1"># create a winner data frame to store the winner stats and a loser data frame for the losers</span>
 <span class="c1"># In addition to the winner and loser columns, we are adding common columns as well (e.g. tournamnt dates)</span>
 <span class="n">common_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Total_Games&#39;</span><span class="p">,</span><span class="s">&#39;Tournament&#39;</span><span class="p">,</span><span class="s">&#39;Tournament_Date&#39;</span><span class="p">,</span> <span class="s">&#39;Court_Surface&#39;</span><span class="p">,</span><span class="s">&#39;Round_Description&#39;</span><span class="p">]</span>
 <span class="n">df_winner_atp</span> <span class="o">=</span> <span class="n">df_atp</span><span class="p">[</span><span class="n">winner_cols</span> <span class="o">+</span> <span class="n">common_cols</span><span class="p">]</span>
@@ -1389,12 +1289,12 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <span class="n">df_loser_wta.columns</span>  <span class="o">=</span> <span class="n">df_winner_atp.columns</span>
 
 
-<span class="c1"># append the winner and loser dataframes </span>
+<span class="c1"># append the winner and loser data frames </span>
 
 <span class="n">df_long_atp</span><span class="o">=</span> <span class="nf">df_winner_atp.append</span><span class="p">(</span><span class="n">df_loser_atp</span><span class="p">)</span>
 <span class="n">df_long_wta</span><span class="o">=</span> <span class="nf">df_winner_wta.append</span><span class="p">(</span><span class="n">df_loser_wta</span><span class="p">)</span>
 </code></pre></div>
-<p>So now our dataframes are in long format and should looks like this</p>
+<p>So now our data frames are in long format and should looks like this</p>
 <div class="highlight"><pre><span></span><code><span class="nf">df_long_atp.head</span><span class="p">()</span>
 </code></pre></div>
 <table>
@@ -1553,11 +1453,11 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <li><code>Player_BreakPoints_Per_Return_Game</code></li>
 <li><code>Player_Game_Win_Percentage</code></li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1"># Here, we will define a function so we can apply it to both atp and wta dataframes</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Here, we will define a function so we can apply it to both atp and wta data frames</span>
 <span class="n">def</span> <span class="nf">get_new_features</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">:</span>
 
     <span class="c1"># Input: </span>
-<span class="c1">#     df: dataframe to get the data from</span>
+<span class="c1">#     df: data frame to get the data from</span>
 
      <span class="c1"># Return: the df with the new features</span>
 
@@ -1574,7 +1474,7 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
     <span class="n">return</span> <span class="n">df</span>
 
 
-<span class="c1"># Apply the function we just created to the long dataframes</span>
+<span class="c1"># Apply the function we just created to the long data frames</span>
 <span class="n">df_long_atp</span> <span class="o">=</span> <span class="nf">get_new_features</span><span class="p">(</span><span class="n">df_long_atp</span><span class="p">)</span>
 <span class="n">df_long_wta</span> <span class="o">=</span> <span class="nf">get_new_features</span><span class="p">(</span><span class="n">df_long_wta</span><span class="p">)</span>
 </code></pre></div>
@@ -1740,8 +1640,8 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <span class="n">def</span> <span class="nf">get_rolling_features </span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">date_df</span><span class="o">=</span><span class="n">None</span><span class="p">,</span><span class="n">rolling_cols</span> <span class="o">=</span> <span class="n">None</span><span class="p">,</span> <span class="n">last_cols</span><span class="o">=</span> <span class="n">None</span><span class="p">)</span><span class="o">:</span>
 
     <span class="c1"># Input: </span>
-<span class="c1">#     df: dataframe to get the data from</span>
-<span class="c1">#     date_df: dataframe that has the start dates for each tournament</span>
+<span class="c1">#     df: data frame to get the data from</span>
+<span class="c1">#     date_df: data frame that has the start dates for each tournament</span>
 <span class="c1">#     rolling_cols: columns to get the rolling averages</span>
 <span class="c1">#     last_cols: columns to get the last value (most recent)</span>
 
@@ -1786,7 +1686,7 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <span class="n">last_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s">&#39;Player_Rank&#39;</span><span class="p">]</span>
 
 
-<span class="c1"># Apply the rolling average function to the long dataframes (it will take a few mins to run)</span>
+<span class="c1"># Apply the rolling average function to the long data frames (it will take a few mins to run)</span>
 <span class="n">df_rolling_atp</span> <span class="o">=</span> <span class="nf">get_rolling_features </span><span class="p">(</span><span class="n">df_long_atp</span><span class="p">,</span> <span class="n">tournament_dates_atp</span><span class="p">,</span> <span class="n">rolling_cols</span><span class="p">,</span> <span class="n">last_cols</span><span class="o">=</span> <span class="n">last_cols</span> <span class="p">)</span>
 <span class="n">df_rolling_wta</span> <span class="o">=</span> <span class="nf">get_rolling_features </span><span class="p">(</span><span class="n">df_long_wta</span><span class="p">,</span> <span class="n">tournament_dates_wta</span><span class="p">,</span> <span class="n">rolling_cols</span><span class="p">,</span> <span class="n">last_cols</span><span class="o">=</span> <span class="n">last_cols</span><span class="p">)</span>
 </code></pre></div>
@@ -1868,7 +1768,7 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <ol>
 <li>We will create a random number for each player which only return 0 or 1</li>
 <li>If it is zero, we will assign the winner to player 1 and loser to player 2</li>
-<li>We will join the features to the player 1 and 2. The join will be on the player names and the tournament date (tournament_index in the feature dataframes)</li>
+<li>We will join the features to the player 1 and 2. The join will be on the player names and the tournament date (tournament_index in the feature data frames)</li>
 <li>For players who do not have any history, we will fill the stats by zeros and rank by 999</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="c1"># Randomise the match_wide dataset so the first player is not always the winner</span>
@@ -1898,7 +1798,7 @@ i.e. player_1,player_2,probability_of_player_1_winning,</li>
 <p>After shuffling, the win rate for player 1 for the mens is 49.64798919857267%
 After shuffling, the win rate for player 1 for the womens is 49.697671426733564%
 The win rates are close enough to 50%. So we are good to go</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># To get our dataframes ready for model training, we will exclude other tournaments from the data now because we have gotten the rolling averages from them and </span>
+<div class="highlight"><pre><span></span><code><span class="c1"># To get our data frames ready for model training, we will exclude other tournaments from the data now because we have gotten the rolling averages from them and </span>
 <span class="c1"># for training, we only need US and Australian Open matches</span>
 <span class="n">df_atp</span> <span class="o">=</span> <span class="n">df_atp.loc</span><span class="p">[</span><span class="nf">df_atp.Tournament.isin</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)]</span>
 <span class="n">df_wta</span> <span class="o">=</span> <span class="n">df_wta.loc</span><span class="p">[</span><span class="nf">df_wta.Tournament.isin</span><span class="p">(</span><span class="n">tournaments</span><span class="p">)]</span>
@@ -1912,7 +1812,7 @@ The win rates are close enough to 50%. So we are good to go</p>
 <span class="n">df_wta</span> <span class="o">=</span> <span class="n">df_wta</span><span class="p">[</span><span class="n">cols_to_keep</span><span class="p">]</span>
 
 
-<span class="c1"># Here, we are joining the rolling average dataframes to the individual matches. </span>
+<span class="c1"># Here, we are joining the rolling average data frames to the individual matches. </span>
 <span class="c1"># We need to do it twice. One for player 1 and one for player 2</span>
 
 <span class="c1"># Get the rolling features for player 1</span>
@@ -1980,16 +1880,16 @@ Name: Tournament_Date, dtype: int64
 2015-01-19     1
 Name: Tournament_Date, dtype: int64
 </code></pre></div>
-<p>Now we have gotten the rolling averages for both player 1 and 2. What we need to do next is to simply calculat their difference.</p>
+<p>Now we have gotten the rolling averages for both player 1 and 2. What we need to do next is to simply calculate their difference.</p>
 <p>To calculate the difference, we need to:</p>
 <ol>
-<li>Split the dataframes into two new dataframes: Player 1 and Player 2</li>
-<li>Take the difference between the two dataframes</li>
+<li>Split the data frames into two new data frames: Player 1 and Player 2</li>
+<li>Take the difference between the two data frames</li>
 </ol>
 <div class="highlight"><pre><span></span><code><span class="n">def</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">diff_cols</span> <span class="o">=</span> <span class="n">None</span><span class="p">)</span><span class="o">:</span>
 
         <span class="c1"># Input: </span>
-<span class="c1">#     df: dataframe to get the data from</span>
+<span class="c1">#     df: data frame to get the data from</span>
 <span class="c1">#     diff_cols: columns we take the difference on. For example is diff_cols = win rate. This function will calculate the </span>
 <span class="c1">#                difference of the win rates between player 1 and player 2</span>
 
@@ -2036,7 +1936,7 @@ Name: Tournament_Date, dtype: int64
 <span class="n">df_atp</span><span class="p">,</span>_ <span class="o">=</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df_atp</span><span class="p">,</span><span class="n">diff_cols</span><span class="o">=</span><span class="n">diff_cols</span><span class="p">)</span>
 <span class="n">df_wta</span><span class="p">,</span>_ <span class="o">=</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df_wta</span><span class="p">,</span><span class="n">diff_cols</span><span class="o">=</span><span class="n">diff_cols</span><span class="p">)</span>
 
-<span class="c1"># Make a copy of the dataframes in case we need to come back to check the values</span>
+<span class="c1"># Make a copy of the data frames in case we need to come back to check the values</span>
 <span class="n">df_atp_final</span> <span class="o">=</span> <span class="nf">df_atp.copy</span><span class="p">()</span>
 <span class="n">df_wta_final</span> <span class="o">=</span> <span class="nf">df_wta.copy</span><span class="p">()</span>
 </code></pre></div>
@@ -2712,7 +2612,7 @@ Name: Tournament_Date, dtype: int64
 <div class="highlight"><pre><span></span><code><span class="nf">print</span><span class="p">(</span><span class="n">df_predict_wta.loc</span><span class="p">[</span><span class="nf">df_predict_wta.Player_p1.isna</span><span class="p">(),</span><span class="s">&#39;player_1&#39;</span><span class="p">]</span><span class="nf">.unique</span><span class="p">()</span><span class="nf">.tolist</span><span class="p">())</span>
 <span class="p">[]</span>
 </code></pre></div>
-<p>We will do the differencing again for the prediction dataframes exactly like what we did for training</p>
+<p>We will do the differencing again for the prediction data frames exactly like what we did for training</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Apply the function and get the difference between player 1 and 2</span>
 <span class="n">df_predict_atp</span><span class="p">,</span>_ <span class="o">=</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df_predict_atp</span><span class="p">,</span><span class="n">diff_cols</span><span class="o">=</span><span class="n">diff_cols</span><span class="p">)</span>
 <span class="n">df_predict_wta</span><span class="p">,</span>_ <span class="o">=</span> <span class="nf">get_player_difference</span><span class="p">(</span><span class="n">df_predict_wta</span><span class="p">,</span><span class="n">diff_cols</span><span class="o">=</span><span class="n">diff_cols</span><span class="p">)</span>

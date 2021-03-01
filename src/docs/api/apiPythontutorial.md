@@ -26,7 +26,7 @@ Here are some other useful links for accessing our API:
 
 ### Setting Up Your Certificates
 
-To use the API securely, Betfair recommends generating certificates. The `betfairlightweight` package requires this to login non-interactively. For detailed instructions on how to generate certificates on a windows machine, follow the [instructions outlined here](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Certificate+Generation+With+XCA). For alternate instructions for Windows, or for Mac/Linux machines, follow the [instructions outlined here](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login). You should then create a folder for your certs, perhaps named 'certs' and grab the path loation.
+To use the API securely, Betfair recommends generating certificates. The `betfairlightweight` package requires this to login non-interactively. For detailed instructions on how to generate certificates on a windows machine, follow the [instructions outlined here](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Certificate+Generation+With+XCA). For alternate instructions for Windows, or for Mac/Linux machines, follow the [instructions outlined here](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login). You should then create a folder for your certs, perhaps named 'certs' and grab the path location.
 
 ### Installing `betfairlightweight`
 

@@ -1039,24 +1039,12 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
-<td></td>
-<td></td>
+<td align="left"><li>1 minute intervals</li><li>last traded price</li><li>no volume</li></td>
+<td align="left"><li>1 second intervals</li><li>price ladder (top 3)</li><li>volume</li></td>
+<td align="left"><li>API tick intervals (50ms)</li><li>price ladder (full)</li><li>volume</li></td>
 </tr>
 </tbody>
 </table>
-<li>1 minute intervals</li>
-<li>last traded price</li>
-<li>no volume</li>
-<p>| 
-<li>1 second intervals</li></p>
-<li>price ladder</li>
-<li>volume</li>
-<p>| 
-<li>API tick intervals (50ms)</li></p>
-<li>price ladder</li>
-<li>volume</li>
-
 <hr />
 <h3 id="purchasing-the-data">Purchasing the data<a class="headerlink" href="#purchasing-the-data" title="Permanent link">&para;</a></h3>
 <p>Start by going to <a href="https://historicdata.betfair.com/#/home">the Betfair Historic Data site</a> and log in using your Betfair account. Note: if you have less than 100 <a href="https://www.betfair.com.au/hub/help/account-help/discount-rates/">Betfair points</a> you may have problems downloading data. </p>
@@ -1086,10 +1074,10 @@
 <p>The site can be pretty slow to download from, and you'll generally have a better experience if you download the data a bit at a time, say month by month. Alternatively if you're going to download a lot of data it might be worth having a look at the historic data API, that can automate the download process and speed it up significantly. There's a guide available <a href="https://historicdata.betfair.com/#/apidocs">here</a>, and some <a href="https://github.com/betfair/historicdata">sample code</a> the help get you started.</p>
 <hr />
 <h3 id="unzipping-the-files">Unzipping the files<a class="headerlink" href="#unzipping-the-files" title="Permanent link">&para;</a></h3>
-<p>You'll need to download a program to unzip the TAR files. Here we'll be using <a href="https://www.7-zip.org/">7Zip</a>, which is free, open source and generally well respected. Once you've downloaded it make sure you also instal it onto the computer you'll be using to open the data files.</p>
+<p>You'll need to download a program to unzip the TAR files. Here we'll be using <a href="https://www.7-zip.org/">7Zip</a>, which is free, open source and generally well respected. Once you've downloaded it make sure you also install it onto the computer you'll be using to open the data files.</p>
 <p>Locate the data.tar file in your computer's file explorer program. Right click on the file, select '7-Zip' from the menu then choose 'Extract files...'.</p>
 <p><img alt="Betfair Historic Data" src="../img/historicDataUnzip2.png" /></p>
-<p>In the model that pops up change the pathmode to 'No pathnames'. You can also change the name and/or path of the folder you want the files extracted to if you want to.</p>
+<p>In the model that pops up change the path mode to 'No pathnames'. You can also change the name and/or path of the folder you want the files extracted to if you want to.</p>
 <p><img alt="Betfair Historic Data" src="../img/historicDataUnzip3.png" /></p>
 <p>You now have a collection of .bz2 files. The final step is to select all the files, right click, select '7-Zip' from the menu then choose 'Extract here'. This will then extract all the individual zipped files which you can then either open in a text editor - you can use something basic like Notepad (installed on basically all computers by default) or a more complete program like <a href="https://code.visualstudio.com/">Visual Studio Code</a> (my go to), <a href="https://www.vim.org/">Vim</a> or <a href="https://notepad-plus-plus.org/">Notepad++</a> - or you can parse over the using a program to do the work for you. We'll explore how to parse the data another time. If you're opening the files with a text editor you might need to right click, choose 'open with' and select your preferred program. </p>
 <p><img alt="Betfair Historic Data" src="../img/historicDataUnzip4.png" /></p>

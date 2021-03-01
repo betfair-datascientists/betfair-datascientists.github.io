@@ -12,9 +12,9 @@ We know that the process of downloading and extracting these data files can be a
 
     A full catalogue of the values included in each data tier is available [here](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf).
     
-**Basic**    |**Advanced**    |**Pro**            
-:------------|:---------------|:------------
-<li>1 minute intervals</li><li>last traded price</li><li>no volume</li> | <li>1 second intervals</li><li>price ladder</li><li>volume</li> | <li>API tick intervals (50ms)</li><li>price ladder</li><li>volume</li>
+|**Basic**    |**Advanced**    |**Pro**      |     
+|:------------|:---------------|:------------|
+|<li>1 minute intervals</li><li>last traded price</li><li>no volume</li> | <li>1 second intervals</li><li>price ladder (top 3)</li><li>volume</li> | <li>API tick intervals (50ms)</li><li>price ladder (full)</li><li>volume</li> |
  
 
 ---
@@ -53,13 +53,13 @@ The site can be pretty slow to download from, and you'll generally have a better
 ---
 ### Unzipping the files
 
-You'll need to download a program to unzip the TAR files. Here we'll be using [7Zip](https://www.7-zip.org/), which is free, open source and generally well respected. Once you've downloaded it make sure you also instal it onto the computer you'll be using to open the data files.
+You'll need to download a program to unzip the TAR files. Here we'll be using [7Zip](https://www.7-zip.org/), which is free, open source and generally well respected. Once you've downloaded it make sure you also install it onto the computer you'll be using to open the data files.
 
 Locate the data.tar file in your computer's file explorer program. Right click on the file, select '7-Zip' from the menu then choose 'Extract files...'.
 
 ![Betfair Historic Data](./img/historicDataUnzip2.png)
 
-In the model that pops up change the pathmode to 'No pathnames'. You can also change the name and/or path of the folder you want the files extracted to if you want to.
+In the model that pops up change the path mode to 'No pathnames'. You can also change the name and/or path of the folder you want the files extracted to if you want to.
 
 ![Betfair Historic Data](./img/historicDataUnzip3.png)
 

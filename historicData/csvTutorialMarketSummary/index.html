@@ -42,7 +42,7 @@
     
     
       
-        <title>JSON to CSV tutorial: producing a market summary - The Automation Hub</title>
+        <title>JSON to CSV tutorial - The Automation Hub</title>
       
     
     
@@ -104,7 +104,7 @@
                 The Automation Hub
               </span>
               <span class="md-header-nav__topic">
-                JSON to CSV tutorial: producing a market summary
+                JSON to CSV tutorial
               </span>
             
           
@@ -161,7 +161,9 @@
       
         
 
-<nav class="md-tabs" data-md-component="tabs">
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -209,7 +211,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="../dataSources/" title="Historic Data" class="md-tabs__link">
+        <a href="../dataSources/" title="Historic Data" class="md-tabs__link md-tabs__link--active">
           Historic Data
         </a>
       
@@ -653,10 +655,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       Historic Data
@@ -689,6 +693,119 @@
     <a href="../usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
       Downloading from the Historic Data site
     </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        JSON to CSV tutorial
+      </label>
+    
+    <a href="./" title="JSON to CSV tutorial" class="md-nav__link md-nav__link--active">
+      JSON to CSV tutorial
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-your-environment" title="Setting up your environment" class="md-nav__link">
+    Setting up your environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-input" title="Data input" class="md-nav__link">
+    Data input
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-definitions" title="Type definitions" class="md-nav__link">
+    Type definitions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#market-summary-data" title="Market summary data" class="md-nav__link">
+    Market summary data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-csv" title="Writing to CSV" class="md-nav__link">
+    Writing to CSV
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering-markets" title="Filtering markets" class="md-nav__link">
+    Filtering markets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#helper-functions" title="Helper functions" class="md-nav__link">
+    Helper functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#final-thoughts" title="Final thoughts" class="md-nav__link">
+    Final thoughts
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#complete-code" title="Complete code" class="md-nav__link">
+    Complete code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -940,6 +1057,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#helper-functions" title="Helper functions" class="md-nav__link">
+    Helper functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#final-thoughts" title="Final thoughts" class="md-nav__link">
     Final thoughts
   </a>
@@ -947,8 +1071,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sample-code" title="Sample code" class="md-nav__link">
-    Sample code
+  <a href="#complete-code" title="Complete code" class="md-nav__link">
+    Complete code
   </a>
   
 </li>
@@ -980,45 +1104,46 @@
                 <h1 id="json-to-csv-tutorial-producing-a-market-summary">JSON to CSV tutorial: producing a market summary<a class="headerlink" href="#json-to-csv-tutorial-producing-a-market-summary" title="Permanent link">&para;</a></h1>
 <hr />
 <p>The historic pricing data available on the <a href="https://historicdata.betfair.com/#/home">Betfair Historic Data site</a> is an excellent resource, including almost every market offered on the Exchange back to 2016. We do appreciate though that the JSON format of the data sets can make it challenging to find value in the data, especially if you're not confident in working with large data sets. </p>
-<p>In this tutorial we're going to step through the process of using <code>betfairlightweight</code> to take in a compressed tar folder, process the historic JSON files, and convert the data into a simple csv output, including basic market summary data for each runner split into pre play and in play values. We're also going to include a filter function, to allow us to filter out markets we're not interested in. </p>
+<p>In this tutorial we're going to step through the process of using the Python <code>betfairlightweight</code> library to take in a compressed tar folder, process the historic JSON files, and convert the data into a simple csv output, including basic market summary data for each runner split into pre play and in play values. We're also going to include a filter function, to allow us to filter out markets we're not interested in. </p>
 <p>The idea of this tutorial is to share a way of using existing libraries to make working with the JSON data sets easier, and hopefully the provide a foundation that you can build your own code base and data sets from. We'll be focusing on horse racing data; what we want to produce is a csv output that includes one row per runner for each market we're interested in, along with summary pre-play and in-play data for the runner. We'll step through the issues we encountered and how we went about solving the various challenges, including sharing relevant code snips along the way. </p>
-<!-- We've also posted the completed code logic on the [`betfair-downunder`]() Github repo.
-
-TODO -->
-
-<p>We're not Python natives and acknowledge that there are probably more efficient and neater ways of achieving the same end goal! As always please <a href="mailto:data@betfair.com.au">reach out</a> with feedback, suggestions or queries. </p>
+<p>We're not Python natives and acknowledge that there are probably more efficient and neater ways of achieving the same end goal! As always please <a href="mailto:data@betfair.com.au">reach out</a> with feedback, suggestions or queries, or feel free to submit a pull request if you catch some bugs or have other improvements! </p>
 <div class="admonition note">
-<p class="admonition-title">Resources</p>
+<p class="admonition-title">Cheat sheet</p>
 <ul>
 <li>
-<p>We'll be taking in an input of a historical tar file downloaded from the <a href="https://historicdata.betfair.com/#/help">Betfair historic data site</a>. We're using a PRO version, though the code should work on ADVANCED too.</p>
+<p>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/historicData/csvTutorialMarketSummary/#sample-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/531830e6eb2b430aee8d0d271aa97fe4dcef54fb/jsonToCsv/main.py">download the script from Github</a>.</p>
+</li>
+<li>
+<p>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </p>
+</li>
+<li>
+<p>The script will take some time before it starts outputting to the output.csv file, so let it run for a few minutes before getting worried that it's not working!</p>
+</li>
+<li>
+<p>Make sure you amend your data path to point to your data file (instructions below). We'll be taking in an input of a historical tar file downloaded from the <a href="https://historicdata.betfair.com/#/help">Betfair historic data site</a>. We're using a PRO version, though the code should work on ADVANCED too. This approach won't work with the BASIC data tier. </p>
 </li>
 <li>
 <p>We're using the <a href="https://github.com/liampauling/betfair/tree/master/betfairlightweight"><code>betfairlightweight</code></a> package to do the heavy lifting</p>
+</li>
+<li>
+<p>We've also posted the completed code logic on the <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/531830e6eb2b430aee8d0d271aa97fe4dcef54fb/jsonToCsv/main.py"><code>betfair-downunder</code> Github repo</a>.</p>
 </li>
 </ul>
 </div>
 <hr />
 <h3 id="setting-up-your-environment">Setting up your environment<a class="headerlink" href="#setting-up-your-environment" title="Permanent link">&para;</a></h3>
-<p>You're going to need to make sure you have <a href="https://www.python.org/downloads/">Python</a> and <a href="https://pypi.org/project/pip/">pip</a> installed to get this code to run. If you're just starting out with Python, you may have to add Python to your environment variables. We're using some pretty new Python features, so it might be worth <a href="https://phoenixnap.com/kb/check-python-version">checking your version</a> and updating if you're keen to follow along. </p>
-<p>Open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>) and input <code>pip install betfairlightweight</code></p>
+<p>You're going to need to make sure you have <a href="https://www.python.org/downloads/">Python</a> and <a href="https://pypi.org/project/pip/">pip</a> installed to get this code to run. If you're just starting out with Python, you may have to add Python to <a href="https://www.educative.io/edpresso/how-to-add-python-to-path-variable-in-windows">your environment variables</a>. The is generally easiest to do by checking the box when you're installing Python choosing to 'add to PATH'. </p>
+<p>The alternative approach to the above is to use a <a href="https://jupyter.org/">Jupyter notebook</a> which has the environment already set up - this might be the easier option for people new to programming. </p>
+<p>We're using some pretty new Python features, so it might be worth <a href="https://phoenixnap.com/kb/check-python-version">checking your version</a> and updating if you're keen to follow along. </p>
+<p>To install <code>betfairlightweight</code> open a command prompt, or a terminal in your text editor of choice and input <code>pip install betfairlightweight</code> then return. </p>
 <hr />
 <h3 id="data-input">Data input<a class="headerlink" href="#data-input" title="Permanent link">&para;</a></h3>
 <p>We started with the <a href="https://github.com/liampauling/betfair/blob/master/examples/examplestreaminghistorical.py">historic data parsing example</a> from <a href="https://github.com/liampauling">liampauling</a>'s Github repo. </p>
-<p>Our first issue was that the example provided was expecting to take in an individual market file. We wanted to be able to accept data in a tar or zipped folder, or a set of individual bz2 files.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># the path directories to the data sets</span>
-<span class="c1"># accepts tar files, zipped files or </span>
-<span class="c1"># directory with bz2 file(s)</span>
-<span class="n">market_paths</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s1">&#39;../_data/2020_12_DecRacingPro.zip&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;../_data/PRO&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;../_data/2021_01_JanRacingPro.tar&#39;</span>
-<span class="p">]</span>
-
-<span class="c1"># loading from tar and extracting files</span>
+<p>Our first issue was that the example provided was expecting to take in an individual market file. We wanted to be able to accept data in a tar archive, a zipped folder, or a directory of individual bz2 files.</p>
+<p>Here's the code we used for handling the different file formats. </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># loading from tar and extracting files</span>
 <span class="k">def</span> <span class="nf">load_markets</span><span class="p">(</span><span class="n">file_paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">file_paths</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">file_path</span> <span class="o">+</span> <span class="s1">&#39;**/**/*.bz2&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
                 <span class="n">f</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
@@ -1040,15 +1165,33 @@ TODO -->
     <span class="k">return</span> <span class="kc">None</span>
 </code></pre></div>
 <p>and then used it like this:</p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">file_obj</span> <span class="ow">in</span> <span class="n">load_markets</span><span class="p">(</span><span class="n">market_paths</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># the path directories to the data sets</span>
+<span class="c1"># accepts tar files, zipped files or </span>
+<span class="c1"># directory with bz2 file(s)</span>
+<span class="n">market_paths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;./2020_12_DecRacingPro.zip&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;./PRO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;./2021_01_JanRacingPro.tar&#39;</span>
+<span class="p">]</span>
+
+<span class="o">...</span> 
+
+<span class="k">for</span> <span class="n">file_obj</span> <span class="ow">in</span> <span class="n">load_markets</span><span class="p">(</span><span class="n">market_paths</span><span class="p">):</span>
     <span class="n">stream</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">streaming</span><span class="o">.</span><span class="n">create_historical_generator_stream</span><span class="p">(</span>
         <span class="n">file_path</span><span class="o">=</span><span class="n">file_obj</span><span class="p">,</span>
         <span class="n">listener</span><span class="o">=</span><span class="n">listener</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;builtins.open&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">f</span><span class="p">):</span>  
+    <span class="k">def</span> <span class="nf">get_pre_post_final</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;builtins.open&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">f</span><span class="p">):</span>  
 </code></pre></div>
 <p>This means we can pass in the tar and/or zipped file in its compressed form and/or directory with individual bz2 files in it and not worry about extracting the file contents, or having to handle the logic of iterating over the inner nested file structure. </p>
+<div class="admonition note">
+<p class="admonition-title">File paths</p>
+<p>The program will look at the file path you pass in relative to the location of the script you're running. So it will start by looking in the same folder it's saved in and then follow your navigation instructions from there, using <code>/</code> to indicate a folder and <code>../</code> to navigate up a level in the folder structure. </p>
+<p>If our example the data files sit in the same folder as the script (<code>./PRO</code>).</p>
+<p>If it were in a folder at the same level as the folder that our script is in then we'd need to navigate 'up' a level (using <code>../</code>) and then into the folder housing the data, i.e. <code>'../dataFolder/PRO'</code> and if the data were in a different folder within the same folder as our script file we'd use <code>'./dataFolder/PRO'</code> etc.</p>
+</div>
 <hr />
 <h3 id="type-definitions">Type definitions<a class="headerlink" href="#type-definitions" title="Permanent link">&para;</a></h3>
 <p>If you're used to working in strongly typed languages, especially those with type definitions, you might find it a bit frustrating to try and figure out where you can access the different data types, for example market name or runner BSP. There are some things you can do to make this a bit easier, other than digging into the <code>betfairlightweight</code> source code, which was where we started. </p>
@@ -1155,65 +1298,103 @@ TODO -->
 </tr>
 </tbody>
 </table>
-<p>This is the logic we used to identify the last market view before the market went in play, and the final market view. We determined the last market pre play by comparing the in play status, and when we found a market that was in play we took our pre play data from the previous market version. Similarly, we took the final in play data from the last market view where the market status showed as 'open'.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># final market view before market goes in play</span>
-<span class="k">if</span> <span class="n">preplay_market</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">preplay_market</span><span class="o">.</span><span class="n">inplay</span> <span class="o">!=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">inplay</span><span class="p">:</span>
-    <span class="n">preplay_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">last_price_traded</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">preplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
-<span class="n">preplay_market</span> <span class="o">=</span> <span class="n">market_book</span>
+<p><code>betfairlightweight</code> exposes snapshots of the market that include all the price data we need. To allow us to compute pre play and in play figures there are three market snapshots we need to find. These are the final view before the market turns in play, the market at the end of the race once it's no longer open but the price ladder hasn't yet been cleared, and the final closed snapshot that shows winner/loser status etc. We can then use the deltas between these market views to calculate the pre play and in play summary statistics. </p>
+<p>We iterate over these market snapshots and when we find the first market showing as in play we go back to the previous update, and use this as our pre play view. After this we keep iterating until we find the last time that the market status shows as 'open' and then use the data from the following update for the final pricing data (i.e. the first market view once the market was suspended at the end of the race). The winner/loser statuses come from the final market view. </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">get_pre_post_final</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;builtins.open&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">f</span><span class="p">):</span>   
+        <span class="n">eval_market</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">prev_market</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">preplay_market</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">postplay_market</span> <span class="o">=</span> <span class="kc">None</span>       
 
-<span class="c1"># final market view at the conclusion of the market</span>
-<span class="k">if</span> <span class="n">postplay_market</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;OPEN&quot;</span> <span class="ow">and</span> <span class="n">market_book</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
-    <span class="n">postplay_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">last_price_traded</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">market_book</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
-<span class="n">postplay_market</span> <span class="o">=</span> <span class="n">market_book</span>   
+        <span class="n">gen</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_generator</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">market_books</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">market_book</span> <span class="ow">in</span> <span class="n">market_books</span><span class="p">:</span>
+
+                <span class="c1"># if market doesn&#39;t meet filter return out</span>
+                <span class="k">if</span> <span class="n">eval_market</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">((</span><span class="n">eval_market</span> <span class="o">:=</span> <span class="n">filter_market</span><span class="p">(</span><span class="n">market_book</span><span class="p">))</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+                <span class="c1"># final market view before market goes in play</span>
+                <span class="k">if</span> <span class="n">prev_market</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prev_market</span><span class="o">.</span><span class="n">inplay</span> <span class="o">!=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">inplay</span><span class="p">:</span>
+                    <span class="n">preplay_market</span> <span class="o">=</span> <span class="n">prev_market</span>
+
+                <span class="c1"># final market view at the conclusion of the market</span>
+                <span class="k">if</span> <span class="n">prev_market</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prev_market</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;OPEN&quot;</span> <span class="ow">and</span> <span class="n">market_book</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="n">prev_market</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
+                    <span class="n">postplay_market</span> <span class="o">=</span> <span class="n">market_book</span>
+
+                <span class="c1"># update reference to previous market</span>
+                <span class="n">prev_market</span> <span class="o">=</span> <span class="n">market_book</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">preplay_market</span><span class="p">,</span> <span class="n">postplay_market</span><span class="p">,</span> <span class="n">prev_market</span><span class="p">)</span> <span class="c1"># prev is now final</span>
+
+<span class="p">(</span><span class="n">preplay_market</span><span class="p">,</span> <span class="n">postplay_market</span><span class="p">,</span> <span class="n">final_market</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_pre_post_final</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
 </code></pre></div>
-<p>We needed to write a function to parse the price data (pre play and in play) and pull out the values we're interested in. We used a reduce function to go over each matched price point, and calculate the four necessary values.</p>
+<p>We needed to write a function to parse the price data (pre play and in play) and pull out the values we're interested in. We used a reduce function to go over each matched price point, and calculate the four necessary values. </p>
 <p>To calculate weighted average price we multiplied price by size for each price point, and added them together. Once they're summed, we divided that figure by the total matched value. </p>
 <p>The matched volume is simply the sum of all matched stakes. </p>
 <p>The min price and max price are the lowest and highest values where money has matched on the runner.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># parsing price data and pulling out weighted avg price, </span>
-<span class="c1"># matched volume, min matched price and max matched price</span>
+<div class="admonition note">
+<p class="admonition-title">Reduce functions</p>
+<p>I gather from some actual Python gurus in our community that while reduce functions are very common in other languages (i.e. the ones I normally work in!), apparently they're not very Pythonic... if you're super keen, feel free to rewrite this section into a list/dict comprehension or another more Pythonic solution!</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># parsing price data and pulling out weighted avg price, matched, min price and max price</span>
 <span class="k">def</span> <span class="nf">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PriceSize</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">traded</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
         <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
     <span class="p">(</span><span class="n">wavg_sum</span><span class="p">,</span> <span class="n">matched</span><span class="p">,</span> <span class="n">min_price</span><span class="p">,</span> <span class="n">max_price</span><span class="p">)</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span>
         <span class="k">lambda</span> <span class="n">total</span><span class="p">,</span> <span class="n">ps</span><span class="p">:</span> <span class="p">(</span>
-            <span class="n">total</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> <span class="c1"># wavg_sum</span>
-            <span class="n">total</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="c1"># matched</span>
-            <span class="nb">min</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="c1"># min_price</span>
-            <span class="nb">max</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="c1"># max_price</span>
+            <span class="n">total</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> <span class="c1"># wavg_sum before we divide by total matched</span>
+            <span class="n">total</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="c1"># total matched</span>
+            <span class="nb">min</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="c1"># min price matched</span>
+            <span class="nb">max</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="c1"># max price matched</span>
         <span class="p">),</span>
         <span class="n">traded</span><span class="p">,</span>
-        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># starting default values</span>
     <span class="p">)</span>
 
-    <span class="n">wavg_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavg_sum</span> <span class="o">/</span> <span class="n">matched</span><span class="p">)</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
-    <span class="n">matched</span> <span class="o">=</span> <span class="n">matched</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">wavg_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavg_sum</span> <span class="o">/</span> <span class="n">matched</span><span class="p">)</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> <span class="c1"># dividing sum of wavg by total matched</span>
+    <span class="n">matched</span> <span class="o">=</span> <span class="n">matched</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> 
     <span class="n">min_price</span> <span class="o">=</span> <span class="n">min_price</span> <span class="k">if</span> <span class="n">min_price</span> <span class="o">!=</span> <span class="mi">1001</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="n">max_price</span> <span class="o">=</span> <span class="n">max_price</span> <span class="k">if</span> <span class="n">max_price</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="n">wavg_sum</span><span class="p">,</span> <span class="n">matched</span><span class="p">,</span> <span class="n">min_price</span><span class="p">,</span> <span class="n">max_price</span><span class="p">)</span>
 </code></pre></div>
+<p>Our volume figures don't include BSP bets yet, so to account for that we're looking at the <code>back_stake_taken</code> and <code>lay_liability_taken</code> values on the SP object from the post play market snapshot, then finding whichever the smaller of those two values is and saving it that so we can add it to the <code>traded_volume</code> field in a later step. We use the smaller value of <code>back_stake_taken</code> or (<code>lay_liability_taken</code>/(BSP - 1)) (i.e. backer's stake for SP lay bets) as any difference between the two values will have matched against non-BSP money and therefore is already accounted for in our matched volume. </p>
+<div class="highlight"><pre><span></span><code><span class="n">preplay_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">last_price_traded</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">preplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
+<span class="n">postplay_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">last_price_traded</span><span class="p">,</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="p">,</span>
+    <span class="c1"># calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (BSP - 1))        </span>
+    <span class="n">min_gr0</span><span class="p">(</span>
+        <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">back_stake_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">lay_liability_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">/</span> <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
+</code></pre></div>
 <p>For our csv, we have columns for runner id, runner name, winning status and BSP, so we'll store these values too. The runner name is a bit harder to get, as we need to match up the runner definition with the same <code>selection_id</code> as the <code>market_book</code> object we're currently looking at.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># runner data</span>
-<span class="n">runner_data</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span>
-        <span class="s1">&#39;selection_id&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">selection_id</span><span class="p">,</span>
-        <span class="s1">&#39;selection_name&#39;</span><span class="p">:</span> <span class="nb">next</span><span class="p">((</span><span class="n">rd</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">rd</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">runners</span> <span class="k">if</span> <span class="n">rd</span><span class="o">.</span><span class="n">selection_id</span> <span class="o">==</span> <span class="n">r</span><span class="o">.</span><span class="n">selection_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">),</span>
-        <span class="s1">&#39;selection_status&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
-        <span class="s1">&#39;sp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">),</span>
-    <span class="p">}</span>
-    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">runners</span> 
-<span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># generic runner data</span>
+    <span class="n">runner_data</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;selection_id&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">selection_id</span><span class="p">,</span>
+            <span class="s1">&#39;selection_name&#39;</span><span class="p">:</span> <span class="nb">next</span><span class="p">((</span><span class="n">rd</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">rd</span> <span class="ow">in</span> <span class="n">final_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">runners</span> <span class="k">if</span> <span class="n">rd</span><span class="o">.</span><span class="n">selection_id</span> <span class="o">==</span> <span class="n">r</span><span class="o">.</span><span class="n">selection_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s1">&#39;selection_status&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+            <span class="s1">&#39;sp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">),</span>
+        <span class="p">}</span>
+        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">final_market</span><span class="o">.</span><span class="n">runners</span> 
+    <span class="p">]</span>
 </code></pre></div>
 <p>Not all markets go in play, and therefore won't have any values for the in play portion of the csv, so we need to make sure we can handle this case.</p>
 <p>We don't have in play figures separate to pre play; we have a snapshot before the market went in play, and then the view at the end of the market, so we need to use the difference between these two sets of figures to figure out what happened in play.</p>
 <p>We have two ladders, one post play and one pre play. We go through every price point in the post play ladder, and remove any volume that's showing in the pre play ladder at the corresponding price point. This leaves us with the volumes matched while the market was in play. </p>
 <p>One corner case we had to catch is that our resulting list might have prices with 0 volume, which trip up our min and max values, which doesn't use volume in its calculations. To catch this we filter out any items from the ladder with a volume of 0.</p>
+<p>Note: there are some markets included in the data files that are effective empty and don't contain any price data. We're disregarding these markets and printing out an error message to the log (<code>market has no price data</code>).</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># runner price data for markets that go in play</span>
 <span class="k">if</span> <span class="n">preplay_traded</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
-        <span class="p">(</span><span class="n">pre_ltp</span><span class="p">,</span> <span class="n">pre_traded</span><span class="p">),</span> <span class="p">(</span><span class="n">post_ltp</span><span class="p">,</span> <span class="n">post_traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="p">(</span><span class="n">pre_ltp</span><span class="p">,</span> <span class="n">pre_traded</span><span class="p">),</span> <span class="p">(</span><span class="n">post_ltp</span><span class="p">,</span> <span class="n">post_traded</span><span class="p">,</span> <span class="n">sp_traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
 
         <span class="n">inplay_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ps</span><span class="p">:</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span>
             <span class="n">PriceSize</span><span class="p">(</span>
@@ -1231,7 +1412,7 @@ TODO -->
             <span class="s1">&#39;preplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_min</span><span class="p">),</span>
             <span class="s1">&#39;preplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_max</span><span class="p">),</span>
             <span class="s1">&#39;preplay_wavg&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_wavg</span><span class="p">),</span>
-            <span class="s1">&#39;preplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_matched</span><span class="p">),</span>
+            <span class="s1">&#39;preplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">((</span><span class="n">pre_matched</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">sp_traded</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)),</span>
             <span class="s1">&#39;inplay_ltp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">post_ltp</span><span class="p">),</span>
             <span class="s1">&#39;inplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_min</span><span class="p">),</span>
             <span class="s1">&#39;inplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_max</span><span class="p">),</span>
@@ -1244,7 +1425,7 @@ TODO -->
 <span class="c1"># runner price data for markets that don&#39;t go in play</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
-        <span class="p">(</span><span class="n">ltp</span><span class="p">,</span> <span class="n">traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="p">(</span><span class="n">ltp</span><span class="p">,</span> <span class="n">traded</span><span class="p">,</span> <span class="n">sp_traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
         <span class="p">(</span><span class="n">wavg</span><span class="p">,</span> <span class="n">matched</span><span class="p">,</span> <span class="n">min_price</span><span class="p">,</span> <span class="n">max_price</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="p">{</span>
@@ -1252,7 +1433,7 @@ TODO -->
             <span class="s1">&#39;preplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">min_price</span><span class="p">),</span>
             <span class="s1">&#39;preplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">max_price</span><span class="p">),</span>
             <span class="s1">&#39;preplay_wavg&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">wavg</span><span class="p">),</span>
-            <span class="s1">&#39;preplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">matched</span><span class="p">),</span>
+            <span class="s1">&#39;preplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">matched</span> <span class="o">+</span> <span class="n">sp_traded</span><span class="p">),</span>
             <span class="s1">&#39;inplay_ltp&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
             <span class="s1">&#39;inplay_min&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
             <span class="s1">&#39;inplay_max&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
@@ -1300,7 +1481,7 @@ TODO -->
 </code></pre></div>
 <hr />
 <h3 id="filtering-markets">Filtering markets<a class="headerlink" href="#filtering-markets" title="Permanent link">&para;</a></h3>
-<p>Currently we're going through every file provided in the raw data folders, which in our case included markets from different countries, all different market types and both gallops and harness races. To save filtering these markets manually later in Excel, and also to avoid processing additional data we don't need and slowing the process down, we decided to add a market filter so we only kept the markets we were interested in.</p>
+<p>Currently we're going through every file provided in the raw data folders, which in our case included markets from different countries, all different market types and both gallops and harness races. To save filtering these markets manually later in Excel, and also to avoid processing additional data we don't need and slowing the process down further, we decided to add a market filter so we only kept the markets we were interested in.</p>
 <p>We filtered on three things:</p>
 <ul>
 <li>event country code (i.e. AU, NZ, GB etc)</li>
@@ -1319,45 +1500,64 @@ TODO -->
 <div class="highlight"><pre><span></span><code><span class="c1"># splitting race name and returning the parts </span>
 <span class="k">def</span> <span class="nf">split_anz_horse_market_name</span><span class="p">(</span><span class="n">market_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
     <span class="c1"># return race no, length, race type</span>
-    <span class="c1"># input sample: R6 1400m Grp1</span>
+    <span class="c1"># input samples: </span>
+    <span class="c1"># &#39;R6 1400m Grp1&#39; -&gt; (&#39;R6&#39;,&#39;1400m&#39;,&#39;grp1&#39;)</span>
+    <span class="c1"># &#39;R1 1609m Trot M&#39; -&gt; (&#39;R1&#39;, &#39;1609m&#39;, &#39;trot&#39;)</span>
+    <span class="c1"># &#39;R4 1660m Pace M&#39; -&gt; (&#39;R4&#39;, &#39;1660m&#39;, &#39;pace&#39;)</span>
     <span class="n">parts</span> <span class="o">=</span> <span class="n">market_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    <span class="n">race_no</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># return example R6</span>
-    <span class="n">race_len</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># return example 1400m</span>
-    <span class="n">race_type</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># return example grp1, trot, pace</span>
+    <span class="n">race_no</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+    <span class="n">race_len</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
+    <span class="n">race_type</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="p">(</span><span class="n">race_no</span><span class="p">,</span> <span class="n">race_len</span><span class="p">,</span> <span class="n">race_type</span><span class="p">)</span>
 </code></pre></div>
-<p>We set an <code>evaluate_market</code> flag to <code>false</code>, ran the filter and skipped any markets that didn't meet our criteria, and set the flag to <code>true</code> for any that did.</p>
-<div class="highlight"><pre><span></span><code><span class="n">evaluate_market</span> <span class="o">=</span> <span class="kc">False</span>         
+<p>We declare an <code>evaluate_market</code> flag and set it to none, and then in our loop the first time we evaluate the market we run the filter and skip any markets that don't meet our criteria.</p>
+<div class="highlight"><pre><span></span><code><span class="n">eval_market</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="n">gen</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_generator</span><span class="p">()</span>
 
 <span class="k">for</span> <span class="n">market_books</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">market_book</span> <span class="ow">in</span> <span class="n">market_books</span><span class="p">:</span>
 
-        <span class="c1"># skipping markets that don&#39;t meet the filter</span>
-        <span class="k">if</span> <span class="n">evaluate_market</span> <span class="o">==</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">filter_market</span><span class="p">(</span><span class="n">market_book</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-            <span class="k">continue</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">evaluate_market</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># if market doesn&#39;t meet filter return out</span>
+        <span class="k">if</span> <span class="n">eval_market</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">((</span><span class="n">eval_market</span> <span class="o">:=</span> <span class="n">filter_market</span><span class="p">(</span><span class="n">market_book</span><span class="p">))</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 </code></pre></div>
-<!-- ---
-### Comparing the results
+<hr />
+<h3 id="helper-functions">Helper functions<a class="headerlink" href="#helper-functions" title="Permanent link">&para;</a></h3>
+<p>There are a couple of helper functions we wrote along the way to make the rest of the code easier to handle. </p>
+<p><strong>As string</strong></p>
+<p>Takes in a number and returns a text representation of it, rounding to two decimal places. </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># rounding to 2 decimal places or returning &#39;&#39; if blank</span>
+<span class="k">def</span> <span class="nf">as_str</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+</code></pre></div>
+<p><strong>Min value greater than 0</strong></p>
+<p>Returns the smaller of two numbers, where the smaller isn't 0. </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># returning smaller of two numbers where min not 0</span>
+<span class="k">def</span> <span class="nf">min_gr0</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">b</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span>
 
-We ran our code over the January 2021 JSON data and compared our output with the equivalent data set produced monthly by our in house reporting team from our database. Here's a sample of the two outputs to see how similar they are.  -->
-
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h3 id="final-thoughts">Final thoughts<a class="headerlink" href="#final-thoughts" title="Permanent link">&para;</a></h3>
 <p><code>betfairlightweight</code> provides a ready made package that makes it easier to work with the JSON data and a pretty easy way to convert the data into a csv format, allowing you to then do your data wrangling in Excel if that's where you're more comfortable. </p>
-<p>Our intention is that you don't need a heap of Python experience to be able to work through this tutorial; as long as you're prepared to get the Python environment set up and learn some basic programming skills the hope is that you'll be able to customise your own csv file and maybe even extend on what we've covered and produced here.</p>
+<p>Our intention is that you don't need a heap of Python experience to be able to work through this tutorial; as long as you're prepared to get the Python environment set up and learn some basic programming skills, the hope is that you'll be able to customise your own csv file and maybe even extend on what we've covered and produced here.</p>
 <p>We're planning on writing some more tutorials to help make it easier to work with the JSON data sets. If there are particular examples or data sets you'd like to see us walk through <a href="mailto:data@betfair.com.au">please reach out</a>.</p>
 <div class="admonition note">
-<p class="admonition-title">Community help</p>
+<p class="admonition-title">Community support</p>
 <ul>
-<li>There's a really active <a href="https://betfairlightweight.herokuapp.com/"><code>betfairlightweight</code> Slack community</a> that's a great place to go to ask questions about the library </li>
+<li>There's a really active <a href="https://betfairlightweight.herokuapp.com/"><code>betfairlightweight</code> Slack community</a> that's a great place to go to ask questions about the library and get support from other people who are also working in the space</li>
 </ul>
 </div>
 <hr />
-<h3 id="sample-code">Sample code<a class="headerlink" href="#sample-code" title="Permanent link">&para;</a></h3>
-<p>Run the code from your ide by using <code>py &lt;filename&gt;.py</code>, making sure you amend the path to point to your input data.</p>
+<h3 id="complete-code">Complete code<a class="headerlink" href="#complete-code" title="Permanent link">&para;</a></h3>
+<p>Run the code from your ide by using <code>py &lt;filename&gt;.py</code>, making sure you amend the path to point to your input data. Please note: the script will take some time before it starts outputting to the output.csv file, so let it run for a few minutes before getting worried that it's not working! You'll also see errors logged to the out file or terminal screen depending on your set up. </p>
+<p><a href="https://github.com/betfair-down-under/autoHubTutorials/blob/531830e6eb2b430aee8d0d271aa97fe4dcef54fb/jsonToCsv/main.py">Download from Github</a></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Set</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
 
@@ -1390,7 +1590,6 @@ We ran our code over the January 2021 JSON data and compared our output with the
 <span class="c1"># loading from tar and extracting files</span>
 <span class="k">def</span> <span class="nf">load_markets</span><span class="p">(</span><span class="n">file_paths</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
     <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">file_paths</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">file_path</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">path</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">iglob</span><span class="p">(</span><span class="n">file_path</span> <span class="o">+</span> <span class="s1">&#39;**/**/*.bz2&#39;</span><span class="p">,</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
                 <span class="n">f</span> <span class="o">=</span> <span class="n">bz2</span><span class="o">.</span><span class="n">BZ2File</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
@@ -1415,6 +1614,15 @@ We ran our code over the January 2021 JSON data and compared our output with the
 <span class="k">def</span> <span class="nf">as_str</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
     <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span> <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
 
+<span class="c1"># returning smaller of two numbers where min not 0</span>
+<span class="k">def</span> <span class="nf">min_gr0</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">b</span>
+    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span>
+
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
 <span class="c1"># parsing price data and pulling out weighted avg price, matched, min price and max price</span>
 <span class="k">def</span> <span class="nf">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PriceSize</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">):</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">traded</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
@@ -1422,17 +1630,17 @@ We ran our code over the January 2021 JSON data and compared our output with the
 
     <span class="p">(</span><span class="n">wavg_sum</span><span class="p">,</span> <span class="n">matched</span><span class="p">,</span> <span class="n">min_price</span><span class="p">,</span> <span class="n">max_price</span><span class="p">)</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span>
         <span class="k">lambda</span> <span class="n">total</span><span class="p">,</span> <span class="n">ps</span><span class="p">:</span> <span class="p">(</span>
-            <span class="n">total</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span><span class="p">),</span>
-            <span class="n">total</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span><span class="p">,</span>
-            <span class="nb">min</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span>
-            <span class="nb">max</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span>
+            <span class="n">total</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="p">(</span><span class="n">ps</span><span class="o">.</span><span class="n">price</span> <span class="o">*</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span><span class="p">),</span> <span class="c1"># wavg_sum before we divide by total matched</span>
+            <span class="n">total</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="c1"># total matched</span>
+            <span class="nb">min</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="c1"># min price matched</span>
+            <span class="nb">max</span><span class="p">(</span><span class="n">total</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="c1"># max price matched</span>
         <span class="p">),</span>
         <span class="n">traded</span><span class="p">,</span>
-        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># starting default values</span>
     <span class="p">)</span>
 
-    <span class="n">wavg_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavg_sum</span> <span class="o">/</span> <span class="n">matched</span><span class="p">)</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
-    <span class="n">matched</span> <span class="o">=</span> <span class="n">matched</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">wavg_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavg_sum</span> <span class="o">/</span> <span class="n">matched</span><span class="p">)</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> <span class="c1"># dividing sum of wavg by total matched</span>
+    <span class="n">matched</span> <span class="o">=</span> <span class="n">matched</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> 
     <span class="n">min_price</span> <span class="o">=</span> <span class="n">min_price</span> <span class="k">if</span> <span class="n">min_price</span> <span class="o">!=</span> <span class="mi">1001</span> <span class="k">else</span> <span class="kc">None</span>
     <span class="n">max_price</span> <span class="o">=</span> <span class="n">max_price</span> <span class="k">if</span> <span class="n">max_price</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
 
@@ -1441,11 +1649,14 @@ We ran our code over the January 2021 JSON data and compared our output with the
 <span class="c1"># splitting race name and returning the parts </span>
 <span class="k">def</span> <span class="nf">split_anz_horse_market_name</span><span class="p">(</span><span class="n">market_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
     <span class="c1"># return race no, length, race type</span>
-    <span class="c1"># input sample: R6 1400m Grp1</span>
+    <span class="c1"># input samples: </span>
+    <span class="c1"># &#39;R6 1400m Grp1&#39; -&gt; (&#39;R6&#39;,&#39;1400m&#39;,&#39;grp1&#39;)</span>
+    <span class="c1"># &#39;R1 1609m Trot M&#39; -&gt; (&#39;R1&#39;, &#39;1609m&#39;, &#39;trot&#39;)</span>
+    <span class="c1"># &#39;R4 1660m Pace M&#39; -&gt; (&#39;R4&#39;, &#39;1660m&#39;, &#39;pace&#39;)</span>
     <span class="n">parts</span> <span class="o">=</span> <span class="n">market_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-    <span class="n">race_no</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># return example R6</span>
-    <span class="n">race_len</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># return example 1400m</span>
-    <span class="n">race_type</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># return example grp1, trot, pace</span>
+    <span class="n">race_no</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
+    <span class="n">race_len</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> 
+    <span class="n">race_type</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> 
 
     <span class="k">return</span> <span class="p">(</span><span class="n">race_no</span><span class="p">,</span> <span class="n">race_len</span><span class="p">,</span> <span class="n">race_type</span><span class="p">)</span>
 
@@ -1457,7 +1668,7 @@ We ran our code over the January 2021 JSON data and compared our output with the
         <span class="ow">and</span> <span class="p">(</span><span class="n">c</span> <span class="o">:=</span> <span class="n">split_anz_horse_market_name</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span> <span class="o">!=</span> <span class="s1">&#39;trot&#39;</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">&#39;pace&#39;</span><span class="p">)</span>
 
 <span class="c1"># setup logging</span>
-<span class="c1"># logging.basicConfig(level=logging.WARN)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">FATAL</span><span class="p">)</span>
 
 <span class="c1"># create trading instance (don&#39;t need username/password)</span>
 <span class="n">trading</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">APIClient</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">)</span>
@@ -1476,127 +1687,141 @@ We ran our code over the January 2021 JSON data and compared our output with the
             <span class="n">listener</span><span class="o">=</span><span class="n">listener</span><span class="p">,</span>
         <span class="p">)</span>
 
-        <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;builtins.open&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">f</span><span class="p">):</span>   
-            <span class="n">evaluate_market</span> <span class="o">=</span> <span class="kc">False</span>
-            <span class="n">preplay_market</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">postplay_market</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">preplay_traded</span> <span class="o">=</span> <span class="kc">None</span>
-            <span class="n">postplay_traded</span> <span class="o">=</span> <span class="kc">None</span>            
+        <span class="k">def</span> <span class="nf">get_pre_post_final</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+            <span class="k">with</span> <span class="n">patch</span><span class="p">(</span><span class="s2">&quot;builtins.open&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">f</span><span class="p">):</span>   
+                <span class="n">eval_market</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">prev_market</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">preplay_market</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">postplay_market</span> <span class="o">=</span> <span class="kc">None</span>       
 
-            <span class="n">gen</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_generator</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">market_books</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">():</span>
-                <span class="k">for</span> <span class="n">market_book</span> <span class="ow">in</span> <span class="n">market_books</span><span class="p">:</span>
+                <span class="n">gen</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_generator</span><span class="p">()</span>
 
-                    <span class="c1"># skipping markets that don&#39;t meet the filter</span>
-                    <span class="k">if</span> <span class="n">evaluate_market</span> <span class="o">==</span> <span class="kc">False</span> <span class="ow">and</span> <span class="n">filter_market</span><span class="p">(</span><span class="n">market_book</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
-                        <span class="k">continue</span>
-                    <span class="k">else</span><span class="p">:</span>
-                        <span class="n">evaluate_market</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">for</span> <span class="n">market_books</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">():</span>
+                    <span class="k">for</span> <span class="n">market_book</span> <span class="ow">in</span> <span class="n">market_books</span><span class="p">:</span>
+                        <span class="c1"># if market doesn&#39;t meet filter return out</span>
+                        <span class="k">if</span> <span class="n">eval_market</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">((</span><span class="n">eval_market</span> <span class="o">:=</span> <span class="n">filter_market</span><span class="p">(</span><span class="n">market_book</span><span class="p">))</span> <span class="o">==</span> <span class="kc">False</span><span class="p">):</span>
+                            <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 
-                    <span class="c1"># final market view before market goes in play</span>
-                    <span class="k">if</span> <span class="n">preplay_market</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">preplay_market</span><span class="o">.</span><span class="n">inplay</span> <span class="o">!=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">inplay</span><span class="p">:</span>
-                        <span class="n">preplay_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">last_price_traded</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">preplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
-                    <span class="n">preplay_market</span> <span class="o">=</span> <span class="n">market_book</span>
+                        <span class="c1"># final market view before market goes in play</span>
+                        <span class="k">if</span> <span class="n">prev_market</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prev_market</span><span class="o">.</span><span class="n">inplay</span> <span class="o">!=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">inplay</span><span class="p">:</span>
+                            <span class="n">preplay_market</span> <span class="o">=</span> <span class="n">prev_market</span>
 
-                    <span class="c1"># final market view at the conclusion of the market</span>
-                    <span class="k">if</span> <span class="n">postplay_market</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;OPEN&quot;</span> <span class="ow">and</span> <span class="n">market_book</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
-                        <span class="n">postplay_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">last_price_traded</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">market_book</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
-                    <span class="n">postplay_market</span> <span class="o">=</span> <span class="n">market_book</span>   
+                        <span class="c1"># final market view at the conclusion of the market</span>
+                        <span class="k">if</span> <span class="n">prev_market</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">prev_market</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s2">&quot;OPEN&quot;</span> <span class="ow">and</span> <span class="n">market_book</span><span class="o">.</span><span class="n">status</span> <span class="o">!=</span> <span class="n">prev_market</span><span class="o">.</span><span class="n">status</span><span class="p">:</span>
+                            <span class="n">postplay_market</span> <span class="o">=</span> <span class="n">market_book</span>
 
-            <span class="c1"># no price data for market</span>
-            <span class="k">if</span> <span class="n">postplay_traded</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;didnt find postplay results?&#39;</span><span class="p">)</span>
-                <span class="k">continue</span><span class="p">;</span> 
+                        <span class="c1"># update reference to previous market</span>
+                        <span class="n">prev_market</span> <span class="o">=</span> <span class="n">market_book</span>
 
-            <span class="c1"># generic runner data</span>
-            <span class="n">runner_data</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="p">{</span>
-                    <span class="s1">&#39;selection_id&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">selection_id</span><span class="p">,</span>
-                    <span class="s1">&#39;selection_name&#39;</span><span class="p">:</span> <span class="nb">next</span><span class="p">((</span><span class="n">rd</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">rd</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">runners</span> <span class="k">if</span> <span class="n">rd</span><span class="o">.</span><span class="n">selection_id</span> <span class="o">==</span> <span class="n">r</span><span class="o">.</span><span class="n">selection_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">),</span>
-                    <span class="s1">&#39;selection_status&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
-                    <span class="s1">&#39;sp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">),</span>
-                <span class="p">}</span>
-                <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">runners</span> 
-            <span class="p">]</span>
+                <span class="k">return</span> <span class="p">(</span><span class="n">preplay_market</span><span class="p">,</span> <span class="n">postplay_market</span><span class="p">,</span> <span class="n">prev_market</span><span class="p">)</span> <span class="c1"># prev is now final</span>
 
-            <span class="c1"># runner price data for markets that go in play</span>
-            <span class="k">if</span> <span class="n">preplay_traded</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
-                    <span class="p">(</span><span class="n">pre_ltp</span><span class="p">,</span> <span class="n">pre_traded</span><span class="p">),</span> <span class="p">(</span><span class="n">post_ltp</span><span class="p">,</span> <span class="n">post_traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
+        <span class="p">(</span><span class="n">preplay_market</span><span class="p">,</span> <span class="n">postplay_market</span><span class="p">,</span> <span class="n">final_market</span><span class="p">)</span> <span class="o">=</span> <span class="n">get_pre_post_final</span><span class="p">(</span><span class="n">stream</span><span class="p">)</span>
 
-                    <span class="n">inplay_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ps</span><span class="p">:</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span>
-                        <span class="n">PriceSize</span><span class="p">(</span>
-                            <span class="n">price</span><span class="o">=</span><span class="n">post_ps</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> 
-                            <span class="n">size</span><span class="o">=</span><span class="n">post_ps</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="nb">next</span><span class="p">((</span><span class="n">pre_ps</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pre_ps</span> <span class="ow">in</span> <span class="n">pre_traded</span> <span class="k">if</span> <span class="n">pre_ps</span><span class="o">.</span><span class="n">price</span> <span class="o">==</span> <span class="n">post_ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-                        <span class="p">)</span>
-                        <span class="k">for</span> <span class="n">post_ps</span> <span class="ow">in</span> <span class="n">post_traded</span> 
-                    <span class="p">]))</span>
+        <span class="c1"># no price data for market</span>
+        <span class="k">if</span> <span class="n">postplay_market</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;market has no price data&#39;</span><span class="p">)</span>
+            <span class="k">continue</span><span class="p">;</span> 
 
-                    <span class="p">(</span><span class="n">ip_wavg</span><span class="p">,</span> <span class="n">ip_matched</span><span class="p">,</span> <span class="n">ip_min</span><span class="p">,</span> <span class="n">ip_max</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse_traded</span><span class="p">(</span><span class="n">inplay_only</span><span class="p">)</span>
-                    <span class="p">(</span><span class="n">pre_wavg</span><span class="p">,</span> <span class="n">pre_matched</span><span class="p">,</span> <span class="n">pre_min</span><span class="p">,</span> <span class="n">pre_max</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse_traded</span><span class="p">(</span><span class="n">pre_traded</span><span class="p">)</span>
+        <span class="n">preplay_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">last_price_traded</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">preplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
+        <span class="n">postplay_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="p">(</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">last_price_traded</span><span class="p">,</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="p">,</span>
+            <span class="c1"># calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (BSP - 1))        </span>
+            <span class="n">min_gr0</span><span class="p">(</span>
+                <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">back_stake_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
+                <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">lay_liability_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">/</span> <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
 
-                    <span class="k">return</span> <span class="p">{</span>
-                        <span class="s1">&#39;preplay_ltp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_ltp</span><span class="p">),</span>
-                        <span class="s1">&#39;preplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_min</span><span class="p">),</span>
-                        <span class="s1">&#39;preplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_max</span><span class="p">),</span>
-                        <span class="s1">&#39;preplay_wavg&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_wavg</span><span class="p">),</span>
-                        <span class="s1">&#39;preplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_matched</span><span class="p">),</span>
-                        <span class="s1">&#39;inplay_ltp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">post_ltp</span><span class="p">),</span>
-                        <span class="s1">&#39;inplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_min</span><span class="p">),</span>
-                        <span class="s1">&#39;inplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_max</span><span class="p">),</span>
-                        <span class="s1">&#39;inplay_wavg&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_wavg</span><span class="p">),</span>
-                        <span class="s1">&#39;inplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_matched</span><span class="p">),</span>
-                    <span class="p">}</span>
+        <span class="c1"># generic runner data</span>
+        <span class="n">runner_data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s1">&#39;selection_id&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">selection_id</span><span class="p">,</span>
+                <span class="s1">&#39;selection_name&#39;</span><span class="p">:</span> <span class="nb">next</span><span class="p">((</span><span class="n">rd</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">rd</span> <span class="ow">in</span> <span class="n">final_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">runners</span> <span class="k">if</span> <span class="n">rd</span><span class="o">.</span><span class="n">selection_id</span> <span class="o">==</span> <span class="n">r</span><span class="o">.</span><span class="n">selection_id</span><span class="p">),</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="s1">&#39;selection_status&#39;</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">status</span><span class="p">,</span>
+                <span class="s1">&#39;sp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">),</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">final_market</span><span class="o">.</span><span class="n">runners</span> 
+        <span class="p">]</span>
 
-                <span class="n">runner_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="n">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="n">preplay_traded</span><span class="p">,</span> <span class="n">postplay_traded</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=</span><span class="n">PriceSize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">]</span>
+        <span class="c1"># runner price data for markets that go in play</span>
+        <span class="k">if</span> <span class="n">preplay_traded</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+                <span class="p">(</span><span class="n">pre_ltp</span><span class="p">,</span> <span class="n">pre_traded</span><span class="p">),</span> <span class="p">(</span><span class="n">post_ltp</span><span class="p">,</span> <span class="n">post_traded</span><span class="p">,</span> <span class="n">sp_traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
 
-            <span class="c1"># runner price data for markets that don&#39;t go in play</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">def</span> <span class="nf">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
-                    <span class="p">(</span><span class="n">ltp</span><span class="p">,</span> <span class="n">traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
-                    <span class="p">(</span><span class="n">wavg</span><span class="p">,</span> <span class="n">matched</span><span class="p">,</span> <span class="n">min_price</span><span class="p">,</span> <span class="n">max_price</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">)</span>
-
-                    <span class="k">return</span> <span class="p">{</span>
-                        <span class="s1">&#39;preplay_ltp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ltp</span><span class="p">),</span>
-                        <span class="s1">&#39;preplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">min_price</span><span class="p">),</span>
-                        <span class="s1">&#39;preplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">max_price</span><span class="p">),</span>
-                        <span class="s1">&#39;preplay_wavg&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">wavg</span><span class="p">),</span>
-                        <span class="s1">&#39;preplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">matched</span><span class="p">),</span>
-                        <span class="s1">&#39;inplay_ltp&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;inplay_min&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;inplay_max&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;inplay_wavg&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                        <span class="s1">&#39;inplay_matched&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
-                    <span class="p">}</span>
-
-                <span class="n">runner_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="n">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_traded</span> <span class="p">]</span>
-
-            <span class="c1"># printing to csv for each runner</span>
-            <span class="k">for</span> <span class="p">(</span><span class="n">rdata</span><span class="p">,</span> <span class="n">rprices</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">runner_data</span><span class="p">,</span> <span class="n">runner_traded</span><span class="p">):</span>
-                <span class="c1"># defining data to go in each column</span>
-                <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
-                    <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
-                        <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_id</span><span class="p">,</span>
-                        <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">market_time</span><span class="p">,</span>
-                        <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">country_code</span><span class="p">,</span>
-                        <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">venue</span><span class="p">,</span>
-                        <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-                        <span class="n">rdata</span><span class="p">[</span><span class="s1">&#39;selection_id&#39;</span><span class="p">],</span>
-                        <span class="n">rdata</span><span class="p">[</span><span class="s1">&#39;selection_name&#39;</span><span class="p">],</span>
-                        <span class="n">rdata</span><span class="p">[</span><span class="s1">&#39;selection_status&#39;</span><span class="p">],</span>
-                        <span class="n">rdata</span><span class="p">[</span><span class="s1">&#39;sp&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_min&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_max&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_wavg&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_ltp&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_matched&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_min&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_max&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_wavg&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_ltp&#39;</span><span class="p">],</span>
-                        <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_matched&#39;</span><span class="p">],</span>
+                <span class="n">inplay_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ps</span><span class="p">:</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span>
+                    <span class="n">PriceSize</span><span class="p">(</span>
+                        <span class="n">price</span><span class="o">=</span><span class="n">post_ps</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> 
+                        <span class="n">size</span><span class="o">=</span><span class="n">post_ps</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="nb">next</span><span class="p">((</span><span class="n">pre_ps</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pre_ps</span> <span class="ow">in</span> <span class="n">pre_traded</span> <span class="k">if</span> <span class="n">pre_ps</span><span class="o">.</span><span class="n">price</span> <span class="o">==</span> <span class="n">post_ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
                     <span class="p">)</span>
+                    <span class="k">for</span> <span class="n">post_ps</span> <span class="ow">in</span> <span class="n">post_traded</span> 
+                <span class="p">]))</span>
+
+                <span class="p">(</span><span class="n">ip_wavg</span><span class="p">,</span> <span class="n">ip_matched</span><span class="p">,</span> <span class="n">ip_min</span><span class="p">,</span> <span class="n">ip_max</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse_traded</span><span class="p">(</span><span class="n">inplay_only</span><span class="p">)</span>
+                <span class="p">(</span><span class="n">pre_wavg</span><span class="p">,</span> <span class="n">pre_matched</span><span class="p">,</span> <span class="n">pre_min</span><span class="p">,</span> <span class="n">pre_max</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse_traded</span><span class="p">(</span><span class="n">pre_traded</span><span class="p">)</span>
+
+                <span class="k">return</span> <span class="p">{</span>
+                    <span class="s1">&#39;preplay_ltp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_ltp</span><span class="p">),</span>
+                    <span class="s1">&#39;preplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_min</span><span class="p">),</span>
+                    <span class="s1">&#39;preplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_max</span><span class="p">),</span>
+                    <span class="s1">&#39;preplay_wavg&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">pre_wavg</span><span class="p">),</span>
+                    <span class="s1">&#39;preplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">((</span><span class="n">pre_matched</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">sp_traded</span> <span class="ow">or</span> <span class="mi">0</span><span class="p">)),</span>
+                    <span class="s1">&#39;inplay_ltp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">post_ltp</span><span class="p">),</span>
+                    <span class="s1">&#39;inplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_min</span><span class="p">),</span>
+                    <span class="s1">&#39;inplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_max</span><span class="p">),</span>
+                    <span class="s1">&#39;inplay_wavg&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_wavg</span><span class="p">),</span>
+                    <span class="s1">&#39;inplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ip_matched</span><span class="p">),</span>
+                <span class="p">}</span>
+
+            <span class="n">runner_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="n">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">zip_longest</span><span class="p">(</span><span class="n">preplay_traded</span><span class="p">,</span> <span class="n">postplay_traded</span><span class="p">,</span> <span class="n">fillvalue</span><span class="o">=</span><span class="n">PriceSize</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="p">]</span>
+
+        <span class="c1"># runner price data for markets that don&#39;t go in play</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">def</span> <span class="nf">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+                <span class="p">(</span><span class="n">ltp</span><span class="p">,</span> <span class="n">traded</span><span class="p">,</span> <span class="n">sp_traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
+                <span class="p">(</span><span class="n">wavg</span><span class="p">,</span> <span class="n">matched</span><span class="p">,</span> <span class="n">min_price</span><span class="p">,</span> <span class="n">max_price</span><span class="p">)</span> <span class="o">=</span> <span class="n">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">)</span>
+
+                <span class="k">return</span> <span class="p">{</span>
+                    <span class="s1">&#39;preplay_ltp&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">ltp</span><span class="p">),</span>
+                    <span class="s1">&#39;preplay_min&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">min_price</span><span class="p">),</span>
+                    <span class="s1">&#39;preplay_max&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">max_price</span><span class="p">),</span>
+                    <span class="s1">&#39;preplay_wavg&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">wavg</span><span class="p">),</span>
+                    <span class="s1">&#39;preplay_matched&#39;</span><span class="p">:</span> <span class="n">as_str</span><span class="p">(</span><span class="n">matched</span> <span class="o">+</span> <span class="n">sp_traded</span><span class="p">),</span>
+                    <span class="s1">&#39;inplay_ltp&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;inplay_min&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;inplay_max&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;inplay_wavg&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;inplay_matched&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+                <span class="p">}</span>
+
+            <span class="n">runner_traded</span> <span class="o">=</span> <span class="p">[</span> <span class="n">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_traded</span> <span class="p">]</span>
+
+        <span class="c1"># printing to csv for each runner</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">rdata</span><span class="p">,</span> <span class="n">rprices</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">runner_data</span><span class="p">,</span> <span class="n">runner_traded</span><span class="p">):</span>
+            <span class="c1"># defining data to go in each column</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+                <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="s2">,</span><span class="si">{}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_id</span><span class="p">,</span>
+                    <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">market_time</span><span class="p">,</span>
+                    <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">country_code</span><span class="p">,</span>
+                    <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">venue</span><span class="p">,</span>
+                    <span class="n">postplay_market</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                    <span class="n">rdata</span><span class="p">[</span><span class="s1">&#39;selection_id&#39;</span><span class="p">],</span>
+                    <span class="n">rdata</span><span class="p">[</span><span class="s1">&#39;selection_name&#39;</span><span class="p">],</span>
+                    <span class="n">rdata</span><span class="p">[</span><span class="s1">&#39;selection_status&#39;</span><span class="p">],</span>
+                    <span class="n">rdata</span><span class="p">[</span><span class="s1">&#39;sp&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_min&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_max&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_wavg&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_ltp&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;preplay_matched&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_min&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_max&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_wavg&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_ltp&#39;</span><span class="p">],</span>
+                    <span class="n">rprices</span><span class="p">[</span><span class="s1">&#39;inplay_matched&#39;</span><span class="p">],</span>
                 <span class="p">)</span>
+            <span class="p">)</span>
 </code></pre></div>
 <hr />
 <h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h3>
@@ -1617,6 +1842,41 @@ We ran our code over the January 2021 JSON data and compared our output with the
       
         
 <footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Downloading from the Historic Data site
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../../modelling/howToModel/" title="Intro to modelling" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Intro to modelling
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">

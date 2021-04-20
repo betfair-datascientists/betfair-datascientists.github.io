@@ -1,0 +1,121 @@
+# Project info
+site_name: The Automation Hub
+site_description: 'Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.'
+site_author: 'Betfair Data Scientists'
+site_url: 'https://betfair-datascientists.github.io'
+docs_dir: 'src'
+site_dir: 'docs'
+
+# Navigation
+nav:
+    - Home: 
+        The Automation Hub: index.md
+    - Tutorials: 
+        - Tools Overview: thirdPartyTools/overview.md           
+        - Bet Angel Professional: 
+            - Overview - Bet Angel Pro: thirdPartyTools/betAngel/betAngel.md
+            - Bet Angel - A beginner's guide: thirdPartyTools/betAngelbeginners.md
+            - Bet Angel - An intermediate guide: thirdPartyTools/betAngelintermediate.md
+            - Bet Angel - An advanced guide: thirdPartyTools/betAngeladvanced.md
+            - Ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
+            - Market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
+            - Tipping automation: thirdPartyTools/betAngelTippingAutomation.md
+            - Simultaneous markets: thirdPartyTools/betAngelSimultaneousMarkets.md
+            - Kelly Criterion staking: thirdPartyTools/betAngelKellyStake.md
+        - Gruss Betting Assistant:
+            - Overview - Gruss: thirdPartyTools/Gruss/Gruss.md
+            - Ratings automation: thirdPartyTools/grussRatingsAutomation.md
+            - Market favourite automation: thirdPartyTools/grussMarketFavouriteAutomation.md
+            - Simultaneous markets: thirdPartyTools/grusslSimultaneousMarkets.md
+            - Kelly Criterion staking: thirdPartyTools/grussKellyStake.md
+        - Cymatic Trader: 
+            - Overview - Cymatic Trader: thirdPartyTools/CymaticTrader/CymaticTrader.md
+            - Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md        
+    - API:
+        - How to access the Betfair API: api/apiappkey.md
+        - API tutorials in R: api/apiRtutorial.md
+        - API tutorial in Python: api/apiPythontutorial.md
+    - Historic Data: 
+        - Historic Data Sources: historicData/dataSources.md
+        - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
+        - JSON to CSV tutorial: historicData/jsonToCsvTutorial.md
+        - Backtesting ratings tutorial: historicData/backtestingRatingsTutorial.md
+    - Modelling:
+        - Intro to modelling: modelling/howToModel.md
+        - How to model the Australian Open: modelling/howToModelTheAusOpen.md
+        - Aus Open R Tutorial: modelling/AusOpenRTutorial.md
+        - Aus Open Python Tutorial: modelling/AusOpenPythonTutorial.md
+        - EPL 01. Data acquisition & exploration: modelling/EPLmodelPart1.md
+        - EPL 02. Data preparation & feature engineering: modelling/EPLmodelPart2.md
+        - EPL 03. Model building & hyperparameter tuning: modelling/EPLmodelPart3.md
+        - EPL 04. Weekly predictions: modelling/EPLmodelPart4.md
+        - AFL 01. Data cleaning: modelling/AFLmodelPart1.md
+        - AFL 02. Feature creation: modelling/AFLmodelPart2.md
+        - AFL 03. Modelling: modelling/AFLmodelPart3.md
+        - AFL 04. Weekly predictions: modelling/AFLmodelPart4.md
+        - Modelling the Brownlow Medal: modelling/brownlowModelTutorial.md
+
+# Theme settings
+theme:
+    name: null
+    custom_dir: 'theme/material'
+    favicon: 'img/BetfairFavicon.ico'
+    logo: 'img/logo.svg'
+    # custom_dir: 'custom_theme/'
+    language: 'en'
+    palette:
+        primary: null
+        accent: null
+    font:
+        text: 'Roboto'
+        code: 'Roboto Mono'
+    feature:
+        tabs: true
+
+# Social Media links (footer)
+extra:
+  social:
+    - type: 'twitter'
+      link: 'https://twitter.com/Betfair_Aus'
+    - type: 'linkedin'
+      link: 'https://linkedin.com/company/betfair-australia'
+    - type: 'facebook'
+      link: 'https://facebook.com/betfairaustralia'
+    - type: 'youtube'
+      link: 'https://youtube.com/user/betfairaus'
+    - type: 'github'
+      link: 'https://github.com/betfair-datascientists'
+
+# Extensions
+markdown_extensions:
+    - admonition
+    - codehilite:
+        guess_lang: false
+        use_pygments: true
+        noclasses: true
+        # pygments_style: onedark
+    - footnotes
+    - meta
+    - toc:
+        permalink: true
+    - pymdownx.arithmatex
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.emoji:
+        emoji_generator: !!python/name:pymdownx.emoji.to_svg
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences
+    - pymdownx.tasklist:
+        custom_checkbox: true
+    - pymdownx.tilde
+
+# Google Analytics
+google_analytics:
+    - 'UA-125973915-1'
+    - 'auto'

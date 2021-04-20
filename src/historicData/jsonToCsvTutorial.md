@@ -225,14 +225,14 @@ def parse_traded(traded: List[PriceSize]) -> (float, float, float, float):
 Our volume figures don't include BSP bets yet, so to account for that we're looking at the `back_stake_taken` and `lay_liability_taken` values on the SP object from the post play market snapshot, then finding whichever the smaller of those two values is and saving it that so we can add it to the `traded_volume` field in a later step. We use the smaller value of `back_stake_taken` or (`lay_liability_taken`/(BSP - 1)) (i.e. backer's stake for SP lay bets) as any difference between the two values will have matched against non-BSP money and therefore is already accounted for in our matched volume. 
 
 ``` Python
-preplay_traded = [ (r.last_price_traded, r.ex.traded_volume) for r in preplay_market.runners ]
+preplay_traded = [ (r.last_price_traded, r.ex.traded_volume) for r in preplay_market.runners ] if preplay_market is not None else None
 postplay_traded = [ (
     r.last_price_traded,
     r.ex.traded_volume,
     # calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (BSP - 1))        
     min_gr0(
         next((pv.size for pv in r.sp.back_stake_taken if pv.size > 0), 0),
-        next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp or 0) - 1)
+        next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp if type(r.sp.actual_sp) is float else 0) - 1)
     )
 ) for r in postplay_market.runners ]
 ```
@@ -305,7 +305,7 @@ else:
             'preplay_min': as_str(min_price),
             'preplay_max': as_str(max_price),
             'preplay_wavg': as_str(wavg),
-            'preplay_matched': as_str(matched + sp_traded),
+            'preplay_matched': as_str((matched or 0) + (sp_traded or 0)),
             'inplay_ltp': '',
             'inplay_min': '',
             'inplay_max': '',
@@ -425,8 +425,8 @@ Takes in a number and returns a text representation of it, rounding to two decim
 
 ``` Python
 # rounding to 2 decimal places or returning '' if blank
-def as_str(v: float) -> str:
-    return '%.2f' % v if v is not None else ''
+def as_str(v) -> str:
+    return '%.2f' % v if type(v) is float else v if type(v) is str else ''
 ```
 
 **Min value greater than 0**
@@ -517,8 +517,8 @@ def load_markets(file_paths: List[str]):
     return None
 
 # rounding to 2 decimal places or returning '' if blank
-def as_str(v: float) -> str:
-    return '%.2f' % v if v is not None else ''
+def as_str(v) -> str:
+    return '%.2f' % v if type(v) is float else v if type(v) is str else ''
 
 # returning smaller of two numbers where min not 0
 def min_gr0(a: float, b: float) -> float:
@@ -628,14 +628,14 @@ with open("output.csv", "w") as output:
             print('market has no price data')
             continue; 
 
-        preplay_traded = [ (r.last_price_traded, r.ex.traded_volume) for r in preplay_market.runners ]
+        preplay_traded = [ (r.last_price_traded, r.ex.traded_volume) for r in preplay_market.runners ] if preplay_market is not None else None
         postplay_traded = [ (
             r.last_price_traded,
             r.ex.traded_volume,
             # calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (BSP - 1))        
             min_gr0(
                 next((pv.size for pv in r.sp.back_stake_taken if pv.size > 0), 0),
-                next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp or 0) - 1)
+                next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp if type(r.sp.actual_sp) is float else 0) - 1)
             )
         ) for r in postplay_market.runners ]
         
@@ -692,7 +692,7 @@ with open("output.csv", "w") as output:
                     'preplay_min': as_str(min_price),
                     'preplay_max': as_str(max_price),
                     'preplay_wavg': as_str(wavg),
-                    'preplay_matched': as_str(matched + sp_traded),
+                    'preplay_matched': as_str((matched or 0) + (sp_traded or 0)),
                     'inplay_ltp': '',
                     'inplay_min': '',
                     'inplay_max': '',

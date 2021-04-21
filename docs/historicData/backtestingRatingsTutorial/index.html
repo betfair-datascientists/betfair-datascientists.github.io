@@ -1352,7 +1352,7 @@
 <p class="admonition-title">Cheat sheet</p>
 <ul>
 <li>
-<p>If you're looking for the complete code <a href="">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py">download the script from Github</a>.</p>
+<p>If you're looking for the complete code <a href="http://127.0.0.1:8000/historicData/backtestingRatingsTutorial/#complete-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py">download the script from Github</a>.</p>
 </li>
 <li>
 <p>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </p>
@@ -2621,7 +2621,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <div class="highlight"><pre><span></span><code><span class="n">bet_eval_chart_cPl</span><span class="p">(</span><span class="n">bets</span><span class="p">)</span>
 </code></pre></div>
 <p>So this isn't gonna build us an art gallery! This is to be expected though, it's not easy to make consistent profit certainly from free ratings sources available online.</p>
-<p><img alt="Output graph" src="./img/graph2.PNG" /></p>
+<p><img alt="Output graph" src="../img/graph1.png" /></p>
 <hr />
 <h3 id="testing-different-approaches">Testing different approaches<a class="headerlink" href="#testing-different-approaches" title="Permanent link">&para;</a></h3>
 <p>We pulled those extra price points for a reason. Let's set up a little test harness that enables us to use different price points and bet using different staking functions.</p>
@@ -2732,7 +2732,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 
 <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">cumulativePLs</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;market_number&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cNpl&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;strategy&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cumulative Net Profit&#39;</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s1">&#39;simple_white&#39;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="Output graph" src="../img/graph3.PNG" /></p>
+<p><img alt="Output graph" src="../img/graph2.png" /></p>
 <hr />
 <h3 id="searching-for-profit">Searching For Profit<a class="headerlink" href="#searching-for-profit" title="Permanent link">&para;</a></h3>
 <p>So this is often where you're going to arrive developing many wagering models: there's no indication of reliable long term profit. Where do you go from here?</p>
@@ -2819,7 +2819,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <div class="highlight"><pre><span></span><code><span class="n">betsFilters</span> <span class="o">=</span> <span class="n">bets</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;((ltp-model_odds) / ltp) &gt; </span><span class="si">{}</span><span class="s1">  | ((model_odds-ltp) / ltp) &gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
 <span class="n">bet_eval_chart_cPl</span><span class="p">(</span><span class="n">betsFilters</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="Output graph" src="../img/graph1.png" /></p>
+<p><img alt="Output graph" src="../img/graph3.png" /></p>
 <p>We were doing ok till the last 200 market nightmare! Might be one to test with more data.</p>
 <ul>
 <li>So we still haven't found a clear profitable edge with these ratings, however we got a bit closer to break even which is positive.</li>

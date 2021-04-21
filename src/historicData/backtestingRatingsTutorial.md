@@ -7,7 +7,7 @@ This tutorial follows on logically from the [JSON to CSV tutorial](https://betfa
 As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/pulls) if you catch some bugs or have other improvements! 
 
 !!! note "Cheat sheet"
-    - If you're looking for the complete code [head to the bottom of the page]() or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py).
+    - If you're looking for the complete code [head to the bottom of the page](http://127.0.0.1:8000/historicData/backtestingRatingsTutorial/#complete-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py).
 
     - To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using [VS code](https://code.visualstudio.com/download)), make sure you've navigated in the terminal to the folder you've saved the script in and then type `py main.py` (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. 
 
@@ -791,7 +791,7 @@ bet_eval_chart_cPl(bets)
 
 So this isn't gonna build us an art gallery! This is to be expected though, it's not easy to make consistent profit certainly from free ratings sources available online.
 
-![Output graph](./img/graph2.PNG)
+![Output graph](./img/graph1.png)
 
 ---
 ### Testing different approaches
@@ -872,7 +872,7 @@ for strategy, objects in grid.items():
 px.line(cumulativePLs, x="market_number", y="cNpl", color="strategy", title='Cumulative Net Profit', template='simple_white')
 ```
 
-![Output graph](./img/graph3.PNG)
+![Output graph](./img/graph2.png)
 
 ---
 ### Searching For Profit
@@ -936,7 +936,7 @@ betsFilters = bets.query('((ltp-model_odds) / ltp) > {}  | ((model_odds-ltp) / l
 bet_eval_chart_cPl(betsFilters)
 ```
 
-![Output graph](./img/graph1.png)
+![Output graph](./img/graph3.png)
 
 We were doing ok till the last 200 market nightmare! Might be one to test with more data.
 

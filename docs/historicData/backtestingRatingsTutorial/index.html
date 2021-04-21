@@ -1347,11 +1347,13 @@
 <hr />
 <p>This tutorial was written by <a href="https://github.com/TMBish">Tom Bishop</a> and was <a href="https://github.com/TMBish/bfStreamTutorials/blob/main/01-hub-backtesting.ipynb">originally published on Github</a>. It is shared here with his permission. </p>
 <p>This tutorial follows on logically from the <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/">JSON to CSV tutorial</a> we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. </p>
+<p>As always please <a href="mailto:data@betfair.com.au">reach out</a> with feedback, suggestions or queries, or feel free to submit a <a href="https://github.com/betfair-down-under/autoHubTutorials/pulls">pull request</a> if you catch some bugs or have other improvements! </p>
 <div class="admonition note">
 <p class="admonition-title">Cheat sheet</p>
 <ul>
-<li>If you're looking for the complete code <a href="">head to the bottom of the page</a> or <a href="">download the script from Github</a>.
-// TO DO add link</li>
+<li>
+<p>If you're looking for the complete code <a href="">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py">download the script from Github</a>.</p>
+</li>
 <li>
 <p>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </p>
 </li>
@@ -1362,8 +1364,7 @@
 <p>We're using the <a href="https://github.com/liampauling/betfair/tree/master/betfairlightweight"><code>betfairlightweight</code></a> package to do the heavy lifting</p>
 </li>
 <li>
-<p>We've also posted the completed code logic on the <a href=""><code>betfair-downunder</code> Github repo</a>.
-// TO DO add link</p>
+<p>We've also posted the completed code logic on the <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py"><code>betfair-downunder</code> Github repo</a>.</p>
 </li>
 </ul>
 </div>
@@ -1830,6 +1831,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <li>From these ladders I can retroactively calculate not only just the best back and lay prices but also WAP prices and also sizes at those boxes which I could use for much more accurate backtesting if I wanted to later without having can across the entire stream files again</li>
 <li>I could easily save the entire open and traded orders ladders in the same way amongst many other ways of retaining more of the data for post-processing analysis</li>
 </ul>
+<p><img alt="Stream Ladder Columns" src="../img/ladderColumns.png" /></p>
 <hr />
 <h2 id="backtesting-analysis">Backtesting Analysis<a class="headerlink" href="#backtesting-analysis" title="Permanent link">&para;</a></h2>
 <p>Let's take stock of where we are. We currently have model ratings (about 1.5 months worth) and Betfair Odds (2 months worth).</p>
@@ -2619,6 +2621,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <div class="highlight"><pre><span></span><code><span class="n">bet_eval_chart_cPl</span><span class="p">(</span><span class="n">bets</span><span class="p">)</span>
 </code></pre></div>
 <p>So this isn't gonna build us an art gallery! This is to be expected though, it's not easy to make consistent profit certainly from free ratings sources available online.</p>
+<p><img alt="Output graph" src="./img/graph2.PNG" /></p>
 <hr />
 <h3 id="testing-different-approaches">Testing different approaches<a class="headerlink" href="#testing-different-approaches" title="Permanent link">&para;</a></h3>
 <p>We pulled those extra price points for a reason. Let's set up a little test harness that enables us to use different price points and bet using different staking functions.</p>
@@ -2729,6 +2732,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 
 <span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">cumulativePLs</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;market_number&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;cNpl&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;strategy&quot;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Cumulative Net Profit&#39;</span><span class="p">,</span> <span class="n">template</span><span class="o">=</span><span class="s1">&#39;simple_white&#39;</span><span class="p">)</span>
 </code></pre></div>
+<p><img alt="Output graph" src="../img/graph3.PNG" /></p>
 <hr />
 <h3 id="searching-for-profit">Searching For Profit<a class="headerlink" href="#searching-for-profit" title="Permanent link">&para;</a></h3>
 <p>So this is often where you're going to arrive developing many wagering models: there's no indication of reliable long term profit. Where do you go from here?</p>
@@ -2815,6 +2819,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <div class="highlight"><pre><span></span><code><span class="n">betsFilters</span> <span class="o">=</span> <span class="n">bets</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;((ltp-model_odds) / ltp) &gt; </span><span class="si">{}</span><span class="s1">  | ((model_odds-ltp) / ltp) &gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
 <span class="n">bet_eval_chart_cPl</span><span class="p">(</span><span class="n">betsFilters</span><span class="p">)</span>
 </code></pre></div>
+<p><img alt="Output graph" src="../img/graph1.png" /></p>
 <p>We were doing ok till the last 200 market nightmare! Might be one to test with more data.</p>
 <ul>
 <li>So we still haven't found a clear profitable edge with these ratings, however we got a bit closer to break even which is positive.</li>
@@ -2847,8 +2852,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <hr />
 <h3 id="complete-code">Complete code<a class="headerlink" href="#complete-code" title="Permanent link">&para;</a></h3>
 <p>Run the code from your ide by using <code>py &lt;filename&gt;.py</code>, making sure you amend the path to point to your input data. </p>
-<p><a href="">Download from Github</a>
-// TO DO add link</p>
+<p><a href="https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py">Download from Github</a></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">requests</span>

@@ -4,19 +4,18 @@ This tutorial was written by [Tom Bishop](https://github.com/TMBish) and was [or
 
 This tutorial follows on logically from the [JSON to CSV tutorial](https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/) we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. 
 
-As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request]() if you catch some bugs or have other improvements! 
-// TO DO add link
+As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/pulls) if you catch some bugs or have other improvements! 
+
 !!! note "Cheat sheet"
-    - If you're looking for the complete code [head to the bottom of the page]() or [download the script from Github]().
-    // TO DO add link
+    - If you're looking for the complete code [head to the bottom of the page]() or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py).
+
     - To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using [VS code](https://code.visualstudio.com/download)), make sure you've navigated in the terminal to the folder you've saved the script in and then type `py main.py` (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. 
 
     - Make sure you amend your data path to point to your data file. We'll be taking in an input of a historical tar file downloaded from the [Betfair historic data site](https://historicdata.betfair.com/#/help). We're using a PRO version, though the code should work on ADVANCED too. This approach won't work with the BASIC data tier. 
 
     - We're using the [`betfairlightweight`](https://github.com/liampauling/betfair/tree/master/betfairlightweight) package to do the heavy lifting
 
-    - We've also posted the completed code logic on the [`betfair-downunder` Github repo]().
-    // TO DO add link
+    - We've also posted the completed code logic on the [`betfair-downunder` Github repo](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py).
 
 ---
 ### Set up
@@ -486,6 +485,8 @@ def run_stream_parsing():
 - From these ladders I can retroactively calculate not only just the best back and lay prices but also WAP prices and also sizes at those boxes which I could use for much more accurate backtesting if I wanted to later without having can across the entire stream files again
 - I could easily save the entire open and traded orders ladders in the same way amongst many other ways of retaining more of the data for post-processing analysis
 
+![Stream Ladder Columns](./img/ladderColumns.png)
+
 ---
 ## Backtesting Analysis
 
@@ -790,6 +791,8 @@ bet_eval_chart_cPl(bets)
 
 So this isn't gonna build us an art gallery! This is to be expected though, it's not easy to make consistent profit certainly from free ratings sources available online.
 
+![Output graph](./img/graph2.PNG)
+
 ---
 ### Testing different approaches
 
@@ -869,6 +872,8 @@ for strategy, objects in grid.items():
 px.line(cumulativePLs, x="market_number", y="cNpl", color="strategy", title='Cumulative Net Profit', template='simple_white')
 ```
 
+![Output graph](./img/graph3.PNG)
+
 ---
 ### Searching For Profit
 
@@ -931,6 +936,8 @@ betsFilters = bets.query('((ltp-model_odds) / ltp) > {}  | ((model_odds-ltp) / l
 bet_eval_chart_cPl(betsFilters)
 ```
 
+![Output graph](./img/graph1.png)
+
 We were doing ok till the last 200 market nightmare! Might be one to test with more data.
 
 - So we still haven't found a clear profitable edge with these ratings, however we got a bit closer to break even which is positive.
@@ -965,8 +972,7 @@ We're planning on writing some more tutorials to help make it easier to work wit
 
 Run the code from your ide by using `py <filename>.py`, making sure you amend the path to point to your input data. 
 
-[Download from Github]()
-// TO DO add link
+[Download from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py)
 
 ``` Python
 import pandas as pd

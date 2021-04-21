@@ -2819,7 +2819,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <div class="highlight"><pre><span></span><code><span class="n">betsFilters</span> <span class="o">=</span> <span class="n">bets</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;((ltp-model_odds) / ltp) &gt; </span><span class="si">{}</span><span class="s1">  | ((model_odds-ltp) / ltp) &gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">))</span>
 <span class="n">bet_eval_chart_cPl</span><span class="p">(</span><span class="n">betsFilters</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="Output graph" src="../img/graph3.png" /></p>
+<p><img alt="Output graph" src="../img/graph4.png" /></p>
 <p>We were doing ok till the last 200 market nightmare! Might be one to test with more data.</p>
 <ul>
 <li>So we still haven't found a clear profitable edge with these ratings, however we got a bit closer to break even which is positive.</li>

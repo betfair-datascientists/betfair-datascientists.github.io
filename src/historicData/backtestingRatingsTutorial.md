@@ -936,7 +936,7 @@ betsFilters = bets.query('((ltp-model_odds) / ltp) > {}  | ((model_odds-ltp) / l
 bet_eval_chart_cPl(betsFilters)
 ```
 
-![Output graph](./img/graph3.png)
+![Output graph](./img/graph4.png)
 
 We were doing ok till the last 200 market nightmare! Might be one to test with more data.
 

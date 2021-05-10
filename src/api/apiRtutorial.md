@@ -202,7 +202,7 @@ fetch_odds <- function(market_id) {
 ## The code below maps (or loops) each market id in the vector we created
 ## above through the fetch_odds function and retrives the market odds 
 ## into a single data frame
-world_cup_market_odds <- map_df(.x = all_world_cup_markets_market_ids, ##Iterate over market ids
+world_cup_market_odds <- map_dfr(.x = all_world_cup_markets_market_ids, ##Iterate over market ids
                                 .f = fetch_odds ## through function fetch_odds
                                 ) %>%
   bind_cols(all_world_cup_markets %>% ## Merge with event names to identify which match odds it is
@@ -309,7 +309,7 @@ fetch_odds <- function(market_id) {
 ## The code below maps (or loops) each market id in the vector we created
 ## above through the fetch_odds function and retrives the market odds 
 ## into a single data frame
-afl_market_odds <- map_df(.x = all_afl_markets_market_ids, ##Iterate over market ids
+afl_market_odds <- map_dfr(.x = all_afl_markets_market_ids, ##Iterate over market ids
                                 .f = fetch_odds ## through function fetch_odds
 ) %>%
   bind_cols(all_afl_markets %>% ## Merge with event names to identify which match odds it is

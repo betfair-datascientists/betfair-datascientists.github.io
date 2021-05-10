@@ -11,11 +11,15 @@ There are four steps involved in getting access to our API
 - Obtain your app key
 - Activate your app key
 
+!!! info "API access"
+    Customers are able to access our API to embed it into their programs and automate their strategies
+    Please [reach out](mailto:api@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
+    
 ---
 ### Find your SSOID token
 The simplest way to setup your browser with the SSOID is to follow [this link](https://identitysso.betfair.com/view/login?product=home.betfair.int&url=https%3A%2F%2Fwww.betfair.com.au%2F) and log in - this will allow for the SSOID to be automatically populated in the next step. 
 
-After loggin in, you’ll be sent to the main Betfair website. Note: it may not show that you’re logged in on the site. You can ignore that. Proceed to step two.
+After logging in, you’ll be sent to the main Betfair website. *Note: it may not show that you’re logged in on the site. You can ignore that. Proceed to step two.*
 
 ---
 ### Register your application
@@ -49,10 +53,10 @@ Grab the application key listed for the live price one - for the example above, 
 ### Activate your app key
 This process will generate two app keys: 
 
-•	A developer key which is designed for development purposes. This has a variable delay of between 1 and 180 seconds, doesn’t show matched volume and doesn’t need to be activated prior to use.
+- A developer key which is designed for development purposes. This has a variable delay of between 1 and 180 seconds, doesn’t show matched volume and doesn’t need to be activated prior to use.
 
-•	A live app key is intended for transacting on the Exchange and should only be used when you’re ready to start placing bets or can no longer test your strategy effectively using the developer key. 
+- A live app key is intended for transacting on the Exchange and should only be used when you’re ready to start placing bets or can no longer test your strategy effectively using the developer key. 
 
-Please note that if the live key is used to pull data from the Exchange without corresponding bets being placed a delay may be automatically applied to the live key. 
+***Please note that if the live key is used to pull data from the Exchange without corresponding bets being placed a delay may be automatically applied to the live key.***
 
 If you’re ready to start testing your strategy or placing bets, please contact api@betfair.com.au and we will be happy to assist with activating the live key and implementing your strategy. 

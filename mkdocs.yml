@@ -32,6 +32,7 @@ nav:
             - Overview - Cymatic Trader: thirdPartyTools/CymaticTrader/CymaticTrader.md
             - Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md        
     - API:
+        - API resources: api/apiResources.md
         - How to access the Betfair API: api/apiappkey.md
         - API tutorials in R: api/apiRtutorial.md
         - API tutorial in Python: api/apiPythontutorial.md
@@ -45,14 +46,8 @@ nav:
         - How to model the Australian Open: modelling/howToModelTheAusOpen.md
         - Aus Open R Tutorial: modelling/AusOpenRTutorial.md
         - Aus Open Python Tutorial: modelling/AusOpenPythonTutorial.md
-        - EPL 01. Data acquisition & exploration: modelling/EPLmodelPart1.md
-        - EPL 02. Data preparation & feature engineering: modelling/EPLmodelPart2.md
-        - EPL 03. Model building & hyperparameter tuning: modelling/EPLmodelPart3.md
-        - EPL 04. Weekly predictions: modelling/EPLmodelPart4.md
-        - AFL 01. Data cleaning: modelling/AFLmodelPart1.md
-        - AFL 02. Feature creation: modelling/AFLmodelPart2.md
-        - AFL 03. Modelling: modelling/AFLmodelPart3.md
-        - AFL 04. Weekly predictions: modelling/AFLmodelPart4.md
+        - EPL ML walkthrough in Python: modelling/EPLmlPython.md
+        - AFL modelling walkthrough in Python: modelling/AFLmodellingPython.md
         - Modelling the Brownlow Medal: modelling/brownlowModelTutorial.md
 
 # Theme settings

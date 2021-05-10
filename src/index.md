@@ -6,7 +6,7 @@ We're here to help you in your automation journey, and this site is dedicated to
 
 ---
 ### Accessing our API
-As you may already know, Betfair has its own API to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software.
+Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software.
 
 There are lots of resources available to support you in accessing the API effectively:
 
@@ -22,7 +22,7 @@ There are lots of resources available to support you in accessing the API effect
 
 !!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
-    If you're a programmer there are lots of resources around to help
+    Please [reach out](mailto:api@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
 
 ---
 ### Historic Data
@@ -78,8 +78,8 @@ We’re putting together a collection of articles on how to use some of these th
 - [An intro to building a predictive model](/modelling/howToModel)
 - [Open source predictive models](/modelling/EPLmodelPart1) built by our in-house Data Scientists
     - [Modelling the Aus Open](/modelling/howToModelTheAusOpen)
-    - [EPL modelling series](/modelling/EPLmodelPart1)
-    - [AFL modelling series](/modelling/AFLmodelPart1)
+    - [EPL ML walkthrough in Python](/modelling/EPLmlPython)
+    - [AFL modelling in Python](/modelling/AFLmodellingPython)
     - [Brownlow modelling tutorial](/modelling/brownlowModelTutorial)
 
 !!! info "Predictive modelling"
@@ -98,6 +98,9 @@ There are a lot of people who use data, models and automation to make a living o
 - [Staking and Money Management](https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/staking-and-money-management/)
 
 
+!!! info "Betfair Quants Slack Group"
+    `betfair quants` is really active community-owned Slack group for people interested in modelling and automation on the Exchange. Please [reach out](mailto:automation@betfair.com.au) if you'd like an invitation. 
+    
 ---
 ### Need extra help?
 

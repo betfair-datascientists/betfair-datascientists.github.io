@@ -198,7 +198,7 @@
   
     <li class="md-tabs__item">
       
-        <a href="./" title="API" class="md-tabs__link md-tabs__link--active">
+        <a href="../apiResources/" title="API" class="md-tabs__link md-tabs__link--active">
           API
         </a>
       
@@ -616,6 +616,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../apiResources/" title="API resources" class="md-nav__link">
+      API resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -857,8 +869,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/EPLmodelPart1/" title="EPL 01. Data acquisition & exploration" class="md-nav__link">
-      EPL 01. Data acquisition & exploration
+    <a href="../../modelling/EPLmlPython/" title="EPL ML walkthrough in Python" class="md-nav__link">
+      EPL ML walkthrough in Python
     </a>
   </li>
 
@@ -869,80 +881,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modelling/EPLmodelPart2/" title="EPL 02. Data preparation & feature engineering" class="md-nav__link">
-      EPL 02. Data preparation & feature engineering
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../modelling/EPLmodelPart3/" title="EPL 03. Model building & hyperparameter tuning" class="md-nav__link">
-      EPL 03. Model building & hyperparameter tuning
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../modelling/EPLmodelPart4/" title="EPL 04. Weekly predictions" class="md-nav__link">
-      EPL 04. Weekly predictions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../modelling/AFLmodelPart1/" title="AFL 01. Data cleaning" class="md-nav__link">
-      AFL 01. Data cleaning
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../modelling/AFLmodelPart2/" title="AFL 02. Feature creation" class="md-nav__link">
-      AFL 02. Feature creation
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../modelling/AFLmodelPart3/" title="AFL 03. Modelling" class="md-nav__link">
-      AFL 03. Modelling
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../../modelling/AFLmodelPart4/" title="AFL 04. Weekly predictions" class="md-nav__link">
-      AFL 04. Weekly predictions
+    <a href="../../modelling/AFLmodellingPython/" title="AFL modelling walkthrough in Python" class="md-nav__link">
+      AFL modelling walkthrough in Python
     </a>
   </li>
 
@@ -1039,10 +979,15 @@
 <li>Obtain your app key</li>
 <li>Activate your app key</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">API access</p>
+<p>Customers are able to access our API to embed it into their programs and automate their strategies
+Please <a href="mailto:api@betfair.com.au">reach out</a> if you're an Australian or New Zealand based customer and are keen for support.</p>
+</div>
 <hr />
 <h3 id="find-your-ssoid-token">Find your SSOID token<a class="headerlink" href="#find-your-ssoid-token" title="Permanent link">&para;</a></h3>
 <p>The simplest way to setup your browser with the SSOID is to follow <a href="https://identitysso.betfair.com/view/login?product=home.betfair.int&amp;url=https%3A%2F%2Fwww.betfair.com.au%2F">this link</a> and log in - this will allow for the SSOID to be automatically populated in the next step. </p>
-<p>After loggin in, you’ll be sent to the main Betfair website. Note: it may not show that you’re logged in on the site. You can ignore that. Proceed to step two.</p>
+<p>After logging in, you’ll be sent to the main Betfair website. <em>Note: it may not show that you’re logged in on the site. You can ignore that. Proceed to step two.</em></p>
 <hr />
 <h3 id="register-your-application">Register your application<a class="headerlink" href="#register-your-application" title="Permanent link">&para;</a></h3>
 <p>Navigate to the <a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/">API-NG accounts visualiser</a>.</p>
@@ -1068,9 +1013,15 @@
 <hr />
 <h3 id="activate-your-app-key">Activate your app key<a class="headerlink" href="#activate-your-app-key" title="Permanent link">&para;</a></h3>
 <p>This process will generate two app keys: </p>
-<p>•   A developer key which is designed for development purposes. This has a variable delay of between 1 and 180 seconds, doesn’t show matched volume and doesn’t need to be activated prior to use.</p>
-<p>•   A live app key is intended for transacting on the Exchange and should only be used when you’re ready to start placing bets or can no longer test your strategy effectively using the developer key. </p>
-<p>Please note that if the live key is used to pull data from the Exchange without corresponding bets being placed a delay may be automatically applied to the live key. </p>
+<ul>
+<li>
+<p>A developer key which is designed for development purposes. This has a variable delay of between 1 and 180 seconds, doesn’t show matched volume and doesn’t need to be activated prior to use.</p>
+</li>
+<li>
+<p>A live app key is intended for transacting on the Exchange and should only be used when you’re ready to start placing bets or can no longer test your strategy effectively using the developer key. </p>
+</li>
+</ul>
+<p><strong><em>Please note that if the live key is used to pull data from the Exchange without corresponding bets being placed a delay may be automatically applied to the live key.</em></strong></p>
 <p>If you’re ready to start testing your strategy or placing bets, please contact <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#112;&#105;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;">&#97;&#112;&#105;&#64;&#98;&#101;&#116;&#102;&#97;&#105;&#114;&#46;&#99;&#111;&#109;&#46;&#97;&#117;</a> and we will be happy to assist with activating the live key and implementing your strategy. </p>
                 
                   
@@ -1092,7 +1043,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../../thirdPartyTools/cymaticTraderRatingsAutomation/" title="Ratings automation" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../apiResources/" title="API resources" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1101,7 +1052,7 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Ratings automation
+                API resources
               </span>
             </div>
           </a>

@@ -9,6 +9,9 @@ This article will outline their thought process and share their approach. Subseq
 
 We will be providing a step by step tutorial in two languages – Python and R.
 
+- [Tutorial in Python](AusOpenPythonTutorial.md)
+- [Tutorial in R](AusOpenRTutorial.md)
+
 These are the two most popular languages used in data science nowadays. Both code examples will follow identical approaches.
 
 ---

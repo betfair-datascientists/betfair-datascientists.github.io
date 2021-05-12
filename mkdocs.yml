@@ -43,12 +43,13 @@ nav:
         - Backtesting ratings tutorial: historicData/backtestingRatingsTutorial.md
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
+        - Soccer modelling tutorial in Python: modelling/soccerModellingTutorialPython.md
         - How to model the Australian Open: modelling/howToModelTheAusOpen.md
         - Aus Open R Tutorial: modelling/AusOpenRTutorial.md
         - Aus Open Python Tutorial: modelling/AusOpenPythonTutorial.md
         - EPL ML walkthrough in Python: modelling/EPLmlPython.md
         - AFL modelling walkthrough in Python: modelling/AFLmodellingPython.md
-        - Modelling the Brownlow Medal: modelling/brownlowModelTutorial.md
+        - Modelling the Brownlow Medal in Python: modelling/brownlowModelTutorial.md
 
 # Theme settings
 theme:

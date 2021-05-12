@@ -1,4 +1,4 @@
-# Australian Open Datathon R Tutorial
+# Australian Open Datathon Python Tutorial
 
 ## Overview
 ### The Task

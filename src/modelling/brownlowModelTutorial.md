@@ -851,3 +851,8 @@ test[['date', 'round', 'player', 'team', 'opposition', 'margin', 'SC', 'predicte
 | 27255 | 2018-08-26 | 23 | J Ziebell | North Melbourne | St Kilda | 23 | 0.033000 | 0.031010 |
 
 And there we have it! In a single notebook we have made a fairly good Brownlow predictive model. Enjoy.
+
+---
+### Disclaimer
+
+Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.

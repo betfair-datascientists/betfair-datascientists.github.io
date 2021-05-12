@@ -68,5 +68,7 @@ However with sports data, you cannot use the majority of information that is pro
 
 You will also need to use historic results in such a way that will have predictive power for the sports event that you are trying to predict. This means that you run into little nuances like needing to use rolling averages, as well as whether to model each match on a single row or multiple rows. In the next article in this series, we will show you how we tackle this problem using code examples that anyone can replicate.
 
-!!! Note "Betfair's Aus Open Datathon"
-    Make sure you register for our [Australian Open Datathon](https://www.betfair.com.au/hub/australian-open-datathon/) to receive 7 years of match data for tournaments all around the world, along with historic Aus Open price data. Submit a model and you'll also be in the running to take home some of the $15k prize pool!
+---
+### Disclaimer
+
+Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.

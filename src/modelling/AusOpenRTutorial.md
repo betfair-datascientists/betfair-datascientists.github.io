@@ -541,3 +541,8 @@ aus_open_2019_features %>%
 | Reilly Opelka | 0.025704824 | -0.0607219257 | -0.015474944 | -0.0720809006 | NA | 0.2262993 |
 | Carlos Berlocq | -0.063580460 | 0.0074576369 | -0.054277974 | -0.0165235079 | NA | 0.2112275 |
 | Pedro Sousa | -0.197333352 | -0.0734557562 | -0.161962722 | -0.1023311674 | NA | 0.1502313 |
+
+---
+### Disclaimer
+
+Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.

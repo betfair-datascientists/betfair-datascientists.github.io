@@ -1,4 +1,4 @@
-# How to model the 2021 Euro & Copa America: Datathon Tutorial
+# How to model the 2021 Euro & Copa America: Python Tutorial
 
 ## The Task
 

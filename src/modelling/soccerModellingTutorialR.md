@@ -29,7 +29,7 @@ library(caTools) # calculate rolling average
 ## Read data from file and get a raw dataset
 #### Change the data types - date column.
 
-We need the date column in good order for our tutorial.
+We need the date column in good order for our tutorial. [Here's a sample of the data set](assets/datathon_initial_form_data - SAMPLE.csv) we're using for this tutorial.
 
 *In general, it's a good idea to evaluate data types of all columns that we work with to ensure they are correct.*
 

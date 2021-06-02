@@ -1,0 +1,1483 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
+      
+      
+        <link rel="canonical" href="https://betfair-datascientists.github.io/autoTools/betAngelintermediate/">
+      
+      
+        <meta name="author" content="Betfair Data Scientists">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Intermediate guide - The Automation Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0028e27e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.dd00d4b7.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/clarke-regular.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#bet-angel-an-intermediate-guide" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo.svg" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                The Automation Hub
+              </span>
+              <span class="md-header-nav__topic">
+                Intermediate guide
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      <div class="bf-nav md-flex__cell">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26"/>
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z"/>
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." title="Home" class="md-tabs__link">
+          Home
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/apiResources/" title="API" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../historicData/dataSources/" title="Historic Data" class="md-tabs__link">
+          Historic Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../modelling/howToModel/" title="Modelling" class="md-tabs__link">
+          Modelling
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../overview/" title="Auto Tools" class="md-tabs__link md-tabs__link--active">
+          Auto Tools
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo.svg" width="48" height="48">
+      
+    </a>
+    The Automation Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Home
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="The Automation Hub" class="md-nav__link">
+      The Automation Hub
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiResources/" title="API resources" class="md-nav__link">
+      API resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiappkey/" title="How to access the Betfair API" class="md-nav__link">
+      How to access the Betfair API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiRtutorial/" title="API tutorials in R" class="md-nav__link">
+      API tutorials in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiPythontutorial/" title="API tutorial in Python" class="md-nav__link">
+      API tutorial in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Historic Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Historic Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/dataSources/" title="Pricing Data Sources" class="md-nav__link">
+      Pricing Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/jsonToCsvTutorial/" title="JSON to CSV in Python" class="md-nav__link">
+      JSON to CSV in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/backtestingRatingsTutorial/" title="Back testing ratings in Python" class="md-nav__link">
+      Back testing ratings in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Historic Data site
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Historic Data site
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Soccer
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Soccer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/soccerEloTutorialR/" title="Elo soccer tutorial in R" class="md-nav__link">
+      Elo soccer tutorial in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/soccerModellingTutorialPython/" title="Soccer modelling tutorial in Python" class="md-nav__link">
+      Soccer modelling tutorial in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/soccerModellingTutorialR/" title="Soccer modelling tutorial in R" class="md-nav__link">
+      Soccer modelling tutorial in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmlPython/" title="EPL ML walk through in Python" class="md-nav__link">
+      EPL ML walk through in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      AFL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        AFL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodellingPython/" title="AFL modelling walk through in Python" class="md-nav__link">
+      AFL modelling walk through in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/brownlowModelTutorial/" title="Modelling the Brownlow Medal in Python" class="md-nav__link">
+      Modelling the Brownlow Medal in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      Tennis
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        Tennis
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
+      How to model the Australian Open
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AusOpenRTutorial/" title="Aus Open R Tutorial" class="md-nav__link">
+      Aus Open R Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AusOpenPythonTutorial/" title="Aus Open Python Tutorial" class="md-nav__link">
+      Aus Open Python Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Auto Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Auto Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="Tools Overview" class="md-nav__link">
+      Tools Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Bet Angel
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Bet Angel
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngel/betAngel/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelbeginners/" title="Beginner's guide" class="md-nav__link">
+      Beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Intermediate guide
+      </label>
+    
+    <a href="./" title="Intermediate guide" class="md-nav__link md-nav__link--active">
+      Intermediate guide
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-ladder-interface" title="The Ladder interface" class="md-nav__link">
+    The Ladder interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-play-trader-view" title="In-Play trader view" class="md-nav__link">
+    In-Play trader view
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-columns" title="Custom Columns" class="md-nav__link">
+    Custom Columns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offset-bets" title="Offset Bets" class="md-nav__link">
+    Offset Bets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dutching" title="Dutching" class="md-nav__link">
+    Dutching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bookmaking" title="Bookmaking" class="md-nav__link">
+    Bookmaking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charting" title="Charting" class="md-nav__link">
+    Charting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" title="Resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-next" title="What next?" class="md-nav__link">
+    What next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngeladvanced/" title="Advanced guide" class="md-nav__link">
+      Advanced guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelMarketFavouriteAutomation/" title="Market fav auto" class="md-nav__link">
+      Market fav auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelTippingAutomation/" title="Tipping auto" class="md-nav__link">
+      Tipping auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelKellyStake/" title="Kelly Criterion staking" class="md-nav__link">
+      Kelly Criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Gruss Betting Assistant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Gruss Betting Assistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Gruss/Gruss/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussMarketFavouriteAutomation/" title="Market fav auto" class="md-nav__link">
+      Market fav auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grusslSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussKellyStake/" title="Kelly Criterion staking" class="md-nav__link">
+      Kelly Criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Cymatic Trader
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        Cymatic Trader
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CymaticTrader/CymaticTrader/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cymaticTraderRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-ladder-interface" title="The Ladder interface" class="md-nav__link">
+    The Ladder interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-play-trader-view" title="In-Play trader view" class="md-nav__link">
+    In-Play trader view
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#custom-columns" title="Custom Columns" class="md-nav__link">
+    Custom Columns
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#offset-bets" title="Offset Bets" class="md-nav__link">
+    Offset Bets
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dutching" title="Dutching" class="md-nav__link">
+    Dutching
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bookmaking" title="Bookmaking" class="md-nav__link">
+    Bookmaking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#charting" title="Charting" class="md-nav__link">
+    Charting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" title="Resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-next" title="What next?" class="md-nav__link">
+    What next?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="bet-angel-an-intermediate-guide">Bet Angel: An Intermediate guide<a class="headerlink" href="#bet-angel-an-intermediate-guide" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="the-ladder-interface">The Ladder interface<a class="headerlink" href="#the-ladder-interface" title="Permanent link">&para;</a></h2>
+<p>The Bet Angel Ladder interface allows you to gain a deeper view of how bets are being placed on a small number of runners as opposed to the high-level overview of a market that we get from the ‘One-Click’ view. This also allows you to get an idea of any potential trends and help you make a more informed decision about your own bets.</p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate1.png" /></p>
+<p>By default, the ladder interface will show you the first three runners in a market. A handy button to keep in mind is the ‘123’ button which will automatically adjust which runners you see and order them in ascending price order with the favourite placed in ‘Ladder 1’ position. </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate2.png" /></p>
+<p>You can also easily specify the runners you would like to look at by simply selecting them from the drop-down box above each ladder. </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate3.png" /></p>
+<p>Just like the ‘One-click screen’, you can click within the blue (back) or pink (lay) columns to place a bet at those specific odds, allowing you to not only get a more detailed view of what the market is doing but quickly place bets of your own.  </p>
+<h2 id="in-play-trader-view">In-Play trader view<a class="headerlink" href="#in-play-trader-view" title="Permanent link">&para;</a></h2>
+<p>The in-play trader view is an alternative way to look and place bets on markets which are in-play. It gives an overview of the highest and lowest price points traded for runners and allows you to easily place bets onto the market.  </p>
+<p>To open the in-play trader view:  </p>
+<p>click the in-play trader icon <img alt="Bet Angel beginner guide" src="../img/intermediate15.png" /> near the top right of the main Bet Angel screen.</p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate4.png" /></p>
+<p>Once you’ve clicked the button, a new window will open up showing every runner in the race. </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate5.png" /></p>
+<p>As you can see, there are a number of dots and lines which give us specific information relating to where bets are being placed for each runner. The blue dot indicates the last back price, the pink shows the last lay price and the yellow indicates the last traded price. The grey bar gives us the highest and lowest traded range of that particular runner.  </p>
+<p>You’ll also notice that there are a number of options that you can use to customize your experience with the tool depending on what information is important to you.   </p>
+<ul>
+<li>At the top left of the window from left to right, you can hide the blue, pink and yellow dots to simplify your view</li>
+<li>change the window to reflect the win percentage scale or tick scale</li>
+<li>sort your runner list depending of a range of factors</li>
+<li>change the height of your runner rows</li>
+<li>adjust the labels for the dots to reflect different information</li>
+</ul>
+<p>You can also use the in-play trader view to place bets just like in the one-click screen or ladder view. You can customise what betting action to take when the left mouse button is clicked (place a back bet, a lay bet or even set that the left mouse button will back while the right button lays).  </p>
+<p>By default, the odds that bets are placed at and the runner you bet on in this view will be determined by the location of your mouse cursor.  </p>
+<p>It pays to be mindful of this when using this view, especially if you have confirm bets turned off as an accidental click on the in-play trader view may cause you to place a bet that you didn’t want. This being said, the price that bets are placed at can be easily changed to a different factor such as the best available back price instead of the mouse cursor location.  </p>
+<h2 id="custom-columns">Custom Columns<a class="headerlink" href="#custom-columns" title="Permanent link">&para;</a></h2>
+<p>Custom columns are an extremely helpful way to speed up how you bet in Bet Angel markets. They allow you customize not only the information that you see in the one-click betting screen, but also lets you place specific bets faster into the market. This is particularly useful when placing bets in-play and speed is a considerable factor for your strategy.</p>
+<p>To get started with your own custom columns </p>
+<ul>
+<li>click the yellow star icon which will bring up the custom column's editor. </li>
+</ul>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate6.png" /></p>
+<p>Once the editor window pops up: </p>
+<ul>
+<li>Click ‘New’ </li>
+<li>Then enter a Profile Name for your custom column and click ‘OK’ </li>
+<li>Choose from the configure options (see below) </li>
+<li>Then click ‘Save Column’ </li>
+</ul>
+<p>You will have a range of options to configure your columns: </p>
+<ul>
+<li>
+<p>Custom Column Profiles – Create multiple profiles for different betting strategies that you may implement. Each profile can have different columns that do different things and these profiles allow you to easily switch between different modes depending on what you’re wanting to do in Bet Angel. </p>
+</li>
+<li>
+<p>General: </p>
+<ul>
+<li>Title – Give your column a name to make it easily identifiable (this will be the name of the column in the column chooser list and title in the column header on the Bet Angel screen)</li>
+<li>ToolTip – a custom info box that appears when the mouse is hovered over your custom column </li>
+<li>Action – Specify what happens when you click on the column, whether it places a back or lay bet, cancels a bet or triggers an automation to run </li>
+<li>Button colour – customise the colour of your column to make it easily distinguishable </li>
+<li>Display – Choose whether each box within your custom column is populated with the runners odds or text </li>
+</ul>
+</li>
+<li>
+<p>Odds – If you decide to have odds populated in your custom column, you can choose from: </p>
+<ul>
+<li>fixed odds,  </li>
+<li>ticks offset from the best back price </li>
+<li>ticks offset from the best lay price  </li>
+<li>a percentage offset from best lay price </li>
+</ul>
+</li>
+<li>
+<p>Stake – This allows you to program a pre-determined stake that can be triggered when you click in the column, essentially giving you your own bet placement shortcut buttons.  </p>
+</li>
+</ul>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate7.png" /></p>
+<p>Once you have set up your custom column the way that you would like it to operate, the next step is to make it visible on your screen so you can use it.  </p>
+<ul>
+<li>Select your custom column name from the drop down box next to the yellow star icon </li>
+<li>Click on <img alt="Bet Angel beginner guide" src="../img/intermediate16.png" /> icon</li>
+<li>Scroll through the list and choose your custom column</li>
+</ul>
+<p>Your custom column should now be added to the right of the existing columns (see image below) </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate8.png" /></p>
+<p>If you haven’t created a profile for your custom columns, click the settings button (see below), then choose columns where pop up window will appear. Find your custom column from the list and tick the box next to it. </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate9.png" /></p>
+<h2 id="offset-bets">Offset Bets<a class="headerlink" href="#offset-bets" title="Permanent link">&para;</a></h2>
+<p>Offset bets are extremely easy to achieve in Bet Angel thanks to a simple to use tool at the top of the One-click screen. Here you can choose to use a number of different offset bet actions and specify the number of ticks or percentage that you want your offset bet to be placed at.  </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate10.png" /></p>
+<p>In the above example, if I placed a back bet on the runner named “1. Andrew Swagger”, the back bet will be placed at $55 and then Bet Angel will automatically place a lay bet on the same runner 2 ticks lower.  </p>
+<h2 id="dutching">Dutching<a class="headerlink" href="#dutching" title="Permanent link">&para;</a></h2>
+<p>The dutching screen within Bet Angel is often overlooked by Bet Angel users but is extremely handy, especially if your preference is lower risk (and lower profit/loss). The dutching screen will only place back bets into a market (while the bookmaking screen will only place lay bets-see next section). Bet Angel makes dutching a lot easier by allowing you to select a number of runners within a market that you think that the runner may be amongst and place bets with a specific stake, achieve a target profit or set a minimum stake for Bet Angel to use.  </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate11.png" /></p>
+<p>In the above example, we’ve selected 5 runners, out of a market of 10, who we think could possibly win the race. Our aim in this scenario is to come away with a profit of $20 if one of our selected runners win. Bet Angel will do all the calculations for you to work out the odds and stake for each runner, but you do have the ability to override a specific runners target profit – especially handy if you're not completely confident that a particular runner will win or not but you hold more or less confidence than the rest of your selections.  </p>
+<p>For example, for 8. Nobodys Puppet, which the best available back price is 10.5, we may think that there is still a possibility for it to win, so we can override the target profit for that runner to be $0 which will mean that if it wins, we won't make any profit but we also won't lose our stake.  </p>
+<p>You’ll notice that there are 3 check box columns: Back, Lay and Manual. These refer to the odds that you’ll be using. If the back-check box is selected, then you’ll be using the best available back odds and the same concept applies if you have the lay check box selected. Manual will allow you to set your own odds for bets to be placed onto the market.  </p>
+<p>Bet Angel will also display the total stake for all of the bets to be placed based on your settings as well as the potential profit (indicated in green) should one of your selections win and the potential loss should they lose (indicated in red).  </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate12.png" /></p>
+<p>For a more in depth run-through of the Dutching functionality, check out the Bet Angel YouTube video <a href="https://www.youtube.com/watch?v=sK5OSmjfOUk">here</a>. </p>
+<h2 id="bookmaking">Bookmaking<a class="headerlink" href="#bookmaking" title="Permanent link">&para;</a></h2>
+<p>The bookmaking screen operates almost identically to the Dutching screen except that it will only place lay bets into the market. The aim of the game in this screen to create a book that ends up being over 100% so that we can secure a profit.  </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate13.png" /></p>
+<p>To see an example of the bookmaking screen in action, take a look at the Bet Angel video on Youtube <a href="https://www.youtube.com/watch?v=2QgD0mElPxc">here</a>. </p>
+<h2 id="charting">Charting<a class="headerlink" href="#charting" title="Permanent link">&para;</a></h2>
+<p>One of the main benefits to using programs such as Bet Angel is the functionality that allows you to gain a more in depth insight into how a market is going, see trends and help you make smarter calls when it comes to placing your own bets. Charts within Bet Angel takes the information from the Betfair exchange and illustrates it in a way that allows you to interpret complex data in a more concise visual format. Advanced charting is a feature that is easily accessed from the One-click, Ladder and manual bet screens and can be accessed by clicking the graph icon next to a runners name. </p>
+<p><img alt="Bet Angel beginner guide" src="../img/intermediate14.png" /></p>
+<p>From here, a chart window will appear with various graphs and options to change the type of graph and the data being displayed.  </p>
+<p>For more detail and information regarding Bet Angels advanced charts, check out their video tutorial <a href="https://www.youtube.com/watch?time_continue=1261&amp;v=kvlB080Mteg&amp;feature=emb_title">here</a>.  </p>
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><a href="https://www.betfair.com.au/hub/peter-webb/">Betfair's interview with Bet Angel's creator, Peter Webb</a></p>
+</li>
+<li>
+<p><a href="https://www.betangel.com/user-guide/">Bet Angel user guide</a></p>
+<ul>
+<li><a href="https://www.betangel.com/user-guide/ladder_interface.html?ms=GgBAAAQAFBAIASA%3D&amp;st=MA%3D%3D&amp;sct=MA%3D%3D&amp;mw=Mzkx">Ladder Mode</a></li>
+<li><a href="https://www.betangel.com/user-guide/bet_angel___inplay_trader.html?ms=GgBAAAQAEEAIASA%3D&amp;st=MA%3D%3D&amp;sct=MjAw&amp;mw=Mzkx">In-Play trader view</a></li>
+<li><a href="https://www.betangel.com/user-guide/custom_columns.html?ms=GgAAAAAAEEAI&amp;q=Q3VzdG9tIENvbHVtbnM%3D&amp;st=Mg%3D%3D&amp;sct=MA%3D%3D&amp;mw=Mzkx">Custom columns</a></li>
+<li><a href="https://www.betangel.com/user-guide/offsetting_by_ticks_or_percentages.html">Offset bets</a></li>
+<li><a href="https://www.betangel.com/user-guide/bet_angel_advanced_dutching.html?ms=GgAAAAAAMUAI&amp;q=RHV0Y2hpbmc%3D&amp;st=Mg%3D%3D&amp;sct=MA%3D%3D&amp;mw=Mzkx">Dutching</a></li>
+<li><a href="https://www.betangel.com/user-guide/bookmaking____being_the_bookmaker_.html?ms=AgAAAAAAAg%3D%3D&amp;q=Qm9va21ha2luZw%3D%3D&amp;st=Mg%3D%3D&amp;sct=MA%3D%3D&amp;mw=MzIw">Bookmaking</a></li>
+</ul>
+</li>
+<li>
+<p><a href="https://www.youtube.com/user/betangeltv">Youtube</a></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=CBfqOQgtVLo&amp;list=PLVgQjBRi6AcmcuL11TtqQUHC4NbmWsUZl">Ladder Mode</a></li>
+<li><a href="https://www.youtube.com/watch?v=z5tLOl-miYU&amp;t=37s">In-Play trader view</a></li>
+<li><a href="https://www.youtube.com/watch?v=YxAl2qOnY8c">Custom Columns</a></li>
+<li><a href="https://www.youtube.com/watch?v=sK5OSmjfOUk">Dutching</a></li>
+<li><a href="https://www.youtube.com/watch?v=2QgD0mElPxc">Bookmaking</a></li>
+</ul>
+</li>
+</ul>
+<hr />
+<h2 id="what-next">What next?<a class="headerlink" href="#what-next" title="Permanent link">&para;</a></h2>
+<p>Now that you've got the intermediate level sorted, take the next step and have a look at our <a href="/thirdPartyTools/betAngeladvanced">Advanced guide to Bet Angel</a>.</p>
+<hr />
+<h2 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
+<p>Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable, and we make no representations in relation to the information on this page. If you're implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred.  Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../betAngelbeginners/" title="Beginner's guide" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Beginner's guide
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../betAngeladvanced/" title="Advanced guide" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Advanced guide
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/Betfair_Aus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/company/betfair-australia" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://facebook.com/betfairaustralia" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://youtube.com/user/betfairaus" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://github.com/betfair-datascientists" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div>
+    <div class="bf-footer">
+      <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+      <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br> Think! About your choices. Don’t chase your losses. Walk away. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      <ul class="bf-links">
+        <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+        <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+        <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://js.adsrvr.org/up_loader.1.1.0.js"></script>
+  <script>ttd_dom_ready(function(){"function"==typeof TTDUniversalPixelApi&&(new TTDUniversalPixelApi).init("y12d1ir",["8ml4f17"],"https://insight.adsrvr.org/track/up")})</script>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.07363bc3.js"></script>
+      
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
+      
+        <script src="../../search/main.js"></script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

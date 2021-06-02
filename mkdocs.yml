@@ -9,52 +9,55 @@ site_dir: 'docs'
 # Navigation
 nav:
     - Home: 
-        The Automation Hub: index.md
-    - Tutorials: 
-        - Tools Overview: thirdPartyTools/overview.md           
-        - Bet Angel Professional: 
-            - Overview - Bet Angel Pro: thirdPartyTools/betAngel/betAngel.md
-            - Bet Angel - A beginner's guide: thirdPartyTools/betAngelbeginners.md
-            - Bet Angel - An intermediate guide: thirdPartyTools/betAngelintermediate.md
-            - Bet Angel - An advanced guide: thirdPartyTools/betAngeladvanced.md
-            - Ratings automation: thirdPartyTools/betAngelRatingsAutomation.md
-            - Market favourite automation: thirdPartyTools/betAngelMarketFavouriteAutomation.md
-            - Tipping automation: thirdPartyTools/betAngelTippingAutomation.md
-            - Simultaneous markets: thirdPartyTools/betAngelSimultaneousMarkets.md
-            - Kelly Criterion staking: thirdPartyTools/betAngelKellyStake.md
-        - Gruss Betting Assistant:
-            - Overview - Gruss: thirdPartyTools/Gruss/Gruss.md
-            - Ratings automation: thirdPartyTools/grussRatingsAutomation.md
-            - Market favourite automation: thirdPartyTools/grussMarketFavouriteAutomation.md
-            - Simultaneous markets: thirdPartyTools/grusslSimultaneousMarkets.md
-            - Kelly Criterion staking: thirdPartyTools/grussKellyStake.md
-        - Cymatic Trader: 
-            - Overview - Cymatic Trader: thirdPartyTools/CymaticTrader/CymaticTrader.md
-            - Ratings automation: thirdPartyTools/cymaticTraderRatingsAutomation.md        
+        The Automation Hub: index.md  
     - API:
         - API resources: api/apiResources.md
         - How to access the Betfair API: api/apiappkey.md
-        - API tutorials in R: api/apiRtutorial.md
-        - API tutorial in Python: api/apiPythontutorial.md
+        - Tutorials:
+            - API tutorials in R: api/apiRtutorial.md
+            - API tutorial in Python: api/apiPythontutorial.md
     - Historic Data: 
-        - Historic Data Sources: historicData/dataSources.md
-        - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
-        - JSON to CSV tutorial: historicData/jsonToCsvTutorial.md
-        - Backtesting ratings tutorial: historicData/backtestingRatingsTutorial.md
+        - Pricing Data Sources: historicData/dataSources.md
+        - Tutorials:
+            - JSON to CSV in Python: historicData/jsonToCsvTutorial.md
+            - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
+        - Historic Data site:
+            - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
         - Soccer:
             - Elo soccer tutorial in R: modelling/soccerEloTutorialR.md
             - Soccer modelling tutorial in Python: modelling/soccerModellingTutorialPython.md
             - Soccer modelling tutorial in R: modelling/soccerModellingTutorialR.md
-            - EPL ML walkthrough in Python: modelling/EPLmlPython.md
+            - EPL ML walk through in Python: modelling/EPLmlPython.md
         - AFL:
-            - AFL modelling walkthrough in Python: modelling/AFLmodellingPython.md
+            - AFL modelling walk through in Python: modelling/AFLmodellingPython.md
             - Modelling the Brownlow Medal in Python: modelling/brownlowModelTutorial.md
         - Tennis:
             - How to model the Australian Open: modelling/howToModelTheAusOpen.md
             - Aus Open R Tutorial: modelling/AusOpenRTutorial.md
             - Aus Open Python Tutorial: modelling/AusOpenPythonTutorial.md
+    - Auto Tools: 
+        - Tools Overview: autoTools/overview.md           
+        - Bet Angel: 
+            - Overview: autoTools/betAngel/betAngel.md
+            - Beginner's guide: autoTools/betAngelbeginners.md
+            - Intermediate guide: autoTools/betAngelintermediate.md
+            - Advanced guide: autoTools/betAngeladvanced.md
+            - Ratings auto: autoTools/betAngelRatingsAutomation.md
+            - Market fav auto: autoTools/betAngelMarketFavouriteAutomation.md
+            - Tipping auto: autoTools/betAngelTippingAutomation.md
+            - Simultaneous markets: autoTools/betAngelSimultaneousMarkets.md
+            - Kelly Criterion staking: autoTools/betAngelKellyStake.md
+        - Gruss Betting Assistant:
+            - Overview: autoTools/Gruss/Gruss.md
+            - Ratings auto: autoTools/grussRatingsAutomation.md
+            - Market fav auto: autoTools/grussMarketFavouriteAutomation.md
+            - Simultaneous markets: autoTools/grusslSimultaneousMarkets.md
+            - Kelly Criterion staking: autoTools/grussKellyStake.md
+        - Cymatic Trader: 
+            - Overview: autoTools/CymaticTrader/CymaticTrader.md
+            - Ratings auto: autoTools/cymaticTraderRatingsAutomation.md      
 
 # Theme settings
 theme:

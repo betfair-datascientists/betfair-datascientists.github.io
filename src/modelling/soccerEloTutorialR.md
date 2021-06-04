@@ -84,9 +84,9 @@ To run the Elo model we will need to use the `elo.run` function from the `elo` p
 
 We can use the `home_result` column we've created to identify the result from the home team's perspective.
 
-We can also input a `k value` which essentially dictates the maximum number of Elo `points` that can be won or lost in a single match.
+We can also input a k value which essentially dictates the maximum number of Elo points that can be won or lost in a single match.
 
-Here we could set `k` to be a constant (such as 30), however to add an extra layer of (very slight) complexity, we can instead choose to use a variable `k value` which is dictated by the margin of the match using a formula of `k = 30 + 30*margin`. This means that for every goal the margin increases by, the `k value` will increase by 30, starting with a base `k value` of 30 for draws (`margin equals 0`). The idea here is simply to help account for and reward/punish teams winning/losing by bigger margins compared to closer matches.
+Here we could set k to be a constant (such as 30), however to add an extra layer of (very slight) complexity, we can instead choose to use a variable k value which is dictated by the margin of the match using a formula of `k = 30 + 30*margin`. This means that for every goal the margin increases by, the k value will increase by 30, starting with a base k value of 30 for draws (`margin equals 0`). The idea here is simply to help account for and reward/punish teams winning/losing by bigger margins compared to closer matches.
 
 ```{r}
 elo_model <- elo.run(data = raw_data,

@@ -25,6 +25,8 @@ nav:
             - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
+        - Racing:
+            - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
         - Soccer:
             - Elo soccer tutorial in R: modelling/soccerEloTutorialR.md
             - Soccer modelling tutorial in Python: modelling/soccerModellingTutorialPython.md
@@ -119,6 +121,9 @@ markdown_extensions:
         custom_checkbox: true
     - pymdownx.tilde
 
+# plugins
+plugins:
+    - mkdocs-jupyter
 # Google Analytics
 google_analytics:
     - 'UA-125973915-1'

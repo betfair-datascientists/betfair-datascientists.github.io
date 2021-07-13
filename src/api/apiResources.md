@@ -16,8 +16,8 @@ Here are some of the resources we'd recommend taking a look at if you're buildin
 
 ## Github
 - Our Datascientists' repos for using [R](/api/apiRtutorial) and [Python](/api/apiPythontutorial) to access the API
-- There's an ANZ [Betfair Down Under](https://github.com/betfair-down-under) community GitHub repo where you can find sample code, libraries, tutorials and other resources for automating and modelling on the Exchange
-- [The UK’s Github repo](https://github.com/betfair/API-NG-Excel-Toolkit) including libraries for other languages
+- There's an ANZ [Betfair Down Under](https://github.com/betfair-down-under) community GitHub repo where you can find sample code, libraries, tutorials and other resources for automating and modelling on the Exchange, including an [Awesome List](https://github.com/betfair-down-under/AwesomeBetfair) and [Knowledge Share](https://github.com/betfair-down-under/knowledgeShare) with helper functions and guidance on best practice shared by the ANZ automation community. 
+- [The UK’s Github repo](https://github.com/betfair) including libraries for other languages
 
 ## Visualisers
 - [Exchange Sports API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) for testing market-related queries

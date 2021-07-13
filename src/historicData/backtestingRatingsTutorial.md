@@ -17,6 +17,8 @@ As always please [reach out](mailto:data@betfair.com.au) with feedback, suggesti
 
     - We've also posted the completed code logic on the [`betfair-downunder` Github repo](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py).
 
+    - You can [watch our workshop working through this tutorial on YouTube.](https://www.youtube.com/watch?v=0UfPdeghuN8)
+
 ---
 ### Set up
 
@@ -1507,6 +1509,11 @@ metricSummary.sort_values(by=['pot'], ascending=False).head(4)
 betsFilters = bets.query('((ltp-model_odds) / ltp) > {}  | ((model_odds-ltp) / ltp) > {}'.format(0.3, 0.3))
 bet_eval_chart_cPl(betsFilters)
 ```
+
+---
+### Workshop
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0UfPdeghuN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 ### Disclaimer

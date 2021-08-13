@@ -31,7 +31,7 @@ We know that automated strategies are only as good as your data. There’s a hug
 
 ### Tutorials
 
-- [JSON to CSV](/historicData/jsonToCsv)
+- [JSON to CSV](/historicData/jsonToCsvTutorial)
 - [Backtesting ratings](/historicData/backtestingRatingsTutorial)
 
 ### Other resources

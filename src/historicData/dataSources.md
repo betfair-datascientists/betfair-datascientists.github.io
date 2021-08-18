@@ -21,7 +21,6 @@ Betfair UK give access to all the historical Stream API data since 2016. It is e
     - Advanced tier – 1 second intervals for odds, volume included (cost associated)
     - Pro tier – 50 millisecond intervals for odds, volume included (cost associated)
 - Includes a Historic Data API endpoint for download management 
-- [Tool available to convert the free data tier TAR files to CSV files](https://github.com/betfair/historic-data-workbook)
 
 ### Supporting resources to help you access this data:
 
@@ -30,6 +29,12 @@ Betfair UK give access to all the historical Stream API data since 2016. It is e
 - [Historic Data Specifications](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf)
 - [API for downloading historic data files](https://historicdata.betfair.com/#/apidocs) (quicker than manually downloading)
 - [Sample code for using the historic data download API](https://github.com/betfair/historicdata)
+
+### Tutorials for working with this data
+
+- [JSON to CSV in Python](/historicData/jsonToCsvTutorial)
+- [Backtesting ratings using historic data in Python](/historicData/backtestingRatingsTutorial)
+- [Automated betting angles: no modelling required](/historicData/automatedBettingAnglesTutorial)
 
 ---
 ## [Historical racing data](https://promo.betfair.com/betfairsp/prices)
@@ -49,16 +54,4 @@ This is an excellent resource if you are interested in racing and like to see ma
     - Winner
 
 ---
-## [Select Australian sports data](https://www.betfair.com.au/hub/tools/betting-tools/betfair-data/)
-
-We provide a range of data on Australian sports in an accessible CSV format. 
-
-- CSV format
-- Select Australian sports including AFL, NRL and Super Rugby
-- All matches 2011 – 2018
-- Market level snapshot, including
-    - Max and min matched prices and volume, pre-play and in-play
-    - Weighted average price
-
----
-If none of these options suit your needs please contact us at bdp@betfair.com.au to discuss other potential options.
+If none of these options suit your needs please contact us at data@betfair.com.au to discuss other potential options.

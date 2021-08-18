@@ -21,6 +21,7 @@ nav:
         - Tutorials:
             - JSON to CSV in Python: historicData/jsonToCsvTutorial.md
             - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
+            - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
         - Historic Data site:
             - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
     - Modelling:
@@ -120,6 +121,8 @@ markdown_extensions:
     - pymdownx.tasklist:
         custom_checkbox: true
     - pymdownx.tilde
+    - pymdownx.superfences
+    - pymdownx.tabbed
 
 # plugins
 plugins:

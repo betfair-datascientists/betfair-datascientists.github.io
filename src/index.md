@@ -31,8 +31,9 @@ We know that automated strategies are only as good as your data. There’s a hug
 
 ### Tutorials
 
-- [JSON to CSV](/historicData/jsonToCsvTutorial)
-- [Backtesting ratings](/historicData/backtestingRatingsTutorial)
+- [JSON to CSV in Python](/historicData/jsonToCsvTutorial)
+- [Backtesting ratings using historic data in Python](/historicData/backtestingRatingsTutorial)
+- [Automated betting angles: no modelling required](/historicData/automatedBettingAnglesTutorial)
 
 ### Other resources
 

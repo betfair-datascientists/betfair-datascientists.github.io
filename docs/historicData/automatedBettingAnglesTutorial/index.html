@@ -2017,7 +2017,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="01-setup">0.1 Setup<a class="anchor-link" href="#0.1-Setup">&#182;</a></h2><p>Once again I'll be presenting the analysis in a jupyter notebook and will be using python as a programming language.</p>
-<p>Some of the data processing code takes a while to execute - that code will be in cells that are commented out - and will require a bit of adjustment to point to places on your computer locally where you want to store the intermediate data files.</p>
+<p>Some of the data processing code takes a while to execute - that code will be in cells that are commented out - and will require a bit of adjustment to point to places on your computer where you want to locally store the intermediate data files.</p>
 <p>You'll also need <code>betfairlightweight</code> which you can install with something like <code>pip install betfairlightweight</code>.</p>
 
 </div>
@@ -2076,10 +2076,10 @@ all of MD as it is not optimized for dense, information rich UIs.
 <li>Backing a greyhound in boxes 1 or 2 in short sprint style races</li>
 <li>Backing a horse pre-race who typically runs at the front of the field and placing an order to lay the same horse if it shortens to some lower price in-play, locking in a profit</li>
 </ul>
-<p>Beyond the complexity of the actual concept what really seperates these angles is evidence. You might have heard TV personalities and betting ads suggest a certain strategy (resembling one of the above) are real-world predictive trends but they rarely are. They are rarely derived from the right historical data or are concluded with the necessary statistical rigour. Most simply formulated their angles off intuition or observing a trend across a small sample of data.</p>
+<p>Beyond the complexity of the actual concept what really seperates these angles is evidence. You might have heard TV personalities and betting ads suggest a certain strategy (resembling one of the above) are real-world predictive trends but they rarely are. They are rarely derived from the right historical data or are concluded without the necessary statistical rigour. Most simply formulated their angles off intuition or observing a trend across a small sample of data.</p>
 <p>There <strong>are</strong> many users on betting exchanges who profit off these angles. In fact, when most people talk about automated or sophisticated exchange betting they are often talking about automating these kind of betting angles, as opposed to betting ratings produced from a sophisticated bottom-up fundemental modelling. That's because profitable fundemental modelling (where your model which arrives at some estimation of fair value from first principles) is very hard.</p>
-<p>The reason this approach is so much easier is that you assume the market odds are right <strong>except</strong> and go from there applying small top-down adjustments for factors that haven't historically been incorporated in the market opinion historically. The challenge lies in finding those factors and making sure you aren't tricking yourself in thinking you've found one that you can profit off in the future.</p>
-<p>Once again this another example of the uses of betfair historical stream data. To get cracking - as always - we need historical odds and the best place to get that is to self serve the historical stream files.</p>
+<p>The reason this approach is so much easier is that you assume the market odds are right <strong>except x</strong> and go from there, applying small top-down adjustments for factors that haven't historically been incorporated in the market opinion. The challenge lies in finding those factors and making sure you aren't tricking yourself in thinking you've found one that you can profit off in the future.</p>
+<p>Once again this is another example of the uses of the Betfair historical stream data. To get cracking - as always - we need historical odds and the best place to get that is to self serve the historical stream files.</p>
 
 </div>
 </div>
@@ -2091,7 +2091,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="03-examples">0.3 Examples<a class="anchor-link" href="#0.3-Examples">&#182;</a></h2><p>I'll go through and end-to-end example of 3 different betting angles on Australian thoroughbred racing. Which will include:</p>
+<h2 id="03-examples">0.3 Examples<a class="anchor-link" href="#0.3-Examples">&#182;</a></h2><p>I'll go through an end-to-end example of 3 different betting angles on Australian thoroughbred racing. Which will include: Which will include:</p>
 <ul>
 <li>Sourcing data</li>
 <li>Assembling data</li>
@@ -2116,7 +2116,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="11-betfair-odds-data">1.1 Betfair Odds Data<a class="anchor-link" href="#1.1-Betfair-Odds-Data">&#182;</a></h3><p>We'll follow a very similar template as other tutorials extracting key information from the betfair stream data.</p>
-<p>It's important to note that given the volume of data you need to handle with these stream files your workflow will probably involve choosing some methods of aggregation / summary that you'll reconsider after your first cut of analysis. Parsing and saving a dataset, using it to test some hypotheses which likely results in more questions that need to be examined by reparsing the stream files in a slightly different way. Your workflow will likely follow something like this diagram.</p>
+<p>It's important to note that given the volume of data you need to handle with these stream files, your workflow will probably involve choosing some methods of aggregation / summary that you'll reconsider after your first cut of analysis. Parsing and saving a dataset, using it to test some hypotheses which likely results in more questions that need to be examined by reparsing the stream files in a slightly different way. Your workflow will likely follow something like this diagram.</p>
 
 </div>
 </div>
@@ -2417,8 +2417,8 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>If you're building a fundemental bottom-up model finding and managing ETL from an approriate data source is a large part of the exercise. If your needs are simpler (for these types of automated strategies for example) there's plenty of good information that's available right inside the betfair API itself.</p>
-<p>The <code>RUNNER_METADATA</code> slot inside the <code>listMarketCatalogue</code> response for example will return a pretty good slice of metadata about the horses racing in upcoming race including but not limited to: the trainer, the jockey, the horses age, and a class rating. The <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/listMarketCatalogue">documentaion for this endpoint</a> will give you the full extent of this what's inside this response.</p>
+<p>If you're building a fundamental bottom-up model, finding and managing ETL from an appropriate data source is a large part of the exercise. If your needs are simpler (for these types of automated strategies for example) there's plenty of good information that's available right inside the betfair API itself.</p>
+<p>The <code>RUNNER_METADATA</code> slot inside the <code>listMarketCatalogue</code> response for example will return a pretty good slice of metadata about the horses racing in upcoming races including but not limited to: the trainer, the jockey, the horses age, and a class rating. The <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/listMarketCatalogue">documentaion for this endpoint</a> will give you the full extent of this what's inside this response.</p>
 <p>Our problem for this exercise is that the historical stream files don't include this <code>RUNNER_METADATA</code> so we weren't able to extract it in the previous step. However, a sneaky workaround is to use an unsuppoerted back-end endpoint, one which Betfair use for <a href="https://www.betfair.com.au/hub/racing-results/">the Hub racing results page</a>.</p>
 <p>These API endpoints are:</p>
 <ul>
@@ -2430,7 +2430,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="extract-betfair-racing-markets-for-a-given-date">Extract Betfair Racing Markets for a Given Date<a class="anchor-link" href="#Extract-Betfair-Racing-Markets-for-a-Given-Date">&#182;</a></h3><p>First we'll hit the <code>https://apigateway.betfair.com.au/hub/racecard</code> enpoint to get the racing markets available on Betfair for a given day in the past</p>
+<h3 id="extract-betfair-racing-markets-for-a-given-date">Extract Betfair Racing Markets for a Given Date<a class="anchor-link" href="#Extract-Betfair-Racing-Markets-for-a-Given-Date">&#182;</a></h3><p>First we'll hit the <code>https://apigateway.betfair.com.au/hub/racecard</code> endpoint to get the racing markets available on Betfair for a given day in the past:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -2477,7 +2477,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h4 id="extract-key-race-metadata">Extract Key Race Metadata<a class="anchor-link" href="#Extract-Key-Race-Metadata">&#182;</a></h4><p>Then (for one of these <code>market_id</code>s) we'll hit the <code>https://apigateway.betfair.com.au/hub/raceevent/</code> enpoint to get some key runner metadata for the runners in this race. It's important to note that this information is available through the Betfair API so we won't need to go to a secondary datasource to find it at the point of implementation, this would add a large layer of complexity to the project including things like string cleaning and matching.</p>
+<h4 id="extract-key-race-metadata">Extract Key Race Metadata<a class="anchor-link" href="#Extract-Key-Race-Metadata">&#182;</a></h4><p>Then (for one of these <code>market_id</code>s) we'll hit the <code>https://apigateway.betfair.com.au/hub/raceevent/</code> enpdoint to get some key runner metadata for the runners in this race. It's important to note that this information is available through the Betfair API so we won't need to go to a secondary datasource to find it at the point of implementation, this would add a large layer of complexity to the project including things like string cleaning and matching.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -3391,7 +3391,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="233-statistically-measuring-profit">2.3.3 Statistically Measuring Profit<a class="anchor-link" href="#2.3.3-Statistically-Measuring-Profit">&#182;</a></h3><p>Betting outcomes, and the randomness associated with them, at their core are the types of things the discipline of statistics was created to solve. Concepts like sample size, expected value, and variance are terms you might hear from sophisticated (and some novice) bettors and they are all drawn from the field of statistics. Though you don't need to become a PHD of statistics every little extra technique or concept you can glean from the field will help your betting if you want it to.</p>
-<p>To illustrate with an example let's group by net backing profit on turnover for a horse to see which horses have the highest historical back POT</p>
+<p>To illustrate with an example, let's group by net backing profit on turnover for a horse to see which horses have the highest historical back POT:</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -3492,9 +3492,9 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>So back Little Vulpine whenever it races? We all know intuitively what's wrong with that betting angle - it's raced one time in our sample and happened to win at a bsp of 270 odd. Sample size and variance are dominating this simple measure of historical POT.</p>
+<p>So back Little Vulpine whenever it races? We all know intuitively what's wrong with that betting angle - it's raced one time in our sample and happened to win at a bsp of 270. Sample size and variance are dominating this simple measure of historical POT.</p>
 <p>Instead what we can do is treat the historical betting outcomes as a random variable and apply some statistical tests of signifance to them. A more detailed discussion of this particular test can be found <a href="https://www.football-data.co.uk/blog/testing_reliabiity_of_t-test_approximation_for_testing_betting_recrods.php">here</a> as can an excel calculator you can input your stats into. I'll simply translate the test to python to enable it's use when formulating our betting angles.</p>
-<p>The TLDR version of this test is that it based on your bet sample size, your profit, and the average odds across that sample of bets, the calculation produces a p value which estimates the probability your profit (or loss) happened by pure chance (where chance would be an expectation of breakeven betting simply at fair odds).</p>
+<p>The TLDR version of this test is that; based on your bet sample size, your profit, and the average odds across that sample of bets, the calculation produces a p value which estimates the probability your profit (or loss) happened by pure chance (where chance would be an expectation of breakeven betting simply at fair odds).</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -3525,7 +3525,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>That doesn't mean we can formulate our angles and use this metric (and this metric alone) to validate their profitability. You'll find that it will give you misleading results in some instances. As analysts we're also prone to finding infinite different ways to unintentionally overfit our analysis as you might have heard elsewhere described as the concept of p-hacking, but it does give us give us an extra filter to cast over our hypotheses before really validating them with out-of-sample testing.</p>
+<p>That doesn't mean we can formulate our angles and use this metric (and this metric alone) to validate their profitability. You'll find that it will give you misleading results in some instances. As analysts we're also prone to finding infinite different ways to unintentionally overfit our analysis as you might have heard elsewhere described as the concept of p-hacking, but it does give us an extra filter to cast over our hypotheses before really validating them with out-of-sample testing.</p>
 
 </div>
 </div>
@@ -4610,7 +4610,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Next, let's split the sample of each jockey's races between two scenarios a) the market firmed for their horse b) their horse drifted in the market in the last 5 minutes of trading.</p>
-<p>We then calculate the same summary table of inputs (profit, average odds etc) for backing these jockeys at the BSP given some market more. We can then feed these metrics into our statistical significance test to get an idea of the profitability of each combination.</p>
+<p>We then calculate the same summary table of inputs (profit, average odds etc) for backing these jockeys at the BSP given some market move. We can then feed these metrics into our statistical significance test to get an idea of the profitability of each combination.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -4788,7 +4788,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>You can think of each of these scenarios representing different cases. If profitable:</p>
 <ul>
-<li>Under market support this could indicate the jockey is being correctly favoured to maximise their horse's chances of winning the race or perhaps even some kind of insider knowledge coming out of the certain stables </li>
+<li>Under market support this could indicate the jockey is being correctly favoured to maximise their horse's chances of winning the race or perhaps even some kind of insider knowledge coming out of certain stables</li>
 <li>Under market drift this could indicate some incorrect skepticism about the jockeys ability and thus their horse has been overlayed</li>
 </ul>
 <p>Either way we're interested to see how these combinations would perform paper trading in our out of sample set</p>
@@ -4987,7 +4987,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="26-angle-3-backing-to-lay">2.6 Angle 3: Backing To Lay<a class="anchor-link" href="#2.6-Angle-3:-Backing-To-Lay">&#182;</a></h3><p>Now let's try to use some of our inplay price data we extracted from the stream files. I'm interested in testing some back-to-lay strategies where a horse is backed preplay with the intention to get some tradeout lay order filled during the race. The types of scenarios where this could be conceivably profitble would be on certain kinds of horses or jockeys that show promise or strength early in the race but generally fade late and might not convert those early advantages often.</p>
+<h3 id="26-angle-3-backing-to-lay">2.6 Angle 3: Backing To Lay<a class="anchor-link" href="#2.6-Angle-3:-Backing-To-Lay">&#182;</a></h3><p>Now let's try to use some of our inplay price data we extracted from the stream files. I'm interested in testing some back-to-lay strategies where a horse is backed preplay with the intention to get some tradeout lay order filled during the race. The types of scenarios where this could be conceivably profitable would be on certain kinds of horses or jockeys that show promise or strength early in the race but generally fade late and might not convert those early advantages often.</p>
 <p>Things we could look at here are:</p>
 <ul>
 <li>Horses that typically trade lower than their preplay odds but don't win often</li>
@@ -5164,7 +5164,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 <li>Horse trades at &lt;50% of it's BSP but loses (our lay bet gets filled) we're breakeven for the market</li>
 <li>Horse trades wins (our lay bet get's filled) and we profit on our back bet and lose our lay bet so our profit is: <code>(BSP-1) - (0.5*BSP-1)</code></li>
 </ul>
-<p>Let's run this backtest on for the top 20 jockeys in our tradeOutIndex dataframe to see how we'd performn on the train and test set.</p>
+<p>Let's run this backtest on the top 20 jockeys in our tradeOutIndex dataframe to see how we'd perform on the train and test set.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -5350,7 +5350,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="30-conclusion">3.0 Conclusion<a class="anchor-link" href="#3.0-Conclusion">&#182;</a></h2><p>This analysis is just a sketch. Heopfully it helps inspire you to think about what kinds of betting angles you could test for a sport or racing code you're interested in. It should give you a framework for thinking about this kind of automated betting, and how it differs from fundemental modelling. It should also give you a few tricks for coming up with your own angles and testing them with the rigour needed to have any realistic expectations of profit. Most of the betting angles you're sold are faulty or have long evaporated from the market by people long before you even knew the rules of the sport. You'll need to be creative and scientific to create your own profitable betting angles, but it's certainly worth it to try.</p>
+<h2 id="30-conclusion">3.0 Conclusion<a class="anchor-link" href="#3.0-Conclusion">&#182;</a></h2><p>This analysis is just a sketch. Hopefully it helps inspire you to think about what kinds of betting angles you could test for a sport or racing code you're interested in. It should give you a framework for thinking about this kind of automated betting, and how it differs from fundamental modelling. It should also give you a few tricks for coming up with your own angles and testing them with the rigour needed to have any realistic expectations of profit. Most of the betting angles you're sold are faulty or have long evaporated from the market by people long before you even knew the rules of the sport. You'll need to be creative and scientific to create your own profitable betting angles, but it's certainly worth it to try.</p>
 
 </div>
 </div>

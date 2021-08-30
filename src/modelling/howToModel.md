@@ -54,7 +54,7 @@ We've also shared a [R repo for connecting with our API](/../api/apiRtutorial), 
 
 We’ve put together some articles to give you an introduction to some of the different approaches you can take to modelling data, but again there are also lots of resources available online. Here are some good places to start:
 
-- Work through the modelling tutorials we've put together using [AFL](/modelling/AFLmodelPart1) and [soccer](/modelling/EPLmodelPart1) data
+- Work through the modelling tutorials we've put together using [AFL](/modelling/AFLmodellingPython/) and [soccer](/modelling/soccerEloTutorialR/) data
 - This [Introduction to Tennis Modelling](https://www.betfair.com.au/hub/better-betting/betting-strategies/tennis/an-introduction-to-tennis-modelling/) gives a good overview of ranking-based models, regression-based models and point-based models
 - How we used [ELO](https://www.betfair.com.au/hub/how-to-use-elo-to-model-the-world-cup/) and [machine learning](https://www.betfair.com.au/hub/how-to-use-machine-learning-for-the-world-cup-datathon/) as different approaches to modelling the recent World Cup
 

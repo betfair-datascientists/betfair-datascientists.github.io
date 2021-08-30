@@ -1,5 +1,10 @@
 # Backtesting wagering models with Betfair JSON stream data
 ---
+### Workshop
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0UfPdeghuN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
 This tutorial was written by [Tom Bishop](https://github.com/TMBish) and was [originally published on Github](https://github.com/TMBish/bfStreamTutorials/blob/main/01-hub-backtesting.ipynb). It is shared here with his permission. 
 
 This tutorial follows on logically from the [JSON to CSV tutorial](https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/) we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. 
@@ -484,7 +489,7 @@ def run_stream_parsing():
 
 - Because this process is very slow you might want to save much more information than you think you need
 - For example I currently think I only want the best back and lay prices at t-3 mins before the off but I've saved the top 3 boxes in the available to back and lay ladders as dictionary strings
-- From these ladders I can retroactively calculate not only just the best back and lay prices but also WAP prices and also sizes at those boxes which I could use for much more accurate backtesting if I wanted to later without having can across the entire stream files again
+- From these ladders I can retroactively calculate not only just the best back and lay prices but also WAP prices and also sizes at those boxes which I could use for much more accurate backtesting if I wanted to later without having to scan across the entire stream files again
 - I could easily save the entire open and traded orders ladders in the same way amongst many other ways of retaining more of the data for post-processing analysis
 
 ![Stream Ladder Columns](./img/ladderColumns.png)
@@ -1509,11 +1514,6 @@ metricSummary.sort_values(by=['pot'], ascending=False).head(4)
 betsFilters = bets.query('((ltp-model_odds) / ltp) > {}  | ((model_odds-ltp) / ltp) > {}'.format(0.3, 0.3))
 bet_eval_chart_cPl(betsFilters)
 ```
-
----
-### Workshop
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0UfPdeghuN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
 ### Disclaimer

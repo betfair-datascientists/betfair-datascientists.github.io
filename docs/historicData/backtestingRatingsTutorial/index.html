@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.0.4">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-3.0.4">
     
     
       
@@ -88,7 +88,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-header-nav__button md-logo">
+        <a href="https://betfair-datascientists.github.io/" title="The Automation Hub" class="md-header-nav__button md-logo">
           
             <img src="../../img/logo.svg" height="24">
           
@@ -221,7 +221,7 @@
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
   <label class="md-nav__title md-nav__title--site" for="__drawer">
-    <a href="https://betfair-datascientists.github.io" title="The Automation Hub" class="md-nav__button md-logo">
+    <a href="https://betfair-datascientists.github.io/" title="The Automation Hub" class="md-nav__button md-logo">
       
         <img src="../../img/logo.svg" width="48" height="48">
       
@@ -462,6 +462,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#workshop" title="Workshop" class="md-nav__link">
+    Workshop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-up" title="Set up" class="md-nav__link">
     Set up
   </a>
@@ -630,13 +637,6 @@
           <li class="md-nav__item">
   <a href="#complete-code" title="Complete code" class="md-nav__link">
     Complete code
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#workshop" title="Workshop" class="md-nav__link">
-    Workshop
   </a>
   
 </li>
@@ -1295,6 +1295,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#workshop" title="Workshop" class="md-nav__link">
+    Workshop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#set-up" title="Set up" class="md-nav__link">
     Set up
   </a>
@@ -1468,13 +1475,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#workshop" title="Workshop" class="md-nav__link">
-    Workshop
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
     Disclaimer
   </a>
@@ -1504,6 +1504,10 @@
                 
                 
                 <h1 id="backtesting-wagering-models-with-betfair-json-stream-data">Backtesting wagering models with Betfair JSON stream data<a class="headerlink" href="#backtesting-wagering-models-with-betfair-json-stream-data" title="Permanent link">&para;</a></h1>
+<hr />
+<h3 id="workshop">Workshop<a class="headerlink" href="#workshop" title="Permanent link">&para;</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0UfPdeghuN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 <hr />
 <p>This tutorial was written by <a href="https://github.com/TMBish">Tom Bishop</a> and was <a href="https://github.com/TMBish/bfStreamTutorials/blob/main/01-hub-backtesting.ipynb">originally published on Github</a>. It is shared here with his permission. </p>
 <p>This tutorial follows on logically from the <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/">JSON to CSV tutorial</a> we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. </p>
@@ -1991,7 +1995,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <ul>
 <li>Because this process is very slow you might want to save much more information than you think you need</li>
 <li>For example I currently think I only want the best back and lay prices at t-3 mins before the off but I've saved the top 3 boxes in the available to back and lay ladders as dictionary strings</li>
-<li>From these ladders I can retroactively calculate not only just the best back and lay prices but also WAP prices and also sizes at those boxes which I could use for much more accurate backtesting if I wanted to later without having can across the entire stream files again</li>
+<li>From these ladders I can retroactively calculate not only just the best back and lay prices but also WAP prices and also sizes at those boxes which I could use for much more accurate backtesting if I wanted to later without having to scan across the entire stream files again</li>
 <li>I could easily save the entire open and traded orders ladders in the same way amongst many other ways of retaining more of the data for post-processing analysis</li>
 </ul>
 <p><img alt="Stream Ladder Columns" src="../img/ladderColumns.png" /></p>
@@ -3549,10 +3553,6 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 <span class="n">bet_eval_chart_cPl</span><span class="p">(</span><span class="n">betsFilters</span><span class="p">)</span>
 </code></pre></div>
 <hr />
-<h3 id="workshop">Workshop<a class="headerlink" href="#workshop" title="Permanent link">&para;</a></h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0UfPdeghuN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-<hr />
 <h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h3>
 <p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
                 
@@ -3652,7 +3652,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
     
       <script src="../../assets/javascripts/application.7a3fd36a.js"></script>
       
-      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.2.2",url:{base:"../.."}})</script>
       
     
     

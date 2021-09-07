@@ -426,7 +426,7 @@ Takes in a number and returns a text representation of it, rounding to two decim
 ``` Python
 # rounding to 2 decimal places or returning '' if blank
 def as_str(v) -> str:
-    return '%.2f' % v if type(v) is float else v if type(v) is str else ''
+    return '%.2f' % v if (type(v) is float) or (type(v) is int) else v if type(v) is str else ''
 ```
 
 **Min value greater than 0**
@@ -518,7 +518,7 @@ def load_markets(file_paths: List[str]):
 
 # rounding to 2 decimal places or returning '' if blank
 def as_str(v) -> str:
-    return '%.2f' % v if type(v) is float else v if type(v) is str else ''
+    return '%.2f' % v if (type(v) is float) or (type(v) is int) else v if type(v) is str else ''
 
 # returning smaller of two numbers where min not 0
 def min_gr0(a: float, b: float) -> float:

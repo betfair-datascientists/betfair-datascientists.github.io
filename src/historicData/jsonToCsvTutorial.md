@@ -232,7 +232,7 @@ postplay_traded = [ (
     # calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (BSP - 1))        
     min_gr0(
         next((pv.size for pv in r.sp.back_stake_taken if pv.size > 0), 0),
-        next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp if type(r.sp.actual_sp) is float else 0) - 1)
+        next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp if (type(r.sp.actual_sp) is float) or (type(r.sp.actual_sp) is int) else 0) - 1)
     )
 ) for r in postplay_market.runners ]
 ```
@@ -635,7 +635,7 @@ with open("output.csv", "w") as output:
             # calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (BSP - 1))        
             min_gr0(
                 next((pv.size for pv in r.sp.back_stake_taken if pv.size > 0), 0),
-                next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp if type(r.sp.actual_sp) is float else 0) - 1)
+                next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp if (type(r.sp.actual_sp) is float) or (type(r.sp.actual_sp) is int) else 0) - 1)
             )
         ) for r in postplay_market.runners ]
         

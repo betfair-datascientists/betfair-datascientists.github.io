@@ -54,7 +54,7 @@ import datetime
 import json
 
 # Change this certs path to wherever you're storing your certificates
-certs_path = r'C:\Users\wardj\Desktop\certs'
+certs_path = r'C:\Users\[user]\Desktop\certs'
 
 # Change these login details to your own
 my_username = "your_username"

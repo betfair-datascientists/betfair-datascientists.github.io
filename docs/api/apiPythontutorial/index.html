@@ -1497,7 +1497,7 @@
 <h2 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h2>
 <p>Here are some other useful links for accessing our API:</p>
 <ul>
-<li><a href="(../../api/apiappkey)">How to create an API app key</a></li>
+<li><a href="../../api/apiappkey">How to create an API app key</a></li>
 <li><a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni">Developer Docs</a> - the official dev docs for Betfair's API</li>
 <li><a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a> - Useful for exploring what the API has to offer</li>
 <li><a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/">Account API Visualiser</a></li>
@@ -1708,7 +1708,7 @@
 <p>If we just wanted to get the event id for horse racing, we could use the filter function from <code>betfairlightweight</code> as shown in the examples and below.</p>
 <p><strong><code>In [50]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Filter for just horse racing</span>
-<span class="n">horse_racing_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">text_query</span><span class="o">=</span><span class="s1">&#39;Horse Racing&#39;</span><span class="p">)</span>
+<span class="n">horse_racing_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">text_query</span><span class="o">=</span><span class="s1">&#39;Horse Racing&#39;</span><span class="p">)</span>
 
 <span class="c1"># This returns a list</span>
 <span class="n">horse_racing_event_type</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_event_types</span><span class="p">(</span>
@@ -1720,7 +1720,7 @@
 <span class="n">horse_racing_event_type_id</span> <span class="o">=</span> <span class="n">horse_racing_event_type</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">id</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The event type id for horse racing is </span><span class="si">{</span><span class="n">horse_racing_event_type_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="n">The</span> <span class="n">event</span> <span class="nb">type</span> <span class="nb">id</span> <span class="k">for</span> <span class="n">horse</span> <span class="n">racing</span> <span class="ow">is</span> <span class="mi">7</span>
+<span class="c1"># The event type id for horse racing is 7</span>
 </code></pre></div>
 <h3 id="get-competition-ids">Get Competition IDs<a class="headerlink" href="#get-competition-ids" title="Permanent link">&para;</a></h3>
 <p>Sometimes you may want to get markets based on the competition. An example may be the Brownlow medal, or the EPL. Let's have a look at all the soccer competitions over the next week and filter to only get the EPL Competition ID.</p>
@@ -1729,7 +1729,7 @@
 <span class="n">datetime_in_a_week</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%TZ&quot;</span><span class="p">)</span>
 
 <span class="c1"># Create a competition filter</span>
-<span class="n">competition_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
+<span class="n">competition_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
     <span class="n">event_type_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="c1"># Soccer&#39;s event type id is 1</span>
     <span class="n">market_start_time</span><span class="o">=</span><span class="p">{</span>
         <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="n">datetime_in_a_week</span>
@@ -1754,7 +1754,7 @@
 <table>
 <thead>
 <tr>
-<th>#</th>
+<th></th>
 <th>Competition</th>
 <th>ID</th>
 </tr>
@@ -1771,7 +1771,7 @@
 <p>Say you want to get all the upcoming events for Thoroughbreads for the next 24 hours. We will use the <code>listEvents</code> operation for this. First, as before, we define a market filter, and then using the betting method from our trading object which we defined earlier.</p>
 <p><strong><code>In [207]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Define a market filter</span>
-<span class="n">thoroughbreds_event_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
+<span class="n">thoroughbreds_event_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
     <span class="n">event_type_ids</span><span class="o">=</span><span class="p">[</span><span class="n">horse_racing_event_type_id</span><span class="p">],</span>
     <span class="n">market_countries</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">],</span>
     <span class="n">market_start_time</span><span class="o">=</span><span class="p">{</span>
@@ -1810,7 +1810,7 @@
 <table>
 <thead>
 <tr>
-<th>#</th>
+<th></th>
 <th>Event Name</th>
 <th>Event ID</th>
 <th>Event Venue</th>
@@ -1967,7 +1967,7 @@
 <p>Say we want to know what market types a certain event is offering. To do this, we use the <code>listMarketTypes</code> operation. Let's take the Moonee Valley event from above (ID: 28971066). As this is a horse race we would expect that it would have Win and Place markets.</p>
 <p><strong><code>In [209]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Define a market filter</span>
-<span class="n">market_types_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
+<span class="n">market_types_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
 
 <span class="c1"># Request market types</span>
 <span class="n">market_types</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_types</span><span class="p">(</span>
@@ -2010,7 +2010,7 @@
 <p>For a more comprehensive understanding of the options for filters and what we can request, please have a look at the <a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a>. The options listed under market filter should be put into a filter, whilst the others should be arguments to the relevant operation function in <code>betfairlightweight</code>.</p>
 <p>For example, if we want all the markets for Moonee Valley, we should use the following filters and arguments.</p>
 <p><strong><code>In [210]:</code></strong></p>
-<div class="highlight"><pre><span></span><code><span class="n">market_catalogue_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="n">market_catalogue_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
 
 <span class="n">market_catalogues</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_catalogue</span><span class="p">(</span>
     <span class="nb">filter</span><span class="o">=</span><span class="n">market_catalogue_filter</span><span class="p">,</span>
@@ -2031,6 +2031,7 @@
 <table>
 <thead>
 <tr>
+<th></th>
 <th>Market Name</th>
 <th>Market ID</th>
 <th>Total Matched</th>
@@ -2041,121 +2042,145 @@
 <td>0</td>
 <td>4 TBP</td>
 <td>1.150090094</td>
+<td>0.000000</td>
 </tr>
 <tr>
 <td>1</td>
 <td>To Be Placed</td>
 <td>1.150090092</td>
+<td>0.000000</td>
 </tr>
 <tr>
 <td>2</td>
 <td>R1 1000m 3yo</td>
 <td>1.150090091</td>
+<td>2250.188360</td>
 </tr>
 <tr>
 <td>3</td>
 <td>4 TBP</td>
 <td>1.150090101</td>
+<td>0.000000</td>
 </tr>
 <tr>
 <td>4</td>
 <td>To Be Placed</td>
 <td>1.150090099</td>
+<td>141.775816</td>
 </tr>
 <tr>
 <td>5</td>
 <td>R2 2040m Hcap</td>
 <td>1.150090098</td>
+<td>1093.481760</td>
 </tr>
 <tr>
 <td>6</td>
 <td>To Be Placed</td>
 <td>1.150090106</td>
+<td>0.000000</td>
 </tr>
 <tr>
 <td>7</td>
 <td>R3 1500m Hcap</td>
 <td>1.150090105</td>
+<td>1499.642480</td>
 </tr>
 <tr>
 <td>8</td>
 <td>4 TBP</td>
 <td>1.150090108</td>
+<td>0.000000</td>
 </tr>
 <tr>
 <td>9</td>
 <td>To Be Placed</td>
 <td>1.150090113</td>
+<td>19.855136</td>
 </tr>
 <tr>
 <td>10</td>
 <td>R4 2040m Hcap</td>
 <td>1.150090112</td>
+<td>588.190288</td>
 </tr>
 <tr>
 <td>11</td>
 <td>4 TBP</td>
 <td>1.150090115</td>
+<td>0.000000</td>
 </tr>
 <tr>
 <td>12</td>
 <td>4 TBP</td>
 <td>1.150090122</td>
+<td>0.000000</td>
 </tr>
 <tr>
 <td>13</td>
 <td>R5 955m Hcap</td>
 <td>1.150090119</td>
+<td>545.762616</td>
 </tr>
 <tr>
 <td>14</td>
 <td>To Be Placed</td>
 <td>1.150090120</td>
+<td>91.920584</td>
 </tr>
 <tr>
 <td>15</td>
 <td>4 TBP</td>
 <td>1.150090129</td>
+<td>48.623344</td>
 </tr>
 <tr>
 <td>16</td>
 <td>To Be Placed</td>
 <td>1.150090127</td>
+<td>65.616152</td>
 </tr>
 <tr>
 <td>17</td>
 <td>R6 1200m Hcap</td>
 <td>1.150090126</td>
+<td>506.342200</td>
 </tr>
 <tr>
 <td>18</td>
 <td>R7 1200m Grp1</td>
 <td>1.150038686</td>
+<td>34480.834976</td>
 </tr>
 <tr>
 <td>19</td>
 <td>4 TBP</td>
 <td>1.150038689</td>
+<td>701.052968</td>
 </tr>
 <tr>
 <td>20</td>
 <td>To Be Placed</td>
 <td>1.150038687</td>
+<td>1504.823656</td>
 </tr>
 <tr>
 <td>21</td>
 <td>R8 1500m Hcap</td>
 <td>1.150090140</td>
+<td>232.971760</td>
 </tr>
 <tr>
 <td>22</td>
 <td>4 TBP</td>
 <td>1.150090143</td>
+<td>0.000000</td>
 </tr>
 <tr>
 <td>23</td>
 <td>To Be Placed</td>
 <td>1.150090141</td>
+<td>73.768352</td>
 </tr>
 </tbody>
 </table>
@@ -2234,7 +2259,7 @@
 <table>
 <thead>
 <tr>
-<th>#</th>
+<th></th>
 <th>Selection ID</th>
 <th>Best Back Price</th>
 <th>Best Back Size</th>
@@ -2460,14 +2485,14 @@
 </code></pre></div>
 <p><strong><code>In [276]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Define a limit order filter</span>
-<span class="n">limit_order_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">limit_order</span><span class="p">(</span>
+<span class="n">limit_order_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">limit_order</span><span class="p">(</span>
     <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
     <span class="n">price</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
     <span class="n">persistence_type</span><span class="o">=</span><span class="s1">&#39;LAPSE&#39;</span>
 <span class="p">)</span>
 
 <span class="c1"># Define an instructions filter</span>
-<span class="n">instructions_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">place_instruction</span><span class="p">(</span>
+<span class="n">instructions_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">place_instruction</span><span class="p">(</span>
     <span class="n">selection_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">fav_selection_id</span><span class="p">),</span>
     <span class="n">order_type</span><span class="o">=</span><span class="s2">&quot;LIMIT&quot;</span><span class="p">,</span>
     <span class="n">side</span><span class="o">=</span><span class="s2">&quot;BACK&quot;</span><span class="p">,</span>
@@ -2567,7 +2592,7 @@
 <table>
 <thead>
 <tr>
-<th>#</th>
+<th></th>
 <th>status</th>
 <th>size_cancelled</th>
 <th>cancelled_date</th>
@@ -2609,7 +2634,7 @@ Alternatively, we can use the <code>getAccountStatement</code> operation from th
 <table>
 <thead>
 <tr>
-<th>#</th>
+<th></th>
 <th>betCount</th>
 <th>betId</th>
 <th>betOutcome</th>
@@ -2697,7 +2722,7 @@ Alternatively, we can use the <code>getAccountStatement</code> operation from th
 <table>
 <thead>
 <tr>
-<th>#</th>
+<th></th>
 <th>ifWin</th>
 <th>selectionId</th>
 <th>marketId</th>
@@ -2753,7 +2778,7 @@ Alternatively, we can use the <code>getAccountStatement</code> operation from th
 <p><strong><code>In [428]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Define a date filter - get all bets for the past 4 days</span>
 <span class="n">four_days_ago</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%TZ&quot;</span><span class="p">)</span>
-<span class="n">acct_statement_date_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">time_range</span><span class="p">(</span><span class="n">from_</span><span class="o">=</span><span class="n">four_days_ago</span><span class="p">)</span>
+<span class="n">acct_statement_date_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">time_range</span><span class="p">(</span><span class="n">from_</span><span class="o">=</span><span class="n">four_days_ago</span><span class="p">)</span>
 
 <span class="c1"># Request account statement</span>
 <span class="n">account_statement</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">get_account_statement</span><span class="p">(</span><span class="n">item_date_range</span><span class="o">=</span><span class="n">acct_statement_date_filter</span><span class="p">)</span>
@@ -2767,7 +2792,7 @@ Alternatively, we can use the <code>getAccountStatement</code> operation from th
 <table>
 <thead>
 <tr>
-<th>#</th>
+<th></th>
 <th>amount</th>
 <th>balance</th>
 <th>itemClass</th>
@@ -2824,7 +2849,7 @@ Alternatively, we can use the <code>getAccountStatement</code> operation from th
 <table>
 <thead>
 <tr>
-<th>#</th>
+<th></th>
 <th>avgPrice</th>
 <th>betCategoryType</th>
 <th>betSize</th>

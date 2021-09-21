@@ -14,7 +14,7 @@ This tutorial will also assume that you have a basic understanding of what an AP
 
 Here are some other useful links for accessing our API:
 
-- [How to create an API app key]((../../api/apiappkey))
+- [How to create an API app key](../../api/apiappkey)
 - [Developer Docs](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni) - the official dev docs for Betfair's API
 - [Sports API Visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) - Useful for exploring what the API has to offer
 - [Account API Visualiser](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/)
@@ -156,7 +156,7 @@ If we just wanted to get the event id for horse racing, we could use the filter 
 
 ``` python
 # Filter for just horse racing
-horse_racing_filter = `betfairlightweight`.filters.market_filter(text_query='Horse Racing')
+horse_racing_filter = betfairlightweight.filters.market_filter(text_query='Horse Racing')
 
 # This returns a list
 horse_racing_event_type = trading.betting.list_event_types(
@@ -168,7 +168,7 @@ horse_racing_event_type = horse_racing_event_type[0]
 horse_racing_event_type_id = horse_racing_event_type.event_type.id
 print(f"The event type id for horse racing is {horse_racing_event_type_id}")
 
-The event type id for horse racing is 7
+# The event type id for horse racing is 7
 ```
 
 ### Get Competition IDs
@@ -182,7 +182,7 @@ Sometimes you may want to get markets based on the competition. An example may b
 datetime_in_a_week = (datetime.datetime.utcnow() + datetime.timedelta(weeks=1)).strftime("%Y-%m-%dT%TZ")
 
 # Create a competition filter
-competition_filter = `betfairlightweight`.filters.market_filter(
+competition_filter = betfairlightweight.filters.market_filter(
     event_type_ids=[1], # Soccer's event type id is 1
     market_start_time={
         'to': datetime_in_a_week
@@ -209,7 +209,7 @@ soccer_competitions[soccer_competitions.Competition.str.contains('English Premie
 
 **`Out[94]:`**
 
-# | Competition	| ID
+| | Competition	| ID
 ---|-----------|-------
 116	| English Premier League	| 10932509
 
@@ -221,7 +221,7 @@ Say you want to get all the upcoming events for Thoroughbreads for the next 24 h
 
 ``` python
 # Define a market filter
-thoroughbreds_event_filter = `betfairlightweight`.filters.market_filter(
+thoroughbreds_event_filter = betfairlightweight.filters.market_filter(
     event_type_ids=[horse_racing_event_type_id],
     market_countries=['AU'],
     market_start_time={
@@ -265,7 +265,7 @@ aus_thoroughbred_events_today
 
 **`Out[208]:`**
 
-# | Event Name	| Event ID	| Event Venue	| Country Code	| Time Zone	| Open Date	| Market Count
+| | Event Name	| Event ID	| Event Venue	| Country Code	| Time Zone	| Open Date	| Market Count
 ---|---|---|---|---|---|---|---
 0	| MVal (AUS) 26th Oct	| 28971066	| Moonee Valley	| AU	| Australia/Sydney	| 2018-10-26 07:30:00	| 24
 1	| Newc (AUS) 26th Oct	| 28974559	| Newcastle	| AU	| Australia/Sydney	| 2018-10-26 07:07:00	| 20
@@ -290,7 +290,7 @@ Say we want to know what market types a certain event is offering. To do this, w
 
 ``` python
 # Define a market filter
-market_types_filter = `betfairlightweight`.filters.market_filter(event_ids=['28971066'])
+market_types_filter = betfairlightweight.filters.market_filter(event_ids=['28971066'])
 
 # Request market types
 market_types = trading.betting.list_market_types(
@@ -326,7 +326,7 @@ For example, if we want all the markets for Moonee Valley, we should use the fol
 **`In [210]:`**
 
 ``` python
-market_catalogue_filter = `betfairlightweight`.filters.market_filter(event_ids=['28971066'])
+market_catalogue_filter = betfairlightweight.filters.market_filter(event_ids=['28971066'])
 
 market_catalogues = trading.betting.list_market_catalogue(
     filter=market_catalogue_filter,
@@ -346,8 +346,8 @@ market_types_mooney_valley
 
 **`Out[210]:`**
 
-Market Name	| Market ID	| Total Matched
----|---|---
+| | Market Name	| Market ID	| Total Matched
+---|---|---|---
 0	| 4 TBP	| 1.150090094	| 0.000000
 1	| To Be Placed	| 1.150090092	| 0.000000
 2	| R1 1000m 3yo	| 1.150090091	| 2250.188360
@@ -454,7 +454,7 @@ runners_df
 
 **`Out[213]:`**
 
-# | Selection ID	| Best Back Price	| Best Back Size	| Best Lay Price	| Best Lay Size	| Last Price Traded	| Total Matched	| Status	| Removal | Date	| Adjustment Factor
+| | Selection ID	| Best Back Price	| Best Back Size	| Best Lay Price	| Best Lay Size	| Last Price Traded	| Total Matched	| Status	| Removal | Date	| Adjustment Factor
 ---|---|---|---|---|---|---|---|---|---|---|---
 0	| 16905731	| 12.0	| 65.54	| 13.0	| 33.09	| 12.0	| 1226.67	| ACTIVE	| None	| 8.333
 1	| 15815968	| 6.6	| 96.64	| 7.0	| 9.00	| 6.6	| 5858.61	| ACTIVE	| None	| 14.286
@@ -494,14 +494,14 @@ fav_price = runners_df.loc[runners_df['Best Back Price'].idxmin(), 'Best Back Pr
 
 ``` python
 # Define a limit order filter
-limit_order_filter = `betfairlightweight`.filters.limit_order(
+limit_order_filter = betfairlightweight.filters.limit_order(
     size=5, 
     price=7,
     persistence_type='LAPSE'
 )
 
 # Define an instructions filter
-instructions_filter = `betfairlightweight`.filters.place_instruction(
+instructions_filter = betfairlightweight.filters.place_instruction(
     selection_id=str(fav_selection_id),
     order_type="LIMIT",
     side="BACK",
@@ -628,7 +628,7 @@ pd.Series(cancelled_order.cancel_instruction_reports[0].__dict__).to_frame().T
 
 **`Out[328]:`**
 
-# | status	| size_cancelled	| cancelled_date	| instruction	| error_code
+| | status	| size_cancelled	| cancelled_date	| instruction	| error_code
 ---|---|---|---|---|---
 0	| SUCCESS	| 5	| 2018-10-26 06:01:26	| betfairlightweight.resources.bettingresources...	| None
 
@@ -661,7 +661,7 @@ pd.DataFrame(cleared_orders._data['clearedOrders'])
 
 **`Out[371]:`**
 
-# | betCount	| betId	| betOutcome	| eventId	| eventTypeId	| handicap	| lastMatchedDate	| marketId	| orderType	| persistenceType	| placedDate	| priceMatched	| priceReduced	| priceRequested	| profit	| selectionId	| settledDate	| side	| sizeSettled
+| | betCount	| betId	| betOutcome	| eventId	| eventTypeId	| handicap	| lastMatchedDate	| marketId	| orderType	| persistenceType	| placedDate	| priceMatched	| priceReduced	| priceRequested	| profit	| selectionId	| settledDate	| side	| sizeSettled
 ---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
 0	| 1	| 142383373022	| LOST	| 28971066	| 7	| 0.0	| 2018-10-26T10:31:53.000Z	| 1.150038686	| MARKET_ON_CLOSE	| LAPSE	| 2018-10-26T00:12:03.000Z	| 5.74	| False	| 5.74	| -5.0	| 21283271	| 2018-10-26T10:34:39.000Z	| BACK	| 5.0
 1	| 1	| 142383570640	| WON	| 28971066	| 7	| 0.0	| 2018-10-26T00:16:32.000Z	| 1.150038686	| LIMIT	| LAPSE	| 2018-10-26T00:16:31.000Z	| 5.40	| False	| 5.50	| 5.0	| 21283271	| 2018-10-26T10:34:39.000Z	| LAY	| 5.0
@@ -693,7 +693,7 @@ pl_df
 
 **`Out[410]:`**
 
-# | ifWin	| selectionId	| marketId
+| | ifWin	| selectionId	| marketId
 ---|---|---|---
 0	| -5.0	| 10065177	| 1.150318913
 1	| 14.0	| 17029506	| 1.150318913
@@ -712,7 +712,7 @@ Another method is to use the `getAccountStatement`, which provides an overview o
 ``` python
 # Define a date filter - get all bets for the past 4 days
 four_days_ago = (datetime.datetime.utcnow() - datetime.timedelta(days=4)).strftime("%Y-%m-%dT%TZ")
-acct_statement_date_filter = `betfairlightweight`.filters.time_range(from_=four_days_ago)
+acct_statement_date_filter = betfairlightweight.filters.time_range(from_=four_days_ago)
 
 # Request account statement
 account_statement = trading.account.get_account_statement(item_date_range=acct_statement_date_filter)
@@ -728,7 +728,7 @@ recent_transactions
 
 **`Out[450]:`**
 
-# | amount	| balance	| itemClass	| itemClassData	| itemDate	| legacyData	| refId
+| | amount	| balance	| itemClass	| itemClassData	| itemDate	| legacyData	| refId
 ---|---|---|---|---|---|---|---
 0	| -5.0	| 256.74	| UNKNOWN	{'unknownStatementItem': '{"avgPrice":3.8,"bet...	| 2018-10-28T23:14:28.000Z	| {'avgPrice': 3.8, 'betSize': 5.0, 'betType': '...	| 142845441633
 1	| 5.0	| 261.74	| UNKNOWN	| {'unknownStatementItem': '{"avgPrice":5.4,"bet...	| 2018-10-26T10:34:39.000Z	| {'avgPrice': 5.4, 'betSize': 5.0, 'betType': '...	| 142383570640
@@ -752,7 +752,7 @@ class_df
 
 **`Out [471]:`**
 
-# | avgPrice	| betCategoryType	| betSize	| betType	| commissionRate	| eventId	| eventTypeId	| fullMarketName	| grossBetAmount	| marketName	| marketType	| placedDate	| selectionId	| selectionName	| startDate	| transactionId	| transactionType	| winLose
+| | avgPrice	| betCategoryType	| betSize	| betType	| commissionRate	| eventId	| eventTypeId	| fullMarketName	| grossBetAmount	| marketName	| marketType	| placedDate	| selectionId	| selectionName	| startDate	| transactionId	| transactionType	| winLose
 ---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
 0	| 3.80	| M	| 5.0	B	| None	| 150318913	| 7	| USA / TPara (US) 28th Oct/ 16:06 R8 1m Allw Claim	| 0.0	| R8 1m Allw Claim	| O	| 2018-10-28T23:02:28.000Z	| 17029506	| Gato Guapo	| 2018-10-28T23:06:00.000Z	| 0	| ACCOUNT_DEBIT	| RESULT_LOST
 1	| 5.40	| E	| 5.0	| L	| None	| 150038686	| 7	| AUS / MVal (AUS) 26th Oct/ 21:30 R7 1200m Grp1	| 0.0	| R7 1200m Grp1	| O	| 2018-10-26T00:16:31.000Z	| 21283271	| 14. Sunlight	| 2018-10-26T10:30:00.000Z	| 0	| | ACCOUNT_CREDIT	| RESULT_WON

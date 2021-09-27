@@ -209,7 +209,7 @@ Fill or kill is a useful tool to instruct Bet Angel to cancel (kill) a bet if it
     - [Refresh settings](https://www.betangel.com/user-guide/refreshing_the_market_odds.html?ms=EgAAAAAAAwg%3D&st=MA%3D%3D&sct=Mzg1LjMzMzM0MzUwNTg1OTQ%3D&mw=MzIw)
     - [Fill or Kill](https://www.betangel.com/user-guide/fill_or_kill_.html?ms=EgAAAAAAAwg%3D&st=MA%3D%3D&sct=Mzg1LjMzMzM0MzUwNTg1OTQ%3D&mw=MzIw)
 
-- [Youtube](https://www.youtube.com/user/betangeltv)cccc
+- [Youtube](https://www.youtube.com/user/betangeltv)
     - [Using the settings feature](https://www.youtube.com/watch?v=DWn7RRFSt_g)
     - [One click trading screen](https://www.youtube.com/watch?v=AU0oj9jAFK8)
     - [Getting Bet Angel to update ten times faster - Refresh settings](https://www.youtube.com/watch?v=QOMx7s7XIAA)
@@ -222,7 +222,7 @@ Fill or kill is a useful tool to instruct Bet Angel to cancel (kill) a bet if it
 ---
 ## What next? 
 
-
+Now that you've got the beginner level sorted, take the next step and have a look at our [Intermediate guide to Bet Angel](/autoTools/betAngelintermediate).
 
 ---
 ## Disclaimer

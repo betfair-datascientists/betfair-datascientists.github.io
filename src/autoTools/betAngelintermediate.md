@@ -165,7 +165,7 @@ For more detail and information regarding Bet Angels advanced charts, check out 
 ---
 ## What next? 
 
-Now that you've got the intermediate level sorted, take the next step and have a look at our [Advanced guide to Bet Angel](/thirdPartyTools/betAngeladvanced).
+Now that you've got the intermediate level sorted, take the next step and have a look at our [Advanced guide to Bet Angel](/autoTools/betAngeladvanced).
 
 ---
 ## Disclaimer

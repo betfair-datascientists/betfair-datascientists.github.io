@@ -151,11 +151,11 @@ For more tutorials on using the Bet Angel Excel function, take a look through ou
     - [Custom Column (Advanced)](https://www.youtube.com/watch?v=-0ShD87g21w)
 
 - [Automation Hub](https://betfair-datascientists.github.io/)
-    - [Ratings Automation tutorial](https://betfair-datascientists.github.io/thirdPartyTools/betAngelRatingsAutomation/)
-    - [Market favourite automation](https://betfair-datascientists.github.io/thirdPartyTools/betAngelMarketFavouriteAutomation/)
-    - [Tipping automation tutorial](https://betfair-datascientists.github.io/thirdPartyTools/betAngelTippingAutomation/)
-    - [Simultaneous markets tutorial](https://betfair-datascientists.github.io/thirdPartyTools/betAngelSimultaneousMarkets/)
-    - [Kelly criterion staking tutorial](https://betfair-datascientists.github.io/thirdPartyTools/betAngelSimultaneousMarkets/)
+    - [Ratings Automation tutorial](https://betfair-datascientists.github.io/autoTools/betAngelRatingsAutomation/)
+    - [Market favourite automation](https://betfair-datascientists.github.io/autoTools/betAngelMarketFavouriteAutomation/)
+    - [Tipping automation tutorial](https://betfair-datascientists.github.io/autoTools/betAngelTippingAutomation/)
+    - [Simultaneous markets tutorial](https://betfair-datascientists.github.io/autoTools/betAngelSimultaneousMarkets/)
+    - [Kelly criterion staking tutorial](https://betfair-datascientists.github.io/autoTools/betAngelSimultaneousMarkets/)
 
 ---
 

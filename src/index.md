@@ -78,6 +78,7 @@ We’re putting together a collection of articles on how to use some of these th
 
 - [Gruss Betting Assistant](/autoTools/Gruss/Gruss)
     - [Ratings automation](/autoTools/grussRatingsAutomation)
+    - [Market view and One-click betting](/autoTools/Setting up basic market view)
     - [Market fav automation](/autoTools/grussMarketFavouriteAutomation)
     - [Automating simultaneous markets](/autoTools/grusslSimultaneousMarkets)
     - [Kelly Criterion staking](/autoTools/grussKellyStake)

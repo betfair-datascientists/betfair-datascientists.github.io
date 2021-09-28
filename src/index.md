@@ -86,6 +86,9 @@ We’re putting together a collection of articles on how to use some of these th
 - [Cymatic Trader](/autoTools/CymaticTrader/CymaticTrader)
     - [Ratings automation](/autoTools/cymaticTraderRatingsAutomation)
 
+- [Geeks Toy]
+    - [Installation and Setup](/autoTools/GeeksToyinstallationandsetup)
+
 --- 
 ## Inspiration & information 
 

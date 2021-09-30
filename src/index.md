@@ -89,7 +89,7 @@ We’re putting together a collection of articles on how to use some of these th
 - [Geeks Toy](/autoTools/GeeksToyinstallationandsetup)
     - [Installation and Setup](/autoTools/GeeksToyinstallationandsetup)
     - [Market view and One click betting](autoTools/GeeksToybasicmarketviewstakingandoneclickbetting)
-    - [Refresh settings](autoTools/GeeksToyRefreshSettings)
+    - [Optimising Refresh settings](autoTools/geeksToyRefreshSettings)
 
 --- 
 ## Inspiration & information 

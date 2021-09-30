@@ -78,7 +78,7 @@ We’re putting together a collection of articles on how to use some of these th
 
 - [Gruss Betting Assistant](/autoTools/Gruss/Gruss)
     - [Ratings automation](/autoTools/grussRatingsAutomation)
-    - [Market view and One-click betting](/autoTools/Setting up basic market view)
+    - [Market view and one click betting](autoTools/GrussSettingupbasicmarketview)
     - [Market fav automation](/autoTools/grussMarketFavouriteAutomation)
     - [Automating simultaneous markets](/autoTools/grusslSimultaneousMarkets)
     - [Kelly Criterion staking](/autoTools/grussKellyStake)
@@ -86,8 +86,10 @@ We’re putting together a collection of articles on how to use some of these th
 - [Cymatic Trader](/autoTools/CymaticTrader/CymaticTrader)
     - [Ratings automation](/autoTools/cymaticTraderRatingsAutomation)
 
-- [Geeks Toy]
+- [Geeks Toy](/autoTools/GeeksToyinstallationandsetup)
     - [Installation and Setup](/autoTools/GeeksToyinstallationandsetup)
+    - [Market view and One click betting](autoTools/GeeksToybasicmarketviewstakingandoneclickbetting)
+    - [Refresh settings](autoTools/GeeksToyRefreshSettings)
 
 --- 
 ## Inspiration & information 

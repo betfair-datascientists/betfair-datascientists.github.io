@@ -1,6 +1,6 @@
-﻿# Geeks Toy: Setting-up basic market view and One click betting
+﻿# Geeks Toy: Setup basic market view and one click betting
 ---
-## **Setting-up basic market view**
+## Setup basic market view
 
 1. Select market type and location 
 
@@ -31,7 +31,13 @@ Click the coloured button to the right of the stake and select “Liability” 
 
 Set the desired default Liability. 
 
-## **Setting up one click betting**
+---
+
+## Setup one click betting
+
+
+
+**Make sure you are happy to not confirm bets before turning this off!**
 
 Open a Market and right click the top then go to:
 
@@ -41,3 +47,7 @@ Open a Market and right click the top then go to:
 ![Graphical user interfaceDescription automatically generated](./img/geeksToyOCB6.png) 
 
 This will allow you to instantly place a bet with one click with your default Stake/Liability by clicking on a runner in the market. 
+
+---
+## Disclaimer
+Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable, and we make no representations in relation to the information on this page. If you're implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.

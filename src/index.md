@@ -74,22 +74,22 @@ We’re putting together a collection of articles on how to use some of these th
     - [Market fav automation](/autoTools/betAngelMarketFavouriteAutomation) 
     - [Tipping automation](/autoTools/betAngelTippingAutomation)
     - [Automating simultaneous markets](/autoTools/betAngelSimultaneousMarkets)
-	- [Kelly Criterion staking](/autoTools/betAngelKellyStake)
+	- [Kelly criterion staking](/autoTools/betAngelKellyStake)
 
 - [Gruss Betting Assistant](/autoTools/Gruss/Gruss)
     - [Ratings automation](/autoTools/grussRatingsAutomation)
     - [Market view and one click betting](autoTools/GrussSettingupbasicmarketview)
     - [Market fav automation](/autoTools/grussMarketFavouriteAutomation)
     - [Automating simultaneous markets](/autoTools/grusslSimultaneousMarkets)
-    - [Kelly Criterion staking](/autoTools/grussKellyStake)
+    - [Kelly criterion staking](/autoTools/grussKellyStake)
 
 - [Cymatic Trader](/autoTools/CymaticTrader/CymaticTrader)
     - [Ratings automation](/autoTools/cymaticTraderRatingsAutomation)
 
 - [Geeks Toy](/autoTools/GeeksToyinstallationandsetup)
-    - [Installation and Setup](/autoTools/GeeksToyinstallationandsetup)
-    - [Market view and One click betting](autoTools/GeeksToybasicmarketviewstakingandoneclickbetting)
-    - [Optimising Refresh settings](autoTools/geeksToyRefreshSettings)
+    - [Installation and setup](/autoTools/GeeksToyinstallationandsetup)
+    - [Market view and one click betting](autoTools/GeeksToybasicmarketviewstakingandoneclickbetting)
+    - [Optimising refresh settings](autoTools/geeksToyRefreshSettings)
 
 --- 
 ## Inspiration & information 

@@ -54,6 +54,7 @@ We know that automated strategies are only as good as your data. There’s a hug
 
 - [An intro to building a predictive model](/modelling/howToModel)
 - [Open source predictive models](/modelling/EPLmlPython) built by our in-house Data Scientists
+    - [Greyhound modelling using form data in Python](/modelling/greyhoundModellingPython)
     - [Modelling the Aus Open](/modelling/howToModelTheAusOpen)
     - [EPL ML walk through in Python](/modelling/EPLmlPython)
     - [AFL modelling in Python](/modelling/AFLmodellingPython)

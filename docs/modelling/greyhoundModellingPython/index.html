@@ -771,6 +771,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#complete-code" title="Complete Code" class="md-nav__link">
+    Complete Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
       
       
       
@@ -1542,6 +1556,20 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#complete-code" title="Complete Code" class="md-nav__link">
+    Complete Code
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
       
       
       
@@ -2164,7 +2192,7 @@ all of MD as it is not optimized for dense, information rich UIs.
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="note-fasttrack-api-key">Note - FastTrack API key<a class="anchor-link" href="#Note---FastTrack-API-key">&#182;</a></h3><p>If you follow <a href="/modelling/greyhoundModellingPythonREADME">README instructions</a> to run this notebook locally, you should have configured a <code>.env</code> file with your FastTrack API key.
+<h3 id="note-fasttrack-api-key">Note - FastTrack API key<a class="anchor-link" href="#Note---FastTrack-API-key">&#182;</a></h3><p>If you follow <a href="https://github.com/BrunoChauvet/greyhound-modelling/blob/master/README.md">README instructions</a> to run this notebook locally, you should have configured a <code>.env</code> file with your FastTrack API key.
 Otherwise you can set your API key below.</p>
 
 </div>
@@ -5363,6 +5391,390 @@ CatBoostClassifier            strike rate: 33.33% Brier score: 0.11038785
 
 </div>
 
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<hr>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="complete-code">Complete Code<a class="anchor-link" href="#Complete-Code">&#182;</a></h2><p>Run the code from your ide by using <code>py &lt;filename&gt;.py</code>, making sure you amend the path to point to your input data.</p>
+<p><a href="https://github.com/betfair-down-under/autoHubTutorials">Download from Github</a></p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+    <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+    <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># Import libraries</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="c1"># Allow imports from src folder</span>
+<span class="n">module_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;../src&#39;</span><span class="p">))</span>
+<span class="k">if</span> <span class="n">module_path</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">module_path</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">from</span> <span class="nn">dateutil.relativedelta</span> <span class="kn">import</span> <span class="n">relativedelta</span>
+<span class="kn">from</span> <span class="nn">dateutil</span> <span class="kn">import</span> <span class="n">tz</span>
+<span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="n">MonthEnd</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">import</span> <span class="nn">itertools</span>
+
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">fasttrack</span> <span class="k">as</span> <span class="nn">ft</span>
+
+<span class="kn">from</span> <span class="nn">dotenv</span> <span class="kn">import</span> <span class="n">load_dotenv</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="c1"># Validate FastTrack API connection</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;FAST_TRACK_API_KEY&#39;</span><span class="p">,</span> <span class="s1">&#39;&lt;REPLACE WITH YOUR KEY&gt;&#39;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">ft</span><span class="o">.</span><span class="n">Fasttrack</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
+<span class="n">track_codes</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">listTracks</span><span class="p">()</span>
+
+<span class="c1"># Import race data excluding NZ races</span>
+<span class="n">au_tracks_filter</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">track_codes</span><span class="p">[</span><span class="n">track_codes</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;NZ&#39;</span><span class="p">][</span><span class="s1">&#39;track_code&#39;</span><span class="p">])</span>
+
+<span class="c1"># Time window to import data</span>
+<span class="c1"># First day of the month 46 months back from now</span>
+<span class="n">date_from</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">46</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># First day of previous month</span>
+<span class="n">date_to</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">relativedelta</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Dataframes to populate data with</span>
+<span class="n">race_details</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+<span class="n">dog_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+
+<span class="c1"># For each month, either fetch data from API or use local CSV file if we already have downloaded it</span>
+<span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">date_from</span><span class="p">,</span> <span class="n">date_to</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;MS&#39;</span><span class="p">):</span>
+    <span class="n">start_date</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">end_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">start</span> <span class="o">+</span> <span class="n">MonthEnd</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">filename_races</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;FT_AU_RACES_</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1">.csv&#39;</span>
+        <span class="n">filename_dogs</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;FT_AU_DOGS_</span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1">.csv&#39;</span>
+
+        <span class="n">filepath_races</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;../data/</span><span class="si">{</span><span class="n">filename_races</span><span class="si">}</span><span class="s1">&#39;</span>
+        <span class="n">filepath_dogs</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;../data/</span><span class="si">{</span><span class="n">filename_dogs</span><span class="si">}</span><span class="s1">&#39;</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loading data from </span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filepath_races</span><span class="p">):</span>
+            <span class="c1"># Load local CSV file</span>
+            <span class="n">month_race_details</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath_races</span><span class="p">)</span> 
+            <span class="n">month_dog_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">filepath_dogs</span><span class="p">)</span> 
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Fetch data from API</span>
+            <span class="n">month_race_details</span><span class="p">,</span> <span class="n">month_dog_results</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">getRaceResults</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">,</span> <span class="n">au_tracks_filter</span><span class="p">)</span>
+            <span class="n">month_race_details</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filepath_races</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">month_dog_results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">filepath_dogs</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># Combine monthly data</span>
+        <span class="n">race_details</span> <span class="o">=</span> <span class="n">race_details</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">month_race_details</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">dog_results</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">month_dog_results</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Could not load data from </span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s1"> to </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1">## Cleanse and normalise the data</span>
+<span class="c1"># Clean up the race dataset</span>
+<span class="n">race_details</span> <span class="o">=</span> <span class="n">race_details</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;@id&#39;</span><span class="p">:</span> <span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">})</span>
+<span class="n">race_details</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">race_details</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;m&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)))</span>
+<span class="n">race_details</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">race_details</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="nb">format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> %b %y&#39;</span><span class="p">)</span>
+<span class="c1"># Clean up the dogs results dataset</span>
+<span class="n">dog_results</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;@id&#39;</span><span class="p">:</span> <span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">,</span> <span class="s1">&#39;RaceId&#39;</span><span class="p">:</span> <span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">})</span>
+
+<span class="c1"># Combine dogs results with race attributes</span>
+<span class="n">dog_results</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>
+    <span class="n">race_details</span><span class="p">[[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">,</span> <span class="s1">&#39;RaceGrade&#39;</span><span class="p">,</span> <span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;date_dt&#39;</span><span class="p">]],</span> 
+    <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;left&#39;</span><span class="p">,</span>
+    <span class="n">on</span> <span class="o">=</span> <span class="s1">&#39;FastTrack_RaceId&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Convert StartPrice to probability</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;StartPrice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;StartPrice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;F&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;StartPrice_probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;StartPrice&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;StartPrice_probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">)[</span><span class="s1">&#39;StartPrice_probability&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># Discard entries without results (scratched or did not finish)</span>
+<span class="n">dog_results</span> <span class="o">=</span> <span class="n">dog_results</span><span class="p">[</span><span class="o">~</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Box&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Box&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Box&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+
+<span class="c1"># Clean up other attributes</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;RunTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;RunTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;SplitMargin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;SplitMargin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Prizemoney&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Prizemoney&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Place&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Place&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">),</span> <span class="n">errors</span><span class="o">=</span><span class="s1">&#39;coerce&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Place&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Normalise some of the raw values</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Prizemoney_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Prizemoney&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Place_inv&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Place&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Place_log&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Place&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;RunSpeed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;RunTime&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1">## Generate features using raw data</span>
+<span class="c1"># Calculate median winner time per track/distance</span>
+<span class="n">win_results</span> <span class="o">=</span> <span class="n">dog_results</span><span class="p">[</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">median_win_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">win_results</span><span class="p">[</span><span class="n">win_results</span><span class="p">[</span><span class="s1">&#39;RunTime&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">])[</span><span class="s1">&#39;RunTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;RunTime&quot;</span><span class="p">:</span> <span class="s2">&quot;RunTime_median&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">median_win_split_time</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">win_results</span><span class="p">[</span><span class="n">win_results</span><span class="p">[</span><span class="s1">&#39;SplitMargin&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">])[</span><span class="s1">&#39;SplitMargin&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;SplitMargin&quot;</span><span class="p">:</span> <span class="s2">&quot;SplitMargin_median&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">median_win_time</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Calculate track speed index</span>
+<span class="n">median_win_time</span><span class="p">[</span><span class="s1">&#39;speed_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">median_win_time</span><span class="p">[</span><span class="s1">&#39;RunTime_median&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">median_win_time</span><span class="p">[</span><span class="s1">&#39;Distance&#39;</span><span class="p">])</span>
+<span class="n">median_win_time</span><span class="p">[</span><span class="s1">&#39;speed_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">median_win_time</span><span class="p">[[</span><span class="s1">&#39;speed_index&#39;</span><span class="p">]])</span>
+<span class="n">median_win_time</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Compare dogs finish time with median winner time</span>
+<span class="n">dog_results</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">median_win_time</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="n">dog_results</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">median_win_split_time</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="c1"># Normalise time comparison</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;RunTime_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;RunTime_median&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;RunTime&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;RunTime_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dog_results</span><span class="p">[[</span><span class="s1">&#39;RunTime_norm&#39;</span><span class="p">]])</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;SplitMargin_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;SplitMargin_median&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;SplitMargin&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+<span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;SplitMargin_norm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dog_results</span><span class="p">[[</span><span class="s1">&#39;SplitMargin_norm&#39;</span><span class="p">]])</span>
+<span class="n">dog_results</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># Calculate box winning percentage for each track/distance</span>
+<span class="n">box_win_percent</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">dog_results</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">,</span> <span class="s1">&#39;Box&#39;</span><span class="p">])[</span><span class="s1">&#39;win&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;win&quot;</span><span class="p">:</span> <span class="s2">&quot;box_win_percent&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="c1"># Add to dog results dataframe</span>
+<span class="n">dog_results</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">box_win_percent</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span> <span class="s1">&#39;Distance&#39;</span><span class="p">,</span> <span class="s1">&#39;Box&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<span class="c1"># Display example of barrier winning probabilities</span>
+<span class="n">display</span><span class="p">(</span><span class="n">box_win_percent</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Generate rolling window features</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">,</span> <span class="s1">&#39;date_dt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># Use rolling window of 28, 91 and 365 days</span>
+<span class="n">rolling_windows</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;28D&#39;</span><span class="p">,</span> <span class="s1">&#39;91D&#39;</span><span class="p">,</span> <span class="s1">&#39;365D&#39;</span><span class="p">]</span>
+<span class="c1"># Features to use for rolling windows calculation</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RunTime_norm&#39;</span><span class="p">,</span> <span class="s1">&#39;SplitMargin_norm&#39;</span><span class="p">,</span> <span class="s1">&#39;Place_inv&#39;</span><span class="p">,</span> <span class="s1">&#39;Place_log&#39;</span><span class="p">,</span> <span class="s1">&#39;Prizemoney_norm&#39;</span><span class="p">]</span>
+<span class="c1"># Aggregation functions to apply</span>
+<span class="n">aggregates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">]</span>
+<span class="c1"># Keep track of generated feature names</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;speed_index&#39;</span><span class="p">,</span> <span class="s1">&#39;box_win_percent&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">rolling_window</span> <span class="ow">in</span> <span class="n">rolling_windows</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing rolling window </span><span class="si">{</span><span class="n">rolling_window</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">rolling_result</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">dataset</span>
+            <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">)[</span><span class="n">features</span><span class="p">]</span>
+            <span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">rolling_window</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">aggregates</span><span class="p">)</span>
+            <span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Generate list of rolling window feature names (eg: RunTime_norm_min_365D)</span>
+        <span class="n">agg_features_cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">rolling_window</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">aggregates</span><span class="p">)]</span>
+        <span class="c1"># Add features to dataset</span>
+        <span class="n">dataset</span><span class="p">[</span><span class="n">agg_features_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">rolling_result</span>
+        <span class="c1"># Keep track of generated feature names</span>
+        <span class="n">feature_cols</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">agg_features_cols</span><span class="p">)</span>
+
+<span class="c1"># Replace missing values with 0</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Only keep data after 2018-12-01</span>
+<span class="n">model_df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">model_df</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s1">&#39;2018-12-01&#39;</span><span class="p">]</span>
+<span class="n">model_df</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">,</span> <span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">,</span> <span class="s1">&#39;DogName&#39;</span><span class="p">,</span> <span class="s1">&#39;win&#39;</span><span class="p">,</span> <span class="s1">&#39;StartPrice_probability&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">feature_cols</span><span class="p">]</span>
+
+<span class="c1"># Only train model off of races where each dog has a value for each feature</span>
+<span class="n">races_exclude</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<span class="n">model_df</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="o">~</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">races_exclude</span><span class="p">)]</span>
+
+<span class="c1">## Build and train Regression models</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="c1"># Split the data into train and test data</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s1">&#39;2021-01-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s1">&#39;2021-01-01&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Use our previously built features set columns as Training vector</span>
+<span class="c1"># Use win flag as Target vector</span>
+<span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">],</span> <span class="n">train_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]</span>
+<span class="n">test_x</span><span class="p">,</span> <span class="n">test_y</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">],</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]</span>
+
+<span class="c1"># Build a LogisticRegression model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Train the model</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Training on </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_x</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> samples with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">)</span><span class="si">}</span><span class="s1"> features&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+<span class="c1"># Generate runner win predictions</span>
+<span class="n">dog_win_probabilities</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_x</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_win_probabilities</span>
+<span class="c1"># Normalise probabilities</span>
+<span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">)[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Create a boolean column for whether a dog has the higehst model prediction in a race</span>
+<span class="n">test_dataset_size</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<span class="n">odds_win_prediction</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">)[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">odds_win_prediction_percent</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">[(</span><span class="n">odds_win_prediction</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)])</span> <span class="o">/</span> <span class="n">test_dataset_size</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LogisticRegression strike rate: </span><span class="si">{</span><span class="n">odds_win_prediction_percent</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">brier_score_loss</span>
+
+<span class="n">brier_score</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">],</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;LogisticRegression Brier score: </span><span class="si">{</span><span class="n">brier_score</span><span class="si">:</span><span class="s1">.8</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Predictions distribution</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">displot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">],</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;StartPrice_probability&#39;</span><span class="p">]],</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+             <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;StartPrice vs LogisticRegression probabilities distribution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Predictions calibration</span>
+<span class="kn">from</span> <span class="nn">sklearn.calibration</span> <span class="kn">import</span> <span class="n">calibration_curve</span>
+
+<span class="n">bins</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+
+<span class="c1"># Generate calibration curves based on our probabilities</span>
+<span class="n">cal_y</span><span class="p">,</span> <span class="n">cal_x</span> <span class="o">=</span> <span class="n">calibration_curve</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">],</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">],</span> <span class="n">n_bins</span><span class="o">=</span><span class="n">bins</span><span class="p">)</span>
+
+<span class="c1"># Plot against reference line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cal_x</span><span class="p">,</span> <span class="n">cal_y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;LogisticRegression calibration curve&quot;</span><span class="p">);</span>
+
+<span class="c1"># Other classification models</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">figure</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="c1"># Gradient Boosting Machines libraries</span>
+<span class="kn">from</span> <span class="nn">lightgbm</span> <span class="kn">import</span> <span class="n">LGBMClassifier</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+<span class="kn">from</span> <span class="nn">catboost</span> <span class="kn">import</span> <span class="n">CatBoostClassifier</span>
+
+<span class="c1"># Common models parameters</span>
+<span class="n">verbose</span>       <span class="o">=</span> <span class="mi">0</span>
+<span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">n_estimators</span>  <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Train different types of models</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;LogisticRegression&#39;</span><span class="p">:</span>         <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">&#39;saga&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="s1">&#39;GradientBoostingClassifier&#39;</span><span class="p">:</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.25</span><span class="p">),</span>
+    <span class="s1">&#39;RandomForestClassifier&#39;</span><span class="p">:</span>     <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">),</span>
+    <span class="s1">&#39;LGBMClassifier&#39;</span><span class="p">:</span>             <span class="n">LGBMClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span> <span class="n">force_col_wise</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+    <span class="s1">&#39;XGBClassifier&#39;</span><span class="p">:</span>              <span class="n">XGBClassifier</span><span class="p">(</span><span class="n">verbosity</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span> <span class="n">objective</span><span class="o">=</span><span class="s1">&#39;binary:logistic&#39;</span><span class="p">,</span> <span class="n">use_label_encoder</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span>
+    <span class="s1">&#39;CatBoostClassifier&#39;</span><span class="p">:</span>         <span class="n">CatBoostClassifier</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="n">verbose</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="n">learning_rate</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Training on </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_x</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> samples with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">)</span><span class="si">}</span><span class="s1"> features&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Fitting model </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_x</span><span class="p">,</span> <span class="n">train_y</span><span class="p">)</span>
+
+<span class="c1"># Calculate probabilities for each model on the test dataset</span>
+<span class="n">probs_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;StartPrice_probability&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">probs_column_key</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;prob_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="c1"># Calculate runner win probability</span>
+    <span class="n">dog_win_probs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">test_x</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">test_data</span><span class="p">[</span><span class="n">probs_column_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_win_probs</span>
+    <span class="c1"># Normalise probabilities</span>
+    <span class="n">test_data</span><span class="p">[</span><span class="n">probs_column_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">)[</span><span class="sa">f</span><span class="s1">&#39;prob_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">probs_columns</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">probs_column_key</span><span class="p">)</span>
+
+<span class="c1"># Calculate model strike rate and Brier score across models</span>
+<span class="c1"># Create a boolean column for whether a dog has the higehst model prediction in a race.</span>
+<span class="c1"># Do the same for the starting price as a comparison</span>
+<span class="n">test_dataset_size</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<span class="n">odds_win_prediction</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">)[</span><span class="s1">&#39;StartPrice_probability&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">odds_win_prediction_percent</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">[(</span><span class="n">odds_win_prediction</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)])</span> <span class="o">/</span> <span class="n">test_dataset_size</span>
+<span class="n">brier_score</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">],</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;StartPrice_probability&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Starting Price                strike rate: </span><span class="si">{</span><span class="n">odds_win_prediction_percent</span><span class="si">:</span><span class="s1">.2%</span><span class="si">}</span><span class="s1"> Brier score: </span><span class="si">{</span><span class="n">brier_score</span><span class="si">:</span><span class="s1">.8</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">predicted_winners</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">)[</span><span class="sa">f</span><span class="s1">&#39;prob_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">==</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">strike_rate</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">[(</span><span class="n">predicted_winners</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)])</span> <span class="o">/</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+    <span class="n">brier_score</span> <span class="o">=</span> <span class="n">brier_score_loss</span><span class="p">(</span><span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;win&#39;</span><span class="p">],</span> <span class="n">test_data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;prob_</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">key</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span><span class="si">}</span><span class="s1">strike rate: </span><span class="si">{</span><span class="n">strike_rate</span><span class="si">:</span><span class="s1">.2%</span><span class="si">}</span><span class="s1"> Brier score: </span><span class="si">{</span><span class="n">brier_score</span><span class="si">:</span><span class="s1">.8</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Visualise model predictions</span>
+<span class="c1"># Display and format sample results</span>
+<span class="k">def</span> <span class="nf">highlight_max</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">props</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">highlight_min</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">s</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">values</span><span class="p">),</span> <span class="n">props</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="n">test_data</span><span class="p">[</span><span class="n">probs_columns</span><span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="o">.</span><span class="n">style</span> \
+    <span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;#FFA07A&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_max</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="s1">&#39;color:red;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> \
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">highlight_min</span><span class="p">,</span> <span class="n">props</span><span class="o">=</span><span class="s1">&#39;color:blue;&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">## Display models feature importance</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">normalize</span>
+
+<span class="n">total_feature_importances</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Individual models feature importance</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">24</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">):</span>
+        <span class="n">feature_importance</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">feature_importance</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span>
+    
+    <span class="n">feature_importance</span> <span class="o">=</span> <span class="n">normalize</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">[:,</span><span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="n">total_feature_importances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">feature_importance</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">,</span> <span class="n">feature_importance</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> Features Importance&#39;</span><span class="p">)</span>
+    <span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Overall feature importance</span>
+<span class="n">avg_feature_importances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">total_feature_importances</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">24</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">,</span> <span class="n">avg_feature_importances</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Overall Features Importance&#39;</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+        </div>
+    </div>
+
+</div>
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<hr>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="disclaimer">Disclaimer<a class="anchor-link" href="#Disclaimer">&#182;</a></h2><p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
+
+</div>
 </div>
 </div>
 

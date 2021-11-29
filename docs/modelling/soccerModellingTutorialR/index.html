@@ -1,0 +1,1908 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
+      
+      
+        <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/soccerModellingTutorialR/">
+      
+      
+        <meta name="author" content="Betfair Data Scientists">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Soccer modelling tutorial in R - The Automation Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0028e27e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.dd00d4b7.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/clarke-regular.css">
+    
+    
+    <script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src="https://www.googletagmanager.com/gtm.js?id=GTM-TP2N564",m.parentNode.insertBefore(r,m)}(window,document,"script","dataLayer")</script>
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#how-to-model-the-2021-euro-copa-america-r-tutorial" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://betfair-datascientists.github.io/" title="The Automation Hub" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo.svg" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                The Automation Hub
+              </span>
+              <span class="md-header-nav__topic">
+                Soccer modelling tutorial in R
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+        
+      </div>
+      <div class="bf-nav md-flex__cell">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26"/>
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z"/>
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." title="Home" class="md-tabs__link">
+          Home
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/apiResources/" title="API" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../historicData/dataSources/" title="Historic Data" class="md-tabs__link">
+          Historic Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../howToModel/" title="Modelling" class="md-tabs__link md-tabs__link--active">
+          Modelling
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../autoTools/overview/" title="Auto Tools" class="md-tabs__link">
+          Auto Tools
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://betfair-datascientists.github.io/" title="The Automation Hub" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo.svg" width="48" height="48">
+      
+    </a>
+    The Automation Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Home
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="The Automation Hub" class="md-nav__link">
+      The Automation Hub
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiResources/" title="API resources" class="md-nav__link">
+      API resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiappkey/" title="How to access the Betfair API" class="md-nav__link">
+      How to access the Betfair API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiRtutorial/" title="API tutorials in R" class="md-nav__link">
+      API tutorials in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiPythontutorial/" title="API tutorial in Python" class="md-nav__link">
+      API tutorial in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/GoldenRulesofAutomation/" title="Golden rules of automation" class="md-nav__link">
+      Golden rules of automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Historic Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Historic Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/dataSources/" title="Pricing Data Sources" class="md-nav__link">
+      Pricing Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/jsonToCsvTutorial/" title="JSON to CSV in Python" class="md-nav__link">
+      JSON to CSV in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/backtestingRatingsTutorial/" title="Back testing ratings in Python" class="md-nav__link">
+      Back testing ratings in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/automatedBettingAnglesTutorial/" title="Automated betting angles in Python" class="md-nav__link">
+      Automated betting angles in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Historic Data site
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Historic Data site
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Racing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Racing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fasttrackTutorial/" title="Greyhound form FastTrack tutorial" class="md-nav__link">
+      Greyhound form FastTrack tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../greyhoundModellingPython/" title="Greyhound modelling in Python" class="md-nav__link">
+      Greyhound modelling in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Soccer
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Soccer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../soccerEloTutorialR/" title="Elo soccer tutorial in R" class="md-nav__link">
+      Elo soccer tutorial in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../soccerModellingTutorialPython/" title="Soccer modelling tutorial in Python" class="md-nav__link">
+      Soccer modelling tutorial in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Soccer modelling tutorial in R
+      </label>
+    
+    <a href="./" title="Soccer modelling tutorial in R" class="md-nav__link md-nav__link--active">
+      Soccer modelling tutorial in R
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-task" title="The Task" class="md-nav__link">
+    The Task
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-data-from-file-and-get-a-raw-dataset" title="Read data from file and get a raw dataset" class="md-nav__link">
+    Read data from file and get a raw dataset
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-the-data-types-date-column" title="Change the data types - date column." class="md-nav__link">
+    Change the data types - date column.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-data-columns-and-create-raw-dataset" title="Get data columns and create raw dataset" class="md-nav__link">
+    Get data columns and create raw dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clean-data" title="Clean data" class="md-nav__link">
+    Clean data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-dataset" title="Raw dataset" class="md-nav__link">
+    Raw dataset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-cleaning-and-feature-engineering" title="Data cleaning and feature engineering" class="md-nav__link">
+    Data cleaning and feature engineering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#target-variable-match-result" title="Target variable - Match Result" class="md-nav__link">
+    Target variable - Match Result
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#average-pre-match-stats-five-match-average" title="Average pre-match stats - Five match average" class="md-nav__link">
+    Average pre-match stats - Five match average
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reshape-average-pre-match-stats" title="Reshape average pre-match stats" class="md-nav__link">
+    Reshape average pre-match stats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-the-difference-of-stats-between-teams" title="Find the difference of stats between teams" class="md-nav__link">
+    Find the difference of stats between teams
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train-ml-model" title="Train ML model" class="md-nav__link">
+    Train ML model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-data-from-our-dataset" title="Get data from our dataset" class="md-nav__link">
+    Get data from our dataset
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split-test-and-training-data" title="Split test and training data" class="md-nav__link">
+    Split test and training data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-and-define-classifiers" title="Name and define classifiers" class="md-nav__link">
+    Name and define classifiers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterate-through-all-classifiers-and-get-their-accuracy-score" title="Iterate through all classifiers and get their accuracy score" class="md-nav__link">
+    Iterate through all classifiers and get their accuracy score
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../EPLmlPython/" title="EPL ML walk through in Python" class="md-nav__link">
+      EPL ML walk through in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      AFL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        AFL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AFLmodellingPython/" title="AFL modelling walk through in Python" class="md-nav__link">
+      AFL modelling walk through in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../brownlowModelTutorial/" title="Modelling the Brownlow Medal in Python" class="md-nav__link">
+      Modelling the Brownlow Medal in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Tennis
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Tennis
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
+      How to model the Australian Open
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AusOpenRTutorial/" title="Aus Open R Tutorial" class="md-nav__link">
+      Aus Open R Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AusOpenPythonTutorial/" title="Aus Open Python Tutorial" class="md-nav__link">
+      Aus Open Python Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Auto Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Auto Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/overview/" title="Tools Overview" class="md-nav__link">
+      Tools Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Bet Angel
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Bet Angel
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngel/betAngel/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelbeginners/" title="Beginner's guide" class="md-nav__link">
+      Beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelintermediate/" title="Intermediate guide" class="md-nav__link">
+      Intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngeladvanced/" title="Advanced guide" class="md-nav__link">
+      Advanced guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelMarketFavouriteAutomation/" title="Market fav auto" class="md-nav__link">
+      Market fav auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelTippingAutomation/" title="Tipping auto" class="md-nav__link">
+      Tipping auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelKellyStake/" title="Kelly criterion staking" class="md-nav__link">
+      Kelly criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Gruss Betting Assistant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Gruss Betting Assistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/Gruss/Gruss/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/GrussSettingupbasicmarketview/" title="Setup basic market view and one click betting" class="md-nav__link">
+      Setup basic market view and one click betting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/grussRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/grussMarketFavouriteAutomation/" title="Market fav auto" class="md-nav__link">
+      Market fav auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/grusslSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/grussKellyStake/" title="Kelly criterion staking" class="md-nav__link">
+      Kelly criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Cymatic Trader
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        Cymatic Trader
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/CymaticTrader/CymaticTrader/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/cymaticTraderRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Geeks Toy
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        Geeks Toy
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/GeeksToyinstallationandsetup/" title="Installation and setup" class="md-nav__link">
+      Installation and setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/GeeksToybasicmarketviewstakingandoneclickbetting/" title="Setup basic market view and one click betting" class="md-nav__link">
+      Setup basic market view and one click betting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/geeksToyRefreshSettings/" title="Optimising refresh settings" class="md-nav__link">
+      Optimising refresh settings
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-task" title="The Task" class="md-nav__link">
+    The Task
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-data-from-file-and-get-a-raw-dataset" title="Read data from file and get a raw dataset" class="md-nav__link">
+    Read data from file and get a raw dataset
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-the-data-types-date-column" title="Change the data types - date column." class="md-nav__link">
+    Change the data types - date column.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-data-columns-and-create-raw-dataset" title="Get data columns and create raw dataset" class="md-nav__link">
+    Get data columns and create raw dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clean-data" title="Clean data" class="md-nav__link">
+    Clean data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#raw-dataset" title="Raw dataset" class="md-nav__link">
+    Raw dataset
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-cleaning-and-feature-engineering" title="Data cleaning and feature engineering" class="md-nav__link">
+    Data cleaning and feature engineering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#target-variable-match-result" title="Target variable - Match Result" class="md-nav__link">
+    Target variable - Match Result
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#average-pre-match-stats-five-match-average" title="Average pre-match stats - Five match average" class="md-nav__link">
+    Average pre-match stats - Five match average
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reshape-average-pre-match-stats" title="Reshape average pre-match stats" class="md-nav__link">
+    Reshape average pre-match stats
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#find-the-difference-of-stats-between-teams" title="Find the difference of stats between teams" class="md-nav__link">
+    Find the difference of stats between teams
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#train-ml-model" title="Train ML model" class="md-nav__link">
+    Train ML model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-data-from-our-dataset" title="Get data from our dataset" class="md-nav__link">
+    Get data from our dataset
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#split-test-and-training-data" title="Split test and training data" class="md-nav__link">
+    Split test and training data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#name-and-define-classifiers" title="Name and define classifiers" class="md-nav__link">
+    Name and define classifiers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterate-through-all-classifiers-and-get-their-accuracy-score" title="Iterate through all classifiers and get their accuracy score" class="md-nav__link">
+    Iterate through all classifiers and get their accuracy score
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="how-to-model-the-2021-euro-copa-america-r-tutorial">How to model the 2021 Euro &amp; Copa America: R Tutorial<a class="headerlink" href="#how-to-model-the-2021-euro-copa-america-r-tutorial" title="Permanent link">&para;</a></h1>
+<h2 id="the-task">The Task<a class="headerlink" href="#the-task" title="Permanent link">&para;</a></h2>
+<p>This notebook will outline how to train a simple classification model to predict the outcome of a soccer match using the dataset provided for the datathon.</p>
+<ol>
+<li>Reading data from file and get a raw dataset</li>
+<li>Data cleaning and feature engineering</li>
+<li>Training a model</li>
+</ol>
+<p>The tutorial covers the thought process of manipulating the dataset (why and how), some simple data cleaning, feature engineering and training a classification model.</p>
+<p>The tutorial <strong>DOES NOT</strong> delve deep into the fundamentals of machine learning, advanced feature engineering or model tuning.</p>
+<p><em>There are some helpful hints along the way though.</em></p>
+<div class="admonition note">
+<p class="admonition-title">Betfair Datathon</p>
+<p>If you're interested in competing in the 2021 Euro &amp; Copa America Datathon competition make sure you <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">head to the Hub</a>, register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. </p>
+</div>
+<div class="highlight"><pre><span></span><code># import required libraries
+library(tidyverse)
+library(lubridate)
+library(caTools) # calculate rolling average 
+</code></pre></div>
+<hr />
+<h2 id="read-data-from-file-and-get-a-raw-dataset">Read data from file and get a raw dataset<a class="headerlink" href="#read-data-from-file-and-get-a-raw-dataset" title="Permanent link">&para;</a></h2>
+<h4 id="change-the-data-types-date-column">Change the data types - date column.<a class="headerlink" href="#change-the-data-types-date-column" title="Permanent link">&para;</a></h4>
+<p>We need the date column in good order for our tutorial. <a href="../assets/datathon_initial_form_data%20-%20SAMPLE.csv">Here's a sample of the data set</a> we're using for this tutorial.</p>
+<p><em>In general, it's a good idea to evaluate data types of all columns that we work with to ensure they are correct.</em></p>
+<div class="highlight"><pre><span></span><code>df = read_csv(&quot;SoccerData.csv&quot;, guess_max = 2000)
+df = df %&gt;% mutate(date_GMT = parse_date_time(date_GMT, &#39;%b %d %Y - %I:%M%p&#39;, tz = &quot;GMT&quot;))
+</code></pre></div>
+<h4 id="get-data-columns-and-create-raw-dataset">Get data columns and create raw dataset<a class="headerlink" href="#get-data-columns-and-create-raw-dataset" title="Permanent link">&para;</a></h4>
+<p>For this tutorial, let's take only a few stats columns to work with.</p>
+<p><em>Typically we would explore all features and then decide which data to discard.</em></p>
+<ol>
+<li>Goal counts</li>
+<li>Corners</li>
+<li>Total shots</li>
+<li>Shots on target</li>
+<li>Fouls</li>
+<li>Possession</li>
+</ol>
+<div class="highlight"><pre><span></span><code>raw_match_stats = df %&gt;%
+  select(
+  date_GMT,
+  home_team_name,
+  away_team_name,
+  home_team_goal_count,
+  away_team_goal_count,
+  home_team_corner_count,
+  away_team_corner_count,
+  home_team_shots,
+  away_team_shots,
+  home_team_shots_on_target,
+  away_team_shots_on_target,
+  home_team_fouls,
+  away_team_fouls,
+  home_team_possession,
+  away_team_possession
+  )
+</code></pre></div>
+<h4 id="clean-data">Clean data<a class="headerlink" href="#clean-data" title="Permanent link">&para;</a></h4>
+<p>As a cleaning step, we order our data by date and drop rows with NA values.</p>
+<div class="highlight"><pre><span></span><code>raw_match_stats = raw_match_stats %&gt;%
+  arrange(desc(date_GMT)) %&gt;%
+  drop_na() %&gt;%
+  mutate(game_id = 1:n())
+</code></pre></div>
+<h4 id="raw-dataset">Raw dataset<a class="headerlink" href="#raw-dataset" title="Permanent link">&para;</a></h4>
+<p>This raw dataset is structured so that each match has an individual row and stats for both teams are on that row with columns titles "home" and "away".</p>
+<p>Our goal is to build a machine learning (ML) model that can predict the result of a soccer match. Given that we have some match stats, we will aim to use that information to predict a WIN, LOSS or DRAW.</p>
+<div class="highlight"><pre><span></span><code>raw_match_stats
+</code></pre></div>
+<hr />
+<h2 id="data-cleaning-and-feature-engineering">Data cleaning and feature engineering<a class="headerlink" href="#data-cleaning-and-feature-engineering" title="Permanent link">&para;</a></h2>
+<h4 id="target-variable-match-result">Target variable - Match Result<a class="headerlink" href="#target-variable-match-result" title="Permanent link">&para;</a></h4>
+<p>Our machine learning model aims to predict the result of a match. This "result" is called the "target variable". Our dataset has no columns showing the match result. We will create two columns for the results for each team. One of these would become the target variable for our ML model.</p>
+<div class="highlight"><pre><span></span><code># create results columns for both home and away teams (W - win, D = Draw, L = Loss).
+raw_match_stats = raw_match_stats %&gt;%
+  mutate(home_team_result = case_when(home_team_goal_count == away_team_goal_count ~ &quot;D&quot;,
+                                      home_team_goal_count &gt; away_team_goal_count ~ &quot;W&quot;,
+                                      home_team_goal_count &lt; away_team_goal_count ~ &quot;L&quot;),
+         away_team_result = case_when(home_team_goal_count == away_team_goal_count ~ &quot;D&quot;,
+                                      home_team_goal_count &gt; away_team_goal_count ~ &quot;L&quot;,
+                                      home_team_goal_count &lt; away_team_goal_count ~ &quot;W&quot;))
+</code></pre></div>
+<h4 id="average-pre-match-stats-five-match-average">Average pre-match stats - Five match average<a class="headerlink" href="#average-pre-match-stats-five-match-average" title="Permanent link">&para;</a></h4>
+<p>Great! Now we have a dataset with many rows of data, with each row representing match stats and the match result (this would become our target variable).</p>
+<p>But our goal is to build an ML model that predicts the match result prior to the start of a match. Are the stats from that match what we need to build this ML model? No! When predicting a match outcome BEFORE the start of the match, we are forced to rely on match stats available to us from previous matches.</p>
+<p>Therefore, we need a dataset with the match result (target variable) and stats for each team heading into that match. For this tutorial, we will look at the average stats for each team in the five matches preceding each match.</p>
+<p>Lets look at how we can get the average stats for the previous 5 matches for each team at each match.</p>
+<ol>
+<li>Split the raw_match_stats to two datasets (home_team_stats and away_team_stats).</li>
+<li>Stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match).</li>
+<li>At each row of this dataset, get the team name, find the stats for that team during the 4. last 5 matches, and average these stats (avg_stats_per_team).
+Add these stats to the team_stats_per_match dataset.</li>
+</ol>
+<p><em>Why did we chose five matches? Why not 10? Should we average over a time period (matches in the last year perhaps?) rather than a number? What's the least number of matches available for each competing team in the dataset? These are all interesting questions that may improve our model.</em></p>
+<div class="highlight"><pre><span></span><code># Split the raw_match_stats to two datasets (home_team_stats and away_team_stats). 
+home_team_stats = raw_match_stats %&gt;%
+  select(game_id,
+         date_GMT,
+         starts_with(&quot;home_team&quot;))
+away_team_stats = raw_match_stats %&gt;%
+  select(game_id,
+         date_GMT,
+         starts_with(&quot;away_team&quot;))
+# rename &quot;home_team&quot; and &quot;away_team&quot; columns
+home_team_stats = rename_with(home_team_stats, ~gsub(&quot;home_team_&quot;, &quot;&quot;, .x))
+away_team_stats = rename_with(away_team_stats, ~gsub(&quot;away_team_&quot;, &quot;&quot;, .x))
+# Stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match). 
+team_stats_per_match = home_team_stats %&gt;%
+  bind_rows(away_team_stats)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team). 
+avg_stats_per_team &lt;- team_stats_per_match %&gt;%
+  group_by(name) %&gt;%
+  filter(n() &gt; 1) %&gt;%     # remove countries with only 1 match
+  arrange(date_GMT) %&gt;%
+  mutate_at(
+  vars(
+  goal_count,
+  corner_count,
+  shots,
+  shots_on_target,
+  fouls,
+  possession
+  ),
+  ## Columns for which we want a rolling mean
+  .funs = ~ runmean(
+  x = dplyr::lag(.x),
+  k = 5,
+  endrule = &quot;mean&quot;,
+  align = &quot;right&quot;
+  )## Rolling mean for last 5 matches
+  ) %&gt;%
+  rename(
+  goals_per_match = goal_count,
+  corners_per_match = corner_count,
+  shots_per_match = shots,
+  shotsOnTarget_per_match = shots_on_target,
+  fouls_per_match = fouls,
+  possession_per_match = possession
+  )
+</code></pre></div>
+<h4 id="reshape-average-pre-match-stats">Reshape average pre-match stats<a class="headerlink" href="#reshape-average-pre-match-stats" title="Permanent link">&para;</a></h4>
+<p>Now that we have the average stats for each team going into every match, we can create a dataset similar to the raw_match_stats, where each row represents both teams from one match.</p>
+<ol>
+<li>Re-segment the home and away teams (name Team 1 and Team 2 rather than home and away).</li>
+<li>Combine at each match to get a dataset with a row representing each match.</li>
+</ol>
+<div class="highlight"><pre><span></span><code># Add these stats to the home/away dataset
+home_team_stats &lt;- home_team_stats %&gt;% 
+  left_join(avg_stats_per_team)  %&gt;%
+  arrange(game_id) %&gt;%
+  rename_with(~paste0(&quot;team_1_&quot;, .))
+away_team_stats &lt;- away_team_stats %&gt;% 
+  left_join(avg_stats_per_team)  %&gt;%
+  arrange(game_id) %&gt;%
+  rename_with(~paste0(&quot;team_2_&quot;, .))
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># Combine at each match to get a dataset with a row representing each match. 
+# drop the NA rows ( earliest match for each team, i.e no previous stats)
+match_stats = home_team_stats %&gt;%
+  bind_cols(away_team_stats) %&gt;%
+  drop_na()
+</code></pre></div>
+<h4 id="find-the-difference-of-stats-between-teams">Find the difference of stats between teams<a class="headerlink" href="#find-the-difference-of-stats-between-teams" title="Permanent link">&para;</a></h4>
+<p>In our ML model, we will take the difference between Team 1 and Team 2 average stats as features. 6 new columns are created for this.</p>
+<p><em>Would we be better off using the raw stats for each team as features?</em></p>
+<p><em>Can we generate any other useful features from the dataset provided?</em></p>
+<p><em>Do we need to weigh the home and away teams because home teams win more often?</em></p>
+<div class="highlight"><pre><span></span><code># create columns with average stat differences between the two teams
+match_stats = match_stats %&gt;%
+  mutate(goals_per_match_diff = team_1_goals_per_match - team_2_goals_per_match,
+         corners_per_match_diff = team_1_corners_per_match - team_2_corners_per_match,
+         shots_per_match_diff = team_1_shots_per_match - team_2_shots_per_match,
+         shotsOnTarget_per_match_diff = team_1_shotsOnTarget_per_match - team_2_shotsOnTarget_per_match,
+         fouls_per_match_diff = team_1_fouls_per_match - team_2_fouls_per_match,
+         possession_per_match_diff = team_1_possession_per_match - team_2_possession_per_match)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>match_stats
+</code></pre></div>
+<hr />
+<h2 id="train-ml-model">Train ML model<a class="headerlink" href="#train-ml-model" title="Permanent link">&para;</a></h2>
+<p>In this tutorial we will:</p>
+<ol>
+<li>Train a model using 6 feature columns</li>
+<li>Use an 80/20 split in training/test data</li>
+<li>Use accuracy to evaluate our models</li>
+</ol>
+<p><em>It's probably worth evaluating multiple models (several models explained in this tutorial), perhaps use k-fold cross validation, and use metrics other than accuracy to evaluate a model (check the commented out code).</em></p>
+<div class="highlight"><pre><span></span><code>library(tidymodels)
+library(discrim)
+library(kknn) # kknn
+library(kernlab) # svm
+library(naivebayes) #naive bayes
+library(rpart) # decision tree
+library(nnet) # logistic regression and neural net
+library(ranger) # random forest (modified by multiclass)
+library(xgboost) # xgboost
+</code></pre></div>
+<hr />
+<h2 id="get-data-from-our-dataset">Get data from our dataset<a class="headerlink" href="#get-data-from-our-dataset" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Team_1_result column - target variable</li>
+<li>The difference of stats between teams (6 columns) - features</li>
+</ol>
+<p><em>Do we need to scale or normalize the feature columns in order for it to make mathematical sense to a ML model? This depends on the type of model we are training, but it's definitely worth investigating in order to achieve a high performing model.</em></p>
+<p><em>We should also investigate the dataset to check if it's balanced on all classes or if it's skewed towards a particular class (i.e are there an equal number of wins, losses and draws?). If not, would this affect model performance?</em></p>
+<div class="highlight"><pre><span></span><code># form a dataset with only target and features
+model_data = match_stats %&gt;%
+  mutate(target = factor(recode(team_1_result, W = 0, D = 1, L = 2))) %&gt;%
+  select(
+    target,
+    goals_per_match_diff,
+    corners_per_match_diff,
+    shots_per_match_diff,
+    shotsOnTarget_per_match_diff,
+    fouls_per_match_diff,
+    possession_per_match_diff
+  )
+</code></pre></div>
+<h4 id="split-test-and-training-data">Split test and training data<a class="headerlink" href="#split-test-and-training-data" title="Permanent link">&para;</a></h4>
+<p>We train a model on the training data, and then use test data to evaluate the performance of that model.</p>
+<div class="highlight"><pre><span></span><code># For more details of using tidymodels package, check https://www.tidymodels.org/
+# split test and train data
+set.seed(2021)
+data_split &lt;- initial_split(model_data, strata = target, prop = 0.8)
+# create a recipe for data pre-processing
+model_recipe &lt;- 
+  recipe(target ~ ., data = model_data) %&gt;%
+  step_zv(all_predictors())  %&gt;%
+  step_corr(all_predictors()) %&gt;%
+  prep()
+</code></pre></div>
+<h4 id="name-and-define-classifiers">Name and define classifiers<a class="headerlink" href="#name-and-define-classifiers" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code># Define the models
+## knn model
+knn_model &lt;- 
+  nearest_neighbor() %&gt;% 
+  set_engine(&quot;kknn&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;)
+## svm model
+svm_model &lt;- 
+  svm_rbf() %&gt;%
+  set_engine(&quot;kernlab&quot;) %&gt;%
+  set_mode(&quot;classification&quot;) 
+## logistic regression model
+lr_model &lt;- 
+  multinom_reg() %&gt;% 
+  set_engine(&quot;nnet&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;)
+## naive bayes
+nb_model &lt;- 
+  naive_Bayes() %&gt;% 
+  set_engine(&quot;naivebayes&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;)
+## decision tree model
+tree_model &lt;- 
+  decision_tree() %&gt;% 
+  set_engine(&quot;rpart&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;)
+# random forest
+rf_model &lt;- 
+  rand_forest() %&gt;% 
+  set_engine(&quot;ranger&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;)
+# boosted tree (xgboost)
+xgb_model &lt;- 
+  boost_tree() %&gt;% 
+  set_engine(&quot;xgboost&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;)
+# single layer neural network
+nn_model &lt;- 
+  mlp() %&gt;% 
+  set_engine(&quot;nnet&quot;) %&gt;% 
+  set_mode(&quot;classification&quot;)
+</code></pre></div>
+<h4 id="iterate-through-all-classifiers-and-get-their-accuracy-score">Iterate through all classifiers and get their accuracy score<a class="headerlink" href="#iterate-through-all-classifiers-and-get-their-accuracy-score" title="Permanent link">&para;</a></h4>
+<p>We can use the best performing model to make our predictions.</p>
+<p><em>There are several other metrics in the code that have been commented out which might provide helpful insights on model performance.</em></p>
+<div class="highlight"><pre><span></span><code>accuracy_results &lt;-
+  map_dfr(
+    .x = list(knn_model,
+              lr_model,
+              nb_model,
+              nn_model,
+              rf_model,
+              svm_model,
+              tree_model,
+              xgb_model),
+    .f = function(the_model) {
+      # create a work flow with recipe and model
+      the_workflow &lt;- workflow() %&gt;%
+        add_recipe(model_recipe) %&gt;%
+        add_model(the_model)
+
+      # fit the model with training data and evaluate with test data
+      the_fit &lt;- the_workflow %&gt;%
+        last_fit(data_split)
+
+      tibble(model_name = class(the_model)[1],
+             accuracy = the_fit %&gt;% collect_metrics() %&gt;% filter(.metric == &quot;accuracy&quot;) %&gt;% select(.estimate) %&gt;% pull)
+    }
+  )
+## Displaying accuracy of the models set in descending order
+accuracy_results %&gt;%
+  arrange(desc(accuracy))
+</code></pre></div>
+<hr />
+<h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h3>
+<p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../soccerModellingTutorialPython/" title="Soccer modelling tutorial in Python" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Soccer modelling tutorial in Python
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../EPLmlPython/" title="EPL ML walk through in Python" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                EPL ML walk through in Python
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/Betfair_Aus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/company/betfair-australia" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://facebook.com/betfairaustralia" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://youtube.com/user/betfairaus" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://github.com/betfair-datascientists" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div> 
+    <div class="bf-footer">
+      <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+      <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      <ul class="bf-links">
+        <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+        <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+        <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://js.adsrvr.org/up_loader.1.1.0.js"></script>
+  <script>ttd_dom_ready(function(){"function"==typeof TTDUniversalPixelApi&&(new TTDUniversalPixelApi).init("y12d1ir",["8ml4f17"],"https://insight.adsrvr.org/track/up")})</script>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.7a3fd36a.js"></script>
+      
+      <script>app.initialize({version:"1.2.2",url:{base:"../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1451 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
+      
+      
+        <link rel="canonical" href="https://betfair-datascientists.github.io/autoTools/geeksToyRefreshSettings/">
+      
+      
+        <meta name="author" content="Betfair Data Scientists">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Optimising refresh settings - The Automation Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0028e27e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.dd00d4b7.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/clarke-regular.css">
+    
+    
+    <script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src="https://www.googletagmanager.com/gtm.js?id=GTM-TP2N564",m.parentNode.insertBefore(r,m)}(window,document,"script","dataLayer")</script>
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#geeks-toy-optimising-refresh-settings" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://betfair-datascientists.github.io/" title="The Automation Hub" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo.svg" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                The Automation Hub
+              </span>
+              <span class="md-header-nav__topic">
+                Optimising refresh settings
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+        
+      </div>
+      <div class="bf-nav md-flex__cell">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26"/>
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z"/>
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." title="Home" class="md-tabs__link">
+          Home
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/apiResources/" title="API" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../historicData/dataSources/" title="Historic Data" class="md-tabs__link">
+          Historic Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../modelling/howToModel/" title="Modelling" class="md-tabs__link">
+          Modelling
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../overview/" title="Auto Tools" class="md-tabs__link md-tabs__link--active">
+          Auto Tools
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://betfair-datascientists.github.io/" title="The Automation Hub" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo.svg" width="48" height="48">
+      
+    </a>
+    The Automation Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Home
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="The Automation Hub" class="md-nav__link">
+      The Automation Hub
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiResources/" title="API resources" class="md-nav__link">
+      API resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiappkey/" title="How to access the Betfair API" class="md-nav__link">
+      How to access the Betfair API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiRtutorial/" title="API tutorials in R" class="md-nav__link">
+      API tutorials in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiPythontutorial/" title="API tutorial in Python" class="md-nav__link">
+      API tutorial in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/GoldenRulesofAutomation/" title="Golden rules of automation" class="md-nav__link">
+      Golden rules of automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Historic Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Historic Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/dataSources/" title="Pricing Data Sources" class="md-nav__link">
+      Pricing Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/jsonToCsvTutorial/" title="JSON to CSV in Python" class="md-nav__link">
+      JSON to CSV in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/backtestingRatingsTutorial/" title="Back testing ratings in Python" class="md-nav__link">
+      Back testing ratings in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/automatedBettingAnglesTutorial/" title="Automated betting angles in Python" class="md-nav__link">
+      Automated betting angles in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Historic Data site
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Historic Data site
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Racing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Racing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/fasttrackTutorial/" title="Greyhound form FastTrack tutorial" class="md-nav__link">
+      Greyhound form FastTrack tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/greyhoundModellingPython/" title="Greyhound modelling in Python" class="md-nav__link">
+      Greyhound modelling in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3">
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Soccer
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Soccer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/soccerEloTutorialR/" title="Elo soccer tutorial in R" class="md-nav__link">
+      Elo soccer tutorial in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/soccerModellingTutorialPython/" title="Soccer modelling tutorial in Python" class="md-nav__link">
+      Soccer modelling tutorial in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/soccerModellingTutorialR/" title="Soccer modelling tutorial in R" class="md-nav__link">
+      Soccer modelling tutorial in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/EPLmlPython/" title="EPL ML walk through in Python" class="md-nav__link">
+      EPL ML walk through in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      AFL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        AFL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AFLmodellingPython/" title="AFL modelling walk through in Python" class="md-nav__link">
+      AFL modelling walk through in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/brownlowModelTutorial/" title="Modelling the Brownlow Medal in Python" class="md-nav__link">
+      Modelling the Brownlow Medal in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Tennis
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Tennis
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
+      How to model the Australian Open
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AusOpenRTutorial/" title="Aus Open R Tutorial" class="md-nav__link">
+      Aus Open R Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../modelling/AusOpenPythonTutorial/" title="Aus Open Python Tutorial" class="md-nav__link">
+      Aus Open Python Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      Auto Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Auto Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../overview/" title="Tools Overview" class="md-nav__link">
+      Tools Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Bet Angel
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Bet Angel
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngel/betAngel/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelbeginners/" title="Beginner's guide" class="md-nav__link">
+      Beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelintermediate/" title="Intermediate guide" class="md-nav__link">
+      Intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngeladvanced/" title="Advanced guide" class="md-nav__link">
+      Advanced guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelMarketFavouriteAutomation/" title="Market fav auto" class="md-nav__link">
+      Market fav auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelTippingAutomation/" title="Tipping auto" class="md-nav__link">
+      Tipping auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../betAngelKellyStake/" title="Kelly criterion staking" class="md-nav__link">
+      Kelly criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Gruss Betting Assistant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Gruss Betting Assistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../Gruss/Gruss/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../GrussSettingupbasicmarketview/" title="Setup basic market view and one click betting" class="md-nav__link">
+      Setup basic market view and one click betting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussMarketFavouriteAutomation/" title="Market fav auto" class="md-nav__link">
+      Market fav auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grusslSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../grussKellyStake/" title="Kelly criterion staking" class="md-nav__link">
+      Kelly criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Cymatic Trader
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        Cymatic Trader
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../CymaticTrader/CymaticTrader/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cymaticTraderRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5" checked>
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Geeks Toy
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        Geeks Toy
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../GeeksToyinstallationandsetup/" title="Installation and setup" class="md-nav__link">
+      Installation and setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../GeeksToybasicmarketviewstakingandoneclickbetting/" title="Setup basic market view and one click betting" class="md-nav__link">
+      Setup basic market view and one click betting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Optimising refresh settings
+      </label>
+    
+    <a href="./" title="Optimising refresh settings" class="md-nav__link md-nav__link--active">
+      Optimising refresh settings
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#refresh-settings" title="Refresh settings" class="md-nav__link">
+    Refresh settings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-market-ladder-settings" title="Changing market ladder settings" class="md-nav__link">
+    Changing market ladder settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection-profit-or-hedged-market-profit" title="Selection profit or hedged (market) profit" class="md-nav__link">
+    Selection profit or hedged (market) profit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" title="Resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#refresh-settings" title="Refresh settings" class="md-nav__link">
+    Refresh settings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changing-market-ladder-settings" title="Changing market ladder settings" class="md-nav__link">
+    Changing market ladder settings
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#selection-profit-or-hedged-market-profit" title="Selection profit or hedged (market) profit" class="md-nav__link">
+    Selection profit or hedged (market) profit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources" title="Resources" class="md-nav__link">
+    Resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="geeks-toy-optimising-refresh-settings">Geeks Toy: Optimising refresh settings<a class="headerlink" href="#geeks-toy-optimising-refresh-settings" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="refresh-settings">Refresh settings<a class="headerlink" href="#refresh-settings" title="Permanent link">&para;</a></h2>
+<p>Geeks Toy can refresh up to 4 times faster than the Exchange! You do also can change some settings to make the full market depth refresh constantly or just have selections closest to the match point refresh constantly, while the rest of the market displays at a slower rate.</p>
+<p>When you load Geeks Toy:</p>
+<ul>
+<li>Right click and go to “Show/Hide”</li>
+<li>Then click on “API Settings Manager”</li>
+</ul>
+<p><img alt="" src="../img/geeksToyRefreshSettings1.png" /></p>
+<p>You then have six different options, allowing you to change various refresh rates inside the software. (It is worth noting that the Exchange updates every 1000ms, so setting refresh rates to 250ms makes them refresh 4 times faster than the  Exchange)</p>
+<ul>
+<li><strong>Bets</strong> - the information relating to your bets for a market, both matched and unmatched</li>
+<li><strong>Prices</strong> - the information relating to the amounts waiting to back and lay. This varies depending on the setting used on the Ladder for Price Display. If <code>Standard</code> or <code>Hybrid</code> is selected it refers to the front three back and lay prices. If <code>Complete</code> is selected it refers to all of the prices, this requires a lot more information to be downloaded each call which is not suitable for slower internet connections and those on limited download allowances</li>
+<li><strong>Complete Prices in Hybrid mode</strong> - the amounts waiting to back and lay outside of the front three prices, i.e. full market depth, when <code>Hybrid</code> Price Display is selected on the Ladder. For people with slow internet connections and those on limited download allowances it should not be set low i.e. less than 1000ms</li>
+<li><strong>Traded Volume</strong> - the information relating to traded volumes</li>
+<li><strong>External Bets</strong> - how often to poll for bets made external to the application. The default is 10 seconds. This saves on bandwith and number of calls if you only use this application for betting.</li>
+<li><strong>Account Funds</strong> - the information relating to your balance. If a change is made to a bet, i.e. a bet is submitted, altered or matched the balance will be updated automatically</li>
+</ul>
+<p>You can change visibility of these settings within the ladder format.</p>
+<h3 id="changing-market-ladder-settings">Changing market ladder settings<a class="headerlink" href="#changing-market-ladder-settings" title="Permanent link">&para;</a></h3>
+<p>Once you are in a market ladder do the following:</p>
+<ul>
+<li>Right click the market header</li>
+<li>Select <code>Visual Options</code></li>
+<li>Select <code>Price Display</code></li>
+</ul>
+<p>You will see three options:</p>
+<ul>
+<li><code>Standard</code> is where you will only see the first 3 sets of odds and they will be updated as per your API settings. The rest of the market will not be visible.</li>
+<li><code>Hybrid</code> is where the entire market is visible but only the first 3 prices will be updated as per your API settings.</li>
+<li><code>Complete</code> is where the entire market is updated as per the API settings.</li>
+</ul>
+<p><img alt="" src="../img/geeksToyRefreshSettings2.png" /></p>
+<h3 id="selection-profit-or-hedged-market-profit">Selection profit or hedged (market) profit<a class="headerlink" href="#selection-profit-or-hedged-market-profit" title="Permanent link">&para;</a></h3>
+<p>As Geeks Toy is predominantly used for trading markets, a great setting to use is the function to show you your Profit/Loss on a certain selection within the market, or your overall Profit/Loss on the entire market (also known as your hedged profit).</p>
+<p>Once you are in a market ladder do the following:</p>
+<ul>
+<li>Right click the market header</li>
+<li>Select <code>Visual Options</code></li>
+<li>Select <code>Profit/Loss</code></li>
+</ul>
+<p>You will see two options:</p>
+<ul>
+<li><code>Selection Profit</code> is the option you will can select if you would like to see Profit/Loss on each selection in the market individually.</li>
+<li><code>Hedged Profit</code> is the option you can select for the software to show you your overall profit/loss across the entire market cumulatively.</li>
+</ul>
+<p><img alt="" src="../img/geeksToyRefreshSettings3.png" /></p>
+<hr />
+<h2 id="resources">Resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.betfair.com.au/hub/geeks-toy-betting-app/">Betfair Geeks Toy Overview</a></li>
+<li><a href="https://www.youtube.com/user/GeeksToy">Geeks Toy Youtube Channel</a></li>
+<li><a href="https://www.youtube.com/user/caanberry">Caan Berry Pro Trader Youtube Channel</a></li>
+<li><a href="https://www.betfair.com.au/hub/10-questions-with-caan-berry-pro-betfair-trader/">Betfair Interview With Cann Berry</a></li>
+</ul>
+<hr />
+<h2 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
+<p>Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable, and we make no representations in relation to the information on this page. If you're implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../GeeksToybasicmarketviewstakingandoneclickbetting/" title="Setup basic market view and one click betting" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Setup basic market view and one click betting
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/Betfair_Aus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/company/betfair-australia" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://facebook.com/betfairaustralia" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://youtube.com/user/betfairaus" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://github.com/betfair-datascientists" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div> 
+    <div class="bf-footer">
+      <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+      <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      <ul class="bf-links">
+        <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+        <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+        <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://js.adsrvr.org/up_loader.1.1.0.js"></script>
+  <script>ttd_dom_ready(function(){"function"==typeof TTDUniversalPixelApi&&(new TTDUniversalPixelApi).init("y12d1ir",["8ml4f17"],"https://insight.adsrvr.org/track/up")})</script>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.7a3fd36a.js"></script>
+      
+      <script>app.initialize({version:"1.2.2",url:{base:"../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1624 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Documentation, guides and articles on creating, developing and implementing automated betting strategies, using data analysis to inform betting models and how to interact with the Betfair API.">
+      
+      
+        <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/soccerEloTutorialR/">
+      
+      
+        <meta name="author" content="Betfair Data Scientists">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../img/BetfairFavicon.ico">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>Elo soccer tutorial in R - The Automation Hub</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.0028e27e.css">
+      
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.dd00d4b7.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    <link rel="stylesheet" href="../../assets/fonts/clarke-regular.css">
+    
+    
+    <script>!function(e,t,a,n,g){e[n]=e[n]||[],e[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var m=t.getElementsByTagName(a)[0],r=t.createElement(a);r.async=!0,r.src="https://www.googletagmanager.com/gtm.js?id=GTM-TP2N564",m.parentNode.insertBefore(r,m)}(window,document,"script","dataLayer")</script>
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#using-an-elo-approach-to-model-soccer-in-r" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://betfair-datascientists.github.io/" title="The Automation Hub" class="md-header-nav__button md-logo">
+          
+            <img src="../../img/logo.svg" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                The Automation Hub
+              </span>
+              <span class="md-header-nav__topic">
+                Elo soccer tutorial in R
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+        
+      </div>
+      <div class="bf-nav md-flex__cell">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26"/>
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z"/>
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../.." title="Home" class="md-tabs__link">
+          Home
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../api/apiResources/" title="API" class="md-tabs__link">
+          API
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../historicData/dataSources/" title="Historic Data" class="md-tabs__link">
+          Historic Data
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../howToModel/" title="Modelling" class="md-tabs__link md-tabs__link--active">
+          Modelling
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../autoTools/overview/" title="Auto Tools" class="md-tabs__link">
+          Auto Tools
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://betfair-datascientists.github.io/" title="The Automation Hub" class="md-nav__button md-logo">
+      
+        <img src="../../img/logo.svg" width="48" height="48">
+      
+    </a>
+    The Automation Hub
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-1" type="checkbox" id="nav-1">
+    
+    <label class="md-nav__link" for="nav-1">
+      Home
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-1">
+        Home
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../.." title="The Automation Hub" class="md-nav__link">
+      The Automation Hub
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
+    
+    <label class="md-nav__link" for="nav-2">
+      API
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        API
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiResources/" title="API resources" class="md-nav__link">
+      API resources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiappkey/" title="How to access the Betfair API" class="md-nav__link">
+      How to access the Betfair API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2-3" type="checkbox" id="nav-2-3">
+    
+    <label class="md-nav__link" for="nav-2-3">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-2-3">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiRtutorial/" title="API tutorials in R" class="md-nav__link">
+      API tutorials in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/apiPythontutorial/" title="API tutorial in Python" class="md-nav__link">
+      API tutorial in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../api/GoldenRulesofAutomation/" title="Golden rules of automation" class="md-nav__link">
+      Golden rules of automation
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      Historic Data
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Historic Data
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/dataSources/" title="Pricing Data Sources" class="md-nav__link">
+      Pricing Data Sources
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-2" type="checkbox" id="nav-3-2">
+    
+    <label class="md-nav__link" for="nav-3-2">
+      Tutorials
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-2">
+        Tutorials
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/jsonToCsvTutorial/" title="JSON to CSV in Python" class="md-nav__link">
+      JSON to CSV in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/backtestingRatingsTutorial/" title="Back testing ratings in Python" class="md-nav__link">
+      Back testing ratings in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/automatedBettingAnglesTutorial/" title="Automated betting angles in Python" class="md-nav__link">
+      Automated betting angles in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Historic Data site
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Historic Data site
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      Modelling
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Modelling
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../howToModel/" title="Intro to modelling" class="md-nav__link">
+      Intro to modelling
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-2" type="checkbox" id="nav-4-2">
+    
+    <label class="md-nav__link" for="nav-4-2">
+      Racing
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-2">
+        Racing
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../fasttrackTutorial/" title="Greyhound form FastTrack tutorial" class="md-nav__link">
+      Greyhound form FastTrack tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../greyhoundModellingPython/" title="Greyhound modelling in Python" class="md-nav__link">
+      Greyhound modelling in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-3" type="checkbox" id="nav-4-3" checked>
+    
+    <label class="md-nav__link" for="nav-4-3">
+      Soccer
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-3">
+        Soccer
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Elo soccer tutorial in R
+      </label>
+    
+    <a href="./" title="Elo soccer tutorial in R" class="md-nav__link md-nav__link--active">
+      Elo soccer tutorial in R
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#elo-modelling" title="Elo modelling" class="md-nav__link">
+    Elo modelling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elo-models-soccer" title="Elo Models &amp; Soccer" class="md-nav__link">
+    Elo Models &amp; Soccer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-packages-import-data" title="Load Packages &amp; Import Data" class="md-nav__link">
+    Load Packages &amp; Import Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-elo-model" title="Running the Elo Model" class="md-nav__link">
+    Running the Elo Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounting-for-draws" title="Accounting for Draws" class="md-nav__link">
+    Accounting for Draws
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-testing" title="Back Testing" class="md-nav__link">
+    Back Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-future-predictions" title="Making Future Predictions" class="md-nav__link">
+    Making Future Predictions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions-areas-for-improvement" title="Conclusions &amp; Areas for Improvement" class="md-nav__link">
+    Conclusions &amp; Areas for Improvement
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../soccerModellingTutorialPython/" title="Soccer modelling tutorial in Python" class="md-nav__link">
+      Soccer modelling tutorial in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../soccerModellingTutorialR/" title="Soccer modelling tutorial in R" class="md-nav__link">
+      Soccer modelling tutorial in R
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../EPLmlPython/" title="EPL ML walk through in Python" class="md-nav__link">
+      EPL ML walk through in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-4" type="checkbox" id="nav-4-4">
+    
+    <label class="md-nav__link" for="nav-4-4">
+      AFL
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-4">
+        AFL
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AFLmodellingPython/" title="AFL modelling walk through in Python" class="md-nav__link">
+      AFL modelling walk through in Python
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../brownlowModelTutorial/" title="Modelling the Brownlow Medal in Python" class="md-nav__link">
+      Modelling the Brownlow Medal in Python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4-5" type="checkbox" id="nav-4-5">
+    
+    <label class="md-nav__link" for="nav-4-5">
+      Tennis
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-4-5">
+        Tennis
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../howToModelTheAusOpen/" title="How to model the Australian Open" class="md-nav__link">
+      How to model the Australian Open
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AusOpenRTutorial/" title="Aus Open R Tutorial" class="md-nav__link">
+      Aus Open R Tutorial
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../AusOpenPythonTutorial/" title="Aus Open Python Tutorial" class="md-nav__link">
+      Aus Open Python Tutorial
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      Auto Tools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        Auto Tools
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/overview/" title="Tools Overview" class="md-nav__link">
+      Tools Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Bet Angel
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Bet Angel
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngel/betAngel/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelbeginners/" title="Beginner's guide" class="md-nav__link">
+      Beginner's guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelintermediate/" title="Intermediate guide" class="md-nav__link">
+      Intermediate guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngeladvanced/" title="Advanced guide" class="md-nav__link">
+      Advanced guide
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelMarketFavouriteAutomation/" title="Market fav auto" class="md-nav__link">
+      Market fav auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelTippingAutomation/" title="Tipping auto" class="md-nav__link">
+      Tipping auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/betAngelKellyStake/" title="Kelly criterion staking" class="md-nav__link">
+      Kelly criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-3" type="checkbox" id="nav-5-3">
+    
+    <label class="md-nav__link" for="nav-5-3">
+      Gruss Betting Assistant
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-3">
+        Gruss Betting Assistant
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/Gruss/Gruss/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/GrussSettingupbasicmarketview/" title="Setup basic market view and one click betting" class="md-nav__link">
+      Setup basic market view and one click betting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/grussRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/grussMarketFavouriteAutomation/" title="Market fav auto" class="md-nav__link">
+      Market fav auto
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/grusslSimultaneousMarkets/" title="Simultaneous markets" class="md-nav__link">
+      Simultaneous markets
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/grussKellyStake/" title="Kelly criterion staking" class="md-nav__link">
+      Kelly criterion staking
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-4" type="checkbox" id="nav-5-4">
+    
+    <label class="md-nav__link" for="nav-5-4">
+      Cymatic Trader
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-4">
+        Cymatic Trader
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/CymaticTrader/CymaticTrader/" title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/cymaticTraderRatingsAutomation/" title="Ratings auto" class="md-nav__link">
+      Ratings auto
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-5" type="checkbox" id="nav-5-5">
+    
+    <label class="md-nav__link" for="nav-5-5">
+      Geeks Toy
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-5">
+        Geeks Toy
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/GeeksToyinstallationandsetup/" title="Installation and setup" class="md-nav__link">
+      Installation and setup
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/GeeksToybasicmarketviewstakingandoneclickbetting/" title="Setup basic market view and one click betting" class="md-nav__link">
+      Setup basic market view and one click betting
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../autoTools/geeksToyRefreshSettings/" title="Optimising refresh settings" class="md-nav__link">
+      Optimising refresh settings
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#elo-modelling" title="Elo modelling" class="md-nav__link">
+    Elo modelling
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#elo-models-soccer" title="Elo Models &amp; Soccer" class="md-nav__link">
+    Elo Models &amp; Soccer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#load-packages-import-data" title="Load Packages &amp; Import Data" class="md-nav__link">
+    Load Packages &amp; Import Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-elo-model" title="Running the Elo Model" class="md-nav__link">
+    Running the Elo Model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounting-for-draws" title="Accounting for Draws" class="md-nav__link">
+    Accounting for Draws
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#back-testing" title="Back Testing" class="md-nav__link">
+    Back Testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-future-predictions" title="Making Future Predictions" class="md-nav__link">
+    Making Future Predictions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions-areas-for-improvement" title="Conclusions &amp; Areas for Improvement" class="md-nav__link">
+    Conclusions &amp; Areas for Improvement
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#disclaimer" title="Disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="using-an-elo-approach-to-model-soccer-in-r">Using an Elo approach to model soccer in R<a class="headerlink" href="#using-an-elo-approach-to-model-soccer-in-r" title="Permanent link">&para;</a></h1>
+<h2 id="elo-modelling">Elo modelling<a class="headerlink" href="#elo-modelling" title="Permanent link">&para;</a></h2>
+<p><a href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo modelling</a> is a commonly-used approach towards creating rating systems in sport. Originally devised by Arpad Elo for ranking chess players, the popularity of Elo modelling has grown massively since its first official use in the 1960s to the point where it is now widely used to model just about every professional sporting code across the globe.</p>
+<p>From a set of Elo ratings we can construct win/loss probabilities for given match-ups between two teams using a simple formula which takes the difference between the two teams' ratings and outputs the probability of each team winning or losing the match. A very basic yet very effective approach!</p>
+<p>To read more the inner workings of Elo models, <a href="https://www.betfair.com.au/hub/tennis-elo-modelling/">take a read of this article</a> for a detailed run-down of how the mathematics behind an Elo rating system works in the context of tennis matches.</p>
+<hr />
+<h2 id="elo-models-soccer">Elo Models &amp; Soccer<a class="headerlink" href="#elo-models-soccer" title="Permanent link">&para;</a></h2>
+<p>Elo-based systems lend themselves particularly well to modelling soccer, so much so that publicly available Elo ratings systems (<a href="https://www.eloratings.net">www.eloratings.net</a> for international soccer for example)  have been adopted by professional bodies to help seed tournaments and create fairer fixtures.</p>
+<p>This tutorial aims to serve as guide of how to build a basic soccer Elo model with a particular focus on the 2021 editions of the Euro and Copa America, as they will serve as the subject of <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">Betfair's Datathon</a>.</p>
+<p>To follow along with this tutorial you will need two things:</p>
+<ol>
+<li>This code is written in R, and hence you will need to have <a href="https://www.r-project.org">R</a> and <a href="https://www.rstudio.com">RStudio</a> running on your system if you wish to follow along.</li>
+<li>You will also need the historical data set provided for Betfair's 2021 Euro &amp; Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021 you can <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">register for the Datathon here</a>, or alternatively if you are reading this tutorial after the Datathon has concluded, please reach out to <a href="datathon@betfair.com.au">datathon@betfair.com.au</a> for data access. In the meantime, <a href="../assets/datathon_initial_form_data%20-%20SAMPLE.csv">click here for a sample of the data</a> which will be enough to allow the code to run effectively.</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Betfair Datathon</p>
+<p>If you're interested in competing in the 2021 Euro &amp; Copa America Datathon competition make sure you <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">head to the Hub</a>, register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. </p>
+</div>
+<p>Let's get started!</p>
+<hr />
+<h2 id="load-packages-import-data">Load Packages &amp; Import Data<a class="headerlink" href="#load-packages-import-data" title="Permanent link">&para;</a></h2>
+<p>The first thing to do is load the packages that will be required to run the Elo model and to read in the historic data from wherever it is stored on your machine.</p>
+<p>The main package to take notice of here is the <code>elo</code> package. As the name suggests, this package is for running Elo models.
+The <code>MLmetrics</code> package will be used towards the end of the tutorial to back-test the accuracy of our model.</p>
+<div class="highlight"><pre><span></span><code>library(readr)
+library(dplyr)
+library(lubridate)
+library(elo)
+library(MLmetrics)
+
+raw_data &lt;- read_csv(&quot;datathon_initial_form_data.csv&quot;)
+</code></pre></div>
+<p>When exploring a new data set, it is always good practice to first get an idea of the what is included in the data set.</p>
+<div class="highlight"><pre><span></span><code>colnames(raw_data)
+</code></pre></div>
+<p>Something noticeable is that the data set does not have a feature included to indicate the result of each match. Let's start by creating two new columns: one showing the result from the home team's perspective and another from the away team's perspective.</p>
+<p>We'll also create a feature to show the margin of the match, i.e. the absolute goal difference between the two sides.</p>
+<div class="highlight"><pre><span></span><code>raw_data &lt;- raw_data %&gt;% 
+  mutate(home_result = case_when(home_team_goal_count &gt; away_team_goal_count ~ 1,
+                                 home_team_goal_count &lt; away_team_goal_count ~ 0,
+                                 home_team_goal_count == away_team_goal_count ~ 0.5),
+  away_result = case_when(home_team_goal_count &lt; away_team_goal_count ~ 1,
+                          home_team_goal_count &gt; away_team_goal_count ~ 0,
+                          home_team_goal_count == away_team_goal_count ~ 0.5),
+  margin = abs(home_team_goal_count - away_team_goal_count))
+</code></pre></div>
+<p>Let's also make sure the date_GMT column is formatted correctly as a date. We can do that using the <code>parse_date_time</code> function from the <code>lubridate</code> package.</p>
+<div class="highlight"><pre><span></span><code>raw_data &lt;- raw_data %&gt;% 
+  mutate(date_GMT = parse_date_time(raw_data$date_GMT , &quot;mdY_HM&quot;))
+</code></pre></div>
+<hr />
+<h2 id="running-the-elo-model">Running the Elo Model<a class="headerlink" href="#running-the-elo-model" title="Permanent link">&para;</a></h2>
+<p>Now comes the fun part - setting the Elo model in action!</p>
+<p>There are a number of steps we could have taken before getting to this point to make the model a touch more complex (and possibly more accurate as a result), however in the interest of keeping this tutorial as accessible and easy to follow as possible let's jump straight into running an Elo model based on our data set.</p>
+<p>To run the Elo model we will need to use the <code>elo.run</code> function from the <code>elo</code> package. The <code>elo.run</code> function requires we input a formula as an argument which tells the function which columns list the two teams, which column is our target/outcome variable, as well as any other features we want to include in our model.</p>
+<p>We can use the <code>home_result</code> column we've created to identify the result from the home team's perspective.</p>
+<p>We can also input a k value which essentially dictates the maximum number of Elo points that can be won or lost in a single match.</p>
+<p>Here we could set k to be a constant (such as 30), however to add an extra layer of (very slight) complexity, we can instead choose to use a variable k value which is dictated by the margin of the match using a formula of <code>k = 30 + 30*margin</code>. This means that for every goal the margin increases by, the k value will increase by 30, starting with a base k value of 30 for draws (<code>margin equals 0</code>). The idea here is simply to help account for and reward/punish teams winning/losing by bigger margins compared to closer matches.</p>
+<div class="highlight"><pre><span></span><code>elo_model &lt;- elo.run(data = raw_data,
+                     formula = home_result ~ home_team_name + away_team_name + k(30 + 30*margin))
+</code></pre></div>
+<p>Let's take a look at the last few matches in our training sample to get a better view of the Elo model in action.</p>
+<div class="highlight"><pre><span></span><code>elo_results &lt;- elo_model %&gt;%
+  as.data.frame()
+
+elo_results %&gt;% tail(n = 10)
+</code></pre></div>
+<p>We can also now check out what the latest Elo rankings for each team in the data set! Let's look at the top 20.</p>
+<p>Keep in mind that teams start with an Elo rating of 1500, so any team with an Elo greater 1500 can be considered above average, while those with Elo ratings below 1500 are therefore below average.</p>
+<div class="highlight"><pre><span></span><code>final_elos &lt;- final.elos(elo_model)
+final_elos %&gt;% sort(decreasing = TRUE) %&gt;% head(n = 20)
+</code></pre></div>
+<hr />
+<h2 id="accounting-for-draws">Accounting for Draws<a class="headerlink" href="#accounting-for-draws" title="Permanent link">&para;</a></h2>
+<p>Something that we need to acknowledge both generally and also in relation to the Euro &amp; Copa America Datathon is that Elo models are best suited to sporting contexts with binary outcomes - i.e. win or lose - however in most soccer fixture we also have the possibility of a draw to account for. We are still able to ensure that Elo ratings update appropriately after a draw using 0.5 wins to denote the situation in which a draw occurs, but when it comes to making probabilistic win predictions using the Elo ratings (see p.A column above for example) things get a little more confusing.</p>
+<p>For the Euro &amp; Copa America Datathon, we also need to consider the fact that draws are a possibility during group stage match-ups, therefore we need to develop a workaround option to include draw probabilities.</p>
+<p>One way to do this - and the method that will be adopted for this tutorial - is to find the historic rate at which two teams of a certain Elo prediction split ending up drawing their matches. For example, how often do matches in which an Elo model deems Team A an 80% chance of winning and Team B a 20% chance of winning result in a draw? How about a 70%-30% split? We can find these draw rates for a range of probability points between 0 and 1 and use them to redistribute win/loss probabilities accordingly.</p>
+<p>Let's start the process by finding historic draw rates. We will bucket matches at 5% increments according to the home team's probability of winning the match according to the model.</p>
+<div class="highlight"><pre><span></span><code>draw_rates &lt;- data.frame(win_prob = elo_model$elos[,3],
+                        win_loss_draw = elo_model$elos[,4]) %&gt;%
+  mutate(prob_bucket = abs(round((win_prob)*20)) / 20) %&gt;%   # Round the predicted win probabilities to the nearest 0.05
+  group_by(prob_bucket) %&gt;%
+  summarise(draw_prob = sum(ifelse(win_loss_draw == 0.5, 1, 0)) / n())   # Calculate the rate their was a draw for this win prob - elo package codes a draw as a 0.5
+
+draw_rates %&gt;% head(n=20)
+</code></pre></div>
+<p>We now have data which will help us deem how likely a match-up between two teams is to end up in a draw!</p>
+<p>The next step is to merge this data in with our existing data set. We also need to include the win/loss probabilities for each match that we've already found using our Elo model so that we may tweak them to include for the possibility of a draw. We'll also pull in the actual Elo ratings for each team for completeness.</p>
+<div class="highlight"><pre><span></span><code>data_with_probabilities &lt;- raw_data %&gt;% 
+  select(tournament, date_GMT, home_team_name, away_team_name, home_result, away_result) %&gt;%   # Remove some redundant columns
+  mutate(home_elo = elo_results$elo.A - elo_results$update.A,    # Add in home team&#39;s elo rating (need to subtract the points update to obtain pre-match rating)
+         away_elo = elo_results$elo.B - elo_results$update.B,    # Add in away team&#39;s elo rating (need to subtract the points update to obtain pre-match rating)
+         home_prob = elo_results$p.A,                            # Add in home team&#39;s win/loss probability
+         away_prob = 1 - home_prob) %&gt;%                          # Add in away team&#39;s win/loss probability
+  mutate(prob_bucket = round(20*home_prob)/20) %&gt;%               # Bucket the home team&#39;s win/loss probability into a rounded increment of 0.05
+  left_join(draw_rates, by = &quot;prob_bucket&quot;) %&gt;%                  # Join in our historic draw rates using the probability buckets
+    relocate(draw_prob, .after = home_prob) %&gt;% 
+  select(-prob_bucket)
+</code></pre></div>
+<p>Having now brought the draw probability for each match into the data frame, we need to redistribute the win and loss probabilities so that <code>Pr(win) + Pr(draw) + Pr(loss)</code> sums to exactly 1. We can do this by simply subtracting the draw probability from each of the win and loss probabilities in a proportional manner. See below:</p>
+<div class="highlight"><pre><span></span><code>data_with_probabilities &lt;- data_with_probabilities %&gt;% 
+  mutate(home_prob = home_prob - home_prob * draw_prob,          # Redistribute home team&#39;s probabilities proportionally to create win/draw/loss probabilities
+         away_prob = away_prob - away_prob * draw_prob)          # Redistribute away team&#39;s probabilities proportionally to create win/draw/loss probabilities
+
+data_with_probabilities %&gt;% 
+  select(home_team_name, away_team_name, home_prob, draw_prob, away_prob) %&gt;% 
+  tail(n=10)
+</code></pre></div>
+<p>And there you have it! We've now come up with win, draw and loss probabilities for each match-up in our data set!</p>
+<p>Keep in mind that if we were to be focusing on knockout matches (i.e. where no draws are possible), we could have just skipped the previous few steps as we already had binary win-loss probabilities as direct outputs from our Elo model.</p>
+<hr />
+<h2 id="back-testing">Back Testing<a class="headerlink" href="#back-testing" title="Permanent link">&para;</a></h2>
+<p>The last step in our modelling process is to back test against a subset of our data to get an idea of our model's accuracy.</p>
+<p>We can use the <code>MLmetrics</code> package to run a <a href="https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a">log loss</a> function on our subset. </p>
+<p>Let's look at how the model performed when we limit the data set to include only the most recent matches from early 2021.</p>
+<div class="highlight"><pre><span></span><code>matches_2021 &lt;- data_with_probabilities %&gt;% 
+  filter(year(date_GMT) == 2021) %&gt;%                      # Filter down to only 2021 matches
+  mutate(home_win = ifelse(home_result == 1, 1, 0),       # Include new columns which show the true outcome of the match
+         draw = ifelse(home_result == 0.5, 1, 0),
+         away_win = ifelse(away_result == 1, 1, 0)) %&gt;% 
+  select(date_GMT, home_team_name, away_team_name, home_prob, draw_prob, away_prob, home_win, draw, away_win)
+
+
+# Run the multinomial log loss function from MLmetrics to output a log loss score for our sample
+MultiLogLoss(
+  y_pred = matches_2021[,c(&quot;home_prob&quot;, &quot;draw_prob&quot;, &quot;away_prob&quot;)] %&gt;% as.matrix(),
+  y_true = matches_2021[,c(&quot;home_win&quot;, &quot;draw&quot;, &quot;away_win&quot;)] %&gt;% as.matrix()
+)
+</code></pre></div>
+<p>A pretty good result for such a simple Elo model!</p>
+<hr />
+<h2 id="making-future-predictions">Making Future Predictions<a class="headerlink" href="#making-future-predictions" title="Permanent link">&para;</a></h2>
+<p>Okay, so now our Elo model is set in place, we have the latest set of Elo ratings for each team and we've back tested our model. We can now apply our model to future matches to obtain probabilities for match-ups that are yet to occur.</p>
+<p>Again we can do this using the <code>elo</code> package. This time we will use the function <code>elo.prob</code>, which takes two teams and outputs the probability of the first team winning the match-up. Like before, this function only considers win/loss outcomes to be possible, so if we were to also be looking to generate draw probabilities for a future match-up, we can just go through the exact same process as we did previously (i.e. make a binary win/loss prediction, merge in historic draw rates for various probabilities, redistribute accordingly).</p>
+<p>Let's just keep this simple for now though and focus on win and loss probabilities. We'll put together a small dataframe of matches and see what our model thinks - we've gone for hypothetical match-ups of Brazil v Argentina, England v France, Spain v Germany and an obligatory 2006 World Cup rematch of Australia v Italy.</p>
+<div class="highlight"><pre><span></span><code>future_matches &lt;- data.frame(
+  team_a = c(&quot;Brazil&quot;, &quot;England&quot;, &quot;Spain&quot;, &quot;Australia&quot;),
+  team_b = c(&quot;Argentina&quot;, &quot;France&quot;, &quot;Germany&quot;, &quot;Italy&quot;))  %&gt;% 
+  mutate(elo_a = final_elos[team_a],
+         elo_b = final_elos[team_b],
+         team_a_win_prob = elo.prob(elo.A = elo_a,
+                                    elo.B = elo_b)
+  )
+
+future_matches
+</code></pre></div>
+<hr />
+<h2 id="conclusions-areas-for-improvement">Conclusions &amp; Areas for Improvement<a class="headerlink" href="#conclusions-areas-for-improvement" title="Permanent link">&para;</a></h2>
+<p>Elo modelling can be a surprisingly accurate modelling technique given how simple it is to implement. This tutorial gives a very basic framework from which you are free to build a more intricate model with more detailed inputs and features.</p>
+<p>Some things that you might want to consider adding to this Elo model:</p>
+<ul>
+<li>Home ground advantage</li>
+<li>Key match statistics (i.e. shots on target, possession %, etc.)</li>
+<li>Whether the match was a dead rubber (teams may take the foot off the gas if they don't need to win to advance to the next stage of a tournament)</li>
+<li>Selected team line-ups (were key players missing?)</li>
+</ul>
+<p>Remember, an Elo model can be as complex or as simple as you want it to be - in some cases it might be better to keep it basic!</p>
+<p>We hope you've found this tutorial useful - if you have any questions regarding predictive data modelling please reach out to <a href="automation@betfair.com.au">automation@betfair.com.au</a>.</p>
+<p>Good luck in the <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">Datathon</a>!</p>
+<hr />
+<h3 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h3>
+<p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../greyhoundModellingPython/" title="Greyhound modelling in Python" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Greyhound modelling in Python
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../soccerModellingTutorialPython/" title="Soccer modelling tutorial in Python" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Soccer modelling tutorial in Python
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+      </div>
+      
+        
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../../assets/fonts/font-awesome.css">
+    
+      <a href="https://twitter.com/Betfair_Aus" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="https://linkedin.com/company/betfair-australia" class="md-footer-social__link fa fa-linkedin"></a>
+    
+      <a href="https://facebook.com/betfairaustralia" class="md-footer-social__link fa fa-facebook"></a>
+    
+      <a href="https://youtube.com/user/betfairaus" class="md-footer-social__link fa fa-youtube"></a>
+    
+      <a href="https://github.com/betfair-datascientists" class="md-footer-social__link fa fa-github"></a>
+    
+  </div>
+
+      
+    </div> 
+    <div class="bf-footer">
+      <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+      <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
+      Australian residents by the South Australian Responsible Gambling Code of Practice.<br> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+      <ul class="bf-links">
+        <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+        <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+        <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+        <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://js.adsrvr.org/up_loader.1.1.0.js"></script>
+  <script>ttd_dom_ready(function(){"function"==typeof TTDUniversalPixelApi&&(new TTDUniversalPixelApi).init("y12d1ir",["8ml4f17"],"https://insight.adsrvr.org/track/up")})</script>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.7a3fd36a.js"></script>
+      
+      <script>app.initialize({version:"1.2.2",url:{base:"../.."}})</script>
+      
+    
+    
+      
+        <script>!function(e,a,t,n,o,c,i){e.GoogleAnalyticsObject=o,e.ga=e.ga||function(){(e.ga.q=e.ga.q||[]).push(arguments)},e.ga.l=1*new Date,c=a.createElement(t),i=a.getElementsByTagName(t)[0],c.async=1,c.src="https://www.google-analytics.com/analytics.js",i.parentNode.insertBefore(c,i)}(window,document,"script",0,"ga"),ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview");var links=document.getElementsByTagName("a");if(Array.prototype.map.call(links,function(e){e.host!=document.location.host&&e.addEventListener("click",function(){var a=e.getAttribute("data-md-action")||"follow";ga("send","event","outbound",a,e.href)})}),document.forms.search){var query=document.forms.search.query;query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}</script>
+      
+    
+  </body>
+</html>

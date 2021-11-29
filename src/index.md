@@ -37,6 +37,7 @@ We know that automated strategies are only as good as your data. There’s a hug
 
 ### Other resources
 
+- [Golden rules of automation](/api/GoldenRulesofAutomation)
 - [Betfair data sources](/historicData/dataSources)
 - [Accessing the official Historic Data site](/historicData/usingHistoricDataSite)
 - [Historic Data FAQs & sample data](https://historicdata.betfair.com/#/help)

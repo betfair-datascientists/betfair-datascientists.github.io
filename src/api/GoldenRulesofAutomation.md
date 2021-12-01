@@ -1,7 +1,6 @@
 # Golden Rules of Automation
 | Some rules of thumb to help on your modelling & automation journey
----
-
+ ---
 So, you're interested in modelling and automation? That's great to hear, but between having that interest and actually developing a fully working automated betting strategy is often a lot of effort, mistakes and iterative learning. Here we share some of our internal 'golden rules' of automation 
 - those lessons we've learnt ourselves or heard from others in the community 
 - in the hope that this might help to expedite your automation journey and help you avoid making some of the same mistakes we have along the way! As a high level philosophy, we suggest taking a risk averse approach to modelling and automation, avoiding bias in your model and back testing, being conservative in your staking and setting your automation up with fail safes and, if in doubt, to simply not bet. Hopefully this philosophy will stand you in good stead on your automation journey!

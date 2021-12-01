@@ -10,6 +10,7 @@ Betfair has a set of customer-facing transactional APIs to allow you to integrat
 
 There are lots of resources available to support you in accessing the API effectively:
 
+- [Golden rules of automation](/api/GoldenRulesofAutomation)
 - [Creating & activating your app key](/api/apiappkey)
 - [Developer Program knowledge base](https://betfairdevelopersupport.zendesk.com/hc/en-us)
 - [Dev Docs](http://developer.betfair.com)
@@ -36,8 +37,6 @@ We know that automated strategies are only as good as your data. There’s a hug
 - [Automated betting angles: no modelling required](/historicData/automatedBettingAnglesTutorial)
 
 ### Other resources
-
-- [Golden rules of automation](/api/GoldenRulesofAutomation)
 - [Betfair data sources](/historicData/dataSources)
 - [Accessing the official Historic Data site](/historicData/usingHistoricDataSite)
 - [Historic Data FAQs & sample data](https://historicdata.betfair.com/#/help)

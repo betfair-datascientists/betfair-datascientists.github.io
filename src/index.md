@@ -35,6 +35,7 @@ We know that automated strategies are only as good as your data. There’s a hug
 - [JSON to CSV in Python](/historicData/jsonToCsvTutorial)
 - [Backtesting ratings using historic data in Python](/historicData/backtestingRatingsTutorial)
 - [Automated betting angles: no modelling required](/historicData/automatedBettingAnglesTutorial)
+- [# Do *#theyknow*? Analysing Betfair market formation and market movements](/historicData/analyingAndPredictingMarketMovements)
 
 ### Other resources
 - [Betfair data sources](/historicData/dataSources)

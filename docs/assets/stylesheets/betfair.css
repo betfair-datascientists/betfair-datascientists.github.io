@@ -1,0 +1,45 @@
+
+.bf-footer {
+    padding-bottom: 6rem;
+}
+
+.bf-footer .bf-footer-inner {
+    font-size: 14px;
+    line-height: 1.4;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+    
+.bf-footer .bf-light {
+    color: var(--md-footer-fg-color);
+}
+  
+.bf-footer .bf-dark {
+    color: var(--md-typeset-kbd-color);
+}
+  
+.bf-footer ul.bf-links {
+    padding-top: 1.5rem;
+    list-style: none;
+    margin: 0;
+}
+
+.bf-footer ul.bf-links li {
+    display: inline-block;
+    margin: 0 !important;
+}
+  
+.bf-footer ul.bf-links li a {
+    color: yellow !important;
+    text-decoration: none !important;
+    font-weight: normal;
+}
+  
+.bf-footer ul.bf-links li span {
+    padding: 0 1.5rem;
+    color: var(--md-default-fg-color--light);
+}
+      
+    
+  

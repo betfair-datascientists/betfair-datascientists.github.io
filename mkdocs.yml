@@ -22,16 +22,16 @@ nav:
         - Tutorials:
             - JSON to CSV in Python: historicData/jsonToCsvTutorial.md
             - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
-            - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
-            - Do \#theyknow? Analysing Betfair market formation and market movements: historicData\analysingAndPredictingMarketMovements.ipynb
+            # - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
+            # - Do \#theyknow? Analysing Betfair market formation and market movements: historicData\analysingAndPredictingMarketMovements.ipynb
             
         - Historic Data site:
             - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
-        - Racing:
-            - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
-            - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb
+        # - Racing:
+        #     - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
+        #     - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb
         - Soccer:
             - Elo soccer tutorial in R: modelling/soccerEloTutorialR.md
             - Soccer modelling tutorial in Python: modelling/soccerModellingTutorialPython.md
@@ -72,85 +72,91 @@ nav:
             - Optimising refresh settings: autoTools/geeksToyRefreshSettings.md
 
 # Theme settings
-# theme:
-#     name: null
-#     custom_dir: 'theme/material'
-#     favicon: 'img/BetfairFavicon.ico'
-#     logo: 'img/logo.svg'
-#     # custom_dir: 'custom_theme/'
-#     language: 'en'
-#     palette:
-#         primary: null
-#         accent: null
-#     font:
-#         text: 'Roboto'
-#         code: 'Roboto Mono'
-#     feature:
-#         tabs: true
-
 theme:
     name: material
+    custom_dir: 'theme2'
     favicon: 'img/BetfairFavicon.ico'
     logo: 'img/logo.svg'
-    # custom_dir: 'custom_theme/'
     language: 'en'
     palette:
-        primary: null
-        accent: null
+        -
+            scheme: betfair
+            primary: amber
+            accent: orange
+            media: "(prefers-color-scheme: light)" 
+            toggle:
+                icon: material/weather-night
+                name: Switch to dark mode
+        -
+            scheme: slate
+            primary: amber
+            accent: orange
+            media: "(prefers-color-scheme: dark)" 
+            toggle:
+                icon: material/weather-sunny
+                name: Switch to light mode
     font:
         text: 'Roboto'
         code: 'Roboto Mono'
-    feature:
-        tabs: true
+    features:
+        - navigation.tabs
 
-# Social Media links (footer)
+extra_css:
+    - assets/stylesheets/betfair.css
+
 extra:
-  social:
-    - type: 'twitter'
-      link: 'https://twitter.com/Betfair_Aus'
-    - type: 'linkedin'
-      link: 'https://linkedin.com/company/betfair-australia'
-    - type: 'facebook'
-      link: 'https://facebook.com/betfairaustralia'
-    - type: 'youtube'
-      link: 'https://youtube.com/user/betfairaus'
-    - type: 'github'
-      link: 'https://github.com/betfair-datascientists'
+    rg_footer: 'Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly.'
+    generator: false
+    # Social Media links (footer)
+    social:
+        - icon: fontawesome/brands/twitter
+          link: https://twitter.com/Betfair_Aus
+        - icon: fontawesome/brands/linkedin
+          link: https://linkedin.com/company/betfair-australia
+        - icon: fontawesome/brands/facebook
+          link: https://facebook.com/betfairaustralia
+        - icon: fontawesome/brands/youtube
+          link: https://youtube.com/user/betfairaus
+        - icon: fontawesome/brands/github
+          link: https://github.com/betfair-datascientists
 
 # Extensions
 markdown_extensions:
     - admonition
-    - codehilite:
-        guess_lang: false
-        use_pygments: true
-        noclasses: true
-        # pygments_style: onedark
-    - footnotes
-    - meta
-    - toc:
-        permalink: true
-    - pymdownx.arithmatex
-    - pymdownx.betterem:
-        smart_enable: all
-    - pymdownx.caret
-    - pymdownx.critic
-    - pymdownx.details
-    - pymdownx.emoji:
-        emoji_generator: !!python/name:pymdownx.emoji.to_svg
-    - pymdownx.inlinehilite
-    - pymdownx.magiclink
-    - pymdownx.mark
-    - pymdownx.smartsymbols
-    - pymdownx.superfences
-    - pymdownx.tasklist:
-        custom_checkbox: true
-    - pymdownx.tilde
-    - pymdownx.superfences
-    - pymdownx.tabbed
+
+# markdown_extensions:
+#     - admonition
+#     - codehilite:
+#         guess_lang: false
+#         use_pygments: true
+#         noclasses: true
+#         # pygments_style: onedark
+#     - footnotes
+#     - meta
+#     - toc:
+#         permalink: true
+#     - pymdownx.arithmatex
+#     - pymdownx.betterem:
+#         smart_enable: all
+#     - pymdownx.caret
+#     - pymdownx.critic
+#     - pymdownx.details
+#     - pymdownx.emoji:
+#         emoji_generator: !!python/name:pymdownx.emoji.to_svg
+#     - pymdownx.inlinehilite
+#     - pymdownx.magiclink
+#     - pymdownx.mark
+#     - pymdownx.smartsymbols
+#     - pymdownx.superfences
+#     - pymdownx.tasklist:
+#         custom_checkbox: true
+#     - pymdownx.tilde
+#     - pymdownx.superfences
+#     - pymdownx.tabbed
 
 # plugins
-plugins:
-    - mkdocs-jupyter
+# plugins:
+#     - mkdocs-jupyter
 # Google Analytics
 google_analytics:
     - 'UA-125973915-1'

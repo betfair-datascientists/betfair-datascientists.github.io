@@ -1,0 +1,102 @@
+{#-
+    This file was automatically generated - do not edit
+  -#}
+  {% set class = "md-header" %}
+  {% if "navigation.tabs.sticky" in features %}
+    {% set class = class ~ " md-header--lifted" %}
+  {% endif %}
+  <header class="{{ class }}" data-md-component="header">
+    <nav class="md-header__inner md-grid" aria-label="{{ lang.t('header.title') }}">
+      <a href="{{ config.extra.homepage | d(nav.homepage.url, true) | url }}" title="{{ config.site_name | e }}" class="md-header__button md-logo" aria-label="{{ config.site_name }}" data-md-component="logo">
+        {% include "partials/logo.html" %}
+      </a>
+      <label class="md-header__button md-icon" for="__drawer">
+        {% include ".icons/material/menu" ~ ".svg" %}
+      </label>
+      <div class="md-header__title" data-md-component="header-title">
+        <div class="md-header__ellipsis">
+          <div class="md-header__topic">
+            <span class="md-ellipsis">
+              {{ config.site_name }}
+            </span>
+          </div>
+          <div class="md-header__topic" data-md-component="header-topic">
+            <span class="md-ellipsis">
+              {% if page and page.meta and page.meta.title %}
+                {{ page.meta.title }}
+              {% else %}
+                {{ page.title }}
+              {% endif %}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {% if not config.theme.palette is mapping %}
+        <form class="md-header__option" data-md-component="palette">
+          {% for option in config.theme.palette %}
+            {% set primary = option.primary | replace(" ", "-") | lower %}
+            {% set accent  = option.accent  | replace(" ", "-") | lower %}
+            <input class="md-option" data-md-color-media="{{ option.media }}" data-md-color-scheme="{{ option.scheme }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}" {% if option.toggle %} aria-label="{{ option.toggle.name }}" {% else %} aria-hidden="true" {% endif %} type="radio" name="__palette" id="__palette_{{ loop.index }}">
+            {% if option.toggle %}
+              <label class="md-header__button md-icon" title="{{ option.toggle.name }}" for="__palette_{{ loop.index0 or loop.length }}" hidden>
+                {% include ".icons/" ~ option.toggle.icon ~ ".svg" %}
+              </label>
+            {% endif %}
+          {% endfor %}
+        </form>
+      {% endif %}
+      {% if config.extra.alternate %}
+        <div class="md-header__option">
+          <div class="md-select">
+            {% set icon = config.theme.icon.alternate or "material/translate" %}
+            <button class="md-header__button md-icon" aria-label="{{ lang.t('select.language.title') }}">
+              {% include ".icons/" ~ icon ~ ".svg" %}
+            </button>
+            <div class="md-select__inner">
+              <ul class="md-select__list">
+                {% for alt in config.extra.alternate %}
+                  <li class="md-select__item">
+                    <a href="{{ alt.link | url }}" hreflang="{{ alt.lang }}" class="md-select__link">
+                      {{ alt.name }}
+                    </a>
+                  </li>
+                  {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% if "search" in config["plugins"] %}
+        <label class="md-header__button md-icon" for="__search">
+          {% include ".icons/material/magnify.svg" %}
+        </label>
+        {% include "partials/search.html" %}
+      {% endif %}
+     
+      <div class="bf-nav">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26" />
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z" />
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+
+      {% if config.repo_url %}
+        <div class="md-header__source">
+          {% include "partials/source.html" %}
+        </div>
+      {% endif %}
+
+    </nav>
+    {% if "navigation.tabs.sticky" in features %}
+      {% if "navigation.tabs" in features %}
+        {% include "partials/tabs.html" %}
+      {% endif %}
+    {% endif %}
+  </header>

@@ -1634,12 +1634,11 @@
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c1"># Change this certs path to wherever you&#39;re storing your certificates</span>
-<span class="n">certs_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\[user]\Desktop\certs&#39;</span>
-
-<span class="c1"># Change these login details to your own</span>
-<span class="n">my_username</span> <span class="o">=</span> <span class="s2">&quot;your_username&quot;</span>
-<span class="n">my_password</span> <span class="o">=</span> <span class="s2">&quot;your_password&quot;</span>
-<span class="n">my_app_key</span> <span class="o">=</span> <span class="s2">&quot;your_app_key&quot;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">cred</span> <span class="o">=</span> <span class="n">jsonload</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">my_username</span> <span class="o">=</span> <span class="n">cred</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">my_password</span> <span class="o">=</span> <span class="n">cred</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+    <span class="n">my_app_key</span> <span class="o">=</span> <span class="n">cred</span><span class="p">[</span><span class="s1">&#39;app_key&#39;</span><span class="p">]</span>
 
 <span class="n">trading</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">APIClient</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">my_username</span><span class="p">,</span>
                                        <span class="n">password</span><span class="o">=</span><span class="n">my_password</span><span class="p">,</span>

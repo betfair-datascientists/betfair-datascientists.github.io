@@ -42,6 +42,12 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/betfair.css">
     
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -58,7 +64,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange">
   
     
     
@@ -108,30 +114,32 @@
           </div>
         </div>
       </div>
+
       
         <form class="md-header__option" data-md-component="palette">
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
             
               <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
               </label>
             
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
             
               <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
               </label>
             
           
         </form>
       
       
+
       
         <label class="md-header__button md-icon" for="__search">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
@@ -147,10 +155,16 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -166,7 +180,21 @@
   </div>
 </div>
       
+     
+      <div class="bf-nav">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26" />
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z" />
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+
       
+
     </nav>
     
   </header>
@@ -175,6 +203,93 @@
       
       
         
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/apiResources/" class="md-tabs__link">
+        API
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../historicData/dataSources/" class="md-tabs__link">
+        Historic Data
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../howToModel/" class="md-tabs__link md-tabs__link--active">
+        Modelling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../autoTools/overview/" class="md-tabs__link">
+        Auto Tools
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
           
         
       
@@ -188,8 +303,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="The Automation Hub" class="md-nav__button md-logo" aria-label="The Automation Hub" data-md-component="logo">
       
@@ -208,46 +325,13 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_1">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Home
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        The Automation Hub
+        Home
       </a>
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -260,7 +344,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -311,10 +395,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_3" checked>
       
       
       
@@ -397,7 +483,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -434,10 +520,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -482,6 +570,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/automatedBettingAnglesTutorial/" class="md-nav__link">
+        Automated betting angles in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+        Do \#theyknow? Analysing Betfair market formation and market movements
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -495,10 +611,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -590,25 +708,90 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
       
       
       
       
         <label class="md-nav__link" for="__nav_4_2">
+          Racing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Racing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Racing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fasttrackTutorial/" class="md-nav__link">
+        Greyhound form FastTrack API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../greyhoundModellingPython/" class="md-nav__link">
+        Greyhound modelling in Python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
           Soccer
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Soccer" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_2">
+        <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
           Soccer
         </label>
@@ -854,21 +1037,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" data-md-state="indeterminate" type="checkbox" id="__nav_4_4" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_3">
+        <label class="md-nav__link" for="__nav_4_4">
           AFL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="AFL" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           AFL
         </label>
@@ -915,21 +1100,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" data-md-state="indeterminate" type="checkbox" id="__nav_4_5" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_4">
+        <label class="md-nav__link" for="__nav_4_5">
           Tennis
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Tennis" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
+        <label class="md-nav__title" for="__nav_4_5">
           <span class="md-nav__icon md-icon"></span>
           Tennis
         </label>
@@ -1001,7 +1188,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -1038,10 +1225,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
       
       
       
@@ -1197,10 +1386,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
       
       
       
@@ -1314,10 +1505,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" data-md-state="indeterminate" type="checkbox" id="__nav_5_4" checked>
       
       
       
@@ -1375,10 +1568,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" data-md-state="indeterminate" type="checkbox" id="__nav_5_5" checked>
       
       
       
@@ -1637,26 +1832,28 @@
 </ol>
 <p>The tutorial <strong>DOES NOT</strong> delve deep into the fundamentals of machine learning, advanced feature engineering or model tuning.</p>
 <p><em>There are some helpful hints along the way though.</em></p>
-<p>!!! note "Betfair Datathon"
-    If you're interested in competing in the 2021 Euro &amp; Copa America Datathon competition make sure you <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">head to the Hub</a>, register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. </p>
-<pre><code class="language-python"># import required libraries
-
-import numpy as np
-import pandas as pd
-import os
-
-import warnings
-warnings.filterwarnings('ignore')
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Betfair Datathon</p>
+<p>If you're interested in competing in the 2021 Euro &amp; Copa America Datathon competition make sure you <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">head to the Hub</a>, register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. </p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># import required libraries</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">import</span> <span class="nn">warnings</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</code></pre></div>
 <hr />
 <h2 id="read-data-from-file-and-get-a-raw-dataset">Read data from file and get a raw dataset</h2>
 <h4 id="change-the-data-types-date-column">Change the data types - date column.</h4>
 <p>We need the date column in good order for our tutorial. <a href="../assets/datathon_initial_form_data%20-%20SAMPLE.csv">Here's a sample of the data set</a> we're using for this tutorial.</p>
 <p><em>In general, it's a good idea to evaluate data types of all columns that we work with to ensure they are correct.</em></p>
-<pre><code class="language-Python">df = pd.read_csv('soccerData.csv')
-</code></pre>
-<pre><code class="language-Python">df['date_GMT']= pd.to_datetime(df['date_GMT'])
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;soccerData.csv&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">])</span>
+</code></pre></div>
 <h4 id="get-data-columns-and-create-raw-dataset">Get data columns and create raw dataset</h4>
 <p>For this tutorial, let's take only a few stats columns to work with.</p>
 <p><em>Typically we would explore all features and then decide which data to discard.</em></p>
@@ -1668,34 +1865,34 @@ warnings.filterwarnings('ignore')
 <li>Fouls</li>
 <li>Possession</li>
 </ol>
-<pre><code class="language-Python">raw_match_stats = df[[
- 'date_GMT',
- 'home_team_name',
- 'away_team_name',
- 'home_team_goal_count',
- 'away_team_goal_count',
- 'home_team_corner_count',
- 'away_team_corner_count',
- 'home_team_shots',
- 'away_team_shots',
- 'home_team_shots_on_target',
- 'away_team_shots_on_target',
- 'home_team_fouls',
- 'away_team_fouls',
- 'home_team_possession',
- 'away_team_possession',]]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">raw_match_stats</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> <span class="s1">&#39;date_GMT&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> <span class="s1">&#39;home_team_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> <span class="s1">&#39;away_team_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a> <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a> <span class="s1">&#39;away_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a> <span class="s1">&#39;home_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a> <span class="s1">&#39;away_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a> <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a> <span class="s1">&#39;away_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a> <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a> <span class="s1">&#39;away_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a> <span class="s1">&#39;home_team_possession&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a> <span class="s1">&#39;away_team_possession&#39;</span><span class="p">,]]</span>
+</code></pre></div>
 <h4 id="clean-data">Clean data</h4>
 <p>As a cleaning step, we order our data by date and drop rows with NA values.</p>
-<pre><code class="language-Python">raw_match_stats = raw_match_stats.sort_values(by=['date_GMT'], ascending=False)
-
-raw_match_stats = raw_match_stats.dropna()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">raw_match_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">raw_match_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</code></pre></div>
 <h3 id="raw-dataset">Raw dataset</h3>
 <p>This raw dataset is structured so that each match has an individual row and stats for both teams are on that row with columns titles "home" and "away".</p>
 <p>Our goal is to build a machine learning (ML) model that can predict the result of a soccer match. Given that we have some match stats, we will aim to use that information to predict a WIN, LOSS or DRAW.</p>
-<pre><code class="language-Python">raw_match_stats
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">raw_match_stats</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1910,16 +2107,16 @@ raw_match_stats = raw_match_stats.dropna()
 <h2 id="data-cleaning-and-feature-engineering">Data cleaning and feature engineering</h2>
 <h4 id="target-variable-match-result">Target variable - Match Result</h4>
 <p>Our machine learning model aims to predict the result of a match. This "result" is called the "target variable". Our dataset has no columns showing the match result. We will create two columns for the results for each team. One of these would become the target variable for our ML model.</p>
-<pre><code class="language-Python"># create results columns for both home and away teams (W - win, D = Draw, L = Loss).
-
-raw_match_stats.loc[raw_match_stats['home_team_goal_count'] == raw_match_stats['away_team_goal_count'], 'home_team_result'] = 'D'
-raw_match_stats.loc[raw_match_stats['home_team_goal_count'] &gt; raw_match_stats['away_team_goal_count'], 'home_team_result'] = 'W'
-raw_match_stats.loc[raw_match_stats['home_team_goal_count'] &lt; raw_match_stats['away_team_goal_count'], 'home_team_result'] = 'L'
-
-raw_match_stats.loc[raw_match_stats['home_team_goal_count'] == raw_match_stats['away_team_goal_count'], 'away_team_result'] = 'D'
-raw_match_stats.loc[raw_match_stats['home_team_goal_count'] &gt; raw_match_stats['away_team_goal_count'], 'away_team_result'] = 'L'
-raw_match_stats.loc[raw_match_stats['home_team_goal_count'] &lt; raw_match_stats['away_team_goal_count'], 'away_team_result'] = 'W'
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># create results columns for both home and away teams (W - win, D = Draw, L = Loss).</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;L&#39;</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;L&#39;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
+</code></pre></div>
 <h4 id="average-pre-match-stats-five-match-average">Average pre-match stats - Five match average</h4>
 <p>Great! Now we have a dataset with many rows of data, with each row representing match stats and the match result (this would become our target variable).</p>
 <p>But our goal is to build an ML model that predicts the match result prior to the start of a match. Are the stats from that match what we need to build this ML model? No! When predicting a match outcome BEFORE the start of the match, we are forced to rely on match stats available to us from previous matches.</p>
@@ -1932,87 +2129,87 @@ raw_match_stats.loc[raw_match_stats['home_team_goal_count'] &lt; raw_match_stats
 <li>Add these stats to the team_stats_per_match dataset.</li>
 </ol>
 <p><em>Why did we chose five matches? Why not 10? Should we average over a time period (matches in the last year perhaps?) rather than a number? What's the least number of matches available for each competing team in the dataset? These are all interesting questions that may improve our model.</em></p>
-<pre><code class="language-Python"># Split the raw_match_stats to two datasets (home_team_stats and away_team_stats)
-
-home_team_stats = raw_match_stats[[
- 'date_GMT',
- 'home_team_name',
- 'home_team_goal_count',
- 'home_team_corner_count',
- 'home_team_shots',
- 'home_team_shots_on_target',
- 'home_team_fouls',
- 'home_team_possession',
- 'home_team_result',]]
-
-away_team_stats = raw_match_stats[[
- 'date_GMT',
- 'away_team_name',
- 'away_team_goal_count',
- 'away_team_corner_count',
- 'away_team_shots',
- 'away_team_shots_on_target',
- 'away_team_fouls',
- 'away_team_possession',
- 'away_team_result',]]
-
-# rename &quot;home_team&quot; and &quot;away_team&quot; columns
-home_team_stats.columns = [col.replace('home_team_','') for col in home_team_stats.columns]
-away_team_stats.columns = [col.replace('away_team_','') for col in away_team_stats.columns]
-
-# stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match)
-team_stats_per_match = home_team_stats.append(away_team_stats)
-</code></pre>
-<pre><code class="language-Python"># At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team). 
-
-avg_stat_columns = ['goals_per_match','corners_per_match','shots_per_match','shotsOnTarget_per_match','fouls_per_match', 'possession_per_match']
-stats_list = []
-for index, row in team_stats_per_match.iterrows():
-    team_stats_last_five_matches = team_stats_per_match.loc[(team_stats_per_match['name']==row['name']) &amp; (team_stats_per_match['date_GMT']&lt;row['date_GMT'])].sort_values(by=['date_GMT'], ascending=False)
-    stats_list.append(team_stats_last_five_matches.iloc[0:5,:].mean(axis=0).values[0:6])
-
-avg_stats_per_team = pd.DataFrame(stats_list, columns=avg_stat_columns)
-</code></pre>
-<pre><code class="language-Python"># Add these stats to the team_stats_per_match dataset.
-
-team_stats_per_match = pd.concat([team_stats_per_match.reset_index(drop=True), avg_stats_per_team], axis=1, ignore_index=False)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Split the raw_match_stats to two datasets (home_team_stats and away_team_stats)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">home_team_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="p">[[</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a> <span class="s1">&#39;date_GMT&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a> <span class="s1">&#39;home_team_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a> <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a> <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a> <span class="s1">&#39;home_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a> <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a> <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a> <span class="s1">&#39;home_team_possession&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a> <span class="s1">&#39;home_team_result&#39;</span><span class="p">,]]</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">away_team_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="p">[[</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a> <span class="s1">&#39;date_GMT&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a> <span class="s1">&#39;away_team_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a> <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a> <span class="s1">&#39;away_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a> <span class="s1">&#39;away_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a> <span class="s1">&#39;away_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a> <span class="s1">&#39;away_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a> <span class="s1">&#39;away_team_possession&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a> <span class="s1">&#39;away_team_result&#39;</span><span class="p">,]]</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="c1"># rename &quot;home_team&quot; and &quot;away_team&quot; columns</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;home_team_&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;away_team_&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="c1"># stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match)</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="n">team_stats_per_match</span> <span class="o">=</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">away_team_stats</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team). </span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">avg_stat_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;goals_per_match&#39;</span><span class="p">,</span><span class="s1">&#39;corners_per_match&#39;</span><span class="p">,</span><span class="s1">&#39;shots_per_match&#39;</span><span class="p">,</span><span class="s1">&#39;shotsOnTarget_per_match&#39;</span><span class="p">,</span><span class="s1">&#39;fouls_per_match&#39;</span><span class="p">,</span> <span class="s1">&#39;possession_per_match&#39;</span><span class="p">]</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">stats_list</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>    <span class="n">team_stats_last_five_matches</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">team_stats_per_match</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">team_stats_per_match</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>    <span class="n">stats_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">team_stats_last_five_matches</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,:]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">])</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">avg_stats_per_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stats_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">avg_stat_columns</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Add these stats to the team_stats_per_match dataset.</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">team_stats_per_match</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">avg_stats_per_team</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
 <h4 id="reshape-average-pre-match-stats">Reshape average pre-match stats</h4>
 <p>Now that we have the average stats for each team going into every match, we can create a dataset similar to the raw_match_stats, where each row represents both teams from one match.</p>
 <ol>
 <li>Re-segment the home and away teams (name Team 1 and Team 2 rather than home and away).</li>
 <li>Combine at each match to get a dataset with a row representing each match.</li>
 </ol>
-<pre><code class="language-Python"># Re-segment the home and away teams.
-
-home_team_stats = team_stats_per_match.iloc[:int(team_stats_per_match.shape[0]/2),:]
-away_team_stats = team_stats_per_match.iloc[int(team_stats_per_match.shape[0]/2):,:]
-
-home_team_stats.columns = ['team_1_'+str(col) for col in home_team_stats.columns]
-away_team_stats.columns = ['team_2_'+str(col) for col in away_team_stats.columns]
-</code></pre>
-<pre><code class="language-Python"># Combine at each match to get a dataset with a row representing each match. 
-# drop the NA rows (earliest match for each team, i.e no previous stats)
-
-match_stats = pd.concat([home_team_stats, away_team_stats.reset_index(drop=True)], axis=1, ignore_index=False)
-match_stats = match_stats.dropna().reset_index(drop=True)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Re-segment the home and away teams.</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">home_team_stats</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),:]</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">away_team_stats</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">):,:]</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;team_1_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;team_2_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Combine at each match to get a dataset with a row representing each match. </span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># drop the NA rows (earliest match for each team, i.e no previous stats)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">match_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">home_team_stats</span><span class="p">,</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">match_stats</span> <span class="o">=</span> <span class="n">match_stats</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
 <h4 id="find-the-difference-of-stats-between-teams">Find the difference of stats between teams</h4>
 <p>In our ML model, we will take the difference between Team 1 and Team 2 average stats as features. 6 new columns are created for this.</p>
 <p><em>Would we be better off using the raw stats for each team as features?</em></p>
 <p><em>Can we generate any other useful features from the dataset provided?</em></p>
 <p><em>Do we need to weigh the home and away teams because home teams win more often?</em></p>
-<pre><code class="language-Python"># create columns with average stat differences between the two teams
-
-match_stats['goals_per_match_diff'] = (match_stats['team_1_goals_per_match'] - match_stats['team_2_goals_per_match'])
-match_stats['corners_per_match_diff'] = (match_stats['team_1_corners_per_match'] - match_stats['team_2_corners_per_match'])
-match_stats['shots_per_match_diff'] = (match_stats['team_1_shots_per_match'] - match_stats['team_2_shots_per_match'])
-match_stats['shotsOnTarget_per_match_diff'] = (match_stats['team_1_shotsOnTarget_per_match'] - match_stats['team_2_shotsOnTarget_per_match'])
-match_stats['fouls_per_match_diff'] = (match_stats['team_1_fouls_per_match'] - match_stats['team_2_fouls_per_match'])
-match_stats['possession_per_match_diff'] = (match_stats['team_1_possession_per_match'] - match_stats['team_2_possession_per_match'])
-</code></pre>
-<pre><code class="language-Python">match_stats
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># create columns with average stat differences between the two teams</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;goals_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_goals_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_goals_per_match&#39;</span><span class="p">])</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;corners_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_corners_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_corners_per_match&#39;</span><span class="p">])</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;shots_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_shots_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_shots_per_match&#39;</span><span class="p">])</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;shotsOnTarget_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_shotsOnTarget_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_shotsOnTarget_per_match&#39;</span><span class="p">])</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;fouls_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_fouls_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_fouls_per_match&#39;</span><span class="p">])</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;possession_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_possession_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_possession_per_match&#39;</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">match_stats</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2304,22 +2501,22 @@ match_stats['possession_per_match_diff'] = (match_stats['team_1_possession_per_m
 <li>Use accuracy to evaluate our models</li>
 </ol>
 <p><em>It's probably worth evaluating multiple models (several models explained in this tutorial), perhaps use k-fold cross validation, and use metrics other than accuracy to evaluate a model (check the commented out code).</em></p>
-<pre><code class="language-Python"># import required libraries
-
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_fscore_support as score, confusion_matrix, roc_auc_score, classification_report, log_loss
-
-from sklearn.neural_network import MLPClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.gaussian_process import GaussianProcessClassifier
-from sklearn.gaussian_process.kernels import RBF
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-from sklearn.linear_model import LogisticRegression
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># import required libraries</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_fscore_support</span> <span class="k">as</span> <span class="n">score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">log_loss</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">GaussianProcessClassifier</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="kn">from</span> <span class="nn">sklearn.gaussian_process.kernels</span> <span class="kn">import</span> <span class="n">RBF</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">AdaBoostClassifier</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">QuadraticDiscriminantAnalysis</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+</code></pre></div>
 <h4 id="get-data-from-our-dataset">Get data from our dataset</h4>
 <ol>
 <li>Team_1_result column - target variable</li>
@@ -2327,61 +2524,61 @@ from sklearn.linear_model import LogisticRegression
 </ol>
 <p><em>Do we need to scale or normalize the feature columns in order for it to make mathematical sense to a ML model? This depends on the type of model we are training, but it's definitely worth investigating in order to achieve a high performing model.</em></p>
 <p><em>We should also investigate the dataset to check if it's balanced on all classes or if it's skewed towards a particular class (i.e are there an equal number of wins, losses and draws?). If not, would this affect model performance?</em></p>
-<pre><code class="language-Python">target = match_stats[['team_1_result']].replace(['W','L','D'],[0,1,2])
-
-features = match_stats[['goals_per_match_diff', 'corners_per_match_diff',
-       'shots_per_match_diff', 'shotsOnTarget_per_match_diff',
-       'fouls_per_match_diff', 'possession_per_match_diff']]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">target</span> <span class="o">=</span> <span class="n">match_stats</span><span class="p">[[</span><span class="s1">&#39;team_1_result&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;W&#39;</span><span class="p">,</span><span class="s1">&#39;L&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">features</span> <span class="o">=</span> <span class="n">match_stats</span><span class="p">[[</span><span class="s1">&#39;goals_per_match_diff&#39;</span><span class="p">,</span> <span class="s1">&#39;corners_per_match_diff&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>       <span class="s1">&#39;shots_per_match_diff&#39;</span><span class="p">,</span> <span class="s1">&#39;shotsOnTarget_per_match_diff&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>       <span class="s1">&#39;fouls_per_match_diff&#39;</span><span class="p">,</span> <span class="s1">&#39;possession_per_match_diff&#39;</span><span class="p">]]</span>
+</code></pre></div>
 <h4 id="split-test-and-training-data">Split test and training data</h4>
 <p>We train a model on the training data, and then use test data to evaluate the performance of that model.</p>
-<pre><code class="language-Python">X_train,X_test,y_train,y_test = train_test_split(features, target, test_size=0.2, stratify = target)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">X_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span> <span class="o">=</span> <span class="n">target</span><span class="p">)</span>
+</code></pre></div>
 <h4 id="name-and-define-classifiers">Name and define classifiers</h4>
-<pre><code class="language-Python">names = [&quot;Nearest Neighbors&quot;, &quot;Logistic Regression&quot;,&quot;Linear SVM&quot;, &quot;RBF SVM&quot;, &quot;Gaussian Process&quot;,
-         &quot;Decision Tree&quot;, &quot;Random Forest&quot;, &quot;Neural Net&quot;, &quot;AdaBoost&quot;,
-         &quot;Naive Bayes&quot;, &quot;QDA&quot;]
-
-classifiers = [
-    KNeighborsClassifier(3),
-    LogisticRegression(),
-    SVC(kernel=&quot;linear&quot;, C=0.025, probability=True),
-    SVC(gamma=2, C=1, probability=True),
-    GaussianProcessClassifier(1.0 * RBF(1.0)),
-    DecisionTreeClassifier(max_depth=5),
-    RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
-    MLPClassifier(alpha=1, max_iter=1000),
-    AdaBoostClassifier(),
-    GaussianNB(),
-    QuadraticDiscriminantAnalysis()]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Logistic Regression&quot;</span><span class="p">,</span><span class="s2">&quot;Linear SVM&quot;</span><span class="p">,</span> <span class="s2">&quot;RBF SVM&quot;</span><span class="p">,</span> <span class="s2">&quot;Gaussian Process&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>         <span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Neural Net&quot;</span><span class="p">,</span> <span class="s2">&quot;AdaBoost&quot;</span><span class="p">,</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>         <span class="s2">&quot;Naive Bayes&quot;</span><span class="p">,</span> <span class="s2">&quot;QDA&quot;</span><span class="p">]</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="n">LogisticRegression</span><span class="p">(),</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="n">GaussianProcessClassifier</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">RBF</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)),</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="n">AdaBoostClassifier</span><span class="p">(),</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    <span class="n">GaussianNB</span><span class="p">(),</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    <span class="n">QuadraticDiscriminantAnalysis</span><span class="p">()]</span>
+</code></pre></div>
 <h4 id="iterate-through-all-classifiers-and-get-their-accuracy-score">Iterate through all classifiers and get their accuracy score</h4>
 <p>We can use the best performing model to make our predictions.</p>
 <p><em>There are several other metrics in the code that have been commented out which might provide helpful insights on model performance.</em></p>
-<pre><code class="language-Python">for name, clf in zip(names, classifiers):
-        clf.fit(X_train, y_train)
-        accuracy = clf.score(X_test, y_test)
-
-        # prediction_proba = clf.predict_proba(X_test)
-        # logloss = log_loss(y_test,prediction_proba)
-        # precision, recall, fscore, support = score(y_test, prediction)
-        # conf_martrix = confusion_matrix(y_test, prediction)
-        # clas_report = classification_report(y_test, prediction)
-
-        print(name, accuracy)
-</code></pre>
-<pre><code>Nearest Neighbors 0.49295774647887325
-Logistic Regression 0.5714285714285714
-Linear SVM 0.5694164989939637
-RBF SVM 0.46680080482897385
-Gaussian Process 0.5633802816901409
-Decision Tree 0.5432595573440644
-Random Forest 0.5533199195171026
-Neural Net 0.5573440643863179
-AdaBoost 0.5573440643863179
-Naive Bayes 0.5331991951710262
-QDA 0.5674044265593562
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">classifiers</span><span class="p">):</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>        <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="c1"># prediction_proba = clf.predict_proba(X_test)</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>        <span class="c1"># logloss = log_loss(y_test,prediction_proba)</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>        <span class="c1"># precision, recall, fscore, support = score(y_test, prediction)</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>        <span class="c1"># conf_martrix = confusion_matrix(y_test, prediction)</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>        <span class="c1"># clas_report = classification_report(y_test, prediction)</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Nearest Neighbors 0.49295774647887325
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Logistic Regression 0.5714285714285714
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Linear SVM 0.5694164989939637
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>RBF SVM 0.46680080482897385
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Gaussian Process 0.5633802816901409
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>Decision Tree 0.5432595573440644
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>Random Forest 0.5533199195171026
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>Neural Net 0.5573440643863179
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>AdaBoost 0.5573440643863179
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>Naive Bayes 0.5331991951710262
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>QDA 0.5674044265593562
+</code></pre></div>
 <hr />
 <h3 id="disclaimer">Disclaimer</h3>
 <p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
@@ -2390,6 +2587,11 @@ QDA 0.5674044265593562
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
         
       </main>
       
@@ -2492,7 +2694,7 @@ QDA 0.5674044265593562
           <div class="bf-footer-inner">
               <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
               <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
           
               <ul class="bf-links">
                 <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
@@ -2521,7 +2723,7 @@ QDA 0.5674044265593562
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
       <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>

@@ -42,6 +42,12 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/betfair.css">
     
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -58,7 +64,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange">
   
     
     
@@ -108,30 +114,32 @@
           </div>
         </div>
       </div>
+
       
         <form class="md-header__option" data-md-component="palette">
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
             
               <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
               </label>
             
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
             
               <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
               </label>
             
           
         </form>
       
       
+
       
         <label class="md-header__button md-icon" for="__search">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
@@ -147,10 +155,16 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -166,7 +180,21 @@
   </div>
 </div>
       
+     
+      <div class="bf-nav">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26" />
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z" />
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+
       
+
     </nav>
     
   </header>
@@ -175,6 +203,93 @@
       
       
         
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../apiResources/" class="md-tabs__link md-tabs__link--active">
+        API
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../historicData/dataSources/" class="md-tabs__link">
+        Historic Data
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../modelling/howToModel/" class="md-tabs__link">
+        Modelling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../autoTools/overview/" class="md-tabs__link">
+        Auto Tools
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
           
         
       
@@ -188,8 +303,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="The Automation Hub" class="md-nav__button md-logo" aria-label="The Automation Hub" data-md-component="logo">
       
@@ -208,43 +325,10 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_1">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Home
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        The Automation Hub
+        Home
       </a>
-    </li>
-  
-
-            
-          
-        </ul>
-      </nav>
     </li>
   
 
@@ -315,7 +399,9 @@
   
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
         <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
@@ -619,7 +705,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -656,10 +742,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -704,6 +792,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/automatedBettingAnglesTutorial/" class="md-nav__link">
+        Automated betting angles in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+        Do \#theyknow? Analysing Betfair market formation and market movements
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -717,10 +833,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -775,7 +893,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" data-md-state="indeterminate" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -812,21 +930,86 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
       
       
       
       
         <label class="md-nav__link" for="__nav_4_2">
+          Racing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Racing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Racing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modelling/fasttrackTutorial/" class="md-nav__link">
+        Greyhound form FastTrack API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modelling/greyhoundModellingPython/" class="md-nav__link">
+        Greyhound modelling in Python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" data-md-state="indeterminate" type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
           Soccer
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Soccer" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_2">
+        <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
           Soccer
         </label>
@@ -901,21 +1084,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" data-md-state="indeterminate" type="checkbox" id="__nav_4_4" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_3">
+        <label class="md-nav__link" for="__nav_4_4">
           AFL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="AFL" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           AFL
         </label>
@@ -962,21 +1147,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" data-md-state="indeterminate" type="checkbox" id="__nav_4_5" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_4">
+        <label class="md-nav__link" for="__nav_4_5">
           Tennis
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Tennis" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
+        <label class="md-nav__title" for="__nav_4_5">
           <span class="md-nav__icon md-icon"></span>
           Tennis
         </label>
@@ -1048,7 +1235,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -1085,10 +1272,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
       
       
       
@@ -1244,10 +1433,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
       
       
       
@@ -1361,10 +1552,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" data-md-state="indeterminate" type="checkbox" id="__nav_5_4" checked>
       
       
       
@@ -1422,10 +1615,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" data-md-state="indeterminate" type="checkbox" id="__nav_5_5" checked>
       
       
       
@@ -1749,33 +1944,33 @@
 <p>Now we're finally ready to log in and use the API. First, we create an APIClient object and then log in. To log in, we'll need to specify where we put our certs. In this example, I'll put them in a folder named 'certs', on my desktop.</p>
 <p>You'll also need to change the <code>username</code>, <code>password</code> and <code>app_key</code> variables to your own.</p>
 <p><strong><code>In [206]:</code></strong></p>
-<pre><code class="language-python"># Import libraries
-import betfairlightweight
-from betfairlightweight import filters
-import pandas as pd
-import numpy as np
-import os
-import datetime
-import json
-
-# Change this certs path to wherever you're storing your certificates
-certs_path = r'C:\Users\[user]\Desktop\certs'
-
-# Change these login details to your own
-my_username = &quot;your_username&quot;
-my_password = &quot;your_password&quot;
-my_app_key = &quot;your_app_key&quot;
-
-trading = betfairlightweight.APIClient(username=my_username,
-                                       password=my_password,
-                                       app_key=my_app_key,
-                                       certs=certs_path)
-
-trading.login()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Import libraries</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">betfairlightweight</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">betfairlightweight</span> <span class="kn">import</span> <span class="n">filters</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">import</span> <span class="nn">datetime</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">json</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Change this certs path to wherever you&#39;re storing your certificates</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">certs_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\[user]\Desktop\certs&#39;</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Change these login details to your own</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">my_username</span> <span class="o">=</span> <span class="s2">&quot;your_username&quot;</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">my_password</span> <span class="o">=</span> <span class="s2">&quot;your_password&quot;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">my_app_key</span> <span class="o">=</span> <span class="s2">&quot;your_app_key&quot;</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">trading</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">APIClient</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">my_username</span><span class="p">,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>                                       <span class="n">password</span><span class="o">=</span><span class="n">my_password</span><span class="p">,</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>                                       <span class="n">app_key</span><span class="o">=</span><span class="n">my_app_key</span><span class="p">,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>                                       <span class="n">certs</span><span class="o">=</span><span class="n">certs_path</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">trading</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+</code></pre></div>
 <p><strong><code>Out[206]:</code></strong></p>
-<pre><code class="language-python">&lt;LoginResource&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&lt;</span><span class="n">LoginResource</span><span class="o">&gt;</span>
+</code></pre></div>
 <h3 id="get-event-ids">Get Event IDs</h3>
 <p>Betfair's API has a number of operations. For example, if you want to list the market book for a market, you would use the listMarketBook operation. These endpoints are shown in the <a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a> and in the docs. They are also listed below:</p>
 <h4 id="sports-api">Sports API</h4>
@@ -1801,16 +1996,16 @@ trading.login()
 <p>The Account Operations API operations/endpoints <a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/">can be found here</a>.</p>
 <p>First we need to grab the 'Event Type Id'. Each sport has a different ID. Below we will find the ids for all sports by requesting the event_type_ids without a filter.</p>
 <p><strong><code>In [43]:</code></strong></p>
-<pre><code class="language-python"># Grab all event type ids. This will return a list which we will iterate over to print out the id and the name of the sport
-event_types = trading.betting.list_event_types()
-
-sport_ids = pd.DataFrame({
-    'Sport': [event_type_object.event_type.name for event_type_object in event_types],
-    'ID': [event_type_object.event_type.id for event_type_object in event_types]
-}).set_index('Sport').sort_index()
-
-sport_ids
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Grab all event type ids. This will return a list which we will iterate over to print out the id and the name of the sport</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">event_types</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_event_types</span><span class="p">()</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">sport_ids</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="s1">&#39;Sport&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_type_object</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">event_type_object</span> <span class="ow">in</span> <span class="n">event_types</span><span class="p">],</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_type_object</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">event_type_object</span> <span class="ow">in</span> <span class="n">event_types</span><span class="p">]</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="p">})</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;Sport&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">sport_ids</span>
+</code></pre></div>
 <p><strong><code>Out[43]:</code></strong></p>
 <table>
 <thead>
@@ -1940,49 +2135,49 @@ sport_ids
 </table>
 <p>If we just wanted to get the event id for horse racing, we could use the filter function from <code>betfairlightweight</code> as shown in the examples and below.</p>
 <p><strong><code>In [50]:</code></strong></p>
-<pre><code class="language-python"># Filter for just horse racing
-horse_racing_filter = betfairlightweight.filters.market_filter(text_query='Horse Racing')
-
-# This returns a list
-horse_racing_event_type = trading.betting.list_event_types(
-    filter=horse_racing_filter)
-
-# Get the first element of the list
-horse_racing_event_type = horse_racing_event_type[0]
-
-horse_racing_event_type_id = horse_racing_event_type.event_type.id
-print(f&quot;The event type id for horse racing is {horse_racing_event_type_id}&quot;)
-
-# The event type id for horse racing is 7
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Filter for just horse racing</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">horse_racing_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">text_query</span><span class="o">=</span><span class="s1">&#39;Horse Racing&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># This returns a list</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="n">horse_racing_event_type</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_event_types</span><span class="p">(</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="nb">filter</span><span class="o">=</span><span class="n">horse_racing_filter</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># Get the first element of the list</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="n">horse_racing_event_type</span> <span class="o">=</span> <span class="n">horse_racing_event_type</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">horse_racing_event_type_id</span> <span class="o">=</span> <span class="n">horse_racing_event_type</span><span class="o">.</span><span class="n">event_type</span><span class="o">.</span><span class="n">id</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The event type id for horse racing is </span><span class="si">{</span><span class="n">horse_racing_event_type_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># The event type id for horse racing is 7</span>
+</code></pre></div>
 <h3 id="get-competition-ids">Get Competition IDs</h3>
 <p>Sometimes you may want to get markets based on the competition. An example may be the Brownlow medal, or the EPL. Let's have a look at all the soccer competitions over the next week and filter to only get the EPL Competition ID.</p>
 <p><strong><code>In [90]:</code></strong></p>
-<pre><code class="language-python"># Get a datetime object in a week and convert to string
-datetime_in_a_week = (datetime.datetime.utcnow() + datetime.timedelta(weeks=1)).strftime(&quot;%Y-%m-%dT%TZ&quot;)
-
-# Create a competition filter
-competition_filter = betfairlightweight.filters.market_filter(
-    event_type_ids=[1], # Soccer's event type id is 1
-    market_start_time={
-        'to': datetime_in_a_week
-    })
-
-# Get a list of competitions for soccer
-competitions = trading.betting.list_competitions(
-    filter=competition_filter
-)
-
-# Iterate over the competitions and create a dataframe of competitions and competition ids
-soccer_competitions = pd.DataFrame({
-    'Competition': [competition_object.competition.name for competition_object in competitions],
-    'ID': [competition_object.competition.id for competition_object in competitions]
-})
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Get a datetime object in a week and convert to string</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">datetime_in_a_week</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">weeks</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%TZ&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Create a competition filter</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="n">competition_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">event_type_ids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="c1"># Soccer&#39;s event type id is 1</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">market_start_time</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="n">datetime_in_a_week</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="p">})</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># Get a list of competitions for soccer</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">competitions</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_competitions</span><span class="p">(</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="nb">filter</span><span class="o">=</span><span class="n">competition_filter</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="p">)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1"># Iterate over the competitions and create a dataframe of competitions and competition ids</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="n">soccer_competitions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>    <span class="s1">&#39;Competition&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">competition_object</span><span class="o">.</span><span class="n">competition</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">competition_object</span> <span class="ow">in</span> <span class="n">competitions</span><span class="p">],</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="s1">&#39;ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">competition_object</span><span class="o">.</span><span class="n">competition</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">competition_object</span> <span class="ow">in</span> <span class="n">competitions</span><span class="p">]</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="p">})</span>
+</code></pre></div>
 <p><strong><code>In [94]:</code></strong></p>
-<pre><code class="language-python"># Get the English Premier League Competition ID
-soccer_competitions[soccer_competitions.Competition.str.contains('English Premier')]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Get the English Premier League Competition ID</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">soccer_competitions</span><span class="p">[</span><span class="n">soccer_competitions</span><span class="o">.</span><span class="n">Competition</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;English Premier&#39;</span><span class="p">)]</span>
+</code></pre></div>
 <p><strong><code>Out[94]:</code></strong></p>
 <table>
 <thead>
@@ -2003,42 +2198,42 @@ soccer_competitions[soccer_competitions.Competition.str.contains('English Premie
 <h3 id="get-upcoming-events">Get Upcoming Events</h3>
 <p>Say you want to get all the upcoming events for Thoroughbreads for the next 24 hours. We will use the <code>listEvents</code> operation for this. First, as before, we define a market filter, and then using the betting method from our trading object which we defined earlier.</p>
 <p><strong><code>In [207]:</code></strong></p>
-<pre><code class="language-python"># Define a market filter
-thoroughbreds_event_filter = betfairlightweight.filters.market_filter(
-    event_type_ids=[horse_racing_event_type_id],
-    market_countries=['AU'],
-    market_start_time={
-        'to': (datetime.datetime.utcnow() + datetime.timedelta(days=1)).strftime(&quot;%Y-%m-%dT%TZ&quot;)
-    }
-)
-
-# Print the filter
-thoroughbreds_event_filter
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># Define a market filter</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="n">thoroughbreds_event_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">event_type_ids</span><span class="o">=</span><span class="p">[</span><span class="n">horse_racing_event_type_id</span><span class="p">],</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">market_countries</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">],</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="n">market_start_time</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>        <span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">+</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%TZ&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="p">}</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># Print the filter</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="n">thoroughbreds_event_filter</span>
+</code></pre></div>
 <p><strong><code>Out[207]:</code></strong></p>
-<pre><code class="language-python">{'eventTypeIds': ['7'],
- 'marketCountries': ['AU'],
- 'marketStartTime': {'to': '2018-10-26T22:25:00Z'}}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span><span class="s1">&#39;eventTypeIds&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;7&#39;</span><span class="p">],</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a> <span class="s1">&#39;marketCountries&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;AU&#39;</span><span class="p">],</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a> <span class="s1">&#39;marketStartTime&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;to&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-10-26T22:25:00Z&#39;</span><span class="p">}}</span>
+</code></pre></div>
 <p><strong><code>In [208]:</code></strong></p>
-<pre><code class="language-python"># Get a list of all thoroughbred events as objects
-aus_thoroughbred_events = trading.betting.list_events(
-    filter=thoroughbreds_event_filter
-)
-
-# Create a DataFrame with all the events by iterating over each event object
-aus_thoroughbred_events_today = pd.DataFrame({
-    'Event Name': [event_object.event.name for event_object in aus_thoroughbred_events],
-    'Event ID': [event_object.event.id for event_object in aus_thoroughbred_events],
-    'Event Venue': [event_object.event.venue for event_object in aus_thoroughbred_events],
-    'Country Code': [event_object.event.country_code for event_object in aus_thoroughbred_events],
-    'Time Zone': [event_object.event.time_zone for event_object in aus_thoroughbred_events],
-    'Open Date': [event_object.event.open_date for event_object in aus_thoroughbred_events],
-    'Market Count': [event_object.market_count for event_object in aus_thoroughbred_events]
-})
-
-aus_thoroughbred_events_today
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Get a list of all thoroughbred events as objects</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">aus_thoroughbred_events</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_events</span><span class="p">(</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    <span class="nb">filter</span><span class="o">=</span><span class="n">thoroughbreds_event_filter</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">)</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="c1"># Create a DataFrame with all the events by iterating over each event object</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="n">aus_thoroughbred_events_today</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    <span class="s1">&#39;Event Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    <span class="s1">&#39;Event ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    <span class="s1">&#39;Event Venue&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">venue</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>    <span class="s1">&#39;Country Code&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">country_code</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>    <span class="s1">&#39;Time Zone&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">time_zone</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>    <span class="s1">&#39;Open Date&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">event</span><span class="o">.</span><span class="n">open_date</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">],</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>    <span class="s1">&#39;Market Count&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">event_object</span><span class="o">.</span><span class="n">market_count</span> <span class="k">for</span> <span class="n">event_object</span> <span class="ow">in</span> <span class="n">aus_thoroughbred_events</span><span class="p">]</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="p">})</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="n">aus_thoroughbred_events_today</span>
+</code></pre></div>
 <p><strong><code>Out[208]:</code></strong></p>
 <table>
 <thead>
@@ -2199,21 +2394,21 @@ aus_thoroughbred_events_today
 <h3 id="get-market-types">Get Market Types</h3>
 <p>Say we want to know what market types a certain event is offering. To do this, we use the <code>listMarketTypes</code> operation. Let's take the Moonee Valley event from above (ID: 28971066). As this is a horse race we would expect that it would have Win and Place markets.</p>
 <p><strong><code>In [209]:</code></strong></p>
-<pre><code class="language-python"># Define a market filter
-market_types_filter = betfairlightweight.filters.market_filter(event_ids=['28971066'])
-
-# Request market types
-market_types = trading.betting.list_market_types(
-        filter=market_types_filter
-)
-
-# Create a DataFrame of market types
-market_types_mooney_valley = pd.DataFrame({
-    'Market Type': [market_type_object.market_type for market_type_object in market_types],
-})
-
-market_types_mooney_valley
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Define a market filter</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">market_types_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># Request market types</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">market_types</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_types</span><span class="p">(</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="nb">filter</span><span class="o">=</span><span class="n">market_types_filter</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">)</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="c1"># Create a DataFrame of market types</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="n">market_types_mooney_valley</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="s1">&#39;Market Type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">market_type_object</span><span class="o">.</span><span class="n">market_type</span> <span class="k">for</span> <span class="n">market_type_object</span> <span class="ow">in</span> <span class="n">market_types</span><span class="p">],</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="p">})</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="n">market_types_mooney_valley</span>
+</code></pre></div>
 <p><strong><code>Out[209]:</code></strong></p>
 <table>
 <thead>
@@ -2243,23 +2438,23 @@ market_types_mooney_valley
 <p>For a more comprehensive understanding of the options for filters and what we can request, please have a look at the <a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a>. The options listed under market filter should be put into a filter, whilst the others should be arguments to the relevant operation function in <code>betfairlightweight</code>.</p>
 <p>For example, if we want all the markets for Moonee Valley, we should use the following filters and arguments.</p>
 <p><strong><code>In [210]:</code></strong></p>
-<pre><code class="language-python">market_catalogue_filter = betfairlightweight.filters.market_filter(event_ids=['28971066'])
-
-market_catalogues = trading.betting.list_market_catalogue(
-    filter=market_catalogue_filter,
-    max_results='100',
-    sort='FIRST_TO_START'
-)
-
-# Create a DataFrame for each market catalogue
-market_types_mooney_valley = pd.DataFrame({
-    'Market Name': [market_cat_object.market_name for market_cat_object in market_catalogues],
-    'Market ID': [market_cat_object.market_id for market_cat_object in market_catalogues],
-    'Total Matched': [market_cat_object.total_matched for market_cat_object in market_catalogues],
-})
-
-market_types_mooney_valley
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">market_catalogue_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">market_catalogues</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_catalogue</span><span class="p">(</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>    <span class="nb">filter</span><span class="o">=</span><span class="n">market_catalogue_filter</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="n">max_results</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>    <span class="n">sort</span><span class="o">=</span><span class="s1">&#39;FIRST_TO_START&#39;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="p">)</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Create a DataFrame for each market catalogue</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">market_types_mooney_valley</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="s1">&#39;Market Name&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">market_cat_object</span><span class="o">.</span><span class="n">market_name</span> <span class="k">for</span> <span class="n">market_cat_object</span> <span class="ow">in</span> <span class="n">market_catalogues</span><span class="p">],</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>    <span class="s1">&#39;Market ID&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">market_cat_object</span><span class="o">.</span><span class="n">market_id</span> <span class="k">for</span> <span class="n">market_cat_object</span> <span class="ow">in</span> <span class="n">market_catalogues</span><span class="p">],</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>    <span class="s1">&#39;Total Matched&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">market_cat_object</span><span class="o">.</span><span class="n">total_matched</span> <span class="k">for</span> <span class="n">market_cat_object</span> <span class="ow">in</span> <span class="n">market_catalogues</span><span class="p">],</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="p">})</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="n">market_types_mooney_valley</span>
+</code></pre></div>
 <p><strong><code>Out[210]:</code></strong></p>
 <table>
 <thead>
@@ -2420,74 +2615,74 @@ market_types_mooney_valley
 <h3 id="get-market-books">Get Market Books</h3>
 <p>If we then want to get the prices available/last traded for a market, we should use the <code>listMarketBook</code> operation. Let's Look at the market book for Moonee Valley R7. We will need to define a function which processes the runner books and collates the data into a DataFrame.</p>
 <p><strong><code>In [212]:</code></strong></p>
-<pre><code class="language-python">def process_runner_books(runner_books):
-    '''
-    This function processes the runner books and returns a DataFrame with the best back/lay prices + vol for each runner
-    :param runner_books:
-    :return:
-    '''
-    best_back_prices = [runner_book.ex.available_to_back[0].price
-                        if runner_book.ex.available_to_back[0].price
-                        else 1.01
-                        for runner_book
-                        in runner_books]
-    best_back_sizes = [runner_book.ex.available_to_back[0].size
-                       if runner_book.ex.available_to_back[0].size
-                       else 1.01
-                       for runner_book
-                       in runner_books]
-
-    best_lay_prices = [runner_book.ex.available_to_lay[0].price
-                       if runner_book.ex.available_to_lay[0].price
-                       else 1000.0
-                       for runner_book
-                       in runner_books]
-    best_lay_sizes = [runner_book.ex.available_to_lay[0].size
-                      if runner_book.ex.available_to_lay[0].size
-                      else 1.01
-                      for runner_book
-                      in runner_books]
-
-    selection_ids = [runner_book.selection_id for runner_book in runner_books]
-    last_prices_traded = [runner_book.last_price_traded for runner_book in runner_books]
-    total_matched = [runner_book.total_matched for runner_book in runner_books]
-    statuses = [runner_book.status for runner_book in runner_books]
-    scratching_datetimes = [runner_book.removal_date for runner_book in runner_books]
-    adjustment_factors = [runner_book.adjustment_factor for runner_book in runner_books]
-
-    df = pd.DataFrame({
-        'Selection ID': selection_ids,
-        'Best Back Price': best_back_prices,
-        'Best Back Size': best_back_sizes,
-        'Best Lay Price': best_lay_prices,
-        'Best Lay Size': best_lay_sizes,
-        'Last Price Traded': last_prices_traded,
-        'Total Matched': total_matched,
-        'Status': statuses,
-        'Removal Date': scratching_datetimes,
-        'Adjustment Factor': adjustment_factors
-    })
-    return df
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">def</span> <span class="nf">process_runner_books</span><span class="p">(</span><span class="n">runner_books</span><span class="p">):</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="sd">    This function processes the runner books and returns a DataFrame with the best back/lay prices + vol for each runner</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="sd">    :param runner_books:</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="sd">    :return:</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="sd">    &#39;&#39;&#39;</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>    <span class="n">best_back_prices</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>                        <span class="k">if</span> <span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>                        <span class="k">else</span> <span class="mf">1.01</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>                        <span class="k">for</span> <span class="n">runner_book</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>                        <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>    <span class="n">best_back_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a>                       <span class="k">if</span> <span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_back</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a>                       <span class="k">else</span> <span class="mf">1.01</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>                       <span class="k">for</span> <span class="n">runner_book</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>                       <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>    <span class="n">best_lay_prices</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_lay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a>                       <span class="k">if</span> <span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_lay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">price</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>                       <span class="k">else</span> <span class="mf">1000.0</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a>                       <span class="k">for</span> <span class="n">runner_book</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a>                       <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>    <span class="n">best_lay_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_lay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a>                      <span class="k">if</span> <span class="n">runner_book</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">available_to_lay</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a>                      <span class="k">else</span> <span class="mf">1.01</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a>                      <span class="k">for</span> <span class="n">runner_book</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a>                      <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a>    <span class="n">selection_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">selection_id</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a>    <span class="n">last_prices_traded</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">last_price_traded</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-31" name="__codelineno-11-31" href="#__codelineno-11-31"></a>    <span class="n">total_matched</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">total_matched</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-32" name="__codelineno-11-32" href="#__codelineno-11-32"></a>    <span class="n">statuses</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">status</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-33" name="__codelineno-11-33" href="#__codelineno-11-33"></a>    <span class="n">scratching_datetimes</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">removal_date</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34" href="#__codelineno-11-34"></a>    <span class="n">adjustment_factors</span> <span class="o">=</span> <span class="p">[</span><span class="n">runner_book</span><span class="o">.</span><span class="n">adjustment_factor</span> <span class="k">for</span> <span class="n">runner_book</span> <span class="ow">in</span> <span class="n">runner_books</span><span class="p">]</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35" href="#__codelineno-11-35"></a>
+<a id="__codelineno-11-36" name="__codelineno-11-36" href="#__codelineno-11-36"></a>    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37" href="#__codelineno-11-37"></a>        <span class="s1">&#39;Selection ID&#39;</span><span class="p">:</span> <span class="n">selection_ids</span><span class="p">,</span>
+<a id="__codelineno-11-38" name="__codelineno-11-38" href="#__codelineno-11-38"></a>        <span class="s1">&#39;Best Back Price&#39;</span><span class="p">:</span> <span class="n">best_back_prices</span><span class="p">,</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39" href="#__codelineno-11-39"></a>        <span class="s1">&#39;Best Back Size&#39;</span><span class="p">:</span> <span class="n">best_back_sizes</span><span class="p">,</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40" href="#__codelineno-11-40"></a>        <span class="s1">&#39;Best Lay Price&#39;</span><span class="p">:</span> <span class="n">best_lay_prices</span><span class="p">,</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41" href="#__codelineno-11-41"></a>        <span class="s1">&#39;Best Lay Size&#39;</span><span class="p">:</span> <span class="n">best_lay_sizes</span><span class="p">,</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42" href="#__codelineno-11-42"></a>        <span class="s1">&#39;Last Price Traded&#39;</span><span class="p">:</span> <span class="n">last_prices_traded</span><span class="p">,</span>
+<a id="__codelineno-11-43" name="__codelineno-11-43" href="#__codelineno-11-43"></a>        <span class="s1">&#39;Total Matched&#39;</span><span class="p">:</span> <span class="n">total_matched</span><span class="p">,</span>
+<a id="__codelineno-11-44" name="__codelineno-11-44" href="#__codelineno-11-44"></a>        <span class="s1">&#39;Status&#39;</span><span class="p">:</span> <span class="n">statuses</span><span class="p">,</span>
+<a id="__codelineno-11-45" name="__codelineno-11-45" href="#__codelineno-11-45"></a>        <span class="s1">&#39;Removal Date&#39;</span><span class="p">:</span> <span class="n">scratching_datetimes</span><span class="p">,</span>
+<a id="__codelineno-11-46" name="__codelineno-11-46" href="#__codelineno-11-46"></a>        <span class="s1">&#39;Adjustment Factor&#39;</span><span class="p">:</span> <span class="n">adjustment_factors</span>
+<a id="__codelineno-11-47" name="__codelineno-11-47" href="#__codelineno-11-47"></a>    <span class="p">})</span>
+<a id="__codelineno-11-48" name="__codelineno-11-48" href="#__codelineno-11-48"></a>    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div>
 <p><strong><code>In [213]:</code></strong></p>
-<pre><code class="language-python"># Create a price filter. Get all traded and offer data
-price_filter = `betfairlightweight`.filters.price_projection(
-    price_data=['EX_BEST_OFFERS']
-)
-
-# Request market books
-market_books = trading.betting.list_market_book(
-    market_ids=['1.150038686'],
-    price_projection=price_filter
-)
-
-# Grab the first market book from the returned list as we only requested one market 
-market_book = market_books[0]
-
-runners_df = process_runner_books(market_book.runners)
-
-runners_df
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Create a price filter. Get all traded and offer data</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">price_filter</span> <span class="o">=</span> <span class="err">`</span><span class="n">betfairlightweight</span><span class="err">`</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">price_projection</span><span class="p">(</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>    <span class="n">price_data</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EX_BEST_OFFERS&#39;</span><span class="p">]</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="c1"># Request market books</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">market_books</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_book</span><span class="p">(</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>    <span class="n">market_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;1.150038686&#39;</span><span class="p">],</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>    <span class="n">price_projection</span><span class="o">=</span><span class="n">price_filter</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="p">)</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="c1"># Grab the first market book from the returned list as we only requested one market </span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="n">market_book</span> <span class="o">=</span> <span class="n">market_books</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="n">runners_df</span> <span class="o">=</span> <span class="n">process_runner_books</span><span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">runners</span><span class="p">)</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="n">runners_df</span>
+</code></pre></div>
 <p><strong><code>Out[213]:</code></strong></p>
 <table>
 <thead>
@@ -2712,115 +2907,115 @@ runners_df
 <p>To place an order we use the <code>placeOrders</code> operation. A handy component of <code>placeOrders</code> is that you can send your strategy along with the runner that you want to back, so it is extremely easy to analyse how your strategy performed later. Let's place a 5 dollar back bet on the favourite at $7 call this strategy <code>'back_the_fav'</code>.</p>
 <p>Note that if you are placing a limit order you must specify a price which is allowed by Betfair. For example, the price 6.3 isn't allowed, whereas 6.4 is, as prices go up by 20c increments at that price range. You can read about <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">tick points here</a>.</p>
 <p><strong><code>In [232]:</code></strong></p>
-<pre><code class="language-python"># Get the favourite's price and selection id
-fav_selection_id = runners_df.loc[runners_df['Best Back Price'].idxmin(), 'Selection ID']
-fav_price = runners_df.loc[runners_df['Best Back Price'].idxmin(), 'Best Back Price']
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Get the favourite&#39;s price and selection id</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">fav_selection_id</span> <span class="o">=</span> <span class="n">runners_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;Best Back Price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(),</span> <span class="s1">&#39;Selection ID&#39;</span><span class="p">]</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="n">fav_price</span> <span class="o">=</span> <span class="n">runners_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;Best Back Price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(),</span> <span class="s1">&#39;Best Back Price&#39;</span><span class="p">]</span>
+</code></pre></div>
 <p><strong><code>In [276]:</code></strong></p>
-<pre><code class="language-python"># Define a limit order filter
-limit_order_filter = betfairlightweight.filters.limit_order(
-    size=5, 
-    price=7,
-    persistence_type='LAPSE'
-)
-
-# Define an instructions filter
-instructions_filter = betfairlightweight.filters.place_instruction(
-    selection_id=str(fav_selection_id),
-    order_type=&quot;LIMIT&quot;,
-    side=&quot;BACK&quot;,
-    limit_order=limit_order_filter
-)
-
-instructions_filter
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Define a limit order filter</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">limit_order_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">limit_order</span><span class="p">(</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>    <span class="n">size</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>    <span class="n">price</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>    <span class="n">persistence_type</span><span class="o">=</span><span class="s1">&#39;LAPSE&#39;</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="p">)</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1"># Define an instructions filter</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="n">instructions_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">place_instruction</span><span class="p">(</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>    <span class="n">selection_id</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">fav_selection_id</span><span class="p">),</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>    <span class="n">order_type</span><span class="o">=</span><span class="s2">&quot;LIMIT&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>    <span class="n">side</span><span class="o">=</span><span class="s2">&quot;BACK&quot;</span><span class="p">,</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>    <span class="n">limit_order</span><span class="o">=</span><span class="n">limit_order_filter</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="p">)</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="n">instructions_filter</span>
+</code></pre></div>
 <p><strong><code>Out[276]:</code></strong></p>
-<pre><code class="language-python">{'limitOrder': {'persistenceType': 'LAPSE', 'price': 7, 'size': 5},
- 'orderType': 'LIMIT',
- 'selectionId': '21283271',
- 'side': 'BACK'}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="p">{</span><span class="s1">&#39;limitOrder&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;persistenceType&#39;</span><span class="p">:</span> <span class="s1">&#39;LAPSE&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a> <span class="s1">&#39;orderType&#39;</span><span class="p">:</span> <span class="s1">&#39;LIMIT&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a> <span class="s1">&#39;selectionId&#39;</span><span class="p">:</span> <span class="s1">&#39;21283271&#39;</span><span class="p">,</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a> <span class="s1">&#39;side&#39;</span><span class="p">:</span> <span class="s1">&#39;BACK&#39;</span><span class="p">}</span>
+</code></pre></div>
 <p><strong><code>In [277]:</code></strong></p>
-<pre><code class="language-python"># Place the order
-order = trading.betting.place_orders(
-    market_id='1.150038686', # The market id we obtained from before
-    customer_strategy_ref='back_the_fav',
-    instructions=[instructions_filter] # This must be a list
-)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># Place the order</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">order</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">place_orders</span><span class="p">(</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    <span class="n">market_id</span><span class="o">=</span><span class="s1">&#39;1.150038686&#39;</span><span class="p">,</span> <span class="c1"># The market id we obtained from before</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="n">customer_strategy_ref</span><span class="o">=</span><span class="s1">&#39;back_the_fav&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">instructions</span><span class="o">=</span><span class="p">[</span><span class="n">instructions_filter</span><span class="p">]</span> <span class="c1"># This must be a list</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="p">)</span>
+</code></pre></div>
 <p>Now that we've placed the other, we can check if the order placing was a success and if any has been matched.</p>
 <p><strong><code>In [306]:</code></strong></p>
-<pre><code class="language-python">order.__dict__
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">order</span><span class="o">.</span><span class="vm">__dict__</span>
+</code></pre></div>
 <p><strong><code>Out[306]:</code></strong></p>
-<pre><code class="language-python">{'_data': {'instructionReports': [{'averagePriceMatched': 0.0,
-    'betId': '142384852665',
-    'instruction': {'limitOrder': {'persistenceType': 'LAPSE',
-      'price': 7.0,
-      'size': 5.0},
-     'orderType': 'LIMIT',
-     'selectionId': 21283271,
-     'side': 'BACK'},
-    'orderStatus': 'EXECUTABLE',
-    'placedDate': '2018-10-26T00:46:46.000Z',
-    'sizeMatched': 0.0,
-    'status': 'SUCCESS'}],
-  'marketId': '1.150038686',
-  'status': 'SUCCESS'},
- '_datetime_created': datetime.datetime(2018, 10, 26, 0, 46, 46, 455349),
- '_datetime_updated': datetime.datetime(2018, 10, 26, 0, 46, 46, 455349),
- 'customer_ref': None,
- 'elapsed_time': 1.484069,
- 'error_code': None,
- 'market_id': '1.150038686',
- 'place_instruction_reports': [&lt;betfairlightweight.resources.bettingresources.PlaceOrderInstructionReports at 0x23e0f7952e8&gt;],
- 'status': 'SUCCESS'}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="p">{</span><span class="s1">&#39;_data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;instructionReports&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;averagePriceMatched&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="s1">&#39;betId&#39;</span><span class="p">:</span> <span class="s1">&#39;142384852665&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>    <span class="s1">&#39;instruction&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;limitOrder&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;persistenceType&#39;</span><span class="p">:</span> <span class="s1">&#39;LAPSE&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>      <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>      <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">},</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>     <span class="s1">&#39;orderType&#39;</span><span class="p">:</span> <span class="s1">&#39;LIMIT&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>     <span class="s1">&#39;selectionId&#39;</span><span class="p">:</span> <span class="mi">21283271</span><span class="p">,</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>     <span class="s1">&#39;side&#39;</span><span class="p">:</span> <span class="s1">&#39;BACK&#39;</span><span class="p">},</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>    <span class="s1">&#39;orderStatus&#39;</span><span class="p">:</span> <span class="s1">&#39;EXECUTABLE&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="s1">&#39;placedDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-10-26T00:46:46.000Z&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>    <span class="s1">&#39;sizeMatched&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">}],</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>  <span class="s1">&#39;marketId&#39;</span><span class="p">:</span> <span class="s1">&#39;1.150038686&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>  <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">},</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a> <span class="s1">&#39;_datetime_created&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">455349</span><span class="p">),</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a> <span class="s1">&#39;_datetime_updated&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">455349</span><span class="p">),</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a> <span class="s1">&#39;customer_ref&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a> <span class="s1">&#39;elapsed_time&#39;</span><span class="p">:</span> <span class="mf">1.484069</span><span class="p">,</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a> <span class="s1">&#39;error_code&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a> <span class="s1">&#39;market_id&#39;</span><span class="p">:</span> <span class="s1">&#39;1.150038686&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a> <span class="s1">&#39;place_instruction_reports&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">betfairlightweight</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">bettingresources</span><span class="o">.</span><span class="n">PlaceOrderInstructionReports</span> <span class="n">at</span> <span class="mh">0x23e0f7952e8</span><span class="o">&gt;</span><span class="p">],</span>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;SUCCESS&#39;</span><span class="p">}</span>
+</code></pre></div>
 <p>As we can see, the status is <code>'SUCCESS'</code>, whilst the <code>sizeMatched</code> is 0. Let's now look at our current orders.</p>
 <h3 id="get-current-orders">Get Current Orders</h3>
 <p>To get our current orders, we need to use the <code>listCurrentOrders</code> operation. We can then use either the bet id, the market id, or the bet strategy to filter our orders.</p>
 <p><strong><code>In [311]:</code></strong></p>
-<pre><code class="language-python">trading.betting.list_current_orders(customer_strategy_refs=['back_the_fav']).__dict__
-Out[311]:
-{'_data': {'currentOrders': [{'averagePriceMatched': 0.0,
-    'betId': '142384852665',
-    'bspLiability': 0.0,
-    'customerStrategyRef': 'back_the_fav',
-    'handicap': 0.0,
-    'marketId': '1.150038686',
-    'orderType': 'LIMIT',
-    'persistenceType': 'LAPSE',
-    'placedDate': '2018-10-26T00:46:46.000Z',
-    'priceSize': {'price': 7.0, 'size': 5.0},
-    'regulatorCode': 'MALTA LOTTERIES AND GAMBLING AUTHORITY',
-    'selectionId': 21283271,
-    'side': 'BACK',
-    'sizeCancelled': 0.0,
-    'sizeLapsed': 0.0,
-    'sizeMatched': 0.0,
-    'sizeRemaining': 5.0,
-    'sizeVoided': 0.0,
-    'status': 'EXECUTABLE'}],
-  'moreAvailable': False},
- '_datetime_created': datetime.datetime(2018, 10, 26, 2, 14, 56, 84036),
- '_datetime_updated': datetime.datetime(2018, 10, 26, 2, 14, 56, 84036),
- 'elapsed_time': 1.327456,
- 'more_available': False,
- 'orders': [&lt;betfairlightweight.resources.bettingresources.CurrentOrder at 0x23e0e7acd30&gt;],
- 'publish_time': None,
- 'streaming_unique_id': None,
- 'streaming_update': None}
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_current_orders</span><span class="p">(</span><span class="n">customer_strategy_refs</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;back_the_fav&#39;</span><span class="p">])</span><span class="o">.</span><span class="vm">__dict__</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">Out</span><span class="p">[</span><span class="mi">311</span><span class="p">]:</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="p">{</span><span class="s1">&#39;_data&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;currentOrders&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;averagePriceMatched&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>    <span class="s1">&#39;betId&#39;</span><span class="p">:</span> <span class="s1">&#39;142384852665&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>    <span class="s1">&#39;bspLiability&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>    <span class="s1">&#39;customerStrategyRef&#39;</span><span class="p">:</span> <span class="s1">&#39;back_the_fav&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="s1">&#39;handicap&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="s1">&#39;marketId&#39;</span><span class="p">:</span> <span class="s1">&#39;1.150038686&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="s1">&#39;orderType&#39;</span><span class="p">:</span> <span class="s1">&#39;LIMIT&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>    <span class="s1">&#39;persistenceType&#39;</span><span class="p">:</span> <span class="s1">&#39;LAPSE&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="s1">&#39;placedDate&#39;</span><span class="p">:</span> <span class="s1">&#39;2018-10-26T00:46:46.000Z&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-12" name="__codelineno-19-12" href="#__codelineno-19-12"></a>    <span class="s1">&#39;priceSize&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">7.0</span><span class="p">,</span> <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">},</span>
+<a id="__codelineno-19-13" name="__codelineno-19-13" href="#__codelineno-19-13"></a>    <span class="s1">&#39;regulatorCode&#39;</span><span class="p">:</span> <span class="s1">&#39;MALTA LOTTERIES AND GAMBLING AUTHORITY&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-14" name="__codelineno-19-14" href="#__codelineno-19-14"></a>    <span class="s1">&#39;selectionId&#39;</span><span class="p">:</span> <span class="mi">21283271</span><span class="p">,</span>
+<a id="__codelineno-19-15" name="__codelineno-19-15" href="#__codelineno-19-15"></a>    <span class="s1">&#39;side&#39;</span><span class="p">:</span> <span class="s1">&#39;BACK&#39;</span><span class="p">,</span>
+<a id="__codelineno-19-16" name="__codelineno-19-16" href="#__codelineno-19-16"></a>    <span class="s1">&#39;sizeCancelled&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-19-17" name="__codelineno-19-17" href="#__codelineno-19-17"></a>    <span class="s1">&#39;sizeLapsed&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-19-18" name="__codelineno-19-18" href="#__codelineno-19-18"></a>    <span class="s1">&#39;sizeMatched&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-19-19" name="__codelineno-19-19" href="#__codelineno-19-19"></a>    <span class="s1">&#39;sizeRemaining&#39;</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+<a id="__codelineno-19-20" name="__codelineno-19-20" href="#__codelineno-19-20"></a>    <span class="s1">&#39;sizeVoided&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+<a id="__codelineno-19-21" name="__codelineno-19-21" href="#__codelineno-19-21"></a>    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;EXECUTABLE&#39;</span><span class="p">}],</span>
+<a id="__codelineno-19-22" name="__codelineno-19-22" href="#__codelineno-19-22"></a>  <span class="s1">&#39;moreAvailable&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">},</span>
+<a id="__codelineno-19-23" name="__codelineno-19-23" href="#__codelineno-19-23"></a> <span class="s1">&#39;_datetime_created&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">84036</span><span class="p">),</span>
+<a id="__codelineno-19-24" name="__codelineno-19-24" href="#__codelineno-19-24"></a> <span class="s1">&#39;_datetime_updated&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">84036</span><span class="p">),</span>
+<a id="__codelineno-19-25" name="__codelineno-19-25" href="#__codelineno-19-25"></a> <span class="s1">&#39;elapsed_time&#39;</span><span class="p">:</span> <span class="mf">1.327456</span><span class="p">,</span>
+<a id="__codelineno-19-26" name="__codelineno-19-26" href="#__codelineno-19-26"></a> <span class="s1">&#39;more_available&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+<a id="__codelineno-19-27" name="__codelineno-19-27" href="#__codelineno-19-27"></a> <span class="s1">&#39;orders&#39;</span><span class="p">:</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">betfairlightweight</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">bettingresources</span><span class="o">.</span><span class="n">CurrentOrder</span> <span class="n">at</span> <span class="mh">0x23e0e7acd30</span><span class="o">&gt;</span><span class="p">],</span>
+<a id="__codelineno-19-28" name="__codelineno-19-28" href="#__codelineno-19-28"></a> <span class="s1">&#39;publish_time&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-19-29" name="__codelineno-19-29" href="#__codelineno-19-29"></a> <span class="s1">&#39;streaming_unique_id&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<a id="__codelineno-19-30" name="__codelineno-19-30" href="#__codelineno-19-30"></a> <span class="s1">&#39;streaming_update&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">}</span>
+</code></pre></div>
 <p>As we can see, we have one order which is unmatched for our strategy <code>'back_the_fav'</code></p>
 <h3 id="cancelling-orders">Cancelling Orders</h3>
 <p>Let's now cancel this bet. To do this, we will use the <code>cancelOrders</code> operation. If you pass in a market ID it will cancel all orders for that specific market ID, like you can do on the website.</p>
 <p><strong><code>In [312]:</code></strong></p>
-<pre><code class="language-python">cancelled_order = trading.betting.cancel_orders(market_id='1.150038686')
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">cancelled_order</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">cancel_orders</span><span class="p">(</span><span class="n">market_id</span><span class="o">=</span><span class="s1">&#39;1.150038686&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong><code>In [328]:</code></strong></p>
-<pre><code class="language-python"># Create a DataFrame to view the instruction report
-pd.Series(cancelled_order.cancel_instruction_reports[0].__dict__).to_frame().T
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Create a DataFrame to view the instruction report</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cancelled_order</span><span class="o">.</span><span class="n">cancel_instruction_reports</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">)</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">T</span>
+</code></pre></div>
 <p><strong><code>Out[328]:</code></strong></p>
 <table>
 <thead>
@@ -2855,14 +3050,14 @@ Alternatively, we can use the <code>getAccountStatement</code> operation from th
 <p>Let's now use both Sports API operations based on our previous orders and then compare it to the <code>getAccountStatement</code> operation.</p>
 <h3 id="get-cleared-orders">Get Cleared Orders</h3>
 <p><strong><code>In [346]:</code></strong></p>
-<pre><code class="language-python"># listClearedOrders
-cleared_orders = trading.betting.list_cleared_orders(bet_status=&quot;SETTLED&quot;,
-                                                    market_ids=[&quot;1.150038686&quot;])
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># listClearedOrders</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">cleared_orders</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_cleared_orders</span><span class="p">(</span><span class="n">bet_status</span><span class="o">=</span><span class="s2">&quot;SETTLED&quot;</span><span class="p">,</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>                                                    <span class="n">market_ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;1.150038686&quot;</span><span class="p">])</span>
+</code></pre></div>
 <p><strong><code>In [371]:</code></strong></p>
-<pre><code class="language-python"># Create a DataFrame from the orders
-pd.DataFrame(cleared_orders._data['clearedOrders'])
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Create a DataFrame from the orders</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">cleared_orders</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;clearedOrders&#39;</span><span class="p">])</span>
+</code></pre></div>
 <p><strong><code>Out[371]:</code></strong></p>
 <table>
 <thead>
@@ -2941,16 +3136,16 @@ pd.DataFrame(cleared_orders._data['clearedOrders'])
 <p>Now let's find the Profit and Loss for the market. To do this we will use the <code>listMarketProfitAndLoss</code> operation. Note that this function only works with market IDs, and once the website clears the market, the operation will no longer work. However the market is generally up for about a minute after the race, so if your strategy is automated, you can check once if your bet is settled and if it is, hit the <code>getMarketProfitAndLoss</code> endpoint.</p>
 <p>Because of this, we will check a different market ID to the example above.</p>
 <p><strong><code>In [406]:</code></strong></p>
-<pre><code class="language-python"># Get the profit/loss - this returns a list
-pl = trading.betting.list_market_profit_and_loss(market_ids=[&quot;1.150318913&quot;], 
-                                                 include_bsp_bets='true', 
-                                                 include_settled_bets='true')
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># Get the profit/loss - this returns a list</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">pl</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">betting</span><span class="o">.</span><span class="n">list_market_profit_and_loss</span><span class="p">(</span><span class="n">market_ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;1.150318913&quot;</span><span class="p">],</span> 
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>                                                 <span class="n">include_bsp_bets</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> 
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a>                                                 <span class="n">include_settled_bets</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+</code></pre></div>
 <p><strong><code>In [410]:</code></strong></p>
-<pre><code class="language-python"># Create a profit/loss DataFrame
-pl_df = pd.DataFrame(pl[0]._data['profitAndLosses']).assign(marketId=pl[0].market_id)
-pl_df
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Create a profit/loss DataFrame</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">pl_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;profitAndLosses&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">marketId</span><span class="o">=</span><span class="n">pl</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">market_id</span><span class="p">)</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">pl_df</span>
+</code></pre></div>
 <p><strong><code>Out[410]:</code></strong></p>
 <table>
 <thead>
@@ -3009,18 +3204,18 @@ pl_df
 <h3 id="get-account-statement">Get Account Statement</h3>
 <p>Another method is to use the <code>getAccountStatement</code>, which provides an overview of all your bets over a certain time period. You can then filter this for specific dates if you wish.</p>
 <p><strong><code>In [428]:</code></strong></p>
-<pre><code class="language-python"># Define a date filter - get all bets for the past 4 days
-four_days_ago = (datetime.datetime.utcnow() - datetime.timedelta(days=4)).strftime(&quot;%Y-%m-%dT%TZ&quot;)
-acct_statement_date_filter = betfairlightweight.filters.time_range(from_=four_days_ago)
-
-# Request account statement
-account_statement = trading.account.get_account_statement(item_date_range=acct_statement_date_filter)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Define a date filter - get all bets for the past 4 days</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">four_days_ago</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span> <span class="o">-</span> <span class="n">datetime</span><span class="o">.</span><span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">T%TZ&quot;</span><span class="p">)</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="n">acct_statement_date_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">time_range</span><span class="p">(</span><span class="n">from_</span><span class="o">=</span><span class="n">four_days_ago</span><span class="p">)</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="c1"># Request account statement</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="n">account_statement</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">get_account_statement</span><span class="p">(</span><span class="n">item_date_range</span><span class="o">=</span><span class="n">acct_statement_date_filter</span><span class="p">)</span>
+</code></pre></div>
 <p><strong><code>In [450]:</code></strong></p>
-<pre><code class="language-python"># Create df of recent transactions
-recent_transactions = pd.DataFrame(account_statement._data['accountStatement'])
-recent_transactions
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Create df of recent transactions</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">recent_transactions</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">account_statement</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="s1">&#39;accountStatement&#39;</span><span class="p">])</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="n">recent_transactions</span>
+</code></pre></div>
 <p><strong><code>Out[450]:</code></strong></p>
 <table>
 <thead>
@@ -3069,15 +3264,15 @@ recent_transactions
 </tbody>
 </table>
 <p><strong><code>In [468]:</code></strong></p>
-<pre><code class="language-python"># Create df of itemClassData - iterate over the account statement list and convert to json so that the DataFrame function
-# can read it correctly
-class_data = [json.loads(account_statement.account_statement[i].item_class_data['unknownStatementItem']) 
-              for i in range(len(account_statement.account_statement))]
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Create df of itemClassData - iterate over the account statement list and convert to json so that the DataFrame function</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="c1"># can read it correctly</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">class_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">account_statement</span><span class="o">.</span><span class="n">account_statement</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">item_class_data</span><span class="p">[</span><span class="s1">&#39;unknownStatementItem&#39;</span><span class="p">])</span> 
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>              <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">account_statement</span><span class="o">.</span><span class="n">account_statement</span><span class="p">))]</span>
+</code></pre></div>
 <p><strong><code>In [471]:</code></strong></p>
-<pre><code class="language-python">class_df = pd.DataFrame(class_data)
-class_df
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="n">class_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">class_data</span><span class="p">)</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">class_df</span>
+</code></pre></div>
 <p><strong><code>Out [471]:</code></strong></p>
 <table>
 <thead>
@@ -3175,6 +3370,11 @@ class_df
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
         
       </main>
       
@@ -3277,7 +3477,7 @@ class_df
           <div class="bf-footer-inner">
               <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
               <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
           
               <ul class="bf-links">
                 <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
@@ -3306,7 +3506,7 @@ class_df
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
       <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>

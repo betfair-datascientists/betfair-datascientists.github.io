@@ -42,6 +42,12 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/betfair.css">
     
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -58,7 +64,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange">
   
     
     
@@ -108,30 +114,32 @@
           </div>
         </div>
       </div>
+
       
         <form class="md-header__option" data-md-component="palette">
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
             
               <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
               </label>
             
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
             
               <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
               </label>
             
           
         </form>
       
       
+
       
         <label class="md-header__button md-icon" for="__search">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
@@ -147,10 +155,16 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -166,7 +180,21 @@
   </div>
 </div>
       
+     
+      <div class="bf-nav">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26" />
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z" />
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+
       
+
     </nav>
     
   </header>
@@ -175,6 +203,93 @@
       
       
         
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/apiResources/" class="md-tabs__link">
+        API
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../historicData/dataSources/" class="md-tabs__link">
+        Historic Data
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../howToModel/" class="md-tabs__link md-tabs__link--active">
+        Modelling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../autoTools/overview/" class="md-tabs__link">
+        Auto Tools
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
           
         
       
@@ -188,8 +303,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="The Automation Hub" class="md-nav__button md-logo" aria-label="The Automation Hub" data-md-component="logo">
       
@@ -208,46 +325,13 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_1">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Home
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        The Automation Hub
+        Home
       </a>
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -260,7 +344,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -311,10 +395,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_3" checked>
       
       
       
@@ -397,7 +483,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -434,10 +520,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -482,6 +570,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/automatedBettingAnglesTutorial/" class="md-nav__link">
+        Automated betting angles in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+        Do \#theyknow? Analysing Betfair market formation and market movements
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -495,10 +611,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -592,21 +710,86 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
       
       
       
       
         <label class="md-nav__link" for="__nav_4_2">
+          Racing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Racing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Racing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fasttrackTutorial/" class="md-nav__link">
+        Greyhound form FastTrack API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../greyhoundModellingPython/" class="md-nav__link">
+        Greyhound modelling in Python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" data-md-state="indeterminate" type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
           Soccer
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Soccer" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_2">
+        <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
           Soccer
         </label>
@@ -683,21 +866,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_3">
+        <label class="md-nav__link" for="__nav_4_4">
           AFL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="AFL" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           AFL
         </label>
@@ -812,21 +997,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" data-md-state="indeterminate" type="checkbox" id="__nav_4_5" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_4">
+        <label class="md-nav__link" for="__nav_4_5">
           Tennis
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Tennis" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
+        <label class="md-nav__title" for="__nav_4_5">
           <span class="md-nav__icon md-icon"></span>
           Tennis
         </label>
@@ -898,7 +1085,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -935,10 +1122,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
       
       
       
@@ -1094,10 +1283,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
       
       
       
@@ -1211,10 +1402,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" data-md-state="indeterminate" type="checkbox" id="__nav_5_4" checked>
       
       
       
@@ -1272,10 +1465,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" data-md-state="indeterminate" type="checkbox" id="__nav_5_5" checked>
       
       
       
@@ -1423,28 +1618,28 @@
 <h1 id="modelling-the-brownlow">Modelling the Brownlow</h1>
 <p>This walkthrough will provide a brief, yet effective tutorial on how to model the Brownlow medal. We will use data from 2010 to 2018, which includes Supercoach points and other useful stats.</p>
 <p>The output will be the number of votes predicted for each player in each match, and we will aggregate these to create aggregates for each team and for the whole competition. No doubt we'll have Mitchell right up the top, and if we don't, then we know we've done something wrong!</p>
-<pre><code class="language-python"># Import modules libraries
-import pandas as pd
-import h2o
-from h2o.automl import H2OAutoML
-import numpy as np
-from sklearn.preprocessing import StandardScaler
-import os
-import pickle
-
-# Change notebook settings
-pd.options.display.max_columns = None
-pd.options.display.max_rows = 300
-from IPython.core.interactiveshell import InteractiveShell
-InteractiveShell.ast_node_interactivity = &quot;all&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Import modules libraries</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span> <span class="nn">h2o</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">h2o.automl</span> <span class="kn">import</span> <span class="n">H2OAutoML</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">pickle</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Change notebook settings</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="mi">300</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="kn">import</span> <span class="n">InteractiveShell</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">InteractiveShell</span><span class="o">.</span><span class="n">ast_node_interactivity</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="eda-read-in-the-data">EDA - Read in the data</h2>
 <p>I have collated this data using the fitzRoy R package and merging the afltables dataset with the footywire dataset, so that we can Supercoach and other advanced stats with Brownlow votes. Let's read in the data and have a sneak peak at what it looks like.</p>
-<pre><code class="language-python">brownlow_data = pd.read_csv('data/afl_brownlow_data.csv')
-
-brownlow_data.tail(3)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">brownlow_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/afl_brownlow_data.csv&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -1629,85 +1824,85 @@ brownlow_data.tail(3)
 </table>
 <p>It looks like we've got about 76,000 rows of data and have stats like hitouts, clangers, effective disposals etc. Let's explore some certain scenarios. Using my domain knowledge of footy, I can hypothesise that if a player kicks 5 goals, he is pretty likely to poll votes. Similarly, if a player gets 30 possessions and 2+ goals, he is also probably likely to poll votes. Let's have a look at the mean votes for players for both of these situations. </p>
 <h3 id="exploring-votes-if-a-bag-is-kicked-5-goals">Exploring votes if a bag is kicked (5+ goals)</h3>
-<pre><code class="language-python">brownlow_data.query('G &gt;= 5').groupby('season').brownlow_votes.mean()
-print(&quot;Mean votes is a player has kicked a bag:&quot;, brownlow_data.query('G &gt;= 5').brownlow_votes.mean())
-
-    season
-    2010    1.420455
-    2011    1.313433
-    2012    1.413333
-    2013    1.253731
-    2014    1.915254
-    2015    1.765625
-    2016    1.788732
-    2017    2.098361
-    2018    0.000000
-    Name: brownlow_votes, dtype: float64
-
-    Mean votes is a player has kicked a bag: 1.4708818635607321
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &gt;= 5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean votes is a player has kicked a bag:&quot;</span><span class="p">,</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &gt;= 5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">season</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="mi">2010</span>    <span class="mf">1.420455</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="mi">2011</span>    <span class="mf">1.313433</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="mi">2012</span>    <span class="mf">1.413333</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="mi">2013</span>    <span class="mf">1.253731</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="mi">2014</span>    <span class="mf">1.915254</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="mi">2015</span>    <span class="mf">1.765625</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="mi">2016</span>    <span class="mf">1.788732</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="mi">2017</span>    <span class="mf">2.098361</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="mi">2018</span>    <span class="mf">0.000000</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="n">Name</span><span class="p">:</span> <span class="n">brownlow_votes</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="n">Mean</span> <span class="n">votes</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">player</span> <span class="n">has</span> <span class="n">kicked</span> <span class="n">a</span> <span class="n">bag</span><span class="p">:</span> <span class="mf">1.4708818635607321</span>
+</code></pre></div>
 <h3 id="exploring-votes-if-the-player-has-30-possies-2-goals">Exploring votes if the player has 30+ possies &amp; 2+ goals</h3>
-<pre><code class="language-python">brownlow_data.query('G &gt;= 2 and D &gt;= 30').groupby('season').brownlow_votes.mean()
-print(&quot;Mean votes if a player has 30 possies and kicks 2+ goals:&quot;, brownlow_data.query('G &gt;= 2 and D &gt;= 30').brownlow_votes.mean())
-
-    season
-    2010    1.826923
-    2011    1.756410
-    2012    2.118421
-    2013    2.000000
-    2014    2.253731
-    2015    2.047619
-    2016    2.103448
-    2017    2.050000
-    2018    0.000000
-    Name: brownlow_votes, dtype: float64
-
-    Mean votes if a player has 30 possies and kicks 2+ goals: 1.8741379310344828
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &gt;= 2 and D &gt;= 30&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean votes if a player has 30 possies and kicks 2+ goals:&quot;</span><span class="p">,</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &gt;= 2 and D &gt;= 30&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">season</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="mi">2010</span>    <span class="mf">1.826923</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="mi">2011</span>    <span class="mf">1.756410</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="mi">2012</span>    <span class="mf">2.118421</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="mi">2013</span>    <span class="mf">2.000000</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>    <span class="mi">2014</span>    <span class="mf">2.253731</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="mi">2015</span>    <span class="mf">2.047619</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="mi">2016</span>    <span class="mf">2.103448</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="mi">2017</span>    <span class="mf">2.050000</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="mi">2018</span>    <span class="mf">0.000000</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">Name</span><span class="p">:</span> <span class="n">brownlow_votes</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="n">Mean</span> <span class="n">votes</span> <span class="k">if</span> <span class="n">a</span> <span class="n">player</span> <span class="n">has</span> <span class="mi">30</span> <span class="n">possies</span> <span class="ow">and</span> <span class="n">kicks</span> <span class="mi">2</span><span class="o">+</span> <span class="n">goals</span><span class="p">:</span> <span class="mf">1.8741379310344828</span>
+</code></pre></div>
 <p>As suspected, the average votes for these two situations is 1.87! That's huge. Let's get an idea of the average votes for each player. It should be around 6/44, as there are always 6 votes per match and around 44 players per match.</p>
-<pre><code class="language-python">brownlow_data.brownlow_votes.mean()
-    0.12347341475121326
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="mf">0.12347341475121326</span>
+</code></pre></div>
 <p>So the average vote is 0.12. Let's see how this changes is the player is a captain. I have collected data on if players are captains from wikipedia and collated it into a csv. Let's load this in and create a "Is the player captain" feature, then check the average votes for captains.</p>
 <h3 id="create-is-player-captain-feature">Create Is Player Captain Feature</h3>
-<pre><code class="language-python">captains = pd.read_csv('data/captains.csv').set_index('player')
-
-def is_captain_for_that_season(captains_df, player, year):
-
-    if player in captains_df.index:
-        # Get years they were captain
-        seasons = captains_df.loc[player].season.split('-')
-        if len(seasons) == 1:
-            seasons_captain = list(map(int, seasons))
-        elif len(seasons) == 2:
-            if seasons[1] == '':
-                seasons_captain = list(range(int(seasons[0]), 2019))
-            else:
-                seasons_captain = list(range(int(seasons[0]), int(seasons[1]) + 1))
-
-        if year in seasons_captain:
-            return 1
-    return 0
-
-brownlow_data['is_captain'] = brownlow_data.apply(lambda x: is_captain_for_that_season(captains, x.player, x.season), axis='columns')
-</code></pre>
-<pre><code class="language-python">brownlow_data.query('is_captain == 1').groupby('season').brownlow_votes.mean()
-print(&quot;Mean votes if a player is captain:&quot;, brownlow_data.query('is_captain == 1').brownlow_votes.mean())
-
-    season
-    2010    0.408497
-    2011    0.429936
-    2012    0.274194
-    2013    0.438725
-    2014    0.519663
-    2015    0.447222
-    2016    0.347826
-    2017    0.425806
-    2018    0.000000
-    Name: brownlow_votes, dtype: float64
-
-    Mean votes if a player is captain: 0.36661698956780925
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">captains</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/captains.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;player&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="k">def</span> <span class="nf">is_captain_for_that_season</span><span class="p">(</span><span class="n">captains_df</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="k">if</span> <span class="n">player</span> <span class="ow">in</span> <span class="n">captains_df</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>        <span class="c1"># Get years they were captain</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="n">seasons</span> <span class="o">=</span> <span class="n">captains_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">player</span><span class="p">]</span><span class="o">.</span><span class="n">season</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">seasons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>            <span class="n">seasons_captain</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">seasons</span><span class="p">))</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">seasons</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>            <span class="k">if</span> <span class="n">seasons</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>                <span class="n">seasons_captain</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">seasons</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="mi">2019</span><span class="p">))</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>                <span class="n">seasons_captain</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">seasons</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">seasons</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>        <span class="k">if</span> <span class="n">year</span> <span class="ow">in</span> <span class="n">seasons_captain</span><span class="p">:</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>            <span class="k">return</span> <span class="mi">1</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="n">brownlow_data</span><span class="p">[</span><span class="s1">&#39;is_captain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">is_captain_for_that_season</span><span class="p">(</span><span class="n">captains</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">season</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;is_captain == 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean votes if a player is captain:&quot;</span><span class="p">,</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;is_captain == 1&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="n">season</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="mi">2010</span>    <span class="mf">0.408497</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="mi">2011</span>    <span class="mf">0.429936</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>    <span class="mi">2012</span>    <span class="mf">0.274194</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="mi">2013</span>    <span class="mf">0.438725</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="mi">2014</span>    <span class="mf">0.519663</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="mi">2015</span>    <span class="mf">0.447222</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="mi">2016</span>    <span class="mf">0.347826</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>    <span class="mi">2017</span>    <span class="mf">0.425806</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>    <span class="mi">2018</span>    <span class="mf">0.000000</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>    <span class="n">Name</span><span class="p">:</span> <span class="n">brownlow_votes</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">float64</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>    <span class="n">Mean</span> <span class="n">votes</span> <span class="k">if</span> <span class="n">a</span> <span class="n">player</span> <span class="ow">is</span> <span class="n">captain</span><span class="p">:</span> <span class="mf">0.36661698956780925</span>
+</code></pre></div>
 <p>This is significantly higher than if they aren't captain. What would be interesting is to look at the average difference in votes between when they were captain and when they weren't, to try and find if there is a 'captain bias' in brownlow votes. Go ahead and try. For now, we're going to move onto feature creation</p>
 <hr />
 <h1 id="feature-creation">Feature Creation</h1>
@@ -1720,30 +1915,30 @@ print(&quot;Mean votes if a player is captain:&quot;, brownlow_data.query('is_ca
 </ul>
 <p>First we will make features of ratios. What is important is not how many of a certain stat a player has, but how much of that stat a player has <em>relative</em> to everyone else in the same match. It doesn't matter if Dusty Martin has 31 possessions if Tom Mitchell has had 50 - Mitchell is probably more likely to poll (assuming all else is equal). So rather than using the actual number of possessions for example, we can divide these possessions by the total amount of possessions in the game. To do this we'll use pandas groupby and transform methods.</p>
 <h3 id="create-ratios-as-features">Create Ratios As Features</h3>
-<pre><code class="language-python">%%time
-
-# Get a list of stats of which to create ratios for
-ratio_cols = ['CP', 'UP', 'ED', 'DE', 'CM', 'GA', 'MI5', 'one_perc', 'BO', 'TOG', 
-               'K', 'HB', 'D', 'M', 'G', 'B', 'T', 'HO', 'I50', 'CL', 'CG', 'R50', 
-               'FF', 'FA', 'AF', 'SC']
-
-# Create a ratios df
-ratios = (brownlow_data.copy()
-          .loc[:, ['match_id'] + ratio_cols]
-          .groupby('match_id')
-          .transform(lambda x: x / x.sum()))
-
-feature_cols = ['date', 'season', 'round', 'venue', 'ID', 'match_id', 'player', 'jumper_no', 'team', 
-                'opposition', 'status', 'team_score', 'opposition_score', 'margin', 'brownlow_votes']
-
-# Create a features df - join the ratios to this df
-features = (brownlow_data[feature_cols].copy()
-               .join(ratios))
-
-    Wall time: 11.3 s
-</code></pre>
-<pre><code class="language-python">features.head()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="o">%%</span><span class="n">time</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># Get a list of stats of which to create ratios for</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">ratio_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CP&#39;</span><span class="p">,</span> <span class="s1">&#39;UP&#39;</span><span class="p">,</span> <span class="s1">&#39;ED&#39;</span><span class="p">,</span> <span class="s1">&#39;DE&#39;</span><span class="p">,</span> <span class="s1">&#39;CM&#39;</span><span class="p">,</span> <span class="s1">&#39;GA&#39;</span><span class="p">,</span> <span class="s1">&#39;MI5&#39;</span><span class="p">,</span> <span class="s1">&#39;one_perc&#39;</span><span class="p">,</span> <span class="s1">&#39;BO&#39;</span><span class="p">,</span> <span class="s1">&#39;TOG&#39;</span><span class="p">,</span> 
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>               <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;HB&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;HO&#39;</span><span class="p">,</span> <span class="s1">&#39;I50&#39;</span><span class="p">,</span> <span class="s1">&#39;CL&#39;</span><span class="p">,</span> <span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="s1">&#39;R50&#39;</span><span class="p">,</span> 
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>               <span class="s1">&#39;FF&#39;</span><span class="p">,</span> <span class="s1">&#39;FA&#39;</span><span class="p">,</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span> <span class="s1">&#39;SC&#39;</span><span class="p">]</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># Create a ratios df</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="n">ratios</span> <span class="o">=</span> <span class="p">(</span><span class="n">brownlow_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>          <span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;match_id&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">ratio_cols</span><span class="p">]</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>          <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>          <span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()))</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="s1">&#39;venue&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;match_id&#39;</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;jumper_no&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> 
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>                <span class="s1">&#39;opposition&#39;</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">,</span> <span class="s1">&#39;team_score&#39;</span><span class="p">,</span> <span class="s1">&#39;opposition_score&#39;</span><span class="p">,</span> <span class="s1">&#39;margin&#39;</span><span class="p">,</span> <span class="s1">&#39;brownlow_votes&#39;</span><span class="p">]</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="c1"># Create a features df - join the ratios to this df</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="n">features</span> <span class="o">=</span> <span class="p">(</span><span class="n">brownlow_data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>               <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ratios</span><span class="p">))</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>    <span class="n">Wall</span> <span class="n">time</span><span class="p">:</span> <span class="mf">11.3</span> <span class="n">s</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">features</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2015,59 +2210,59 @@ features = (brownlow_data[feature_cols].copy()
 </tbody>
 </table>
 <h3 id="kicked-a-bag-feature">Kicked A Bag Feature</h3>
-<pre><code class="language-python">features['kicked_a_bag'] = brownlow_data.G.apply(lambda x: 1 if x &gt;= 5 else 0)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;kicked_a_bag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="is-captain-feature">Is Captain Feature</h3>
-<pre><code class="language-python">features['is_captain'] = features.apply(lambda x: is_captain_for_that_season(captains, x.player, x.season), axis='columns')
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;is_captain&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">is_captain_for_that_season</span><span class="p">(</span><span class="n">captains</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">season</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="won-the-game-feature">Won the Game Feature</h3>
-<pre><code class="language-python">features['team_won'] = np.where(features.margin &gt; 0, 1, 0)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;team_won&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">margin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="30-2-goals-feature">30+ &amp; 2+ Goals Feature</h3>
-<pre><code class="language-python">features['got_30_possies_2_goals'] = np.where((brownlow_data.G &gt;= 2) &amp; (brownlow_data.D &gt;= 30), 1, 0)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;got_30_possies_2_goals&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">brownlow_data</span><span class="o">.</span><span class="n">G</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">brownlow_data</span><span class="o">.</span><span class="n">D</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
 <h3 id="previous-top-10-finish-feature">Previous Top 10 Finish Feature</h3>
 <p>I have a strong feeling that past performance may be a predictor of future performance in the brownlow. For example, last year Dusty Martin won the Brownlow. The umpires may have a bias towards Dusty this year because he is known to be on their radar as being a good player. Let's create a feature which is categorical and is 1 if the player has previously finished in the top 10. Let's create a function for this and then apply it to the afltables dataset, which has data back to 1897. We will then create a lookup table for the top 10 for each season and merge this table with our current features df.</p>
-<pre><code class="language-python">afltables = pd.read_csv('data/afltables_stats.csv').query('Season &gt;= 2000')
-
-def replace_special_characters(name):
-    name = name.replace(&quot;'&quot;, &quot;&quot;).replace(&quot;-&quot;, &quot; &quot;).lower()
-    name_split = name.split()
-
-    if len(name_split) &gt; 2:
-        first_name = name_split[0]
-        last_name = name_split[-1]
-        name = first_name + ' ' + last_name
-
-    name_split_2 = name.split()
-    name = name_split_2[0][0] + ' ' + name_split_2[1]
-    return name.title()
-
-afltables = (afltables.assign(player=lambda df: df['First.name'] + ' ' + df.Surname)
-                .assign(player=lambda df: df.player.apply(replace_special_characters))
-                .rename(columns={'Brownlow.Votes': 'brownlow_votes', 'Season': 'season', 'Playing.for': 'team'}))
-</code></pre>
-<pre><code class="language-python">### Create Top 10 rank look up table
-
-brownlow_votes_yearly = (afltables.groupby(['season', 'player', 'team'], as_index=False)
-                                  .brownlow_votes
-                                  .sum())
-
-brownlow_votes_yearly['yearly_rank'] = (brownlow_votes_yearly.groupby('season')
-                                                             .brownlow_votes
-                                                             .rank(method='max', ascending=False))
-
-# Filter to only get a dataframe since 2000 and only the top 10 players from each season
-brownlow_votes_top_10 = brownlow_votes_yearly.query('yearly_rank &lt; 11 &amp; season &gt;= 2000')
-
-brownlow_votes_top_10.head(3)
-
-def how_many_times_top_10(top_10_df, player, year):
-    times = len(top_10_df[(top_10_df.player == player) &amp; (top_10_df.season &lt; year)])
-    return times
-
-features['times_in_top_10'] = features.apply(lambda x: how_many_times_top_10(brownlow_votes_top_10, x.player, x.season), axis=1) 
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">afltables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/afltables_stats.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Season &gt;= 2000&#39;</span><span class="p">)</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="k">def</span> <span class="nf">replace_special_characters</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    <span class="n">name_split</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_split</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>        <span class="n">first_name</span> <span class="o">=</span> <span class="n">name_split</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>        <span class="n">last_name</span> <span class="o">=</span> <span class="n">name_split</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>        <span class="n">name</span> <span class="o">=</span> <span class="n">first_name</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">last_name</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>    <span class="n">name_split_2</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">name_split_2</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">name_split_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>    <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="n">title</span><span class="p">()</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a><span class="n">afltables</span> <span class="o">=</span> <span class="p">(</span><span class="n">afltables</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">player</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;First.name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">Surname</span><span class="p">)</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>                <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">player</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">player</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">replace_special_characters</span><span class="p">))</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>                <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Brownlow.Votes&#39;</span><span class="p">:</span> <span class="s1">&#39;brownlow_votes&#39;</span><span class="p">,</span> <span class="s1">&#39;Season&#39;</span><span class="p">:</span> <span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;Playing.for&#39;</span><span class="p">:</span> <span class="s1">&#39;team&#39;</span><span class="p">}))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1">### Create Top 10 rank look up table</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="n">brownlow_votes_yearly</span> <span class="o">=</span> <span class="p">(</span><span class="n">afltables</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>                                  <span class="o">.</span><span class="n">brownlow_votes</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>                                  <span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="n">brownlow_votes_yearly</span><span class="p">[</span><span class="s1">&#39;yearly_rank&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">brownlow_votes_yearly</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>                                                             <span class="o">.</span><span class="n">brownlow_votes</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>                                                             <span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="c1"># Filter to only get a dataframe since 2000 and only the top 10 players from each season</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="n">brownlow_votes_top_10</span> <span class="o">=</span> <span class="n">brownlow_votes_yearly</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;yearly_rank &lt; 11 &amp; season &gt;= 2000&#39;</span><span class="p">)</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="n">brownlow_votes_top_10</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="k">def</span> <span class="nf">how_many_times_top_10</span><span class="p">(</span><span class="n">top_10_df</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>    <span class="n">times</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">top_10_df</span><span class="p">[(</span><span class="n">top_10_df</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">player</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">top_10_df</span><span class="o">.</span><span class="n">season</span> <span class="o">&lt;</span> <span class="n">year</span><span class="p">)])</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>    <span class="k">return</span> <span class="n">times</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;times_in_top_10&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">how_many_times_top_10</span><span class="p">(</span><span class="n">brownlow_votes_top_10</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">season</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2107,27 +2302,27 @@ features['times_in_top_10'] = features.apply(lambda x: how_many_times_top_10(bro
 </tbody>
 </table>
 <h3 id="average-brownlow-votes-per-game-last-season-feature">Average Brownlow Votes Per Game Last Season Feature</h3>
-<pre><code class="language-python"># Create a brownlow votes lookup table
-brownlow_votes_lookup_table = (brownlow_data.groupby(['player', 'team', 'season'], as_index=False)
-                                    .brownlow_votes
-                                    .mean()
-                                    .assign(next_season=lambda df: df.season + 1)
-                                    .rename(columns={
-                                        'brownlow_votes': 'ave_votes_last_season'
-                                    }))
-
-# Have a look at Cripps to check if it's working
-brownlow_votes_lookup_table[brownlow_votes_lookup_table.player == 'P Cripps']
-
-# Merge it to our features df
-features_with_votes_last_season = (pd.merge(features, brownlow_votes_lookup_table.drop(columns='season'),
-
-                                             left_on=['player', 'team', 'season'], 
-                                             right_on=['player', 'team', 'next_season'],
-                                             how='left')
-                                  .drop(columns=['next_season'])
-                                  .fillna(0))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Create a brownlow votes lookup table</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">brownlow_votes_lookup_table</span> <span class="o">=</span> <span class="p">(</span><span class="n">brownlow_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>                                    <span class="o">.</span><span class="n">brownlow_votes</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>                                    <span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>                                    <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">next_season</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">season</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>                                    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>                                        <span class="s1">&#39;brownlow_votes&#39;</span><span class="p">:</span> <span class="s1">&#39;ave_votes_last_season&#39;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>                                    <span class="p">}))</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1"># Have a look at Cripps to check if it&#39;s working</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="n">brownlow_votes_lookup_table</span><span class="p">[</span><span class="n">brownlow_votes_lookup_table</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="s1">&#39;P Cripps&#39;</span><span class="p">]</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="c1"># Merge it to our features df</span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a><span class="n">features_with_votes_last_season</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">brownlow_votes_lookup_table</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">),</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>                                             <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">],</span> 
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>                                             <span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;next_season&#39;</span><span class="p">],</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>                                             <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>                                  <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;next_season&#39;</span><span class="p">])</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>                                  <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2188,86 +2383,86 @@ features_with_votes_last_season = (pd.merge(features, brownlow_votes_lookup_tabl
 <p>The metric we will use for loss in Mean Absolute Error (MAE).</p>
 <p>As we are using regression, some values are negative. We will convert these negative values to 0 as it doesn't make sense to poll negative brownlow votes. Similarly, some matches won't predict exactly 6 votes, so we will scale these predictions so that we predict exactly 6 votes for each match.</p>
 <p>So that you don't have to train these models yourself, I have saved the models and we will load them in. If you are keen to train the models yourself, simply uncomment out the code below and run the cell. To bulk uncomment, highlight the rows and press ctrl + '/'</p>
-<pre><code class="language-python">h2o.init()
-
-# Uncomment the code below if you want to train the models yourself - otherwise, we will load them in the load cell from disk
-
-## Join to our features df
-
-# aml_yearly_model_objects = {}
-# yearly_predictions_dfs = {}
-
-# feature_cols = ['margin', 'CP', 'UP', 'ED', 'DE',
-#        'CM', 'GA', 'MI5', 'one_perc', 'BO', 'TOG', 'K', 'HB', 'D', 'M', 'G',
-#        'B', 'T', 'HO', 'I50', 'CL', 'CG', 'R50', 'FF', 'FA', 'AF', 'SC']
-
-# for year in range(2011, 2018):
-#     # Filter the data to only include past data
-#     train_historic = brownlow_data[brownlow_data.season &lt; year].copy()
-
-#     # Convert to an h2o frame
-#     train_h2o_historic = h2o.H2OFrame(train_historic)
-
-#     # Create an AutoML object
-#     aml = H2OAutoML(max_runtime_secs=30,
-#                    balance_classes=True,
-#                    seed=42)
-
-#     # Train the model
-#     aml.train(y='brownlow_votes', x=feature_cols, training_frame=train_h2o_historic)
-
-#     # save the model
-#     model_path = h2o.save_model(model=aml.leader, path=&quot;models&quot;, force=True)
-
-#     # Get model id
-#     model_name = aml.leaderboard[0, 'model_id']
-
-#     # Rename the model on disk
-#     os.rename(f'models/{model_name}', f'models/yearly_model_{year}')
-
-#     # Append the best model to a list
-#     aml_yearly_model_objects[year] = aml.leader
-
-#     # Make predictions on test set for that year
-#     test_historic = brownlow_data[brownlow_data.season == year].copy()
-#     test_h2o_historic = h2o.H2OFrame(test_historic)
-
-#     preds = aml.predict(test_h2o_historic).as_data_frame()
-#     test_historic['predicted_votes'] = preds.values
-
-#     # Convert negative predictions to 0
-#     test_historic['predicted_votes_neg_to_0'] = test_historic.predicted_votes.apply(lambda x: 0 if x &lt; 0 else x)
-
-#     # Create a total match votes column - which calculates the number of votes predicted in each game when the predictions 
-#     # are unscaled
-#     test_historic['unscaled_match_votes'] = test_historic.groupby('match_id').predicted_votes_neg_to_0.transform('sum')
-
-#     # Scale predictions
-#     test_historic['predicted_votes_scaled'] = test_historic.predicted_votes_neg_to_0 / test_historic.unscaled_match_votes * 6
-
-#     # Aggregate the predictions
-#     test_grouped = (test_historic.groupby(['player', 'team'], as_index=False)
-#                                  .sum()
-#                                  .sort_values(by='brownlow_votes', ascending=False)
-#                                  .assign(mae=lambda df: abs(df.predicted_votes_scaled - df.brownlow_votes)))
-
-#     test_grouped['error'] = test_grouped.predicted_votes_scaled - test_grouped.brownlow_votes
-#     test_grouped['next_year'] = year + 1
-
-#     # Add this years predictions df to a dictionary to use later
-#     yearly_predictions_dfs[year] = test_grouped
-
-# preds_errors = None
-
-# for key, value in yearly_predictions_dfs.items():
-#     if preds_errors is None:
-#         preds_errors = value[['player', 'season', 'next_year', 'brownlow_votes', 'predicted_votes_scaled', 'error']]
-#     else:
-#         preds_errors = preds_errors.append(value[['player', 'season', 'next_year', 'brownlow_votes', 'predicted_votes_scaled', 'error']], sort=True)
-
-# with open('data/prediction_errors_df.pickle', 'wb') as handle:
-#     pickle.dump(yearly_predicted_errors, handle)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">h2o</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="c1"># Uncomment the code below if you want to train the models yourself - otherwise, we will load them in the load cell from disk</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1">## Join to our features df</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># aml_yearly_model_objects = {}</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="c1"># yearly_predictions_dfs = {}</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="c1"># feature_cols = [&#39;margin&#39;, &#39;CP&#39;, &#39;UP&#39;, &#39;ED&#39;, &#39;DE&#39;,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="c1">#        &#39;CM&#39;, &#39;GA&#39;, &#39;MI5&#39;, &#39;one_perc&#39;, &#39;BO&#39;, &#39;TOG&#39;, &#39;K&#39;, &#39;HB&#39;, &#39;D&#39;, &#39;M&#39;, &#39;G&#39;,</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="c1">#        &#39;B&#39;, &#39;T&#39;, &#39;HO&#39;, &#39;I50&#39;, &#39;CL&#39;, &#39;CG&#39;, &#39;R50&#39;, &#39;FF&#39;, &#39;FA&#39;, &#39;AF&#39;, &#39;SC&#39;]</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="c1"># for year in range(2011, 2018):</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a><span class="c1">#     # Filter the data to only include past data</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="c1">#     train_historic = brownlow_data[brownlow_data.season &lt; year].copy()</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a><span class="c1">#     # Convert to an h2o frame</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a><span class="c1">#     train_h2o_historic = h2o.H2OFrame(train_historic)</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a><span class="c1">#     # Create an AutoML object</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a><span class="c1">#     aml = H2OAutoML(max_runtime_secs=30,</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a><span class="c1">#                    balance_classes=True,</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a><span class="c1">#                    seed=42)</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a><span class="c1">#     # Train the model</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a><span class="c1">#     aml.train(y=&#39;brownlow_votes&#39;, x=feature_cols, training_frame=train_h2o_historic)</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a><span class="c1">#     # save the model</span>
+<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a><span class="c1">#     model_path = h2o.save_model(model=aml.leader, path=&quot;models&quot;, force=True)</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a>
+<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a><span class="c1">#     # Get model id</span>
+<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a><span class="c1">#     model_name = aml.leaderboard[0, &#39;model_id&#39;]</span>
+<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>
+<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a><span class="c1">#     # Rename the model on disk</span>
+<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a><span class="c1">#     os.rename(f&#39;models/{model_name}&#39;, f&#39;models/yearly_model_{year}&#39;)</span>
+<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a>
+<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a><span class="c1">#     # Append the best model to a list</span>
+<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a><span class="c1">#     aml_yearly_model_objects[year] = aml.leader</span>
+<a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a>
+<a id="__codelineno-16-41" name="__codelineno-16-41" href="#__codelineno-16-41"></a><span class="c1">#     # Make predictions on test set for that year</span>
+<a id="__codelineno-16-42" name="__codelineno-16-42" href="#__codelineno-16-42"></a><span class="c1">#     test_historic = brownlow_data[brownlow_data.season == year].copy()</span>
+<a id="__codelineno-16-43" name="__codelineno-16-43" href="#__codelineno-16-43"></a><span class="c1">#     test_h2o_historic = h2o.H2OFrame(test_historic)</span>
+<a id="__codelineno-16-44" name="__codelineno-16-44" href="#__codelineno-16-44"></a>
+<a id="__codelineno-16-45" name="__codelineno-16-45" href="#__codelineno-16-45"></a><span class="c1">#     preds = aml.predict(test_h2o_historic).as_data_frame()</span>
+<a id="__codelineno-16-46" name="__codelineno-16-46" href="#__codelineno-16-46"></a><span class="c1">#     test_historic[&#39;predicted_votes&#39;] = preds.values</span>
+<a id="__codelineno-16-47" name="__codelineno-16-47" href="#__codelineno-16-47"></a>
+<a id="__codelineno-16-48" name="__codelineno-16-48" href="#__codelineno-16-48"></a><span class="c1">#     # Convert negative predictions to 0</span>
+<a id="__codelineno-16-49" name="__codelineno-16-49" href="#__codelineno-16-49"></a><span class="c1">#     test_historic[&#39;predicted_votes_neg_to_0&#39;] = test_historic.predicted_votes.apply(lambda x: 0 if x &lt; 0 else x)</span>
+<a id="__codelineno-16-50" name="__codelineno-16-50" href="#__codelineno-16-50"></a>
+<a id="__codelineno-16-51" name="__codelineno-16-51" href="#__codelineno-16-51"></a><span class="c1">#     # Create a total match votes column - which calculates the number of votes predicted in each game when the predictions </span>
+<a id="__codelineno-16-52" name="__codelineno-16-52" href="#__codelineno-16-52"></a><span class="c1">#     # are unscaled</span>
+<a id="__codelineno-16-53" name="__codelineno-16-53" href="#__codelineno-16-53"></a><span class="c1">#     test_historic[&#39;unscaled_match_votes&#39;] = test_historic.groupby(&#39;match_id&#39;).predicted_votes_neg_to_0.transform(&#39;sum&#39;)</span>
+<a id="__codelineno-16-54" name="__codelineno-16-54" href="#__codelineno-16-54"></a>
+<a id="__codelineno-16-55" name="__codelineno-16-55" href="#__codelineno-16-55"></a><span class="c1">#     # Scale predictions</span>
+<a id="__codelineno-16-56" name="__codelineno-16-56" href="#__codelineno-16-56"></a><span class="c1">#     test_historic[&#39;predicted_votes_scaled&#39;] = test_historic.predicted_votes_neg_to_0 / test_historic.unscaled_match_votes * 6</span>
+<a id="__codelineno-16-57" name="__codelineno-16-57" href="#__codelineno-16-57"></a>
+<a id="__codelineno-16-58" name="__codelineno-16-58" href="#__codelineno-16-58"></a><span class="c1">#     # Aggregate the predictions</span>
+<a id="__codelineno-16-59" name="__codelineno-16-59" href="#__codelineno-16-59"></a><span class="c1">#     test_grouped = (test_historic.groupby([&#39;player&#39;, &#39;team&#39;], as_index=False)</span>
+<a id="__codelineno-16-60" name="__codelineno-16-60" href="#__codelineno-16-60"></a><span class="c1">#                                  .sum()</span>
+<a id="__codelineno-16-61" name="__codelineno-16-61" href="#__codelineno-16-61"></a><span class="c1">#                                  .sort_values(by=&#39;brownlow_votes&#39;, ascending=False)</span>
+<a id="__codelineno-16-62" name="__codelineno-16-62" href="#__codelineno-16-62"></a><span class="c1">#                                  .assign(mae=lambda df: abs(df.predicted_votes_scaled - df.brownlow_votes)))</span>
+<a id="__codelineno-16-63" name="__codelineno-16-63" href="#__codelineno-16-63"></a>
+<a id="__codelineno-16-64" name="__codelineno-16-64" href="#__codelineno-16-64"></a><span class="c1">#     test_grouped[&#39;error&#39;] = test_grouped.predicted_votes_scaled - test_grouped.brownlow_votes</span>
+<a id="__codelineno-16-65" name="__codelineno-16-65" href="#__codelineno-16-65"></a><span class="c1">#     test_grouped[&#39;next_year&#39;] = year + 1</span>
+<a id="__codelineno-16-66" name="__codelineno-16-66" href="#__codelineno-16-66"></a>
+<a id="__codelineno-16-67" name="__codelineno-16-67" href="#__codelineno-16-67"></a><span class="c1">#     # Add this years predictions df to a dictionary to use later</span>
+<a id="__codelineno-16-68" name="__codelineno-16-68" href="#__codelineno-16-68"></a><span class="c1">#     yearly_predictions_dfs[year] = test_grouped</span>
+<a id="__codelineno-16-69" name="__codelineno-16-69" href="#__codelineno-16-69"></a>
+<a id="__codelineno-16-70" name="__codelineno-16-70" href="#__codelineno-16-70"></a><span class="c1"># preds_errors = None</span>
+<a id="__codelineno-16-71" name="__codelineno-16-71" href="#__codelineno-16-71"></a>
+<a id="__codelineno-16-72" name="__codelineno-16-72" href="#__codelineno-16-72"></a><span class="c1"># for key, value in yearly_predictions_dfs.items():</span>
+<a id="__codelineno-16-73" name="__codelineno-16-73" href="#__codelineno-16-73"></a><span class="c1">#     if preds_errors is None:</span>
+<a id="__codelineno-16-74" name="__codelineno-16-74" href="#__codelineno-16-74"></a><span class="c1">#         preds_errors = value[[&#39;player&#39;, &#39;season&#39;, &#39;next_year&#39;, &#39;brownlow_votes&#39;, &#39;predicted_votes_scaled&#39;, &#39;error&#39;]]</span>
+<a id="__codelineno-16-75" name="__codelineno-16-75" href="#__codelineno-16-75"></a><span class="c1">#     else:</span>
+<a id="__codelineno-16-76" name="__codelineno-16-76" href="#__codelineno-16-76"></a><span class="c1">#         preds_errors = preds_errors.append(value[[&#39;player&#39;, &#39;season&#39;, &#39;next_year&#39;, &#39;brownlow_votes&#39;, &#39;predicted_votes_scaled&#39;, &#39;error&#39;]], sort=True)</span>
+<a id="__codelineno-16-77" name="__codelineno-16-77" href="#__codelineno-16-77"></a>
+<a id="__codelineno-16-78" name="__codelineno-16-78" href="#__codelineno-16-78"></a><span class="c1"># with open(&#39;data/prediction_errors_df.pickle&#39;, &#39;wb&#39;) as handle:</span>
+<a id="__codelineno-16-79" name="__codelineno-16-79" href="#__codelineno-16-79"></a><span class="c1">#     pickle.dump(yearly_predicted_errors, handle)</span>
+</code></pre></div>
 <p>Checking whether there is an H2O instance running at http://localhost:54321. connected.   </p>
 <table>
 <thead>
@@ -2339,13 +2534,13 @@ features_with_votes_last_season = (pd.merge(features, brownlow_votes_lookup_tabl
 </tr>
 </tbody>
 </table>
-<pre><code class="language-python"># Load predictions error df    
-with open('data/prediction_errors_df.pickle', 'rb') as handle:
-    preds_errors = pickle.load(handle)
-
-# Look at last years predictions
-preds_errors.query('next_year == 2018').sort_values(by='brownlow_votes', ascending=False).head(20)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># Load predictions error df    </span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/prediction_errors_df.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>    <span class="n">preds_errors</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="c1"># Look at last years predictions</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="n">preds_errors</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;next_year == 2018&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;brownlow_votes&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2542,43 +2737,43 @@ preds_errors.query('next_year == 2018').sort_values(by='brownlow_votes', ascendi
 </tbody>
 </table>
 <p>Look at that! A simply Machine Learning ensemble model, using AutoML predicted last year's winner! That's impressive. As we can see it also predicted Bontempelli would only score 11.26, when he actually scored 19 - a huge discrepency. Let's use this as a feature.</p>
-<pre><code class="language-python">features_with_historic_perf_relative_to_model = \
-    (features_with_votes_last_season.pipe(pd.merge, preds_errors[['player', 'next_year', 'error']],
-                                          left_on=['player', 'season'],
-                                          right_on=['player', 'next_year'],
-                                          how='left')
-                                     .fillna(0)
-                                     .rename(columns={'error': 'error_last_season'})
-                                     .drop_duplicates(subset=['player', 'round', 'SC']))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">features_with_historic_perf_relative_to_model</span> <span class="o">=</span> \
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>    <span class="p">(</span><span class="n">features_with_votes_last_season</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">,</span> <span class="n">preds_errors</span><span class="p">[[</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;next_year&#39;</span><span class="p">,</span> <span class="s1">&#39;error&#39;</span><span class="p">]],</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>                                          <span class="n">left_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">],</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>                                          <span class="n">right_on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;next_year&#39;</span><span class="p">],</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>                                          <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>                                     <span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>                                     <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;error_last_season&#39;</span><span class="p">})</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>                                     <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="s1">&#39;SC&#39;</span><span class="p">]))</span>
+</code></pre></div>
 <hr />
 <h2 id="filtering-the-data-to-only-include-the-top-20-sc-for-each-match">Filtering the data to only include the top 20 SC for each match</h2>
 <p>Logically, it is extremely unlikely that a player will poll votes if their Supercoach score is not in the top 20 players. By eliminating the other 20+ players, we can reduce the noise in the data, as we are almost certain the players won't poll from the bottom half. Let's explore how many players poll if they're not in the top 20, and then filter our df if this number is not significant.</p>
-<pre><code class="language-python"># Find number of players who vote when in top 15 SC
-
-brownlow_data['SC_rank_match'] = brownlow_data.groupby('match_id').SC.rank(method='max', ascending=False)
-
-brownlow_data.query('SC_rank_match &gt; 20 and season &gt; 2014').brownlow_votes.value_counts()
-
-    0.0    18330
-    1.0       14
-    2.0        8
-    3.0        2
-    Name: brownlow_votes, dtype: int64
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># Find number of players who vote when in top 15 SC</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">brownlow_data</span><span class="p">[</span><span class="s1">&#39;SC_rank_match&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">SC</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SC_rank_match &gt; 20 and season &gt; 2014&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>    <span class="mf">0.0</span>    <span class="mi">18330</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>    <span class="mf">1.0</span>       <span class="mi">14</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>    <span class="mf">2.0</span>        <span class="mi">8</span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>    <span class="mf">3.0</span>        <span class="mi">2</span>
+<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>    <span class="n">Name</span><span class="p">:</span> <span class="n">brownlow_votes</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</code></pre></div>
 <p>Since 2014, there have only been 24 players who have voted and not been in the top 20 SC.</p>
-<pre><code class="language-python">features_with_sc_rank = features_with_historic_perf_relative_to_model.copy()
-
-features_with_sc_rank['SC_rank_match'] = features_with_sc_rank.groupby('match_id').SC.rank(method='max', ascending=False)
-
-# Filter out rows with a SC rank of below 20
-features_with_sc_rank_filtered = features_with_sc_rank.query('SC_rank_match &lt;= 20')
-</code></pre>
-<pre><code class="language-python"># Filter out 2010 and 2011 as we used these seasons to create historic model performance features
-features_last_before_train = features_with_sc_rank_filtered.query('season != 2010 and season != 2011').reset_index(drop=True)
-
-features_last_before_train.head(3)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">features_with_sc_rank</span> <span class="o">=</span> <span class="n">features_with_historic_perf_relative_to_model</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">features_with_sc_rank</span><span class="p">[</span><span class="s1">&#39;SC_rank_match&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features_with_sc_rank</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">SC</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># Filter out rows with a SC rank of below 20</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="n">features_with_sc_rank_filtered</span> <span class="o">=</span> <span class="n">features_with_sc_rank</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SC_rank_match &lt;= 20&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Filter out 2010 and 2011 as we used these seasons to create historic model performance features</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">features_last_before_train</span> <span class="o">=</span> <span class="n">features_with_sc_rank_filtered</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;season != 2010 and season != 2011&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="n">features_last_before_train</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2800,84 +2995,83 @@ features_last_before_train.head(3)
 <hr />
 <h2 id="modeling-the-2017-brownlow">Modeling The 2017 Brownlow</h2>
 <p>Now that we have all of our features, we can simply create a training set (2012-2016), and a test set (2017), and make our predictions for last year! We will use AutoML for this process again. Again, rather than waiting for the model to train, I will save the model so you can simply load it in. We will also scale our features. We can then see how our model went in predicting last year's brownlow, creating a baseline for this years' predictions. We will then predict this year's vote count.</p>
-<pre><code class="language-python">train_baseline = features_last_before_train.query(&quot;season &lt; 2017&quot;)
-holdout = features_last_before_train.query(&quot;season == 2017&quot;)
-
-scale_cols = ['team_score', 'opposition_score', 'margin', 'CP', 'UP', 'ED', 'DE',
-       'CM', 'GA', 'MI5', 'one_perc', 'BO', 'K', 'HB', 'D', 'M', 'G',
-       'B', 'T', 'HO', 'I50', 'CL', 'CG', 'R50', 'FF', 'FA', 'AF', 'SC']
-
-other_feature_cols = ['is_captain', 'kicked_a_bag', 'team_won', 'got_30_possies_2_goals', 'times_in_top_10', 
-                      'ave_votes_last_season', 'error_last_season', 'SC_rank_match']
-
-all_feature_cols = scale_cols + other_feature_cols
-
-# Scale features
-scaler = StandardScaler()
-
-train_baseline_scaled = train_baseline.copy()
-train_baseline_scaled[scale_cols] = scaler.fit_transform(train_baseline[scale_cols])
-
-holdout_scaled = holdout.copy()
-holdout_scaled[scale_cols] = scaler.transform(holdout[scale_cols])
-
-# Convert categorical columns to categoricals
-train_baseline_h2o = h2o.H2OFrame(train_baseline_scaled)
-holdout_h2o = h2o.H2OFrame(holdout_scaled)
-
-for col in ['is_captain', 'kicked_a_bag', 'team_won', 'got_30_possies_2_goals']:
-    train_baseline_h2o[col] = train_baseline_h2o[col].asfactor()
-    holdout_h2o[col] = holdout_h2o[col].asfactor()
-</code></pre>
-<pre><code>C:\Users\wardj\AppData\Local\Continuum\anaconda3\lib\site-packages\h2o\utils\shared_utils.py:177: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">train_baseline</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season &lt; 2017&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">holdout</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season == 2017&quot;</span><span class="p">)</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">scale_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;team_score&#39;</span><span class="p">,</span> <span class="s1">&#39;opposition_score&#39;</span><span class="p">,</span> <span class="s1">&#39;margin&#39;</span><span class="p">,</span> <span class="s1">&#39;CP&#39;</span><span class="p">,</span> <span class="s1">&#39;UP&#39;</span><span class="p">,</span> <span class="s1">&#39;ED&#39;</span><span class="p">,</span> <span class="s1">&#39;DE&#39;</span><span class="p">,</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>       <span class="s1">&#39;CM&#39;</span><span class="p">,</span> <span class="s1">&#39;GA&#39;</span><span class="p">,</span> <span class="s1">&#39;MI5&#39;</span><span class="p">,</span> <span class="s1">&#39;one_perc&#39;</span><span class="p">,</span> <span class="s1">&#39;BO&#39;</span><span class="p">,</span> <span class="s1">&#39;K&#39;</span><span class="p">,</span> <span class="s1">&#39;HB&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>       <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span> <span class="s1">&#39;HO&#39;</span><span class="p">,</span> <span class="s1">&#39;I50&#39;</span><span class="p">,</span> <span class="s1">&#39;CL&#39;</span><span class="p">,</span> <span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="s1">&#39;R50&#39;</span><span class="p">,</span> <span class="s1">&#39;FF&#39;</span><span class="p">,</span> <span class="s1">&#39;FA&#39;</span><span class="p">,</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span> <span class="s1">&#39;SC&#39;</span><span class="p">]</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="n">other_feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;is_captain&#39;</span><span class="p">,</span> <span class="s1">&#39;kicked_a_bag&#39;</span><span class="p">,</span> <span class="s1">&#39;team_won&#39;</span><span class="p">,</span> <span class="s1">&#39;got_30_possies_2_goals&#39;</span><span class="p">,</span> <span class="s1">&#39;times_in_top_10&#39;</span><span class="p">,</span> 
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>                      <span class="s1">&#39;ave_votes_last_season&#39;</span><span class="p">,</span> <span class="s1">&#39;error_last_season&#39;</span><span class="p">,</span> <span class="s1">&#39;SC_rank_match&#39;</span><span class="p">]</span>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="n">all_feature_cols</span> <span class="o">=</span> <span class="n">scale_cols</span> <span class="o">+</span> <span class="n">other_feature_cols</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="c1"># Scale features</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="n">train_baseline_scaled</span> <span class="o">=</span> <span class="n">train_baseline</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="n">train_baseline_scaled</span><span class="p">[</span><span class="n">scale_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train_baseline</span><span class="p">[</span><span class="n">scale_cols</span><span class="p">])</span>
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="n">holdout_scaled</span> <span class="o">=</span> <span class="n">holdout</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a><span class="n">holdout_scaled</span><span class="p">[</span><span class="n">scale_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">holdout</span><span class="p">[</span><span class="n">scale_cols</span><span class="p">])</span>
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a><span class="c1"># Convert categorical columns to categoricals</span>
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a><span class="n">train_baseline_h2o</span> <span class="o">=</span> <span class="n">h2o</span><span class="o">.</span><span class="n">H2OFrame</span><span class="p">(</span><span class="n">train_baseline_scaled</span><span class="p">)</span>
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a><span class="n">holdout_h2o</span> <span class="o">=</span> <span class="n">h2o</span><span class="o">.</span><span class="n">H2OFrame</span><span class="p">(</span><span class="n">holdout_scaled</span><span class="p">)</span>
+<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a>
+<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;is_captain&#39;</span><span class="p">,</span> <span class="s1">&#39;kicked_a_bag&#39;</span><span class="p">,</span> <span class="s1">&#39;team_won&#39;</span><span class="p">,</span> <span class="s1">&#39;got_30_possies_2_goals&#39;</span><span class="p">]:</span>
+<a id="__codelineno-22-27" name="__codelineno-22-27" href="#__codelineno-22-27"></a>    <span class="n">train_baseline_h2o</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_baseline_h2o</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">asfactor</span><span class="p">()</span>
+<a id="__codelineno-22-28" name="__codelineno-22-28" href="#__codelineno-22-28"></a>    <span class="n">holdout_h2o</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">holdout_h2o</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">asfactor</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>C:\Users\wardj\AppData\Local\Continuum\anaconda3\lib\site-packages\h2o\utils\shared_utils.py:177: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
   data = _handle_python_lists(python_obj.as_matrix().tolist(), -1)[1]
 
 Parse progress: |█████████████████████████████████████████████████████████| 100%
 Parse progress: |█████████████████████████████████████████████████████████| 100%
-</code></pre>
+</code></pre></div>
 <p>Below I have commented out training and saving the 2017 model. Rather than training it again, we will just load it in. Uncomment this part out if you want to train it yourself.</p>
-<pre><code class="language-python"># aml_2017_model = H2OAutoML(max_runtime_secs = 60*3,
-#                    balance_classes=True,
-#                    seed=42)
-
-# aml_2017_model.train(y='brownlow_votes', x=all_feature_cols, training_frame=train_baseline_h2o)
-</code></pre>
-<pre><code class="language-python"># save the model
-# model_path = h2o.save_model(model=aml_2017_model.leader, path=&quot;models&quot;, force=True)
-
-# Get model id
-# model_name = aml_2017_model.leaderboard[0, 'model_id']
-
-# Rename the model on disk
-# os.rename(f'models/{model_name}', f'models/brownlow_2017_model_v1')
-
-# Load model in
-aml_2017_model = h2o.load_model('models/brownlow_2017_model_v1')
-</code></pre>
-<pre><code class="language-python"># Predict the 2017 brownlow count
-preds_final_2017_model = aml_2017_model.predict(holdout_h2o)
-
-# Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total
-holdout = (holdout.assign(predicted_votes=preds_final_2017_model.as_data_frame().values)
-                  .assign(predicted_votes_neg_to_0=lambda df: df.predicted_votes.apply(lambda x: 0 if x &lt;0 else x))
-                  .assign(unscaled_match_votes=lambda df: df.groupby('match_id').predicted_votes_neg_to_0.transform('sum'))
-                  .assign(predicted_votes_scaled=lambda df: df.predicted_votes_neg_to_0 / df.unscaled_match_votes * 6))
-
-# Create an aggregate votes df and show the average SC points and goals scored
-agg_predictions_2017 = (holdout.groupby(['player', 'team'], as_index=False)
-                        .agg({
-                            'brownlow_votes': sum,
-                            'predicted_votes_scaled': sum,
-                            'SC': 'mean',
-                            'G': 'mean'})
-                        .sort_values(by='brownlow_votes', ascending=False)
-                        .assign(mae=lambda df: abs(df.brownlow_votes - df.predicted_votes_scaled))
-                        .reset_index(drop=True))
-</code></pre>
-<pre><code>stackedensemble prediction progress: |████████████████████████████████████| 100%
-</code></pre>
-<pre><code class="language-python">agg_predictions_2017.head(15)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># aml_2017_model = H2OAutoML(max_runtime_secs = 60*3,</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="c1">#                    balance_classes=True,</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="c1">#                    seed=42)</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="c1"># aml_2017_model.train(y=&#39;brownlow_votes&#39;, x=all_feature_cols, training_frame=train_baseline_h2o)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># save the model</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="c1"># model_path = h2o.save_model(model=aml_2017_model.leader, path=&quot;models&quot;, force=True)</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Get model id</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="c1"># model_name = aml_2017_model.leaderboard[0, &#39;model_id&#39;]</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># Rename the model on disk</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="c1"># os.rename(f&#39;models/{model_name}&#39;, f&#39;models/brownlow_2017_model_v1&#39;)</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="c1"># Load model in</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="n">aml_2017_model</span> <span class="o">=</span> <span class="n">h2o</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/brownlow_2017_model_v1&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Predict the 2017 brownlow count</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">preds_final_2017_model</span> <span class="o">=</span> <span class="n">aml_2017_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">holdout_h2o</span><span class="p">)</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">holdout</span> <span class="o">=</span> <span class="p">(</span><span class="n">holdout</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes</span><span class="o">=</span><span class="n">preds_final_2017_model</span><span class="o">.</span><span class="n">as_data_frame</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_neg_to_0</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="k">else</span> <span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">unscaled_match_votes</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">predicted_votes_neg_to_0</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_scaled</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes_neg_to_0</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">unscaled_match_votes</span> <span class="o">*</span> <span class="mi">6</span><span class="p">))</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="c1"># Create an aggregate votes df and show the average SC points and goals scored</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="n">agg_predictions_2017</span> <span class="o">=</span> <span class="p">(</span><span class="n">holdout</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>                        <span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>                            <span class="s1">&#39;brownlow_votes&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">,</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>                            <span class="s1">&#39;predicted_votes_scaled&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">,</span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>                            <span class="s1">&#39;SC&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>                            <span class="s1">&#39;G&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>                        <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;brownlow_votes&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>                        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">mae</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="nb">abs</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">brownlow_votes</span> <span class="o">-</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes_scaled</span><span class="p">))</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>                        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+    stackedensemble prediction progress: |████████████████████████████████████| 100%</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">agg_predictions_2017</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3045,88 +3239,87 @@ agg_predictions_2017 = (holdout.groupby(['player', 'team'], as_index=False)
 </tbody>
 </table>
 <p>So whilst our model predicted Dangerfield to win, it was pretty damn accurate! Let's find the MAE for the top 100, 50, 25, and 10, and then compare it to 2018's MAE in week, when the Brownlow has been counted.</p>
-<pre><code class="language-python">for top_x in [10, 25, 50, 100]:
-    temp_mae = round(agg_predictions_2017.iloc[:top_x].mae.mean(), 3)
-    print(f&quot;The Average Mean Absolute Error for the top {top_x} is {temp_mae}&quot;)
-</code></pre>
-<pre><code>The Average Mean Absolute Error for the top 10 is 3.216
-The Average Mean Absolute Error for the top 25 is 2.931
-The Average Mean Absolute Error for the top 50 is 3.15
-The Average Mean Absolute Error for the top 100 is 2.577
-</code></pre>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="k">for</span> <span class="n">top_x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">]:</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>    <span class="n">temp_mae</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">agg_predictions_2017</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">top_x</span><span class="p">]</span><span class="o">.</span><span class="n">mae</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Average Mean Absolute Error for the top </span><span class="si">{</span><span class="n">top_x</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">temp_mae</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+    The Average Mean Absolute Error for the top 10 is 3.216
+    The Average Mean Absolute Error for the top 25 is 2.931
+    The Average Mean Absolute Error for the top 50 is 3.15
+    The Average Mean Absolute Error for the top 100 is 2.577</p>
 <hr />
 <h2 id="modelling-this-years-brownlow">Modelling This Year's Brownlow</h2>
 <p>Let's now predict this year's vote count. These predictions will be on the front page of the GitHub.</p>
-<pre><code class="language-python">train = features_last_before_train.query(&quot;season &lt; 2018&quot;)
-test = features_last_before_train.query(&quot;season == 2018&quot;)
-
-# Scale features
-scaler = StandardScaler()
-
-train_scaled = train.copy()
-train_scaled[scale_cols] = scaler.fit_transform(train[scale_cols])
-
-test_scaled = test.copy()
-test_scaled[scale_cols] = scaler.transform(test[scale_cols])
-</code></pre>
-<pre><code class="language-python"># Convert categorical columns to categoricals
-
-train_h2o = h2o.H2OFrame(train_scaled)
-test_h2o = h2o.H2OFrame(test_scaled)
-
-for col in ['is_captain', 'kicked_a_bag', 'team_won', 'got_30_possies_2_goals']:
-    train_h2o[col] = train_h2o[col].asfactor()
-    test_h2o[col] = test_h2o[col].asfactor()
-</code></pre>
-<pre><code>C:\Users\wardj\AppData\Local\Continuum\anaconda3\lib\site-packages\h2o\utils\shared_utils.py:177: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="n">train</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season &lt; 2018&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">test</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season == 2018&quot;</span><span class="p">)</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># Scale features</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="n">train_scaled</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="n">train_scaled</span><span class="p">[</span><span class="n">scale_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">train</span><span class="p">[</span><span class="n">scale_cols</span><span class="p">])</span>
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a>
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="n">test_scaled</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="n">test_scaled</span><span class="p">[</span><span class="n">scale_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="n">scale_cols</span><span class="p">])</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># Convert categorical columns to categoricals</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">train_h2o</span> <span class="o">=</span> <span class="n">h2o</span><span class="o">.</span><span class="n">H2OFrame</span><span class="p">(</span><span class="n">train_scaled</span><span class="p">)</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">test_h2o</span> <span class="o">=</span> <span class="n">h2o</span><span class="o">.</span><span class="n">H2OFrame</span><span class="p">(</span><span class="n">test_scaled</span><span class="p">)</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;is_captain&#39;</span><span class="p">,</span> <span class="s1">&#39;kicked_a_bag&#39;</span><span class="p">,</span> <span class="s1">&#39;team_won&#39;</span><span class="p">,</span> <span class="s1">&#39;got_30_possies_2_goals&#39;</span><span class="p">]:</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a>    <span class="n">train_h2o</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">train_h2o</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">asfactor</span><span class="p">()</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a>    <span class="n">test_h2o</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">test_h2o</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">asfactor</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>C:\Users\wardj\AppData\Local\Continuum\anaconda3\lib\site-packages\h2o\utils\shared_utils.py:177: FutureWarning: Method .as_matrix will be removed in a future version. Use .values instead.
   data = _handle_python_lists(python_obj.as_matrix().tolist(), -1)[1]
 
 Parse progress: |█████████████████████████████████████████████████████████| 100%
 Parse progress: |█████████████████████████████████████████████████████████| 100%
-</code></pre>
-<pre><code class="language-python"># Train the model - this part is commented out as we will just load our model from disk
-
-# aml = H2OAutoML(max_runtime_secs = 60*3,
-#                    balance_classes=True,
-#                    seed=42)
-
-# aml.train(y='brownlow_votes', x=all_feature_cols, training_frame=train_h2o)
-</code></pre>
-<pre><code class="language-python"># # save the model
-# model_path = h2o.save_model(model=aml.leader, path=&quot;models&quot;, force=True)
-
-# # Get model id
-# model_name = aml.leaderboard[0, 'model_id']
-
-# # Rename the model on disk
-# os.rename(f'models/{model_name}', f'models/brownlow_2018_model_v1')
-
-# Load model in
-aml = h2o.load_model('models/brownlow_2018_model_v1')
-</code></pre>
-<pre><code class="language-python"># Predict the 2018 brownlow count
-preds_final_2018_model = aml.predict(test_h2o)
-
-# Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total
-test = (test.assign(predicted_votes=preds_final_2018_model.as_data_frame().values)
-                  .assign(predicted_votes_neg_to_0=lambda df: df.predicted_votes.apply(lambda x: 0 if x &lt;0 else x))
-                  .assign(unscaled_match_votes=lambda df: df.groupby('match_id').predicted_votes_neg_to_0.transform('sum'))
-                  .assign(predicted_votes_scaled=lambda df: df.predicted_votes_neg_to_0 / df.unscaled_match_votes * 6))
-
-# Create an aggregate votes df and show the average SC points and goals scored
-agg_predictions_2018 = (test.groupby(['player', 'team'], as_index=False)
-                        .agg({
-                            'predicted_votes_scaled': sum,
-                            'match_id': 'count'}) # shows how many games they played
-                        .sort_values(by='predicted_votes_scaled', ascending=False)
-                        .reset_index(drop=True))
-</code></pre>
-<pre><code>stackedensemble prediction progress: |████████████████████████████████████| 100%
-</code></pre>
-<pre><code class="language-python"># Show the top 25 predictions
-
-agg_predictions_2018.head(25)
-</code></pre>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Train the model - this part is commented out as we will just load our model from disk</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="c1"># aml = H2OAutoML(max_runtime_secs = 60*3,</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1">#                    balance_classes=True,</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1">#                    seed=42)</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="c1"># aml.train(y=&#39;brownlow_votes&#39;, x=all_feature_cols, training_frame=train_h2o)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># # save the model</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="c1"># model_path = h2o.save_model(model=aml.leader, path=&quot;models&quot;, force=True)</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="c1"># # Get model id</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a><span class="c1"># model_name = aml.leaderboard[0, &#39;model_id&#39;]</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="c1"># # Rename the model on disk</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="c1"># os.rename(f&#39;models/{model_name}&#39;, f&#39;models/brownlow_2018_model_v1&#39;)</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a>
+<a id="__codelineno-31-10" name="__codelineno-31-10" href="#__codelineno-31-10"></a><span class="c1"># Load model in</span>
+<a id="__codelineno-31-11" name="__codelineno-31-11" href="#__codelineno-31-11"></a><span class="n">aml</span> <span class="o">=</span> <span class="n">h2o</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;models/brownlow_2018_model_v1&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="c1"># Predict the 2018 brownlow count</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="n">preds_final_2018_model</span> <span class="o">=</span> <span class="n">aml</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_h2o</span><span class="p">)</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="n">test</span> <span class="o">=</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes</span><span class="o">=</span><span class="n">preds_final_2018_model</span><span class="o">.</span><span class="n">as_data_frame</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_neg_to_0</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="k">else</span> <span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">unscaled_match_votes</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">predicted_votes_neg_to_0</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_scaled</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes_neg_to_0</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">unscaled_match_votes</span> <span class="o">*</span> <span class="mi">6</span><span class="p">))</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a><span class="c1"># Create an aggregate votes df and show the average SC points and goals scored</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="n">agg_predictions_2018</span> <span class="o">=</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>                        <span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>                            <span class="s1">&#39;predicted_votes_scaled&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">,</span>
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>                            <span class="s1">&#39;match_id&#39;</span><span class="p">:</span> <span class="s1">&#39;count&#39;</span><span class="p">})</span> <span class="c1"># shows how many games they played</span>
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>                        <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;predicted_votes_scaled&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>                        <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>stackedensemble prediction progress: |████████████████████████████████████| 100%
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="c1"># Show the top 25 predictions</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="n">agg_predictions_2018</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3315,8 +3508,8 @@ agg_predictions_2018.head(25)
 </tr>
 </tbody>
 </table>
-<pre><code class="language-python">print(agg_predictions_2018.head(15))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">agg_predictions_2018</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3420,8 +3613,8 @@ agg_predictions_2018.head(25)
 </tbody>
 </table>
 <p>Now that we have the top 25, let's also look at the top 3 from each team.</p>
-<pre><code class="language-python">agg_predictions_2018.sort_values(by=['team', 'predicted_votes_scaled'], ascending=[True, False]).groupby('team').head(3)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">agg_predictions_2018</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;predicted_votes_scaled&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;team&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3814,8 +4007,8 @@ agg_predictions_2018.head(25)
 </tbody>
 </table>
 <p>If you're looking for a round by round breakdown, just have a look at the test dataframe.</p>
-<pre><code class="language-python">test[['date', 'round', 'player', 'team', 'opposition', 'margin', 'SC', 'predicted_votes_scaled']].tail(25)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">test</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;round&#39;</span><span class="p">,</span> <span class="s1">&#39;player&#39;</span><span class="p">,</span> <span class="s1">&#39;team&#39;</span><span class="p">,</span> <span class="s1">&#39;opposition&#39;</span><span class="p">,</span> <span class="s1">&#39;margin&#39;</span><span class="p">,</span> <span class="s1">&#39;SC&#39;</span><span class="p">,</span> <span class="s1">&#39;predicted_votes_scaled&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -4118,6 +4311,11 @@ agg_predictions_2018.head(25)
           </div>
         </div>
         
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
       </main>
       
         <footer class="md-footer">
@@ -4219,7 +4417,7 @@ agg_predictions_2018.head(25)
           <div class="bf-footer-inner">
               <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
               <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
           
               <ul class="bf-links">
                 <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
@@ -4248,7 +4446,7 @@ agg_predictions_2018.head(25)
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
       <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>

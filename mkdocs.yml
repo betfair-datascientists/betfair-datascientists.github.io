@@ -8,8 +8,7 @@ site_dir: 'docs'
 
 # Navigation
 nav:
-    - Home: 
-        The Automation Hub: index.md  
+    - Home: index.md  
     - API:
         - API resources: api/apiResources.md
         - How to access the Betfair API: api/apiappkey.md
@@ -22,16 +21,15 @@ nav:
         - Tutorials:
             - JSON to CSV in Python: historicData/jsonToCsvTutorial.md
             - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
-            # - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
-            # - Do \#theyknow? Analysing Betfair market formation and market movements: historicData\analysingAndPredictingMarketMovements.ipynb
-            
+            - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
+            - Do \#theyknow? Analysing Betfair market formation and market movements: historicData\analysingAndPredictingMarketMovements.ipynb
         - Historic Data site:
             - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
-        # - Racing:
-        #     - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
-        #     - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb
+        - Racing:
+            - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
+            - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb
         - Soccer:
             - Elo soccer tutorial in R: modelling/soccerEloTutorialR.md
             - Soccer modelling tutorial in Python: modelling/soccerModellingTutorialPython.md
@@ -74,7 +72,7 @@ nav:
 # Theme settings
 theme:
     name: material
-    custom_dir: 'theme2'
+    custom_dir: 'theme'
     favicon: 'img/BetfairFavicon.ico'
     logo: 'img/logo.svg'
     language: 'en'
@@ -97,12 +95,38 @@ theme:
                 name: Switch to light mode
     font:
         text: 'Roboto'
-        code: 'Roboto Mono'
+        code: 'Roboto Mono' 
     features:
+        - navigation.instant
         - navigation.tabs
+        - navigation.top
+        - navigation.expand
+        - navigation.sections
+        - search.suggest
+        - search.highlight
+        - search.share
 
-extra_css:
-    - assets/stylesheets/betfair.css
+# Extensions
+markdown_extensions:
+    - admonition
+    - meta
+    - md_in_html
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.inlinehilite
+    - pymdownx.highlight:
+        anchor_linenums: true
+    - pymdownx.superfences
+
+# plugins
+plugins:
+   - search
+   - mknotebooks
+
+# Google Analytics
+google_analytics:
+    - 'UA-125973915-1'
+    - 'auto'
 
 extra:
     rg_footer: 'Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly.'
@@ -120,44 +144,6 @@ extra:
         - icon: fontawesome/brands/github
           link: https://github.com/betfair-datascientists
 
-# Extensions
-markdown_extensions:
-    - admonition
-
-# markdown_extensions:
-#     - admonition
-#     - codehilite:
-#         guess_lang: false
-#         use_pygments: true
-#         noclasses: true
-#         # pygments_style: onedark
-#     - footnotes
-#     - meta
-#     - toc:
-#         permalink: true
-#     - pymdownx.arithmatex
-#     - pymdownx.betterem:
-#         smart_enable: all
-#     - pymdownx.caret
-#     - pymdownx.critic
-#     - pymdownx.details
-#     - pymdownx.emoji:
-#         emoji_generator: !!python/name:pymdownx.emoji.to_svg
-#     - pymdownx.inlinehilite
-#     - pymdownx.magiclink
-#     - pymdownx.mark
-#     - pymdownx.smartsymbols
-#     - pymdownx.superfences
-#     - pymdownx.tasklist:
-#         custom_checkbox: true
-#     - pymdownx.tilde
-#     - pymdownx.superfences
-#     - pymdownx.tabbed
-
-# plugins
-# plugins:
-#     - mkdocs-jupyter
-# Google Analytics
-google_analytics:
-    - 'UA-125973915-1'
-    - 'auto'
+# betfair custom theme css file
+extra_css:
+    - assets/stylesheets/betfair.css

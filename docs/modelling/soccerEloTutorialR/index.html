@@ -42,6 +42,12 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/betfair.css">
     
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -58,7 +64,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange">
   
     
     
@@ -108,30 +114,32 @@
           </div>
         </div>
       </div>
+
       
         <form class="md-header__option" data-md-component="palette">
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
             
               <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
               </label>
             
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
             
               <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
               </label>
             
           
         </form>
       
       
+
       
         <label class="md-header__button md-icon" for="__search">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
@@ -147,10 +155,16 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -166,7 +180,21 @@
   </div>
 </div>
       
+     
+      <div class="bf-nav">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26" />
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z" />
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+
       
+
     </nav>
     
   </header>
@@ -175,6 +203,93 @@
       
       
         
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/apiResources/" class="md-tabs__link">
+        API
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../historicData/dataSources/" class="md-tabs__link">
+        Historic Data
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../howToModel/" class="md-tabs__link md-tabs__link--active">
+        Modelling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../autoTools/overview/" class="md-tabs__link">
+        Auto Tools
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
           
         
       
@@ -188,8 +303,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="The Automation Hub" class="md-nav__button md-logo" aria-label="The Automation Hub" data-md-component="logo">
       
@@ -208,46 +325,13 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_1">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Home
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        The Automation Hub
+        Home
       </a>
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -260,7 +344,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -311,10 +395,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_3" checked>
       
       
       
@@ -397,7 +483,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -434,10 +520,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -482,6 +570,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/automatedBettingAnglesTutorial/" class="md-nav__link">
+        Automated betting angles in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+        Do \#theyknow? Analysing Betfair market formation and market movements
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -495,10 +611,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -590,25 +708,90 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
       
       
       
       
         <label class="md-nav__link" for="__nav_4_2">
+          Racing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Racing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Racing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fasttrackTutorial/" class="md-nav__link">
+        Greyhound form FastTrack API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../greyhoundModellingPython/" class="md-nav__link">
+        Greyhound modelling in Python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
           Soccer
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Soccer" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_2">
+        <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
           Soccer
         </label>
@@ -786,21 +969,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" data-md-state="indeterminate" type="checkbox" id="__nav_4_4" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_3">
+        <label class="md-nav__link" for="__nav_4_4">
           AFL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="AFL" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           AFL
         </label>
@@ -847,21 +1032,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" data-md-state="indeterminate" type="checkbox" id="__nav_4_5" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_4">
+        <label class="md-nav__link" for="__nav_4_5">
           Tennis
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Tennis" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
+        <label class="md-nav__title" for="__nav_4_5">
           <span class="md-nav__icon md-icon"></span>
           Tennis
         </label>
@@ -933,7 +1120,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -970,10 +1157,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
       
       
       
@@ -1129,10 +1318,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
       
       
       
@@ -1246,10 +1437,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" data-md-state="indeterminate" type="checkbox" id="__nav_5_4" checked>
       
       
       
@@ -1307,10 +1500,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" data-md-state="indeterminate" type="checkbox" id="__nav_5_5" checked>
       
       
       
@@ -1504,42 +1699,42 @@
 <li>This code is written in R, and hence you will need to have <a href="https://www.r-project.org">R</a> and <a href="https://www.rstudio.com">RStudio</a> running on your system if you wish to follow along.</li>
 <li>You will also need the historical data set provided for Betfair's 2021 Euro &amp; Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021 you can <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">register for the Datathon here</a>, or alternatively if you are reading this tutorial after the Datathon has concluded, please reach out to <a href="datathon@betfair.com.au">datathon@betfair.com.au</a> for data access. In the meantime, <a href="../assets/datathon_initial_form_data%20-%20SAMPLE.csv">click here for a sample of the data</a> which will be enough to allow the code to run effectively.</li>
 </ol>
-<p>!!! note "Betfair Datathon"
-    If you're interested in competing in the 2021 Euro &amp; Copa America Datathon competition make sure you <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">head to the Hub</a>, register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. </p>
+<div class="admonition note">
+<p class="admonition-title">Betfair Datathon</p>
+<p>If you're interested in competing in the 2021 Euro &amp; Copa America Datathon competition make sure you <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">head to the Hub</a>, register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. </p>
+</div>
 <p>Let's get started!</p>
 <hr />
 <h2 id="load-packages-import-data">Load Packages &amp; Import Data</h2>
 <p>The first thing to do is load the packages that will be required to run the Elo model and to read in the historic data from wherever it is stored on your machine.</p>
 <p>The main package to take notice of here is the <code>elo</code> package. As the name suggests, this package is for running Elo models.
 The <code>MLmetrics</code> package will be used towards the end of the tutorial to back-test the accuracy of our model.</p>
-<pre><code>library(readr)
-library(dplyr)
-library(lubridate)
-library(elo)
-library(MLmetrics)
-
-raw_data &lt;- read_csv(&quot;datathon_initial_form_data.csv&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>library(readr)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>library(dplyr)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>library(lubridate)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>library(elo)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>library(MLmetrics)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>raw_data &lt;- read_csv(&quot;datathon_initial_form_data.csv&quot;)
+</code></pre></div>
 <p>When exploring a new data set, it is always good practice to first get an idea of the what is included in the data set.</p>
-<pre><code>colnames(raw_data)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>colnames(raw_data)
+</code></pre></div>
 <p>Something noticeable is that the data set does not have a feature included to indicate the result of each match. Let's start by creating two new columns: one showing the result from the home team's perspective and another from the away team's perspective.</p>
 <p>We'll also create a feature to show the margin of the match, i.e. the absolute goal difference between the two sides.</p>
-<pre><code>raw_data &lt;- raw_data %&gt;% 
-  mutate(home_result = case_when(home_team_goal_count &gt; away_team_goal_count ~ 1,
-                                 home_team_goal_count &lt; away_team_goal_count ~ 0,
-                                 home_team_goal_count == away_team_goal_count ~ 0.5),
-  away_result = case_when(home_team_goal_count &lt; away_team_goal_count ~ 1,
-                          home_team_goal_count &gt; away_team_goal_count ~ 0,
-                          home_team_goal_count == away_team_goal_count ~ 0.5),
-  margin = abs(home_team_goal_count - away_team_goal_count))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>raw_data &lt;- raw_data %&gt;% 
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  mutate(home_result = case_when(home_team_goal_count &gt; away_team_goal_count ~ 1,
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                                 home_team_goal_count &lt; away_team_goal_count ~ 0,
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>                                 home_team_goal_count == away_team_goal_count ~ 0.5),
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  away_result = case_when(home_team_goal_count &lt; away_team_goal_count ~ 1,
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>                          home_team_goal_count &gt; away_team_goal_count ~ 0,
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                          home_team_goal_count == away_team_goal_count ~ 0.5),
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  margin = abs(home_team_goal_count - away_team_goal_count))
+</code></pre></div>
 <p>Let's also make sure the date_GMT column is formatted correctly as a date. We can do that using the <code>parse_date_time</code> function from the <code>lubridate</code> package.</p>
-<pre><code>
-raw_data &lt;- raw_data %&gt;% 
-  mutate(date_GMT = parse_date_time(raw_data$date_GMT , &quot;mdY_HM&quot;))
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>raw_data &lt;- raw_data %&gt;% 
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  mutate(date_GMT = parse_date_time(raw_data$date_GMT , &quot;mdY_HM&quot;))
+</code></pre></div>
 <hr />
 <h2 id="running-the-elo-model">Running the Elo Model</h2>
 <p>Now comes the fun part - setting the Elo model in action!</p>
@@ -1548,64 +1743,56 @@ raw_data &lt;- raw_data %&gt;%
 <p>We can use the <code>home_result</code> column we've created to identify the result from the home team's perspective.</p>
 <p>We can also input a k value which essentially dictates the maximum number of Elo points that can be won or lost in a single match.</p>
 <p>Here we could set k to be a constant (such as 30), however to add an extra layer of (very slight) complexity, we can instead choose to use a variable k value which is dictated by the margin of the match using a formula of <code>k = 30 + 30*margin</code>. This means that for every goal the margin increases by, the k value will increase by 30, starting with a base k value of 30 for draws (<code>margin equals 0</code>). The idea here is simply to help account for and reward/punish teams winning/losing by bigger margins compared to closer matches.</p>
-<pre><code>elo_model &lt;- elo.run(data = raw_data,
-                     formula = home_result ~ home_team_name + away_team_name + k(30 + 30*margin))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>elo_model &lt;- elo.run(data = raw_data,
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                     formula = home_result ~ home_team_name + away_team_name + k(30 + 30*margin))
+</code></pre></div>
 <p>Let's take a look at the last few matches in our training sample to get a better view of the Elo model in action.</p>
-<pre><code>elo_results &lt;- elo_model %&gt;%
-  as.data.frame()
-
-elo_results %&gt;% tail(n = 10)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>elo_results &lt;- elo_model %&gt;%
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  as.data.frame()
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>elo_results %&gt;% tail(n = 10)
+</code></pre></div>
 <p>We can also now check out what the latest Elo rankings for each team in the data set! Let's look at the top 20.</p>
 <p>Keep in mind that teams start with an Elo rating of 1500, so any team with an Elo greater 1500 can be considered above average, while those with Elo ratings below 1500 are therefore below average.</p>
-<pre><code>
-final_elos &lt;- final.elos(elo_model)
-final_elos %&gt;% sort(decreasing = TRUE) %&gt;% head(n = 20)
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>final_elos &lt;- final.elos(elo_model)
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>final_elos %&gt;% sort(decreasing = TRUE) %&gt;% head(n = 20)
+</code></pre></div>
 <hr />
 <h2 id="accounting-for-draws">Accounting for Draws</h2>
 <p>Something that we need to acknowledge both generally and also in relation to the Euro &amp; Copa America Datathon is that Elo models are best suited to sporting contexts with binary outcomes - i.e. win or lose - however in most soccer fixture we also have the possibility of a draw to account for. We are still able to ensure that Elo ratings update appropriately after a draw using 0.5 wins to denote the situation in which a draw occurs, but when it comes to making probabilistic win predictions using the Elo ratings (see p.A column above for example) things get a little more confusing.</p>
 <p>For the Euro &amp; Copa America Datathon, we also need to consider the fact that draws are a possibility during group stage match-ups, therefore we need to develop a workaround option to include draw probabilities.</p>
 <p>One way to do this - and the method that will be adopted for this tutorial - is to find the historic rate at which two teams of a certain Elo prediction split ending up drawing their matches. For example, how often do matches in which an Elo model deems Team A an 80% chance of winning and Team B a 20% chance of winning result in a draw? How about a 70%-30% split? We can find these draw rates for a range of probability points between 0 and 1 and use them to redistribute win/loss probabilities accordingly.</p>
 <p>Let's start the process by finding historic draw rates. We will bucket matches at 5% increments according to the home team's probability of winning the match according to the model.</p>
-<pre><code>
-draw_rates &lt;- data.frame(win_prob = elo_model$elos[,3],
-                        win_loss_draw = elo_model$elos[,4]) %&gt;%
-  mutate(prob_bucket = abs(round((win_prob)*20)) / 20) %&gt;%   # Round the predicted win probabilities to the nearest 0.05
-  group_by(prob_bucket) %&gt;%
-  summarise(draw_prob = sum(ifelse(win_loss_draw == 0.5, 1, 0)) / n())   # Calculate the rate their was a draw for this win prob - elo package codes a draw as a 0.5
-
-draw_rates %&gt;% head(n=20)
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>draw_rates &lt;- data.frame(win_prob = elo_model$elos[,3],
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                        win_loss_draw = elo_model$elos[,4]) %&gt;%
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  mutate(prob_bucket = abs(round((win_prob)*20)) / 20) %&gt;%   # Round the predicted win probabilities to the nearest 0.05
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  group_by(prob_bucket) %&gt;%
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  summarise(draw_prob = sum(ifelse(win_loss_draw == 0.5, 1, 0)) / n())   # Calculate the rate their was a draw for this win prob - elo package codes a draw as a 0.5
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>draw_rates %&gt;% head(n=20)
+</code></pre></div>
 <p>We now have data which will help us deem how likely a match-up between two teams is to end up in a draw!</p>
 <p>The next step is to merge this data in with our existing data set. We also need to include the win/loss probabilities for each match that we've already found using our Elo model so that we may tweak them to include for the possibility of a draw. We'll also pull in the actual Elo ratings for each team for completeness.</p>
-<pre><code>
-data_with_probabilities &lt;- raw_data %&gt;% 
-  select(tournament, date_GMT, home_team_name, away_team_name, home_result, away_result) %&gt;%   # Remove some redundant columns
-  mutate(home_elo = elo_results$elo.A - elo_results$update.A,    # Add in home team's elo rating (need to subtract the points update to obtain pre-match rating)
-         away_elo = elo_results$elo.B - elo_results$update.B,    # Add in away team's elo rating (need to subtract the points update to obtain pre-match rating)
-         home_prob = elo_results$p.A,                            # Add in home team's win/loss probability
-         away_prob = 1 - home_prob) %&gt;%                          # Add in away team's win/loss probability
-  mutate(prob_bucket = round(20*home_prob)/20) %&gt;%               # Bucket the home team's win/loss probability into a rounded increment of 0.05
-  left_join(draw_rates, by = &quot;prob_bucket&quot;) %&gt;%                  # Join in our historic draw rates using the probability buckets
-    relocate(draw_prob, .after = home_prob) %&gt;% 
-  select(-prob_bucket)
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>data_with_probabilities &lt;- raw_data %&gt;% 
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  select(tournament, date_GMT, home_team_name, away_team_name, home_result, away_result) %&gt;%   # Remove some redundant columns
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  mutate(home_elo = elo_results$elo.A - elo_results$update.A,    # Add in home team&#39;s elo rating (need to subtract the points update to obtain pre-match rating)
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>         away_elo = elo_results$elo.B - elo_results$update.B,    # Add in away team&#39;s elo rating (need to subtract the points update to obtain pre-match rating)
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>         home_prob = elo_results$p.A,                            # Add in home team&#39;s win/loss probability
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>         away_prob = 1 - home_prob) %&gt;%                          # Add in away team&#39;s win/loss probability
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  mutate(prob_bucket = round(20*home_prob)/20) %&gt;%               # Bucket the home team&#39;s win/loss probability into a rounded increment of 0.05
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  left_join(draw_rates, by = &quot;prob_bucket&quot;) %&gt;%                  # Join in our historic draw rates using the probability buckets
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    relocate(draw_prob, .after = home_prob) %&gt;% 
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>  select(-prob_bucket)
+</code></pre></div>
 <p>Having now brought the draw probability for each match into the data frame, we need to redistribute the win and loss probabilities so that <code>Pr(win) + Pr(draw) + Pr(loss)</code> sums to exactly 1. We can do this by simply subtracting the draw probability from each of the win and loss probabilities in a proportional manner. See below:</p>
-<pre><code>
-data_with_probabilities &lt;- data_with_probabilities %&gt;% 
-  mutate(home_prob = home_prob - home_prob * draw_prob,          # Redistribute home team's probabilities proportionally to create win/draw/loss probabilities
-         away_prob = away_prob - away_prob * draw_prob)          # Redistribute away team's probabilities proportionally to create win/draw/loss probabilities
-
-data_with_probabilities %&gt;% 
-  select(home_team_name, away_team_name, home_prob, draw_prob, away_prob) %&gt;% 
-  tail(n=10)
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>data_with_probabilities &lt;- data_with_probabilities %&gt;% 
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  mutate(home_prob = home_prob - home_prob * draw_prob,          # Redistribute home team&#39;s probabilities proportionally to create win/draw/loss probabilities
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>         away_prob = away_prob - away_prob * draw_prob)          # Redistribute away team&#39;s probabilities proportionally to create win/draw/loss probabilities
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>data_with_probabilities %&gt;% 
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>  select(home_team_name, away_team_name, home_prob, draw_prob, away_prob) %&gt;% 
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>  tail(n=10)
+</code></pre></div>
 <p>And there you have it! We've now come up with win, draw and loss probabilities for each match-up in our data set!</p>
 <p>Keep in mind that if we were to be focusing on knockout matches (i.e. where no draws are possible), we could have just skipped the previous few steps as we already had binary win-loss probabilities as direct outputs from our Elo model.</p>
 <hr />
@@ -1613,41 +1800,37 @@ data_with_probabilities %&gt;%
 <p>The last step in our modelling process is to back test against a subset of our data to get an idea of our model's accuracy.</p>
 <p>We can use the <code>MLmetrics</code> package to run a <a href="https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a">log loss</a> function on our subset. </p>
 <p>Let's look at how the model performed when we limit the data set to include only the most recent matches from early 2021.</p>
-<pre><code>
-matches_2021 &lt;- data_with_probabilities %&gt;% 
-  filter(year(date_GMT) == 2021) %&gt;%                      # Filter down to only 2021 matches
-  mutate(home_win = ifelse(home_result == 1, 1, 0),       # Include new columns which show the true outcome of the match
-         draw = ifelse(home_result == 0.5, 1, 0),
-         away_win = ifelse(away_result == 1, 1, 0)) %&gt;% 
-  select(date_GMT, home_team_name, away_team_name, home_prob, draw_prob, away_prob, home_win, draw, away_win)
-
-
-# Run the multinomial log loss function from MLmetrics to output a log loss score for our sample
-MultiLogLoss(
-  y_pred = matches_2021[,c(&quot;home_prob&quot;, &quot;draw_prob&quot;, &quot;away_prob&quot;)] %&gt;% as.matrix(),
-  y_true = matches_2021[,c(&quot;home_win&quot;, &quot;draw&quot;, &quot;away_win&quot;)] %&gt;% as.matrix()
-)
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>matches_2021 &lt;- data_with_probabilities %&gt;% 
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  filter(year(date_GMT) == 2021) %&gt;%                      # Filter down to only 2021 matches
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  mutate(home_win = ifelse(home_result == 1, 1, 0),       # Include new columns which show the true outcome of the match
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>         draw = ifelse(home_result == 0.5, 1, 0),
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>         away_win = ifelse(away_result == 1, 1, 0)) %&gt;% 
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  select(date_GMT, home_team_name, away_team_name, home_prob, draw_prob, away_prob, home_win, draw, away_win)
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a># Run the multinomial log loss function from MLmetrics to output a log loss score for our sample
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>MultiLogLoss(
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  y_pred = matches_2021[,c(&quot;home_prob&quot;, &quot;draw_prob&quot;, &quot;away_prob&quot;)] %&gt;% as.matrix(),
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  y_true = matches_2021[,c(&quot;home_win&quot;, &quot;draw&quot;, &quot;away_win&quot;)] %&gt;% as.matrix()
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>)
+</code></pre></div>
 <p>A pretty good result for such a simple Elo model!</p>
 <hr />
 <h2 id="making-future-predictions">Making Future Predictions</h2>
 <p>Okay, so now our Elo model is set in place, we have the latest set of Elo ratings for each team and we've back tested our model. We can now apply our model to future matches to obtain probabilities for match-ups that are yet to occur.</p>
 <p>Again we can do this using the <code>elo</code> package. This time we will use the function <code>elo.prob</code>, which takes two teams and outputs the probability of the first team winning the match-up. Like before, this function only considers win/loss outcomes to be possible, so if we were to also be looking to generate draw probabilities for a future match-up, we can just go through the exact same process as we did previously (i.e. make a binary win/loss prediction, merge in historic draw rates for various probabilities, redistribute accordingly).</p>
 <p>Let's just keep this simple for now though and focus on win and loss probabilities. We'll put together a small dataframe of matches and see what our model thinks - we've gone for hypothetical match-ups of Brazil v Argentina, England v France, Spain v Germany and an obligatory 2006 World Cup rematch of Australia v Italy.</p>
-<pre><code>
-future_matches &lt;- data.frame(
-  team_a = c(&quot;Brazil&quot;, &quot;England&quot;, &quot;Spain&quot;, &quot;Australia&quot;),
-  team_b = c(&quot;Argentina&quot;, &quot;France&quot;, &quot;Germany&quot;, &quot;Italy&quot;))  %&gt;% 
-  mutate(elo_a = final_elos[team_a],
-         elo_b = final_elos[team_b],
-         team_a_win_prob = elo.prob(elo.A = elo_a,
-                                    elo.B = elo_b)
-  )
-
-future_matches
-
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>future_matches &lt;- data.frame(
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  team_a = c(&quot;Brazil&quot;, &quot;England&quot;, &quot;Spain&quot;, &quot;Australia&quot;),
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  team_b = c(&quot;Argentina&quot;, &quot;France&quot;, &quot;Germany&quot;, &quot;Italy&quot;))  %&gt;% 
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  mutate(elo_a = final_elos[team_a],
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>         elo_b = final_elos[team_b],
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>         team_a_win_prob = elo.prob(elo.A = elo_a,
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>                                    elo.B = elo_b)
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  )
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>future_matches
+</code></pre></div>
 <hr />
 <h2 id="conclusions-areas-for-improvement">Conclusions &amp; Areas for Improvement</h2>
 <p>Elo modelling can be a surprisingly accurate modelling technique given how simple it is to implement. This tutorial gives a very basic framework from which you are free to build a more intricate model with more detailed inputs and features.</p>
@@ -1670,6 +1853,11 @@ future_matches
           </div>
         </div>
         
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
       </main>
       
         <footer class="md-footer">
@@ -1677,7 +1865,7 @@ future_matches
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../howToModel/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Intro to modelling" rel="prev">
+          <a href="../greyhoundModellingPython/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Greyhound modelling in Python" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -1686,7 +1874,7 @@ future_matches
                 <span class="md-footer__direction">
                   Previous
                 </span>
-                Intro to modelling
+                Greyhound modelling in Python
               </div>
             </div>
           </a>
@@ -1771,7 +1959,7 @@ future_matches
           <div class="bf-footer-inner">
               <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
               <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
           
               <ul class="bf-links">
                 <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
@@ -1800,7 +1988,7 @@ future_matches
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
       <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>

@@ -42,6 +42,12 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/betfair.css">
     
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -58,7 +64,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange">
   
     
     
@@ -108,30 +114,32 @@
           </div>
         </div>
       </div>
+
       
         <form class="md-header__option" data-md-component="palette">
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
             
               <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
               </label>
             
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
             
               <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
               </label>
             
           
         </form>
       
       
+
       
         <label class="md-header__button md-icon" for="__search">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
@@ -147,10 +155,16 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -166,7 +180,21 @@
   </div>
 </div>
       
+     
+      <div class="bf-nav">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26" />
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z" />
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+
       
+
     </nav>
     
   </header>
@@ -175,6 +203,93 @@
       
       
         
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/apiResources/" class="md-tabs__link">
+        API
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../historicData/dataSources/" class="md-tabs__link">
+        Historic Data
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../howToModel/" class="md-tabs__link md-tabs__link--active">
+        Modelling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../autoTools/overview/" class="md-tabs__link">
+        Auto Tools
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
           
         
       
@@ -188,8 +303,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="The Automation Hub" class="md-nav__button md-logo" aria-label="The Automation Hub" data-md-component="logo">
       
@@ -208,46 +325,13 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_1">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Home
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        The Automation Hub
+        Home
       </a>
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -260,7 +344,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -311,10 +395,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_3" checked>
       
       
       
@@ -397,7 +483,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -434,10 +520,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -482,6 +570,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/automatedBettingAnglesTutorial/" class="md-nav__link">
+        Automated betting angles in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+        Do \#theyknow? Analysing Betfair market formation and market movements
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -495,10 +611,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -592,21 +710,86 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
       
       
       
       
         <label class="md-nav__link" for="__nav_4_2">
+          Racing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Racing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Racing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fasttrackTutorial/" class="md-nav__link">
+        Greyhound form FastTrack API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../greyhoundModellingPython/" class="md-nav__link">
+        Greyhound modelling in Python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" data-md-state="indeterminate" type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
           Soccer
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Soccer" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_2">
+        <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
           Soccer
         </label>
@@ -681,21 +864,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" data-md-state="indeterminate" type="checkbox" id="__nav_4_4" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_3">
+        <label class="md-nav__link" for="__nav_4_4">
           AFL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="AFL" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           AFL
         </label>
@@ -744,21 +929,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_4">
+        <label class="md-nav__link" for="__nav_4_5">
           Tennis
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Tennis" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
+        <label class="md-nav__title" for="__nav_4_5">
           <span class="md-nav__icon md-icon"></span>
           Tennis
         </label>
@@ -932,7 +1119,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -969,10 +1156,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
       
       
       
@@ -1128,10 +1317,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
       
       
       
@@ -1245,10 +1436,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" data-md-state="indeterminate" type="checkbox" id="__nav_5_4" checked>
       
       
       
@@ -1306,10 +1499,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" data-md-state="indeterminate" type="checkbox" id="__nav_5_5" checked>
       
       
       
@@ -1499,28 +1694,28 @@
 <h2 id="exploring-the-data">Exploring the Data</h2>
 <p>First we need to get an idea of what the data looks like. Let's read the men's data in and get an idea of what it looks like. Note that you will need to install all the packages listed below unless you already have them.</p>
 <p>Note that for this tutorial I will be using <code>dplyr</code>, if you are not familiar with the syntax I encourage you to read up on <a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html">the basics</a>.</p>
-<pre><code class="language-r"># Import libraries
-library(dplyr)
-library(readr)
-library(tidyr)
-library(RcppRoll)
-library(tidyselect)
-library(lubridate)
-library(stringr)
-library(zoo)
-library(purrr)
-library(h2o)
-library(DT)
-mens = readr::read_csv('data/ATP_matches.csv', na = &quot;.&quot;) # NAs are indicated by .
-mens %&gt;%
-  datatable(rownames = FALSE, extensions = 'Scroller', 
-            options = list(dom = &quot;t&quot;, 
-            scrollY = 450,
-            scroller = TRUE,
-            scrollX = 600,
-            fixedColumns = TRUE)) %&gt;%
-  formatRound(columns=pluck(., &quot;x&quot;, &quot;data&quot;) %&gt;% colnames(), digits=3)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Import libraries</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nf">library</span><span class="p">(</span><span class="n">RcppRoll</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyselect</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nf">library</span><span class="p">(</span><span class="n">lubridate</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nf">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nf">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nf">library</span><span class="p">(</span><span class="n">h2o</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nf">library</span><span class="p">(</span><span class="n">DT</span><span class="p">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">mens</span> <span class="o">=</span> <span class="n">readr</span><span class="o">::</span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/ATP_matches.csv&#39;</span><span class="p">,</span> <span class="n">na</span> <span class="o">=</span> <span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="c1"># NAs are indicated by .</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">mens</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> 
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>            <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>            <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -2957,54 +3152,54 @@ mens %&gt;%
 <p>To avoid this problem, let's reshape the data from wide to long, then shuffle the data. For this, we will define a function, <code>split_winner_loser_columns</code>, which splits the raw data frame into two data frames, appends them together, and then shuffles the data.</p>
 <p>Let's also remove all Grass and Clay matches from our data, as we will be modelling the Australian Open which is a hardcourt surface.</p>
 <p>Additionally, we will add a few columns, such as <code>Match_Id</code> and <code>Total_Games</code>. These will be useful later.</p>
-<pre><code class="language-r">split_winner_loser_columns &lt;- function(df) {
-  # This function splits the raw data into two data frames and appends them together then shuffles them
-  # This output is a data frame with only one player's stats on each row (i.e. in long format)
-
-  # Grab a df with only the Winner's stats
-  winner = df %&gt;% 
-    select(-contains(&quot;Loser&quot;)) %&gt;% # Select only the Winner columns + extra game info columns as a df
-    rename_at( # Rename all columns containing &quot;Winner&quot; to &quot;Player&quot; 
-      vars(contains(&quot;Winner&quot;)),
-      ~str_replace(., &quot;Winner&quot;, &quot;Player&quot;)
-    ) %&gt;%
-    mutate(Winner = 1) # Create a target column
-
-  # Repeat the process with the loser's stats
-  loser = df %&gt;%
-    select(-contains(&quot;Winner&quot;)) %&gt;%
-    rename_at(
-      vars(contains(&quot;Loser&quot;)),
-      ~str_replace(., &quot;Loser&quot;, &quot;Player&quot;)
-    ) %&gt;%
-    mutate(Winner = 0)
-
-  set.seed(183) # Set seed to replicate results - 183 is the most games played in a tennis match (Isner-Mahut)
-
-  # Create a df that appends both the Winner and loser df together
-  combined_df = winner %&gt;% 
-    rbind(loser) %&gt;% # Append the loser df to the Winner df
-    slice(sample(1:n())) %&gt;% # Randomise row order
-    arrange(Match_Id) %&gt;% # Arrange by Match_Id
-    return()
-}
-</code></pre>
-<pre><code class="language-r"># Read in men and womens data; randomise the data to avoid result leakage
-mens = readr::read_csv('data/ATP_matches.csv', na = &quot;.&quot;) %&gt;%
-  filter(Court_Surface == &quot;Hard&quot; | Court_Surface == &quot;Indoor Hard&quot;) %&gt;% # Filter to only use hardcourt games
-  mutate(Match_Id = row_number(), # Add a match ID column to be used as a key
-         Tournament_Date = dmy(Tournament_Date), # Change Tournament to datetime
-         Total_Games = Winner_Games_Won + Loser_Games_Won) %&gt;% # Add a total games played column
-  split_winner_loser_columns() # Change the data frame from wide to long
-mens %&gt;%
-  datatable(rownames = FALSE, extensions = 'Scroller', 
-            options = list(dom = &quot;t&quot;, 
-            scrollY = 450,
-            scroller = TRUE,
-            scrollX = 600,
-            fixedColumns = TRUE)) %&gt;%
-  formatRound(columns=pluck(., &quot;x&quot;, &quot;data&quot;) %&gt;% colnames(), digits=3)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">split_winner_loser_columns</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>  <span class="c1"># This function splits the raw data into two data frames and appends them together then shuffles them</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>  <span class="c1"># This output is a data frame with only one player&#39;s stats on each row (i.e. in long format)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  <span class="c1"># Grab a df with only the Winner&#39;s stats</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  <span class="n">winner</span> <span class="o">=</span> <span class="n">df</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Loser&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="c1"># Select only the Winner columns + extra game info columns as a df</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="nf">rename_at</span><span class="p">(</span> <span class="c1"># Rename all columns containing &quot;Winner&quot; to &quot;Player&quot; </span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>      <span class="nf">vars</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Winner&quot;</span><span class="p">)),</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>      <span class="o">~</span><span class="nf">str_replace</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;Winner&quot;</span><span class="p">,</span> <span class="s">&quot;Player&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="nf">mutate</span><span class="p">(</span><span class="n">Winner</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span> <span class="c1"># Create a target column</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>  <span class="c1"># Repeat the process with the loser&#39;s stats</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>  <span class="n">loser</span> <span class="o">=</span> <span class="n">df</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Winner&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    <span class="nf">rename_at</span><span class="p">(</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>      <span class="nf">vars</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Loser&quot;</span><span class="p">)),</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>      <span class="o">~</span><span class="nf">str_replace</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;Loser&quot;</span><span class="p">,</span> <span class="s">&quot;Player&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="nf">mutate</span><span class="p">(</span><span class="n">Winner</span> <span class="o">=</span> <span class="m">0</span><span class="p">)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>  <span class="nf">set.seed</span><span class="p">(</span><span class="m">183</span><span class="p">)</span> <span class="c1"># Set seed to replicate results - 183 is the most games played in a tennis match (Isner-Mahut)</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>  <span class="c1"># Create a df that appends both the Winner and loser df together</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>  <span class="n">combined_df</span> <span class="o">=</span> <span class="n">winner</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>    <span class="nf">rbind</span><span class="p">(</span><span class="n">loser</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Append the loser df to the Winner df</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>    <span class="nf">slice</span><span class="p">(</span><span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="nf">n</span><span class="p">()))</span> <span class="o">%&gt;%</span> <span class="c1"># Randomise row order</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="nf">arrange</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Arrange by Match_Id</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="nf">return</span><span class="p">()</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Read in men and womens data; randomise the data to avoid result leakage</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">mens</span> <span class="o">=</span> <span class="n">readr</span><span class="o">::</span><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/ATP_matches.csv&#39;</span><span class="p">,</span> <span class="n">na</span> <span class="o">=</span> <span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  <span class="nf">filter</span><span class="p">(</span><span class="n">Court_Surface</span> <span class="o">==</span> <span class="s">&quot;Hard&quot;</span> <span class="o">|</span> <span class="n">Court_Surface</span> <span class="o">==</span> <span class="s">&quot;Indoor Hard&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Filter to only use hardcourt games</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  <span class="nf">mutate</span><span class="p">(</span><span class="n">Match_Id</span> <span class="o">=</span> <span class="nf">row_number</span><span class="p">(),</span> <span class="c1"># Add a match ID column to be used as a key</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>         <span class="n">Tournament_Date</span> <span class="o">=</span> <span class="nf">dmy</span><span class="p">(</span><span class="n">Tournament_Date</span><span class="p">),</span> <span class="c1"># Change Tournament to datetime</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>         <span class="n">Total_Games</span> <span class="o">=</span> <span class="n">Winner_Games_Won</span> <span class="o">+</span> <span class="n">Loser_Games_Won</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Add a total games played column</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  <span class="nf">split_winner_loser_columns</span><span class="p">()</span> <span class="c1"># Change the data frame from wide to long</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">mens</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> 
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>            <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>            <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>            <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3178,38 +3373,38 @@ mens %&gt;%
 <p>Thinking about the dynamics of tennis, we know that players often will matches by "breaking" the opponent's serve (i.e. winning a game when the opponent is serving). This is especially important in mens tennis. Let's create a feature called <code>F_Player_BreakPoints_Per_Game</code>, which is the number of breakpoints a player gets per game that they play (even though they can only get breakpoints every second game, we will use total games). Let's also create a feature called <code>F_Player_Return_Win_Ratio</code> which is the proportion of points won when returning.</p>
 <p>Similarly, "holding" serve is important (i.e. winning a game when you are serving). Let's create a feature called <code>F_Player_Serve_Win_Ratio</code> which is the proportion of points won when serving.</p>
 <p>Finally, you only win a set of tennis by winning more sets than your opponent. To win a set, you need to win games. Let's create a feature called <code>F_Player_Game_Win_Percentage</code> which is the propotion of games that a player wins.</p>
-<pre><code class="language-r">add_ratio_features &lt;- function(df) {
-  # This function adds ratio features to a long df
-  df %&gt;%
-    mutate(
-      # Point Win ratio when serving
-      F_Player_Serve_Win_Ratio = (Player_FirstServes_Won + Player_SecondServes_Won - Player_DoubleFaults) / 
-        (Player_FirstServes_In + Player_SecondServes_In + Player_DoubleFaults), 
-      # Point win ratio when returning
-      F_Player_Return_Win_Ratio = Player_ReturnPoints_Won / Player_ReturnPoints_Faced, 
-      # Breakpoints per receiving game
-      F_Player_BreakPoints_Per_Game = Player_BreakPoints / Total_Games, 
-      F_Player_Game_Win_Percentage = Player_Games_Won / Total_Games
-    ) %&gt;%
-    mutate_at(
-      vars(colnames(.), -contains(&quot;Rank&quot;), -Tournament_Date), # Replace all NAs with0 apart from Rank, Date
-      ~ifelse(is.na(.), 0, .)
-    ) %&gt;%
-    return()
-}
-mens = mens %&gt;%
-  add_ratio_features() # Add features
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">add_ratio_features</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  <span class="c1"># This function adds ratio features to a long df</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  <span class="n">df</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="nf">mutate</span><span class="p">(</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>      <span class="c1"># Point Win ratio when serving</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>      <span class="n">F_Player_Serve_Win_Ratio</span> <span class="o">=</span> <span class="p">(</span><span class="n">Player_FirstServes_Won</span> <span class="o">+</span> <span class="n">Player_SecondServes_Won</span> <span class="o">-</span> <span class="n">Player_DoubleFaults</span><span class="p">)</span> <span class="o">/</span> 
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="p">(</span><span class="n">Player_FirstServes_In</span> <span class="o">+</span> <span class="n">Player_SecondServes_In</span> <span class="o">+</span> <span class="n">Player_DoubleFaults</span><span class="p">),</span> 
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>      <span class="c1"># Point win ratio when returning</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>      <span class="n">F_Player_Return_Win_Ratio</span> <span class="o">=</span> <span class="n">Player_ReturnPoints_Won</span> <span class="o">/</span> <span class="n">Player_ReturnPoints_Faced</span><span class="p">,</span> 
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>      <span class="c1"># Breakpoints per receiving game</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>      <span class="n">F_Player_BreakPoints_Per_Game</span> <span class="o">=</span> <span class="n">Player_BreakPoints</span> <span class="o">/</span> <span class="n">Total_Games</span><span class="p">,</span> 
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>      <span class="n">F_Player_Game_Win_Percentage</span> <span class="o">=</span> <span class="n">Player_Games_Won</span> <span class="o">/</span> <span class="n">Total_Games</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="nf">mutate_at</span><span class="p">(</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>      <span class="nf">vars</span><span class="p">(</span><span class="nf">colnames</span><span class="p">(</span><span class="n">.</span><span class="p">),</span> <span class="o">-</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Rank&quot;</span><span class="p">),</span> <span class="o">-</span><span class="n">Tournament_Date</span><span class="p">),</span> <span class="c1"># Replace all NAs with0 apart from Rank, Date</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>      <span class="o">~</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">.</span><span class="p">),</span> <span class="m">0</span><span class="p">,</span> <span class="n">.</span><span class="p">)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="nf">return</span><span class="p">()</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="p">}</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="n">mens</span> <span class="o">=</span> <span class="n">mens</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>  <span class="nf">add_ratio_features</span><span class="p">()</span> <span class="c1"># Add features</span>
+</code></pre></div>
 <p>Now that we have added our features, we need to create rolling averages for them. We cannot simply use current match statistics, as they will leak the result to the model. Instead, we need to use past match statistics to predict future matches. Here we will use a rolling mean with a window of 15. If the player hasn't played 15 games, we will instead use a cumulative mean. We will also lag the result so as to not leak the result.</p>
 <p>This next chunk of code simply takes all the columns starting with F_ and calculates these means.</p>
-<pre><code class="language-r">mens = mens %&gt;% 
-  group_by(Player) %&gt;% # Group by player
-  mutate_at( # Create a rolling mean with window 15 for each player. 
-    vars(starts_with(&quot;F_&quot;)), # If the player hasn't played 15 games, use a cumulative mean
-    ~coalesce(rollmean(., k = 15, align = &quot;right&quot;, fill = NA_real_), cummean(.)) %&gt;% lag()
-  ) %&gt;%
-  ungroup()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">mens</span> <span class="o">=</span> <span class="n">mens</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>  <span class="nf">group_by</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Group by player</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  <span class="nf">mutate_at</span><span class="p">(</span> <span class="c1"># Create a rolling mean with window 15 for each player. </span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="nf">vars</span><span class="p">(</span><span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;F_&quot;</span><span class="p">)),</span> <span class="c1"># If the player hasn&#39;t played 15 games, use a cumulative mean</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="o">~</span><span class="nf">coalesce</span><span class="p">(</span><span class="nf">rollmean</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="m">15</span><span class="p">,</span> <span class="n">align</span> <span class="o">=</span> <span class="s">&quot;right&quot;</span><span class="p">,</span> <span class="n">fill</span> <span class="o">=</span> <span class="kc">NA_real_</span><span class="p">),</span> <span class="nf">cummean</span><span class="p">(</span><span class="n">.</span><span class="p">))</span> <span class="o">%&gt;%</span> <span class="nf">lag</span><span class="p">()</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  <span class="nf">ungroup</span><span class="p">()</span>
+</code></pre></div>
 <hr />
 <h2 id="creating-a-training-feature-matrix">Creating a Training Feature Matrix</h2>
 <p>In predictive modelling language - features are data metrics we use to predict an outcome or target variable. We have several choices to make before we get to the prediction phase. What are the features? How do we structure the outcome variable? What does each row mean? Do we use all data or just a subset? We narrowed it down to two options</p>
@@ -3221,88 +3416,88 @@ Doing Option 1 would mean we have a lot more data to build a strong model, but i
 <p>However, we also need to train our model in the same way that will be used to predict the 2019 Australian Open. When predicting the 2nd round, we won't have data from the 1st round. So we will need to build our training feature matrix with this in mind. We should extract features for a player from past games at the start of the tournament and apply them to every matchup that that player plays.</p>
 <p>To do this, we will create a function, <code>extract_latest_features_for_tournament</code>, which maps over our feature data frame for the dates in the first round of a tournament and grabs features.</p>
 <p>First, we need the Australian Open and US Open results - let's grab these and then apply our function.</p>
-<pre><code class="language-r"># Get Australian Open and US Open Results
-aus_us_open_results = 
-  mens %&gt;%
-  filter((Tournament == &quot;Australian Open, Melbourne&quot; | Tournament == &quot;U.S. Open, New York&quot;)
-         &amp; Round_Description != &quot;Qualifying&quot; &amp; Tournament_Date != &quot;2012-01-16&quot;) %&gt;% # Filter out qualifiers
-  select(Match_Id, Player, Tournament, Tournament_Date, Round_Description, Winner)
-# Create a function which extracts features for each tournament
-extract_latest_features_for_tournament = function(df, dte) {
-
-  df %&gt;% # Filter for the 1st round
-    filter(Tournament_Date == dte, Round_Description == &quot;First Round&quot;, Tournament_Date != &quot;2012-01-16&quot;) %&gt;% 
-    group_by(Player) %&gt;% # Group by player
-    select_at(
-      vars(Match_Id, starts_with(&quot;F_&quot;), Player_Rank) # Grab the players' features
-    ) %&gt;%
-    rename(F_Player_Rank = Player_Rank) %&gt;%
-    ungroup() %&gt;%
-    mutate(Feature_Date = dte) %&gt;%
-    select(Player, Feature_Date, everything())
-}
-# Create a feature matrix in long format
-feature_matrix_long = 
-  aus_us_open_results %&gt;%
-  distinct(Tournament_Date) %&gt;% # Pull all Tournament Dates
-  pull() %&gt;%
-  map_dfr(
-    ~extract_latest_features_for_tournament(mens, .) # Get the features
-  ) %&gt;%
-  filter(Feature_Date != &quot;2012-01-16&quot;) %&gt;% # Filter out the first Aus Open
-  mutate_at( # Replace NAs with the mean
-    vars(starts_with(&quot;F_&quot;)),
-    ~ifelse(is.na(.), mean(., na.rm = TRUE), .)
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Get Australian Open and US Open Results</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">aus_us_open_results</span> <span class="o">=</span> 
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  <span class="n">mens</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  <span class="nf">filter</span><span class="p">((</span><span class="n">Tournament</span> <span class="o">==</span> <span class="s">&quot;Australian Open, Melbourne&quot;</span> <span class="o">|</span> <span class="n">Tournament</span> <span class="o">==</span> <span class="s">&quot;U.S. Open, New York&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>         <span class="o">&amp;</span> <span class="n">Round_Description</span> <span class="o">!=</span> <span class="s">&quot;Qualifying&quot;</span> <span class="o">&amp;</span> <span class="n">Tournament_Date</span> <span class="o">!=</span> <span class="s">&quot;2012-01-16&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Filter out qualifiers</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  <span class="nf">select</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="n">Player</span><span class="p">,</span> <span class="n">Tournament</span><span class="p">,</span> <span class="n">Tournament_Date</span><span class="p">,</span> <span class="n">Round_Description</span><span class="p">,</span> <span class="n">Winner</span><span class="p">)</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Create a function which extracts features for each tournament</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">extract_latest_features_for_tournament</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">dte</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  <span class="n">df</span> <span class="o">%&gt;%</span> <span class="c1"># Filter for the 1st round</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="nf">filter</span><span class="p">(</span><span class="n">Tournament_Date</span> <span class="o">==</span> <span class="n">dte</span><span class="p">,</span> <span class="n">Round_Description</span> <span class="o">==</span> <span class="s">&quot;First Round&quot;</span><span class="p">,</span> <span class="n">Tournament_Date</span> <span class="o">!=</span> <span class="s">&quot;2012-01-16&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="nf">group_by</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Group by player</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="nf">select_at</span><span class="p">(</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>      <span class="nf">vars</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;F_&quot;</span><span class="p">),</span> <span class="n">Player_Rank</span><span class="p">)</span> <span class="c1"># Grab the players&#39; features</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>    <span class="nf">rename</span><span class="p">(</span><span class="n">F_Player_Rank</span> <span class="o">=</span> <span class="n">Player_Rank</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="nf">ungroup</span><span class="p">()</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>    <span class="nf">mutate</span><span class="p">(</span><span class="n">Feature_Date</span> <span class="o">=</span> <span class="n">dte</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="nf">select</span><span class="p">(</span><span class="n">Player</span><span class="p">,</span> <span class="n">Feature_Date</span><span class="p">,</span> <span class="nf">everything</span><span class="p">())</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="p">}</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="c1"># Create a feature matrix in long format</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="n">feature_matrix_long</span> <span class="o">=</span> 
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>  <span class="n">aus_us_open_results</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>  <span class="nf">distinct</span><span class="p">(</span><span class="n">Tournament_Date</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Pull all Tournament Dates</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>  <span class="nf">pull</span><span class="p">()</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>  <span class="nf">map_dfr</span><span class="p">(</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>    <span class="o">~</span><span class="nf">extract_latest_features_for_tournament</span><span class="p">(</span><span class="n">mens</span><span class="p">,</span> <span class="n">.</span><span class="p">)</span> <span class="c1"># Get the features</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>  <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a>  <span class="nf">filter</span><span class="p">(</span><span class="n">Feature_Date</span> <span class="o">!=</span> <span class="s">&quot;2012-01-16&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Filter out the first Aus Open</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a>  <span class="nf">mutate_at</span><span class="p">(</span> <span class="c1"># Replace NAs with the mean</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>    <span class="nf">vars</span><span class="p">(</span><span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;F_&quot;</span><span class="p">)),</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>    <span class="o">~</span><span class="nf">ifelse</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">.</span><span class="p">),</span> <span class="nf">mean</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="n">na.rm</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">),</span> <span class="n">.</span><span class="p">)</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>  <span class="p">)</span>
+</code></pre></div>
 <p>Now that we have a feature matrix in long format, we need to convert it to wide format so that the features are on the same row. To do this we will define a function <code>gather_df</code>, which converts the data frame from long to wide.
 Let's also join the results to the matrix and convert the <code>Winner</code> column to a factor. Finally, we will take the difference of player1 and player2's features, so as to reduce the dimensionality of the model.</p>
-<pre><code class="language-r">gather_df &lt;- function(df) {
-  # This function puts the df back into its original format of each row containing stats for both players
-  df %&gt;%
-    arrange(Match_Id) %&gt;%
-    filter(row_number() %% 2 != 0) %&gt;% # Filter for every 2nd row, starting at the 1st index. e.g. 1, 3, 5
-    rename_at( # Rename columns to player_1
-      vars(contains(&quot;Player&quot;)),
-      ~str_replace(., &quot;Player&quot;, &quot;player_1&quot;)
-    ) %&gt;%
-    inner_join(df %&gt;%
-                 filter(row_number() %% 2 == 0) %&gt;%
-                 rename_at(
-                   vars(contains(&quot;Player&quot;)), # Rename columns to player_2
-                   ~str_replace(., &quot;Player&quot;, &quot;player_2&quot;)
-                 ) %&gt;%
-                 select(Match_Id, contains(&quot;Player&quot;)),
-               by=c('Match_Id')
-    ) %&gt;%
-    select(Match_Id, player_1, player_2, Winner, everything()) %&gt;%
-    return()
-}
-# Joining results to features
-feature_matrix_wide = aus_us_open_results %&gt;%
-  inner_join(feature_matrix_long %&gt;% 
-               select(-Match_Id), 
-             by = c(&quot;Player&quot;, &quot;Tournament_Date&quot; = &quot;Feature_Date&quot;)) %&gt;%
-  gather_df() %&gt;%
-  mutate(
-    F_Serve_Win_Ratio_Diff = F_player_1_Serve_Win_Ratio - F_player_2_Serve_Win_Ratio,
-    F_Return_Win_Ratio_Diff = F_player_1_Return_Win_Ratio - F_player_2_Return_Win_Ratio,
-    F_Game_Win_Percentage_Diff = F_player_1_Game_Win_Percentage - F_player_2_Game_Win_Percentage,
-    F_BreakPoints_Per_Game_Diff = F_player_1_BreakPoints_Per_Game - F_player_2_BreakPoints_Per_Game,
-    F_Rank_Diff = (F_player_1_Rank - F_player_2_Rank),
-    Winner = as.factor(Winner)
-  ) %&gt;%
-  select(Match_Id, player_1, player_2, Tournament, Tournament_Date, Round_Description, Winner, contains(&quot;Diff&quot;))
-train = feature_matrix_wide
-train %&gt;%
-  datatable(rownames = FALSE, extensions = 'Scroller', 
-            options = list(dom = &quot;t&quot;, 
-            scrollY = 450,
-            scroller = TRUE,
-            scrollX = 600,
-            fixedColumns = TRUE)) %&gt;%
-  formatRound(columns=pluck(., &quot;x&quot;, &quot;data&quot;) %&gt;% colnames(), digits=3)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">gather_df</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  <span class="c1"># This function puts the df back into its original format of each row containing stats for both players</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  <span class="n">df</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    <span class="nf">arrange</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    <span class="nf">filter</span><span class="p">(</span><span class="nf">row_number</span><span class="p">()</span> <span class="o">%%</span> <span class="m">2</span> <span class="o">!=</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Filter for every 2nd row, starting at the 1st index. e.g. 1, 3, 5</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>    <span class="nf">rename_at</span><span class="p">(</span> <span class="c1"># Rename columns to player_1</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>      <span class="nf">vars</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">)),</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>      <span class="o">~</span><span class="nf">str_replace</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;Player&quot;</span><span class="p">,</span> <span class="s">&quot;player_1&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>    <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>    <span class="nf">inner_join</span><span class="p">(</span><span class="n">df</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>                 <span class="nf">filter</span><span class="p">(</span><span class="nf">row_number</span><span class="p">()</span> <span class="o">%%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">0</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>                 <span class="nf">rename_at</span><span class="p">(</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>                   <span class="nf">vars</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">)),</span> <span class="c1"># Rename columns to player_2</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>                   <span class="o">~</span><span class="nf">str_replace</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;Player&quot;</span><span class="p">,</span> <span class="s">&quot;player_2&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>                 <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>                 <span class="nf">select</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">)),</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>               <span class="n">by</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;Match_Id&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>    <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>    <span class="nf">select</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="n">Winner</span><span class="p">,</span> <span class="nf">everything</span><span class="p">())</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>    <span class="nf">return</span><span class="p">()</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="p">}</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="c1"># Joining results to features</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="n">feature_matrix_wide</span> <span class="o">=</span> <span class="n">aus_us_open_results</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>  <span class="nf">inner_join</span><span class="p">(</span><span class="n">feature_matrix_long</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>               <span class="nf">select</span><span class="p">(</span><span class="o">-</span><span class="n">Match_Id</span><span class="p">),</span> 
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a>             <span class="n">by</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Player&quot;</span><span class="p">,</span> <span class="s">&quot;Tournament_Date&quot;</span> <span class="o">=</span> <span class="s">&quot;Feature_Date&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a>  <span class="nf">gather_df</span><span class="p">()</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>  <span class="nf">mutate</span><span class="p">(</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>    <span class="n">F_Serve_Win_Ratio_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Serve_Win_Ratio</span> <span class="o">-</span> <span class="n">F_player_2_Serve_Win_Ratio</span><span class="p">,</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>    <span class="n">F_Return_Win_Ratio_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Return_Win_Ratio</span> <span class="o">-</span> <span class="n">F_player_2_Return_Win_Ratio</span><span class="p">,</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>    <span class="n">F_Game_Win_Percentage_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Game_Win_Percentage</span> <span class="o">-</span> <span class="n">F_player_2_Game_Win_Percentage</span><span class="p">,</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>    <span class="n">F_BreakPoints_Per_Game_Diff</span> <span class="o">=</span> <span class="n">F_player_1_BreakPoints_Per_Game</span> <span class="o">-</span> <span class="n">F_player_2_BreakPoints_Per_Game</span><span class="p">,</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>    <span class="n">F_Rank_Diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">F_player_1_Rank</span> <span class="o">-</span> <span class="n">F_player_2_Rank</span><span class="p">),</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>    <span class="n">Winner</span> <span class="o">=</span> <span class="nf">as.factor</span><span class="p">(</span><span class="n">Winner</span><span class="p">)</span>
+<a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>  <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>  <span class="nf">select</span><span class="p">(</span><span class="n">Match_Id</span><span class="p">,</span> <span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="n">Tournament</span><span class="p">,</span> <span class="n">Tournament_Date</span><span class="p">,</span> <span class="n">Round_Description</span><span class="p">,</span> <span class="n">Winner</span><span class="p">,</span> <span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Diff&quot;</span><span class="p">))</span>
+<a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a><span class="n">train</span> <span class="o">=</span> <span class="n">feature_matrix_wide</span>
+<a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a><span class="n">train</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-39" name="__codelineno-6-39" href="#__codelineno-6-39"></a>  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+<a id="__codelineno-6-40" name="__codelineno-6-40" href="#__codelineno-6-40"></a>            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span> 
+<a id="__codelineno-6-41" name="__codelineno-6-41" href="#__codelineno-6-41"></a>            <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+<a id="__codelineno-6-42" name="__codelineno-6-42" href="#__codelineno-6-42"></a>            <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-6-43" name="__codelineno-6-43" href="#__codelineno-6-43"></a>            <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+<a id="__codelineno-6-44" name="__codelineno-6-44" href="#__codelineno-6-44"></a>            <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-6-45" name="__codelineno-6-45" href="#__codelineno-6-45"></a>  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3412,71 +3607,71 @@ train %&gt;%
 <p>Now that we have our training set, <code>train</code>, we need to create a feature matrix to create predictions on. To do this, we need to generate features again. We could simply append a player list to our raw data frame, create a mock date and then use the <code>extract_latest_features_for_tournament</code> function that we used before. 
 Instead, we're going to create a lookup table for each unique player in the 2019 Australian Open. We will need to get their last 15 games and then find the mean for each feature so that our features are the same.</p>
 <p>Let's first explore what the dummy submission file looks like, then use it to get the unique players.</p>
-<pre><code class="language-r">read_csv('data/men_dummy_submission_file.csv') %&gt;% glimpse()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">glimpse</span><span class="p">()</span>
+</code></pre></div>
 <p>As we can see, the dummy submission file contains every potential match up for the Open. This will be updated a few days before the Open starts with the actual players playing. Let's now create the lookup feature table.</p>
-<pre><code class="language-r"># Get a vector of unique players in this years' open using the dummy submission file
-unique_players = read_csv('data/men_dummy_submission_file.csv') %&gt;% pull(player_1) %&gt;% unique()
-# Get the last 15 games played for each unique player and find their features
-lookup_feature_table = read_csv('data/ATP_matches.csv', na = &quot;.&quot;) %&gt;%
-  filter(Court_Surface == &quot;Hard&quot; | Court_Surface == &quot;Indoor Hard&quot;) %&gt;%
-  mutate(Match_Id = row_number(), # Add a match ID column to be used as a key
-         Tournament_Date = dmy(Tournament_Date), # Change Tournament to datetime
-         Total_Games = Winner_Games_Won + Loser_Games_Won) %&gt;% # Add a total games played column
-  # clean_missing_data() %&gt;% # Clean missing data
-  split_winner_loser_columns() %&gt;% # Change the data frame from wide to long
-  add_ratio_features() %&gt;%
-  filter(Player %in% unique_players) %&gt;%
-  group_by(Player) %&gt;%
-  top_n(15, Match_Id) %&gt;%
-  summarise(
-    F_Player_Serve_Win_Ratio = mean(F_Player_Serve_Win_Ratio),
-    F_Player_Return_Win_Ratio = mean(F_Player_Return_Win_Ratio),
-    F_Player_BreakPoints_Per_Game = mean(F_Player_BreakPoints_Per_Game),
-    F_Player_Game_Win_Percentage = mean(F_Player_Game_Win_Percentage),
-    F_Player_Rank = last(Player_Rank)
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># Get a vector of unique players in this years&#39; open using the dummy submission file</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="n">unique_players</span> <span class="o">=</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">pull</span><span class="p">(</span><span class="n">player_1</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">unique</span><span class="p">()</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># Get the last 15 games played for each unique player and find their features</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">lookup_feature_table</span> <span class="o">=</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/ATP_matches.csv&#39;</span><span class="p">,</span> <span class="n">na</span> <span class="o">=</span> <span class="s">&quot;.&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>  <span class="nf">filter</span><span class="p">(</span><span class="n">Court_Surface</span> <span class="o">==</span> <span class="s">&quot;Hard&quot;</span> <span class="o">|</span> <span class="n">Court_Surface</span> <span class="o">==</span> <span class="s">&quot;Indoor Hard&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>  <span class="nf">mutate</span><span class="p">(</span><span class="n">Match_Id</span> <span class="o">=</span> <span class="nf">row_number</span><span class="p">(),</span> <span class="c1"># Add a match ID column to be used as a key</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>         <span class="n">Tournament_Date</span> <span class="o">=</span> <span class="nf">dmy</span><span class="p">(</span><span class="n">Tournament_Date</span><span class="p">),</span> <span class="c1"># Change Tournament to datetime</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>         <span class="n">Total_Games</span> <span class="o">=</span> <span class="n">Winner_Games_Won</span> <span class="o">+</span> <span class="n">Loser_Games_Won</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="c1"># Add a total games played column</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>  <span class="c1"># clean_missing_data() %&gt;% # Clean missing data</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>  <span class="nf">split_winner_loser_columns</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="c1"># Change the data frame from wide to long</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>  <span class="nf">add_ratio_features</span><span class="p">()</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>  <span class="nf">filter</span><span class="p">(</span><span class="n">Player</span> <span class="o">%in%</span> <span class="n">unique_players</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>  <span class="nf">group_by</span><span class="p">(</span><span class="n">Player</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>  <span class="nf">top_n</span><span class="p">(</span><span class="m">15</span><span class="p">,</span> <span class="n">Match_Id</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>  <span class="nf">summarise</span><span class="p">(</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>    <span class="n">F_Player_Serve_Win_Ratio</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">F_Player_Serve_Win_Ratio</span><span class="p">),</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>    <span class="n">F_Player_Return_Win_Ratio</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">F_Player_Return_Win_Ratio</span><span class="p">),</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>    <span class="n">F_Player_BreakPoints_Per_Game</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">F_Player_BreakPoints_Per_Game</span><span class="p">),</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>    <span class="n">F_Player_Game_Win_Percentage</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">F_Player_Game_Win_Percentage</span><span class="p">),</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>    <span class="n">F_Player_Rank</span> <span class="o">=</span> <span class="nf">last</span><span class="p">(</span><span class="n">Player_Rank</span><span class="p">)</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>  <span class="p">)</span>
+</code></pre></div>
 <p>Now let's create features for every single combination. To do this we'll join our <code>lookup_feature_table</code> to the <code>player_1</code> and <code>player_2</code> columns in the <code>dummy_submission_file</code>.</p>
-<pre><code class="language-r"># Create feature matrix for the Australian Open for all player 1s
-features_player_1 = read_csv('data/men_dummy_submission_file.csv') %&gt;%
-  select(player_1) %&gt;%
-  inner_join(lookup_feature_table, by=c(&quot;player_1&quot; = &quot;Player&quot;)) %&gt;%
-  rename(F_player_1_Serve_Win_Ratio = F_Player_Serve_Win_Ratio,
-         F_player_1_Return_Win_Ratio = F_Player_Return_Win_Ratio,
-         F_player_1_BreakPoints_Per_Game = F_Player_BreakPoints_Per_Game,
-         F_player_1_Game_Win_Percentage = F_Player_Game_Win_Percentage,
-         F_player_1_Rank = F_Player_Rank)
-# Create feature matrix for the Australian Open for all player 2s
-features_player_2 = read_csv('data/men_dummy_submission_file.csv') %&gt;%
-  select(player_2) %&gt;%
-  inner_join(lookup_feature_table, by=c(&quot;player_2&quot; = &quot;Player&quot;)) %&gt;%
-  rename(F_player_2_Serve_Win_Ratio = F_Player_Serve_Win_Ratio,
-         F_player_2_Return_Win_Ratio = F_Player_Return_Win_Ratio,
-         F_player_2_BreakPoints_Per_Game = F_Player_BreakPoints_Per_Game,
-         F_player_2_Game_Win_Percentage = F_Player_Game_Win_Percentage,
-         F_player_2_Rank = F_Player_Rank)
-# Join the two dfs together and subtract features to create Difference features
-aus_open_2019_features = features_player_1 %&gt;% 
-  bind_cols(features_player_2) %&gt;%
-  select(player_1, player_2, everything()) %&gt;%
-  mutate(
-    F_Serve_Win_Ratio_Diff = F_player_1_Serve_Win_Ratio - F_player_2_Serve_Win_Ratio,
-    F_Return_Win_Ratio_Diff = F_player_1_Return_Win_Ratio - F_player_2_Return_Win_Ratio,
-    F_Game_Win_Percentage_Diff = F_player_1_Game_Win_Percentage - F_player_2_Game_Win_Percentage,
-    F_BreakPoints_Per_Game_Diff = F_player_1_BreakPoints_Per_Game - F_player_2_BreakPoints_Per_Game,
-    F_Rank_Diff = (F_player_1_Rank - F_player_2_Rank)
-  ) %&gt;%
-  select(player_1, player_2, contains(&quot;Diff&quot;))
-aus_open_2019_features  %&gt;%
-  datatable(rownames = FALSE, extensions = 'Scroller', 
-            options = list(dom = &quot;t&quot;,
-                          scrollY = 450,
-                          scroller = TRUE,
-                          scrollX = 600,
-                          fixedColumns = TRUE)) %&gt;%
-  formatRound(columns=pluck(., &quot;x&quot;, &quot;data&quot;) %&gt;% colnames(), digits=3)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Create feature matrix for the Australian Open for all player 1s</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">features_player_1</span> <span class="o">=</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  <span class="nf">select</span><span class="p">(</span><span class="n">player_1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  <span class="nf">inner_join</span><span class="p">(</span><span class="n">lookup_feature_table</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;player_1&quot;</span> <span class="o">=</span> <span class="s">&quot;Player&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>  <span class="nf">rename</span><span class="p">(</span><span class="n">F_player_1_Serve_Win_Ratio</span> <span class="o">=</span> <span class="n">F_Player_Serve_Win_Ratio</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>         <span class="n">F_player_1_Return_Win_Ratio</span> <span class="o">=</span> <span class="n">F_Player_Return_Win_Ratio</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>         <span class="n">F_player_1_BreakPoints_Per_Game</span> <span class="o">=</span> <span class="n">F_Player_BreakPoints_Per_Game</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>         <span class="n">F_player_1_Game_Win_Percentage</span> <span class="o">=</span> <span class="n">F_Player_Game_Win_Percentage</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>         <span class="n">F_player_1_Rank</span> <span class="o">=</span> <span class="n">F_Player_Rank</span><span class="p">)</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># Create feature matrix for the Australian Open for all player 2s</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="n">features_player_2</span> <span class="o">=</span> <span class="nf">read_csv</span><span class="p">(</span><span class="s">&#39;data/men_dummy_submission_file.csv&#39;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>  <span class="nf">select</span><span class="p">(</span><span class="n">player_2</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>  <span class="nf">inner_join</span><span class="p">(</span><span class="n">lookup_feature_table</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;player_2&quot;</span> <span class="o">=</span> <span class="s">&quot;Player&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>  <span class="nf">rename</span><span class="p">(</span><span class="n">F_player_2_Serve_Win_Ratio</span> <span class="o">=</span> <span class="n">F_Player_Serve_Win_Ratio</span><span class="p">,</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>         <span class="n">F_player_2_Return_Win_Ratio</span> <span class="o">=</span> <span class="n">F_Player_Return_Win_Ratio</span><span class="p">,</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>         <span class="n">F_player_2_BreakPoints_Per_Game</span> <span class="o">=</span> <span class="n">F_Player_BreakPoints_Per_Game</span><span class="p">,</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>         <span class="n">F_player_2_Game_Win_Percentage</span> <span class="o">=</span> <span class="n">F_Player_Game_Win_Percentage</span><span class="p">,</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>         <span class="n">F_player_2_Rank</span> <span class="o">=</span> <span class="n">F_Player_Rank</span><span class="p">)</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="c1"># Join the two dfs together and subtract features to create Difference features</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="n">aus_open_2019_features</span> <span class="o">=</span> <span class="n">features_player_1</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>  <span class="nf">bind_cols</span><span class="p">(</span><span class="n">features_player_2</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>  <span class="nf">select</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="nf">everything</span><span class="p">())</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>  <span class="nf">mutate</span><span class="p">(</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>    <span class="n">F_Serve_Win_Ratio_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Serve_Win_Ratio</span> <span class="o">-</span> <span class="n">F_player_2_Serve_Win_Ratio</span><span class="p">,</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>    <span class="n">F_Return_Win_Ratio_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Return_Win_Ratio</span> <span class="o">-</span> <span class="n">F_player_2_Return_Win_Ratio</span><span class="p">,</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>    <span class="n">F_Game_Win_Percentage_Diff</span> <span class="o">=</span> <span class="n">F_player_1_Game_Win_Percentage</span> <span class="o">-</span> <span class="n">F_player_2_Game_Win_Percentage</span><span class="p">,</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>    <span class="n">F_BreakPoints_Per_Game_Diff</span> <span class="o">=</span> <span class="n">F_player_1_BreakPoints_Per_Game</span> <span class="o">-</span> <span class="n">F_player_2_BreakPoints_Per_Game</span><span class="p">,</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>    <span class="n">F_Rank_Diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">F_player_1_Rank</span> <span class="o">-</span> <span class="n">F_player_2_Rank</span><span class="p">)</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>  <span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>  <span class="nf">select</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="n">player_2</span><span class="p">,</span> <span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Diff&quot;</span><span class="p">))</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="n">aus_open_2019_features</span>  <span class="o">%&gt;%</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>                          <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>                          <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>                          <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>                          <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -3550,51 +3745,51 @@ aus_open_2019_features  %&gt;%
 <h2 id="generating-2019-australian-open-predictions">Generating 2019 Australian Open Predictions</h2>
 <p>Now that we have our features, we can finally train our model and generate predictions for the 2019 Australian Open. Due to its simplicity, we will use h2o's Auto Machine Learning function <code>h2o.automl</code>. This will train a heap of different models and optimise the hyperparameters, as well as creating stacked ensembles automatically for us. We will use optimising by log loss.</p>
 <p>First, we must create h2o frames for our training and feature data frames. Then we will run <code>h2o.automl</code>. Note that we can set the <code>max_runtime_secs</code> parameter. As this is a notebook, I have set it for 30 seconds - but I suggest you give it 10 minutes to create the best model. We can then create our predictions and assign them back to our <code>aus_open_2019_features</code> data frame. Finally, we will group_by player and find the best player, on average.</p>
-<pre><code class="language-r">## Setup H2O
-h2o.init(ip = &quot;localhost&quot;,
-         port = 54321,
-         enable_assertions = TRUE,
-         nthreads = 2,
-         max_mem_size = &quot;24g&quot;
-
-)
-## Sending file to h2o
-train_h2o = feature_matrix_wide %&gt;%
-  select(contains(&quot;Diff&quot;), Winner) %&gt;%
-  as.h2o(destination_frame = &quot;train_h2o&quot;)
-aus_open_2019_features_h2o = aus_open_2019_features %&gt;%
-  select(contains(&quot;Diff&quot;)) %&gt;%
-  as.h2o(destination_frame = &quot;aus_open_2019_features_h2o&quot;)
-## Running Auto ML 
-mens_model = h2o.automl(y = &quot;Winner&quot;,
-                        training_frame = train_h2o,
-                        max_runtime_secs = 30,
-                        max_models = 100,
-                        stopping_metric = &quot;logloss&quot;,
-                        sort_metric = &quot;logloss&quot;,
-                        balance_classes = TRUE,
-                        seed = 183) # Set seed to replicate results - 183 is the most games played in a tennis match (Isner-Mahut)
-## Predictions on test frame
-predictions = h2o.predict(mens_model@leader, aus_open_2019_features_h2o) %&gt;%
-  as.data.frame()
-aus_open_2019_features$prob_player_1 = predictions$p1
-aus_open_2019_features$prob_player_2 = predictions$p0
-h2o.shutdown(prompt = FALSE)
-</code></pre>
-<p>Now let's find the best player by taking the mean of the prediction probability by player.</p>
-<pre><code class="language-r">aus_open_2019_features %&gt;% 
-  select(player_1, starts_with(&quot;F_&quot;), prob_player_1) %&gt;%
-  group_by(player_1) %&gt;%
-  summarise_all(mean) %&gt;%
-  arrange(desc(prob_player_1)) %&gt;%
-  datatable(rownames = FALSE, extensions = 'Scroller', 
-            options = list(dom = &quot;t&quot;,
-                          scrollY = 450,
-                          scroller = TRUE,
-                          scrollX = 600,
-                          fixedColumns = TRUE)) %&gt;%
-  formatRound(columns=pluck(., &quot;x&quot;, &quot;data&quot;) %&gt;% colnames(), digits=3)
-</code></pre>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1">## Setup H2O</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">h2o.init</span><span class="p">(</span><span class="n">ip</span> <span class="o">=</span> <span class="s">&quot;localhost&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>         <span class="n">port</span> <span class="o">=</span> <span class="m">54321</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>         <span class="n">enable_assertions</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>         <span class="n">nthreads</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>         <span class="n">max_mem_size</span> <span class="o">=</span> <span class="s">&quot;24g&quot;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="p">)</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1">## Sending file to h2o</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="n">train_h2o</span> <span class="o">=</span> <span class="n">feature_matrix_wide</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  <span class="nf">select</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Diff&quot;</span><span class="p">),</span> <span class="n">Winner</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  <span class="nf">as.h2o</span><span class="p">(</span><span class="n">destination_frame</span> <span class="o">=</span> <span class="s">&quot;train_h2o&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">aus_open_2019_features_h2o</span> <span class="o">=</span> <span class="n">aus_open_2019_features</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>  <span class="nf">select</span><span class="p">(</span><span class="nf">contains</span><span class="p">(</span><span class="s">&quot;Diff&quot;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>  <span class="nf">as.h2o</span><span class="p">(</span><span class="n">destination_frame</span> <span class="o">=</span> <span class="s">&quot;aus_open_2019_features_h2o&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c1">## Running Auto ML </span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="n">mens_model</span> <span class="o">=</span> <span class="nf">h2o.automl</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="s">&quot;Winner&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>                        <span class="n">training_frame</span> <span class="o">=</span> <span class="n">train_h2o</span><span class="p">,</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>                        <span class="n">max_runtime_secs</span> <span class="o">=</span> <span class="m">30</span><span class="p">,</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>                        <span class="n">max_models</span> <span class="o">=</span> <span class="m">100</span><span class="p">,</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>                        <span class="n">stopping_metric</span> <span class="o">=</span> <span class="s">&quot;logloss&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>                        <span class="n">sort_metric</span> <span class="o">=</span> <span class="s">&quot;logloss&quot;</span><span class="p">,</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>                        <span class="n">balance_classes</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>                        <span class="n">seed</span> <span class="o">=</span> <span class="m">183</span><span class="p">)</span> <span class="c1"># Set seed to replicate results - 183 is the most games played in a tennis match (Isner-Mahut)</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="c1">## Predictions on test frame</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="n">predictions</span> <span class="o">=</span> <span class="nf">h2o.predict</span><span class="p">(</span><span class="n">mens_model</span><span class="o">@</span><span class="n">leader</span><span class="p">,</span> <span class="n">aus_open_2019_features_h2o</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a>  <span class="nf">as.data.frame</span><span class="p">()</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="n">aus_open_2019_features</span><span class="o">$</span><span class="n">prob_player_1</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">$</span><span class="n">p1</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="n">aus_open_2019_features</span><span class="o">$</span><span class="n">prob_player_2</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">$</span><span class="n">p0</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="nf">h2o.shutdown</span><span class="p">(</span><span class="n">prompt</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</code></pre></div>
+Now let's find the best player by taking the mean of the prediction probability by player.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">aus_open_2019_features</span> <span class="o">%&gt;%</span> 
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  <span class="nf">select</span><span class="p">(</span><span class="n">player_1</span><span class="p">,</span> <span class="nf">starts_with</span><span class="p">(</span><span class="s">&quot;F_&quot;</span><span class="p">),</span> <span class="n">prob_player_1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  <span class="nf">group_by</span><span class="p">(</span><span class="n">player_1</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  <span class="nf">summarise_all</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  <span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">prob_player_1</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>  <span class="nf">datatable</span><span class="p">(</span><span class="n">rownames</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">,</span> <span class="n">extensions</span> <span class="o">=</span> <span class="s">&#39;Scroller&#39;</span><span class="p">,</span> 
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>            <span class="n">options</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">dom</span> <span class="o">=</span> <span class="s">&quot;t&quot;</span><span class="p">,</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>                          <span class="n">scrollY</span> <span class="o">=</span> <span class="m">450</span><span class="p">,</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>                          <span class="n">scroller</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>                          <span class="n">scrollX</span> <span class="o">=</span> <span class="m">600</span><span class="p">,</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>                          <span class="n">fixedColumns</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">))</span> <span class="o">%&gt;%</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>  <span class="nf">formatRound</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="nf">pluck</span><span class="p">(</span><span class="n">.</span><span class="p">,</span> <span class="s">&quot;x&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">colnames</span><span class="p">(),</span> <span class="n">digits</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</code></pre></div></p>
 <table>
 <thead>
 <tr>
@@ -4168,6 +4363,11 @@ h2o.shutdown(prompt = FALSE)
           </div>
         </div>
         
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
       </main>
       
         <footer class="md-footer">
@@ -4269,7 +4469,7 @@ h2o.shutdown(prompt = FALSE)
           <div class="bf-footer-inner">
               <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
               <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
           
               <ul class="bf-links">
                 <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
@@ -4298,7 +4498,7 @@ h2o.shutdown(prompt = FALSE)
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
       <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>

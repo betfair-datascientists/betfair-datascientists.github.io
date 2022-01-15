@@ -42,6 +42,12 @@
     
       <link rel="stylesheet" href="../../assets/stylesheets/betfair.css">
     
+      <link rel="stylesheet" href="../../css/ansi-colours.css">
+    
+      <link rel="stylesheet" href="../../css/jupyter-cells.css">
+    
+      <link rel="stylesheet" href="../../css/pandas-dataframe.css">
+    
     <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -58,7 +64,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    <body dir="ltr" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange">
   
     
     
@@ -108,30 +114,32 @@
           </div>
         </div>
       </div>
+
       
         <form class="md-header__option" data-md-component="palette">
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="betfair" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
             
               <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
               </label>
             
           
             
             
-            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="amber" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
             
               <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
               </label>
             
           
         </form>
       
       
+
       
         <label class="md-header__button md-icon" for="__search">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
@@ -147,10 +155,16 @@
       </label>
       <nav class="md-search__options" aria-label="Search">
         
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
         <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
         </button>
       </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
       
     </form>
     <div class="md-search__output">
@@ -166,7 +180,21 @@
   </div>
 </div>
       
+     
+      <div class="bf-nav">
+        <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
+          xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 38.775 4.59" width="24" height="17">
+          <path class="st1" d="m 160.3,-136.95 v 26" />
+          <g transform="translate(18.8,-137.15)">
+            <path d="m 2.2901089,126.53441 v 5.20093 H -3.3107216 L 7.4888397,144.33446 18.2884,131.73534 h -5.598633 v -5.20093 z m -8.6000974,8.10132 -10.8017585,12.59913 h 5.60083 v 5.2998 h 10.3996581 v -5.2998 h 5.6008306 z" />
+          </g>
+        </svg><span> Exchange</span></a>
+        <a href="https://www.betfair.com.au/hub/">Hub</a>
+      </div>
+
       
+
     </nav>
     
   </header>
@@ -175,6 +203,93 @@
       
       
         
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../api/apiResources/" class="md-tabs__link">
+        API
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../historicData/dataSources/" class="md-tabs__link">
+        Historic Data
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../howToModel/" class="md-tabs__link md-tabs__link--active">
+        Modelling
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../autoTools/overview/" class="md-tabs__link">
+        Auto Tools
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
           
         
       
@@ -188,8 +303,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="The Automation Hub" class="md-nav__button md-logo" aria-label="The Automation Hub" data-md-component="logo">
       
@@ -208,46 +325,13 @@
   
   
   
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_1">
-          Home
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Home" data-md-level="1">
-        <label class="md-nav__title" for="__nav_1">
-          <span class="md-nav__icon md-icon"></span>
-          Home
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-              
-  
-  
-  
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        The Automation Hub
+        Home
       </a>
     </li>
   
 
-            
-          
-        </ul>
-      </nav>
-    </li>
-  
-
     
       
       
@@ -260,7 +344,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" data-md-state="indeterminate" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -311,10 +395,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" data-md-state="indeterminate" type="checkbox" id="__nav_2_3" checked>
       
       
       
@@ -397,7 +483,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -434,10 +520,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" data-md-state="indeterminate" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -482,6 +570,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/automatedBettingAnglesTutorial/" class="md-nav__link">
+        Automated betting angles in Python
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+        Do \#theyknow? Analysing Betfair market formation and market movements
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -495,10 +611,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" data-md-state="indeterminate" type="checkbox" id="__nav_3_3" checked>
       
       
       
@@ -590,25 +708,90 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" data-md-state="indeterminate" type="checkbox" id="__nav_4_2" checked>
       
       
       
       
         <label class="md-nav__link" for="__nav_4_2">
+          Racing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Racing" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Racing
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fasttrackTutorial/" class="md-nav__link">
+        Greyhound form FastTrack API
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../greyhoundModellingPython/" class="md-nav__link">
+        Greyhound modelling in Python
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
           Soccer
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Soccer" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_2">
+        <label class="md-nav__title" for="__nav_4_3">
           <span class="md-nav__icon md-icon"></span>
           Soccer
         </label>
@@ -854,21 +1037,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" data-md-state="indeterminate" type="checkbox" id="__nav_4_4" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_3">
+        <label class="md-nav__link" for="__nav_4_4">
           AFL
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="AFL" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_3">
+        <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           AFL
         </label>
@@ -915,21 +1100,23 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_5" data-md-state="indeterminate" type="checkbox" id="__nav_4_5" checked>
       
       
       
       
-        <label class="md-nav__link" for="__nav_4_4">
+        <label class="md-nav__link" for="__nav_4_5">
           Tennis
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="Tennis" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_4">
+        <label class="md-nav__title" for="__nav_4_5">
           <span class="md-nav__icon md-icon"></span>
           Tennis
         </label>
@@ -1001,7 +1188,7 @@
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" data-md-state="indeterminate" type="checkbox" id="__nav_5" checked>
       
       
       
@@ -1038,10 +1225,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" data-md-state="indeterminate" type="checkbox" id="__nav_5_2" checked>
       
       
       
@@ -1197,10 +1386,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" data-md-state="indeterminate" type="checkbox" id="__nav_5_3" checked>
       
       
       
@@ -1314,10 +1505,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_4" data-md-state="indeterminate" type="checkbox" id="__nav_5_4" checked>
       
       
       
@@ -1375,10 +1568,12 @@
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" data-md-state="indeterminate" type="checkbox" id="__nav_5_5" checked>
       
       
       
@@ -1637,21 +1832,23 @@
 <p>The tutorial covers the thought process of manipulating the dataset (why and how), some simple data cleaning, feature engineering and training a classification model.</p>
 <p>The tutorial <strong>DOES NOT</strong> delve deep into the fundamentals of machine learning, advanced feature engineering or model tuning.</p>
 <p><em>There are some helpful hints along the way though.</em></p>
-<p>!!! note "Betfair Datathon"
-    If you're interested in competing in the 2021 Euro &amp; Copa America Datathon competition make sure you <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">head to the Hub</a>, register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. </p>
-<pre><code># import required libraries
-library(tidyverse)
-library(lubridate)
-library(caTools) # calculate rolling average 
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Betfair Datathon</p>
+<p>If you're interested in competing in the 2021 Euro &amp; Copa America Datathon competition make sure you <a href="https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/">head to the Hub</a>, register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. </p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># import required libraries
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>library(tidyverse)
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>library(lubridate)
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>library(caTools) # calculate rolling average 
+</code></pre></div>
 <hr />
 <h2 id="read-data-from-file-and-get-a-raw-dataset">Read data from file and get a raw dataset</h2>
 <h4 id="change-the-data-types-date-column">Change the data types - date column.</h4>
 <p>We need the date column in good order for our tutorial. <a href="../assets/datathon_initial_form_data%20-%20SAMPLE.csv">Here's a sample of the data set</a> we're using for this tutorial.</p>
 <p><em>In general, it's a good idea to evaluate data types of all columns that we work with to ensure they are correct.</em></p>
-<pre><code>df = read_csv(&quot;SoccerData.csv&quot;, guess_max = 2000)
-df = df %&gt;% mutate(date_GMT = parse_date_time(date_GMT, '%b %d %Y - %I:%M%p', tz = &quot;GMT&quot;))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>df = read_csv(&quot;SoccerData.csv&quot;, guess_max = 2000)
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>df = df %&gt;% mutate(date_GMT = parse_date_time(date_GMT, &#39;%b %d %Y - %I:%M%p&#39;, tz = &quot;GMT&quot;))
+</code></pre></div>
 <h4 id="get-data-columns-and-create-raw-dataset">Get data columns and create raw dataset</h4>
 <p>For this tutorial, let's take only a few stats columns to work with.</p>
 <p><em>Typically we would explore all features and then decide which data to discard.</em></p>
@@ -1663,50 +1860,50 @@ df = df %&gt;% mutate(date_GMT = parse_date_time(date_GMT, '%b %d %Y - %I:%M%p',
 <li>Fouls</li>
 <li>Possession</li>
 </ol>
-<pre><code>raw_match_stats = df %&gt;%
-  select(
-  date_GMT,
-  home_team_name,
-  away_team_name,
-  home_team_goal_count,
-  away_team_goal_count,
-  home_team_corner_count,
-  away_team_corner_count,
-  home_team_shots,
-  away_team_shots,
-  home_team_shots_on_target,
-  away_team_shots_on_target,
-  home_team_fouls,
-  away_team_fouls,
-  home_team_possession,
-  away_team_possession
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>raw_match_stats = df %&gt;%
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  select(
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  date_GMT,
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  home_team_name,
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  away_team_name,
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  home_team_goal_count,
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  away_team_goal_count,
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  home_team_corner_count,
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>  away_team_corner_count,
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  home_team_shots,
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>  away_team_shots,
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>  home_team_shots_on_target,
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>  away_team_shots_on_target,
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>  home_team_fouls,
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>  away_team_fouls,
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>  home_team_possession,
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>  away_team_possession
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>  )
+</code></pre></div>
 <h4 id="clean-data">Clean data</h4>
 <p>As a cleaning step, we order our data by date and drop rows with NA values.</p>
-<pre><code>raw_match_stats = raw_match_stats %&gt;%
-  arrange(desc(date_GMT)) %&gt;%
-  drop_na() %&gt;%
-  mutate(game_id = 1:n())
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>raw_match_stats = raw_match_stats %&gt;%
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  arrange(desc(date_GMT)) %&gt;%
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  drop_na() %&gt;%
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  mutate(game_id = 1:n())
+</code></pre></div>
 <h4 id="raw-dataset">Raw dataset</h4>
 <p>This raw dataset is structured so that each match has an individual row and stats for both teams are on that row with columns titles "home" and "away".</p>
 <p>Our goal is to build a machine learning (ML) model that can predict the result of a soccer match. Given that we have some match stats, we will aim to use that information to predict a WIN, LOSS or DRAW.</p>
-<pre><code>raw_match_stats
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>raw_match_stats
+</code></pre></div>
 <hr />
 <h2 id="data-cleaning-and-feature-engineering">Data cleaning and feature engineering</h2>
 <h4 id="target-variable-match-result">Target variable - Match Result</h4>
 <p>Our machine learning model aims to predict the result of a match. This "result" is called the "target variable". Our dataset has no columns showing the match result. We will create two columns for the results for each team. One of these would become the target variable for our ML model.</p>
-<pre><code># create results columns for both home and away teams (W - win, D = Draw, L = Loss).
-raw_match_stats = raw_match_stats %&gt;%
-  mutate(home_team_result = case_when(home_team_goal_count == away_team_goal_count ~ &quot;D&quot;,
-                                      home_team_goal_count &gt; away_team_goal_count ~ &quot;W&quot;,
-                                      home_team_goal_count &lt; away_team_goal_count ~ &quot;L&quot;),
-         away_team_result = case_when(home_team_goal_count == away_team_goal_count ~ &quot;D&quot;,
-                                      home_team_goal_count &gt; away_team_goal_count ~ &quot;L&quot;,
-                                      home_team_goal_count &lt; away_team_goal_count ~ &quot;W&quot;))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a># create results columns for both home and away teams (W - win, D = Draw, L = Loss).
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>raw_match_stats = raw_match_stats %&gt;%
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  mutate(home_team_result = case_when(home_team_goal_count == away_team_goal_count ~ &quot;D&quot;,
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>                                      home_team_goal_count &gt; away_team_goal_count ~ &quot;W&quot;,
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>                                      home_team_goal_count &lt; away_team_goal_count ~ &quot;L&quot;),
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>         away_team_result = case_when(home_team_goal_count == away_team_goal_count ~ &quot;D&quot;,
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>                                      home_team_goal_count &gt; away_team_goal_count ~ &quot;L&quot;,
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>                                      home_team_goal_count &lt; away_team_goal_count ~ &quot;W&quot;))
+</code></pre></div>
 <h4 id="average-pre-match-stats-five-match-average">Average pre-match stats - Five match average</h4>
 <p>Great! Now we have a dataset with many rows of data, with each row representing match stats and the match result (this would become our target variable).</p>
 <p>But our goal is to build an ML model that predicts the match result prior to the start of a match. Are the stats from that match what we need to build this ML model? No! When predicting a match outcome BEFORE the start of the match, we are forced to rely on match stats available to us from previous matches.</p>
@@ -1719,91 +1916,91 @@ raw_match_stats = raw_match_stats %&gt;%
 Add these stats to the team_stats_per_match dataset.</li>
 </ol>
 <p><em>Why did we chose five matches? Why not 10? Should we average over a time period (matches in the last year perhaps?) rather than a number? What's the least number of matches available for each competing team in the dataset? These are all interesting questions that may improve our model.</em></p>
-<pre><code># Split the raw_match_stats to two datasets (home_team_stats and away_team_stats). 
-home_team_stats = raw_match_stats %&gt;%
-  select(game_id,
-         date_GMT,
-         starts_with(&quot;home_team&quot;))
-away_team_stats = raw_match_stats %&gt;%
-  select(game_id,
-         date_GMT,
-         starts_with(&quot;away_team&quot;))
-# rename &quot;home_team&quot; and &quot;away_team&quot; columns
-home_team_stats = rename_with(home_team_stats, ~gsub(&quot;home_team_&quot;, &quot;&quot;, .x))
-away_team_stats = rename_with(away_team_stats, ~gsub(&quot;away_team_&quot;, &quot;&quot;, .x))
-# Stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match). 
-team_stats_per_match = home_team_stats %&gt;%
-  bind_rows(away_team_stats)
-</code></pre>
-<pre><code># At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team). 
-avg_stats_per_team &lt;- team_stats_per_match %&gt;%
-  group_by(name) %&gt;%
-  filter(n() &gt; 1) %&gt;%     # remove countries with only 1 match
-  arrange(date_GMT) %&gt;%
-  mutate_at(
-  vars(
-  goal_count,
-  corner_count,
-  shots,
-  shots_on_target,
-  fouls,
-  possession
-  ),
-  ## Columns for which we want a rolling mean
-  .funs = ~ runmean(
-  x = dplyr::lag(.x),
-  k = 5,
-  endrule = &quot;mean&quot;,
-  align = &quot;right&quot;
-  )## Rolling mean for last 5 matches
-  ) %&gt;%
-  rename(
-  goals_per_match = goal_count,
-  corners_per_match = corner_count,
-  shots_per_match = shots,
-  shotsOnTarget_per_match = shots_on_target,
-  fouls_per_match = fouls,
-  possession_per_match = possession
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a># Split the raw_match_stats to two datasets (home_team_stats and away_team_stats). 
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>home_team_stats = raw_match_stats %&gt;%
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  select(game_id,
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>         date_GMT,
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>         starts_with(&quot;home_team&quot;))
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>away_team_stats = raw_match_stats %&gt;%
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>  select(game_id,
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>         date_GMT,
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>         starts_with(&quot;away_team&quot;))
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a># rename &quot;home_team&quot; and &quot;away_team&quot; columns
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>home_team_stats = rename_with(home_team_stats, ~gsub(&quot;home_team_&quot;, &quot;&quot;, .x))
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>away_team_stats = rename_with(away_team_stats, ~gsub(&quot;away_team_&quot;, &quot;&quot;, .x))
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a># Stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match). 
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>team_stats_per_match = home_team_stats %&gt;%
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>  bind_rows(away_team_stats)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a># At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team). 
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>avg_stats_per_team &lt;- team_stats_per_match %&gt;%
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  group_by(name) %&gt;%
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  filter(n() &gt; 1) %&gt;%     # remove countries with only 1 match
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  arrange(date_GMT) %&gt;%
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>  mutate_at(
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  vars(
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  goal_count,
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>  corner_count,
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  shots,
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>  shots_on_target,
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>  fouls,
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>  possession
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>  ),
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>  ## Columns for which we want a rolling mean
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>  .funs = ~ runmean(
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>  x = dplyr::lag(.x),
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>  k = 5,
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>  endrule = &quot;mean&quot;,
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>  align = &quot;right&quot;
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>  )## Rolling mean for last 5 matches
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>  ) %&gt;%
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>  rename(
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>  goals_per_match = goal_count,
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>  corners_per_match = corner_count,
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>  shots_per_match = shots,
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>  shotsOnTarget_per_match = shots_on_target,
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>  fouls_per_match = fouls,
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>  possession_per_match = possession
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>  )
+</code></pre></div>
 <h4 id="reshape-average-pre-match-stats">Reshape average pre-match stats</h4>
 <p>Now that we have the average stats for each team going into every match, we can create a dataset similar to the raw_match_stats, where each row represents both teams from one match.</p>
 <ol>
 <li>Re-segment the home and away teams (name Team 1 and Team 2 rather than home and away).</li>
 <li>Combine at each match to get a dataset with a row representing each match.</li>
 </ol>
-<pre><code># Add these stats to the home/away dataset
-home_team_stats &lt;- home_team_stats %&gt;% 
-  left_join(avg_stats_per_team)  %&gt;%
-  arrange(game_id) %&gt;%
-  rename_with(~paste0(&quot;team_1_&quot;, .))
-away_team_stats &lt;- away_team_stats %&gt;% 
-  left_join(avg_stats_per_team)  %&gt;%
-  arrange(game_id) %&gt;%
-  rename_with(~paste0(&quot;team_2_&quot;, .))
-</code></pre>
-<pre><code># Combine at each match to get a dataset with a row representing each match. 
-# drop the NA rows ( earliest match for each team, i.e no previous stats)
-match_stats = home_team_stats %&gt;%
-  bind_cols(away_team_stats) %&gt;%
-  drop_na()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a># Add these stats to the home/away dataset
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>home_team_stats &lt;- home_team_stats %&gt;% 
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  left_join(avg_stats_per_team)  %&gt;%
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  arrange(game_id) %&gt;%
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>  rename_with(~paste0(&quot;team_1_&quot;, .))
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>away_team_stats &lt;- away_team_stats %&gt;% 
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  left_join(avg_stats_per_team)  %&gt;%
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  arrange(game_id) %&gt;%
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>  rename_with(~paste0(&quot;team_2_&quot;, .))
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a># Combine at each match to get a dataset with a row representing each match. 
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a># drop the NA rows ( earliest match for each team, i.e no previous stats)
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>match_stats = home_team_stats %&gt;%
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>  bind_cols(away_team_stats) %&gt;%
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>  drop_na()
+</code></pre></div>
 <h4 id="find-the-difference-of-stats-between-teams">Find the difference of stats between teams</h4>
 <p>In our ML model, we will take the difference between Team 1 and Team 2 average stats as features. 6 new columns are created for this.</p>
 <p><em>Would we be better off using the raw stats for each team as features?</em></p>
 <p><em>Can we generate any other useful features from the dataset provided?</em></p>
 <p><em>Do we need to weigh the home and away teams because home teams win more often?</em></p>
-<pre><code># create columns with average stat differences between the two teams
-match_stats = match_stats %&gt;%
-  mutate(goals_per_match_diff = team_1_goals_per_match - team_2_goals_per_match,
-         corners_per_match_diff = team_1_corners_per_match - team_2_corners_per_match,
-         shots_per_match_diff = team_1_shots_per_match - team_2_shots_per_match,
-         shotsOnTarget_per_match_diff = team_1_shotsOnTarget_per_match - team_2_shotsOnTarget_per_match,
-         fouls_per_match_diff = team_1_fouls_per_match - team_2_fouls_per_match,
-         possession_per_match_diff = team_1_possession_per_match - team_2_possession_per_match)
-</code></pre>
-<pre><code>match_stats
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a># create columns with average stat differences between the two teams
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>match_stats = match_stats %&gt;%
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  mutate(goals_per_match_diff = team_1_goals_per_match - team_2_goals_per_match,
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>         corners_per_match_diff = team_1_corners_per_match - team_2_corners_per_match,
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>         shots_per_match_diff = team_1_shots_per_match - team_2_shots_per_match,
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>         shotsOnTarget_per_match_diff = team_1_shotsOnTarget_per_match - team_2_shotsOnTarget_per_match,
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>         fouls_per_match_diff = team_1_fouls_per_match - team_2_fouls_per_match,
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>         possession_per_match_diff = team_1_possession_per_match - team_2_possession_per_match)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>match_stats
+</code></pre></div>
 <hr />
 <h2 id="train-ml-model">Train ML model</h2>
 <p>In this tutorial we will:</p>
@@ -1813,16 +2010,16 @@ match_stats = match_stats %&gt;%
 <li>Use accuracy to evaluate our models</li>
 </ol>
 <p><em>It's probably worth evaluating multiple models (several models explained in this tutorial), perhaps use k-fold cross validation, and use metrics other than accuracy to evaluate a model (check the commented out code).</em></p>
-<pre><code>library(tidymodels)
-library(discrim)
-library(kknn) # kknn
-library(kernlab) # svm
-library(naivebayes) #naive bayes
-library(rpart) # decision tree
-library(nnet) # logistic regression and neural net
-library(ranger) # random forest (modified by multiclass)
-library(xgboost) # xgboost
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>library(tidymodels)
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>library(discrim)
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>library(kknn) # kknn
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>library(kernlab) # svm
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>library(naivebayes) #naive bayes
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>library(rpart) # decision tree
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>library(nnet) # logistic regression and neural net
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>library(ranger) # random forest (modified by multiclass)
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>library(xgboost) # xgboost
+</code></pre></div>
 <hr />
 <h2 id="get-data-from-our-dataset">Get data from our dataset</h2>
 <ol>
@@ -1831,106 +2028,106 @@ library(xgboost) # xgboost
 </ol>
 <p><em>Do we need to scale or normalize the feature columns in order for it to make mathematical sense to a ML model? This depends on the type of model we are training, but it's definitely worth investigating in order to achieve a high performing model.</em></p>
 <p><em>We should also investigate the dataset to check if it's balanced on all classes or if it's skewed towards a particular class (i.e are there an equal number of wins, losses and draws?). If not, would this affect model performance?</em></p>
-<pre><code># form a dataset with only target and features
-model_data = match_stats %&gt;%
-  mutate(target = factor(recode(team_1_result, W = 0, D = 1, L = 2))) %&gt;%
-  select(
-    target,
-    goals_per_match_diff,
-    corners_per_match_diff,
-    shots_per_match_diff,
-    shotsOnTarget_per_match_diff,
-    fouls_per_match_diff,
-    possession_per_match_diff
-  )
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a># form a dataset with only target and features
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>model_data = match_stats %&gt;%
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  mutate(target = factor(recode(team_1_result, W = 0, D = 1, L = 2))) %&gt;%
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  select(
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>    target,
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>    goals_per_match_diff,
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>    corners_per_match_diff,
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>    shots_per_match_diff,
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>    shotsOnTarget_per_match_diff,
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>    fouls_per_match_diff,
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>    possession_per_match_diff
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>  )
+</code></pre></div>
 <h4 id="split-test-and-training-data">Split test and training data</h4>
 <p>We train a model on the training data, and then use test data to evaluate the performance of that model.</p>
-<pre><code># For more details of using tidymodels package, check https://www.tidymodels.org/
-# split test and train data
-set.seed(2021)
-data_split &lt;- initial_split(model_data, strata = target, prop = 0.8)
-# create a recipe for data pre-processing
-model_recipe &lt;- 
-  recipe(target ~ ., data = model_data) %&gt;%
-  step_zv(all_predictors())  %&gt;%
-  step_corr(all_predictors()) %&gt;%
-  prep()
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a># For more details of using tidymodels package, check https://www.tidymodels.org/
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a># split test and train data
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>set.seed(2021)
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>data_split &lt;- initial_split(model_data, strata = target, prop = 0.8)
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a># create a recipe for data pre-processing
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>model_recipe &lt;- 
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>  recipe(target ~ ., data = model_data) %&gt;%
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>  step_zv(all_predictors())  %&gt;%
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>  step_corr(all_predictors()) %&gt;%
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>  prep()
+</code></pre></div>
 <h4 id="name-and-define-classifiers">Name and define classifiers</h4>
-<pre><code># Define the models
-## knn model
-knn_model &lt;- 
-  nearest_neighbor() %&gt;% 
-  set_engine(&quot;kknn&quot;) %&gt;% 
-  set_mode(&quot;classification&quot;)
-## svm model
-svm_model &lt;- 
-  svm_rbf() %&gt;%
-  set_engine(&quot;kernlab&quot;) %&gt;%
-  set_mode(&quot;classification&quot;) 
-## logistic regression model
-lr_model &lt;- 
-  multinom_reg() %&gt;% 
-  set_engine(&quot;nnet&quot;) %&gt;% 
-  set_mode(&quot;classification&quot;)
-## naive bayes
-nb_model &lt;- 
-  naive_Bayes() %&gt;% 
-  set_engine(&quot;naivebayes&quot;) %&gt;% 
-  set_mode(&quot;classification&quot;)
-## decision tree model
-tree_model &lt;- 
-  decision_tree() %&gt;% 
-  set_engine(&quot;rpart&quot;) %&gt;% 
-  set_mode(&quot;classification&quot;)
-# random forest
-rf_model &lt;- 
-  rand_forest() %&gt;% 
-  set_engine(&quot;ranger&quot;) %&gt;% 
-  set_mode(&quot;classification&quot;)
-# boosted tree (xgboost)
-xgb_model &lt;- 
-  boost_tree() %&gt;% 
-  set_engine(&quot;xgboost&quot;) %&gt;% 
-  set_mode(&quot;classification&quot;)
-# single layer neural network
-nn_model &lt;- 
-  mlp() %&gt;% 
-  set_engine(&quot;nnet&quot;) %&gt;% 
-  set_mode(&quot;classification&quot;)
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a># Define the models
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>## knn model
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>knn_model &lt;- 
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>  nearest_neighbor() %&gt;% 
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>  set_engine(&quot;kknn&quot;) %&gt;% 
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>  set_mode(&quot;classification&quot;)
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>## svm model
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>svm_model &lt;- 
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>  svm_rbf() %&gt;%
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>  set_engine(&quot;kernlab&quot;) %&gt;%
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>  set_mode(&quot;classification&quot;) 
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>## logistic regression model
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>lr_model &lt;- 
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>  multinom_reg() %&gt;% 
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>  set_engine(&quot;nnet&quot;) %&gt;% 
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>  set_mode(&quot;classification&quot;)
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>## naive bayes
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>nb_model &lt;- 
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>  naive_Bayes() %&gt;% 
+<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>  set_engine(&quot;naivebayes&quot;) %&gt;% 
+<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>  set_mode(&quot;classification&quot;)
+<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>## decision tree model
+<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>tree_model &lt;- 
+<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>  decision_tree() %&gt;% 
+<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>  set_engine(&quot;rpart&quot;) %&gt;% 
+<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>  set_mode(&quot;classification&quot;)
+<a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a># random forest
+<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a>rf_model &lt;- 
+<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>  rand_forest() %&gt;% 
+<a id="__codelineno-15-30" name="__codelineno-15-30" href="#__codelineno-15-30"></a>  set_engine(&quot;ranger&quot;) %&gt;% 
+<a id="__codelineno-15-31" name="__codelineno-15-31" href="#__codelineno-15-31"></a>  set_mode(&quot;classification&quot;)
+<a id="__codelineno-15-32" name="__codelineno-15-32" href="#__codelineno-15-32"></a># boosted tree (xgboost)
+<a id="__codelineno-15-33" name="__codelineno-15-33" href="#__codelineno-15-33"></a>xgb_model &lt;- 
+<a id="__codelineno-15-34" name="__codelineno-15-34" href="#__codelineno-15-34"></a>  boost_tree() %&gt;% 
+<a id="__codelineno-15-35" name="__codelineno-15-35" href="#__codelineno-15-35"></a>  set_engine(&quot;xgboost&quot;) %&gt;% 
+<a id="__codelineno-15-36" name="__codelineno-15-36" href="#__codelineno-15-36"></a>  set_mode(&quot;classification&quot;)
+<a id="__codelineno-15-37" name="__codelineno-15-37" href="#__codelineno-15-37"></a># single layer neural network
+<a id="__codelineno-15-38" name="__codelineno-15-38" href="#__codelineno-15-38"></a>nn_model &lt;- 
+<a id="__codelineno-15-39" name="__codelineno-15-39" href="#__codelineno-15-39"></a>  mlp() %&gt;% 
+<a id="__codelineno-15-40" name="__codelineno-15-40" href="#__codelineno-15-40"></a>  set_engine(&quot;nnet&quot;) %&gt;% 
+<a id="__codelineno-15-41" name="__codelineno-15-41" href="#__codelineno-15-41"></a>  set_mode(&quot;classification&quot;)
+</code></pre></div>
 <h4 id="iterate-through-all-classifiers-and-get-their-accuracy-score">Iterate through all classifiers and get their accuracy score</h4>
 <p>We can use the best performing model to make our predictions.</p>
 <p><em>There are several other metrics in the code that have been commented out which might provide helpful insights on model performance.</em></p>
-<pre><code>accuracy_results &lt;-
-  map_dfr(
-    .x = list(knn_model,
-              lr_model,
-              nb_model,
-              nn_model,
-              rf_model,
-              svm_model,
-              tree_model,
-              xgb_model),
-    .f = function(the_model) {
-      # create a work flow with recipe and model
-      the_workflow &lt;- workflow() %&gt;%
-        add_recipe(model_recipe) %&gt;%
-        add_model(the_model)
-
-      # fit the model with training data and evaluate with test data
-      the_fit &lt;- the_workflow %&gt;%
-        last_fit(data_split)
-
-      tibble(model_name = class(the_model)[1],
-             accuracy = the_fit %&gt;% collect_metrics() %&gt;% filter(.metric == &quot;accuracy&quot;) %&gt;% select(.estimate) %&gt;% pull)
-    }
-  )
-## Displaying accuracy of the models set in descending order
-accuracy_results %&gt;%
-  arrange(desc(accuracy))
-</code></pre>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>accuracy_results &lt;-
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>  map_dfr(
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>    .x = list(knn_model,
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>              lr_model,
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>              nb_model,
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>              nn_model,
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>              rf_model,
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>              svm_model,
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>              tree_model,
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>              xgb_model),
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>    .f = function(the_model) {
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>      # create a work flow with recipe and model
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>      the_workflow &lt;- workflow() %&gt;%
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>        add_recipe(model_recipe) %&gt;%
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>        add_model(the_model)
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>      # fit the model with training data and evaluate with test data
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>      the_fit &lt;- the_workflow %&gt;%
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>        last_fit(data_split)
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>      tibble(model_name = class(the_model)[1],
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>             accuracy = the_fit %&gt;% collect_metrics() %&gt;% filter(.metric == &quot;accuracy&quot;) %&gt;% select(.estimate) %&gt;% pull)
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>    }
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>  )
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>## Displaying accuracy of the models set in descending order
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>accuracy_results %&gt;%
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>  arrange(desc(accuracy))
+</code></pre></div>
 <hr />
 <h3 id="disclaimer">Disclaimer</h3>
 <p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
@@ -1939,6 +2136,11 @@ accuracy_results %&gt;%
             </article>
           </div>
         </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
         
       </main>
       
@@ -2041,7 +2243,7 @@ accuracy_results %&gt;%
           <div class="bf-footer-inner">
               <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
               <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its Responsible Gambling Code of Conduct and for South
-              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Don’t let the game play you. Stay in control. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+              Australian residents by the South Australian Responsible Gambling Code of Practice.<br /> Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly. Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
           
               <ul class="bf-links">
                 <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
@@ -2070,7 +2272,7 @@ accuracy_results %&gt;%
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
     
     
       <script src="../../assets/javascripts/bundle.1514a9a0.min.js"></script>

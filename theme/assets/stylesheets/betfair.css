@@ -122,6 +122,9 @@
     padding: 0 1.5rem;
     color: var(--md-footer-fg-color--lighter);
 }
+.bf-footer .inner-link {
+    font-weight: bold;
+}
       
 
 /* customize the mknotebooks output */

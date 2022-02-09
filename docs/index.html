@@ -1619,8 +1619,8 @@
 <li><a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Exchange Sports API visualiser</a> for testing market-related queries</li>
 <li><a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/">Exchange Account API visualiser</a> for testing account-related queries</li>
 <li>Our Datascientists' repos for using <a href="/api/apiRtutorial">R</a> and <a href="/api/apiPythontutorial">Python</a> to access the API</li>
-<li>There's an ANZ <a href="https://github.com/betfair-down-under">Betfair Down Under</a> community GitHub repo where you can find sample code, libraries, tutorials and other resources for automating and modelling on the Exchange</li>
-<li><a href="https://github.com/betfair/API-NG-Excel-Toolkit">The UK’s Github repo</a> including libraries for other languages</li>
+<li>There's an ANZ <a href="https://github.com/betfair-down-under">Betfair Down Under</a> community GitHub repo where you can find sample code, libraries, tutorials and other resources for automating and modelling on the Exchange and an <a href="https://github.com/betfair-down-under/AwesomeBetfair"><code>AwesomeBetfair</code></a> list of external repos we think are worth visiting</li>
+<li><a href="https://github.com/betfair">The UK’s Github repo</a> including libraries for other languages</li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">API access</p>
@@ -1629,7 +1629,7 @@ Please <a href="mailto:api@betfair.com.au">reach out</a> if you're an Australian
 </div>
 <hr />
 <h2 id="historic-pricing-data">Historic pricing data</h2>
-<p>We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the <a href="/historicData/dataSources">different data sources</a> if you’re not quite sure where to start. We’ve also shared some tips on learning to create <a href="/modelling/howToModel">predictive models using this data</a>, which link in with the models shared in the <a href="/modelling/EPLmodelPart1">modelling section</a>.</p>
+<p>We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the <a href="/historicData/dataSources">different data sources</a> if you’re not quite sure where to start. We’ve also shared some tips on learning to create <a href="/modelling/howToModel">predictive models using this data</a>, which link in with the models shared in the <a href="/modelling">modelling section</a>.</p>
 <h3 id="tutorials">Tutorials</h3>
 <ul>
 <li><a href="/historicData/jsonToCsvTutorial">JSON to CSV in Python</a></li>
@@ -1641,31 +1641,18 @@ Please <a href="mailto:api@betfair.com.au">reach out</a> if you're an Australian
 <h3 id="other-resources">Other resources</h3>
 <ul>
 <li><a href="/historicData/dataSources">Betfair data sources</a></li>
-<li><a href="/historicData/usingHistoricDataSite">Accessing the official Historic Data site</a></li>
+<li><a href="https://www.betfairhistoricdata.co.uk/">Data processor</a> to generate CSVs from the historic JSON files </li>
 <li><a href="https://historicdata.betfair.com/#/help">Historic Data FAQs &amp; sample data</a></li>
 <li><a href="https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf">Historic Data Specifications</a></li>
-<li><a href="https://historicdata.betfair.com/#/apidocs">API for downloading historic data files</a> (quicker than manually downloading)</li>
-<li><a href="https://github.com/betfair/historicdata">Sample code for using the historic data download API</a></li>
 <li><a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Exchange+Stream+API">The Stream API dev docs</a> are the best source of information for interpreting the data from the Historic Data site</li>
-<li><a href="https://promo.betfair.com/betfairsp/prices">Historic BSP csv files</a></li>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Historic Betfair data</p>
-<p>There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data</p>
+<p>There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data. If you are interested in the data available please <a href="mailto:data@betfair.com.au">reach out</a>.</p>
 </div>
 <hr />
 <h2 id="data-modelling">Data modelling</h2>
-<ul>
-<li><a href="/modelling/howToModel">An intro to building a predictive model</a></li>
-<li><a href="/modelling/EPLmlPython">Open source predictive models</a> built by our in-house Data Scientists<ul>
-<li><a href="/modelling/greyhoundModellingPython">Greyhound modelling using form data in Python</a></li>
-<li><a href="/modelling/howToModelTheAusOpen">Modelling the Aus Open</a></li>
-<li><a href="/modelling/EPLmlPython">EPL ML walk through in Python</a></li>
-<li><a href="/modelling/AFLmodellingPython">AFL modelling in Python</a></li>
-<li><a href="/modelling/brownlowModelTutorial">Brownlow modelling tutorial</a></li>
-</ul>
-</li>
-</ul>
+<p>We have a series of modelling tutorials created by community members ranging from racing to sports, including <a href="/modelling/greyhoundModellingPython">greyhound modelling using form data in Python</a>, an <a href="/modelling/AFLmodellingPython">AFL tutorial in Python</a> and <a href="/modelling/brownlowModelTutorial">Brownlow modelling tutorial</a></p>
 <div class="admonition info">
 <p class="admonition-title">Predictive modelling</p>
 <p>Many of our most successful customers use predictive models as the basis for their betting strategies </p>
@@ -1675,48 +1662,18 @@ Please <a href="mailto:api@betfair.com.au">reach out</a> if you're an Australian
 <p>Whilst the following tools are not custom built for your approach, they do allow you to automate your betting strategies. You just set up specific betting conditions and let the third party application do the work for you. <a href="https://betangel.com">Bet Angel</a> and <a href="http://gruss-software.co.uk">Gruss Betting Assistant</a> are probably the most popular automation tools used by Australian customers. </p>
 <p>We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.</p>
 <ul>
-<li>
-<p><a href="/autoTools/betAngel/betAngel">Bet Angel Professional</a></p>
-<ul>
-<li><a href="/autoTools/betAngelRatingsAutomation">Ratings automation</a></li>
-<li><a href="/autoTools/betAngelMarketFavouriteAutomation">Market fav automation</a> </li>
-<li><a href="/autoTools/betAngelTippingAutomation">Tipping automation</a></li>
-<li><a href="/autoTools/betAngelSimultaneousMarkets">Automating simultaneous markets</a></li>
-<li><a href="/autoTools/betAngelKellyStake">Kelly criterion staking</a></li>
-</ul>
-</li>
-<li>
-<p><a href="/autoTools/Gruss/Gruss">Gruss Betting Assistant</a></p>
-<ul>
-<li><a href="/autoTools/grussRatingsAutomation">Ratings automation</a></li>
-<li><a href="autoTools/GrussSettingupbasicmarketview">Market view and one click betting</a></li>
-<li><a href="/autoTools/grussMarketFavouriteAutomation">Market fav automation</a></li>
-<li><a href="/autoTools/grusslSimultaneousMarkets">Automating simultaneous markets</a></li>
-<li><a href="/autoTools/grussKellyStake">Kelly criterion staking</a></li>
-</ul>
-</li>
-<li>
-<p><a href="/autoTools/CymaticTrader/CymaticTrader">Cymatic Trader</a></p>
-<ul>
-<li><a href="/autoTools/cymaticTraderRatingsAutomation">Ratings automation</a></li>
-</ul>
-</li>
-<li>
-<p><a href="/autoTools/GeeksToyinstallationandsetup">Geeks Toy</a></p>
-<ul>
-<li><a href="/autoTools/GeeksToyinstallationandsetup">Installation and setup</a></li>
-<li><a href="autoTools/GeeksToybasicmarketviewstakingandoneclickbetting">Market view and one click betting</a></li>
-<li><a href="autoTools/geeksToyRefreshSettings">Optimising refresh settings</a></li>
-</ul>
-</li>
+<li><a href="/autoTools/betAngel/betAngel">Bet Angel Professional</a></li>
+<li><a href="/autoTools/Gruss/Gruss">Gruss Betting Assistant</a></li>
+<li><a href="/autoTools/CymaticTrader/CymaticTrader">Cymatic Trader</a></li>
+<li><a href="/autoTools/GeeksToyinstallationandsetup">Geeks Toy</a></li>
 </ul>
 <hr />
 <h2 id="inspiration-information">Inspiration &amp; information</h2>
 <p>There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. </p>
 <ul>
+<li><a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ">Analytical Meet Up recordings</a></li>
 <li><a href="https://www.betfair.com.au/hub/better-betting/customer-insights/the-banker-a-quants-afl-betting-strategy/">The Banker: A Quant's AFL Betting Strategy</a></li>
 <li><a href="https://www.betfair.com.au/hub/better-betting/customer-insights/mathematician/">The Mathematician</a></li>
-<li><a href="https://www.reddit.com/r/BackAndLay/">'Back and Lay'</a> is a subreddit dedicated to discussing trading techniques</li>
 <li><a href="https://twitter.com/Betfair_Aus">Our Twitter community</a> is really active </li>
 <li><a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">Staking Plans and Strategies</a></li>
 <li><a href="https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/staking-and-money-management/">Staking and Money Management</a></li>
@@ -1727,7 +1684,7 @@ Please <a href="mailto:api@betfair.com.au">reach out</a> if you're an Australian
 </div>
 <hr />
 <h2 id="need-extra-help">Need extra help?</h2>
-<p>If you’re looking for bespoke advice or have extra questions, please contact us at <a href="mailto:automation@betfair.com">automation@betfair.com</a>.au. Our automation team are here to support you in automating your betting strategies.</p>
+<p>If you’re looking for bespoke advice or have extra questions, please contact us at <a href="mailto:automation@betfair.com.au">automation@betfair.com.au</a>. Our automation team are here to support you in automating your betting strategies.</p>
 
               
             </article>

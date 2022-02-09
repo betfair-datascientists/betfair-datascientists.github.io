@@ -31,8 +31,8 @@ There are lots of resources available to support you in accessing the API effect
 - [Exchange Sports API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) for testing market-related queries
 - [Exchange Account API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/) for testing account-related queries
 - Our Datascientists' repos for using [R](/api/apiRtutorial) and [Python](/api/apiPythontutorial) to access the API
-- There's an ANZ [Betfair Down Under](https://github.com/betfair-down-under) community GitHub repo where you can find sample code, libraries, tutorials and other resources for automating and modelling on the Exchange
-- [The UK’s Github repo](https://github.com/betfair/API-NG-Excel-Toolkit) including libraries for other languages
+- There's an ANZ [Betfair Down Under](https://github.com/betfair-down-under) community GitHub repo where you can find sample code, libraries, tutorials and other resources for automating and modelling on the Exchange and an [`AwesomeBetfair`](https://github.com/betfair-down-under/AwesomeBetfair) list of external repos we think are worth visiting
+- [The UK’s Github repo](https://github.com/betfair) including libraries for other languages
 
 !!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
@@ -41,7 +41,7 @@ There are lots of resources available to support you in accessing the API effect
 ---
 ## Historic pricing data
 
-We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the [different data sources](/historicData/dataSources) if you’re not quite sure where to start. We’ve also shared some tips on learning to create [predictive models using this data](/modelling/howToModel), which link in with the models shared in the [modelling section](/modelling/EPLmodelPart1).
+We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the [different data sources](/historicData/dataSources) if you’re not quite sure where to start. We’ve also shared some tips on learning to create [predictive models using this data](/modelling/howToModel), which link in with the models shared in the [modelling section](/modelling).
 
 ### Tutorials
 
@@ -53,27 +53,18 @@ We know that automated strategies are only as good as your data. There’s a hug
 
 ### Other resources
 - [Betfair data sources](/historicData/dataSources)
-- [Accessing the official Historic Data site](/historicData/usingHistoricDataSite)
+- [Data processor](https://www.betfairhistoricdata.co.uk/) to generate CSVs from the historic JSON files 
 - [Historic Data FAQs & sample data](https://historicdata.betfair.com/#/help)
 - [Historic Data Specifications](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf)
-- [API for downloading historic data files](https://historicdata.betfair.com/#/apidocs) (quicker than manually downloading)
-- [Sample code for using the historic data download API](https://github.com/betfair/historicdata)
 - [The Stream API dev docs](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Exchange+Stream+API) are the best source of information for interpreting the data from the Historic Data site
-- [Historic BSP csv files](https://promo.betfair.com/betfairsp/prices)
 
 !!! info "Historic Betfair data"
-    There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data
+    There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data. If you are interested in the data available please [reach out](mailto:data@betfair.com.au).
 
 ---
 ## Data modelling 
 
-- [An intro to building a predictive model](/modelling/howToModel)
-- [Open source predictive models](/modelling/EPLmlPython) built by our in-house Data Scientists
-    - [Greyhound modelling using form data in Python](/modelling/greyhoundModellingPython)
-    - [Modelling the Aus Open](/modelling/howToModelTheAusOpen)
-    - [EPL ML walk through in Python](/modelling/EPLmlPython)
-    - [AFL modelling in Python](/modelling/AFLmodellingPython)
-    - [Brownlow modelling tutorial](/modelling/brownlowModelTutorial)
+We have a series of modelling tutorials created by community members ranging from racing to sports, including [greyhound modelling using form data in Python](/modelling/greyhoundModellingPython), an [AFL tutorial in Python](/modelling/AFLmodellingPython) and [Brownlow modelling tutorial](/modelling/brownlowModelTutorial)
 
 !!! info "Predictive modelling"
     Many of our most successful customers use predictive models as the basis for their betting strategies 
@@ -86,35 +77,18 @@ Whilst the following tools are not custom built for your approach, they do allow
 We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.
 
 - [Bet Angel Professional](/autoTools/betAngel/betAngel)
-    - [Ratings automation](/autoTools/betAngelRatingsAutomation)
-    - [Market fav automation](/autoTools/betAngelMarketFavouriteAutomation) 
-    - [Tipping automation](/autoTools/betAngelTippingAutomation)
-    - [Automating simultaneous markets](/autoTools/betAngelSimultaneousMarkets)
-	- [Kelly criterion staking](/autoTools/betAngelKellyStake)
-
 - [Gruss Betting Assistant](/autoTools/Gruss/Gruss)
-    - [Ratings automation](/autoTools/grussRatingsAutomation)
-    - [Market view and one click betting](autoTools/GrussSettingupbasicmarketview)
-    - [Market fav automation](/autoTools/grussMarketFavouriteAutomation)
-    - [Automating simultaneous markets](/autoTools/grusslSimultaneousMarkets)
-    - [Kelly criterion staking](/autoTools/grussKellyStake)
-
 - [Cymatic Trader](/autoTools/CymaticTrader/CymaticTrader)
-    - [Ratings automation](/autoTools/cymaticTraderRatingsAutomation)
-
 - [Geeks Toy](/autoTools/GeeksToyinstallationandsetup)
-    - [Installation and setup](/autoTools/GeeksToyinstallationandsetup)
-    - [Market view and one click betting](autoTools/GeeksToybasicmarketviewstakingandoneclickbetting)
-    - [Optimising refresh settings](autoTools/geeksToyRefreshSettings)
 
 --- 
 ## Inspiration & information 
 
 There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. 
 
+- [Analytical Meet Up recordings](https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ)
 - [The Banker: A Quant's AFL Betting Strategy](https://www.betfair.com.au/hub/better-betting/customer-insights/the-banker-a-quants-afl-betting-strategy/)
 - [The Mathematician](https://www.betfair.com.au/hub/better-betting/customer-insights/mathematician/)
-- ['Back and Lay'](https://www.reddit.com/r/BackAndLay/) is a subreddit dedicated to discussing trading techniques
 - [Our Twitter community](https://twitter.com/Betfair_Aus) is really active 
 - [Staking Plans and Strategies](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/)
 - [Staking and Money Management](https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/staking-and-money-management/)
@@ -126,4 +100,4 @@ There are a lot of people who use data, models and automation to make a living o
 ---
 ## Need extra help?
 
-If you’re looking for bespoke advice or have extra questions, please contact us at [automation@betfair.com](mailto:automation@betfair.com).au. Our automation team are here to support you in automating your betting strategies.
+If you’re looking for bespoke advice or have extra questions, please contact us at [automation@betfair.com.au](mailto:automation@betfair.com.au). Our automation team are here to support you in automating your betting strategies.

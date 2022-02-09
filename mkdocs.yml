@@ -22,7 +22,7 @@ nav:
             - JSON to CSV in Python: historicData/jsonToCsvTutorial.md
             - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
             - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
-            - Do \#theyknow? Analysing Betfair market formation and market movements: historicData\analysingAndPredictingMarketMovements.ipynb
+            - Do they know? Analysing Betfair market formation and market movements: historicData\analysingAndPredictingMarketMovements.ipynb
         - Historic Data site:
             - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
     - Modelling:
@@ -77,16 +77,14 @@ theme:
     logo: 'img/logo.svg'
     language: 'en'
     palette:
-        -
-            scheme: betfair
+        -   scheme: betfair
             primary: amber
             accent: orange
             media: "(prefers-color-scheme: light)" 
             toggle:
                 icon: material/weather-night
                 name: Switch to dark mode
-        -
-            scheme: slate
+        -   scheme: slate
             primary: amber
             accent: orange
             media: "(prefers-color-scheme: dark)" 
@@ -97,6 +95,7 @@ theme:
         text: 'Roboto'
         code: 'Roboto Mono' 
     features:
+        - toc.integrate
         - navigation.instant
         - navigation.tabs
         - navigation.top

@@ -1,8 +1,6 @@
-
 :root>* {
     --bf-yellow: #ffb80c;
     --bf-black: #1e1e1e;
-
 }
 
 [data-md-color-scheme="betfair"] {
@@ -10,9 +8,6 @@
     --bf-header-fg: var(--bf-yellow);
     --bf-tabs-bg: var(--bf-yellow);
     --bf-tabs-fg: var(--bf-black);
-
-    --bf-footer-fg: var(--md-default-fg-color--light);
-
     --md-primary-fg-color: var(--bf-yellow);
 }
 
@@ -21,13 +16,7 @@
     --bf-header-fg: var(--bf-yellow);
     --bf-tabs-bg: var(--md-footer-bg-color);
     --bf-tabs-fg: var(--bf-yellow);
-
-    --bf-footer-fg: var(--md-default-fg-color--light);
-
-
     --md-primary-fg-color: var(--bf-yellow);
-
-    /* --md-hue: 42;  */
 }
 
 /* Header */
@@ -134,11 +123,16 @@
     color: var(--md-footer-fg-color--lighter);
 }
       
-    
 
-
- 
-  
+/* customize the mknotebooks output */
+.output_wrapper {
+    overflow: scroll;
+    scrollbar-color: var(--md-default-fg-color--lighter) transparent;
+    scrollbar-width: thin;
+}
+.output pre {
+    background-color: var(--md-code-bg-color) !important;
+}
 
 @font-face {
     font-family: "Montserrat";
@@ -148,4 +142,3 @@
             local("montserrat"),
             url("../fonts/montserrat-regular.woff2") format("woff2");
 }
-      

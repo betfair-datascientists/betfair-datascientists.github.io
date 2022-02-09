@@ -1,0 +1,76 @@
+{#-
+    This file was automatically generated - do not edit
+  -#}
+  <footer class="md-footer">
+    {% if page.previous_page or page.next_page %}
+      <nav class="md-footer__inner md-grid" aria-label="{{ lang.t('footer.title') }}">
+        {% if page.previous_page %}
+          {% set direction = lang.t("footer.previous") %}
+          <a href="{{ page.previous_page.url | url }}" class="md-footer__link md-footer__link--prev" aria-label="{{ direction }}: {{ page.previous_page.title | e }}" rel="prev">
+            <div class="md-footer__button md-icon">
+              {% include ".icons/material/arrow-left.svg" %}
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  {{ direction }}
+                </span>
+                {{ page.previous_page.title }}
+              </div>
+            </div>
+          </a>
+        {% endif %}
+        {% if page.next_page %}
+          {% set direction = lang.t("footer.next") %}
+          <a href="{{ page.next_page.url | url }}" class="md-footer__link md-footer__link--next" aria-label="{{ direction }}: {{ page.next_page.title | e }}" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  {{ direction }}
+                </span>
+                {{ page.next_page.title }}
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              {% include ".icons/material/arrow-right.svg" %}
+            </div>
+          </a>
+        {% endif %}
+      </nav>
+    {% endif %}
+    <div class="md-footer-meta md-typeset">
+      <div class="md-footer-meta__inner md-grid">
+        {% include "partials/copyright.html" %}
+        {% if config.extra.social %}
+          {% include "partials/social.html" %}
+        {% endif %}
+      </div>
+
+      <div class="bf-footer">
+          <div class="bf-footer-inner">
+              <p class="bf-light">Betfair Pty Limited is licensed and regulated by the Northern Territory Government of Australia.</p>
+              <p class="bf-dark">Betfair Pty Limited's gambling operations are governed by its <a class='inner-link' href="https://www.betfair.com.au/info/responsible-gambling/">Responsible Gambling Code of Conduct</a> and for South
+              Australian residents by the <a class='inner-link' href="https://www.betfair.com.au/info/pdf/SA-GCoP.pdf">South Australian Responsible Gambling Code of Practice.</a>a<br /> {{ config.extra.rg_footer }} Call Gambling Help 1800 858 858 <a href="https://gamblinghelponline.org.au">www.gamblinghelponline.org.au</a></p>
+          
+              <ul class="bf-links">
+                <li><a href="https://www.betfair.com.au/hub/help/account-help/responsible-gambling/">Responsible Gambling</a><span>|</span></li>
+                <li><a href="http://www.betfair.com/AUS_NZL/aboutUs/Terms.and.Conditions/">Terms & Conditions</a><span>|</span></li>
+                <li><a href="https://www.betfair.com.au/info/privacy-policy/">Privacy Policy</a><span>|</span></li>
+                <li><a href="http://www.betfair.com/en/aboutUs/Rules.and.Regulations/">Rules & Regulations</a><span>|</span></li>
+                <li><a href="https://www.betfair.com/AUS_NZL/aboutUs/Dispute.Resolution">Dispute Resolution</a></li>
+              </ul>
+          </div>
+      </div>
+    </div>
+
+    <script src="https://js.adsrvr.org/up_loader.1.1.0.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        ttd_dom_ready( function() {
+            if (typeof TTDUniversalPixelApi === 'function') {
+                var universalPixelApi = new TTDUniversalPixelApi();
+                universalPixelApi.init("y12d1ir", ["8ml4f17"], "https://insight.adsrvr.org/track/up");
+            }
+        });
+    </script>
+
+</footer>

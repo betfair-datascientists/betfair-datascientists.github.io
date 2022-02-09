@@ -43,7 +43,7 @@ You'll also need to change the `username`, `password` and `app_key` variables to
 
 **`In [206]:`**
 
-``` python
+``` py
 # Import libraries
 import betfairlightweight
 from betfairlightweight import filters

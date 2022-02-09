@@ -1,4 +1,17 @@
+---
+hide:
+  - navigation
+#   - toc
+---
+
+<!-- hide text header for img header -->
+<style> .md-typeset h1 { display: none; } </style>
+    
+# _
+
+<div markdown style='text-align: center;'>
 ![The Automation Hub](/img/automationHubHero.gif)
+</div>
 
 Betfair is one of the only betting platforms in the world that demands winning clients. Unlike bookies, we don’t ban you when you succeed. We need you, and we want you to be able to keep improving your strategies so you win more. 
 

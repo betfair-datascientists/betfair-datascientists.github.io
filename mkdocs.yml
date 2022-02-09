@@ -8,8 +8,7 @@ site_dir: 'docs'
 
 # Navigation
 nav:
-    - Home: 
-        The Automation Hub: index.md  
+    - Home: index.md  
     - API:
         - API resources: api/apiResources.md
         - How to access the Betfair API: api/apiappkey.md
@@ -23,8 +22,8 @@ nav:
             - JSON to CSV in Python: historicData/jsonToCsvTutorial.md
             - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
             - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
-            - Do \#theyknow? Analysing Betfair market formation & market movements: historicData\analysingAndPredictingMarketMovements.ipynb
-            - Wisdom of the crowd? Analysing & understanding BSP: historicData\analysingAndPredictingBSP.ipynb
+            - Do &#35theyknow? Analysing Betfair market formation & market movements: historicData/analysingAndPredictingMarketMovements.ipynb
+            - Wisdom of the crowd? Analysing & understanding BSP: historicData/analysingAndPredictingBSP.ipynb
             
         - Historic Data site:
             - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
@@ -74,70 +73,78 @@ nav:
 
 # Theme settings
 theme:
-    name: null
-    custom_dir: 'theme/material'
+    name: material
+    custom_dir: 'theme'
     favicon: 'img/BetfairFavicon.ico'
     logo: 'img/logo.svg'
-    # custom_dir: 'custom_theme/'
     language: 'en'
     palette:
-        primary: null
-        accent: null
+        -   scheme: betfair
+            primary: amber
+            accent: orange
+            media: "(prefers-color-scheme: light)" 
+            toggle:
+                icon: material/weather-night
+                name: Switch to dark mode
+        -   scheme: slate
+            primary: amber
+            accent: orange
+            media: "(prefers-color-scheme: dark)" 
+            toggle:
+                icon: material/weather-sunny
+                name: Switch to light mode
     font:
         text: 'Roboto'
-        code: 'Roboto Mono'
-    feature:
-        tabs: true
-
-# Social Media links (footer)
-extra:
-  social:
-    - type: 'twitter'
-      link: 'https://twitter.com/Betfair_Aus'
-    - type: 'linkedin'
-      link: 'https://linkedin.com/company/betfair-australia'
-    - type: 'facebook'
-      link: 'https://facebook.com/betfairaustralia'
-    - type: 'youtube'
-      link: 'https://youtube.com/user/betfairaus'
-    - type: 'github'
-      link: 'https://github.com/betfair-datascientists'
+        code: 'Roboto Mono' 
+    features:
+        - toc.integrate
+        - navigation.instant
+        - navigation.tabs
+        - navigation.top
+        - navigation.expand
+        - navigation.sections
+        - search.suggest
+        - search.highlight
+        - search.share
 
 # Extensions
 markdown_extensions:
     - admonition
-    - codehilite:
-        guess_lang: false
-        use_pygments: true
-        noclasses: true
-        # pygments_style: onedark
-    - footnotes
     - meta
-    - toc:
-        permalink: true
-    - pymdownx.arithmatex
-    - pymdownx.betterem:
-        smart_enable: all
-    - pymdownx.caret
-    - pymdownx.critic
-    - pymdownx.details
-    - pymdownx.emoji:
-        emoji_generator: !!python/name:pymdownx.emoji.to_svg
+    - md_in_html
+    - pymdownx.tabbed:
+        alternate_style: true
     - pymdownx.inlinehilite
-    - pymdownx.magiclink
-    - pymdownx.mark
-    - pymdownx.smartsymbols
+    - pymdownx.highlight:
+        anchor_linenums: true
     - pymdownx.superfences
-    - pymdownx.tasklist:
-        custom_checkbox: true
-    - pymdownx.tilde
-    - pymdownx.superfences
-    - pymdownx.tabbed
 
 # plugins
 plugins:
-    - mkdocs-jupyter
+   - search
+   - mknotebooks
+
 # Google Analytics
 google_analytics:
     - 'UA-125973915-1'
     - 'auto'
+
+extra:
+    rg_footer: 'Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly.'
+    generator: false
+    # Social Media links (footer)
+    social:
+        - icon: fontawesome/brands/twitter
+          link: https://twitter.com/Betfair_Aus
+        - icon: fontawesome/brands/linkedin
+          link: https://linkedin.com/company/betfair-australia
+        - icon: fontawesome/brands/facebook
+          link: https://facebook.com/betfairaustralia
+        - icon: fontawesome/brands/youtube
+          link: https://youtube.com/user/betfairaus
+        - icon: fontawesome/brands/github
+          link: https://github.com/betfair-datascientists
+
+# betfair custom theme css file
+extra_css:
+    - assets/stylesheets/betfair.css

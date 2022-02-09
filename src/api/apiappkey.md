@@ -14,16 +14,15 @@ There are four steps involved in getting access to our API
 !!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
     Please [reach out](mailto:api@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
-    
 ---
 ### Find your SSOID token
-The simplest way to setup your browser with the SSOID is to follow [this link](https://identitysso.betfair.com/view/login?product=home.betfair.int&url=https%3A%2F%2Fwww.betfair.com.au%2F) and log in - this will allow for the SSOID to be automatically populated in the next step. 
+The simplest way to setup your browser with the SSOID is to follow <a href="https://identitysso.betfair.com/view/login?product=home.betfair.int&url=https%3A%2F%2Fwww.betfair.com.au%2F" target="_blank">this link</a> and log in - this will allow for the SSOID to be automatically populated in the next step. 
 
 After logging in, you’ll be sent to the main Betfair website. *Note: it may not show that you’re logged in on the site. You can ignore that. Proceed to step two.*
 
 ---
 ### Register your application
-Navigate to the [API-NG accounts visualiser](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/).
+Navigate to the <a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/" target="_blank">API-NG accounts visualiser</a>.
 
 If you’ve followed step 1 correctly, your SSOID token should be automatically populated in the visualiser.
 

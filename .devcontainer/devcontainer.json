@@ -3,16 +3,5 @@
     "build": {
       "dockerfile": "Dockerfile"
     },
-  
-    // Add the IDs of extensions you want installed when the container is created.
-    // "extensions": [
-    //   "dbaeumer.vscode-eslint"
-    // ],
-
-      // Use 'postCreateCommand' to run commands after the container is created.
-    // "postCreateCommand": "pip install --no-cache-dir mkdocs-jupyter",
-  
-    // Use 'forwardPorts' to make a list of ports inside the container available locally.
     "forwardPorts": [ 8000 ],
-
   }

@@ -54,12 +54,11 @@ import datetime
 import json
 
 # Change this certs path to wherever you're storing your certificates
-certs_path = r'C:\Users\[user]\Desktop\certs'
-
-# Change these login details to your own
-my_username = "your_username"
-my_password = "your_password"
-my_app_key = "your_app_key"
+with open('credentials.json') as f:
+    cred = jsonload(f)
+    my_username = cred['username']
+    my_password = cred['password']
+    my_app_key = cred['app_key']
 
 trading = betfairlightweight.APIClient(username=my_username,
                                        password=my_password,

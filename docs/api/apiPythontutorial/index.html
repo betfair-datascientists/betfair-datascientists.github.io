@@ -886,9 +886,70 @@
       
       
 
-  
-  
-  
+  <li class="md-nav__item">
+    <a href="../../historicData/analysingAndPredictingMarketMovements/" title="Do #theyknow? Analysing Betfair market formation &amp; market movements" class="md-nav__link">
+      Do #theyknow? Analysing Betfair market formation &amp; market movements
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/analysingAndPredictingBSP/" title="Wisdom of the crowd? Analysing &amp; understanding BSP" class="md-nav__link">
+      Wisdom of the crowd? Analysing &amp; understanding BSP
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-3" type="checkbox" id="nav-3-3">
+    
+    <label class="md-nav__link" for="nav-3-3">
+      Historic Data site
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-3">
+        Historic Data site
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../historicData/usingHistoricDataSite/" title="Downloading from the Historic Data site" class="md-nav__link">
+      Downloading from the Historic Data site
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
     
     <li class="md-nav__item md-nav__item--nested">
       
@@ -1944,29 +2005,28 @@
 <p>Now we're finally ready to log in and use the API. First, we create an APIClient object and then log in. To log in, we'll need to specify where we put our certs. In this example, I'll put them in a folder named 'certs', on my desktop.</p>
 <p>You'll also need to change the <code>username</code>, <code>password</code> and <code>app_key</code> variables to your own.</p>
 <p><strong><code>In [206]:</code></strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Import libraries</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">betfairlightweight</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">betfairlightweight</span> <span class="kn">import</span> <span class="n">filters</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">import</span> <span class="nn">os</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">import</span> <span class="nn">datetime</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">json</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Change this certs path to wherever you&#39;re storing your certificates</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">certs_path</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;C:\Users\[user]\Desktop\certs&#39;</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Change these login details to your own</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">my_username</span> <span class="o">=</span> <span class="s2">&quot;your_username&quot;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">my_password</span> <span class="o">=</span> <span class="s2">&quot;your_password&quot;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">my_app_key</span> <span class="o">=</span> <span class="s2">&quot;your_app_key&quot;</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">trading</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">APIClient</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">my_username</span><span class="p">,</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>                                       <span class="n">password</span><span class="o">=</span><span class="n">my_password</span><span class="p">,</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>                                       <span class="n">app_key</span><span class="o">=</span><span class="n">my_app_key</span><span class="p">,</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>                                       <span class="n">certs</span><span class="o">=</span><span class="n">certs_path</span><span class="p">)</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">trading</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Import libraries</span>
+<span class="kn">import</span> <span class="nn">betfairlightweight</span>
+<span class="kn">from</span> <span class="nn">betfairlightweight</span> <span class="kn">import</span> <span class="n">filters</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># Change this certs path to wherever you&#39;re storing your certificates</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;credentials.json&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">cred</span> <span class="o">=</span> <span class="n">jsonload</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">my_username</span> <span class="o">=</span> <span class="n">cred</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">my_password</span> <span class="o">=</span> <span class="n">cred</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+    <span class="n">my_app_key</span> <span class="o">=</span> <span class="n">cred</span><span class="p">[</span><span class="s1">&#39;app_key&#39;</span><span class="p">]</span>
+
+<span class="n">trading</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">APIClient</span><span class="p">(</span><span class="n">username</span><span class="o">=</span><span class="n">my_username</span><span class="p">,</span>
+                                       <span class="n">password</span><span class="o">=</span><span class="n">my_password</span><span class="p">,</span>
+                                       <span class="n">app_key</span><span class="o">=</span><span class="n">my_app_key</span><span class="p">,</span>
+                                       <span class="n">certs</span><span class="o">=</span><span class="n">certs_path</span><span class="p">)</span>
+
+<span class="n">trading</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
 </code></pre></div>
 <p><strong><code>Out[206]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&lt;</span><span class="n">LoginResource</span><span class="o">&gt;</span>

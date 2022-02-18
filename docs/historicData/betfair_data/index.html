@@ -12,14 +12,14 @@
         <meta name="author" content="Betfair Data Scientists">
       
       
-        <link rel="canonical" href="https://betfair-datascientists.github.io/historicData/dataSources/">
+        <link rel="canonical" href="https://betfair-datascientists.github.io/historicData/betfair_data/">
       
       <link rel="icon" href="../../img/BetfairFavicon.ico">
       <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.1">
     
     
       
-        <title>Pricing Data Sources - The Automation Hub</title>
+        <title>Betfair data - The Automation Hub</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#historical-data-sources" class="md-skip">
+        <a href="#betfair-data" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +108,7 @@
           <div class="md-header__topic" data-md-component="header-topic">
             <span class="md-ellipsis">
               
-                Pricing Data Sources
+                Betfair data
               
             </span>
           </div>
@@ -240,15 +240,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../dataSources/" class="md-tabs__link">
         Historic Data
       </a>
     </li>
@@ -480,14 +478,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" data-md-state="indeterminate" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -508,99 +504,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Pricing Data Sources
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../dataSources/" class="md-nav__link">
         Pricing Data Sources
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#historical-stream-api-data" class="md-nav__link">
-    Historical Stream API data
-  </a>
-  
-    <nav class="md-nav" aria-label="Historical Stream API data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-you-need-to-know-about-this-data-source" class="md-nav__link">
-    What you need to know about this data source:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#supporting-resources-to-help-you-access-this-data" class="md-nav__link">
-    Supporting resources to help you access this data:
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tutorials-for-working-with-this-data" class="md-nav__link">
-    Tutorials for working with this data
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#historical-racing-data" class="md-nav__link">
-    Historical racing data
-  </a>
-  
-    <nav class="md-nav" aria-label="Historical racing data">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#what-you-need-to-know-about-this-data-source_1" class="md-nav__link">
-    What you need to know about this data source:
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1590,60 +1498,164 @@
                 
 
 
-<h1 id="historical-data-sources">Historical Data Sources</h1>
-<p>We know that your automated strategies and models are only as good as your data. We work hard to make sure you have access to the data you need to allow you to achieve what you're setting out to in your automation and modelling projects. There’s a huge variety of historic pricing data available, and hopefully this page shows you how to access what you're looking for.</p>
-<p>For more information on how to use this data to make your own predictive model, take a look at our <a href="/modelling/howToModel">modelling section</a>. </p>
-<hr />
-<h2 id="historical-stream-api-data"><a href="https://historicdata.betfair.com/#/mydata">Historical Stream API data</a></h2>
-<p>Betfair UK give access to all the historical Stream API data since 2016. It is excellent to use in building models and back testing strategies, however isn't necessarily in an easily accessible format for everyone. </p>
-<h3 id="what-you-need-to-know-about-this-data-source">What you need to know about this data source:</h3>
-<ul>
-<li>JSON format, downloads as TAR files (zipped)</li>
-<li>Australian and overseas racing, plus soccer, tennis, cricket, golf and ‘other sport’ data</li>
-<li>All Exchange markets included since the Stream API was introduced in 2016</li>
-<li>Time-stamped odds and volume data</li>
-<li>Able to filter by Event ID, market type and other parameters </li>
-<li>3 tiers of access:<ul>
-<li>Basic free tier – 1 minute intervals for odds, no volume (free)</li>
-<li>Advanced tier – 1 second intervals for odds, volume included (cost associated)</li>
-<li>Pro tier – 50 millisecond intervals for odds, volume included (cost associated)</li>
-</ul>
-</li>
-<li>Includes a Historic Data API endpoint for download management </li>
-</ul>
-<h3 id="supporting-resources-to-help-you-access-this-data">Supporting resources to help you access this data:</h3>
-<ul>
-<li><a href="/historicData/usingHistoricDataSite">How to download and access the data files</a></li>
-<li><a href="https://historicdata.betfair.com/#/help">Historic Data FAQs &amp; sample data</a></li>
-<li><a href="https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf">Historic Data Specifications</a></li>
-<li><a href="https://historicdata.betfair.com/#/apidocs">API for downloading historic data files</a> (quicker than manually downloading)</li>
-<li><a href="https://github.com/betfair/historicdata">Sample code for using the historic data download API</a></li>
-</ul>
-<h3 id="tutorials-for-working-with-this-data">Tutorials for working with this data</h3>
-<ul>
-<li><a href="/historicData/jsonToCsvTutorial">JSON to CSV in Python</a></li>
-<li><a href="/historicData/backtestingRatingsTutorial">Backtesting ratings using historic data in Python</a></li>
-<li><a href="/historicData/automatedBettingAnglesTutorial">Automated betting angles: no modelling required</a></li>
-</ul>
-<hr />
-<h2 id="historical-racing-data"><a href="https://promo.betfair.com/betfairsp/prices">Historical racing data</a></h2>
-<p>This is an excellent resource if you are interested in racing and like to see market level data in a CSV format.</p>
-<h3 id="what-you-need-to-know-about-this-data-source_1">What you need to know about this data source:</h3>
-<ul>
-<li>CSV format</li>
-<li>Free to download</li>
-<li>All Australian and overseas races, dating back to the beginning of the Exchange</li>
-<li>Available as a single file per day, per country, win or place market</li>
-<li>Market snapshot by runner, including<ul>
-<li>Max and min matched prices and volume, pre-play and in-play</li>
-<li>Weighted average price, pre-play and in-play</li>
-<li>BSP</li>
-<li>Winner</li>
-</ul>
-</li>
-</ul>
-<hr />
-<p>If none of these options suit your needs please contact us at data@betfair.com.au to discuss other potential options.</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="betfair-data">Betfair Data</h1>
+<p>Betfair Data is a very fast Betfair historical data file parsing library for python. It currently supports tar archives containing BZ2 compressed NLJSON files (the standard format provided by <a href="https://historicdata.betfair.com/#/home">Betfair's historic data portal</a>).</p>
+<p>The library is written in Rust and uses advanced performance enhancing techniques, like in place json deserialization and decompressing Bz2 encoded data on worker threads and is ideal for parsing large quantities of historic data that could otherwise take hours or days to parse.</p>
+<h2 id="installation">Installation</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip install betfair_data
+</code></pre></div>
+<p>Note: requires Python &gt;= 3.6.</p>
+<h2 id="example">Example</h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">betfair_data</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">paths</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="s2">&quot;data/2021_12_DecRacingAUPro.tar&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="s2">&quot;data/2021_10_OctRacingAUPro.tar&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="s2">&quot;data/2021_11_NovRacingAUPro.tar&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">]</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">market_count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">update_count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="k">for</span> <span class="n">market</span> <span class="ow">in</span> <span class="n">betfair_data</span><span class="o">.</span><span class="n">TarBz2</span><span class="p">(</span><span class="n">paths</span><span class="p">):</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="n">market_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>    <span class="n">update_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="k">while</span> <span class="n">market</span><span class="o">.</span><span class="n">update</span><span class="p">():</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="n">update_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Markets </span><span class="si">{</span><span class="n">market_count</span><span class="si">}</span><span class="s2"> Updates </span><span class="si">{</span><span class="n">update_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Markets </span><span class="si">{</span><span class="n">market_count</span><span class="si">}</span><span class="s2"> Updates </span><span class="si">{</span><span class="n">update_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="types">Types</h2>
+<p>IDE's should automatically detect the types and provide checking and auto complete. See the <a href="betfair_data.pyi">pyi stub file</a> for a comprehensive view of the types and method available.</p>
+<p><br /></p>
+<h2 id="benchmarks">Benchmarks</h2>
+<table>
+<thead>
+<tr>
+<th>Betfair Data (this)</th>
+<th><a href="https://github.com/liampauling/betfair/">Betfairlightweight</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3m 37sec</td>
+<td>1hour 1min 45sec</td>
+</tr>
+<tr>
+<td>~101 markets/sec</td>
+<td>~6 markets/sec</td>
+</tr>
+<tr>
+<td>~768,000 updates/sec</td>
+<td>~45,500 updates/sec</td>
+</tr>
+</tbody>
+</table>
+<p>Benchmarks were run against 3 months of Australian racing markets comprising roughly 22,000 markets. Benchmarks were run on a M1 Macbook Pro with 32GB ram.</p>
+<p>These results should only be used as a rough comparison, different machines, different sports and even different months can effect the performance and overall markets/updates per second.</p>
+<p>No disrespect is intended towards betfairlightweight, which remains an amazing library and a top choice for working with the Betfair API. Every effort was made to have its benchmark below run as fast as possible, and any improvements are welcome.</p>
+<p><br></p>
+<p>Betfair_Data benchmark show in the example above.</p>
+<details><summary>Betfairlightweight Benchmark</summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Sequence</span> 
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">import</span> <span class="nn">unittest.mock</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">import</span> <span class="nn">tarfile</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">import</span> <span class="nn">bz2</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="kn">import</span> <span class="nn">betfairlightweight</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">trading</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">APIClient</span><span class="p">(</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">,</span> <span class="s2">&quot;appkey&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="n">listener</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">StreamListener</span><span class="p">(</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">max_latency</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">lightweight</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">update_clk</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">output_queue</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cumulative_runner_tv</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">calculate_market_tv</span><span class="o">=</span><span class="kc">True</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">paths</span> <span class="o">=</span> <span class="p">[</span> 
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="s2">&quot;data/2021_10_OctRacingAUPro.tar&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    <span class="s2">&quot;data/2021_11_NovRacingAUPro.tar&quot;</span><span class="p">,</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="s2">&quot;data/2021_12_DecRacingAUPro.tar&quot;</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="p">]</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="k">def</span> <span class="nf">load_tar</span><span class="p">(</span><span class="n">file_paths</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    <span class="k">for</span> <span class="n">file_path</span> <span class="ow">in</span> <span class="n">file_paths</span><span class="p">:</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="k">with</span> <span class="n">tarfile</span><span class="o">.</span><span class="n">TarFile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span> <span class="k">as</span> <span class="n">archive</span><span class="p">:</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">archive</span><span class="p">:</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>                <span class="k">yield</span> <span class="n">bz2</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">archive</span><span class="o">.</span><span class="n">extractfile</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    <span class="k">return</span> <span class="kc">None</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="n">market_count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="n">update_count</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="k">for</span> <span class="n">file_obj</span> <span class="ow">in</span> <span class="n">load_tar</span><span class="p">(</span><span class="n">paths</span><span class="p">):</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>    <span class="k">with</span> <span class="n">unittest</span><span class="o">.</span><span class="n">mock</span><span class="o">.</span><span class="n">patch</span><span class="p">(</span><span class="s2">&quot;builtins.open&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">f</span><span class="p">):</span>  
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>        <span class="n">stream</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">streaming</span><span class="o">.</span><span class="n">create_historical_generator_stream</span><span class="p">(</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>            <span class="n">file_path</span><span class="o">=</span><span class="n">file_obj</span><span class="p">,</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>            <span class="n">listener</span><span class="o">=</span><span class="n">listener</span><span class="p">,</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>        <span class="p">)</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>        <span class="n">gen</span> <span class="o">=</span> <span class="n">stream</span><span class="o">.</span><span class="n">get_generator</span><span class="p">()</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>        <span class="n">market_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>        <span class="k">for</span> <span class="n">market_books</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">():</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>            <span class="k">for</span> <span class="n">market_book</span> <span class="ow">in</span> <span class="n">market_books</span><span class="p">:</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>                <span class="n">update_count</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Markets </span><span class="si">{</span><span class="n">market_count</span><span class="si">}</span><span class="s2"> Updates </span><span class="si">{</span><span class="n">update_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\r</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Markets </span><span class="si">{</span><span class="n">market_count</span><span class="si">}</span><span class="s2"> Updates </span><span class="si">{</span><span class="n">update_count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p><br>
+<br></p>
+<h2 id="logging">Logging</h2>
+<p>Logging can be enabled and warnings are emitted for IO and JSON errors</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span> <span class="nn">logging</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">WARN</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(levelname)s</span><span class="s1"> </span><span class="si">%(name)s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+</code></pre></div>
+Example logged errors</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>WARNING betfair_data source: data/2021_10_OctRacingAUPro.tar file: PRO/2021/Oct/4/30970292/1.188542184.bz2 err: (JSON Parse Error) expected value at line 1480 column 1
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>WARNING betfair_data source: data/2021_10_OctRacingAUPro.tar file: PRO/2021/Oct/8/30985584/1.188739324.bz2 err: (JSON Parse Error) expected `:` at line 1 column 909
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>WARNING betfair_data source: data/2021_10_OctRacingAUPro.tar file: PRO/2021/Oct/8/30985584/1.188739325.bz2 err: (JSON Parse Error) expected `:` at line 1 column 904
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>WARNING betfair_data source: data/2021_10_OctRacingAUPro.tar file: PRO/2021/Oct/15/31001342/1.189124831.bz2 err: (JSON Parse Error) expected value at line 1335 column 1
+</code></pre></div>
+</div>
+</div>
+</div>
 
               
             </article>
@@ -1658,41 +1670,6 @@
       </main>
       
         <footer class="md-footer">
-    
-      <nav class="md-footer__inner md-grid" aria-label="Footer">
-        
-          
-          <a href="../../api/GoldenRulesofAutomation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Golden rules of automation" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Golden rules of automation
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../jsonToCsvTutorial/" class="md-footer__link md-footer__link--next" aria-label="Next: JSON to CSV in Python" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                JSON to CSV in Python
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
     <div class="md-footer-meta md-typeset">
       <div class="md-footer-meta__inner md-grid">

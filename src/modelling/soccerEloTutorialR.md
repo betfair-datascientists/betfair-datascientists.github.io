@@ -18,7 +18,7 @@ This tutorial aims to serve as guide of how to build a basic soccer Elo model wi
 To follow along with this tutorial you will need two things:
 
 1. This code is written in R, and hence you will need to have [R](https://www.r-project.org) and [RStudio](https://www.rstudio.com) running on your system if you wish to follow along.
-2. You will also need the historical data set provided for Betfair's 2021 Euro & Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021 you can [register for the Datathon here](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/), or alternatively if you are reading this tutorial after the Datathon has concluded, please reach out to [datathon@betfair.com.au](datathon@betfair.com.au) for data access. In the meantime, [click here for a sample of the data](assets/datathon_initial_form_data - SAMPLE.csv) which will be enough to allow the code to run effectively.
+2. You will also need the historical data set provided for Betfair's 2021 Euro & Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021 you can [register for the Datathon here](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/), or alternatively if you are reading this tutorial after the Datathon has concluded, please reach out to [datathon@betfair.com.au](mailto:datathon@betfair.com.au) for data access. In the meantime, [click here for a sample of the data](assets/datathon_initial_form_data - SAMPLE.csv) which will be enough to allow the code to run effectively.
 
 !!! note "Betfair Datathon"
     If you're interested in competing in the 2021 Euro & Copa America Datathon competition make sure you [head to the Hub](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/), register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. 
@@ -240,7 +240,7 @@ Some things that you might want to consider adding to this Elo model:
 
 Remember, an Elo model can be as complex or as simple as you want it to be - in some cases it might be better to keep it basic!
 
-We hope you've found this tutorial useful - if you have any questions regarding predictive data modelling please reach out to [automation@betfair.com.au](automation@betfair.com.au).
+We hope you've found this tutorial useful - if you have any questions regarding predictive data modelling please reach out to [automation@betfair.com.au](mailto:automation@betfair.com.au).
 
 Good luck in the [Datathon](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/)!
 

@@ -20,13 +20,12 @@ nav:
         - Pricing Data Sources: historicData/dataSources.md
         - Tutorials:
             - JSON to CSV in Python: historicData/jsonToCsvTutorial.md
+            - JSON to CSV | Revisited: historicData/jsonToCsvRevisited/index.md
             - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
             - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
             - Do &#35theyknow? Analysing Betfair market formation & market movements: historicData/analysingAndPredictingMarketMovements.ipynb
             - Wisdom of the crowd? Analysing & understanding BSP: historicData/analysingAndPredictingBSP.ipynb
-            
-        - Historic Data site:
-            - Downloading from the Historic Data site: historicData/usingHistoricDataSite.md
+
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
         - Racing:

@@ -1,0 +1,168 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="220"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style type="text/css">
+    .func_g:hover { stroke:black; stroke-width:0.5; cursor:pointer; }
+</style>
+<svg class="func_g" x="0.0" y="192" width="1198.9999991570517" height="23"><g>
+    <title>~:0:&lt;built-in method builtins.exec&gt; 100.00% (1 72 6.2329e-05 651.997417209)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method builtins.exec&gt;</text>
+</g></svg>
+<svg class="func_g" x="0.16726061788181226" y="168" width="1198.8326238227646" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:1:&lt;module&gt; 99.99% (1 1 1.2573001186844504 651.9064769708864)</title>
+    <rect height="100%" width="100%" fill="rgb(71, 230, 126)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;module&gt;</text>
+</g></svg>
+<svg class="func_g" x="0.2302944023684089" y="144" width="817.6421511441206" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:28:load_markets 68.22% (22001 22001 0.09594080687178959 444.79380711610384)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">load_markets</text>
+</g></svg>
+<svg class="func_g" x="0.2302944023684089" y="120" width="8.961258364063896" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/bz2.py:97:close 0.83% (22000 22000 0.14353349299683055 5.412262275069555)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">close</text>
+</g></svg>
+<svg class="func_g" x="0.24043806131618997" y="96" width="8.686941585822925" height="23"><g>
+    <title>~:0:&lt;method 'close' of '_io.BufferedReader' objects&gt; 0.81% (22000 22000 0.035080329518665826 5.263217415873018)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'close' of '_io.BufferedReader' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="0.24043806131618997" y="72" width="8.622376306449535" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/_compression.py:59:close 0.80% (22000 22000 5.2221998155656095 5.228137086354352)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">close</text>
+</g></svg>
+<svg class="func_g" x="10.19993288893631" y="120" width="799.5014462086347" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/bz2.py:157:read 66.71% (22000 22000 0.01465725940616926 434.937396472274)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">read</text>
+</g></svg>
+<svg class="func_g" x="10.2515664258879" y="96" width="799.422836013784" height="23"><g>
+    <title>~:0:&lt;method 'read' of '_io.BufferedReader' objects&gt; 66.70% (22000 22000 0.48707848367049045 434.89468510223656)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'read' of '_io.BufferedReader' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="10.2515664258879" y="72" width="794.4406998745736" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/_compression.py:113:readall 66.29% (21888 21888 0.08179752768139117 432.1877351878777)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">readall</text>
+</g></svg>
+<svg class="func_g" x="10.2515664258879" y="48" width="789.1435563157152" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/_compression.py:72:read 65.85% (80326 80326 0.32143471646191 429.3096319200551)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">read</text>
+</g></svg>
+<svg class="func_g" x="10.262985337692268" y="24" width="784.0078961564379" height="23"><g>
+    <title>~:0:&lt;method 'decompress' of '_bz2.BZ2Decompressor' objects&gt; 65.42% (411544 411544 426.5192676185017 426.5192676185017)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'decompress' of '_bz2.BZ2Decompressor' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="795.2708814941302" y="24" width="3.5326412667022" height="23"><g>
+    <title>~:0:&lt;method 'read' of '_io.BufferedReader' objects&gt; 0.38% (433432 433432 0.24285390356224232 2.462725334250595)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'read' of '_io.BufferedReader' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="795.2708814941302" y="0" width="3.0647908958204857" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/_compression.py:113:readall 0.34% (112 112 0.0004179945103039995 2.208527639526074)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">readall</text>
+</g></svg>
+<svg class="func_g" x="800.4013271150031" y="48" width="4.140390992232607" height="23"><g>
+    <title>~:0:&lt;method 'join' of 'bytes' objects&gt; 0.43% (21888 21888 2.7929347106119735 2.7929347106119735)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'join' of 'bytes' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="805.6922663004615" y="72" width="3.085669121754944" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/tarfile.py:695:readinto 0.34% (455318 455318 0.2994290021372566 2.219871430688353)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">readinto</text>
+</g></svg>
+<svg class="func_g" x="805.6922663004615" y="48" width="2.429258306578541" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/tarfile.py:664:read 0.29% (455318 455318 0.478741596815532 1.863222967001932)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">read</text>
+</g></svg>
+<svg class="func_g" x="805.9499747645823" y="24" width="1.0865450639682388" height="23"><g>
+    <title>~:0:&lt;method 'read' of '_io.BufferedReader' objects&gt; 0.17% (411544 411544 1.1336849946275975 1.1336849946275975)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'read' of '_io.BufferedReader' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="811.1852762782366" y="120" width="6.463981348123875" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/tarfile.py:2098:extractfile 0.62% (22000 22000 0.06402753656864314 4.05541380374285)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">extractfile</text>
+</g></svg>
+<svg class="func_g" x="811.4805608956374" y="96" width="6.018633748261966" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/tarfile.py:1786:getmember 0.58% (22000 22000 0.014128536159676516 3.813442566181049)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">getmember</text>
+</g></svg>
+<svg class="func_g" x="811.4805608956374" y="72" width="5.99263020448678" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/tarfile.py:2373:_getmember 0.58% (22000 22000 3.1187575142974344 3.7993140300213724)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_getmember</text>
+</g></svg>
+<svg class="func_g" x="811.4805608956374" y="48" width="1" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/tarfile.py:1797:getmembers 0.10% (22000 22000 0.008861752842223932 0.6805565157239379)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">getmembers</text>
+</g></svg>
+<svg class="func_g" x="811.4805608956374" y="24" width="1" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/tarfile.py:2396:_load 0.10% (3 3 0.0028890549953279514 0.6691317014123767)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_load</text>
+</g></svg>
+<svg class="func_g" x="811.4805608956374" y="0" width="1" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/tarfile.py:2310:next 0.10% (22000 22000 0.023850702979660132 0.6662426464170487)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">next</text>
+</g></svg>
+<svg class="func_g" x="818.872445546489" y="144" width="357.4961153854859" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:122:get_pre_post_final 29.87% (22000 22000 194.68632094088483 194.78211789582306)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">get_pre_post_final</text>
+</g></svg>
+<svg class="func_g" x="1178.1317250334737" y="144" width="17.725844464470732" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:205:&lt;listcomp&gt; 1.56% (4397 4397 0.048165891166608146 10.17433519539067)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="1178.1317250334737" y="120" width="17.63719523391588" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:178:runner_vals 1.55% (49617 49617 0.2815591842967291 10.126169304224062)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">runner_vals</text>
+</g></svg>
+<svg class="func_g" x="1178.3475289114344" y="96" width="3.0672276054636445" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:67:parse_traded 0.34% (99234 99234 0.04583975364789681 2.2098515798551936)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">parse_traded</text>
+</g></svg>
+<svg class="func_g" x="1178.3475289114344" y="72" width="2.9611283916008024" height="23"><g>
+    <title>~:0:&lt;built-in method _functools.reduce&gt; 0.33% (84602 84602 0.2412763638033479 2.1522045686426337)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method _functools.reduce&gt;</text>
+</g></svg>
+<svg class="func_g" x="1178.3475289114344" y="48" width="2.5170597055620907" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:72:&lt;lambda&gt; 0.29% (2902518 2902518 1.4059540400175325 1.9109282048392857)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;lambda&gt;</text>
+</g></svg>
+<svg class="func_g" x="1182.8447553148114" y="96" width="12.405955812479096" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:181:&lt;listcomp&gt; 1.12% (49617 49617 1.4162826956329964 7.283873809245232)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="1182.9248253142653" y="72" width="9.719220220942312" height="23"><g>
+    <title>~:0:&lt;built-in method builtins.next&gt; 0.89% (2533428 2533428 0.20197055940026376 5.8240865862152305)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method builtins.next&gt;</text>
+</g></svg>
+<svg class="func_g" x="1183.047327359478" y="48" width="9.224991747506005" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_pysrc.py:184:&lt;genexpr&gt; 0.85% (2503435 2503435 5.555556845866918 5.555556845866918)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;genexpr&gt;</text>
+</g></svg>
+</svg>

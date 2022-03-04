@@ -1,0 +1,63 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="180"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style type="text/css">
+    .func_g:hover { stroke:black; stroke-width:0.5; cursor:pointer; }
+</style>
+<svg class="func_g" x="0.0" y="144" width="1198.9999996832607" height="23"><g>
+    <title>~:0:&lt;built-in method builtins.exec&gt; 100.00% (1 72 5.9328000000000005e-05 314.454326875)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method builtins.exec&gt;</text>
+</g></svg>
+<svg class="func_g" x="0.33011477382414306" y="120" width="1198.66965850581" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_rustsrc.py:1:&lt;module&gt; 99.97% (1 1 104.31531227391096 314.36776253114846)</title>
+    <rect height="100%" width="100%" fill="rgb(99, 206, 42)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;module&gt;</text>
+</g></svg>
+<svg class="func_g" x="0.4553922741604101" y="96" width="757.1636560447106" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_rustsrc.py:97:get_pre_post_final 63.18% (21997 21997 198.61845449996684 198.67320182129671)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">get_pre_post_final</text>
+</g></svg>
+<svg class="func_g" x="760.1938252665238" y="96" width="39.107875428406174" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_rustsrc.py:180:&lt;listcomp&gt; 3.34% (4397 4397 0.04983781016334094 10.510079144628973)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="760.1938252665238" y="72" width="38.91768764255326" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_rustsrc.py:153:runner_vals 3.33% (49610 49610 0.29116438891104046 10.460241334465632)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">runner_vals</text>
+</g></svg>
+<svg class="func_g" x="760.6544305592068" y="48" width="7.691760355212539" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_rustsrc.py:42:parse_traded 0.72% (99221 99221 0.04809824515241418 2.277634710482155)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">parse_traded</text>
+</g></svg>
+<svg class="func_g" x="760.6544305592068" y="24" width="7.466695912757615" height="23"><g>
+    <title>~:0:&lt;built-in method _functools.reduce&gt; 0.71% (84596 84596 0.2495005923240661 2.2186576373368707)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method _functools.reduce&gt;</text>
+</g></svg>
+<svg class="func_g" x="760.6544305592068" y="0" width="6.514568099204365" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_rustsrc.py:47:&lt;lambda&gt; 0.63% (2902314 2902314 1.4465130046417636 1.9691570450128046)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;lambda&gt;</text>
+</g></svg>
+<svg class="func_g" x="770.2706330323507" y="48" width="27.72975741238235" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_rustsrc.py:156:&lt;listcomp&gt; 2.39% (49610 49610 1.4575872564767196 7.528497108981085)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="770.4397263184154" y="24" width="21.998315136902217" height="23"><g>
+    <title>~:0:&lt;built-in method builtins.next&gt; 1.92% (2533084 2533084 0.20760956972317843 6.026599756285475)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method builtins.next&gt;</text>
+</g></svg>
+<svg class="func_g" x="770.6917718194055" y="0" width="20.95400359817669" height="23"><g>
+    <title>py_src/json2csv/json2csv_bflw_rustsrc.py:159:&lt;genexpr&gt; 1.83% (2504332 2504332 5.7529428545818 5.7529428545818)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;genexpr&gt;</text>
+</g></svg>
+</svg>

@@ -6,10 +6,10 @@ In this tutorial we're going to step through the process of using the Python `be
 
 The idea of this tutorial is to share a way of using existing libraries to make working with the JSON data sets easier, and hopefully the provide a foundation that you can build your own code base and data sets from. We'll be focusing on horse racing data; what we want to produce is a csv output that includes one row per runner for each market we're interested in, along with summary pre-play and in-play data for the runner. We'll step through the issues we encountered and how we went about solving the various challenges, including sharing relevant code snips along the way. 
 
-We're not Python natives and acknowledge that there are probably more efficient and neater ways of achieving the same end goal! As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/blob/531830e6eb2b430aee8d0d271aa97fe4dcef54fb/jsonToCsv/main.py) if you catch some bugs or have other improvements! 
+We're not Python natives and acknowledge that there are probably more efficient and neater ways of achieving the same end goal! As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py) if you catch some bugs or have other improvements! 
 
 !!! note "Cheat sheet"
-    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/historicData/csvTutorialMarketSummary/#sample-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/531830e6eb2b430aee8d0d271aa97fe4dcef54fb/jsonToCsv/main.py).
+    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/historicData/csvTutorialMarketSummary/#sample-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py).
 
     - To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using [VS code](https://code.visualstudio.com/download)), make sure you've navigated in the terminal to the folder you've saved the script in and then type `py main.py` (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. 
 
@@ -19,7 +19,7 @@ We're not Python natives and acknowledge that there are probably more efficient 
 
     - We're using the [`betfairlightweight`](https://github.com/liampauling/betfair/tree/master/betfairlightweight) package to do the heavy lifting
 
-    - We've also posted the completed code logic on the [`betfair-downunder` Github repo](https://github.com/betfair-down-under/autoHubTutorials/blob/531830e6eb2b430aee8d0d271aa97fe4dcef54fb/jsonToCsv/main.py).
+    - We've also posted the completed code logic on the [`betfair-downunder` Github repo](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py).
 
 ---
 ### Setting up your environment
@@ -461,11 +461,11 @@ We're planning on writing some more tutorials to help make it easier to work wit
 
 Run the code from your ide by using `py <filename>.py`, making sure you amend the path to point to your input data. Please note: the script will take some time before it starts outputting to the output.csv file, so let it run for a few minutes before getting worried that it's not working! You'll also see errors logged to the out file or terminal screen depending on your set up. 
 
-[Download from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/531830e6eb2b430aee8d0d271aa97fe4dcef54fb/jsonToCsv/main.py)
+[Download from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py)
 
 ``` Python
 import logging
-from typing import List, Set, Dict, Tuple, Optional
+from typing import List, Tuple
 
 from unittest.mock import patch
 from itertools import zip_longest
@@ -481,17 +481,33 @@ import glob
 import betfairlightweight
 from betfairlightweight.resources.bettingresources import (
     PriceSize,
-    MarketBook
+    MarketBook 
 )
 
-# the path directories to the data sets
-# accepts tar files, zipped files or 
-# directory with bz2 file(s)
+file_output = "output_bflw.csv"
+
 market_paths = [
-    '../_data/2020_12_DecRacingPro.zip',
-    '../_data/PRO',
-    '../_data/2021_01_JanRacingPro.tar'
+    "data/2021_10_OctRacingAUPro.tar",
+    "data/2021_11_NovRacingAUPro.tar",
+    "data/2021_12_DecRacingAUPro.tar",
 ]
+
+# setup logging
+logging.basicConfig(level=logging.FATAL)
+
+# create trading instance (don't need username/password)
+trading = betfairlightweight.APIClient("username", "password", "appkey")
+
+# create listener
+listener = betfairlightweight.StreamListener(
+    max_latency=None,   # ignore latency errors
+    output_queue=None,  # use generator rather than a queue (faster)
+    lightweight=False,  # lightweight mode is faster
+    update_clk=False,   # do not update clk on updates (not required when backtesting)
+
+    cumulative_runner_tv=True, 
+    calculate_market_tv=True
+)
 
 # loading from tar and extracting files
 def load_markets(file_paths: List[str]):
@@ -513,7 +529,6 @@ def load_markets(file_paths: List[str]):
                 with zipfile.ZipFile(file_path) as archive:
                     for file in archive.namelist():
                         yield bz2.open(archive.open(file))
-        
     return None
 
 # rounding to 2 decimal places or returning '' if blank
@@ -526,14 +541,14 @@ def min_gr0(a: float, b: float) -> float:
         return b
     if b <= 0:
         return a
-    
+
     return min(a, b)
 
 # parsing price data and pulling out weighted avg price, matched, min price and max price
-def parse_traded(traded: List[PriceSize]) -> (float, float, float, float):
+def parse_traded(traded: List[PriceSize]) -> Tuple[float, float, float, float]:
     if len(traded) == 0: 
         return (None, None, None, None)
-     
+
     (wavg_sum, matched, min_price, max_price) = functools.reduce(
         lambda total, ps: (
             total[0] + (ps.price * ps.size), # wavg_sum before we divide by total matched
@@ -553,7 +568,7 @@ def parse_traded(traded: List[PriceSize]) -> (float, float, float, float):
     return (wavg_sum, matched, min_price, max_price)
 
 # splitting race name and returning the parts 
-def split_anz_horse_market_name(market_name: str) -> (str, str, str):
+def split_anz_horse_market_name(market_name: str) -> Tuple[str, str, str]:
     # return race no, length, race type
     # input samples: 
     # 'R6 1400m Grp1' -> ('R6','1400m','grp1')
@@ -569,25 +584,19 @@ def split_anz_horse_market_name(market_name: str) -> (str, str, str):
 # filtering markets to those that fit the following criteria
 def filter_market(market: MarketBook) -> bool: 
     d = market.market_definition
-    return (d.country_code == 'AU' 
+    return (d != None
+        and d.country_code == 'AU' 
         and d.market_type == 'WIN' 
         and (c := split_anz_horse_market_name(d.name)[2]) != 'trot' and c != 'pace')
 
-# setup logging
-logging.basicConfig(level=logging.FATAL)
-
-# create trading instance (don't need username/password)
-trading = betfairlightweight.APIClient("username", "password")
-
-# create listener
-listener = betfairlightweight.StreamListener(max_latency=None)
-
 # record prices to a file
-with open("output.csv", "w") as output:
+with open(file_output, "w") as output:
     # defining column headers
     output.write("market_id,event_date,country,track,market_name,selection_id,selection_name,result,bsp,pp_min,pp_max,pp_wap,pp_ltp,pp_volume,ip_min,ip_max,ip_wap,ip_ltp,ip_volume\n")
 
-    for file_obj in load_markets(market_paths):
+    for i, file_obj in enumerate(load_markets(market_paths)):
+        print("Market {}".format(i), end='\r')
+
         stream = trading.streaming.create_historical_generator_stream(
             file_path=file_obj,
             listener=listener,
@@ -601,31 +610,30 @@ with open("output.csv", "w") as output:
                 postplay_market = None       
 
                 gen = stream.get_generator()
-                
+
                 for market_books in gen():
                     for market_book in market_books:
                         # if market doesn't meet filter return out
                         if eval_market is None and ((eval_market := filter_market(market_book)) == False):
                             return (None, None, None)
-                        
+
                         # final market view before market goes in play
                         if prev_market is not None and prev_market.inplay != market_book.inplay:
                             preplay_market = prev_market
-                        
+
                         # final market view at the conclusion of the market
                         if prev_market is not None and prev_market.status == "OPEN" and market_book.status != prev_market.status:
                             postplay_market = market_book
-                        
+
                         # update reference to previous market
                         prev_market = market_book
-                
+
                 return (preplay_market, postplay_market, prev_market) # prev is now final
-            
+
         (preplay_market, postplay_market, final_market) = get_pre_post_final(stream)
 
         # no price data for market
         if postplay_market is None:
-            print('market has no price data')
             continue; 
 
         preplay_traded = [ (r.last_price_traded, r.ex.traded_volume) for r in preplay_market.runners ] if preplay_market is not None else None
@@ -636,9 +644,9 @@ with open("output.csv", "w") as output:
             min_gr0(
                 next((pv.size for pv in r.sp.back_stake_taken if pv.size > 0), 0),
                 next((pv.size for pv in r.sp.lay_liability_taken if pv.size > 0), 0)  / ((r.sp.actual_sp if (type(r.sp.actual_sp) is float) or (type(r.sp.actual_sp) is int) else 0) - 1)
-            )
+            ) if r.sp.actual_sp is not None else 0,
         ) for r in postplay_market.runners ]
-        
+
         # generic runner data
         runner_data = [
             {
@@ -680,7 +688,7 @@ with open("output.csv", "w") as output:
                 }
 
             runner_traded = [ runner_vals(r) for r in zip_longest(preplay_traded, postplay_traded, fillvalue=PriceSize(0, 0)) ]
-        
+
         # runner price data for markets that don't go in play
         else:
             def runner_vals(r):
@@ -699,7 +707,7 @@ with open("output.csv", "w") as output:
                     'inplay_wavg': '',
                     'inplay_matched': '',
                 }
-            
+
             runner_traded = [ runner_vals(r) for r in postplay_traded ]
 
         # printing to csv for each runner

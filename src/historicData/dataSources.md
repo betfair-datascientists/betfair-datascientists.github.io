@@ -24,15 +24,14 @@ Betfair UK give access to all the historical Stream API data since 2016. It is e
 
 ### Supporting resources to help you access this data:
 
-- [How to download and access the data files](/historicData/usingHistoricDataSite)
 - [Historic Data FAQs & sample data](https://historicdata.betfair.com/#/help)
 - [Historic Data Specifications](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf)
-- [API for downloading historic data files](https://historicdata.betfair.com/#/apidocs) (quicker than manually downloading)
 - [Sample code for using the historic data download API](https://github.com/betfair/historicdata)
 
 ### Tutorials for working with this data
 
 - [JSON to CSV in Python](/historicData/jsonToCsvTutorial)
+- [JSON to CSV | Revisited](/historicData/jsonToCsvRevisited) - where we make it 30 times faster
 - [Backtesting ratings using historic data in Python](/historicData/backtestingRatingsTutorial)
 - [Automated betting angles: no modelling required](/historicData/automatedBettingAnglesTutorial)
 

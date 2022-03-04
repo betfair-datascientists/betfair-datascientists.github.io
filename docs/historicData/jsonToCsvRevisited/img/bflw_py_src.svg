@@ -1,0 +1,358 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" width="1200" height="340"
+     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<style type="text/css">
+    .func_g:hover { stroke:black; stroke-width:0.5; cursor:pointer; }
+</style>
+<svg class="func_g" x="0.0" y="312" width="1198.9999999884851" height="23"><g>
+    <title>~:0:&lt;built-in method builtins.exec&gt; 100.00% (1 219 0.000206137 4376.874716083)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method builtins.exec&gt;</text>
+</g></svg>
+<svg class="func_g" x="0.12215339108662825" y="288" width="1198.877790081182" height="23"><g>
+    <title>json2csv_bflw.py:1:&lt;module&gt; 99.99% (1 1 0.47495673581034836 4376.42896820522)</title>
+    <rect height="100%" width="100%" fill="rgb(44, 255, 210)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;module&gt;</text>
+</g></svg>
+<svg class="func_g" x="0.46792447177907914" y="264" width="1197.6757292132038" height="23"><g>
+    <title>json2csv_bflw.py:136:get_pre_post_final 99.89% (9689 9689 167.00456054699885 4372.044576688307)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">get_pre_post_final</text>
+</g></svg>
+<svg class="func_g" x="0.46859241546614705" y="240" width="1151.8250625667167" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/betfairstream.py:348:_read_loop 96.07% (31681777 31681777 24.17766796744632 4204.809057052902)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_read_loop</text>
+</g></svg>
+<svg class="func_g" x="0.6985098817380252" y="216" width="50.65338611919347" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/bz2.py:186:readline 4.30% (31674155 31674155 13.355170039140006 188.40033308944993)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">readline</text>
+</g></svg>
+<svg class="func_g" x="0.6985098817380252" y="192" width="5.388525591896234" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/_compression.py:16:_check_can_read 0.53% (31674155 31674155 6.279930172924535 23.3014801137401)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_check_can_read</text>
+</g></svg>
+<svg class="func_g" x="0.6985098817380252" y="168" width="3.6667682430404156" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/bz2.py:135:readable 0.39% (31674155 31674155 7.0695433954111735 17.021549940815568)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">readable</text>
+</g></svg>
+<svg class="func_g" x="0.6985098817380252" y="144" width="1.7285240334816585" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/_compression.py:12:_check_not_closed 0.23% (31674155 31674155 6.975773808010694 9.952006545404394)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_check_not_closed</text>
+</g></svg>
+<svg class="func_g" x="7.527415359504496" y="192" width="40.16291729168676" height="23"><g>
+    <title>~:0:&lt;method 'readline' of '_io.BufferedReader' objects&gt; 3.43% (31674155 31674155 6.0713239198430315 150.13744327994027)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'readline' of '_io.BufferedReader' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="7.527415359504496" y="168" width="38.498353150298264" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/_compression.py:66:readinto 3.29% (944459 944459 1.4750126163373716 144.06611936009725)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">readinto</text>
+</g></svg>
+<svg class="func_g" x="7.527415359504496" y="144" width="37.96815381437258" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/_compression.py:72:read 3.25% (944459 944459 1.0437727578851854 142.13227263683106)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">read</text>
+</g></svg>
+<svg class="func_g" x="7.546397447801783" y="120" width="37.1406889203412" height="23"><g>
+    <title>~:0:&lt;method 'decompress' of '_bz2.BZ2Decompressor' objects&gt; 3.18% (1062034 1062034 139.11418082585857 139.11418082585857)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'decompress' of '_bz2.BZ2Decompressor' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="52.41072962563257" y="216" width="111.80418375353834" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/listener.py:42:snap 9.40% (31672090 31672090 10.091378028170592 411.4414831199837)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">snap</text>
+</g></svg>
+<svg class="func_g" x="52.41072962563257" y="192" width="109.03744848711843" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/stream.py:97:snap 9.17% (31672090 31672090 16.107575873702498 401.3501050918131)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">snap</text>
+</g></svg>
+<svg class="func_g" x="52.41072962563257" y="168" width="104.02204305797349" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/stream.py:98:&lt;listcomp&gt; 8.75% (31672090 31672090 13.801236680457944 383.05693741352934)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="52.41072962563257" y="144" width="100.23818240609448" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:358:create_resource 8.44% (31672088 31672088 75.73045626012022 369.2557007330714)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">create_resource</text>
+</g></svg>
+<svg class="func_g" x="52.41072962563257" y="120" width="61.69661270561676" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:564:__init__ 5.22% (31672088 31672088 150.57867576362574 228.67934911491284)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="52.41072962563257" y="96" width="5.095697075026575" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/baseresource.py:11:__init__ 0.51% (31672088 31672088 15.590073490242155 22.23341867070077)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="52.41072962563257" y="72" width="1" height="23"><g>
+    <title>~:0:&lt;built-in method utcnow&gt; 0.12% (31607939 31607939 5.0435225153151295 5.0435225153151295)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method utcnow&gt;</text>
+</g></svg>
+<svg class="func_g" x="58.50642670065914" y="96" width="5.421595376234667" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/baseresource.py:21:strip_datetime 0.54% (31657349 31657349 13.880635132584153 23.422098699522266)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">strip_datetime</text>
+</g></svg>
+<svg class="func_g" x="58.51705122280277" y="72" width="1" height="23"><g>
+    <title>~:0:&lt;built-in method builtins.isinstance&gt; 0.11% (63085836 63085836 4.660649230356169 4.660649230356169)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method builtins.isinstance&gt;</text>
+</g></svg>
+<svg class="func_g" x="59.79485317948726" y="72" width="1" height="23"><g>
+    <title>~:0:&lt;built-in method utcfromtimestamp&gt; 0.11% (31516879 31516879 4.84206250129747 4.84206250129747)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method utcfromtimestamp&gt;</text>
+</g></svg>
+<svg class="func_g" x="65.71163418536325" y="96" width="5.259248395107316" height="23"><g>
+    <title>~:0:&lt;method 'get' of 'dict' objects&gt; 0.52% (665113851 665113851 22.829955035409327 22.829955035409327)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'get' of 'dict' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="71.97088258047059" y="96" width="1" height="23"><g>
+    <title>~:0:&lt;method 'pop' of 'dict' objects&gt; 0.15% (126688353 126688353 6.757057591646962 6.757057591646962)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'pop' of 'dict' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="115.10734233124934" y="120" width="2.2448140498863762" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:374:&lt;listcomp&gt; 0.27% (31672088 31672088 11.835120477895703 11.835120477895703)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="118.35215638113571" y="120" width="12.936611632430818" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:385:serialise 1.16% (31672088 31672088 38.22930860781486 50.832335902033336)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">serialise</text>
+</g></svg>
+<svg class="func_g" x="118.35215638113571" y="96" width="2.455349703601216" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:408:&lt;listcomp&gt; 0.29% (31672088 31672088 12.603027294218478 12.603027294218478)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="165.21491337917092" y="216" width="980.3466564913036" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/listener.py:118:on_data 81.78% (31672090 31672090 30.055914979516363 3579.3594737921603)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">on_data</text>
+</g></svg>
+<svg class="func_g" x="165.2149225283296" y="192" width="954.6921752228968" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/listener.py:179:_on_change_message 79.64% (31672088 31672088 14.32598096431783 3485.787431776333)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_on_change_message</text>
+</g></svg>
+<svg class="func_g" x="165.2149225283296" y="168" width="950.3675240531329" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/stream.py:60:on_update 79.28% (31672088 31672088 13.43135085998769 3470.0137181421665)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">on_update</text>
+</g></svg>
+<svg class="func_g" x="165.2149225283296" y="144" width="946.685074342474" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/stream.py:148:_process 78.97% (31672088 31672088 32.64465811241657 3456.582367282179)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_process</text>
+</g></svg>
+<svg class="func_g" x="165.2509262225736" y="120" width="935.2267634089883" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:232:update_cache 78.02% (31672088 31672088 100.68083637745752 3414.789374436952)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">update_cache</text>
+</g></svg>
+<svg class="func_g" x="165.2509262225736" y="96" width="83.29872806078951" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:45:update 7.02% (87378196 87378196 86.98440877300845 307.4708095423055)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">update</text>
+</g></svg>
+<svg class="func_g" x="165.2509262225736" y="72" width="35.76140119997928" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:80:serialise 3.06% (91559343 91559343 34.44806019305793 134.08337286793045)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">serialise</text>
+</g></svg>
+<svg class="func_g" x="165.2509262225736" y="48" width="24.605272059440846" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:81:&lt;listcomp&gt; 2.13% (91559343 91559343 93.39255656372377 93.39255656372377)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="190.85619828201447" y="48" width="1" height="23"><g>
+    <title>~:0:&lt;method 'values' of 'dict' objects&gt; 0.14% (91559343 91559343 6.242756111148756 6.242756111148756)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'values' of 'dict' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="202.01232742255291" y="72" width="19.19250961624401" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:87:_sort_order_book 1.68% (18424534 18424534 37.05182225492371 73.6500706620411)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_sort_order_book</text>
+</g></svg>
+<svg class="func_g" x="202.01232742255291" y="48" width="8.734069018279696" height="23"><g>
+    <title>~:0:&lt;built-in method builtins.sorted&gt; 0.81% (18424534 18424534 35.50400047593675 35.50400047593675)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method builtins.sorted&gt;</text>
+</g></svg>
+<svg class="func_g" x="222.2048370387969" y="72" width="1" height="23"><g>
+    <title>~:0:&lt;method 'append' of 'list' objects&gt; 0.13% (113069965 113069965 5.799852607381409 5.799852607381409)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'append' of 'list' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="223.7949723705707" y="72" width="1" height="23"><g>
+    <title>~:0:&lt;method 'copy' of 'list' objects&gt; 0.16% (136532627 136532627 6.953104631944107 6.953104631944107)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'copy' of 'list' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="249.5496542833631" y="96" width="4.981236856586028" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:145:update_traded 0.50% (7495730 7495730 1.7871172239270905 21.815936973955296)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">update_traded</text>
+</g></svg>
+<svg class="func_g" x="249.5496542833631" y="72" width="4.491266087989036" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:45:update 0.46% (7495730 7495730 7.232164900121213 20.028819750028205)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">update</text>
+</g></svg>
+<svg class="func_g" x="249.5496542833631" y="48" width="1.1335690605576723" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:80:serialise 0.18% (5313948 5313948 1.9993066919380151 7.781970396884537)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">serialise</text>
+</g></svg>
+<svg class="func_g" x="249.5496542833631" y="24" width="1" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:81:&lt;listcomp&gt; 0.12% (5313948 5313948 5.420344781930012 5.420344781930012)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="255.53089113994918" y="96" width="782.7207169239255" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:170:serialise 65.31% (97391385 97391385 158.66945724111895 2858.539492006406)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">serialise</text>
+</g></svg>
+<svg class="func_g" x="255.53089113994918" y="72" width="734.41465798377" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:481:__init__ 61.28% (97760776 97760776 106.19994667496171 2682.3481853307308)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="255.53089113994918" y="48" width="85.16358706695164" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:348:__init__ 7.18% (97760776 97760776 55.82862678903539 314.27268806997967)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="255.53089113994918" y="24" width="37.335062613459414" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:359:&lt;listcomp&gt; 3.19% (97760776 97760776 110.22020249669154 139.82313857826603)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="255.53089113994918" y="0" width="7.116184629872066" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:331:__init__ 0.68% (446818872 446818872 29.602936081574484 29.602936081574484)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="293.8659537534086" y="24" width="31.522088584988552" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:360:&lt;listcomp&gt; 2.71% (97760776 97760776 95.72441153822437 118.62092270267821)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="293.8659537534086" y="0" width="5.277495971296594" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:331:__init__ 0.52% (390887365 390887365 22.89651116445384 22.89651116445384)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="341.6944782069008" y="48" width="619.1344193616692" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:370:__init__ 51.68% (97760776 97760776 64.48945197414221 2261.8755505857894)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="341.6944782069008" y="24" width="269.60422588070253" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:376:&lt;listcomp&gt; 22.55% (97760776 97760776 776.921794901545 987.0006619448542)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="341.6944782069008" y="0" width="56.5969514327701" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:331:__init__ 4.80% (3660408799 3660408799 210.07886704330917 210.07886704330917)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="612.2987040876034" y="24" width="215.15046201569479" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:377:&lt;listcomp&gt; 18.01% (97760776 97760776 623.7380546462704 788.3862433960263)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 165, 95)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="612.2987040876034" y="0" width="44.141302713510086" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:331:__init__ 3.76% (2914145977 2914145977 164.64818874975595 164.64818874975595)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="828.4491661032981" y="24" width="114.69877247326208" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:378:&lt;listcomp&gt; 9.64% (97760776 97760776 337.7547060890545 421.99919327076657)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="828.4491661032981" y="0" width="22.09716205620709" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:331:__init__ 1.92% (1494891479 1494891479 84.24448718171209 84.24448718171209)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="990.9455491237192" y="72" width="1.4782146859803609" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:151:serialise_available_to_back 0.21% (97760776 97760776 9.03902933349758 9.03902933349758)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 115, 64)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">serialise_available_to_back</text>
+</g></svg>
+<svg class="func_g" x="993.4237638096995" y="72" width="1.3257197844316537" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:161:serialise_available_to_lay 0.19% (97760776 97760776 8.482820101058824 8.482820101058824)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">serialise_available_to_lay</text>
+</g></svg>
+<svg class="func_g" x="1039.2516080638748" y="96" width="1" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:263:&lt;listcomp&gt; 0.13% (7495730 7495730 5.776004858615511 5.776004858615511)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;listcomp&gt;</text>
+</g></svg>
+<svg class="func_g" x="1040.8352051005463" y="96" width="2.569115658691835" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:312:_process_market_definition 0.30% (54945 54945 0.8167494506134602 13.017976737878428)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_process_market_definition</text>
+</g></svg>
+<svg class="func_g" x="1041.124242009932" y="72" width="1.0886541563526153" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:170:serialise 0.17% (619170 619170 0.7200027094413977 7.618147973057627)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 140, 79)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">serialise</text>
+</g></svg>
+<svg class="func_g" x="1041.124242009932" y="48" width="1" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:481:__init__ 0.16% (249778 249778 0.2713399718204844 6.853377085470465)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="1041.344389251232" y="24" width="1" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/resources/bettingresources.py:370:__init__ 0.13% (249778 249778 0.16477000817089665 5.779073035091163)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 240, 141)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">__init__</text>
+</g></svg>
+<svg class="func_g" x="1045.526128833182" y="96" width="23.71657609488289" height="23"><g>
+    <title>~:0:&lt;built-in method builtins.sum&gt; 2.06% (12017398 12017398 37.1612321883009 90.15113081572707)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;built-in method builtins.sum&gt;</text>
+</g></svg>
+<svg class="func_g" x="1045.526128833182" y="72" width="13.528146788996507" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/cache.py:293:&lt;genexpr&gt; 1.21% (857349459 857349459 52.98989862742617 52.98989862742617)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;genexpr&gt;</text>
+</g></svg>
+<svg class="func_g" x="1070.2427049280645" y="96" width="2.6314978575421963" height="23"><g>
+    <title>~:0:&lt;method 'get' of 'dict' objects&gt; 0.30% (194782769 194782769 13.245509295282119 13.245509295282119)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 90, 49)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;method 'get' of 'dict' objects&gt;</text>
+</g></svg>
+<svg class="func_g" x="1120.9070977512265" y="192" width="1.2566485575286843" height="23"><g>
+    <title>/Users/r/.pyenv/versions/3.10.1/lib/python3.10/site-packages/betfairlightweight/streaming/listener.py:196:_error_handler 0.19% (31672088 31672088 6.822595850458548 8.230890012189375)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 190, 110)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">_error_handler</text>
+</g></svg>
+<svg class="func_g" x="1123.9870106999529" y="192" width="13.334182117337312" height="23"><g>
+    <title>~:0:&lt;orjson.loads&gt; 1.19% (31672090 31672090 52.28243273808732 52.28243273808732)</title>
+    <rect height="100%" width="100%" fill="rgb(255, 215, 125)" rx="2" ry="2" />
+    <text alignment-baseline="central" x="4.0" y="12.0" font-size="12px" fill="rgb(0,0,0)">&lt;orjson.loads&gt;</text>
+</g></svg>
+</svg>

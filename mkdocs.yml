@@ -124,9 +124,10 @@ plugins:
    - mknotebooks
 
 # Google Analytics
-google_analytics:
-    - 'UA-125973915-1'
-    - 'auto'
+extra: 
+    analytics:
+        provider: google
+        property: 'UA-125973915-1'
 
 extra:
     rg_footer: 'Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly.'

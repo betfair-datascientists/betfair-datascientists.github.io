@@ -1,4 +1,5 @@
 # JSON to CSV | Revisited
+---
 
 !!! note "Before you start"
 
@@ -7,6 +8,15 @@
 So we're nearly a year on from our original [JSON to CSV tutorial](../jsonToCsvTutorial.md), and while it was generally well received a very common (and fair!) complaint was how long it took the script to run. Many people said that it could take all day, or they had to leave their PC on over night to finish, which obviously makes the data processing and back testing process a lot less accessible, which was the whole point of the original article. So we're circling back around to see what we can do to decrease the running time and to make working with larger samples of data less of an all day affair. 
 
 You might want to stick around, because the final results are really something. 
+
+!!! note "Cheat sheet"
+    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/historicData/jsonToCsvRevisited/#completed-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master/jsonToCsvRevisited).
+
+    - To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using [VS code](https://code.visualstudio.com/download)), make sure you've navigated in the terminal to the folder you've saved the script in and then type `py main.py` (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. 
+
+    - Make sure you amend your data path to point to your data file. We'll be taking in an input of a historical tar file downloaded from the [Betfair historic data site](https://historicdata.betfair.com/#/help). We're using a PRO version, though the code should work on ADVANCED too. This approach won't work with the BASIC data tier. 
+
+    - We're using the  [`betfair_data`](https://github.com/tarb/betfair_data) package to do the heavy lifting; it's a Python library with a Rust backend, which makes it incredibly fast (spoiler alert!)
 
 ---
 ## Let's get a baseline
@@ -272,7 +282,7 @@ Loading up the profiler, we can see that our flamegraph has gotten pretty bare. 
 
 ---
 ## Validating our results
-All of this effort measuring speed, and we haven't actually stopped to look at our output! Getting an answer quickly is only useful if we actually get the right answer, so let's run some copmarisons between our original output and the output of the new library.
+All of this effort measuring speed, and we haven't actually stopped to look at our output! Getting an answer quickly is only useful if we actually get the right answer, so let's run some comarisons between our original output and the output of the new library.
 
 All of the outputted CSV files are ```52,483``` lines long, which is definitely a good start. We do need to go deeper though to make sure the values in every row are the same - we have essentially rewritten all the complex data handling logic so small differences in the output are to be expected.
 

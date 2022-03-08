@@ -1566,12 +1566,30 @@
                 
 
 <h1 id="json-to-csv-revisited">JSON to CSV | Revisited</h1>
+<hr />
 <div class="admonition note">
 <p class="admonition-title">Before you start</p>
 <p>This tutorial follows on from our <a href="../jsonToCsvTutorial/">previous JSON to CSV tutorial</a> where we stepped through how to work with the historic recordings of Betfair's price data. You should make sure you read that first before continuing here! </p>
 </div>
 <p>So we're nearly a year on from our original <a href="../jsonToCsvTutorial/">JSON to CSV tutorial</a>, and while it was generally well received a very common (and fair!) complaint was how long it took the script to run. Many people said that it could take all day, or they had to leave their PC on over night to finish, which obviously makes the data processing and back testing process a lot less accessible, which was the whole point of the original article. So we're circling back around to see what we can do to decrease the running time and to make working with larger samples of data less of an all day affair. </p>
 <p>You might want to stick around, because the final results are really something. </p>
+<div class="admonition note">
+<p class="admonition-title">Cheat sheet</p>
+<ul>
+<li>
+<p>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvRevisited/#completed-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/tree/master/jsonToCsvRevisited">download the script from Github</a>.</p>
+</li>
+<li>
+<p>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </p>
+</li>
+<li>
+<p>Make sure you amend your data path to point to your data file. We'll be taking in an input of a historical tar file downloaded from the <a href="https://historicdata.betfair.com/#/help">Betfair historic data site</a>. We're using a PRO version, though the code should work on ADVANCED too. This approach won't work with the BASIC data tier. </p>
+</li>
+<li>
+<p>We're using the  <a href="https://github.com/tarb/betfair_data"><code>betfair_data</code></a> package to do the heavy lifting; it's a Python library with a Rust backend, which makes it incredibly fast (spoiler alert!)</p>
+</li>
+</ul>
+</div>
 <hr />
 <h2 id="lets-get-a-baseline">Let's get a baseline</h2>
 <p>So how slow are we talking? Let's pick some data and run our script as it is from our last tutorial and see how long it takes. We'll be using 3 months worth of PRO Australian Racing data, from October to December 2021, as the basis for this benchmark and our other tests going forward.</p>
@@ -1770,7 +1788,7 @@
 </div>
 <hr />
 <h2 id="validating-our-results">Validating our results</h2>
-<p>All of this effort measuring speed, and we haven't actually stopped to look at our output! Getting an answer quickly is only useful if we actually get the right answer, so let's run some copmarisons between our original output and the output of the new library.</p>
+<p>All of this effort measuring speed, and we haven't actually stopped to look at our output! Getting an answer quickly is only useful if we actually get the right answer, so let's run some comarisons between our original output and the output of the new library.</p>
 <p>All of the outputted CSV files are <code>52,483</code> lines long, which is definitely a good start. We do need to go deeper though to make sure the values in every row are the same - we have essentially rewritten all the complex data handling logic so small differences in the output are to be expected.</p>
 <p>Luckily as CSV files are just plain text we can check the outputs of each line using <code>diff</code>:</p>
 <div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="go">diff output_bfd.csv output_bflw.csv  </span>

@@ -1574,6 +1574,10 @@
 
 <h1 id="json-to-csv-tutorial-making-a-market-summary">JSON to CSV tutorial: making a market summary</h1>
 <hr />
+<div class="admonition note">
+<p class="admonition-title">Before you start</p>
+<p>This tutorial was original shared in 2021. Since then a new library has been created that allows you to run the same logic included here with about a 97% reduction in run time, which makes a significant difference in usability. To learn about these changes and how to implement them to speed up your code take a look at our <a href="../jsonToCsvRevisited">JSON to CSV revisited article</a>.</p>
+</div>
 <p>The historic pricing data available on the <a href="https://historicdata.betfair.com/#/home">Betfair Historic Data site</a> is an excellent resource, including almost every market offered on the Exchange back to 2016. We do appreciate though that the JSON format of the data sets can make it challenging to find value in the data, especially if you're not confident in working with large data sets. </p>
 <p>In this tutorial we're going to step through the process of using the Python <code>betfairlightweight</code> library to take in a compressed tar folder, process the historic JSON files, and convert the data into a simple csv output, including basic market summary data for each runner split into pre play and in play values. We're also going to include a filter function, to allow us to filter out markets we're not interested in. </p>
 <p>The idea of this tutorial is to share a way of using existing libraries to make working with the JSON data sets easier, and hopefully the provide a foundation that you can build your own code base and data sets from. We'll be focusing on horse racing data; what we want to produce is a csv output that includes one row per runner for each market we're interested in, along with summary pre-play and in-play data for the runner. We'll step through the issues we encountered and how we went about solving the various challenges, including sharing relevant code snips along the way. </p>

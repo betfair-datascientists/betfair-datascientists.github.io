@@ -1,5 +1,10 @@
 # JSON to CSV tutorial: making a market summary
 ---
+
+!!! note "Before you start"
+
+    This tutorial was original shared in 2021. Since then a new library has been created that allows you to run the same logic included here with about a 97% reduction in run time, which makes a significant difference in usability. To learn about these changes and how to implement them to speed up your code take a look at our [JSON to CSV revisited article](../jsonToCsvRevisited).
+
 The historic pricing data available on the [Betfair Historic Data site](https://historicdata.betfair.com/#/home) is an excellent resource, including almost every market offered on the Exchange back to 2016. We do appreciate though that the JSON format of the data sets can make it challenging to find value in the data, especially if you're not confident in working with large data sets. 
 
 In this tutorial we're going to step through the process of using the Python `betfairlightweight` library to take in a compressed tar folder, process the historic JSON files, and convert the data into a simple csv output, including basic market summary data for each runner split into pre play and in play values. We're also going to include a filter function, to allow us to filter out markets we're not interested in. 

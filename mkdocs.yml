@@ -123,11 +123,8 @@ plugins:
    - search
    - mknotebooks
 
-# Google Analytics
-extra: 
-    analytics:
-        provider: google
-        property: 'UA-125973915-1'
+
+  
 
 extra:
     rg_footer: 'Think! About your choices. Stay in control. Leave before you lose it. Gamble responsibly.'
@@ -144,6 +141,10 @@ extra:
           link: https://youtube.com/user/betfairaus
         - icon: fontawesome/brands/github
           link: https://github.com/betfair-datascientists
+    # Google Analytics
+    analytics:
+        provider: google
+        property: UA-125973915-1
 
 # betfair custom theme css file
 extra_css:

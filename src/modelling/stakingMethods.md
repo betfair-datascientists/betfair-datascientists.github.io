@@ -39,11 +39,11 @@ What we’re most interested in seeing is how likely it is that the staking syst
 
 |**Staking method**|**Description**|
 | :- | :- |
-|1. Fixed Staking|<p>Fixed staking is probably the most simplistic betting system where we bet the same $ amount on every bet no matter what happens to our bankroll in the future</p><p></p><p>*Stake = x 	where x is some fixed $ amount*</p><p></p>|
-|2a. Proportional Staking - % of bankroll|<p>Proportional staking defines the bet stake size based on a percentage of your current bank. As your bank increases, the absolute value of your stakes increase and vice versa for when your bank decreases.</p><p></p><p>*Stake = Bh 	where 		B is the current bank size*</p><p>`				`*h is some chosen fixed %*</p><p></p>|
-|2b. Proportional Staking - bet to win certain amount|<p>A variant of proportional staking, where for each bet we stake an amount such that if we win, the winning amount is a set % of our bankroll</p><p></p><p>*Stake = Bk / (o-1) 	where 	B is the current bank size*</p><p>`				`*k is some chosen fixed %*</p><p>`                                                                 `*o is the odds in decimal form*</p><p></p><p></p><p></p>|
+|1. Fixed Staking|<p>Fixed staking is probably the most simplistic betting system where we bet the same $ amount on every bet no matter what happens to our bankroll in the future</p><p></p><p>*Stake = x <br><br>where x is some fixed $ amount*</p><p></p>|
+|2a. Proportional Staking - % of bankroll|<p>Proportional staking defines the bet stake size based on a percentage of your current bank. As your bank increases, the absolute value of your stakes increase and vice versa for when your bank decreases.</p><p></p><p>*Stake = Bh <br><br>where B is the current bank size</p><p>h is some chosen fixed %*</p><p></p>|
+|2b. Proportional Staking - bet to win certain amount|<p>A variant of proportional staking, where for each bet we stake an amount such that if we win, the winning amount is a set % of our bankroll</p><p></p><p>*Stake = Bk / (o-1) <br><br>where B is the current bank size</p><p>k is some chosen fixed %</p><p>o is the odds in decimal form*</p><p></p><p></p><p></p>|
 |<p>3. Martingale Staking</p><p></p>|<p>The Martingale betting system is a progressive betting system whereby after every loss, we stake an amount that will recoup all previous consecutive losses and win the original desired amount. After every win, the betting stakes are reset to the initial desired win amount.</p><p></p>|
-|<p>4. Kelly Staking</p><p></p>|<p>Kelly staking or some variant is probably the most popular staking method amongst serious bettors. The Kelly staking formula determines bet size based on the odds of the bet and the assumed edge.</p><p></p><p>*Stake = B[(o-1)p - (1-p)] / (o-1) 	where 	B is the current bank size*</p><p>`			`*k is some chosen fixed %*</p><p>`                                                   `*o is the odds in decimal form*</p><p></p>|
+|<p>4. Kelly Staking</p><p></p>|<p>Kelly staking or some variant is probably the most popular staking method amongst serious bettors. The Kelly staking formula determines bet size based on the odds of the bet and the assumed edge.</p><p></p><p>*Stake = B[(o-1)p - (1-p)] / (o-1) <br><br>where B is the current bank size</p><p>k is some chosen fixed %</p><p>o is the odds in decimal form*</p><p></p>|
 
 
 ### Pros/Cons
@@ -384,6 +384,7 @@ numbetsSuccess = np.median([i[1] for i in simStore if i[0] == 'Objective Achieve
 numbetsRuined = np.median([i[1] for i in simStore if i[0] == 'Ruined'])
 
 ```
+
 ---
 ### Disclaimer 
 

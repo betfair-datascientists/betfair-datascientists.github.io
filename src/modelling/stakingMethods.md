@@ -1,4 +1,11 @@
 ﻿# Staking Methods and Bankroll Management
+---
+### Workshop
+
+<iframe width="950" height="534" src="https://www.youtube.com/embed/zRvCj-GXflI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+---
+This tutorial was written by Jason and was [originally published on Github](https://github.com/betfair-down-under/autoHubTutorials/blob/master/stakingMethodsAndBankrollManagement/stakingFunctions.py). It is shared here with his permission. 
 
 To be a successful bettor in the long run, you not only need a winning model, but you also need to have a good staking system. In this article, we’ll go over the basics of staking and analyse some of the more popular staking strategies, outlining their pros and cons.
 

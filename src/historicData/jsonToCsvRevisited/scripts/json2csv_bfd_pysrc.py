@@ -12,7 +12,7 @@ import glob
 from betfair_data import PriceSize
 from betfair_data import bflw
 
-file_output = "output_bfd_py_source.csv"
+file_output = "output_py_source.csv"
 
 market_paths = [
     "data/2021_10_OctRacingAUPro.tar",
@@ -30,22 +30,22 @@ def load_markets(file_paths: List[str]):
             for path in glob.iglob(file_path + '**/**/*.bz2', recursive=True):
                 with bz2.BZ2File(path, 'rb') as f:
                     bytes = f.read()
-                    yield (path, bytes) 
+                    yield bflw.File(path, bytes)
         elif os.path.isfile(file_path):
             ext = os.path.splitext(file_path)[1]
             # iterate through a tar archive
             if ext == '.tar':
                 with tarfile.TarFile(file_path) as archive:
                     for file in archive:
-                        file = file.name
+                        name = file.name
                         bytes = bz2.open(archive.extractfile(file)).read()
-                        yield (file, bytes)
+                        yield bflw.File(name, bytes)
             # or a zip archive
             elif ext == '.zip':
                 with zipfile.ZipFile(file_path) as archive:
-                    for file in archive.namelist():
-                        bytes = bz2.open(archive.open(file)).read()
-                        yield (file, bytes)
+                    for name in archive.namelist():
+                        bytes = bz2.open(archive.open(name)).read()
+                        yield bflw.File(name, bytes)
     return None
 
 # rounding to 2 decimal places or returning '' if blank
@@ -111,7 +111,7 @@ with open(file_output, "w") as output:
     # defining column headers
     output.write("market_id,event_date,country,track,market_name,selection_id,selection_name,result,bsp,pp_min,pp_max,pp_wap,pp_ltp,pp_volume,ip_min,ip_max,ip_wap,ip_ltp,ip_volume\n")
 
-    for i, (file, bytes) in enumerate(load_markets(market_paths)):
+    for i, file in enumerate(load_markets(market_paths)):
         print("Market {}".format(i), end='\r')
 
         def get_pre_post_final():
@@ -120,7 +120,7 @@ with open(file_output, "w") as output:
             preplay_market = None
             postplay_market = None       
 
-            for market_books in bflw.BflwIter(file, bytes):
+            for market_books in file:
                 for market_book in market_books:
                     # if market doesn't meet filter return out
                     if eval_market is None and ((eval_market := filter_market(market_book)) == False):

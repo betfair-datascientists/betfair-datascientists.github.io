@@ -30,8 +30,6 @@ The third factor that influences your staking that most people overlook is the i
 
 ## Common staking systems
 
-The following simulation is based on artificial parameters set by Betfair to illustrate the effects of different staking strategies. Of course, gambling is not a reasonable strategy for financial betterment.
-
 Here, we’ll go through some of the more common staking systems. However, rather than just describing each of the staking systems, we’ll attempt to understand the risk/reward profile of each by simulating each staking system 10,000 times based on the following parameters:
 
 - Starting bank of $1,000
@@ -64,6 +62,8 @@ What we’re most interested in seeing is how likely it is that the staking syst
 |<p>6. Kelly Staking</p><p></p>|<p>- Theoretically, it gives the “best” balance of risk vs reward</p><p>- Varies bet size based on assumed edge</p><p></p>|<p>- Variance is high, bank can be very erratic</p><p>- Kelly assumes full knowledge of what our edge is. Given we will never know this with certainty, it may lead us to stake too much on low or negative edge bets.</p><p></p>|
 
 ### Simulation results
+
+The following simulation is based on artificial parameters set by Betfair to illustrate the effects of different staking strategies. Of course, gambling is not a reasonable strategy for financial betterment.
 
 |**Staking method**|**Simulation results**|
 | :- | :- |

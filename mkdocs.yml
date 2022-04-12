@@ -28,6 +28,7 @@ nav:
 
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
+        - Staking Methods and Bankroll Management: modelling/stakingMethods.md
         - Racing:
             - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
             - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb

@@ -386,26 +386,26 @@ def process_runner_books(runner_books):
     :return:
     '''
     best_back_prices = [runner_book.ex.available_to_back[0].price
-                        if runner_book.ex.available_to_back[0].price
-                        else 1.01
-                        for runner_book
-                        in runner_books]
+        if runner_book.ex.available_to_back.price
+        else 1.01
+        for runner_book
+        in runner_books]
     best_back_sizes = [runner_book.ex.available_to_back[0].size
-                       if runner_book.ex.available_to_back[0].size
-                       else 1.01
-                       for runner_book
-                       in runner_books]
+        if runner_book.ex.available_to_back.size
+        else 1.01
+        for runner_book
+        in runner_books]
 
     best_lay_prices = [runner_book.ex.available_to_lay[0].price
-                       if runner_book.ex.available_to_lay[0].price
-                       else 1000.0
-                       for runner_book
-                       in runner_books]
+        if runner_book.ex.available_to_lay.price
+        else 1000.0
+        for runner_book
+        in runner_books]
     best_lay_sizes = [runner_book.ex.available_to_lay[0].size
-                      if runner_book.ex.available_to_lay[0].size
-                      else 1.01
-                      for runner_book
-                      in runner_books]
+        if runner_book.ex.available_to_lay.size
+        else 1.01
+        for runner_book
+        in runner_books]
     
     selection_ids = [runner_book.selection_id for runner_book in runner_books]
     last_prices_traded = [runner_book.last_price_traded for runner_book in runner_books]

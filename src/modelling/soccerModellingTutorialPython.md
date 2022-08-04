@@ -1,5 +1,5 @@
 # How to model the 2021 Euro & Copa America: Python Tutorial
-
+This tutorial was written as part of the 2021 Euro & Copa America Datathon competition
 ## The Task
 
 This notebook will outline how to train a simple classification model to predict the outcome of a soccer match using the dataset provided for the datathon.

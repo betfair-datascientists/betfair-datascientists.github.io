@@ -1,5 +1,5 @@
 # Using an Elo approach to model soccer in R
-
+This tutorial was written as part of the 2021 Euro & Copa America Datathon competition
 ## Elo modelling
 
 [Elo modelling](https://en.wikipedia.org/wiki/Elo_rating_system) is a commonly-used approach towards creating rating systems in sport. Originally devised by Arpad Elo for ranking chess players, the popularity of Elo modelling has grown massively since its first official use in the 1960s to the point where it is now widely used to model just about every professional sporting code across the globe.

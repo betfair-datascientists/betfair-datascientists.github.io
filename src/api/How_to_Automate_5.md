@@ -84,7 +84,13 @@ framework = FlumineSimulation(client=client)
 
 and instead of pointing it to markets you want to run your strategy on, you point it to your historic data files instead (as it is quite slow I would also suggest only replaying a subsection of the historic files, you can change that with the listner_kwargs), then just run it as you would any other strategy in Flumine:
 
-```py title="Pointing the simulation to the historical files" hl_lines="7 9"
+```py title="Pointing the simulation to the historical files" hl_lines="12 14"
+
+# Searches for all betfair data files within the folder sample_monthly_data_output
+data_folder = 'sample_monthly_data_output'
+data_files = os.listdir(data_folder,)
+data_files = [f'{data_folder}/{path}' for path in data_files]
+
 strategy = BackFavStrategy(
     # market_filter selects what portion of the historic data we simulate our strategy on
     # markets selects the list of betfair historic data files

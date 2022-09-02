@@ -11,3 +11,7 @@ The most successful punters out there are already focused on their mental game. 
 We are not talking about psychobabble or sitting in your feelings here. I am focused on driving performance and my proven Mental Game system uses practical, logical strategies that deliver results when you do the work. I’ll use this article series to teach you the basics of the system and equip you to improve your mental game. Invest the time and you won’t be sorry. 
 
 For the last 17 years I’ve been coaching world champion poker players, PGA Tour players, financial traders and punters from around the world. My job is simply to help them be more successful, more consistent and perform at their highest levels. I’m able to do that not because I’m an elite poker player, trader or punter, but because I am an expert in how mental game impacts performance. I’ve also written three highly acclaimed books, The Mental Game of Poker 1 & 2 and my newest book, The Mental Game of Trading. Find out more about my work at: [https://jaredtendler.com/](https://jaredtendler.com/) 
+
+---
+
+[Part I](../roleOfEmotions) - Role of Emotions

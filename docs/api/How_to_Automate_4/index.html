@@ -1529,7 +1529,21 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For this tutorial we will be automating the model that Bruno taught us how to make in the <a href="https://betfair-datascientists.github.io/modelling/greyhoundModellingPython/">Greyhound Modelling Tutorial</a>. This tutorial also follows on logically from <a href="../How_to_Automate_3">How to Automate III</a>. So, if you haven't already, make sure you take a look at those before continuing here!</p>
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For this tutorial we will be automating the model that Bruno taught us how to make in the <a href="https://betfair-datascientists.github.io/modelling/greyhoundModellingPython/">Greyhound Modelling Tutorial</a>. This tutorial follows on logically from <a href="../How_to_Automate_3">How to Automate III</a>. If you haven't already, make sure you take a look at the <a href="../How_to_Automate_1">rest of the series</a> first those before continuing here as they cover some key concepts!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 </div>
 </div>
 </div>
@@ -1577,6 +1591,13 @@
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 </div>
 </div>
 </div>
@@ -2813,6 +2834,13 @@ End Date: 2022-07-30
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="cleaning-our-data-and-feature-creation">Cleaning our data and feature creation</h2>
 </div>
 </div>
@@ -3110,134 +3138,20 @@ End Date: 2022-07-30
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The second thing that we need to add is related to reserve dogs, and this took me ages to come to this solution, but if you have a better one, please submit a pull request.</p>
-<p>Basically, a single greyhound can be a reserve dog for multiple races on the same day. They each appear as a new row in our data frame. For example, 'COACH BEARD' is a reserve dog for three different races today (2022-07-04):</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">dog_results</span><span class="p">[</span><span class="n">dog_results</span><span class="p">[</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">592253143</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()[[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">,</span><span class="s1">&#39;Place&#39;</span><span class="p">,</span><span class="s1">&#39;DogName&#39;</span><span class="p">,</span><span class="s1">&#39;RaceNum&#39;</span><span class="p">,</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span><span class="s1">&#39;Distance&#39;</span><span class="p">,</span><span class="s1">&#39;win&#39;</span><span class="p">,</span><span class="s1">&#39;Prizemoney_norm&#39;</span><span class="p">,</span><span class="s1">&#39;Place_inv&#39;</span><span class="p">,</span><span class="s1">&#39;Place_log&#39;</span><span class="p">]]</span>
-</code></pre></div>
-
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_html rendered_html output_subarea output_execute_result">
-<div>
-<style scoped="scoped">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-<thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date_dt</th>
-      <th>Place</th>
-      <th>DogName</th>
-      <th>RaceNum</th>
-      <th>Track</th>
-      <th>Distance</th>
-      <th>win</th>
-      <th>Prizemoney_norm</th>
-      <th>Place_inv</th>
-      <th>Place_log</th>
-    </tr>
-  </thead>
-<tbody>
-    <tr>
-      <th>616959</th>
-      <td>2022-05-04</td>
-      <td>1.0</td>
-      <td>COACH BEARD</td>
-      <td>3</td>
-      <td>Bendigo</td>
-      <td>425</td>
-      <td>1</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>0.301030</td>
-    </tr>
-    <tr>
-      <th>627625</th>
-      <td>2022-05-16</td>
-      <td>2.0</td>
-      <td>COACH BEARD</td>
-      <td>5</td>
-      <td>Shepparton</td>
-      <td>450</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>0.5</td>
-      <td>0.477121</td>
-    </tr>
-    <tr>
-      <th>654587</th>
-      <td>2022-07-04</td>
-      <td>0.0</td>
-      <td>COACH BEARD</td>
-      <td>8</td>
-      <td>Ballarat</td>
-      <td>450</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>inf</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>654588</th>
-      <td>2022-07-04</td>
-      <td>0.0</td>
-      <td>COACH BEARD</td>
-      <td>8</td>
-      <td>Ballarat</td>
-      <td>450</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>inf</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>654589</th>
-      <td>2022-07-04</td>
-      <td>0.0</td>
-      <td>COACH BEARD</td>
-      <td>8</td>
-      <td>Ballarat</td>
-      <td>450</td>
-      <td>0</td>
-      <td>0.0</td>
-      <td>inf</td>
-      <td>0.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-</div>
+<p>Basically, a single greyhound can be a reserve dog for multiple races on the same day. They each appear as a new row in our data frame. For example, 'MACI REID' is a reserve dog for three different races on the 2022-09-02:</p>
+<p><img alt="reserve_dogs_example" src="../hta_img/reserve_dogs_example.png" /></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When we try lag our data by using <code>.shift(1)</code> like in Bruno's original code it will produce the wrong values for our features. In the above example only the first race today (2022-06-07) Townsville Race 4 (the second row) will have correct data but all the rows under it will have incorrectly calculated features. We need each of the following rows to be the same as the second row. The solution that I have come up with is a little bit complicated, but it gets the job done:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a># Please submit a pull request if you have a better solution
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>temp = rolling_result.reset_index()
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>temp = temp[temp[&#39;date_dt&#39;] == pd.Timestamp.now().normalize()]
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>temp.groupby([&#39;FastTrack_DogId&#39;,&#39;date_dt&#39;]).first()
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>rolling_result.loc[pd.IndexSlice[:, pd.Timestamp.now().normalize()], :] = temp.groupby([&#39;FastTrack_DogId&#39;,&#39;date_dt&#39;]).first()
+<p>When we try lag our data by using <code>.shift(1)</code> like in Bruno's original code it will produce the wrong values for our features. In the above example only the first race The Gardens Race 4 (the third row) will have correct data but all the rows under it will have incorrectly calculated features. We need each of the following rows to be the same as the third row. The solution that I have come up with is a little bit complicated, but it gets the job done:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a># Please submit a pull request if you have a better solution
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>temp = rolling_result.reset_index()
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>temp = temp[temp[&#39;date_dt&#39;] == pd.Timestamp.now().normalize()]
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>temp.groupby([&#39;FastTrack_DogId&#39;,&#39;date_dt&#39;]).first()
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>rolling_result.loc[pd.IndexSlice[:, pd.Timestamp.now().normalize()], :] = temp.groupby([&#39;FastTrack_DogId&#39;,&#39;date_dt&#39;]).first()
 </code></pre></div>
 <p>Basically, for each greyhound we can just take the first row of data (which is correct) and set the rest of today's races to have the same value</p>
 </div>
@@ -3246,44 +3160,44 @@ End Date: 2022-07-30
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Generate rolling window features</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">,</span> <span class="s1">&#39;date_dt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># Use rolling window of 28, 91 and 365 days</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">rolling_windows</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;28D&#39;</span><span class="p">,</span> <span class="s1">&#39;91D&#39;</span><span class="p">,</span> <span class="s1">&#39;365D&#39;</span><span class="p">]</span>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1"># Features to use for rolling windows calculation</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RunTime_norm&#39;</span><span class="p">,</span> <span class="s1">&#39;SplitMargin_norm&#39;</span><span class="p">,</span> <span class="s1">&#39;Place_inv&#39;</span><span class="p">,</span> <span class="s1">&#39;Place_log&#39;</span><span class="p">,</span> <span class="s1">&#39;Prizemoney_norm&#39;</span><span class="p">]</span>
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="c1"># Aggregation functions to apply</span>
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="n">aggregates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">]</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1"># Keep track of generated feature names</span>
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;speed_index&#39;</span><span class="p">,</span> <span class="s1">&#39;box_win_percent&#39;</span><span class="p">]</span>
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>
-<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="k">for</span> <span class="n">rolling_window</span> <span class="ow">in</span> <span class="n">rolling_windows</span><span class="p">:</span>
-<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing rolling window </span><span class="si">{</span><span class="n">rolling_window</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>
-<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>        <span class="n">rolling_result</span> <span class="o">=</span> <span class="p">(</span>
-<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>            <span class="n">dataset</span>
-<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>            <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
-<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>            <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">)[</span><span class="n">features</span><span class="p">]</span>
-<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a>            <span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">rolling_window</span><span class="p">)</span>
-<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a>            <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">aggregates</span><span class="p">)</span>
-<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a>            <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Thanks to Brett for finding this!</span>
-<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>            <span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a>        <span class="p">)</span>
-<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>
-<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a>        <span class="c1"># My own dodgey code to work with reserve dogs</span>
-<a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a>        <span class="n">temp</span> <span class="o">=</span> <span class="n">rolling_result</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a>        <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">normalize</span><span class="p">()]</span>
-<a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>        <span class="n">temp</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-<a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>        <span class="n">rolling_result</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">normalize</span><span class="p">()],</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
-<a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a>
-<a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a>        <span class="c1"># Generate list of rolling window feature names (eg: RunTime_norm_min_365D)</span>
-<a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a>        <span class="n">agg_features_cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">rolling_window</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">aggregates</span><span class="p">)]</span>
-<a id="__codelineno-21-35" name="__codelineno-21-35" href="#__codelineno-21-35"></a>        <span class="c1"># Add features to dataset</span>
-<a id="__codelineno-21-36" name="__codelineno-21-36" href="#__codelineno-21-36"></a>        <span class="n">dataset</span><span class="p">[</span><span class="n">agg_features_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">rolling_result</span>
-<a id="__codelineno-21-37" name="__codelineno-21-37" href="#__codelineno-21-37"></a>        <span class="c1"># Keep track of generated feature names</span>
-<a id="__codelineno-21-38" name="__codelineno-21-38" href="#__codelineno-21-38"></a>        <span class="n">feature_cols</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">agg_features_cols</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Generate rolling window features</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">dog_results</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">,</span> <span class="s1">&#39;date_dt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># Use rolling window of 28, 91 and 365 days</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="n">rolling_windows</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;28D&#39;</span><span class="p">,</span> <span class="s1">&#39;91D&#39;</span><span class="p">,</span> <span class="s1">&#39;365D&#39;</span><span class="p">]</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="c1"># Features to use for rolling windows calculation</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RunTime_norm&#39;</span><span class="p">,</span> <span class="s1">&#39;SplitMargin_norm&#39;</span><span class="p">,</span> <span class="s1">&#39;Place_inv&#39;</span><span class="p">,</span> <span class="s1">&#39;Place_log&#39;</span><span class="p">,</span> <span class="s1">&#39;Prizemoney_norm&#39;</span><span class="p">]</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="c1"># Aggregation functions to apply</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="n">aggregates</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">,</span> <span class="s1">&#39;std&#39;</span><span class="p">]</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="c1"># Keep track of generated feature names</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;speed_index&#39;</span><span class="p">,</span> <span class="s1">&#39;box_win_percent&#39;</span><span class="p">]</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="k">for</span> <span class="n">rolling_window</span> <span class="ow">in</span> <span class="n">rolling_windows</span><span class="p">:</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Processing rolling window </span><span class="si">{</span><span class="n">rolling_window</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>        <span class="n">rolling_result</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>            <span class="n">dataset</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>            <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>            <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">)[</span><span class="n">features</span><span class="p">]</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>            <span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">rolling_window</span><span class="p">)</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>            <span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">aggregates</span><span class="p">)</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>            <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># Thanks to Brett for finding this!</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>            <span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>        <span class="p">)</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>        <span class="c1"># My own dodgey code to work with reserve dogs</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a>        <span class="n">temp</span> <span class="o">=</span> <span class="n">rolling_result</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>        <span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span><span class="p">[</span><span class="n">temp</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">normalize</span><span class="p">()]</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a>        <span class="n">temp</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a>        <span class="n">rolling_result</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">IndexSlice</span><span class="p">[:,</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">normalize</span><span class="p">()],</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;FastTrack_DogId&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a>
+<a id="__codelineno-20-33" name="__codelineno-20-33" href="#__codelineno-20-33"></a>        <span class="c1"># Generate list of rolling window feature names (eg: RunTime_norm_min_365D)</span>
+<a id="__codelineno-20-34" name="__codelineno-20-34" href="#__codelineno-20-34"></a>        <span class="n">agg_features_cols</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">_</span><span class="si">{</span><span class="n">rolling_window</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">product</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">aggregates</span><span class="p">)]</span>
+<a id="__codelineno-20-35" name="__codelineno-20-35" href="#__codelineno-20-35"></a>        <span class="c1"># Add features to dataset</span>
+<a id="__codelineno-20-36" name="__codelineno-20-36" href="#__codelineno-20-36"></a>        <span class="n">dataset</span><span class="p">[</span><span class="n">agg_features_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">rolling_result</span>
+<a id="__codelineno-20-37" name="__codelineno-20-37" href="#__codelineno-20-37"></a>        <span class="c1"># Keep track of generated feature names</span>
+<a id="__codelineno-20-38" name="__codelineno-20-38" href="#__codelineno-20-38"></a>        <span class="n">feature_cols</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">agg_features_cols</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -3346,21 +3260,21 @@ End Date: 2022-07-30
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Replace missing values with 0</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">dataset</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">display</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1"># Only keep data after 2018-12-01</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="n">model_df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="n">feature_cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="n">model_df</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s1">&#39;2018-12-01&#39;</span><span class="p">]</span>
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
-<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="c1"># This line was originally part of Bruno&#39;s tutorial, but we don&#39;t run it in this script</span>
-<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="c1"># model_df = model_df[[&#39;date_dt&#39;, &#39;FastTrack_RaceId&#39;, &#39;DogName&#39;, &#39;win&#39;, &#39;StartPrice_probability&#39;] + feature_cols]</span>
-<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>
-<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="c1"># Only train model off of races where each dog has a value for each feature</span>
-<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="n">races_exclude</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="n">model_df</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="o">~</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">races_exclude</span><span class="p">)]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># Replace missing values with 0</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">dataset</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">display</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">8</span><span class="p">))</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># Only keep data after 2018-12-01</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="n">model_df</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="n">feature_cols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="n">model_df</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s1">&#39;2018-12-01&#39;</span><span class="p">]</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="c1"># This line was originally part of Bruno&#39;s tutorial, but we don&#39;t run it in this script</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1"># model_df = model_df[[&#39;date_dt&#39;, &#39;FastTrack_RaceId&#39;, &#39;DogName&#39;, &#39;win&#39;, &#39;StartPrice_probability&#39;] + feature_cols]</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a><span class="c1"># Only train model off of races where each dog has a value for each feature</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="n">races_exclude</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)][</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="n">model_df</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="o">~</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">races_exclude</span><span class="p">)]</span>
 </code></pre></div>
 
 </div>
@@ -4550,6 +4464,13 @@ End Date: 2022-07-30
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="generate-predictions">Generate predictions</h2>
 </div>
 </div>
@@ -4584,23 +4505,23 @@ But this presents a second problem, because we will have multiple entries for th
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Feeding our predictions through the simulator is entirely optional, but, in my opinion it is where the real sauce is made. The idea is that if we are testing our model live, we can also use the simulator to test what would happen if we tested different staking methodologies, market timings and bet placement to optimise our model. This way you can have a model but test out different strategies to optimise model performance. The thing is, I have had a play with the simulator already and we can't simulate <code>market_catalogue</code> unless you have recorded it yourself (which is what I'll be using to get <code>market_id</code> and <code>selection_id</code> to place live bets). The simulator we will use later on will only take your ratings, market_id and selection_id, so we need our data in a similar format to what we had in <a href="../How_to_Automate_3">how automate III</a>. In other words, since we don't have  <code>market_catalogue</code> in the simulator, we need another way to get the market_id and selection_id.</p>
-<p>My hacky work around is to generate the probabilities like normal (since the data is historical), we don't need to deal with reserve dogs and scratching's, then get the <code>market_id</code> and <code>selection_id</code> from the Betfair datascience greyhound model by merging on DogName and date. We can take the code we wrote in <a href="../How_to_Automate_3">how to automate III</a> that downloads the greyhound ratings and convert that into a function that downloads the ratings for a date range.</p>
+<p>Feeding our predictions through the simulator is entirely optional, but, in my opinion it is where the real sauce is made. The idea is that if we are testing our model live, we can also use the simulator to test what would happen if we tested different staking methodologies, market timings and bet placement to optimise our model. This way you can have a model but test out different strategies to optimise model performance. The thing is, I have had a play with the simulator already and we can't simulate <code>market_catalogue</code> unless you have recorded it yourself (which is what I'll be using to get <code>market_id</code> and <code>selection_id</code> to place live bets). The simulator we will use later on will only take your ratings, market_id and selection_id, so we need our data in a similar format to what we had in <a href="../How_to_Automate_3">How to automate III</a>. In other words, since we don't have  <code>market_catalogue</code> in the simulator, we need another way to get the market_id and selection_id.</p>
+<p>My hacky work around is to generate the probabilities like normal (since the data is historical), we don't need to deal with reserve dogs and scratching's, then get the <code>market_id</code> and <code>selection_id</code> from the Betfair datascience greyhound model by merging on DogName and date. We can take the code we wrote in <a href="../How_to_Automate_3">How to automate III</a> that downloads the greyhound ratings and convert that into a function that downloads the ratings for a date range.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># Generate predictions like normal</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="c1"># Range of dates that we want to simulate later &#39;2022-03-01&#39; to &#39;2022-04-01&#39;</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="n">todays_data</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[(</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2022-03-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2022-04-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))]</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="n">dog_win_probabilities</span> <span class="o">=</span> <span class="n">brunos_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">todays_data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">])[:,</span><span class="mi">1</span><span class="p">]</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_win_probabilities</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;renormalise_prob&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">todays_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">)[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;renormalise_prob&#39;</span><span class="p">]</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="n">todays_data</span> <span class="o">=</span> <span class="n">todays_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;date_dt&#39;</span><span class="p">)</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="n">todays_data</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># Generate predictions like normal</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="c1"># Range of dates that we want to simulate later &#39;2022-03-01&#39; to &#39;2022-04-01&#39;</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">todays_data</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[(</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2022-03-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s1">&#39;2022-04-01&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))]</span>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="n">dog_win_probabilities</span> <span class="o">=</span> <span class="n">brunos_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">todays_data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">])[:,</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_win_probabilities</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;renormalise_prob&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">todays_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">)[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;rating&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;renormalise_prob&#39;</span><span class="p">]</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="n">todays_data</span> <span class="o">=</span> <span class="n">todays_data</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">&#39;date_dt&#39;</span><span class="p">)</span>
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="n">todays_data</span>
 </code></pre></div>
 
 </div>
@@ -6103,44 +6024,44 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="k">def</span> <span class="nf">download_iggy_ratings</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>    <span class="sd">&quot;&quot;&quot;Downloads the Betfair Iggy model ratings for a given date and formats it into a nice DataFrame.</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="sd">    Args:</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="sd">        date (datetime): the date we want to download the ratings for</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="sd">    &quot;&quot;&quot;</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>    <span class="n">iggy_url_1</span> <span class="o">=</span> <span class="s1">&#39;https://betfair-data-supplier-prod.herokuapp.com/api/widgets/iggy-joey/datasets?date=&#39;</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>    <span class="n">iggy_url_2</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>    <span class="n">iggy_url_3</span> <span class="o">=</span> <span class="s1">&#39;&amp;presenter=RatingsPresenter&amp;csv=true&#39;</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>    <span class="n">iggy_url</span> <span class="o">=</span> <span class="n">iggy_url_1</span> <span class="o">+</span> <span class="n">iggy_url_2</span> <span class="o">+</span> <span class="n">iggy_url_3</span>
-<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>
-<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>    <span class="c1"># Download todays greyhounds ratings</span>
-<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>    <span class="n">iggy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">iggy_url</span><span class="p">)</span>
-<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>
-<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>    <span class="c1"># Data clearning</span>
-<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>    <span class="n">iggy_df</span> <span class="o">=</span> <span class="n">iggy_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
-<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
-<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a>        <span class="s2">&quot;meetings.races.bfExchangeMarketId&quot;</span><span class="p">:</span><span class="s2">&quot;market_id&quot;</span><span class="p">,</span>
-<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>        <span class="s2">&quot;meetings.races.runners.bfExchangeSelectionId&quot;</span><span class="p">:</span><span class="s2">&quot;selection_id&quot;</span><span class="p">,</span>
-<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>        <span class="s2">&quot;meetings.races.runners.ratedPrice&quot;</span><span class="p">:</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span>
-<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>        <span class="s2">&quot;meetings.races.number&quot;</span><span class="p">:</span><span class="s2">&quot;RaceNum&quot;</span><span class="p">,</span>
-<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>        <span class="s2">&quot;meetings.name&quot;</span><span class="p">:</span><span class="s2">&quot;Track&quot;</span><span class="p">,</span>
-<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>        <span class="s2">&quot;meetings.races.runners.name&quot;</span><span class="p">:</span><span class="s2">&quot;DogName&quot;</span>
-<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a>        <span class="p">}</span>
-<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>    <span class="p">)</span>
-<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a>    <span class="c1"># iggy_df = iggy_df[[&#39;market_id&#39;,&#39;selection_id&#39;,&#39;rating&#39;]]</span>
-<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>    <span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;market_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;market_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a>    <span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span>
-<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a>
-<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a>    <span class="c1"># Set market_id and selection_id as index for easy referencing</span>
-<a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a>    <span class="c1"># iggy_df = iggy_df.set_index([&#39;market_id&#39;,&#39;selection_id&#39;])</span>
-<a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a>    <span class="k">return</span><span class="p">(</span><span class="n">iggy_df</span><span class="p">)</span>
-<a id="__codelineno-24-33" name="__codelineno-24-33" href="#__codelineno-24-33"></a>
-<a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a><span class="c1"># Download historical ratings over a time period and convert into a big DataFrame.</span>
-<a id="__codelineno-24-35" name="__codelineno-24-35" href="#__codelineno-24-35"></a><span class="n">back_test_period</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2022-03-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2022-04-01&#39;</span><span class="p">)</span>
-<a id="__codelineno-24-36" name="__codelineno-24-36" href="#__codelineno-24-36"></a><span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">download_iggy_ratings</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">back_test_period</span><span class="p">]</span>
-<a id="__codelineno-24-37" name="__codelineno-24-37" href="#__codelineno-24-37"></a><span class="n">iggy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
-<a id="__codelineno-24-38" name="__codelineno-24-38" href="#__codelineno-24-38"></a><span class="n">iggy_df</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="k">def</span> <span class="nf">download_iggy_ratings</span><span class="p">(</span><span class="n">date</span><span class="p">):</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>    <span class="sd">&quot;&quot;&quot;Downloads the Betfair Iggy model ratings for a given date and formats it into a nice DataFrame.</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="sd">    Args:</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="sd">        date (datetime): the date we want to download the ratings for</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="sd">    &quot;&quot;&quot;</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>    <span class="n">iggy_url_1</span> <span class="o">=</span> <span class="s1">&#39;https://betfair-data-supplier-prod.herokuapp.com/api/widgets/iggy-joey/datasets?date=&#39;</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    <span class="n">iggy_url_2</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>    <span class="n">iggy_url_3</span> <span class="o">=</span> <span class="s1">&#39;&amp;presenter=RatingsPresenter&amp;csv=true&#39;</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>    <span class="n">iggy_url</span> <span class="o">=</span> <span class="n">iggy_url_1</span> <span class="o">+</span> <span class="n">iggy_url_2</span> <span class="o">+</span> <span class="n">iggy_url_3</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>    <span class="c1"># Download todays greyhounds ratings</span>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="n">iggy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">iggy_url</span><span class="p">)</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>    <span class="c1"># Data clearning</span>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>    <span class="n">iggy_df</span> <span class="o">=</span> <span class="n">iggy_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>    <span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>        <span class="s2">&quot;meetings.races.bfExchangeMarketId&quot;</span><span class="p">:</span><span class="s2">&quot;market_id&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>        <span class="s2">&quot;meetings.races.runners.bfExchangeSelectionId&quot;</span><span class="p">:</span><span class="s2">&quot;selection_id&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>        <span class="s2">&quot;meetings.races.runners.ratedPrice&quot;</span><span class="p">:</span><span class="s2">&quot;rating&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>        <span class="s2">&quot;meetings.races.number&quot;</span><span class="p">:</span><span class="s2">&quot;RaceNum&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>        <span class="s2">&quot;meetings.name&quot;</span><span class="p">:</span><span class="s2">&quot;Track&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>        <span class="s2">&quot;meetings.races.runners.name&quot;</span><span class="p">:</span><span class="s2">&quot;DogName&quot;</span>
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>        <span class="p">}</span>
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>    <span class="p">)</span>
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>    <span class="c1"># iggy_df = iggy_df[[&#39;market_id&#39;,&#39;selection_id&#39;,&#39;rating&#39;]]</span>
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>    <span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;market_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;market_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>    <span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date</span>
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>    <span class="c1"># Set market_id and selection_id as index for easy referencing</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>    <span class="c1"># iggy_df = iggy_df.set_index([&#39;market_id&#39;,&#39;selection_id&#39;])</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>    <span class="k">return</span><span class="p">(</span><span class="n">iggy_df</span><span class="p">)</span>
+<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a><span class="c1"># Download historical ratings over a time period and convert into a big DataFrame.</span>
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a><span class="n">back_test_period</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s1">&#39;2022-03-01&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;2022-04-01&#39;</span><span class="p">)</span>
+<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a><span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">download_iggy_ratings</span><span class="p">(</span><span class="n">day</span><span class="p">)</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">back_test_period</span><span class="p">]</span>
+<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="n">iggy_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">frames</span><span class="p">)</span>
+<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a><span class="n">iggy_df</span>
 </code></pre></div>
 
 </div>
@@ -6346,12 +6267,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># format DogNames to merge</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Res&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># Merge</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="n">backtest</span> <span class="o">=</span> <span class="n">iggy_df</span><span class="p">[[</span><span class="s1">&#39;market_id&#39;</span><span class="p">,</span><span class="s1">&#39;selection_id&#39;</span><span class="p">,</span><span class="s1">&#39;DogName&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">todays_data</span><span class="p">[[</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="s1">&#39;DogName&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]],</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">])</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="n">backtest</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># format DogNames to merge</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Res&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iggy_df</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># Merge</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="n">backtest</span> <span class="o">=</span> <span class="n">iggy_df</span><span class="p">[[</span><span class="s1">&#39;market_id&#39;</span><span class="p">,</span><span class="s1">&#39;selection_id&#39;</span><span class="p">,</span><span class="s1">&#39;DogName&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">todays_data</span><span class="p">[[</span><span class="s1">&#39;rating&#39;</span><span class="p">,</span><span class="s1">&#39;DogName&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]],</span> <span class="n">how</span> <span class="o">=</span> <span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">,</span><span class="s1">&#39;date_dt&#39;</span><span class="p">])</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="n">backtest</span>
 </code></pre></div>
 
 </div>
@@ -6485,9 +6406,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># Save predictions for if we want to backtest/simulate it later</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="n">backtest</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;backtest.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Csv format</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="c1"># backtest.to_pickle(&#39;backtest.pkl&#39;) # pickle format (faster, but can&#39;t open in excel)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># Save predictions for if we want to backtest/simulate it later</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="n">backtest</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;backtest.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="c1"># Csv format</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="c1"># backtest.to_pickle(&#39;backtest.pkl&#39;) # pickle format (faster, but can&#39;t open in excel)</span>
 </code></pre></div>
 
 </div>
@@ -6516,7 +6437,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="n">todays_data</span><span class="p">[</span><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;798906744&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">todays_data</span><span class="p">[</span><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;FastTrack_RaceId&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;798906744&#39;</span><span class="p">]</span>
 </code></pre></div>
 
 </div>
@@ -7977,19 +7898,19 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Select todays data </span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">todays_data</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)]</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="c1"># Generate runner win predictions</span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">dog_win_probabilities</span> <span class="o">=</span> <span class="n">brunos_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">todays_data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">])[:,</span><span class="mi">1</span><span class="p">]</span>
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_win_probabilities</span>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="c1"># We no longer renomralise probability in this chunk of code, do it in Flumine instead</span>
-<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="c1"># todays_data[&#39;renormalise_prob&#39;] = todays_data.groupby(&#39;FastTrack_RaceId&#39;)[&#39;prob_LogisticRegression&#39;].apply(lambda x: x / x.sum())</span>
-<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="c1"># todays_data[&#39;rating&#39;] = 1/todays_data[&#39;renormalise_prob&#39;]</span>
-<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a><span class="c1"># todays_data = todays_data.sort_values(by = &#39;date_dt&#39;)</span>
-<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>
-<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="n">todays_data</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># Select todays data </span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="n">todays_data</span> <span class="o">=</span> <span class="n">model_df</span><span class="p">[</span><span class="n">model_df</span><span class="p">[</span><span class="s1">&#39;date_dt&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)]</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># Generate runner win predictions</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="n">dog_win_probabilities</span> <span class="o">=</span> <span class="n">brunos_model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">todays_data</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">])[:,</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;prob_LogisticRegression&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">dog_win_probabilities</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="c1"># We no longer renomralise probability in this chunk of code, do it in Flumine instead</span>
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a><span class="c1"># todays_data[&#39;renormalise_prob&#39;] = todays_data.groupby(&#39;FastTrack_RaceId&#39;)[&#39;prob_LogisticRegression&#39;].apply(lambda x: x / x.sum())</span>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="c1"># todays_data[&#39;rating&#39;] = 1/todays_data[&#39;renormalise_prob&#39;]</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a><span class="c1"># todays_data = todays_data.sort_values(by = &#39;date_dt&#39;)</span>
+<a id="__codelineno-27-12" name="__codelineno-27-12" href="#__codelineno-27-12"></a>
+<a id="__codelineno-27-13" name="__codelineno-27-13" href="#__codelineno-27-13"></a><span class="n">todays_data</span>
 </code></pre></div>
 
 </div>
@@ -9463,11 +9384,11 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="c1"># Prepare data for easy reference in flumine</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;DogName_bf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Res&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">todays_data</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Sandown (SAP)&#39;</span><span class="p">:</span> <span class="s1">&#39;Sandown Park&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="n">todays_data</span> <span class="o">=</span> <span class="n">todays_data</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;DogName_bf&#39;</span><span class="p">,</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span><span class="s1">&#39;RaceNum&#39;</span><span class="p">])</span>
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="n">todays_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># Prepare data for easy reference in flumine</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;DogName_bf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">todays_data</span><span class="p">[</span><span class="s1">&#39;DogName&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;Res&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="n">todays_data</span><span class="o">.</span><span class="n">replace</span><span class="p">({</span><span class="s1">&#39;Sandown (SAP)&#39;</span><span class="p">:</span> <span class="s1">&#39;Sandown Park&#39;</span><span class="p">},</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="n">todays_data</span> <span class="o">=</span> <span class="n">todays_data</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;DogName_bf&#39;</span><span class="p">,</span><span class="s1">&#39;Track&#39;</span><span class="p">,</span><span class="s1">&#39;RaceNum&#39;</span><span class="p">])</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="n">todays_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </code></pre></div>
 
 </div>
@@ -10343,18 +10264,94 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If you look closely at the data frame above you might notice that for reserve dogs, they will have a Box number of 9 or 10. I personally don't really watch greyhound racing (I just like numbers), but I'm pretty confident that there is only ever a max of around 8 greyhounds per race. In which case we will need to adjust it somehow. I didn't notice this issue for quite a while, but the good thing is the website gives us the info we need to adjust: </p>
-<p><img alt="reserve_dog" src="reserve_dog.PNG" /></p>
+<p>If you look closely at the data frame above you might notice that for reserve dogs, they will have a Box number of 9 or 10. There is only ever a max of 8 greyhounds per race therefore we will need to adjust it somehow. I didn't notice this issue for quite a while, but the good thing is the website gives us the info we need to adjust: </p>
+<p><img alt="reserve_dog" src="../hta_img/reserve_dog.png" /></p>
 <p>We can see that Rhinestone Ash is a reserve dog and has the number 9, if you click on rules, you can see what Box it is starting from: </p>
-<p><img alt="reserve_dog_2" src="reserve_dog_2.png" /></p>
+<p><img alt="reserve_dog_2" src="../hta_img/reserve_dog_2.png" /></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The problem is, my webscraping is pretty poor, and it would take significant time for me to learn it. But after going through the <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Betting+Type+Definitions#BettingTypeDefinitions-MarketDescription">documentation</a> again, changes to boxes are actually available through the API under the <code>clarifications</code> attribute of <code>marketDescription</code>. You will be able to access this within Flumine as <code>market.market_catalogue.description.clarifications</code>, but it's a bit weird. It returns box changes as a string that looks like this: <img alt="" src="box_changes.png" /></p>
+<p>The problem is, my webscraping is pretty poor, and it would take significant time for me to learn it. But after going through the <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Betting+Type+Definitions#BettingTypeDefinitions-MarketDescription">documentation</a> again, changes to boxes are actually available through the API under the <code>clarifications</code> attribute of <code>marketDescription</code>. You will be able to access this within Flumine as <code>market.market_catalogue.description.clarifications</code>, but it's a bit weird. It returns box changes as a string that looks like this: <img alt="box_changes" src="../hta_img/box_changes.png" /></p>
 <p>Originally I had planned to leave this article as it is since, I've never worked with anything like this before and its already getting pretty long, however huge shoutout to Betfair Quants community and especially <a href="https://github.com/Landrin-br">Brett</a> who provided his solution to working with box changes. </p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">regexp_tokenize</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="c1"># my_string is an example string, that you will need to get live from the api via: market.market_catalogue.description.clarifications.replace(&quot;&lt;br&gt; Dog&quot;,&quot;&lt;br&gt;Dog&quot;)</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="n">my_string</span> <span class="o">=</span> <span class="s2">&quot;&lt;br&gt;Box changes:&lt;br&gt;Dog 9. Tralee Blaze starts from box no. 8&lt;br&gt;&lt;br&gt;Dog 6. That Other One starts from box no. 2&lt;br&gt;&lt;br&gt;&quot;</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;HTML Comment: </span><span class="si">{</span><span class="n">my_string</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="n">pattern1</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(?&lt;=&lt;br&gt;Dog ).+?(?= starts)&#39;</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="n">pattern2</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(?&lt;=\bbox no. )(\w+)&quot;</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="n">runners_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span> <span class="p">(</span><span class="n">regexp_tokenize</span><span class="p">(</span><span class="n">my_string</span><span class="p">,</span> <span class="n">pattern1</span><span class="p">),</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;runner_name&#39;</span><span class="p">])</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;runner_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;runner_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="c1"># Remove dog name from runner_number</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;runner_number&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;runner_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[:(</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="c1"># Remove dog number from runner_name</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;runner_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;runner_name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[(</span><span class="n">x</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):]</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;Box&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">regexp_tokenize</span><span class="p">(</span><span class="n">my_string</span><span class="p">,</span> <span class="n">pattern2</span><span class="p">)</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="n">runners_df</span>
+</code></pre></div>
+
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+<code>HTML Comment: &lt;br&gt;Box changes:&lt;br&gt;Dog 9. Tralee Blaze starts from box no. 8&lt;br&gt;&lt;br&gt;Dog 6. That Other One starts from box no. 2&lt;br&gt;&lt;br&gt;
+</code>
+</pre>
+</div>
+</div>
+<div class="output_area">
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="scoped">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>runner_name</th>
+      <th>runner_number</th>
+      <th>Box</th>
+    </tr>
+  </thead>
+<tbody>
+    <tr>
+      <th>0</th>
+      <td>TRALEE BLAZE</td>
+      <td>9</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>THAT OTHER ONE</td>
+      <td>6</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -10363,12 +10360,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Brett's solution is amazing, there is only one problem, currently our code is structured so that we generate our predictions in the morning well before the race starts. To implement the above fix, we need to generate our predictions just before the race starts to incorporate the Box information. </p>
 <p>This means we need to write a little bit more code to make it happen, but we are almost there. </p>
-<p>So now my plan to update the old data and generate probabilities just before the race. So now just before the jump my code structure will look like this:
-- pull any data on box changes from the Betfair API
-- convert the box change data into a dataframe named <code>runners_df</code> using the Brett's code
-- in my original dataframe named <code>todays_data</code> replace any Box data with <code>runners_df</code> data, otherwise leave it untouched
-- then merge the <code>box_win_percent</code> dataframe back onto the <code>todays_data</code> dataframe 
-- now we can predict probabilities again and then renormalise them</p>
+<p>So now my plan to update the old data and generate probabilities just before the race. So now just before the jump my code structure will look like this:</p>
+<ul>
+<li>pull any data on box changes from the Betfair API</li>
+<li>convert the box change data into a dataframe named <code>runners_df</code> using the Brett's code</li>
+<li>in my original dataframe named <code>todays_data</code> replace any Box data with <code>runners_df</code> data, otherwise leave it untouched</li>
+<li>then merge the <code>box_win_percent</code> dataframe back onto the <code>todays_data</code> dataframe </li>
+<li>now we can predict probabilities again and then renormalise them</li>
+</ul>
 </div>
 </div>
 </div>
@@ -10401,6 +10400,13 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now everything is done, and we can finally move onto placing our bets</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
 </div>
 </div>
 </div>
@@ -10464,7 +10470,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's create a new class for our strategy called FlatBetting that finds the best available to back and lay price 60 seconds before the jump. If any of those prices have value, we will place a flat bet for /$/5 at those prices. This code is almost the same as <a href="">How to Automate III</a></p>
+<p>Let's create a new class for our strategy called FlatBetting that finds the best available to back and lay price 60 seconds before the jump. If any of those prices have value, we will place a flat bet for $5 at those prices. This code is almost the same as <a href="../How_to_Automate_3">How to Automate III</a></p>
 <p>Since we are now editing our <code>todays_data</code> dataframe inside our Flumine strategy we will also need to convert <code>todays_data</code> to a global variable which is a simple one liner:
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>global todays_data
 </code></pre></div></p>
@@ -10797,7 +10803,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="conclusion-and-next-steps">Conclusion and next steps</h3>
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="conclusion-and-next-steps">Conclusion and next steps</h2>
 </div>
 </div>
 </div>
@@ -11488,7 +11501,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="disclaimer">Disclaimer</h4>
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="disclaimer">Disclaimer</h2>
 </div>
 </div>
 </div>

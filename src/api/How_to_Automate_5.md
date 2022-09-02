@@ -1,9 +1,9 @@
 # How to Automate 5
----
 
+---
 !!! note "Before you start"
 
-    This tutorial follows on from our [How to Automate series](../how_to_automate_1.ipynb) which stepped through how to create a trading bot for a few different strategies. Make sure you take a look through them first before 
+    This tutorial follows on from our [How to Automate series](../how_to_automate_1.ipynb) which stepped through how to create a trading bot for a few different strategies. Make sure you take a look through them first before you start here.
     
 
 This is the final part of the How to Automate series (for a while at least). In my previous posts we have created a few different strategies, but I haven't actually backtested or simulated any of them yet. How will do we even know if they have any edge? 
@@ -22,22 +22,24 @@ Something that is important to note is that although this is the most realistic 
 
 But either way, we can still try some really cool things such as testing different time points to place bets without needing to re-extract data each time, change staking methodology or placing bets a few ticks away from the best available prices and hoping it gets matched.
 
+---
 
 ## Set up
 
-Before we get started, although Jupyter Notebook/lab is a quants' favourite tool we need to use a different IDE such as VS Code for our simulation code (feel free to try it out, it didn't work for me and I read a note somewhere about it in the docs, but can't find it anymore). All code files are made available on [github]().
+Before we get started, although Jupyter Notebook/lab is a quants' favourite tool we need to use a different IDE such as VS Code for our simulation code (feel free to try it out, it didn't work for me and I read a note somewhere about it in the docs, but can't find it anymore). All code files are made available on [github](https://github.com/betfair-down-under/autoHubTutorials/tree/master).
 
 I am going to use the March 2022 Greyhound Pro data and I've provided a sample of that data in the github repo which you can use to follow along, but if your an Australian and New Zealand customer make sure to shoot an email to <data@betfair.com.au>. 
 
 Simulation mode in Flumine requires your data to be structured a certain way. So, if you have purchased data you will need it to be extracted formatted so that each market file is within a single file, instead or having files within files within files (default).
 
 You can do it manually, which will take an unimaginable amount of time, but I've written a simple script that will do it for you. But you just need to do few things before you run the script. 
+
 - Take your data that has the .tar extension, mine was 2022_03_MarGreyhoundsPro.tar and extract it using winrar/7zip etc this will create a file named 2022_03_MarGreyhoundsPro
 - make sure 2022_03_MarGreyhoundsPro is stored in the same location as the data extractor script
 - create a new empty folder that you want the extracted data to be outputted to, I created output_2022_03_MarGreyhoundsPro
 - then run the script
 
-```py title="Extracts and formats the content of .tar files" hl_lines="10 11 12 13"
+```py title="Extracts and formats the content of .tar files" hl_lines="10 12"
 # Extracts all the bzip2 files (.bz2) 
 # contained within the specified output_folder and any sub-folders
 # and writes them to a file with their market_id as their file name
@@ -64,20 +66,27 @@ for path in files:
 
 Now we are all set up lets run our sim!
 
+---
+
 ## How the sims work
 
 Flumine is pretty cool, by default it hooks up to the Betfair API and it will run our strategy on live markets. When we set it to simulation mode we can hook it up to the historic data instead. The historic data is basically photos of the exhange up to every 50ms, in simulation mode Flumine essentially quickly scans through each picture sequentially essentially replaying the market. Just like how you would `add_strategy()` to Flumine to add a strategy that runs live, you can do the same thing in simulation mode and it will place into the simulated markets it creates.
 
 The coolest thing is, it is super easy to change it to simulation mode:
 
-```py title = "Setting Flumine to simulation Mode"
+```py title="Setting Flumine to simulation Mode" 
+
 # Set Flumine to simulation mode
 client = clients.SimulatedClient()
 framework = FlumineSimulation(client=client)
+
 ```
 
 and instead of pointing it to markets you want to run your strategy on, you point it to your historic data files instead (as it is quite slow I would also suggest only replaying a subsection of the historic files, you can change that with the listner_kwargs), then just run it as you would any other strategy in Flumine:
+
 ```py title = "Pointing the simulation to the historical files" hl_lines="8 10"
+
+import pandas as pd
 # Set parameters for our strategy
 strategy = BackFavStrategy(
     # market_filter selects what portion of the historic data we simulate our strategy on
@@ -97,7 +106,10 @@ strategy = BackFavStrategy(
 # Run our strategy on the simulated market
 framework.add_strategy(strategy)
 framework.run()
+
 ```
+
+---
 
 ## Running Sims: How to Automate II
 
@@ -343,9 +355,11 @@ A months worth of data will take ages to run (like 8 hours on my slow laptop), b
     framework.run()
     ```
 
+---
+
 ## Running Sims: How to Automate III
 
-Okay, so we got the first one running pretty easily, a little too easily (a few lines of code and no major issues or hacky work arounds), lets test out a strategy that requires external data. In [How to Automate III]() we automated the betfair data scientists model, lets now simulate performance. I'm going to do just the greyhound model, 'Iggy', at the moment, but the code is basically the same for the thoroughbred model, 'Kash'.
+Okay, so we got the first one running pretty easily, a little too easily (a few lines of code and no major issues or hacky work arounds), lets test out a strategy that requires external data. In [How to Automate III](../How_to_Automate_3) we automated the betfair data scientists model, lets now simulate performance. I'm going to do just the greyhound model, 'Iggy', at the moment, but the code is basically the same for the thoroughbred model, 'Kash'.
 
 Because we didn't save any of our ratings in How to Automate III we will need to redownload it now. And instead or redownloading just one days worth of data lets test out a whole month at a time. Lets reuse the function we created in How to Automate IV that we used a hacky work around that downloads the ratings for a range of dates:
 
@@ -380,7 +394,7 @@ iggy_df = pd.concat(frames)
 print(iggy_df)
 ```
 
-Now that we have downloaded a whole month of Iggy ratings to simulate it is crazy easy to simulate. We do the same thing we did when simulating How to Automate II: copy and paste the original code, and set Flumine into simulation mode pointing it to the historic data instead of the Betfair API"
+Now that we have downloaded a whole month of Iggy ratings to simulate it is crazy easy to simulate. We do the same thing we did when simulating How to Automate II: copy and paste the original code, and set Flumine into simulation mode pointing it to the historic data instead of the Betfair API.
 
 === "Changes made to the original How to Automate III code"
 
@@ -659,11 +673,13 @@ Now that we have downloaded a whole month of Iggy ratings to simulate it is craz
     framework.run()
     ```
 
+---
+
 ## Simulating How to Automate IV
 
 Because we coded How to Automate IV with simulating in mind (I didn't originally and had to recode it a few times), its easy for us to simulate the performance of our model. As we saved our model ratings to a csv, reading it in now actually makes the code simpler then what we created for placing live bets. This is because the issues we had working around reserve dogs and matching with the Betfair API has been taken care of (there are no reserve dogs to work around in the historic data). In fact thanks to my hacky work around in How to Automate IV the data is also in the same format as How to Automate III so we can basically use almost the exact same code we used to simulate How to Automate III. 
 
-The only real differences from simulating How to Automate III and How to Automate IV is that we need to have the csv file of predictions already (available on github), read that in, and change any naming conventions that might be different.
+The only real differences from simulating How to Automate III and How to Automate IV is that we need to have the csv file of predictions already, read that in, and change any naming conventions that might be different.
 
 === "Read in model predictions and format dataframe for easy reference"
 
@@ -878,8 +894,10 @@ The only real differences from simulating How to Automate III and How to Automat
     framework.run()
     ```
 
+---
+
 ## Gotta go fast
-Now that we have everything working, if you have tried any of the simulations you may notice its pretty slow. I definitely have especially for larger files such as on 1 months worth of data (probably took me around 8 hours of just running the code in the background). The good thing is we can speed it up, the bad thing is, its via multiprocessing which I have never touched before. But turns out its not too bad. 
+Now that we have everything working, if you have tried any of the simulations you may notice its pretty slow. I definitely have, especially for larger files such as on 1 months worth of data (probably took me around 8 hours of just running the code in the background). The good thing is we can speed it up, the bad thing is, its via multiprocessing which I have never touched before. But turns out its not too bad. 
 
 You really only need to wrap your Flumine client into a function:
 
@@ -948,9 +966,11 @@ if __name__ == "__main__":
 
 ```
 
-But I wanted to understand how the code works, but it actually isn't too bad. Essentially it takes all the historical markets you have e.g. 1000, and splits it into 8 chunks. Then we run our strategy on all 8 chunks simultaniously. And this gives serious speed improvements. The complete code for all three simulations using multi processing are available at the end of this post. 
+Essentially it takes all the historical markets you have e.g. 1000, and splits it into 8 chunks. Then we run our strategy on all 8 chunks simultaniously. And this gives serious speed improvements. The complete code for all three simulations using multi processing are available at the end of this post. 
 
 Future versions of Flumine are using the new BetfairData library to speed up simulations which once fully implemented should also give some serious speed benefits. 
+
+---
 
 ## Analysing and optimising our results
 
@@ -968,7 +988,8 @@ results = results.sort_values(by = ['date_time_placed'])
 results['cum_profit'] = results['profit'].cumsum()
 px.line(results, 'date_time_placed', 'cum_profit').show()
 ```
-[post_sim_analysis_v1](post_sim_analysis_v1.png)
+
+![post_sim_analysis_v1](hta_img/post_sim_analysis_v1.png)
 
 Before commissions the model is profitable, which is awesome as I didn't think that would be the case. Bruno has mentioned to me that the model in the tutorial was quite "basic" and not profitable, but it seems we got super lucky with a few long shots getting up in March. Lets incorporate commissions into our results and see if it remains profitable:
 
@@ -981,7 +1002,7 @@ gross_profit['cum_npl'] = gross_profit['net_pnl'].cumsum()
 px.line(gross_profit, gross_profit.index, 'cum_npl').show()
 ```
 
-[post_sim_analysis_v2](post_sim_analysis_v2.png)
+![post_sim_analysis_v2](hta_img/post_sim_analysis_v2.png)
 
 We are close, infact we were up a bit at the start but it seems after taking into account commissions we are no longer profitable and end the month down around $800. Lets try two different things to see if we can optimse our strategy: a different staking methodology and also a different time we start placing our bets.
 
@@ -999,11 +1020,11 @@ My theory is that because we are crossing the spread and taking whatever prices 
     ```
 === "Results Before Commissions"
 
-    ![post_sim_analysis_30secs](post_sim_analysis_30secs.png)
+    ![post_sim_analysis_30secs](hta_img/post_sim_analysis_30secs.png)
 
 === "Results After Commissions"
 
-    ![post_sim_analysis_30secs_v2](post_sim_analysis_30secs_v2.png)
+    ![post_sim_analysis_30secs_v2](hta_img/post_sim_analysis_30secs_v2.png)
 
 So the results seem pretty similar to before. After commisions we are down around $700 so we seem to be doing slighlty better.
 
@@ -1044,13 +1065,15 @@ Lets try a different staking method instead, this time I have opted for a propor
     ```
 === "Results Before Commissions"
 
-    ![post_sim_analysis_ps](post_sim_analysis_ps.png)
+    ![post_sim_analysis_ps](hta_img/post_sim_analysis_ps.png)
 
 === "Results After Commissions"
 
-    ![post_sim_analysis_pS_v2](post_sim_analysis_ps_v2.png)
+    ![post_sim_analysis_ps_v2](hta_img/post_sim_analysis_ps_v2.png)
 
 I'm pretty surprised, I really did not expect to be profitable after commissions. We are slightly profitable at the end but we spent a significant amount of time in the negatives during the month. Without testing it out further with more historic data I going to put this down as variance for now. And I'll hand it over to you.
+
+---
 
 ## Conclusion and next steps
 
@@ -1063,7 +1086,7 @@ We need more data to draw a good conclusion about long term results, I have defi
 ### Complete Code
 
 === "Multiprocess How to Automate II"
-    [Download from Github]()
+    [Download from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master)
 
     ```py
     # Import libraries
@@ -1307,7 +1330,7 @@ We need more data to draw a good conclusion about long term results, I have defi
     ```
 
 === "Multiprocess How to Automate III"
-    [Download from Github]()
+    [Download from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master)
 
     ```py
     # Import libraries
@@ -1555,7 +1578,7 @@ We need more data to draw a good conclusion about long term results, I have defi
     ```
 
 === "Multiprocess How to Automate IV"
-    [Download from Github]()
+    [Download from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master)
 
     ```py
     # Import libraries
@@ -1789,6 +1812,7 @@ We need more data to draw a good conclusion about long term results, I have defi
     ```
 
 ---
+
 ## Disclaimer
 
 Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.

@@ -34,7 +34,7 @@ Funny enough, your emotional reactions are very much like patterns in the bettin
 
 Many of you right now are blind to the patterns in your mental game, much like you were unable to spot patterns in the betting market when you first started punting. But the more you worked at it the better you became. The same is true with your emotions.
 
-Start by focusing on the times when you already know that your emotions are more intense than ideal or when you’re making repetitive mistakes. At those times, examine and note what’s going on with your emotions, thoughts, actions, or changes in your decision-making, and what’s causing your emotions to be high. Here’s an example of what to write down:
+Start by focusing on the times when you already know that your emotions are more intense than ideal or when you’re making repetitive mistakes. At those times, examine and note what’s going on with your emotions, thoughts, actions, or changes in your decision-making, and what’s causing your emotions to be high. Here’s an example of what to write down (templates can be downloaded below):
 
 **Situation/mistake**: Winning a lot, consistently for a few days/week.
 

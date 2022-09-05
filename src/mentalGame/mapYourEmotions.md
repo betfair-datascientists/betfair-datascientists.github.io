@@ -76,7 +76,12 @@ You don’t need to have details for all 10 levels, certainly not at the start. 
 
 I’m sure some of you feel overwhelmed by what I’m asking you to do. Don’t be. Many of my clients and readers of my books have felt that same way, unnecessarily, until they got started.  Building knowledge for the emotional patterns in your mental game is a skill like any other and you do this all the time with the betting markets! The only difference is you’ve never done it with your emotions. But so what? Put in a bit of time starting to collect data and wait until you see how much knowledge has been waiting to be organized. 
 
-To help you, you can download both the data collection worksheet and maps for anger, fear, and confidence below. [Where are the download buttons/links going to be?] 
+To help you, you can download both the data collection worksheet and maps for anger, fear, and confidence below. 
+
+- [Data Collection Worksheet](assets/dataCollectionWorksheet.pdf)
+- [Anger Profile](assets/angerProfile.docx)
+- [Confidence Profile](assets/confidenceProfile.docx)
+- [Fear Profile](assets/fearProfile.docx)
 
 Once you have a solid draft, you can use it throughout the day to recognize when your emotions are at risk of escalating. Take action then, while you still have the literal capacity in your brain to do so, and you’ll have a chance at avoiding those costly mistakes. 
 

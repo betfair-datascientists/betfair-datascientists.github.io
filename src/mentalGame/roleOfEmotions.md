@@ -5,6 +5,7 @@
 While making money may not be the only reason you’ve decided to become a punter, money is like a scoreboard telling you whether you’re winning or losing in this game. Obviously, you want to win more than you lose. Yet whether you're a novice punter or a seasoned pro, sometimes you find yourself losing money when you shouldn’t and leaving potential profits on the table. The question is why.
 
 Many of you have already tightened your system or worked up a new model as a way to stop these unnecessary losses. Those are the correct first steps. But what if the bleeding continues because you find yourself making mistakes like these: 
+
 - Launching a model  that doesn’t pass all the checks
 - Increasing stake size to recover previous losses
 - Stopping a model running after a negative downturn
@@ -24,6 +25,7 @@ Just like any other game, if you’re going to win, you need to know the rules. 
 This is why you make those mistakes. Your emotions are running too hot and they override the part of the brain responsible for thinking and processing information correctly. Both positive and negative emotions can cause this breakdown in mental functioning. That’s why you increase stakes or launch a model too quickly—excitement or overconfidence prevent you from making a well-reasoned decision. Having confidence is important to performance, but too much of it can lead you to overlook some factors or overestimate the accuracy of your opinion.
 
 When your emotions are too intense, the following can also happen:
+
 - Your mind moves so fast that you miss key pieces of data
 - You know the right answer, but can’t access it
 - You’re aware that what you’re doing is wrong, but you can’t stop yourself
@@ -52,12 +54,11 @@ In this series of articles I’ll help you with that strategy. But what I will t
 
 Many punters believe that they should always be able to control their emotions. Some even expect that it should be easy to do that. But here’s the thing, the part of the brain responsible for emotional control is called the prefrontal cortex. And when your emotional system becomes overactive it takes resources away from the prefrontal cortex, and lowers your ability to control your emotions. 
 
-Which means that in order for you to have a chance at controlling your emotions, you must recognize the early signs of your emotions rising, while you still have the potential to stop the rise of emotion! Stay tuned for the next article, where I’ll show you how to look for and identify those signs.
+Which means that in order for you to have a chance at controlling your emotions, you must recognize the early signs of your emotions rising, while you still have the potential to stop the rise of emotion! The next article is available now, where I’ll show you how to look for and identify those signs.
+
+[Part II](../mapYourEmotions) - Map Your Emotions
 
 ---
 
 Jared Tendler, MS is a mental game coach for world champion poker players, PGA Tour players, sports bettors and financial traders from 45 countries. He is the author of three highly acclaimed books, The Mental Game of Poker 1 & 2 and his newest book The Mental Game of Trading. Find out more about Jared’s work at: [https://jaredtendler.com/](https://jaredtendler.com/) 
 
----
-
-[Part II](../mapYourEmotions) - Map Your Emotions

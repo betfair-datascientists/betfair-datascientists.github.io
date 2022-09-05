@@ -14,4 +14,7 @@ For the last 17 years I’ve been coaching world champion poker players, PGA Tou
 
 ---
 
-[Part I](../roleOfEmotions) - Role of Emotions
+Watch this space as Jared will be writing an entire series of articles related to related to the mental game of wagering, we recommend following the articles in sequential order: 
+
+- [Part I](../roleOfEmotions) - Role of emotions
+- [Part II](../mapYourEmotions) - Map your emotions

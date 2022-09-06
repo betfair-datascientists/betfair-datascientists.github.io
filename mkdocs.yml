@@ -15,6 +15,11 @@ nav:
         - Tutorials:
             - API tutorials in R: api/apiRtutorial.md
             - API tutorial in Python: api/apiPythontutorial.md
+            - How to Automate 1: api/How_to_Automate_1.ipynb
+            - How to Automate 2: api/How_to_Automate_2.ipynb
+            - How to Automate 3: api/How_to_Automate_3.ipynb
+            - How to Automate 4: api/How_to_Automate_4.ipynb
+            - How to Automate 5: api/How_to_Automate_5.md
         - Golden rules of automation: api/GoldenRulesofAutomation.md
     - Historic Data: 
         - Pricing Data Sources: historicData/dataSources.md
@@ -72,6 +77,10 @@ nav:
             - Optimising refresh settings: autoTools/geeksToyRefreshSettings.md
     # - About Us:
     #     - Meet the Team: aboutUs/test.md
+    - Mental Game:
+        - Intro: mentalGame/intro.md
+        - Part 1: mentalGame/roleOfEmotions.md
+        - Part 2: mentalGame/mapYourEmotions.md
 
 # Theme settings
 theme:

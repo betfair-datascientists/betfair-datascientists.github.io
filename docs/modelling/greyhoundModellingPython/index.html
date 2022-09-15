@@ -2556,10 +2556,12 @@ Loading data from 2021-09-01 to 2021-09-30
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The cell below shows some normalisation techniques
-- Apply <code>Log base 10</code> transformation to <code>Prizemoney</code> and <code>Place</code>
-- Apply <code>inverse</code> transformation to <code>Place</code>
-- Combine <code>RunTime</code> and <code>Distance</code> to generate <code>Speed</code> value</p>
+<p>The cell below shows some normalisation techniques. Why normalise data? <a href="https://docs.microsoft.com/en-us/azure/machine-learning/component-reference/normalize-data">Microsoft Azure</a> has an excellent article on why this technique is often applied.</p>
+<ul>
+<li>Apply <code>Log base 10</code> transformation to <code>Prizemoney</code> and <code>Place</code></li>
+<li>Apply <code>inverse</code> transformation to <code>Place</code></li>
+<li>Combine <code>RunTime</code> and <code>Distance</code> to generate <code>Speed</code> value</li>
+</ul>
 </div>
 </div>
 </div>
@@ -3068,13 +3070,16 @@ Loading data from 2021-09-01 to 2021-09-30
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="generate-time-based-features">Generate time-based features</h3>
 <p>Now that we have a set of basic features for individual dog results, we need to aggregate them into a single feature vector.</p>
-<p>To do so, we calculate the <code>min</code>, <code>max</code>, <code>mean</code>, <code>median</code>, <code>std</code> of features previously caculated over different time windows <code>28</code>, <code>91</code> and <code>365</code> days:
-- <code>RunTime_norm</code>
-- <code>SplitMargin_norm</code>
-- <code>Place_inv</code>
-- <code>Place_log</code>
-- <code>Prizemoney_norm</code></p>
-<p>Depending on the dataset size, this can take several minutes</p>
+<p>To do so, we calculate the <code>min</code>, <code>max</code>, <code>mean</code>, <code>median</code>, <code>std</code> of features previously caculated over different time windows <code>28</code>, <code>91</code> and <code>365</code> days:</p>
+<ul>
+<li><code>RunTime_norm</code></li>
+<li><code>SplitMargin_norm</code></li>
+<li><code>Place_inv</code></li>
+<li><code>Place_log</code></li>
+<li><code>Prizemoney_norm</code></li>
+</ul>
+<p>This will allow us to create a short, medium and long term measures of our features.</p>
+<p>Depending on the dataset size, this can take several minutes.</p>
 </div>
 </div>
 </div>
@@ -3442,9 +3447,11 @@ Processing rolling window 365D
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="4-build-and-train-regression-models">4. Build and train regression models</h2>
 <h3 id="logistic-regression">Logistic regression</h3>
-<p>The dataset is split between training and validation:
-- train dataset: from 2018-12-01 to 2020-12-31
-- validation dataset: from 2021-01-01</p>
+<p>The dataset is split between training and validation:</p>
+<ul>
+<li>train dataset: from 2018-12-01 to 2020-12-31</li>
+<li>validation dataset: from 2021-01-01</li>
+</ul>
 <p>The next cell trains a <a href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html">LogisticRegression</a> model and uses the <code>win</code> flag (<code>0=lose, 1=win</code>) as a target.</p>
 </div>
 </div>
@@ -3675,12 +3682,14 @@ To get our model to generate more accurate probabilities, we would need to gener
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="compare-other-types-of-classification-models">Compare other types of classification models</h3>
-<p>The next cell trains different classification models using <code>Scikit-learn</code> unified API:
-- <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">GradientBoostingClassifier</a>
-- <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">RandomForestClassifier</a>
-- <a href="https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html">LGBMClassifier</a>
-- <a href="https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier">XGBClassifier</a>
-- <a href="https://catboost.ai/docs/concepts/python-reference_catboostclassifier">CatBoostClassifier</a></p>
+<p>The next cell trains different classification models using <code>Scikit-learn</code> unified API:</p>
+<ul>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">GradientBoostingClassifier</a></li>
+<li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">RandomForestClassifier</a></li>
+<li><a href="https://lightgbm.readthedocs.io/en/latest/pythonapi/lightgbm.LGBMClassifier.html">LGBMClassifier</a></li>
+<li><a href="https://xgboost.readthedocs.io/en/latest/python/python_api.html#xgboost.XGBClassifier">XGBClassifier</a></li>
+<li><a href="https://catboost.ai/docs/concepts/python-reference_catboostclassifier">CatBoostClassifier</a></li>
+</ul>
 <p>Depending on dataset size and compute capacity, this can take several minutes</p>
 </div>
 </div>

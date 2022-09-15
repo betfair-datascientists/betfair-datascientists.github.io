@@ -2505,6 +2505,71 @@ Loading data from 2021-09-01 to 2021-09-30
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>From the FastTrack documentation, this is what each variable represents:</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Box</td>
+<td>Integer value between 1 and 8</td>
+</tr>
+<tr>
+<td>Rug</td>
+<td>This is an integer value between 1 and 10</td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>This is a decimal value to 1 decimal place</td>
+</tr>
+<tr>
+<td>StartPrice</td>
+<td>This is an integer value &gt; 0 that is prefixed by the character "$"</td>
+</tr>
+<tr>
+<td>Handicap</td>
+<td>Empty = Not a Handicapped Race "Y" = Handicapped Race</td>
+</tr>
+<tr>
+<td>Margin1</td>
+<td>This is a decimal value to two decimal places representing a dogs margin from the winning dog, in the case of the winning dog, it is the margin to the second dog.</td>
+</tr>
+<tr>
+<td>Margin2</td>
+<td>This is a decimal value to two decimal places representing a dogs margin from the dog in front if it, in the case of the winning dog this value is empty.</td>
+</tr>
+<tr>
+<td>PIR</td>
+<td>This is a dogs place at each of the split points in a race. The string representation is \<Speed>/\<PlaceAtSplit1>\<PlaceAtSplint2>\<PlaceAtSplitN><br>The Speed values will be one of the following:<br>S = “Slow Start”<br>M = “Medium Start”<br>F = “Fast Start”<br>E.g. S/444 = Slow start and was placed 4th at each of the races<br>three split points</td>
+</tr>
+<tr>
+<td>Checks</td>
+<td>Whether the dog was checked in running by other dogs, and the number of lengths lost as a result of the checking, ie. C1</td>
+</tr>
+<tr>
+<td>SplitMargin</td>
+<td>This is a decimal value to two decimal places representing a dogs time at the first split marker.</td>
+</tr>
+<tr>
+<td>RunTime</td>
+<td>This is a decimal value to two decimal places representing a dogs running time for a race</td>
+</tr>
+<tr>
+<td>PriceMoney</td>
+<td>This is an integer value &gt; 0 with a “$” character prefix. Maximum of 8 values</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2-cleanse-and-normalise-the-data">2. Cleanse and normalise the data</h2>
 <p>Here we do some basic data manipulation and cleansing to get variables into format that we can work with</p>
 </div>

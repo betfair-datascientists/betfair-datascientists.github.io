@@ -18,3 +18,4 @@ Watch this space as Jared will be writing an entire series of articles related t
 
 - [Part I](../roleOfEmotions) - Role of emotions
 - [Part II](../mapYourEmotions) - Map your emotions
+- [Part III](../handlingBadVariance) - Handling Bad Variance

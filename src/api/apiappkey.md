@@ -31,6 +31,8 @@ If you’ve followed step 1 correctly, your SSOID token should be automatically 
 Next click on `createDeveloperAppKeys` in the left hand navigation.
 
 Type in an application name (this is your app key name, so make sure this is unique), then click ‘Execute’ down the bottom of the page.
+
+- Common errors when creating your app key are if the Application Name you’re using isn’t unique (no Betfair customers can have the same Application Name) or if you’re Application Name contains your account username
  
 If you receive an error message saying that your app key couldn’t be created, it’s most likely because you already have one. Use the `getDeveloperAppKeys` method in the left hand menu to check whether there’s already an app key associated with your account.
 

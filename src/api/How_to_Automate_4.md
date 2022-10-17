@@ -357,7 +357,8 @@ Following Bruno's code, we have a few lines of cleaning left that we can just co
     # Select todays data and prepare data for easy reference in flumine
     todays_data = model_df[model_df['date_dt'] == pd.Timestamp.now().strftime('%Y-%m-%d')]
     todays_data['DogName_bf'] = todays_data['DogName'].apply(lambda x: x.replace("'", "").replace(".", "").replace("Res", "").strip())
-    todays_data.replace({'Sandown (SAP)': 'Sandown Park'}, regex=True, inplace=True)
+    final_data.replace('Sandown (SAP)','Sandown Park',inplace = True)
+    final_data.replace('Murray Bridge (MBR)','Murray Bridge',inplace = True)
     todays_data = todays_data.set_index(['DogName_bf','Track','RaceNum'])
     print(todays_data)
 
@@ -1134,7 +1135,8 @@ Run the code from your ide by using py `<filename>`.py, making sure you amend th
         # Select todays data and prepare data for easy reference in flumine
         todays_data = model_df[model_df['date_dt'] == pd.Timestamp.now().strftime('%Y-%m-%d')]
         todays_data['DogName_bf'] = todays_data['DogName'].apply(lambda x: x.replace("'", "").replace(".", "").replace("Res", "").strip())
-        todays_data.replace({'Sandown (SAP)': 'Sandown Park'}, regex=True, inplace=True)
+        final_data.replace('Sandown (SAP)','Sandown Park',inplace = True)
+        final_data.replace('Murray Bridge (MBR)','Murray Bridge',inplace = True)
         todays_data = todays_data.set_index(['DogName_bf','Track','RaceNum'])
         print(todays_data)
 

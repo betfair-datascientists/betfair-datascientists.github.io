@@ -892,7 +892,7 @@ Run the code from your ide by using py `<filename>`.py, making sure you amend th
 
 === "Part 1"
 
-    [Download from Github]()
+    [Download from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master/howToAutomate/how_to_automate_IV)
 
     ```py
 
@@ -988,7 +988,7 @@ Run the code from your ide by using py `<filename>`.py, making sure you amend th
 
 === "Part 2"
 
-    [Download from Github]()
+    [Download from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master/howToAutomate/how_to_automate_IV)
 
     ```py
 
@@ -1146,7 +1146,7 @@ Run the code from your ide by using py `<filename>`.py, making sure you amend th
 
 === "Part 3"
 
-    [Download from Github]()
+    [Download from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master/howToAutomate/how_to_automate_IV)
 
     ```py
 
@@ -1468,7 +1468,7 @@ Run the code from your ide by using py `<filename>`.py, making sure you amend th
 
 === "Part 4"
 
-    [Download from Github]()
+    [Download from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master/howToAutomate/how_to_automate_IV)
 
     ```py
 

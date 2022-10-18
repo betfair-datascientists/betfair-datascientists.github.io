@@ -199,7 +199,7 @@ Fill or kill is a useful tool to instruct Bet Angel to cancel (kill) a bet if it
 
 ## Resources
 
-- [Betfair's interview with Bet Angel's creator, Peter Webb](https://www.betfair.com.au/hub/peter-webb/)
+- [Betfair's interview with Bet Angel's creator, Peter Webb](https://www.youtube.com/playlist?list=PLvw8KRdyfOY33tlo_L5L7puekU4ligj4I)
 
 - [Bet Angel User Guide](https://www.betangel.com/user-guide/)
     - [Installation](https://www.betangel.com/user-guide/downloading_and_installing_bet_angel.html?ms=AQAAAAAAQA%3D%3D&st=MA%3D%3D&sct=MA%3D%3D&mw=MzIw)

@@ -139,7 +139,7 @@ For more tutorials on using the Bet Angel Excel function, take a look through ou
 
 ## Resources
 
-- [Betfair's interview with Bet Angel's creator, Peter Webb](https://www.betfair.com.au/hub/peter-webb/)
+- [Betfair's interview with Bet Angel's creator, Peter Webb](https://www.youtube.com/playlist?list=PLvw8KRdyfOY33tlo_L5L7puekU4ligj4I)
 
 - [Bet Angel User Guide](https://www.betangel.com/user-guide/)
     - [Triggered Betting](https://www.betangel.com/user-guide/advanced_automation__triggered_betting_.html?ms=AAAAAAAA&st=MA%3D%3D&sct=MTAw&mw=MzIw)

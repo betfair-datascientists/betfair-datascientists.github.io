@@ -1041,7 +1041,7 @@ Lets try a different staking method instead, this time I have opted for a propor
         # Only use streaming API:
         for runner in market_book.runners:
             model_price = todays_data.loc[market.market_id].loc[runner.selection_id]['rating']
-            # If best available to back price is > rated price then flat $5 back
+            # If best available to back price is > rated price then proportional back stake
             if runner.status == "ACTIVE" and runner.ex.available_to_back[0]['price'] > model_price:
                 trade = Trade(
                 market_id=market_book.market_id,
@@ -1053,7 +1053,7 @@ Lets try a different staking method instead, this time I have opted for a propor
                     side="BACK", order_type=LimitOrder(price=runner.ex.available_to_back[0]['price'], size=round(10/(runner.ex.available_to_back[0]['price']-1),2))
                 )
                 market.place_order(order)
-            # If best available to lay price is < rated price then flat $5 lay
+            # If best available to lay price is < rated price then proportional lay stake
             if runner.status == "ACTIVE" and runner.ex.available_to_lay[0]['price'] < model_price:
                 trade = Trade(
                 market_id=market_book.market_id,

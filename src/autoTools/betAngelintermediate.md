@@ -145,7 +145,7 @@ For more detail and information regarding Bet Angels advanced charts, check out 
 
 ## Resources
 
-- [Betfair's interview with Bet Angel's creator, Peter Webb](https://www.betfair.com.au/hub/peter-webb/)
+- [Betfair's interview with Bet Angel's creator, Peter Webb](https://www.youtube.com/playlist?list=PLvw8KRdyfOY33tlo_L5L7puekU4ligj4I)
 
 - [Bet Angel user guide](https://www.betangel.com/user-guide/)
     - [Ladder Mode](https://www.betangel.com/user-guide/ladder_interface.html?ms=GgBAAAQAFBAIASA%3D&st=MA%3D%3D&sct=MA%3D%3D&mw=Mzkx)

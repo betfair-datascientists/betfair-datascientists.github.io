@@ -27,7 +27,7 @@ If you’re new to these languages, here are some resources that will help get y
 ---
 ## Find a data source
 
-Finding quality data is crucial to being able to create a successful model. We have lots of [historical Exchange data](https://www.betfair.com.au/hub/tools/betfair-data-cheat-sheet/) that we’re happy to share, and there are lots of other sources of sports or racing specific data available online, depending on what you’re looking for.
+Finding quality data is crucial to being able to create a successful model. We have lots of [historical Exchange data](https://www.betfair.com.au/hub/education/betfair-advanced/historical-data-sources/) that we’re happy to share, and there are lots of other sources of sports or racing specific data available online, depending on what you’re looking for.
 
 For our workshops we use historical NBA odds data from the Exchange ([which you can download directly from here](/modelling/assets/BetfairNBAOdds.csv), along with NBA game data from a variety of sources including:
 
@@ -55,15 +55,15 @@ We've also shared a [R repo for connecting with our API](/../api/apiRtutorial), 
 We’ve put together some articles to give you an introduction to some of the different approaches you can take to modelling data, but again there are also lots of resources available online. Here are some good places to start:
 
 - Work through the modelling tutorials we've put together using [AFL](/modelling/AFLmodellingPython/) and [soccer](/modelling/soccerEloTutorialR/) data
-- This [Introduction to Tennis Modelling](https://www.betfair.com.au/hub/better-betting/betting-strategies/tennis/an-introduction-to-tennis-modelling/) gives a good overview of ranking-based models, regression-based models and point-based models
-- How we used [ELO](https://www.betfair.com.au/hub/how-to-use-elo-to-model-the-world-cup/) and [machine learning](https://www.betfair.com.au/hub/how-to-use-machine-learning-for-the-world-cup-datathon/) as different approaches to modelling the recent World Cup
+- This [Introduction to Tennis Modelling](https://betfair-datascientists.github.io/modelling/howToModelTheAusOpen/) gives a good overview of ranking-based models, regression-based models and point-based models
+- How we used [ELO](https://betfair-datascientists.github.io/modelling/soccerEloTutorialR/) and [machine learning](https://betfair-datascientists.github.io/modelling/EPLmlPython/) as different approaches to modelling the World Cup
 
 ---
 ## Get your hands dirty
 
 The best way to learn is by doing. Make sure you have a solid foundation knowledge to work from, then get excited, get your hands dirty and see what you can create! Here are a final few thoughts to help you decide where to from here:
 
-- Make sure you’ve got your [betting basics](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/) and [wagering fundamentals](https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/) knowledge solid
-- Learn about the importance of [ratings and prices](https://www.betfair.com.au/hub/better-betting/betsmart-education/ratings-and-prices/) and get inspired by the [models](https://www.betfair.com.au/hub/tools/models/) created by our Data Scientists
+- Make sure you’ve got your [Betfair Basics](https://www.betfair.com.au/hub/education/betfair-basics/the-betfair-exchange/) knowledge solid including [back betting](https://www.betfair.com.au/hub/education/betfair-basics/back-betting/), [lay betting](https://www.betfair.com.au/hub/education/betfair-basics/lay-betting/) and [reading exchange markets](https://www.betfair.com.au/hub/education/betfair-basics/read-an-exchange-market/)
+- Learn about the importance of ratings and [prices](https://www.betfair.com.au/hub/education/racing-strategy/value-and-odds/) and get inspired by the [models](https://www.betfair.com.au/hub/models/) created by our Data Scientists
 - Consider how you could use our [API](/../api/apiappkey) in building and automating your model
-- Read about how successful some of our customers have been in their [modelling journeys](https://www.betfair.com.au/hub/better-betting/customer-insights/)
+- Read about how successful some of our customers have been in their [modelling journeys](https://www.youtube.com/watch?v=zBU5JA4hl1c&list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ)

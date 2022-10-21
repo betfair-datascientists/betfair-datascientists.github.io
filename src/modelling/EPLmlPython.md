@@ -2,7 +2,7 @@
 
 ---
 # 01. Data Acquisition & Exploration
-Welcome to the first part of this Machine Learning Walkthrough. This tutorial will be made of two parts; how we actually acquired our data (programmatically) and exploring the data to find potential features to use in the [next tutorial](/modelling/EPLmodelPart2).
+Welcome to the first part of this Machine Learning Walkthrough. This tutorial will be made of four parts; how we actually acquired our data (programmatically), exploring the data to find potential features, building the model and using the model to make predictions.
 
 ---
 ## Data Acquisition
@@ -507,7 +507,7 @@ As we can see away odds is most highly correlated to margin. This makes sense, a
 ---
 # 02. Data Preparation & Feature Engineering
 
-Welcome to the second part of this Machine Learning Walkthrough. This tutorial will focus on data preparation and feature creation, before we dive into modelling in the [next tutorial](/modelling/EPLmodelPart3).
+Welcome to the second part of this Machine Learning Walkthrough. This tutorial will focus on data preparation and feature creation, before we dive into modelling in the next tutorial.
 
 Specifically, this tutorial will cover a few things:
 
@@ -803,7 +803,7 @@ We will utilise pre-made functions to create all of our features in just a few l
 
 As part of this process we will create features which include margin weighted elo, an exponential average for asian handicap data, and odds as features.
 
-Our Elo function is essentially the same as the one we created in the AFL tutorial; if you would like to know more about Elo models please read [this](https://www.betfair.com.au/hub/better-betting/betting-strategies/tennis/tennis-elo-modelling/) article.
+Our Elo function is essentially the same as the one we created in the AFL tutorial; if you would like to know more about Elo models please read [this](https://en.wikipedia.org/wiki/Elo_rating_system) article.
 
 Note that the cell below may take a few minutes to run.
 
@@ -910,7 +910,7 @@ We now have a features DataFrame ready, with all the feature columns beginning w
 
 ---
 # 03. Model Building & Hyperparameter Tuning
-Welcome to the third part of this Machine Learning Walkthrough. This tutorial will focus on the model building process, including how to tune hyperparameters. In the [next tutorial], we will create weekly predictions based on the model we have created here.
+Welcome to the third part of this Machine Learning Walkthrough. This tutorial will focus on the model building process, including how to tune hyperparameters. In the next tutorial, we will create weekly predictions based on the model we have created here.
 
 Specifically, this tutorial will cover a few things:
 
@@ -1151,7 +1151,7 @@ There we have it! The odds predicted 54.5% of EPL games correctly in the 2017/18
 ---
 # 04. Weekly Predictions
 
-Welcome to the third part of this Machine Learning Walkthrough. This tutorial will be a walk through of creating weekly EPL predictions from the basic logistic regression model we built in the previous tutorial. We will then analyse our predictions and create staking strategies in the next tutorial.
+Welcome to the final part of this Machine Learning Walkthrough. This tutorial will be a walk through of creating weekly EPL predictions from the basic logistic regression model we built in the previous tutorial. We will then analyse our predictions and create staking strategies in the next tutorial.
 
 Specifically, this tutorial will cover a few things:
 

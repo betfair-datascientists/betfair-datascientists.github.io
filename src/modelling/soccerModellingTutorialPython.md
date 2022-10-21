@@ -13,8 +13,6 @@ The tutorial **DOES NOT** delve deep into the fundamentals of machine learning, 
 
 *There are some helpful hints along the way though.*
 
-!!! note "Betfair Datathon"
-    If you're interested in competing in the 2021 Euro & Copa America Datathon competition make sure you [head to the Hub](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/), register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. 
 
 ``` python
 # import required libraries

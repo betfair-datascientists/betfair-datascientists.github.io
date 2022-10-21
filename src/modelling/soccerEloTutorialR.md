@@ -6,22 +6,20 @@ This tutorial was written as part of the 2021 Euro & Copa America Datathon compe
 
 From a set of Elo ratings we can construct win/loss probabilities for given match-ups between two teams using a simple formula which takes the difference between the two teams' ratings and outputs the probability of each team winning or losing the match. A very basic yet very effective approach!
 
-To read more the inner workings of Elo models, [take a read of this article](https://www.betfair.com.au/hub/tennis-elo-modelling/) for a detailed run-down of how the mathematics behind an Elo rating system works in the context of tennis matches.
+To read more the inner workings of Elo models, [take a read of this article](http://irep.ntu.ac.uk/id/eprint/42038/1/1400774_Vaughan_Williams.pdf) for a detailed run-down of how the mathematics behind an Elo rating system works in the context of tennis matches.
 
 ---
 ## Elo Models & Soccer
 
 Elo-based systems lend themselves particularly well to modelling soccer, so much so that publicly available Elo ratings systems ([www.eloratings.net](https://www.eloratings.net) for international soccer for example)  have been adopted by professional bodies to help seed tournaments and create fairer fixtures.
 
-This tutorial aims to serve as guide of how to build a basic soccer Elo model with a particular focus on the 2021 editions of the Euro and Copa America, as they will serve as the subject of [Betfair's Datathon](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/).
+This tutorial aims to serve as guide of how to build a basic soccer Elo model with a particular focus on the 2021 editions of the Euro and Copa America, as they served as the subject of Betfair's Datathon.
 
 To follow along with this tutorial you will need two things:
 
 1. This code is written in R, and hence you will need to have [R](https://www.r-project.org) and [RStudio](https://www.rstudio.com) running on your system if you wish to follow along.
-2. You will also need the historical data set provided for Betfair's 2021 Euro & Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021 you can [register for the Datathon here](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/), or alternatively if you are reading this tutorial after the Datathon has concluded, please reach out to [datathon@betfair.com.au](mailto:datathon@betfair.com.au) for data access. In the meantime, [click here for a sample of the data](assets/datathon_initial_form_data - SAMPLE.csv) which will be enough to allow the code to run effectively.
+2. You will also need the historical data set provided for Betfair's 2021 Euro & Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021, please reach out to [datathon@betfair.com.au](mailto:datathon@betfair.com.au) for data access. In the meantime, [click here for a sample of the data](assets/datathon_initial_form_data - SAMPLE.csv) which will be enough to allow the code to run effectively.
 
-!!! note "Betfair Datathon"
-    If you're interested in competing in the 2021 Euro & Copa America Datathon competition make sure you [head to the Hub](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/), register and download the bespoke data set provided and get your model submitted before 11 June for your chance to win part of the prize pool. 
 
 Let's get started!
 
@@ -242,7 +240,6 @@ Remember, an Elo model can be as complex or as simple as you want it to be - in 
 
 We hope you've found this tutorial useful - if you have any questions regarding predictive data modelling please reach out to [automation@betfair.com.au](mailto:automation@betfair.com.au).
 
-Good luck in the [Datathon](https://www.betfair.com.au/hub/betfair-euro-copa-america-datathon/)!
 
 ---
 ### Disclaimer 

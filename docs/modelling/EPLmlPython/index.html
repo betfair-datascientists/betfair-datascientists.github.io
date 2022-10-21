@@ -1703,7 +1703,7 @@
 <h1 id="epl-machine-learning-walkthrough">EPL Machine Learning Walkthrough</h1>
 <hr />
 <h1 id="01-data-acquisition-exploration">01. Data Acquisition &amp; Exploration</h1>
-<p>Welcome to the first part of this Machine Learning Walkthrough. This tutorial will be made of two parts; how we actually acquired our data (programmatically) and exploring the data to find potential features to use in the <a href="/modelling/EPLmodelPart2">next tutorial</a>.</p>
+<p>Welcome to the first part of this Machine Learning Walkthrough. This tutorial will be made of four parts; how we actually acquired our data (programmatically), exploring the data to find potential features, building the model and using the model to make predictions.</p>
 <hr />
 <h2 id="data-acquisition">Data Acquisition</h2>
 <p>We will be grabbing our data from <a href="http://www.football-data.co.uk/englandm.php">football-data.co.uk</a>, which has an enormous amount of soccer data dating back to the 90s. They also generously allow us to use it for free! However, the data is in separate CSVs based on the season. That means we would need to manually download 20 different files if we wanted the past 20 seasons. Rather than do this laborious and boring task, let's create a function which downloads the files for us, and appends them all into one big CSV.</p>
@@ -2593,7 +2593,7 @@ Name: homeWin, dtype: float64
 <p>As we can see away odds is most highly correlated to margin. This makes sense, as odds generally have most/all information included in the price. What is interesting is that elo seems to also be highly correlated, which is good news for our elo model that we made. Similarly, weighted goals and the the value of the defence relative to other teams ('defMktH%' etc.) is strongly correlated to margin.</p>
 <hr />
 <h1 id="02-data-preparation-feature-engineering">02. Data Preparation &amp; Feature Engineering</h1>
-<p>Welcome to the second part of this Machine Learning Walkthrough. This tutorial will focus on data preparation and feature creation, before we dive into modelling in the <a href="/modelling/EPLmodelPart3">next tutorial</a>.</p>
+<p>Welcome to the second part of this Machine Learning Walkthrough. This tutorial will focus on data preparation and feature creation, before we dive into modelling in the next tutorial.</p>
 <p>Specifically, this tutorial will cover a few things:</p>
 <ol>
 <li>Data wrangling specifically for sport</li>
@@ -3947,7 +3947,7 @@ Name: homeWin, dtype: float64
 <h2 id="creating-our-features-dataframe">Creating our Features DataFrame</h2>
 <p>We will utilise pre-made functions to create all of our features in just a few lines of code.</p>
 <p>As part of this process we will create features which include margin weighted elo, an exponential average for asian handicap data, and odds as features.</p>
-<p>Our Elo function is essentially the same as the one we created in the AFL tutorial; if you would like to know more about Elo models please read <a href="https://www.betfair.com.au/hub/better-betting/betting-strategies/tennis/tennis-elo-modelling/">this</a> article.</p>
+<p>Our Elo function is essentially the same as the one we created in the AFL tutorial; if you would like to know more about Elo models please read <a href="https://en.wikipedia.org/wiki/Elo_rating_system">this</a> article.</p>
 <p>Note that the cell below may take a few minutes to run.</p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="c1"># Create feature DataFrames</span>
 <a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a><span class="n">features_all_games</span> <span class="o">=</span> <span class="n">create_all_games_features</span><span class="p">(</span><span class="n">all_games</span><span class="p">)</span>
@@ -4674,7 +4674,7 @@ Name: homeWin, dtype: float64
 <p>We now have a features DataFrame ready, with all the feature columns beginning with the "f_". In the next section, we will walk through the modelling process to try and find the best type of model to use.</p>
 <hr />
 <h1 id="03-model-building-hyperparameter-tuning">03. Model Building &amp; Hyperparameter Tuning</h1>
-<p>Welcome to the third part of this Machine Learning Walkthrough. This tutorial will focus on the model building process, including how to tune hyperparameters. In the [next tutorial], we will create weekly predictions based on the model we have created here.</p>
+<p>Welcome to the third part of this Machine Learning Walkthrough. This tutorial will focus on the model building process, including how to tune hyperparameters. In the next tutorial, we will create weekly predictions based on the model we have created here.</p>
 <p>Specifically, this tutorial will cover a few things:</p>
 <ol>
 <li>Choosing which Machine Learning algorithm to use from a variety of choices</li>
@@ -4968,7 +4968,7 @@ Name: homeWin, dtype: float64
 <p>There we have it! The odds predicted 54.5% of EPL games correctly in the 2017/18 season, whilst our model predicted 54% correctly. This is a decent result for the first iteration of our model. In future iterations, we could wait a certain number of matches each season and calculate EMAs for on those first n games. This may help the issue of players switching clubs and teams becoming relatively stronger/weaker compared to previous seasons.</p>
 <hr />
 <h1 id="04-weekly-predictions">04. Weekly Predictions</h1>
-<p>Welcome to the third part of this Machine Learning Walkthrough. This tutorial will be a walk through of creating weekly EPL predictions from the basic logistic regression model we built in the previous tutorial. We will then analyse our predictions and create staking strategies in the next tutorial.</p>
+<p>Welcome to the final part of this Machine Learning Walkthrough. This tutorial will be a walk through of creating weekly EPL predictions from the basic logistic regression model we built in the previous tutorial. We will then analyse our predictions and create staking strategies in the next tutorial.</p>
 <p>Specifically, this tutorial will cover a few things:</p>
 <ol>
 <li>Obtaining Weekly Odds / Game Info Using Betfair's API</li>

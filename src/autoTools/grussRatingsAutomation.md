@@ -9,14 +9,14 @@ Gruss Betting Assistant has a spreadsheet functionality that lets you place bets
 --- 
 ## - The plan
 
-We're using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) put together by some of our Data Scientists. This model creates ratings for Victorian and Queensland greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so we're going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Gruss Betting Assistant's Excel triggered betting feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what we've used for the automation here. 
+We're using the [Greyhound Ratings Model](https://www.betfair.com.au/hub/models/greyhound-predictions-model/) put together by some of our Data Scientists. This model creates ratings for Victorian and Queensland greyhound races daily and is freely available on the Hub. It's pretty good at predicting winners, so we're going to place back bets on the dogs with shorter ratings where the market price is better than the model's rating. Gruss Betting Assistant's Excel triggered betting feature has the capacity to let you create spreadsheets with pretty complicated rules that can be applied to multiple markets, which is what we've used for the automation here. 
 
-Here we'll step through how we went about getting Gruss to place bets using [these ratings](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program running and be able to walk away. Obviously, you can use your own ratings and change the rules according to what your strategy is.
+Here we'll step through how we went about getting Gruss to place bets using [these ratings](https://www.betfair.com.au/hub/models/greyhound-predictions-model/). Once it's set up the goal is to be able to upload a new set of ratings, choose your races, set the program running and be able to walk away. Obviously, you can use your own ratings and change the rules according to what your strategy is.
 
 ![Automating a ratings based strategy with Gruss](./img/GrussHubGreyRatings.png)
 
 !!! info "Resources"
-    - Ratings: [Betfair Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/)
+    - Ratings: [Betfair Data Scientists' Greyhound Ratings Model](https://www.betfair.com.au/hub/models/greyhound-predictions-model/)
     - Rules: [here's the spreadsheet](./assets/Gruss_RatingsAutomation.xlsx) We set up with our rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings 
     - Tool: [Gruss Betting Assistant](http://www.gruss-software.co.uk/betfair-products/betfair-betting-assistant)
 
@@ -30,7 +30,7 @@ Make sure you've downloaded and installed [Gruss Betting Assistant](http://www.g
 ---
 ### - Downloading & formatting ratings
 
-Here we're using the [Betfair's Data Scientists' greyhound ratings model](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/) for greyhound racing but alternatively you can follow the same process using the [Betfair's Data Scientists' thoroughbred Ratings Model](https://www.betfair.com.au/hub/horse-racing-tips/#today) which is also available on the hub. When there are ratings made available, you will have the options to download them as a CSV or JSON file. For this tutorial, we'll go ahead and download the ratings as a CSV file. 
+Here we're using the [Betfair's Data Scientists' greyhound ratings model](https://www.betfair.com.au/hub/models/greyhound-predictions-model/) for greyhound racing but alternatively you can follow the same process using the [Betfair's Data Scientists' thoroughbred Ratings Model](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/) which is also available on the hub. When there are ratings made available, you will have the options to download them as a CSV or JSON file. For this tutorial, we'll go ahead and download the ratings as a CSV file. 
 
 ![Automating a ratings based strategy with Gruss](./img/GrussHubRatings.png)
 
@@ -133,7 +133,7 @@ Stepping through each step:
 ```
 
 
-- **Back market percentage (Overround) is less than what we define (UserOverround):** Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'RATINGS' worksheet. [Additional information relating to over-rounds can be found on the Hub.](https://www.betfair.com.au/hub/understanding-over-round/)
+- **Back market percentage (Overround) is less than what we define (UserOverround):** Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'RATINGS' worksheet. [Additional information relating to over-rounds can be found here.](https://caanberry.com/understanding-the-over-round-in-betting-markets/)
 
 
 ``` excel hl_lines="6"
@@ -265,7 +265,7 @@ You need to copy/paste these three formulas into the relevant cell on each runne
 
 ![Automating a ratings based strategy with Gruss](./img/GrussRatingsExcel2.PNG)
 
-**Stake:** It's completely up to you what staking approach you want to take. We've kept it simple and are just using a 'to win / to lose' strategy. Each bet aims to win whatever value has been entered in the 'SETTINGS' worksheet on that runner at the current odds if the bet type has been set to BACK. If the bet type has been changed to LAY, then the stake becomes the liability - again, easily changed in the 'SETTINGS' worksheet. We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
+**Stake:** It's completely up to you what staking approach you want to take. We've kept it simple and are just using a 'to win / to lose' strategy. Each bet aims to win whatever value has been entered in the 'SETTINGS' worksheet on that runner at the current odds if the bet type has been set to BACK. If the bet type has been changed to LAY, then the stake becomes the liability - again, easily changed in the 'SETTINGS' worksheet. We've got some [good resources on the Hub](https://www.betfair.com.au/hub/education/racing-strategy/staking-and-money-management/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
 ```=IF(A5="","",IF(BACKLAY="BACK", stake/(F5-1),stake*(H5/(H5-1))-stake)
 ```

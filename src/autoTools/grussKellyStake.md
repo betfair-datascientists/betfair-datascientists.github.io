@@ -10,24 +10,24 @@ Gruss Betting Assistant has a spreadsheet functionality that lets you place bets
 --- 
 ### - The plan
 
-We'll be building on the Gruss Ratings tutorial which utilizes the the [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/horse-racing-tips/#today). For this tutorial, we'll be assuming that you have already gone through the ratings tutorial, but if you havn't, you can [check it out here](../grussRatingsAutomation/), as the concepts and underlying trigger based strategy here do build on what we covered previously. 
+We'll be building on the Gruss Ratings tutorial which utilizes the the [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/). For this tutorial, we'll be assuming that you have already gone through the ratings tutorial, but if you havn't, you can [check it out here](../grussRatingsAutomation/), as the concepts and underlying trigger based strategy here do build on what we covered previously. 
 
 Staking strategies such as Kelly Criterion can be adventagous for automation when used in conjunction with a successful selection strategy. Rather than sending your bot to place static stake values for every bet, methods such as this let you place bet stakes which take into consideration your ratings and betting bank. 
 
-If you're not familiar with the Kelly Criterion staking strategy, we recommend having a quick read of the [Kelly staking page on the Betfair Hub](https://www.betfair.com.au/hub/staking-kelly-criterion/). There are plenty more resources on the internet relating to the strategy which may provide a more in depth understanding. 
+If you're not familiar with the Kelly Criterion staking strategy, we recommend having a quick read about [Kelly staking](https://en.wikipedia.org/wiki/Kelly_criterion). There are plenty more resources on the internet relating to the strategy which may provide a more in depth understanding. 
 
 !!! info "Resources"
-    - Ratings: [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/horse-racing-tips/#today)
+    - Ratings: [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/)
     - Before you start: [check out the Gruss Ratings tutorial](../grussRatingsAutomation/) 
     - Rules: [here's the spreadsheet](./assets/Gruss_Kelly.xlsx) we set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy
-    - Understanding how the [Kelly Criterion staking strategy works](https://www.betfair.com.au/hub/staking-kelly-criterion/)
+    - Understanding how the [Kelly Criterion staking strategy works](https://en.wikipedia.org/wiki/Kelly_criterion)
     - Tool: [Gruss Betting Assistant](https://www.gruss-software.co.uk/)
 
 ---
 
 ### - Recapping the strategy covered in the Gruss ratings automation tutorial
 
-We'll be using the same trigger strategy that's outlined in the [Gruss Ratings tutorial](../grussRatingsAutomation/) which uses the [thoroughbred ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). Whilst the trigger will remain unchanged, we'll need to make small tweaks to the stake column of the 'MARKET' worksheet (column S) and we've added an additional option to the 'SETTINGS' worksheet which will allow you to choose either a half Kelly or full Kelly stake. If you havn't yet read our Gruss ratings tutorial, we highly recommend that you do so as to understand how the bet placement trigger works. The tutorial can be found [here](../grussRatingsAutomation/).
+We'll be using the same trigger strategy that's outlined in the [Gruss Ratings tutorial](../grussRatingsAutomation/) which uses the [thoroughbred ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/). Whilst the trigger will remain unchanged, we'll need to make small tweaks to the stake column of the 'MARKET' worksheet (column S) and we've added an additional option to the 'SETTINGS' worksheet which will allow you to choose either a half Kelly or full Kelly stake. If you havn't yet read our Gruss ratings tutorial, we highly recommend that you do so as to understand how the bet placement trigger works. The tutorial can be found [here](../grussRatingsAutomation/).
 
 ---
 ### - Set up 
@@ -62,7 +62,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
 **Calculating the Kelly stake**
 
-As explained in the [Kelly Criterion staking strategy Betfair page](https://www.betfair.com.au/hub/staking-kelly-criterion/), the formula to claculate the Kelly stake is:
+As explained [here](https://en.wikipedia.org/wiki/Kelly_criterion), the formula to claculate the Kelly stake is:
 
 ```(BP-Q)/B```
 Where B is the odds you are getting -1 (because we're using decimal odds), P is the likelihood of the bet winning and Q is the probability of losing (or 1 – P).

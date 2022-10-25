@@ -42,7 +42,7 @@ Hand in hand with your back testing you need to develop a staking strategy. Diff
 ## Automation 
 
 ### Choose a tool that suits the job
-Depending on the complexity of your strategy and your skillset. If you can achieve what you need using one of the [many tools that exist for automation on the Exchange](https://www.betfair.com.au/hub/betting-applications/), great! If not, and you have some coding skills, probably the next best option is to see whether there's a code library around in a language that you're familiar with. We've put together [a collection of some of the most popular libraries and repos](https://github.com/betfair-down-under/AwesomeBetfair) for interacting with the Exchange APIs that might help you decide where to start. 
+Depending on the complexity of your strategy and your skillset. If you can achieve what you need using one of the [many tools that exist for automation on the Exchange](https://www.betfair.com.au/hub/education/betfair-advanced/tools-overview/), great! If not, and you have some coding skills, probably the next best option is to see whether there's a code library around in a language that you're familiar with. We've put together [a collection of some of the most popular libraries and repos](https://github.com/betfair-down-under/AwesomeBetfair) for interacting with the Exchange APIs that might help you decide where to start. 
 
 ### Code modularization
 It's easy to dive straight into it when you're building a bot, but being intentional in your design can save you grief in the long term. Writing modular code will help create a more robust pipeline that makes it easier to diagnose errors when they occur and deploy fixes and is much easier to maintain. It's also worth commenting your code as you go (we know, do as we say, not as we do!), but it really makes it easier to come back to your code down the track and understand what your logic is doing. The same principle also applies to using existing tools.
@@ -94,7 +94,7 @@ Any long-term strategy is likely to see variance across time, and it is challeng
 ## Resources
 If you want to learn more, here are some resources that might be valuable:
 
-- [Meet ups and workshop recordings](https://www.betfair.com.au/hub/analytical-meet-ups/)
+- [Meet ups and workshop recordings](https://www.youtube.com/watch?v=zBU5JA4hl1c&list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ)
 - [API resources](https://betfair-datascientists.github.io/api/apiResources/)
 - [Historic pricing data](https://betfair-datascientists.github.io/historicData/dataSources/)
 - [Modelling tutorials](https://betfair-datascientists.github.io/modelling/howToModel/)

@@ -3,7 +3,7 @@
 ---
 ## Automating a market favourite strategy using Gruss Betting Assistant
 
-Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of backing them.
+Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/education/betfair-basics/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of backing them.
 
 Building on our [previous articles](../grussRatingsAutomation/), we're using the spreadsheet functionality available in Gruss Betting Assistant to implement this strategy. If you haven't already we'd recommend going back and having a read of [this article](../grussRatingsAutomation/), as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Gruss and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at automation@betfair.com.au with your feedback and opinions. 
 
@@ -272,7 +272,7 @@ You need to copy/paste this formula into the relevant cells for each of the runn
 
 ![Automating a market favourite strategy with Gruss](./img/GrussMarketFav2.png)
 
-- **Stake:** it's completely up to you what staking approach you want to take. We're keeping it simple and using flat stake here, so will just place $10 on each runner. This goes in column S (S5 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
+- **Stake:** it's completely up to you what staking approach you want to take. We're keeping it simple and using flat stake here, so will just place $10 on each runner. This goes in column S (S5 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/education/racing-strategy/staking-and-money-management/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
 ```=IF(A5="","",stake)```
 

@@ -96,7 +96,7 @@ You can easily switch between different settings profiles that you’ve created 
 
 ![Bet Angel beginner guide](./img/beginner11.png)
 
-To help you through getting setup in Bet Angel, take a look at the [Bet Angel: Recommended Settings From Betfair on the Betfair Hub](https://www.betfair.com.au/hub/bet-angel-recommended-settings-from-betfair/) created specifically to help you get up and running.  
+To help you through getting setup in Bet Angel, take a look at [an introduction to BetAngel video](https://www.youtube.com/watch?v=WsSx8EMRw3Q) created specifically to help you get up and running.  
 
 ---
 
@@ -215,8 +215,7 @@ Fill or kill is a useful tool to instruct Bet Angel to cancel (kill) a bet if it
     - [Getting Bet Angel to update ten times faster - Refresh settings](https://www.youtube.com/watch?v=QOMx7s7XIAA)
 
 - [Betfair Hub](https://www.betfair.com.au/hub/)
-    - [Bet Angel overview](https://www.betfair.com.au/hub/bet-angel-betting-app/)
-    - [Recommended settings from Betfair](https://www.betfair.com.au/hub/bet-angel-recommended-settings-from-betfair/)
+
 
 
 ---

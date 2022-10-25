@@ -3,7 +3,7 @@
 ---
 ## Automating a market favourite strategy using Bet Angel Pro
 
-Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of backing them.
+Here we explore how to implement an automated strategy to place [Betfair Starting Price (BSP)](https://www.betfair.com.au/hub/education/betfair-basics/betfair-starting-price-bsp/) bets on the top two runners in the market. This lets you choose your selections based on market sentiment close to the jump, and not worry about current market price by using BSP to place your bets. You could equally use effectively the same approach if you wanted to lay the favourite(s) instead of backing them.
 
 Building on our [previous articles](../betAngelRatingsAutomation/), we're using the spreadsheet functionality available in Bet Angel Pro to implement this strategy. If you haven't already we'd recommend going back and having a read of [this article](../betAngelRatingsAutomation/), as the concepts here do build on what we covered previously. As we've said before, there are so many different ways to use this part of Bet Angel and we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us at automation@betfair.com.au with your feedback and opinions. 
 
@@ -258,7 +258,7 @@ You need to copy/paste these three formulas into the relevant cell on each green
 
 ![Automating a market favourite strategy with Bet Angel](./img/BetAngelMarketFavouriteExcel2.png)
 
-- **Stake:** it's completely up to you what staking approach you want to take. We're keeping it simple and using flat staking here, so will just place $10 on each runner. This goes in column N (N9 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
+- **Stake:** it's completely up to you what staking approach you want to take. We're keeping it simple and using flat staking here, so will just place $10 on each runner. This goes in column N (N9 for the first runner). We've got some [good resources on the Hub](https://www.betfair.com.au/hub/education/racing-strategy/staking-and-money-management/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
 ```=IF(B9="","","10")```
 

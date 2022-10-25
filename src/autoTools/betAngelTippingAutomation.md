@@ -12,14 +12,14 @@ This is what we're going to explore here - we'll be using Bet Angel Pro to place
 
 We have a set of tips that we've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips you may have. Our goal is to create an automated process which will let us choose our tips for the day, then walk away and the program do the leg work. 
 
-Here we'll step through how we went about getting Bet Angel Pro to place bets on the favourite runner identified by [Betfair's Data Scientists](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/). There are no ratings associated with these tips, so we're happy to take [Betfair's Starting Price](https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/) instead of a price for these bets. 
+Here we'll step through how we went about getting Bet Angel Pro to place bets on the favourite runner identified by [Betfair's Data Scientists](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/). There are no ratings associated with these tips, so we're happy to take [Betfair's Starting Price](https://www.betfair.com.au/hub/education/betfair-basics/betfair-starting-price-bsp/) instead of a price for these bets. 
 
 ![Automating a tipping strategy with Bet Angel](./img/BetAngeltipHub.png)
 
 If you want to follow along and try this approach yourself you'll need to download [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/) and sign up for either a subscription or at least a test period. They have a [14 day free trial](https://www.betangel.com/trial/) that's valuable for establishing whether this tool will do what you want it to for your specific strategy. 
 
 !!! info "Resources"
-    - Tips: [Betfair Data Scientists' Racing Prediction Model](https://www.betfair.com.au/hub/tools/models/racing-prediction-model/)
+    - Tips: [Betfair Data Scientists' Racing Prediction Model](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/)
     - Rules: [here's the spreadsheet](./assets/BetAngel_Tipping.xls), we used to automate our tips but you may need to tweak it a bit to suit your own tips. 
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
 
@@ -132,7 +132,7 @@ Stepping through each step:
     In the 'BET ANGEL' worksheet, the formulas will be written ```TimeTillJump1<UserTimeTillJump,``` while in the 'BET ANGEL 2' and 'BET ANGEL 3' worksheets it will be written ```TimeTillJump2<UserTimeTillJump,``` and ```TimeTillJump3<UserTimeTillJump,``` respectively. This will mean that every 'BET ANGEL' worksheet will display and track the correct time till jump for their own applicable market.  
 
 
-- **Back market percentage (Overrounds1) is less than what we define (UserOverround):** Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'SETTINGS' worksheet. [Additional information relating to over-rounds can be found on the Hub.](https://www.betfair.com.au/hub/understanding-over-round/)
+- **Back market percentage (Overrounds1) is less than what we define (UserOverround):** Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'SETTINGS' worksheet. [Additional information relating to over-rounds can be found here.](https://caanberry.com/understanding-the-over-round-in-betting-markets/)
 
 ``` excel hl_lines="5"
 =IF(
@@ -248,7 +248,7 @@ You need to copy/paste this formula into the relevant cell on each green row - w
 ![Automating your tipping with Bet Angel](./img/BetAngelTippingExcel2.png)
 
 
-- **Stake:** It's completely up to you what staking approach you want to take. We've kept it simple and are using seperate variables for a back bet and lay bet. These variables can be easily changed from the 'SETTINGS' tab. We've got some [good resources on the Hub](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
+- **Stake:** It's completely up to you what staking approach you want to take. We've kept it simple and are using seperate variables for a back bet and lay bet. These variables can be easily changed from the 'SETTINGS' tab. We've got some [good resources on the Hub](https://www.betfair.com.au/hub/education/racing-strategy/staking-and-money-management/) that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. 
 
 ```=IFERROR(IF(B9="","",IF(INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2)="BACK", BackStake,LayStake)),"")
 ```

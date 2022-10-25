@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/AFLmodellingPython/">
       
       <link rel="icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
@@ -1703,7 +1703,7 @@
 <h1 id="afl-modelling-walkthrough">AFL Modelling Walkthrough</h1>
 <hr />
 <h1 id="01-data-cleaning">01. Data Cleaning</h1>
-<p>These tutorials will walk you through how to construct your own basic AFL model, using publicly available data. The output will be odds for each team to win, which will be shown on <a href="https://www.betfair.com.au/hub/tools/models/afl-prediction-model/">The Hub</a>.</p>
+<p>These tutorials will walk you through how to construct your own basic AFL model, using publicly available data. The output will be odds for each team to win, which will be shown on <a href="https://www.betfair.com.au/hub/sports/afl/how-to-build-an-afl-model/">The Hub</a>.</p>
 <p>In this notebook we will walk you through the basics of cleaning this dataset and how we have done it. If you want to get straight to feature creation or modelling, feel free to jump ahead!</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Import libraries</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -3456,7 +3456,7 @@
 <p>Our data is now fully ready to be explored and for features to be created.</p>
 <hr />
 <h1 id="02-feature-creation">02. Feature Creation</h1>
-<p>These tutorials will walk you through how to construct your own basic AFL model. The output will be odds for each team to win, which will be shown on <a href="https://www.betfair.com.au/hub/tools/models/afl-prediction-model/">The Hub</a>.</p>
+<p>These tutorials will walk you through how to construct your own basic AFL model. The output will be odds for each team to win, which will be shown on <a href="https://www.betfair.com.au/hub/sports/afl/how-to-build-an-afl-model/">The Hub</a>.</p>
 <p>In this notebook we will walk you through creating features from our dataset, which was cleaned in the first tutorial. Feature engineering is an integral part of the Data Science process. Creative and smart features can be the difference between an average performing model and a model profitable which beats the market odds.</p>
 <hr />
 <h2 id="grabbing-our-dataset">Grabbing Our Dataset</h2>
@@ -4526,7 +4526,7 @@ To create these features we will need the opposition's Inside 50s/Rebound 50s. S
 </table>
 <p>We will merge these features back to our features df later, when the features data frame is on a single row as well.</p>
 <h3 id="creating-an-elo-feature">Creating an Elo Feature</h3>
-<p>Another feature which we could create is an Elo feature. If you don't know what Elo is, go ahead and read our article on it <a href="https://www.betfair.com.au/hub/better-betting/betting-strategies/tennis/tennis-elo-modelling/">here</a>. We have also written a guide on using elo to model the 2018 FIFA World Cup <a href="https://www.betfair.com.au/hub/how-to-use-elo-to-model-the-world-cup/">here</a>.</p>
+<p>Another feature which we could create is an Elo feature. If you don't know what Elo is, go ahead and read an article on it <a href="https://en.wikipedia.org/wiki/Elo_rating_system">here</a>. We have also written a guide on using elo to model the 2021 Euro &amp; Copa America tournaments <a href="https://betfair-datascientists.github.io/modelling/soccerEloTutorialR/">here</a>.</p>
 <p>Essentially, Elo ratings increase if you win. The amount the rating increases is based on how strong the opponent is relative to the team who won. Weak teams get more points for beating stronger teams than they do for beating weaker teams, and vice versa for losses (teams lose points for losses).</p>
 <p>Mathematically, Elo ratings can also assign a probability for winning or losing based on the two Elo Ratings of the teams playing.</p>
 <p>So let's get into it. We will first define a function which calculates the elo for each team and applies these elos to our DataFrame.</p>
@@ -5254,7 +5254,7 @@ To create these features we will need the opposition's Inside 50s/Rebound 50s. S
 <p>Note that all of our features have columns starting with 'f_' so in the section, we will grab this feature dataframe and use these features to sport predicting the matches.</p>
 <hr />
 <h1 id="03-modelling">03. Modelling</h1>
-<p>These tutorials will walk you through how to construct your own basic AFL model, using publically available data. The output will be odds for each team to win, which will be shown on <a href="https://www.betfair.com.au/hub/tools/models/afl-prediction-model/">The Hub</a>.</p>
+<p>These tutorials will walk you through how to construct your own basic AFL model, using publically available data. The output will be odds for each team to win, which will be shown on <a href="https://www.betfair.com.au/hub/sports/afl/how-to-build-an-afl-model/">The Hub</a>.</p>
 <p>In this notebook we will walk you through modelling our AFL data to create predictions. We will train a variety of quick and easy models to get a feel of what works and what doesn't. We will then tune our hyperparameters so that we are ready to make week by week predictions.</p>
 <hr />
 <h2 id="grabbing-our-dataset_1">Grabbing Our Dataset</h2>
@@ -7680,10 +7680,10 @@ To create these features we will need the opposition's Inside 50s/Rebound 50s. S
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
       
     
   </body>

@@ -6,8 +6,6 @@ This notebook will outline how the Betfair Data Scientists went about modelling 
 
 The metric used to determine the winner will be log loss, based on the actual matchups that happen in the Open. For more information on log loss, click [here](http://wiki.fast.ai/index.php/Log_Loss).
 
-For a detailed outline of the task, the prizes, and to sign up, click [here](https://www.betfair.com.au/hub/australian-open-datathon/).
-
 How an outline of our methodology and thought process, read [this](/modelling/howToModelTheAusOpen) article.
 
 ### Intention

@@ -1,6 +1,6 @@
 # How to model the Australian Open
 
-Betfair’s Data Scientists Team are putting together a collection of articles on How to Build a Model and submit an entry to the [Betfair Aus Open Datathon](https://www.betfair.com.au/hub/australian-open-datathon/).
+Betfair’s Data Scientists Team put together a collection of articles on How to Build a Model and in preparation for the previous Betfair Aus Open Datathon.
 
 This article will outline their thought process and share their approach. Subsequent articles will be posted with code examples that outline how this approach can be put into practice.
 

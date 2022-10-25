@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://betfair-datascientists.github.io/autoTools/betAngelTippingAutomation/">
       
       <link rel="icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.4.0, mkdocs-material-8.5.6">
+      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
@@ -1842,13 +1842,13 @@
 <hr />
 <h2 id="-the-plan">- The plan</h2>
 <p>We have a set of tips that we've taken from our DataScientists' Racing Prediction Model, but this approach should work for any set of tips you may have. Our goal is to create an automated process which will let us choose our tips for the day, then walk away and the program do the leg work. </p>
-<p>Here we'll step through how we went about getting Bet Angel Pro to place bets on the favourite runner identified by <a href="https://www.betfair.com.au/hub/tools/models/racing-prediction-model/">Betfair's Data Scientists</a>. There are no ratings associated with these tips, so we're happy to take <a href="https://www.betfair.com.au/hub/tools/betting-tools/betfair-starting-price-bsp/">Betfair's Starting Price</a> instead of a price for these bets. </p>
+<p>Here we'll step through how we went about getting Bet Angel Pro to place bets on the favourite runner identified by <a href="https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/">Betfair's Data Scientists</a>. There are no ratings associated with these tips, so we're happy to take <a href="https://www.betfair.com.au/hub/education/betfair-basics/betfair-starting-price-bsp/">Betfair's Starting Price</a> instead of a price for these bets. </p>
 <p><img alt="Automating a tipping strategy with Bet Angel" src="../img/BetAngeltipHub.png" /></p>
 <p>If you want to follow along and try this approach yourself you'll need to download <a href="https://www.betangel.com/bet-angel-professional/">Bet Angel Pro</a> and sign up for either a subscription or at least a test period. They have a <a href="https://www.betangel.com/trial/">14 day free trial</a> that's valuable for establishing whether this tool will do what you want it to for your specific strategy. </p>
 <div class="admonition info">
 <p class="admonition-title">Resources</p>
 <ul>
-<li>Tips: <a href="https://www.betfair.com.au/hub/tools/models/racing-prediction-model/">Betfair Data Scientists' Racing Prediction Model</a></li>
+<li>Tips: <a href="https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/">Betfair Data Scientists' Racing Prediction Model</a></li>
 <li>Rules: <a href="../assets/BetAngel_Tipping.xls">here's the spreadsheet</a>, we used to automate our tips but you may need to tweak it a bit to suit your own tips. </li>
 <li>Tool: <a href="https://www.betangel.com/bet-angel-professional/">Bet Angel Pro</a></li>
 </ul>
@@ -1953,7 +1953,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p>In the 'BET ANGEL' worksheet, the formulas will be written <code>TimeTillJump1&lt;UserTimeTillJump,</code> while in the 'BET ANGEL 2' and 'BET ANGEL 3' worksheets it will be written <code>TimeTillJump2&lt;UserTimeTillJump,</code> and <code>TimeTillJump3&lt;UserTimeTillJump,</code> respectively. This will mean that every 'BET ANGEL' worksheet will display and track the correct time till jump for their own applicable market.  </p>
 </div>
 <ul>
-<li><strong>Back market percentage (Overrounds1) is less than what we define (UserOverround):</strong> Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'SETTINGS' worksheet. <a href="https://www.betfair.com.au/hub/understanding-over-round/">Additional information relating to over-rounds can be found on the Hub.</a></li>
+<li><strong>Back market percentage (Overrounds1) is less than what we define (UserOverround):</strong> Here we're making a calculation for each runner (100 / best back price) and then calculating the sum of all of the runners together to give us the back market percentage. As the closer the BMP is to 100%, the fairer the market is, we use this to ensure that we only place bets when the market is less than what we define in the 'SETTINGS' worksheet. <a href="https://caanberry.com/understanding-the-over-round-in-betting-markets/">Additional information relating to over-rounds can be found here.</a></li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>=IF(
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>   AND(
@@ -2059,7 +2059,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 <p><code>=IFERROR(IF(B9="","",IF(INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2)="LAY",1.01,1000)),"")</code></p>
 <p><img alt="Automating your tipping with Bet Angel" src="../img/BetAngelTippingExcel2.png" /></p>
 <ul>
-<li><strong>Stake:</strong> It's completely up to you what staking approach you want to take. We've kept it simple and are using seperate variables for a back bet and lay bet. These variables can be easily changed from the 'SETTINGS' tab. We've got some <a href="https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
+<li><strong>Stake:</strong> It's completely up to you what staking approach you want to take. We've kept it simple and are using seperate variables for a back bet and lay bet. These variables can be easily changed from the 'SETTINGS' tab. We've got some <a href="https://www.betfair.com.au/hub/education/racing-strategy/staking-and-money-management/">good resources on the Hub</a> that look at different staking approaches - these might be useful in helping you decide which strategy you want to use. </li>
 </ul>
 <p><code>=IFERROR(IF(B9="","",IF(INDEX(TIP!A:B,MATCH(B9,RunnerName,0),2)="BACK", BackStake,LayStake)),"")</code></p>
 <p><img alt="Automating your tipping with Bet Angel" src="../img/BetAngelTippingExcel3.png" /></p>
@@ -2241,10 +2241,10 @@ keep on top of more complex strategies that require long formaulas to implement.
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.078830c0.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
       
     
   </body>

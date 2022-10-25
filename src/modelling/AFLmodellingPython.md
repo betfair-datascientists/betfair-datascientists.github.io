@@ -3,7 +3,7 @@
 ---
 # 01. Data Cleaning
 
-These tutorials will walk you through how to construct your own basic AFL model, using publicly available data. The output will be odds for each team to win, which will be shown on [The Hub](https://www.betfair.com.au/hub/tools/models/afl-prediction-model/).
+These tutorials will walk you through how to construct your own basic AFL model, using publicly available data. The output will be odds for each team to win, which will be shown on [The Hub](https://www.betfair.com.au/hub/sports/afl/how-to-build-an-afl-model/).
 
 In this notebook we will walk you through the basics of cleaning this dataset and how we have done it. If you want to get straight to feature creation or modelling, feel free to jump ahead!
 
@@ -311,7 +311,7 @@ Our data is now fully ready to be explored and for features to be created.
 ---
 # 02. Feature Creation
 
-These tutorials will walk you through how to construct your own basic AFL model. The output will be odds for each team to win, which will be shown on [The Hub](https://www.betfair.com.au/hub/tools/models/afl-prediction-model/).
+These tutorials will walk you through how to construct your own basic AFL model. The output will be odds for each team to win, which will be shown on [The Hub](https://www.betfair.com.au/hub/sports/afl/how-to-build-an-afl-model/).
 
 In this notebook we will walk you through creating features from our dataset, which was cleaned in the first tutorial. Feature engineering is an integral part of the Data Science process. Creative and smart features can be the difference between an average performing model and a model profitable which beats the market odds.
 
@@ -600,7 +600,7 @@ efficiency_features_single_row.tail(5)
 We will merge these features back to our features df later, when the features data frame is on a single row as well.
 
 ### Creating an Elo Feature
-Another feature which we could create is an Elo feature. If you don't know what Elo is, go ahead and read our article on it [here](https://www.betfair.com.au/hub/better-betting/betting-strategies/tennis/tennis-elo-modelling/). We have also written a guide on using elo to model the 2018 FIFA World Cup [here](https://www.betfair.com.au/hub/how-to-use-elo-to-model-the-world-cup/).
+Another feature which we could create is an Elo feature. If you don't know what Elo is, go ahead and read an article on it [here](https://en.wikipedia.org/wiki/Elo_rating_system). We have also written a guide on using elo to model the 2021 Euro & Copa America tournaments [here](https://betfair-datascientists.github.io/modelling/soccerEloTutorialR/).
 
 Essentially, Elo ratings increase if you win. The amount the rating increases is based on how strong the opponent is relative to the team who won. Weak teams get more points for beating stronger teams than they do for beating weaker teams, and vice versa for losses (teams lose points for losses).
 
@@ -796,7 +796,7 @@ Note that all of our features have columns starting with 'f_' so in the section,
 ---
 # 03. Modelling
 
-These tutorials will walk you through how to construct your own basic AFL model, using publically available data. The output will be odds for each team to win, which will be shown on [The Hub](https://www.betfair.com.au/hub/tools/models/afl-prediction-model/).
+These tutorials will walk you through how to construct your own basic AFL model, using publically available data. The output will be odds for each team to win, which will be shown on [The Hub](https://www.betfair.com.au/hub/sports/afl/how-to-build-an-afl-model/).
 
 In this notebook we will walk you through modelling our AFL data to create predictions. We will train a variety of quick and easy models to get a feel of what works and what doesn't. We will then tune our hyperparameters so that we are ready to make week by week predictions.
 

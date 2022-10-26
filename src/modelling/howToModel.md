@@ -27,7 +27,7 @@ If you’re new to these languages, here are some resources that will help get y
 ---
 ## Find a data source
 
-Finding quality data is crucial to being able to create a successful model. We have lots of [historical Exchange data](https://www.betfair.com.au/hub/education/betfair-advanced/historical-data-sources/) that we’re happy to share, and there are lots of other sources of sports or racing specific data available online, depending on what you’re looking for.
+Finding quality data is crucial to being able to create a successful model. We have lots of historical Exchange data that we’re happy to share, and there are lots of other sources of sports or racing specific data available online, depending on what you’re looking for.
 
 For our workshops we use historical NBA odds data from the Exchange ([which you can download directly from here](/modelling/assets/BetfairNBAOdds.csv), along with NBA game data from a variety of sources including:
 

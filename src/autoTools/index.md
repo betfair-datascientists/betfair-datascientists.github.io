@@ -78,12 +78,10 @@ We’re putting together a collection of articles on how to use some of these th
 --- 
 ### Inspiration & information 
 
-- [The Banker: A Quant's AFL Betting Strategy](https://www.betfair.com.au/hub/better-betting/customer-insights/the-banker-a-quants-afl-betting-strategy/)
-- [The Mathematician](https://www.betfair.com.au/hub/better-betting/customer-insights/mathematician/)
 - ['Back and Lay'](https://www.reddit.com/r/BackAndLay/) is a subreddit dedicated to discussing trading techniques
 - [Our Twitter community](https://twitter.com/Betfair_Aus) is really active 
-- [Staking Plans and Strategies](https://www.betfair.com.au/hub/better-betting/betting-principles/basic-principles/staking-plans-and-strategies/)
-- [Staking and Money Management](https://www.betfair.com.au/hub/better-betting/betsmart-education/wagering-and-fundamentals/staking-and-money-management/)
+- [Racing Stategy](https://www.betfair.com.au/hub/category/education/racing-strategy/)
+
 
 !!! note "Some extra info"
     There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. 

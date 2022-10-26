@@ -20,7 +20,7 @@ We know that the process of downloading and extracting these data files can be a
 ---
 ### Purchasing the data
 
-Start by going to [the Betfair Historic Data site](https://historicdata.betfair.com/#/home) and log in using your Betfair account. Note: if you have less than 100 [Betfair points](https://www.betfair.com.au/hub/help/account-help/discount-rates/) you may have problems downloading data. 
+Start by going to [the Betfair Historic Data site](https://historicdata.betfair.com/#/home) and log in using your Betfair account. Note: if you have less than 100 Betfair points you may have problems downloading data. 
 
 On the [Home](https://historicdata.betfair.com/#/home) page select the data set you want to download.
 

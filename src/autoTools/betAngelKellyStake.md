@@ -61,7 +61,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
 **Calculating the Kelly stake**
 
-As explained [here](https://en.wikipedia.org/wiki/Kelly_criterion), the formula to claculate the Kelly stake is:
+As explained [here](https://en.wikipedia.org/wiki/Kelly_criterion), the formula to calculate the Kelly stake is:
 
 ```(BP-Q)/B```
 Where B is the odds you are getting -1 (because we're using decimal odds), P is the likelihood of the bet winning and Q is the probability of losing (or 1 – P).

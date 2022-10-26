@@ -37,13 +37,13 @@ If two teams play their first match, both with Elo of 1500, **Pwin** is equal to
 
 ## - Taking Elo to the next level
 
-If you're interested in learning more about Elo and implementing a dynamic K-factor instead of a static one for greater accuracy, check out the article we've created in the Betfair Hub which applies [Elo in the context of modelling tennis](https://www.betfair.com.au/hub/tennis-elo-modelling/). Doing so can bring greater accuracy, especially when applied to the AFL season as the K-factor can be set to change depending on the importance of a particular match such as finals and early / late season games. 
+If you're interested in learning more about Elo and implementing a dynamic K-factor instead of a static one for greater accuracy, check out this article which applies [Elo in the context of modelling tennis](http://irep.ntu.ac.uk/id/eprint/42038/1/1400774_Vaughan_Williams.pdf/). Doing so can bring greater accuracy, especially when applied to the AFL season as the K-factor can be set to change depending on the importance of a particular match such as finals and early / late season games. 
 
 ---
 
 !!! info "Resources"
     - Learn more about the origins of Elo by visiting the [Elo Wikipedia page](https://en.wikipedia.org/wiki/Elo_rating_system#History)
-    - Take a look at the [Elo Tennis model article on the Betfair Hub](https://www.betfair.com.au/hub/tennis-elo-modelling/)
+    - Take a look at this [Elo Tennis model article](http://irep.ntu.ac.uk/id/eprint/42038/1/1400774_Vaughan_Williams.pdf)
     - Here's another good resource to help gain a better understanding of how Elo works and is applied: [The Math behind Elo](https://blog.mackie.io/the-elo-algorithm)
     
 ---

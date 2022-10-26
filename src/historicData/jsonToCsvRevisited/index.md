@@ -50,7 +50,7 @@ But *is* this actually slow? Let's count up how many files there are in our TAR 
 Each update can effect any or all of the runners in a market, and, to be fair, we are keeping track of a sizeable amount of data for each runner, including all the prices and volumes available in both back and lay ladders, all the money matched at every price point, the money in the BSP pools at each limit, plus a lot more... how much faster can we really expect this to run?
 
 ---
-## RTFM (Read the *** manual)
+## READ. THE. DOCUMENTATION.
 
 The `betfairlightweight` library is doing all the computationally heavy lifting in our script, and speeding it up even slightly could save us a lot of total run time, so we figured we should probably take a look online to see if there were known ways of speeding it up. 
 

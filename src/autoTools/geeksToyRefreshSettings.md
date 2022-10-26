@@ -59,7 +59,6 @@ You will see two options:
 
 ## Resources
 
-- [Betfair Geeks Toy Overview](https://www.betfair.com.au/hub/geeks-toy-betting-app/)
 - [Geeks Toy Youtube Channel](https://www.youtube.com/user/GeeksToy)
 - [Caan Berry Pro Trader Youtube Channel](https://www.youtube.com/user/caanberry)
 - [Betfair Interview With Cann Berry](https://www.betfair.com.au/hub/10-questions-with-caan-berry-pro-betfair-trader/)

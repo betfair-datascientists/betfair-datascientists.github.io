@@ -10,18 +10,18 @@ Bet Angel Pro and Gruss have a spreadsheet functionality that lets you place bet
 --- 
 ### - The plan
 
-We'll be building on the Ratings tutorial which utilizes the the [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/horse-racing-tips/#today). For this tutorial, we'll be assuming that you have already gone through the ratings tutorial, but if you havn't, you can [check it out here](../betAngelRatingsAutomation/), as the concepts and underlying trigger based strategy here do build on what we covered previously. 
+We'll be building on the Ratings tutorial which utilizes the the [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/). For this tutorial, we'll be assuming that you have already gone through the ratings tutorial, but if you havn't, you can [check it out here](../betAngelRatingsAutomation/), as the concepts and underlying trigger based strategy here do build on what we covered previously. 
 
 Staking strategies such as Kelly Criterion can be adventagous for automation when used in conjunction with a successful selection strategy. Rather than sending your bot to place static stake values for every bet, methods such as this let you place bet stakes which take into consideration your ratings and betting bank. 
 
-If you're not familiar with the Kelly Criterion staking strategy, we recommend having a quick read of the [Kelly staking page on the Betfair Hub](https://www.betfair.com.au/hub/staking-kelly-criterion/). There are plenty more resources on the internet relating to the strategy which may provide a more in depth understanding. 
+If you're not familiar with the Kelly Criterion staking strategy, we recommend having a quick read about [Kelly staking](https://en.wikipedia.org/wiki/Kelly_criterion). There are plenty more resources on the internet relating to the strategy which may provide a more in depth understanding. 
 
 !!! info "Resources"
-    - Ratings: [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/horse-racing-tips/#today)
+    - Ratings: [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/)
     - Before you start: [check out the Bet Angel Ratings tutorial](../betAngelRatingsAutomation/) 
     - Rules: [here's the spreadsheet for Bet Angel](./assets/BetAngel_Kelly.xls) we set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy
     - Rules: [here's the spreadsheet for Gruss](./assets/Gruss_Kelly.xlsx)
-    - Understanding how the [Kelly Criterion staking strategy works](https://www.betfair.com.au/hub/staking-kelly-criterion/)
+    - Understanding how the [Kelly Criterion staking strategy works](https://en.wikipedia.org/wiki/Kelly_criterion)
     - Tools: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/) and [Gruss Betting Assistant](http://www.gruss-software.co.uk/betfair-products/betfair-betting-assistant)
 
 
@@ -29,7 +29,7 @@ If you're not familiar with the Kelly Criterion staking strategy, we recommend h
 
 ### - Recapping the strategy covered in the Ratings automation tutorial
 
-We'll be using the same trigger strategy that's outlined in the [Ratings tutorial](../betAngelRatingsAutomation/) which uses the [thoroughbred ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/). Whilst the trigger will remain unchanged, we'll need to make small tweaks to the stake column of the 'BET ANGEL' worksheet (column N) for Bet Angel users or 'MARKET' worksheet (column S) for Gruss users. We've added an additional option to the 'SETTINGS' worksheet which will allow you to choose either a half Kelly or full Kelly stake. If you havn't yet read our Ratings tutorial, we highly recommend that you do so as to understand how the bet placement trigger works. The tutorial can be found [here](../betAngelRatingsAutomation/).
+We'll be using the same trigger strategy that's outlined in the [Ratings tutorial](../betAngelRatingsAutomation/) which uses the [thoroughbred ratings shared by our Data Scientists on the Hub](https://www.betfair.com.au/hub/models/greyhound-predictions-model/). Whilst the trigger will remain unchanged, we'll need to make small tweaks to the stake column of the 'BET ANGEL' worksheet (column N) for Bet Angel users or 'MARKET' worksheet (column S) for Gruss users. We've added an additional option to the 'SETTINGS' worksheet which will allow you to choose either a half Kelly or full Kelly stake. If you havn't yet read our Ratings tutorial, we highly recommend that you do so as to understand how the bet placement trigger works. The tutorial can be found [here](../betAngelRatingsAutomation/).
 
 ---
 ### - Set up 
@@ -70,7 +70,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 
 **Calculating the Kelly stake**
 
-As explained in the [Kelly Criterion staking strategy Betfair page](https://www.betfair.com.au/hub/staking-kelly-criterion/), the formula to claculate the Kelly stake is:
+As explained [here](https://en.wikipedia.org/wiki/Kelly_criterion), the formula to claculate the Kelly stake is:
 
 ```(BP-Q)/B```
 Where B is the odds you are getting -1 (because we're using decimal odds), P is the likelihood of the bet winning and Q is the probability of losing (or 1 – P).

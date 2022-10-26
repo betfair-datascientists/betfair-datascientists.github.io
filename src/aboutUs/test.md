@@ -10,13 +10,13 @@ Date Started at Betfair: Feb 2020
 
 My Edge: Ability to focus for hours on end, so I can record every bet in a spreadsheet and track whether I'm winning or losing
 
-## Ivan Zhou
-Slack Handle: Ivan Zhou
+## Mitch Motyka
+Slack Handle: MitchM
 
 My Role: Client Development Executive - Helping clients automate their strategies and models
 
-Date Started at Betfair: Jul 2021
+Date Started at Betfair: Oct 2022
 
-My Edge: Mastery of the imfamous 'for' loop in python. Horribly inefficient but works like a charm.
+My Edge: Low tech doesn't always mean low success
 
-Best Winning Moment: Modelled the Share Price of Cardinal Resources (CDV) Perfectly 1 year in advance ($0.34 -> $0.70)
+Best Winning Moment: 7-leg UK Goliath Soccer Multi win on my birthday

@@ -87,7 +87,6 @@ We’re putting together a collection of articles on how to use some of these th
 There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. 
 
 - [Analytical Meet Up recordings](https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ)
-- [The Banker: A Quant's AFL Betting Strategy](https://www.betfair.com.au/hub/uncategorized/the-banker-a-quants-afl-betting-strategy/)
 - [Our Twitter community](https://twitter.com/Betfair_Aus) is really active 
 
 

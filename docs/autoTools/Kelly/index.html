@@ -1691,23 +1691,23 @@
 <p>Bet Angel Pro and Gruss have a spreadsheet functionality that lets you place bets using your own variables and information from the live market, which is what we've used here to not only automate thoroughbred ratings from the Hub, but to also add the Kelly staking method. There are so many different ways to use this part of Bet Angel and Gruss - we're very open to any thoughts about more effective ways of implementing this sort of strategy. You're welcome to reach out to us on automation@betfair.com.au with your feedback and opinions. </p>
 <hr />
 <h3 id="-the-plan">- The plan</h3>
-<p>We'll be building on the Ratings tutorial which utilizes the the <a href="https://www.betfair.com.au/hub/horse-racing-tips/#today">Betfair's Data Scientists' thoroughbred ratings model</a>. For this tutorial, we'll be assuming that you have already gone through the ratings tutorial, but if you havn't, you can <a href="../betAngelRatingsAutomation/">check it out here</a>, as the concepts and underlying trigger based strategy here do build on what we covered previously. </p>
+<p>We'll be building on the Ratings tutorial which utilizes the the <a href="https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/">Betfair's Data Scientists' thoroughbred ratings model</a>. For this tutorial, we'll be assuming that you have already gone through the ratings tutorial, but if you havn't, you can <a href="../betAngelRatingsAutomation/">check it out here</a>, as the concepts and underlying trigger based strategy here do build on what we covered previously. </p>
 <p>Staking strategies such as Kelly Criterion can be adventagous for automation when used in conjunction with a successful selection strategy. Rather than sending your bot to place static stake values for every bet, methods such as this let you place bet stakes which take into consideration your ratings and betting bank. </p>
-<p>If you're not familiar with the Kelly Criterion staking strategy, we recommend having a quick read of the <a href="https://www.betfair.com.au/hub/staking-kelly-criterion/">Kelly staking page on the Betfair Hub</a>. There are plenty more resources on the internet relating to the strategy which may provide a more in depth understanding. </p>
+<p>If you're not familiar with the Kelly Criterion staking strategy, we recommend having a quick read about <a href="https://en.wikipedia.org/wiki/Kelly_criterion">Kelly staking</a>. There are plenty more resources on the internet relating to the strategy which may provide a more in depth understanding. </p>
 <div class="admonition info">
 <p class="admonition-title">Resources</p>
 <ul>
-<li>Ratings: <a href="https://www.betfair.com.au/hub/horse-racing-tips/#today">Betfair's Data Scientists' thoroughbred ratings model</a></li>
+<li>Ratings: <a href="https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/">Betfair's Data Scientists' thoroughbred ratings model</a></li>
 <li>Before you start: <a href="../betAngelRatingsAutomation/">check out the Bet Angel Ratings tutorial</a> </li>
 <li>Rules: <a href="../assets/BetAngel_Kelly.xls">here's the spreadsheet for Bet Angel</a> we set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy</li>
 <li>Rules: <a href="../assets/Gruss_Kelly.xlsx">here's the spreadsheet for Gruss</a></li>
-<li>Understanding how the <a href="https://www.betfair.com.au/hub/staking-kelly-criterion/">Kelly Criterion staking strategy works</a></li>
+<li>Understanding how the <a href="https://en.wikipedia.org/wiki/Kelly_criterion">Kelly Criterion staking strategy works</a></li>
 <li>Tools: <a href="https://www.betangel.com/bet-angel-professional/">Bet Angel Pro</a> and <a href="http://www.gruss-software.co.uk/betfair-products/betfair-betting-assistant">Gruss Betting Assistant</a></li>
 </ul>
 </div>
 <hr />
 <h3 id="-recapping-the-strategy-covered-in-the-ratings-automation-tutorial">- Recapping the strategy covered in the Ratings automation tutorial</h3>
-<p>We'll be using the same trigger strategy that's outlined in the <a href="../betAngelRatingsAutomation/">Ratings tutorial</a> which uses the <a href="https://www.betfair.com.au/hub/tools/models/greyhound-ratings-model/">thoroughbred ratings shared by our Data Scientists on the Hub</a>. Whilst the trigger will remain unchanged, we'll need to make small tweaks to the stake column of the 'BET ANGEL' worksheet (column N) for Bet Angel users or 'MARKET' worksheet (column S) for Gruss users. We've added an additional option to the 'SETTINGS' worksheet which will allow you to choose either a half Kelly or full Kelly stake. If you havn't yet read our Ratings tutorial, we highly recommend that you do so as to understand how the bet placement trigger works. The tutorial can be found <a href="../betAngelRatingsAutomation/">here</a>.</p>
+<p>We'll be using the same trigger strategy that's outlined in the <a href="../betAngelRatingsAutomation/">Ratings tutorial</a> which uses the <a href="https://www.betfair.com.au/hub/models/greyhound-predictions-model/">thoroughbred ratings shared by our Data Scientists on the Hub</a>. Whilst the trigger will remain unchanged, we'll need to make small tweaks to the stake column of the 'BET ANGEL' worksheet (column N) for Bet Angel users or 'MARKET' worksheet (column S) for Gruss users. We've added an additional option to the 'SETTINGS' worksheet which will allow you to choose either a half Kelly or full Kelly stake. If you havn't yet read our Ratings tutorial, we highly recommend that you do so as to understand how the bet placement trigger works. The tutorial can be found <a href="../betAngelRatingsAutomation/">here</a>.</p>
 <hr />
 <h3 id="-set-up">- Set up</h3>
 <p>Make sure you've downloaded and installed Bet Angel Pro or Gruss, and signed in.
@@ -1738,7 +1738,7 @@ keep on top of more complex strategies that require long formaulas to implement.
 </ul>
 </div>
 <p><strong>Calculating the Kelly stake</strong></p>
-<p>As explained in the <a href="https://www.betfair.com.au/hub/staking-kelly-criterion/">Kelly Criterion staking strategy Betfair page</a>, the formula to claculate the Kelly stake is:</p>
+<p>As explained <a href="https://en.wikipedia.org/wiki/Kelly_criterion">here</a>, the formula to claculate the Kelly stake is:</p>
 <p><code>(BP-Q)/B</code>
 Where B is the odds you are getting -1 (because we're using decimal odds), P is the likelihood of the bet winning and Q is the probability of losing (or 1 – P).</p>
 <p>To show the steps of the calculation and to ensure that it's doing what we're expecting it to, we've created a 8 column table in the 'KELLY' worksheet.  </p>

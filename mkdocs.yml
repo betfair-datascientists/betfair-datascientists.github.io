@@ -42,6 +42,7 @@ nav:
             - Soccer modelling tutorial in Python: modelling/soccerModellingTutorialPython.md
             - Soccer modelling tutorial in R: modelling/soccerModellingTutorialR.md
             - EPL ML walk through in Python: modelling/EPLmlPython.md
+            #- FIFA 2022 World Cup Datathon: modelling/soccerWorldCup2022Datathon.md
         - AFL:
             - AFL modelling walk through in Python: modelling/AFLmodellingPython.md
             - Modelling the Brownlow Medal in Python: modelling/brownlowModelTutorial.ipynb
@@ -83,6 +84,8 @@ nav:
         - Part 2: mentalGame/mapYourEmotions.md
         - Part 3: mentalGame/handlingBadVariance.md
         - Part 4: mentalGame/winbyBeingGreatatLosing.md
+        #- Part 5: mentalGame/correctingyouremotions.md
+        #- Part 6: mentalGame/responsibleGambling
 
 # Theme settings
 theme:

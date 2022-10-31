@@ -1004,7 +1004,7 @@ from betfairlightweight.resources.bettingresources import (
     PriceSize,
     MarketBook
 )
-
+#Comment out the below line if not using a Jupyter Notebook (.ipynb)
 %config IPCompleter.greedy=True
 
 #### --------------------------
@@ -1015,11 +1015,12 @@ from betfairlightweight.resources.bettingresources import (
 def getHubRatings(dte):
     
     # Substitute the date into the URL
-    url = 'https://betfair-data-supplier-prod.herokuapp.com/api/widgets/kash-ratings-model/datasets?date={}presenter=RatingsPresenter&json=true'.format(dte)
+    url = 'https://betfair-data-supplier-prod.herokuapp.com/api/widgets/kash-ratings-model/datasets?date=20{}&presenter=RatingsPresenter&json=true'.format(dte)
     
     # Convert the response into JSON
     responseJson = requests.get(url).json()
-        
+    # if SSL.Certificate errors are encountered, replace the above line with: responseJson = requests.get(url,verify=False).json()
+    
     hubList = []
     
     if not responseJson:
@@ -1095,7 +1096,7 @@ def load_markets(file_paths):
     return None
 
 # Extract Components From Generated Stream
-def extract_components_from_stream(s):
+def extract_components_from_stream(stream):
     
     with patch("builtins.open", lambda f, _: f):   
     
@@ -1143,12 +1144,12 @@ def extract_components_from_stream(s):
 def run_stream_parsing():
     
     # Run Pipeline
-    with open("outputs/tho-odds.csv", "w+") as output:
+    with open("outputs/tho-odds.csv", "w") as output:
 
         # Write Column Headers To File
         output.write("market_id,event_date,country,track,market_name,selection_id,selection_name,result,bsp,ltp,matched_volume,atb_ladder_3m,atl_ladder_3m\n")
 
-        for file_obj in load_markets(data_path):
+        for file_obj in load_markets('[INPUT LOCATION OF DATA FILES HERE]'):
 
             # Instantiate a "stream" object
             stream = trading.streaming.create_historical_generator_stream(
@@ -1371,6 +1372,7 @@ dateDFList = []
 dateList = pd.date_range(date(2021,2,18),date.today()-timedelta(days=1),freq='d')
 
 for dte in dateList:
+    dte = dte.strftime("%y-%m-%d")
     dateDFList.append(getHubRatings(dte))
     
 # Concatenate (add rows to rows) all the dataframes within the list
@@ -1383,7 +1385,7 @@ trading = betfairlightweight.APIClient("username", "password")
 listener = StreamListener(max_latency=None)
 
 # This will execute the files (it took me ~2 hours for 2 months of data)
-#run_stream_parsing()
+run_stream_parsing()
 
 # Load in odds file we created above
 bfOdds = pd.read_csv("outputs/tho-odds.csv", dtype={'market_id': object, 'selection_id': object, 'atb_ladder_3m': object, 'atl_ladder_3m': object})

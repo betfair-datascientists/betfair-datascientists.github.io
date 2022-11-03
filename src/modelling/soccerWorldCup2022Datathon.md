@@ -14,6 +14,12 @@ Please register your interest [here](https://docs.google.com/forms/d/1ApCKQ-NkwN
 
 Daily leaderboard updates will be published here throughout the tournament so be sure to check back to follow your model’s competition ranking.
 
+Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
+
+
+See the [Terms and Conditions]("Betfair Terms and Conditions 2022 FIFA World Cup Datathon.pdf") for full competition rules
+
+
 ## Prizes
 
 Over $5,000 in prize money is up for grabs!
@@ -44,8 +50,6 @@ The goal from there is to use the provided data (or any other data) to build you
 How you go about building the model is entirely up to you – do you want to build an Elo model, a regression-based model, a Machine Learning algorithm or something entirely different? Get as innovative with it as you want!
 
 Your set of predictions will be due before the tournament kicks off – all submissions must be emailed to [datathon@betfair.com.au](mailto:datathon@betfair.com.au) before 4:59pm AEDT Friday November 18th 2022.
-
-See the Terms and Conditions for full competition rules.
 
 ## Submission & Judging
 

@@ -1968,7 +1968,7 @@ To build the most accurate model possible, we would need to trial-and-error at t
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>brier(elo_model)
 </code></pre></div>
 <h2 id="using-the-elo-model-to-predict-world-cup-results">Using the Elo Model to Predict World Cup Results</h2>
-<p>Now that we have our Elo model and final team ratings, we can turn our attention toward future matches and making predictions using our ratings. Maintaining our focus on the 2022 World Cup, <a href="({{file name='dummy_submission_file.csv'}})">a CSV including all group stage fixtures as well as all possible knockout stage match-ups can be downloaded here</a>. Note that this file is also what will be used for 2022 World Cup Datathon submissions.</p>
+<p>Now that we have our Elo model and final team ratings, we can turn our attention toward future matches and making predictions using our ratings. Maintaining our focus on the 2022 World Cup, <a href="/assets/dummy_submission_file.csv">a CSV including all group stage fixtures as well as all possible knockout stage match-ups can be downloaded here</a>. Note that this file is also what will be used for 2022 World Cup Datathon submissions.</p>
 <p>Start off by reading in the file.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>world_cup_matchups &lt;- read_csv(&quot;dummy_submission_file.csv&quot;)
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>

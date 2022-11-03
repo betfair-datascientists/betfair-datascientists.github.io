@@ -17,7 +17,7 @@ Daily leaderboard updates will be published here throughout the tournament so be
 Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
 
-See the [Terms and Conditions](({{file name='Betfair Terms and Conditions 2022 FIFA World Cup Datathon.pdf'}})) for full competition rules
+See the [Terms and Conditions](/assets/Betfair_TCs_2022_Datathon.pdf) for full competition rules
 
 
 ## Prizes

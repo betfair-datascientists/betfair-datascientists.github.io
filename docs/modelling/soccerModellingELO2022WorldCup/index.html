@@ -1826,8 +1826,6 @@
 
   <h1>NEW Soccer modelling tutorial in R for 2022 Fifa World Cup</h1>
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
-</code></pre></div>
 <h2 id="introduction">Introduction</h2>
 <p>The 2022 FIFA World Cup is nearly upon us - 64 matches of top shelf international football between 32 qualifying nations from around the globe in what is sure to be a spectacle of the best footballing nations from around the globe.</p>
 <p>One of the reasons I am excited for this year's World Cup is that the tournament provides a unique opportunity for us analytical types to try our hand at modelling international football over an extended run of matches in a high-exposure environment where we know betting market liquidity will be strong. While international football fixtures will often see teams field sub-full strength sides for friendly matches and minor fixtures, the World Cup sees teams roll out full strength (or near enough to) line-ups, meaning we as fans are treated to the absolute best each competing country has to offer - this factor makes the World Cup an even more exciting prospect for predictive modelling.</p>
@@ -1848,46 +1846,46 @@
 <p>Let's get into building our Elo model - this tutorial uses <a href="https://www.r-project.org">R</a>, however Python and other similar programming languages are just as capable of implementing Elo-style approaches.</p>
 <h2 id="importing-and-manipulating-data">Importing and Manipulating Data</h2>
 <p>Start off by installing the packages we'll need. <code>tidyverse</code> will be used for basic data reading and manipulation, <code>formattable</code> is a useful package for working with different data formats, <code>lubridate</code> for dates, <code>showtext</code> for importing fonts for visualisations, while the <code>elo</code> package does most of the heavy lifting here relating to the inner workings of the Elo rating system itself.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>packages &lt;- c(&quot;tidyverse&quot;, &quot;elo&quot;, &quot;formattable&quot;, &quot;lubridate&quot;, &quot;showtext&quot;)
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>install.packages(setdiff(packages, rownames(installed.packages())))
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>library(tidyverse)
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>library(formattable)
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>library(elo)
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>library(lubridate)
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>library(showtext)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>packages &lt;- c(&quot;tidyverse&quot;, &quot;elo&quot;, &quot;formattable&quot;, &quot;lubridate&quot;, &quot;showtext&quot;)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>install.packages(setdiff(packages, rownames(installed.packages())))
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>library(tidyverse)
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>library(formattable)
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>library(elo)
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>library(lubridate)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>library(showtext)
 </code></pre></div>
 <p>Once the required packages are installed and loaded into our R environment we can import the historic match results data. In this case I've downloaded the <a href="https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017?resource=download">Kaggle data set</a> to my local machine so that I can read it in as a CSV - you should be able to do the same using a free Kaggle account. Alternatively this is the same data set you'll receive through participating in the <a href="/modelling/soccerWorldCup2022Datathon/">Betfair World Cup Datathon</a>.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>match_results &lt;- read_csv(&quot;results.csv&quot;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>match_results &lt;- read_csv(&quot;results.csv&quot;)
 </code></pre></div>
 <p>Let's get an idea of what's included in the data set:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>match_results %&gt;% glimpse
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>match_results %&gt;% glimpse
 </code></pre></div>
 <p>The data contains information regarding who played, when and where the match took place, each team's score and where applicable, the tournament during which the match took place.</p>
 <p>To run an Elo model, we'll need to add a couple more features to our data set, namely an indicator for each match's outcome as well as the final margin. The historic data also has a couple of different naming conventions for some nations which we should now address.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>match_results_wrangled &lt;- match_results %&gt;% 
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  # Rename United States and South Korea to USA and Korea Republic respectively to reflect current naming. We need to do this to both &#39;home_team&#39; and &#39;away_team&#39; columns
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  mutate(home_team = case_when(home_team == &quot;United States&quot; ~ &quot;USA&quot;,
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>                               home_team == &quot;South Korea&quot; ~ &quot;Korea Republic&quot;,
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>                               TRUE ~ home_team),
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>         away_team = case_when(away_team == &quot;United States&quot; ~ &quot;USA&quot;,
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>                               away_team == &quot;South Korea&quot; ~ &quot;Korea Republic&quot;,
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                               TRUE ~ away_team),
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>         # Add a new column for match result from both the home team and away team&#39;s perspectives. 1 = Win, 0.5 = Draw, 0 = Loss.
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>         home_result = case_when(home_score &gt; away_score ~ 1,
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>                                 home_score &lt; away_score ~ 0,
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>                                 home_score == away_score ~ 0.5),
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>         away_result = case_when(home_score &lt; away_score ~ 1,
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>                                 home_score &gt; away_score ~ 0,
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>                                 home_score == away_score ~ 0.5),
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>         # Add a margin feature
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>         margin = abs(home_score - away_score)) %&gt;% 
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>  # If there are any matches missing score data, we don&#39;t want to use them for our Elo model - drop any data where we are missing a match margin
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>  drop_na(margin)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>match_results_wrangled &lt;- match_results %&gt;% 
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>  # Rename United States and South Korea to USA and Korea Republic respectively to reflect current naming. We need to do this to both &#39;home_team&#39; and &#39;away_team&#39; columns
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>  mutate(home_team = case_when(home_team == &quot;United States&quot; ~ &quot;USA&quot;,
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>                               home_team == &quot;South Korea&quot; ~ &quot;Korea Republic&quot;,
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>                               TRUE ~ home_team),
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>         away_team = case_when(away_team == &quot;United States&quot; ~ &quot;USA&quot;,
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                               away_team == &quot;South Korea&quot; ~ &quot;Korea Republic&quot;,
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>                               TRUE ~ away_team),
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>         # Add a new column for match result from both the home team and away team&#39;s perspectives. 1 = Win, 0.5 = Draw, 0 = Loss.
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>         home_result = case_when(home_score &gt; away_score ~ 1,
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>                                 home_score &lt; away_score ~ 0,
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>                                 home_score == away_score ~ 0.5),
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>         away_result = case_when(home_score &lt; away_score ~ 1,
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>                                 home_score &gt; away_score ~ 0,
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>                                 home_score == away_score ~ 0.5),
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>         # Add a margin feature
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>         margin = abs(home_score - away_score)) %&gt;% 
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>  # If there are any matches missing score data, we don&#39;t want to use them for our Elo model - drop any data where we are missing a match margin
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>  drop_na(margin)
 </code></pre></div>
 <h2 id="emulating-the-world-football-elo-ratings-model">Emulating the World Football Elo Ratings Model</h2>
 <p>Having now wrangled our data into a usable format, we could now in theory jump straight into running our Elo model over the data using the <code>elo</code> package, but before we do that there are a few other things we should first consider.
@@ -1900,191 +1898,195 @@ To build the most accurate model possible, we would need to trial-and-error at t
 <li>Teams playing at home also get a 100-point Elo ratings boost when calculating win/loss probabilities (as well as being factored into ratings adjustments).</li>
 </ul>
 <p>Let's now add features to our data set to allow for these factors to be included in our Elo model.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>final_dataset &lt;- match_results_wrangled %&gt;% 
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  # Add a column to show 100 where there is a home ground advantage or 0 when played at a neutral venue. Our Elo model will call on this column for HGA.
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>  mutate(hga = 100*!neutral,
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>         # Allocate each tournament within the data to a K-weighting according to the above definition. Note that this section is quite open to interpretation.
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>         tournament_weight = case_when(tournament == &quot;FIFA World Cup&quot; ~ 60,
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>                                       tournament %in% c(&quot;Confederations Cup&quot;, &quot;African Cup of Nations&quot;, &quot;Copa América&quot;, 
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>                                                     &quot;UEFA Euro&quot;, &quot;AFC Asian Cup&quot;) ~ 50,
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>                                       str_detect(tolower(tournament), &quot;qualification&quot;) ~ 40,
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>                                       str_detect(tolower(tournament), &quot; cup&quot;) ~ 40,
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>                                       tournament %in% c(&quot;UEFA Nations League&quot;, &quot;CONCACAF Nations League&quot;) ~ 40,
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>                                       tournament == &quot;Friendly&quot; ~ 20,
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>                                       TRUE ~ 30),
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>         # Use our &#39;margin&#39; feature to create the goal difference K-multiplier.
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>         goal_diff_multiplier = case_when(margin &lt;= 1 ~ 1,
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>                                          margin == 2 ~ 1.5,
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>                                          margin == 3 ~ 1.75, 
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>                                          margin &gt;= 4 ~ 1.75 + (margin-3)/8),
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>         # Combine the tournament weight and goal difference features to obtain our final K value for each match.
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>         k = tournament_weight*goal_diff_multiplier,
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>         # Also add a &#39;match_id&#39; feaature to identify each match by number - we&#39;ll use this later.
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>         match_id = row_number()) %&gt;% 
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>  relocate(match_id)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>final_dataset &lt;- match_results_wrangled %&gt;% 
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>  # Add a column to show 100 where there is a home ground advantage or 0 when played at a neutral venue. Our Elo model will call on this column for HGA.
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>  mutate(hga = 100*!neutral,
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>         # Allocate each tournament within the data to a K-weighting according to the above definition. Note that this section is quite open to interpretation.
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>         tournament_weight = case_when(tournament == &quot;FIFA World Cup&quot; ~ 60,
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>                                       tournament %in% c(&quot;Confederations Cup&quot;, &quot;African Cup of Nations&quot;, &quot;Copa América&quot;, 
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>                                                     &quot;UEFA Euro&quot;, &quot;AFC Asian Cup&quot;) ~ 50,
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>                                       str_detect(tolower(tournament), &quot;qualification&quot;) ~ 40,
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>                                       str_detect(tolower(tournament), &quot; cup&quot;) ~ 40,
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>                                       tournament %in% c(&quot;UEFA Nations League&quot;, &quot;CONCACAF Nations League&quot;) ~ 40,
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>                                       tournament == &quot;Friendly&quot; ~ 20,
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>                                       TRUE ~ 30),
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>         # Use our &#39;margin&#39; feature to create the goal difference K-multiplier.
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>         goal_diff_multiplier = case_when(margin &lt;= 1 ~ 1,
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>                                          margin == 2 ~ 1.5,
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>                                          margin == 3 ~ 1.75, 
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>                                          margin &gt;= 4 ~ 1.75 + (margin-3)/8),
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>         # Combine the tournament weight and goal difference features to obtain our final K value for each match.
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>         k = tournament_weight*goal_diff_multiplier,
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>         # Also add a &#39;match_id&#39; feaature to identify each match by number - we&#39;ll use this later.
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>         match_id = row_number()) %&gt;% 
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>  relocate(match_id)
 </code></pre></div>
 <h2 id="running-the-elo-model">Running the Elo Model</h2>
 <p>Our data is now ready to be run through the Elo model. This involves using the <code>elo.run()</code> function from the <code>elo</code> package, which then runs through each match in the historic data set, running and updating each team's Elo rating as it goes. By the end, we should have an Elo rating for each team as of the most recent international football match.</p>
 <p>Using the <code>formula</code> argument to <code>elo.run()</code> we can include for the nuances of the World Football Elo Ratings system. Use <code>adjust()</code> to include the home ground advantage factor, and <code>k()</code> to allow for our variable k-value.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>elo_model &lt;- elo.run(data = final_dataset,
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>                     formula = home_result ~ adjust(home_team, hga) + away_team + k(k))
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>elo_model &lt;- elo.run(data = final_dataset,
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>                     formula = home_result ~ adjust(home_team, hga) + away_team + k(k))
 </code></pre></div>
 <p>The Elo model is stored as <code>elo_model</code>, which we can then call on to see the model's final ratings, as below:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>final_elos &lt;- final.elos(elo_model) %&gt;% 
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>  enframe(name = &quot;team&quot;, value = &quot;elo&quot;) %&gt;% 
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  arrange(desc(elo))
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a># See the top 10 rated nations
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>final_elos %&gt;% slice_head(n = 10)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>final_elos &lt;- final.elos(elo_model) %&gt;% 
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>  enframe(name = &quot;team&quot;, value = &quot;elo&quot;) %&gt;% 
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  arrange(desc(elo))
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a># See the top 10 rated nations
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>final_elos %&gt;% slice_head(n = 10)
 </code></pre></div>
 <p>To gain a better understanding of how our final Elo ratings are distributed, we can visualise all team ratings in a histogram.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a># Load Google fonts from https://fonts.google.com/
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>font_add_google(name = &quot;Poor Story&quot;, family = &quot;poor_story&quot;)
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>showtext_auto()
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a># Visualise final Elo ratings
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>final_elos %&gt;% 
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  ggplot(aes(x = elo)) +
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  geom_histogram(binwidth = 100, fill = &quot;#ffb80c&quot;, color = &quot;white&quot;) +
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>  theme_minimal() +
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>  labs(x = &quot;Elo Rating&quot;,
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>       y = &quot;# of Teams&quot;,
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>       title = &quot;Distribution of Final Elo Ratings&quot;) +
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>  theme(panel.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>        plot.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>        text = element_text(color = &quot;black&quot;, family = &quot;poor_story&quot;),
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>        axis.text = element_text(color = &quot;black&quot;, size = 14),
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>        plot.title = element_text(color = &quot;black&quot;, size = 24, hjust = 0.5),
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>        axis.title = element_text(family = &quot;poor_story&quot;, size = 16),
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;))
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a># Load Google fonts from https://fonts.google.com/
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>font_add_google(name = &quot;Poor Story&quot;, family = &quot;poor_story&quot;)
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>showtext_auto()
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a># Visualise final Elo ratings
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>final_elos %&gt;% 
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>  ggplot(aes(x = elo)) +
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>  geom_histogram(binwidth = 100, fill = &quot;#ffb80c&quot;, color = &quot;white&quot;) +
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>  theme_minimal() +
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>  labs(x = &quot;Elo Rating&quot;,
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>       y = &quot;# of Teams&quot;,
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>       title = &quot;Distribution of Final Elo Ratings&quot;) +
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>  theme(panel.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        plot.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        text = element_text(color = &quot;black&quot;, family = &quot;poor_story&quot;),
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>        axis.text = element_text(color = &quot;black&quot;, size = 14),
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>        plot.title = element_text(color = &quot;black&quot;, size = 24, hjust = 0.5),
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>        axis.title = element_text(family = &quot;poor_story&quot;, size = 16),
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;))
 </code></pre></div>
 <p>We can see that the final Elo ratings are somewhat normally distributed, ranging from below 1000 at the bottom end up to above 2000 for the absolute best teams as we saw above. In line with most Elo models, teams start with an intial Elo rating of 1500 which is also approximately at the centre of the distribution of teams' final Elo ratings.</p>
 <p>Since we are only aiming to recreate an existing rating system here, this tutorial won't go too far into testing the Elo model's accuracy, but be aware that the <code>elo</code> package also includes some helpful helper functions for model evaluation, including Brier scores.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>brier(elo_model)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>brier(elo_model)
 </code></pre></div>
 <h2 id="using-the-elo-model-to-predict-world-cup-results">Using the Elo Model to Predict World Cup Results</h2>
 <p>Now that we have our Elo model and final team ratings, we can turn our attention toward future matches and making predictions using our ratings. Maintaining our focus on the 2022 World Cup, <a href="/modelling/assets/dummy_submission_file.csv">a CSV including all group stage fixtures as well as all possible knockout stage match-ups can be downloaded here</a>. Note that this file is also what will be used for 2022 World Cup Datathon submissions.</p>
 <p>Start off by reading in the file.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>world_cup_matchups &lt;- read_csv(&quot;dummy_submission_file.csv&quot;)
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>world_cup_matchups %&gt;% glimpse
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>world_cup_matchups &lt;- read_csv(&quot;dummy_submission_file.csv&quot;)
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>world_cup_matchups %&gt;% glimpse
 </code></pre></div>
 <p>We have information relating to the teams playing and the stage of the World Cup tournament during which the match will be played - now all we need to do is fill in the "home_team_prob", "draw_prob" and "away_team_prob" columns with the relevant probabilities using predictions based on our Elo ratings.</p>
 <h3 id="accounting-for-draws">Accounting for Draws</h3>
 <p>Here is where things get a touch messy - Elo systems were originally devised to accommodate for two-player games of chess where winning or losing were the only two outcomes possible. For the group stage of the World Cup, drawn matches are also a possible outcome which means we need to accommodate for this in our predictions.</p>
 <p>While there is no particularly obvious way to go about this, we can make do by using our historical match data to see how often teams draw for various Elo rating matchups. For example, at what rate does a team with a 400 Elo-point advantage draw with their opponent? In this instance, a 400 point advantage would see the better ranked team have a 91% chance of winning, but we would need to adjust that probability to include for a third possible outcome - the draw.</p>
 <p>Let's find the draw rates for various differentials in win probability.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a># Start by taking our Elo model, wrangling the match-by-match rating updates within the stored model and joining to our historic data set.
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>elo_results &lt;- elo_model %&gt;% 
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  as_tibble() %&gt;% 
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  mutate(match_id = row_number()) %&gt;% 
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>  select(match_id, 
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>         home_update = update.A,
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>         away_update = update.B,
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>         home_elo = elo.A,
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>         away_elo = elo.B) %&gt;% 
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>  # Join onto our historic data set using the match_id columns we created as a join key
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>  right_join(final_dataset, by = &quot;match_id&quot;)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a># Start by taking our Elo model, wrangling the match-by-match rating updates within the stored model and joining to our historic data set.
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>elo_results &lt;- elo_model %&gt;% 
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  as_tibble() %&gt;% 
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>  mutate(match_id = row_number()) %&gt;% 
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>  select(match_id, 
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>         home_update = update.A,
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>         away_update = update.B,
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>         home_elo = elo.A,
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>         away_elo = elo.B) %&gt;% 
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  # Join onto our historic data set using the match_id columns we created as a join key
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  right_join(final_dataset, by = &quot;match_id&quot;)
 </code></pre></div>
 <p>We can now find the home and away win probabilities for each historic match and bucket them into groups at 5% increments according to how close the home and away win probabilities were. E.g. a team with a 90% chance to win coming up against a team with a 10% chance to win would have a 80% differential in win probability.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>draw_rates &lt;- elo_results %&gt;%
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  mutate(home_elo_pre_match = home_elo - home_update,
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>         away_elo_pre_match = away_elo - away_update,
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>         home_prob = elo.prob(home_elo_pre_match, away_elo_pre_match),
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>         away_prob = 1 - home_prob,
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>         prob_diff = abs(home_prob - away_prob),
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>         prob_diff_bucket = round(20*prob_diff)/20) %&gt;% # Bucket into 20 groups at 5% increments between 0% and 100%
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>  filter(year(date) &gt;= 2005) %&gt;%  # Filter down to the past 15 years to only bucket matches once some fairly decent Elo ratings have been established
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>  group_by(prob_diff_bucket) %&gt;%
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>  summarise(draw_rate = sum(home_result == 0.5)/n())
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>draw_rates %&gt;% slice_head(n = 10)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>draw_rates &lt;- elo_results %&gt;%
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  mutate(home_elo_pre_match = home_elo - home_update,
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>         away_elo_pre_match = away_elo - away_update,
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>         home_prob = elo.prob(home_elo_pre_match, away_elo_pre_match),
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>         away_prob = 1 - home_prob,
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>         prob_diff = abs(home_prob - away_prob),
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>         prob_diff_bucket = round(20*prob_diff)/20) %&gt;% # Bucket into 20 groups at 5% increments between 0% and 100%
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  filter(year(date) &gt;= 2005) %&gt;%  # Filter down to the past 15 years to only bucket matches once some fairly decent Elo ratings have been established
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>  group_by(prob_diff_bucket) %&gt;%
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>  summarise(draw_rate = sum(home_result == 0.5)/n())
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>draw_rates %&gt;% slice_head(n = 10)
 </code></pre></div>
 <p>We can visualise the draw rates for win probability differentials to get a better idea of how often draws happen in various scenarios.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>draw_rates %&gt;%
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>  mutate(draw_rate = percent(draw_rate, digits = 0),
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>         prob_diff_bucket = percent(prob_diff_bucket, digits = 0)) %&gt;%
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  ggplot(aes(x = prob_diff_bucket, y = draw_rate)) +
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>  geom_col(fill = &quot;#ffb80c&quot;) +
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>  geom_text(aes(label = draw_rate, y = draw_rate + 0.01), 
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>            size = 3.5, family = &quot;poor_story&quot;) +
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  theme_minimal() +
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>  scale_y_continuous(labels = scales::percent) +
-<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>  scale_x_continuous(labels = scales::percent, breaks = scales::pretty_breaks()) +
-<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>  labs(y = &quot;Historic Draw Rate&quot;, 
-<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>       x = &quot;Difference in Win Probability Between Home &amp; Away Sides&quot;,
-<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>       title = &quot;Draw Frequency by Heaviness of Favouritism&quot;) +
-<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>  theme(panel.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
-<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>        plot.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
-<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>        text = element_text(color = &quot;black&quot;, family = &quot;poor_story&quot;),
-<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>        axis.text = element_text(color = &quot;black&quot;, size = 12),
-<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>        plot.title = element_text(color = &quot;black&quot;, size = 24, hjust = 0.5),
-<a id="__codelineno-13-19" name="__codelineno-13-19" href="#__codelineno-13-19"></a>        axis.title = element_text(family = &quot;poor_story&quot;, size = 16),
-<a id="__codelineno-13-20" name="__codelineno-13-20" href="#__codelineno-13-20"></a>        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;))
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>draw_rates %&gt;%
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  mutate(draw_rate = percent(draw_rate, digits = 0),
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>         prob_diff_bucket = percent(prob_diff_bucket, digits = 0)) %&gt;%
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  ggplot(aes(x = prob_diff_bucket, y = draw_rate)) +
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>  geom_col(fill = &quot;#ffb80c&quot;) +
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>  geom_text(aes(label = draw_rate, y = draw_rate + 0.01), 
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>            size = 3.5, family = &quot;poor_story&quot;) +
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>  theme_minimal() +
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>  scale_y_continuous(labels = scales::percent) +
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>  scale_x_continuous(labels = scales::percent, breaks = scales::pretty_breaks()) +
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>  labs(y = &quot;Historic Draw Rate&quot;, 
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>       x = &quot;Difference in Win Probability Between Home &amp; Away Sides&quot;,
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>       title = &quot;Draw Frequency by Heaviness of Favouritism&quot;) +
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>  theme(panel.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>        plot.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>        text = element_text(color = &quot;black&quot;, family = &quot;poor_story&quot;),
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>        axis.text = element_text(color = &quot;black&quot;, size = 12),
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>        plot.title = element_text(color = &quot;black&quot;, size = 24, hjust = 0.5),
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>        axis.title = element_text(family = &quot;poor_story&quot;, size = 16),
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;))
 </code></pre></div>
 <p>We can see that draws happen in more than 30% of matches where there has been a ~0% difference in win probability between the two sides (i.e. it was very close to a 50-50 match-up) - this is the highest draw rate, as one would expect. The draw rate falls away from there, to the point where only 3.5% of matches with a 95% win probability differential end in draws.
 Applying these draw rates to our group stage fixture predictions should allow for our Elo model to overcome the three-outcome nature of football.</p>
 <h3 id="visualising-elo-ratings-through-time">Visualising Elo Ratings Through Time</h3>
 <p>Something we can do to help us better understand how the Elo model develops final team ratings is to visualise how a team's rating has developed over time. We know that the rating system dictates that all teams start with an initial rating of 1500, so we should expect to see teams move upward or down from there as a starting point depending on their fortunes. </p>
 <p>Let's look at how Australia's Elo rating has changed through time.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>elo_results %&gt;% 
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  select(match_id, date, home_team, home_elo) %&gt;% rename(team = home_team, elo = home_elo) %&gt;% 
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  bind_rows(elo_results %&gt;% select(match_id, date, away_team, away_elo) %&gt;% rename(team = away_team, elo = away_elo)) %&gt;% 
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  arrange(match_id) %&gt;% 
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>  filter(team == &quot;Australia&quot;) %&gt;% 
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>  ggplot(aes(x = date, y = elo, group = 1)) +
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>  geom_hline(yintercept = 1500, linetype = &quot;dashed&quot;, color = &quot;black&quot;) +
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>  geom_line(color = &quot;#ffb80c&quot;, size = 1) +
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>  theme_minimal() +
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>  labs(x = &quot;Year&quot;, y = &quot;Elo Rating&quot;,
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>       title = &quot;Australia&#39;s Historic Elo Rating&quot;) + 
-<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>  theme(panel.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>        plot.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
-<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>        text = element_text(color = &quot;black&quot;, family = &quot;poor_story&quot;),
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>        axis.text = element_text(color = &quot;black&quot;, size = 12),
-<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>        plot.title = element_text(color = &quot;black&quot;, size = 24, hjust = 0.5),
-<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>        axis.title = element_text(family = &quot;poor_story&quot;, size = 16),
-<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;))
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>elo_results %&gt;% 
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>  select(match_id, date, home_team, home_elo) %&gt;% rename(team = home_team, elo = home_elo) %&gt;% 
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>  bind_rows(elo_results %&gt;% select(match_id, date, away_team, away_elo) %&gt;% rename(team = away_team, elo = away_elo)) %&gt;% 
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>  arrange(match_id) %&gt;% 
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>  filter(team == &quot;Australia&quot;) %&gt;% 
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>  ggplot(aes(x = date, y = elo, group = 1)) +
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>  geom_hline(yintercept = 1500, linetype = &quot;dashed&quot;, color = &quot;black&quot;) +
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>  geom_line(color = &quot;#ffb80c&quot;, size = 1) +
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>  theme_minimal() +
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>  labs(x = &quot;Year&quot;, y = &quot;Elo Rating&quot;,
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a>       title = &quot;Australia&#39;s Historic Elo Rating&quot;) + 
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a>  theme(panel.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>        plot.background = element_rect(fill = &quot;transparent&quot;, colour = NA),
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a>        text = element_text(color = &quot;black&quot;, family = &quot;poor_story&quot;),
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>        axis.text = element_text(color = &quot;black&quot;, size = 12),
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>        plot.title = element_text(color = &quot;black&quot;, size = 24, hjust = 0.5),
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a>        axis.title = element_text(family = &quot;poor_story&quot;, size = 16),
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>        plot.margin = unit(c(1,1,1,1), &quot;cm&quot;))
 </code></pre></div>
 <p>After a slow few decades initially with very few matches played, the Socceroos' Elo eventuall reached a peak rating of 1954 in June of 2001 (after a win against New Zealand) and hos now settled back in the low-1800s range as of late 2022.</p>
 <h3 id="making-predictions">Making Predictions</h3>
 <p>Time to get back to making predictions - again using the <code>elo</code> package, the <code>elo.calc()</code> function can be used here to find the probability that a team with rating X will beat a team with rating Y.
 From there we can overlay our draw rates and adjust as necessary to ensure all outcomes sum to equal 100%.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>world_cup_predictions &lt;- world_cup_matchups %&gt;%
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>  # Join on final home and away team Elo ratings ahead of calculating win probabilities
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>  left_join(final_elos %&gt;% rename(home_elo = elo), by = c(&quot;home_team&quot; = &quot;team&quot;)) %&gt;%
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>  left_join(final_elos %&gt;% rename(away_elo = elo), by = c(&quot;away_team&quot; = &quot;team&quot;)) %&gt;%
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>  # Calculate win probabilities
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>  mutate(home_team_prob = elo.prob(home_elo, away_elo),
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>         away_team_prob = elo.prob(away_elo, home_elo),
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>         # Just as we did with finding draw rates, group each match into probability differential buckets so that we can apply the correct draw rate
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a>         prob_diff = abs(home_team_prob - away_team_prob),
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>         prob_diff_bucket = round(20*prob_diff)/20) %&gt;%
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>  # Join on our draw rates data frame - this essentially gives us the historic draw rate for the given match-up&#39;s probability split
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a>  left_join(draw_rates, by = &quot;prob_diff_bucket&quot;) %&gt;%
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a>
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a>  # update the draw_prob column accordiingly for group stage matches. Set draw_prob to 0 for knockout matches where draws aren&#39;t possible.
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a>  mutate(draw_prob = case_when(stage == &quot;Group&quot; ~ draw_rate,
-<a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a>                               stage == &quot;Knockout&quot; ~ 0),
-<a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a>
-<a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a>         # Adjust home_team_prob and away_team_prob columns proportionally to allow for draw probability
-<a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a>         home_team_prob = home_team_prob * (1 - draw_prob),
-<a id="__codelineno-15-23" name="__codelineno-15-23" href="#__codelineno-15-23"></a>         away_team_prob = away_team_prob * (1 - draw_prob)) %&gt;%
-<a id="__codelineno-15-24" name="__codelineno-15-24" href="#__codelineno-15-24"></a>
-<a id="__codelineno-15-25" name="__codelineno-15-25" href="#__codelineno-15-25"></a>  # Remove redundant columns
-<a id="__codelineno-15-26" name="__codelineno-15-26" href="#__codelineno-15-26"></a>  select(home_team:away_team_prob)
-<a id="__codelineno-15-27" name="__codelineno-15-27" href="#__codelineno-15-27"></a>
-<a id="__codelineno-15-28" name="__codelineno-15-28" href="#__codelineno-15-28"></a># View 5 group stage matches and 5 knockout matches
-<a id="__codelineno-15-29" name="__codelineno-15-29" href="#__codelineno-15-29"></a>world_cup_predictions %&gt;% group_by(stage) %&gt;% slice_head(n = 5)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>world_cup_predictions &lt;- world_cup_matchups %&gt;%
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>  # Join on final home and away team Elo ratings ahead of calculating win probabilities
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>  left_join(final_elos %&gt;% rename(home_elo = elo), by = c(&quot;home_team&quot; = &quot;team&quot;)) %&gt;%
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>  left_join(final_elos %&gt;% rename(away_elo = elo), by = c(&quot;away_team&quot; = &quot;team&quot;)) %&gt;%
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>  # Calculate win probabilities
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>  mutate(home_team_prob = elo.prob(home_elo, away_elo),
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>         away_team_prob = elo.prob(away_elo, home_elo),
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>         # Just as we did with finding draw rates, group each match into probability differential buckets so that we can apply the correct draw rate
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>         prob_diff = abs(home_team_prob - away_team_prob),
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>         prob_diff_bucket = round(20*prob_diff)/20) %&gt;%
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>  # Join on our draw rates data frame - this essentially gives us the historic draw rate for the given match-up&#39;s probability split
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>  left_join(draw_rates, by = &quot;prob_diff_bucket&quot;) %&gt;%
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>  # update the draw_prob column accordingly for group stage matches. Set draw_prob to 0 for knockout matches where draws aren&#39;t possible.
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>  mutate(draw_prob = case_when(stage == &quot;Group&quot; ~ draw_rate,
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>                               stage == &quot;Knockout&quot; ~ 0),
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>         # Adjust home_team_prob and away_team_prob columns proportionally to allow for draw probability
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>         home_team_prob = home_team_prob * (1 - draw_prob),
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>         away_team_prob = away_team_prob * (1 - draw_prob)) %&gt;%
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>  # Remove redundant columns
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>  select(home_team:away_team_prob)
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a># View 5 group stage matches and 5 knockout matches
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a>world_cup_predictions %&gt;% group_by(stage) %&gt;% slice_head(n = 5)
+<a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a>
+<a id="__codelineno-14-31" name="__codelineno-14-31" href="#__codelineno-14-31"></a>model_name = &quot;Elo_Tutorial&quot;
+<a id="__codelineno-14-32" name="__codelineno-14-32" href="#__codelineno-14-32"></a>file_name=paste(model_name,&quot;_submission_file.csv&quot;,sep=&quot;&quot;)
+<a id="__codelineno-14-33" name="__codelineno-14-33" href="#__codelineno-14-33"></a>write.csv(world_cup_predictions,file_name)
 </code></pre></div>
 <p>And there you have it - we've successfully created a model for predicting future match outcomes for the 2022 FIFA World Cup!</p>
 <p>We hope you've found this tutorial useful - if you have any questions regarding predictive data modelling please reach out to <a href="mailto:automation@betfair.com.au">automation@betfair.com.au</a>.</p>

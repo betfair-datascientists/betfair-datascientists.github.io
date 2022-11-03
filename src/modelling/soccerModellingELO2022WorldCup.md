@@ -6,9 +6,6 @@ output: rmdformats::robobook
 css: betfair_robobook.css
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, warning=FALSE)
-```
 
 ## Introduction
 
@@ -342,7 +339,7 @@ world_cup_predictions <- world_cup_matchups %>%
   # Join on our draw rates data frame - this essentially gives us the historic draw rate for the given match-up's probability split
   left_join(draw_rates, by = "prob_diff_bucket") %>%
 
-  # update the draw_prob column accordiingly for group stage matches. Set draw_prob to 0 for knockout matches where draws aren't possible.
+  # update the draw_prob column accordingly for group stage matches. Set draw_prob to 0 for knockout matches where draws aren't possible.
   mutate(draw_prob = case_when(stage == "Group" ~ draw_rate,
                                stage == "Knockout" ~ 0),
 
@@ -355,6 +352,10 @@ world_cup_predictions <- world_cup_matchups %>%
 
 # View 5 group stage matches and 5 knockout matches
 world_cup_predictions %>% group_by(stage) %>% slice_head(n = 5)
+
+model_name = "Elo_Tutorial"
+file_name=paste(model_name,"_submission_file.csv",sep="")
+write.csv(world_cup_predictions,file_name)
 ```
 
 

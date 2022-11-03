@@ -206,7 +206,7 @@ brier(elo_model)
 
 ## Using the Elo Model to Predict World Cup Results
 
-Now that we have our Elo model and final team ratings, we can turn our attention toward future matches and making predictions using our ratings. Maintaining our focus on the 2022 World Cup, [a CSV including all group stage fixtures as well as all possible knockout stage match-ups can be downloaded here](/assets/dummy_submission_file.csv). Note that this file is also what will be used for 2022 World Cup Datathon submissions.
+Now that we have our Elo model and final team ratings, we can turn our attention toward future matches and making predictions using our ratings. Maintaining our focus on the 2022 World Cup, [a CSV including all group stage fixtures as well as all possible knockout stage match-ups can be downloaded here](/modelling/assets/dummy_submission_file.csv). Note that this file is also what will be used for 2022 World Cup Datathon submissions.
 
 Start off by reading in the file.
 

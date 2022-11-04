@@ -221,7 +221,7 @@ final_elos %>%
         axis.title = element_text(family = "poor_story", size = 16),
         plot.margin = unit(c(1,1,1,1), "cm"))
 ```
-![png](../img/DIST_ELO.PNG)
+![png](../img/DIST_ELO.png)
 
 We can see that the final Elo ratings are somewhat normally distributed, ranging from below 1000 at the bottom end up to above 2000 for the absolute best teams as we saw above. In line with most Elo models, teams start with an intial Elo rating of 1500 which is also approximately at the centre of the distribution of teams' final Elo ratings.
 
@@ -342,7 +342,7 @@ draw_rates %>%
         axis.title = element_text(family = "poor_story", size = 16),
         plot.margin = unit(c(1,1,1,1), "cm"))
 ```
-![png](../img/DRAW_FREQ.PNG)
+![png](../img/DRAW_FREQ.png)
 
 We can see that draws happen in more than 30% of matches where there has been a ~0% difference in win probability between the two sides (i.e. it was very close to a 50-50 match-up) - this is the highest draw rate, as one would expect. The draw rate falls away from there, to the point where only 3.5% of matches with a 95% win probability differential end in draws.
 Applying these draw rates to our group stage fixture predictions should allow for our Elo model to overcome the three-outcome nature of football.
@@ -374,7 +374,7 @@ elo_results %>%
         axis.title = element_text(family = "poor_story", size = 16),
         plot.margin = unit(c(1,1,1,1), "cm"))
 ```
-![png](../img/AUST_ELO_RATING.PNG)
+![png](../img/AUST_ELO_RATING.png)
 
 After a slow few decades initially with very few matches played, the Socceroos' Elo eventuall reached a peak rating of 1954 in June of 2001 (after a win against New Zealand) and has now settled back in the low-1800s range as of late 2022.
 

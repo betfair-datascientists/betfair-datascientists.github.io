@@ -444,6 +444,11 @@ We hope you've found this tutorial useful - if you have any questions regarding 
 
 Good luck in the [Datathon](/modelling/soccerWorldCup2022Datathon/)!
 
+--- 
+### Disclaimer
+
+Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.
+
 ## Complete Code
 
 ```{r message=FALSE}

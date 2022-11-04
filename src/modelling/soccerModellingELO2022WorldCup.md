@@ -374,7 +374,7 @@ elo_results %>%
         axis.title = element_text(family = "poor_story", size = 16),
         plot.margin = unit(c(1,1,1,1), "cm"))
 ```
-![png](../img/AUST_ELO_RATING.png)
+![png](../img/AUS_ELO_RATING.png)
 
 After a slow few decades initially with very few matches played, the Socceroos' Elo eventuall reached a peak rating of 1954 in June of 2001 (after a win against New Zealand) and has now settled back in the low-1800s range as of late 2022.
 

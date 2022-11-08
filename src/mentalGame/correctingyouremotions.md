@@ -1,4 +1,4 @@
-# Correcting Your Emotions
+# 5: Correcting Your Emotions
 
 
 Imagine you’re walking down the street and experience some pain in your foot. You stop and sit down, wondering what the problem is. Is there something wrong with the shoe you’re wearing? Maybe you’ve tied them too tight, or worse, perhaps there’s a problem with your muscles or ligaments? The bottom line is that you’re curious about what’s causing your pain. You don’t ignore it, you examine it with interest because doing so is required to fix the problem and eliminate the pain.
@@ -41,7 +41,7 @@ Losing streaks bring on a fear of the systems failing. The fear is that I have p
 
 **Step 2:** Explain why it makes sense that you have this problem, or why you think, feel, or react that way.
 
-It is logical because for me, the pain of losses is felt 10x more than the excitement of winning. A lot of people lose in gambling and I know it requires a lot of work to remain in the top few winning punters. It's understandable that I don't like losses as this brings on fear of failure, fear of loss and fear of humiliation.
+It is logical because for me, the pain of losses is felt 10 times more than the excitement of winning. A lot of people lose in gambling and I know it requires a lot of work to remain in the top few winning punters. It's understandable that I don't like losses as this brings on fear of failure, fear of loss and fear of humiliation.
 
 **Step 3:** Explain why the logic in Step 2 is flawed.
 

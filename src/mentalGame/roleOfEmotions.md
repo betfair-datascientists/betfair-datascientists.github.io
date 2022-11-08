@@ -1,4 +1,4 @@
-# The Role of Emotions in Wagering
+# 1: The Role of Emotions in Wagering
 
 ---
 

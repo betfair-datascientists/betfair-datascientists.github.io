@@ -1,4 +1,4 @@
-# Responsible Gambling
+# 6: Responsible Gambling
 
 When I first started working with poker players in 2007, people would often ask me if I was trying to get them to stop gambling. I laughed and said, “No, I’m trying to help them win more money!”
 
@@ -6,7 +6,7 @@ Actually, the poker players, traders, and punters I work with all have one thing
 
 In developing your punting model, you aspire to be the casino – where you have the edge that makes money long term. And until you reach that point, you’re betting on yourself. You’re investing money like a business start-up would in the early stage of research and development, where they’re, for example, building a product to eventually bring to the market with the hopes that it can hit their sales targets. Invest money now to make more money in the future. General society doesn’t view the people who start those types of businesses as gamblers, although some of them actually are. There’s a graveyard of bad ideas that should never have been funded. Yet inventors and business owners are praised for their risk taking, not treated as the gamblers that they are.
 
-Of course, even great ideas can be a gamble. Business books are lined with stories of well-intended failures, along with lessons on how to avoid that fate and when to quit. Punting, much like poker and trading, can easily verge into that direction and it’s important that you know where that line is for you. If you’re losing money in the pursuit of a profitable model, that’s not gambling…until it is. 
+Of course, even great ideas can be a gamble. Business books are lined with stories of well-intended failures, along with lessons on how to avoid that fate and when to quit. Punting, much like poker and trading, can easily verge into that direction and it’s important that you know where that line is for you. If you’re losing money in the pursuit of a profitable model, that’s not gambling ... until it is. 
 
 For some, gambling is just about fun, a form of paid entertainment. In that case, determine an amount of money that determines when your fun is over. But if gambling is a serious hobby or a professional aspiration, how do you know when enough is enough and it’s time to quit? I recommend you figure that out now, before you’ve gotten to that point.
 

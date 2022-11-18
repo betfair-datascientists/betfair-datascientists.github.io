@@ -9,8 +9,7 @@ Betfair is giving you the chance to show off your data modelling skills by build
 With over $5,000 in prizes up for grabs, we’re challenging you to use your modelling skills to your advantage, be that by building your first predictive sports model, improving on an existing design or have a go something different by adapting your data skills from other fields.This year’s Soccer World Cup tournament will run from November 20th to December 18th, presenting a perfect opportunity for keen sports and data enthusiasts to get involved and put your skills to the test against the masses in order to compete for both cash prizes and ultimate glory!
 
 Submissions close at 4:59pm AEDT on Friday November 18th - time to get modelling! 
-
-Please register your interest [here](https://docs.google.com/forms/d/1ApCKQ-NkwNx4OeCyc1yBH667YinZTfNSWjOJqgJdVnM). Datasets and submission files will be provided by email once registrations have been received.
+Registrations have now closed. 
 
 Daily leaderboard updates will be published here throughout the tournament so be sure to check back to follow your model’s competition ranking.
 

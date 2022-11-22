@@ -42,7 +42,7 @@ nav:
             - Soccer modelling tutorial in R for 2022 FIFA World Cup: modelling/soccerModellingELO2022WorldCup.md
             #- Elo soccer tutorial in R: modelling/soccerEloTutorialR.md
             - Soccer modelling tutorial in Python: modelling/soccerModellingTutorialPython.md
-            - Soccer modelling tutorial in R: modelling/soccerModellingTutorialR.md
+            #- Soccer modelling tutorial in R: modelling/soccerModellingTutorialR.md
             - EPL ML walk through in Python: modelling/EPLmlPython.md
 
         - AFL:
@@ -88,6 +88,9 @@ nav:
         - Part 4: mentalGame/winbyBeingGreatatLosing.md
         - Part 5: mentalGame/correctingyouremotions.md
         - Part 6: mentalGame/responsibleGambling.md
+        #- Part 7: mentalGame/InchwormConcept.md
+        #- Part 8: mentalGame/HighExpectations.md
+        #- Part 9: mentalGame/TappingYourIntuition.md
 
 # Theme settings
 theme:

@@ -32,4 +32,4 @@ At the end of the day, if it’s time for you to quit, understanding why it’s 
 
 ---
 
-Jared Tendler, MS is a mental game coach for world champion poker players, PGA Tour players, sports bettors and financial traders from 45 countries. He is the author of three highly acclaimed books, The Mental Game of Poker 1 & 2 and his newest book The Mental Game of Trading. Find out more about Jared’s work at: https://jaredtendler.com/ 
+Jared Tendler, MS is a mental game coach for world champion poker players, PGA Tour players, sports bettors and financial traders from 45 countries. He is the author of three highly acclaimed books, The Mental Game of Poker 1 & 2 and his newest book The Mental Game of Trading. Find out more about Jared’s work at: [https://jaredtendler.com/](https://jaredtendler.com/) 

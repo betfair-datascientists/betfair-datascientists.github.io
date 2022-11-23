@@ -12,8 +12,43 @@ Registrations and submissions have now closed.
 
 Daily leaderboard updates will be published here throughout the tournament so be sure to check back to follow your model’s competition ranking.
 
-Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
+## Leaderboard Update - (23/11/2022)
 
+| Rank | Prize_Rank | Name | Model | LogLoss
+1 | 1 | Tom Atkins | Elo-Ml | 0.573655867899438
+2 | 2 | Andrew Mackey | Footyprophet | 0.590376315655715
+3 | N/A | Mitch Motyka | Excel-Stats | 0.616404369599391
+4 | 3 | Sean Farrell | Randomshrubbery | 0.62062863714252
+5 | N/A | Betfair WCPM | Submission-File | 0.632099114233823
+6 | 4 | Yeon Kim | Sandstorm | 0.632235475905907
+7 | N/A | Stats Insider | Submission-File | 0.632375545339407
+8 | N/A | Fence Sitter | Submission-File | 0.636514168294812
+9 | 5 | Bruce Davey | Claudia | 0.638318987866964
+10 | 6 | Jamie Troubridge | Bruno-Fernandsh-Model | 0.639873273421384
+11 | 7 | Drew Gill | Watp | 0.641184891260729
+12 | 8 | Mark Dragicevic | Onddownelo | 0.642796348988213
+13 | 9 | Rowan Warneke | Nothoughtsheadempty | 0.643392876507168
+14 | 10 | Hamish Blanchard | Sub | 0.657583944258842
+15 | N/A | Ivan Zhou | Literally-The-Worst-Model | 0.658947274920859
+16 | 11 | Ash Walls | Salah-Dweller | 0.660065640553059
+17 | 12 | Ian Lundy | Winning-Entry | 0.660109037987511
+18 | N/A | Betfair Market-Odds | Submission-File | 0.663460099211918
+19 | N/A | Automation Hub | Elo-Tutorial | 0.668871208510814
+20 | 13 | Joel Morrison | Out-Of-The-Blue | 0.687743090983438
+21 | 14 | Craig Johnson | Craigspick | 0.700501821360589
+22 | 15 | Tiago Ferreira | Tfsubmission | 0.70983208869963
+23 | 16 | Mark Hunter | Mifsud4President | 0.734681547673644
+24 | 17 | David Dragicevic | Daves-Screamers | 0.744108028638622
+25 | 18 | Matt Dragicevic | Forca-Elo | 0.755172232314552
+26 | 19 | Ewan Campbell | Vinous-Predictions | 0.771557555485051
+27 | 20 | Paul Smith | Quicklongshot | 0.853123269494346
+28 | 21 | Hung Doan | Hdsubmission | 1.42792448438237
+28 | 22 | Thi Doan | Qdsubmission | 1.42792448438237
+30 | 23 | Robert Nguyen | Final | 1.98238809905769
+31 | 24 | Andrew Randazzo | Italia2006 | 6.09588345261576
+
+
+Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
 See the [Terms and Conditions](/modelling/assets/Betfair_TCs_2022_Datathon.pdf) for full competition rules
 

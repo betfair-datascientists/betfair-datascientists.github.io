@@ -15,6 +15,7 @@ Daily leaderboard updates will be published here throughout the tournament so be
 ## Leaderboard Update - (23/11/2022)
 
 | Rank | Prize_Rank | Name | Model | LogLoss
+---|---|---|---|---
 1 | 1 | Tom Atkins | Elo-Ml | 0.573655867899438
 2 | 2 | Andrew Mackey | Footyprophet | 0.590376315655715
 3 | N/A | Mitch Motyka | Excel-Stats | 0.616404369599391

@@ -16,38 +16,38 @@ Daily leaderboard updates will be published here throughout the tournament so be
 
 | Rank | Prize_Rank | Name | Model | LogLoss
 ---|---|---|---|---
-1 | 1 | Andrew Mackey | Footyprophet | 0.5409
-2 | 2 | Chris Amos | 4670 | 0.5497
-3 | 3 | Tom Atkins | Elo-Ml | 0.5543
-4 | 4 | Drew Gill | Watp | 0.557
-5 | 5 | Ian Lundy | Winning-Entry | 0.5577
-6 | 6 | Bruce Davey | Claudia | 0.5587
-7 | 7 | Jamie Troubridge | Bruno-Fernandsh-Model | 0.5587
-8 | N/A | Betfair WCPM | Submission-File | 0.5614
-9 | N/A | Stats Insider | Submission-File | 0.5634
-10 | 8 | Sean Farrell | Randomshrubbery | 0.565
-11 | 9 | Yeon Kim | Sandstorm | 0.5685
-12 | 10 | Hamish Blanchard | Sub | 0.573
-13 | 11 | Rowan Warneke | Nothoughtsheadempty | 0.5753
-14 | N/A | Betfair Market-Odds | Submission-File | 0.5759
-15 | 12 | Mark Dragicevic | Onddownelo | 0.5799
-16 | 13 | Ash Walls | Salah-Dweller | 0.581
-17 | 14 | Joel Morrison | Out-Of-The-Blue | 0.5919
-18 | N/A | Automation Hub | Elo-Tutorial | 0.5982
-19 | N/A | Mitch Motyka | Excel-Stats | 0.5986
-20 | 15 | Craig Johnson | Craigspick | 0.6038
-21 | 16 | Tiago Ferreira | Tfsubmission | 0.6125
-22 | N/A | Fence Sitter | Submission-File | 0.6173
-23 | 17 | Mark Hunter | Mifsud4President | 0.6326
-24 | N/A | Ivan Zhou | Literally-The-Worst-Model | 0.6421
-25 | 18 | David Dragicevic | Daves-Screamers | 0.6439
-26 | 19 | Matt Dragicevic | Forca-Elo | 0.6546
-27 | 20 | Ewan Campbell | Vinous-Predictions | 0.655
-28 | 21 | Paul Smith | Quicklongshot | 0.7471
-29 | 22 | Thi Doan | Qdsubmission | 1.3003
-29 | 23 | Hung Doan | Hdsubmission | 1.3003
-31 | 24 | Robert Nguyen | Final | 1.454
-32 | 25 | Andrew Randazzo | Italia2006 | 4.1785
+1 | 1 | Andrew Mackey | Footyprophet | 0.5808
+2 | 2 | Ian Lundy | Winning-Entry | 0.5997
+3 | 3 | Chris Amos | 4670 | 0.6028
+4 | 4 | Yeon Kim | Sandstorm | 0.6046
+5 | 5 | Tom Atkins | Elo-Ml | 0.606
+6 | 6 | Jamie Troubridge | Bruno-Fernandsh-Model | 0.6068
+7 | 7 | Bruce Davey | Claudia | 0.6099
+8 |  | Betfair World-Cup-Predictions-Model | Submission-File | 0.6108
+9 | 8 | Drew Gill | Watp | 0.6111
+10 |  | Stats Insider | Submission-File | 0.6116
+11 | 9 | Ash Walls | Salah-Dweller | 0.6218
+12 | 10 | Hamish Blanchard | Sub | 0.6251
+13 |  | Betfair Market-Odds | Submission-File | 0.6285
+14 |  | Automation Hub | Elo-Tutorial | 0.6304
+15 | 11 | Mark Dragicevic | Onddownelo | 0.6351
+16 | 12 | Rowan Warneke | Nothoughtsheadempty | 0.6364
+17 |  | Fence Sitter | Submission-File | 0.6365
+18 | 13 | Sean Farrell | Randomshrubbery | 0.6502
+19 | 14 | Joel Morrison | Out-Of-The-Blue | 0.6561
+20 | 15 | Tiago Ferreira | Tfsubmission | 0.663
+21 |  | Ivan Zhou | Literally-The-Worst-Model | 0.6633
+22 | 16 | Craig Johnson | Craigspick | 0.6856
+23 | 17 | Mark Hunter | Mifsud4President | 0.6876
+24 | 18 | David Dragicevic | Daves-Screamers | 0.6942
+25 | 19 | Matt Dragicevic | Forca-Elo | 0.6983
+26 | 20 | Ewan Campbell | Vinous-Predictions | 0.6991
+27 | 21 | Paul Smith | Quicklongshot | 0.8499
+28 | 22 | Thi Doan | Qdsubmission | 1.4279
+28 | 23 | Hung Doan | Hdsubmission | 1.4279
+30 | 24 | Robert Nguyen | Final | 1.5061
+31 |  | Mitch Motyka | Excel-Stats | 1.558
+32 | 25 | Andrew Randazzo | Italia2006 | 5.1379
 
 
 Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)

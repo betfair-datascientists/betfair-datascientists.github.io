@@ -12,7 +12,7 @@ Registrations and submissions have now closed.
 
 Daily leaderboard updates will be published here throughout the tournament so be sure to check back to follow your model’s competition ranking.
 
-## Leaderboard Update - (24/11/2022)
+## Leaderboard Update - (25/11/2022)
 
 | Rank | Prize_Rank | Name | Model | LogLoss
 ---|---|---|---|---

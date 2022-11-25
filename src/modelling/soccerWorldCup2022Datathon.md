@@ -45,8 +45,8 @@ Daily leaderboard updates will be published here throughout the tournament so be
 27 | 20 | Quicklongshot | 0.7434
 28 | 21 | Final | 1.228
 29 | 22 | faint-cheek-strap | 1.2511
-29 |  | grind-press-shark | 1.2511
-31 | 23 | Excel-Stats | 1.309
+29 | 23 | grind-press-shark | 1.2511
+31 |  | Excel-Stats | 1.309
 32 | 24 | Italia2006 | 3.9552
 
 

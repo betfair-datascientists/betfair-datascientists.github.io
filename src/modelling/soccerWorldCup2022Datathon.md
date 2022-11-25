@@ -14,40 +14,40 @@ Daily leaderboard updates will be published here throughout the tournament so be
 
 ## Leaderboard Update - (25/11/2022)
 
-| Rank | Prize_Rank | Name | Model | LogLoss
----|---|---|---|---
-1 | 1 | Ian Lundy | Winning-Entry | 0.5292
-2 | 2 | Andrew Mackey | Footyprophet | 0.5463
-3 | 3 | Yeon Kim | Sandstorm | 0.549
-4 | 4 | Rowan Warneke | Nothoughtsheadempty | 0.5551
-5 | 5 | Jamie Troubridge | Bruno-Fernandsh-Model | 0.5554
-6 | 6 | Chris Amos | 4670 | 0.5554
-7 | N/A | Betfair World-Cup-Predictions-Model | Submission-File | 0.5593
-8 | 7 | Ash Walls | Salah-Dweller | 0.5605
-9 | N/A | Stats Insider | Submission-File | 0.561
-10 | N/A | Automation Hub | Elo-Tutorial | 0.5613
-11 | 8 | Drew Gill | Watp | 0.5631
-12 | 9 | Mark Dragicevic | Onddownelo | 0.5647
-13 | N/A | Betfair Market-Odds | Submission-File | 0.566
-14 | 10 | Hamish Blanchard | Sub | 0.5673
-15 | 11 | Bruce Davey | Claudia | 0.5691
-16 | 12 | Sean Farrell | Randomshrubbery | 0.5718
-17 | N/A | Tiago Ferreira | Tfsubmission | 0.5731
-18 | 13 | Joel Morrison | Out-Of-The-Blue | 0.5731
-19 | 14 | Tom Atkins | Elo-Ml | 0.5757
-20 | 15 | Ewan Campbell | Vinous-Predictions | 0.5999
-21 | 16 | Craig Johnson | Craigspick | 0.6001
-22 | 17 | Mark Hunter | Mifsud4President | 0.6249
-23 | 18 | David Dragicevic | Daves-Screamers | 0.6307
-24 | 19 | Matt Dragicevic | Forca-Elo | 0.6308
-25 | N/A | Fence Sitter | Submission-File | 0.6365
-26 | N/A | Ivan Zhou | Literally-The-Worst-Model | 0.6754
-27 | 20 | Paul Smith | Quicklongshot | 0.7434
-28 | 21 | Robert Nguyen | Final | 1.228
-29 | 22 | Hung Doan | Hdsubmission | 1.2511
-29 | 2 | Thi Doan | Qdsubmission | 1.2511
-31 | N/A | Mitch Motyka | Excel-Stats | 1.309
-32 | 24 | Andrew Randazzo | Italia2006 | 3.9552
+| Rank | Prize_Rank | Model | LogLoss
+---|---|---|---
+1 | 1 | Winning-Entry | 0.5292
+2 | 2 | Footyprophet | 0.5463
+3 | 3 | Sandstorm | 0.549
+4 | 4 | Nothoughtsheadempty | 0.5551
+5 | 5 | Bruno-Fernandsh-Model | 0.5554
+6 | 6 | 4670 | 0.5554
+7 |  | Betfair-Predictions-Model | 0.5593
+8 | 7 | Salah-Dweller | 0.5605
+9 |  | Stats-Insider | 0.561
+10 |  | Elo-Tutorial | 0.5613
+11 | 8 | Watp | 0.5631
+12 | 9 | Onddownelo | 0.5647
+13 |  | Betfair-odds | 0.566
+14 | 10 | steam-party-jewel | 0.5673
+15 | 11 | Claudia | 0.5691
+16 | 12 | Randomshrubbery | 0.5718
+17 |  | table-learn-knock | 0.5731
+18 | 13 | Out-Of-The-Blue | 0.5731
+19 | 14 | Elo-Ml | 0.5757
+20 | 15 | Vinous-Predictions | 0.5999
+21 | 16 | Craigspick | 0.6001
+22 | 17 | Mifsud4President | 0.6249
+23 | 18 | Daves-Screamers | 0.6307
+24 | 19 | Forca-Elo | 0.6308
+25 |  | Fence-Sitter | 0.6365
+26 |  | Literally-The-Worst-Model | 0.6754
+27 | 20 | Quicklongshot | 0.7434
+28 | 21 | Final | 1.228
+29 | 22 | faint-cheek-strap | 1.2511
+29 |  | grind-press-shark | 1.2511
+31 | 23 | Excel-Stats | 1.309
+32 | 24 | Italia2006 | 3.9552
 
 
 

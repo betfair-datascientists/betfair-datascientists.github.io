@@ -459,7 +459,7 @@ Our intention is that you don't need a heap of Python experience to be able to w
 We're planning on writing some more tutorials to help make it easier to work with the JSON data sets. If there are particular examples or data sets you'd like to see us walk through [please reach out](mailto:data@betfair.com.au).
 
 !!! note "Community support"
-    - There's a really active [`betfairlightweight` Slack community](https://betfairlightweight.herokuapp.com/) that's a great place to go to ask questions about the library and get support from other people who are also working in the space
+    - There's a really active [Betcode (formerly Betfairlightweight) slack group](https://betcode-org.slack.com/ssb/redirect) that's a great place to go to ask questions about the library and get support from other people who are also working in the space
 
 --- 
 ### Complete code

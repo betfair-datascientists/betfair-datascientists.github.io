@@ -16,38 +16,39 @@ Daily leaderboard updates will be published here throughout the tournament so be
 
 | Rank | Prize_Rank | Model | LogLoss | Change
 ---|---|---|---|---
-1 | 1 | Onddownelo | 0.5782 | 0
-2 | 2 | Footyprophet | 0.5785 | 0
-3 | 3 | 4670 | 0.5809 | 4
-4 | 4 | Claudia | 0.5826 | 1
-5 | 5 | Watp | 0.5852 | 6
-6 | 6 | Bruno-Fernandsh-Model | 0.5859 | 4
-7 | 7 | Randomshrubbery | 0.5866 | 9
-8 | N/A | Stats-Insider | 0.5875 | 1
-9 | 8 | Winning-Entry | 0.5894 | -3
-10 | 9 | Elo-Ml | 0.5904 | 2
-11 | 10 | Salah-Dweller | 0.5913 | -3
-12 | N/A | Betfair-Predictions-Model | 0.5923 | 1
-13 | N/A | Elo-Tutorial | 0.5943 | -10
-14 | N/A | Betfair-Odds | 0.5943 | 4
-15 | 11 | Out-Of-The-Blue | 0.5945 | 2
-16 | 12 | Steam-Party-Jewel | 0.5952 | 3
-17 | 13 | Sandstorm | 0.5973 | -13
-18 | 14 | Nothoughtsheadempty | 0.6059 | -4
-19 | 15 | Forca-Elo | 0.6159 | 2
-20 | N/A | Table-Learn-Knock | 0.6169 | -5
-21 | 16 | Mifsud4President | 0.6176 | 1
-22 | 17 | Daves-Screamers | 0.6208 | 1
-23 | 18 | Craigspick | 0.6272 | 2
-24 | N/A | Fence-Sitter | 0.6365 | 0
-25 | N/A | Literally-The-Worst-Model | 0.6774 | 1
-26 | 19 | Vinous-Predictions | 0.6933 | -6
-27 | 20 | Quicklongshot | 0.7001 | 0
-28 | 21 | Final | 0.9256 | 0
-29 | N/A | Excel-Stats | 0.9583 | 0
-30 | 22 | Faint-Cheek-Strap | 1.2511 | 0
-31 | 23 | Grind-Press-Shark | 1.4279 | 0
-32 | 24 | Italia2006 | 2.9336 | 0
+1 | 1 | Claudia | 0.5517 | 3
+2 | 2 | Footyprophet | 0.5541 | 0
+3 | 3 | 4670 | 0.5594 | 0
+4 |  | Stats-Insider | 0.5618 | 4
+5 | 4 | Bruno-Fernandsh-Model | 0.5641 | 1
+6 | 5 | Winning-Entry | 0.5651 | 3
+7 | 6 | Out-Of-The-Blue | 0.567 | 8
+8 | 7 | Watp | 0.5683 | -3
+9 | 8 | Elo-Ml | 0.5686 | 1
+10 |  | Betfair-Odds | 0.5699 | 4
+11 | 9 | Onddownelo | 0.5713 | -10
+12 | 10 | Steam-Party-Jewel | 0.5716 | 4
+13 | 11 | Randomshrubbery | 0.5744 | -6
+14 | 12 | Salah-Dweller | 0.5763 | -3
+15 |  | Elo-Tutorial | 0.5844 | -2
+16 |  | Table-Learn-Knock | 0.5909 | 4
+17 |  | Betfair-Predictions-Model | 0.5923 | -5
+18 | 13 | Sandstorm | 0.5929 | -1
+19 | 14 | Mifsud4President | 0.5935 | 2
+20 | 15 | Forca-Elo | 0.5936 | -1
+21 | 16 | Nothoughtsheadempty | 0.5956 | -3
+22 | 17 | Daves-Screamers | 0.5965 | 0
+23 | 18 | Craigspick | 0.5996 | 0
+24 |  | Fence-Sitter | 0.6365 | 0
+25 | 19 | Quicklongshot | 0.6439 | 2
+26 | 20 | Vinous-Predictions | 0.679 | 0
+27 |  | Literally-The-Worst-Model | 0.6847 | -2
+28 | 21 | Final | 0.8616 | 0
+29 |  | Excel-Stats | 0.8856 | 0
+30 | 22 | Faint-Cheek-Strap | 1.2708 | 0
+30 | 22 | Grind-Press-Shark | 1.2708 | 0
+32 | 24 | Italia2006 | 2.6468 | 0
+
 
 
 

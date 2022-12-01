@@ -12,42 +12,43 @@ Registrations and submissions have now closed.
 
 Daily leaderboard updates will be published here throughout the tournament so be sure to check back to follow your model’s competition ranking.
 
-## Leaderboard Update - (29/11/2022)
+## Leaderboard Update - (01/12/2022)
 
 | Rank | Prize_Rank | Model | LogLoss | Change
 ---|---|---|---|---
-1 | 1 | Claudia | 0.5517 | 3
-2 | 2 | Footyprophet | 0.5541 | 0
-3 | 3 | 4670 | 0.5594 | 0
-4 |  | Stats-Insider | 0.5618 | 4
-5 | 4 | Bruno-Fernandsh-Model | 0.5641 | 1
-6 | 5 | Winning-Entry | 0.5651 | 3
-7 | 6 | Out-Of-The-Blue | 0.567 | 8
-8 | 7 | Watp | 0.5683 | -3
-9 | 8 | Elo-Ml | 0.5686 | 1
-10 |  | Betfair-Odds | 0.5699 | 4
-11 | 9 | Onddownelo | 0.5713 | -10
-12 | 10 | Steam-Party-Jewel | 0.5716 | 4
-13 | 11 | Randomshrubbery | 0.5744 | -6
-14 | 12 | Salah-Dweller | 0.5763 | -3
-15 |  | Elo-Tutorial | 0.5844 | -2
-16 |  | Table-Learn-Knock | 0.5909 | 4
-17 |  | Betfair-Predictions-Model | 0.5923 | -5
-18 | 13 | Sandstorm | 0.5929 | -1
-19 | 14 | Mifsud4President | 0.5935 | 2
-20 | 15 | Forca-Elo | 0.5936 | -1
-21 | 16 | Nothoughtsheadempty | 0.5956 | -3
-22 | 17 | Daves-Screamers | 0.5965 | 0
-23 | 18 | Craigspick | 0.5996 | 0
-24 |  | Fence-Sitter | 0.6365 | 0
-25 | 19 | Quicklongshot | 0.6439 | 2
-26 | 20 | Vinous-Predictions | 0.679 | 0
-27 |  | Literally-The-Worst-Model | 0.6847 | -2
-28 | 21 | Final | 0.8616 | 0
-29 |  | Excel-Stats | 0.8856 | 0
-30 | 22 | Faint-Cheek-Strap | 1.2708 | 0
-30 | 22 | Grind-Press-Shark | 1.2708 | 0
-32 | 24 | Italia2006 | 2.6468 | 0
+1 | 1 | Footyprophet | 0.56551
+2 | 2 | Elo-Ml | 0.57697
+3 | 3 | Claudia | 0.5796-2
+4 | 4 | 4670 | 0.5818-1
+5 | N/A | Betfair-Odds | 0.58275
+6 | 5 | Bruno-Fernandsh-Model | 0.5848-1
+7 | N/A | Stats-Insider | 0.5858-3
+8 | N/A | Elo-Tutorial | 0.58987
+9 | 6 | Winning-Entry | 0.5898-3
+10 | 7 | Salah-Dweller | 0.58994
+11 | 8 | Watp | 0.5904-3
+12 | 9 | Out-Of-The-Blue | 0.5913-5
+13 | N/A | Betfair-Predictions-Model | 0.59234
+14 | 10 | Onddownelo | 0.5947-3
+15 | 11 | Daves-Screamers | 0.59517
+16 | 12 | Steam-Party-Jewel | 0.5974-4
+17 | 13 | Mifsud4President | 0.60172
+18 | 14 | Randomshrubbery | 0.6028-5
+19 | 15 | Sandstorm | 0.6061-1
+20 | N/A | Table-Learn-Knock | 0.6077-4
+21 | 16 | Nothoughtsheadempty | 0.61360
+22 | 17 | Forca-Elo | 0.6201-2
+23 | N/A | Fence-Sitter | 0.63651
+24 | 18 | Craigspick | 0.6426-1
+25 | 19 | Quicklongshot | 0.68630
+26 | N/A | Literally-The-Worst-Model | 0.68891
+27 | 20 | Vinous-Predictions | 0.6956-1
+28 | 21 | Final | 0.85830
+29 | N/A | Excel-Stats | 0.89580
+30 | 22 | Faint-Cheek-Strap | 1.28650
+30 | 22 | Grind-Press-Shark | 1.28650
+32 | 24 | Italia2006 | 3.53970
+
 
 
 

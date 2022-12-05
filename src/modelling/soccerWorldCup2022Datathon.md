@@ -12,43 +12,42 @@ Registrations and submissions have now closed.
 
 Daily leaderboard updates will be published here throughout the tournament so be sure to check back to follow your model’s competition ranking.
 
-## Leaderboard Update - (05/12/2022)
+## Leaderboard Update - (06/12/2022)
 
 | Rank | Prize_Rank | Model | LogLoss | Change
 ---|---|---|---|---
-1 | 1 | Footyprophet | 0.5543 | 0
-2 |  | Betfair-Odds | 0.5617 | 0
-3 | 2 | Daves-Screamers | 0.5659 | 11
-4 | 3 | 4670 | 0.5705 | 2
-5 | 4 | Elo-Ml | 0.5722 | -1
-6 | 5 | Claudia | 0.5748 | -3
-7 | 6 | Bruno-Fernandsh-Model | 0.5765 | -2
-8 | 7 | Mifsud4President | 0.5774 | 10
-9 | 8 | Steam-Party-Jewel | 0.5795 | 6
-10 | 9 | Sandstorm | 0.5818 | 7
-11 | 10 | Watp | 0.5822 | 1
-12 | 11 | Salah-Dweller | 0.5826 | -3
-13 |  | Elo-Tutorial | 0.5853 | -2
-14 | 12 | Winning-Entry | 0.5872 | -4
-15 |  | Betfair-Predictions-Model | 0.5881 | -8
-16 | 13 | Onddownelo | 0.5893 | -3
-17 |  | Table-Learn-Knock | 0.5962 | 4
-18 |  | Stats-Insider | 0.5977 | -10
-19 | 14 | Forca-Elo | 0.5984 | 0
-20 | 15 | Out-Of-The-Blue | 0.6059 | -4
-21 | 16 | Nothoughtsheadempty | 0.6202 | 1
-22 |  | Fence-Sitter | 0.6231 | 1
-23 | 17 | Randomshrubbery | 0.6282 | -3
-24 | 18 | Craigspick | 0.6533 | 0
-25 |  | Literally-The-Worst-Model | 0.6718 | 0
-26 | 19 | Quicklongshot | 0.691 | 1
-27 | 20 | Vinous-Predictions | 0.6997 | 1
-28 | 21 | Final | 0.7802 | 0
-29 |  | Excel-Stats | 0.8334 | 0
-30 | 22 | Grind-Press-Shark | 1.2098 | 0
-31 | 23 | Faint-Cheek-Strap | 1.2647 | 0
-32 | 24 | Italia2006 | 3.9133 | 0
-
+1 | 1 | Footyprophet | 0.5418 | 0
+2 | 2 | 4670 | 0.5513 | 2
+3 | 3 | Daves-Screamers | 0.5516 | 0
+4 |  | Betfair-Odds | 0.5532 | -2
+5 | 4 | Elo-Ml | 0.5565 | 0
+6 | 5 | Claudia | 0.5592 | 0
+7 | 6 | Steam-Party-Jewel | 0.5599 | 2
+8 |  | Stats-Insider | 0.5607 | 10
+9 | 7 | Bruno-Fernandsh-Model | 0.5613 | -2
+10 | 8 | Mifsud4President | 0.5616 | -2
+11 | 9 | Watp | 0.5656 | 0
+12 | 10 | Sandstorm | 0.5673 | -2
+13 | 11 | Salah-Dweller | 0.5686 | -1
+14 |  | Elo-Tutorial | 0.5713 | -1
+15 | 12 | Winning-Entry | 0.5719 | -1
+16 |  | Betfair-Predictions-Model | 0.5724 | -1
+17 | 13 | Onddownelo | 0.5758 | -1
+18 |  | Table-Learn-Knock | 0.5784 | -1
+19 | 14 | Forca-Elo | 0.5843 | 0
+20 | 15 | Out-Of-The-Blue | 0.5885 | 0
+21 | 16 | Nothoughtsheadempty | 0.6026 | 0
+22 | 17 | Randomshrubbery | 0.6164 | 1
+23 |  | Fence-Sitter | 0.6171 | -1
+24 | 18 | Craigspick | 0.6348 | 0
+25 |  | Literally-The-Worst-Model | 0.6632 | 0
+26 | 19 | Quicklongshot | 0.6672 | 0
+27 | 20 | Vinous-Predictions | 0.6852 | 0
+28 | 21 | Final | 0.7532 | 0
+29 |  | Excel-Stats | 0.803 | 0
+30 | 22 | Grind-Press-Shark | 1.1652 | 0
+31 | 23 | Faint-Cheek-Strap | 1.2184 | 0
+32 | 24 | Italia2006 | 3.7683 | 0
 
 Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 

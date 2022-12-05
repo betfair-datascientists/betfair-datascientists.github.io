@@ -2,6 +2,7 @@
 
 ## Ben Douglas
 Slack Handle: BenD
+Discord Handle: BenD_BF
 
 My Role: Automation Manager - Working with customers to help them get their strategies automated 
 and supplying customers with resources to increase their edge
@@ -12,6 +13,7 @@ My Edge: Ability to focus for hours on end, so I can record every bet in a sprea
 
 ## Mitch Motyka
 Slack Handle: MitchM
+Discord Handle: MitchM_BF
 
 My Role: Client Development Executive - Helping clients automate their strategies and models
 
@@ -20,3 +22,13 @@ Date Started at Betfair: Oct 2022
 My Edge: Low tech doesn't always mean low success
 
 Best Winning Moment: 7-leg UK Goliath Soccer Multi win on my birthday
+
+## Email Contacts
+
+Automation Queries: automation@betfair.com.au
+
+Datathon Queries: datathon@betfair.com.au
+
+API Queries: api@betfair.com.au
+
+Commercial Enquiries: bdp@betfair.com.au

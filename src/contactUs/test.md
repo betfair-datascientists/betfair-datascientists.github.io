@@ -2,6 +2,7 @@
 
 ## Ben Douglas
 Slack Handle: BenD
+
 Discord Handle: BenD_BF
 
 My Role: Automation Manager - Working with customers to help them get their strategies automated 
@@ -13,6 +14,7 @@ My Edge: Ability to focus for hours on end, so I can record every bet in a sprea
 
 ## Mitch Motyka
 Slack Handle: MitchM
+
 Discord Handle: MitchM_BF
 
 My Role: Client Development Executive - Helping clients automate their strategies and models

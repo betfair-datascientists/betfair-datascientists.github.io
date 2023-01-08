@@ -1376,7 +1376,7 @@ predictions_df
 | 8 | 2018-09-02 | Cardiff | Arsenal | 7.00 | 4.30 | 1.62 | 6.256929 | 4.893445 | 1.572767 |
 | 9 | 2018-09-03 | Watford | Tottenham | 5.90 | 4.30 | 1.68 | 5.643663 | 4.338926 | 1.688224 |
 
-Above are the predictions for this Gameweek's matches. In the next tutorial we will explore the errors our model has made, and work on creating a profitable betting strategy.
+Above are the predictions for this Gameweek's matches. 
 
 ---
 ### Disclaimer

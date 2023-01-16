@@ -59,7 +59,7 @@ We know that automated strategies are only as good as your data. There’s a hug
 - [The Stream API dev docs](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Exchange+Stream+API) are the best source of information for interpreting the data from the Historic Data site
 
 !!! info "Historic Betfair data"
-    There is a lot of historical price data available for all makrets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data. If you are interested in the data available please [reach out](mailto:data@betfair.com.au).
+    There is a lot of historical price data available for all markets offered on the Exchange, ranging from aggregate, market-level csv files to complete JSON recreations of API Stream data. If you are interested in the data available please [reach out](mailto:data@betfair.com.au).
 
 ---
 ## Data modelling 
@@ -91,8 +91,8 @@ There are a lot of people who use data, models and automation to make a living o
 
 
 
-!!! info "Betfair Quants Slack Group"
-    `betfair quants` is really active community-owned Slack group for people interested in modelling and automation on the Exchange. Please [reach out](mailto:automation@betfair.com.au) if you'd like an invitation. 
+!!! info "Betfair Quants Discord Group"
+    `betfair quants` is really active Betfair-owned Discord server for people interested in modelling and automation on the Exchange. Please [reach out](mailto:automation@betfair.com.au) if you'd like an invitation. 
     
 ---
 ## Need extra help?

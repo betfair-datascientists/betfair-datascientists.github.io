@@ -1,7 +1,6 @@
 # Meet the Team
 
 ## Ben Douglas
-Slack Handle: BenD
 
 Discord Handle: BenD_BF
 
@@ -13,7 +12,6 @@ Date Started at Betfair: Feb 2020
 My Edge: Ability to focus for hours on end, so I can record every bet in a spreadsheet and track whether I'm winning or losing
 
 ## Mitch Motyka
-Slack Handle: MitchM
 
 Discord Handle: MitchM_BF
 

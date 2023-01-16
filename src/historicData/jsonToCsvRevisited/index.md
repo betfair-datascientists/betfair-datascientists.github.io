@@ -5,9 +5,9 @@
 
     This tutorial follows on from our [previous JSON to CSV tutorial](../jsonToCsvTutorial.md) where we stepped through how to work with the historic recordings of Betfair's price data. You should make sure you read that first before continuing here! 
 
-So we're nearly a year on from our original [JSON to CSV tutorial](../jsonToCsvTutorial.md), and while it was generally well received a very common (and fair!) complaint was how long it took the script to run. Many people said that it could take all day, or they had to leave their PC on over night to finish, which obviously makes the data processing and back testing process a lot less accessible, which was the whole point of the original article. So we're circling back around to see what we can do to decrease the running time and to make working with larger samples of data less of an all day affair. 
+So we're nearly a year on from our original [JSON to CSV tutorial](../jsonToCsvTutorial.md), and while it was generally well received a very common (and fair) complaint was how long it took the script to run. Many people said that it could take all day, or they had to leave their PC on over night to finish, which obviously makes the data processing and back testing process a lot less accessible, which was the whole point of the original article. So we're circling back around to see what we can do to decrease the running time and to make working with larger samples of data less of an all-day affair. 
 
-You might want to stick around, because the final results are really something. 
+You might want to stick around because the final results are really something. 
 
 !!! note "Cheat sheet"
     - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/historicData/jsonToCsvRevisited/#completed-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master/jsonToCsvRevisited).
@@ -41,7 +41,7 @@ gtime python json2csv.py
 ```
 ... oof. This took a while: ```2h 41m 26s``` to be precise. 
 
-This is less 'run to the kitchen and grab a cup of coffee' and more 'head to the pub and settle in for the night' territory, and thats on a new, very fast, MacBook Pro... if you have an older pc you should expect this to take significantly longer again.
+This is less 'run to the kitchen and grab a cup of coffee' and more 'head to the pub and settle in for the night' territory, and that's on a new, very fast, MacBook Pro... if you have an older pc you should expect this to take significantly longer again.
 
 But *is* this actually slow? Let's count up how many files there are in our TAR archives, and then how many lines in each of the files, with each line being an update to a market, to give us an ideal of the scale of data we're dealing with:
 
@@ -113,7 +113,7 @@ It's worth noting here that `betfairlightweight` is a Python library, written pr
 
     <img src="img/bflw_py_src.svg" width="100%" alt='bflw flamegraph' />
 
-Python sits in a peculiar space as both a very fast and simlutaneously very slow programming language. When your program is spending most of its time running slow interpreted Python code it can be one of the slowest languages around - much slower then many other popular languages. Having said that though, there is a good chance if you're working in Python that a lot of your program isn't actually written in Python, but is instead written in a very fast systems language like C, C++ or Rust; much of the Python standard library, and many popular libraries like numpy, scipy and tensorflow are all examples of this. In these cases when Python is just acting as glue between code written in lower, faster languages a Python program can actually be really fast. 
+Python sits in a peculiar space as both a very fast and simultaneously very slow programming language. When your program is spending most of its time running slow interpreted Python code it can be one of the slowest languages around - much slower then many other popular languages. Having said that though, there is a good chance if you're working in Python that a lot of your program isn't actually written in Python, but is instead written in a very fast systems language like C, C++ or Rust; much of the Python standard library, and many popular libraries like numpy, scipy and tensorflow are all examples of this. In these cases when Python is just acting as glue between code written in lower, faster languages a Python program can actually be really fast. 
 
 This leaves us with two paths: stay with `betfairlightweight` and try and optimise the performance up to a sufficiently faster level, or rewrite the portion of `betfairlightweight` that handles parsing the JSON stream files in a much faster language and expose that back to Python as a new library. It is worth noting that `betfairlightweight` is not a new library - it's been around for a good period of time and has been actively developed enough that the chance of us finding some ground breaking optimisations that could dramatically speed up performance is low, and we would ideally like to see a very large performance increase to move the dial on our original numbers. 
 
@@ -242,7 +242,7 @@ However if we were to move the file loading and decompression process to another
 
 This version only has a few additional code changes to the previous `betfair_data` example - we'll be removing the ```load_markets``` generator function from the previous script, and will replace it with a call to a new Rust function that we have added to our library. Now the ```betfair_data.Files``` function is doing all the heavy lifting. It creates its own thread, loads the files, decompresses them (if needed) and buffers them for the main Python thread to take as needed.
 
-```py title='Loading the files in a seperate thread' hl_lines="1 8"
+```py title='Loading the files in a separate thread' hl_lines="1 8"
 for file in betfair_data.Files(market_paths).bflw():
     def get_pre_post_final():
         eval_market = None
@@ -284,7 +284,7 @@ Loading up the profiler, we can see that our flamegraph has gotten pretty bare. 
 
 ---
 ## Validating our results
-All of this effort measuring speed, and we haven't actually stopped to look at our output! Getting an answer quickly is only useful if we actually get the right answer, so let's run some comarisons between our original output and the output of the new library.
+All of this effort measuring speed, and we haven't actually stopped to look at our output! Getting an answer quickly is only useful if we actually get the right answer, so let's run some comparisons between our original output and the output of the new library.
 
 All of the outputted CSV files are ```52,483``` lines long, which is definitely a good start. We do need to go deeper though to make sure the values in every row are the same - we have essentially rewritten all the complex data handling logic so small differences in the output could be expected.
 

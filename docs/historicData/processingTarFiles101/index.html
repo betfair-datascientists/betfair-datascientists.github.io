@@ -2132,14 +2132,16 @@ This will provide:
 - Number of Active Runners in the market (this can help in the event of late scratchings)
 - Timestamp (will help us later to calculate time relative to scheduled off time)
 - Traded Volume on the selection so far
-- Weighted Average Price
-- Last Traded Price
-- Selection Status (this can help in the event of late scratchings)
-- Reduction Factor (affect on the market if the runner were to be scratched)
-- Back Ladder (pulls 5 best prices and volume available)
-- Lay Ladder (pulls 5 best prices and volume available)
-- BSP Near Price
-- BSP Far Price</p>
+- Weighted Average Price</p>
+<ul>
+<li>Last Traded Price</li>
+<li>Selection Status (this can help in the event of late scratchings)</li>
+<li>Reduction Factor (affect on the market if the runner were to be scratched)</li>
+<li>Back Ladder (pulls 5 best prices and volume available)</li>
+<li>Lay Ladder (pulls 5 best prices and volume available)</li>
+<li>BSP Near Price</li>
+<li>BSP Far Price</li>
+</ul>
 <p>NOTE: Projected BSP displayed on the app/website is the Near Price - more information about Near/Far Prices and their accuracy can be found <a href="https://betfair-datascientists.github.io/historicData/analysingAndPredictingBSP/">here</a></p>
 <p>NOTE: The function is defined to stop pulling the prices once the market goes in-play. If in-play prices are required, then simply remove the condition for market_book.inplay</p>
 </div>

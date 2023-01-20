@@ -51,6 +51,7 @@ We know that automated strategies are only as good as your data. There’s a hug
 - [Do *#theyknow*? Analysing Betfair market formation and market movements](/historicData/analysingAndPredictingMarketMovements)
 - [Wisdom of the crowd? Analysing & understanding BSP](/historicData/analysingAndPredictingBSP)
 
+
 ### Other resources
 - [Betfair data sources](/historicData/dataSources)
 - [Data processor](https://www.betfairhistoricdata.co.uk/) to generate CSVs from the historic JSON files 

@@ -1858,7 +1858,7 @@
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="cheat-sheet">Cheat sheet</h3>
 <ul>
-<li>This is presented as a Jupyter notebook as this format is interactive and lets you run snippets of code from wihtin the notebook. To use this functionality <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/master/processingTarFiles101/tar.ipynb">you'll need to download a copy of the <code>ipynb</code> file locally</a> and open it in a text editor (i.e. VS code).</li>
+<li>This is presented as a Jupyter notebook as this format is interactive and lets you run snippets of code from within the notebook. To use this functionality <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/master/processingTarFiles101/tar.ipynb">you'll need to download a copy of the <code>ipynb</code> file locally</a> and open it in a text editor (i.e. VS code).</li>
 <li>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/historicData/processingTarFiles101/#21-complete-code-racing-processor">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/tree/master/processingTarFiles101">download the script from Github</a>.</li>
 <li>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </li>
 <li>Make sure you amend your data path to point to your data file. We'll be taking in an input of a historical tar file downloaded from the <a href="https://historicdata.betfair.com/#/help">Betfair historic data site</a>. We're using a PRO version, though the code should work on ADVANCED too. This approach won't work with the BASIC data tier. For more information on these files please reach out to us at <a href="mailto:automation@betfair.com.au">automation</a></li>
@@ -1908,6 +1908,23 @@
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="kn">from</span> <span class="nn">currency_converter</span> <span class="kn">import</span> <span class="n">CurrencyConverter</span>
 </code></pre></div>
 
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[1], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> import pandas as pd
+<span class="ansi-green-intense-fg ansi-bold">      2</span> import numpy as np
+<span class="ansi-green-intense-fg ansi-bold">      3</span> import os
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;pandas&#39;</pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
@@ -2143,7 +2160,7 @@ This will provide:</p>
 <li>BSP Far Price</li>
 </ul>
 <p>NOTE: Projected BSP displayed on the app/website is the Near Price - more information about Near/Far Prices and their accuracy can be found <a href="https://betfair-datascientists.github.io/historicData/analysingAndPredictingBSP/">here</a></p>
-<p>NOTE: The function is defined to stop pulling the prices once the market goes in-play. If in-play prices are required, then simply remove the condition for market_book.inplay</p>
+<p>NOTE: The function is defined to stop pulling the prices once the market goes in-play. If in-play prices are required, then simply remove the condition for market_book.inplay. However, you will need to insert an inplay flag.</p>
 </div>
 </div>
 </div>
@@ -2557,8 +2574,8 @@ In our metadata files we will provide:</p>
 <p>If you'd like to expand your datasets, here's a list of other accessible data sources that can add additional datapoints and are fairly simple to join:</p>
 <ul>
 <li>Unsupported API endpoint for a day's racecard - <code>https://apigateway.betfair.com.au/hub/racecard?date=YYYY-MM-DD</code> (simply substitute your day at the end)</li>
-<li>Unsupported API endpoint for market and runner metadata including Barrier, Trainer, Jockey and Best Tote Price - <code>https://apigateway.betfair.com.au/hub/raceevent/market_id</code> (simply substitute your market_id at the end including "1.") These ratings are available back to 18/2/21.</li>
-<li>Carrot Cruncher Horse Racing Model (url=<code>https://betfair-data-supplier-prod.herokuapp.com/api/widgets/kash-ratings-model/datasets?date='+YYYY-MM-DD+'&amp;presenter=RatingsPresenter&amp;csv=true</code>) (simply substitute your date in the middle)</li>
+<li>Unsupported API endpoint for market and runner metadata including Barrier, Trainer, Jockey and Best Tote Price - <code>https://apigateway.betfair.com.au/hub/raceevent/market_id</code> (simply substitute your market_id at the end including "1.")</li>
+<li>Carrot Cruncher Horse Racing Model (url=<code>https://betfair-data-supplier-prod.herokuapp.com/api/widgets/kash-ratings-model/datasets?date='+YYYY-MM-DD+'&amp;presenter=RatingsPresenter&amp;csv=true</code>) (simply substitute your date in the middle). These ratings are available back to 18/2/21.</li>
 </ul>
 <p>Hopefully this tutorial has helped and provides a great resource to be able to process these powerful, if cumbersome, TAR files and assists in your data gathering!</p>
 <p>For further tutorials on how to handle these new CSV files to create a model - check out our suite of other tutorials in the <a href="https://betfair-datascientists.github.io/modelling/howToModel">modelling section</a> </p>

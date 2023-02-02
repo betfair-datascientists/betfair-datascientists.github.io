@@ -9,6 +9,7 @@ Here are some of the resources we'd recommend taking a look at if you're buildin
 - [Dev Docs](http://developer.betfair.com)
 - [Developer Program knowledge base](https://betfairdevelopersupport.zendesk.com/hc/en-us)
 - [Developer Forum](https://forum.developer.betfair.com/) where you can share your experiences and find out what's worked for other clients
+- [Stream API](https://docs.developer.betfair.com/plugins/servlet/mobile?contentId=6094862#content/view/6094862) where you can find an intro to the stream api
 
 !!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies

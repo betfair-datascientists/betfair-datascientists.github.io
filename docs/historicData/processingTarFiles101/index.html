@@ -1909,29 +1909,12 @@
 </code></pre></div>
 
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[1], line 1</span>
-<span class="ansi-green-fg">----&gt; 1</span> import pandas as pd
-<span class="ansi-green-intense-fg ansi-bold">      2</span> import numpy as np
-<span class="ansi-green-intense-fg ansi-bold">      3</span> import os
-
-<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;pandas&#39;</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="12-picking-our-intervals">1.2 Picking our intervals</h3>
-<p>Here we'll define our working folder and the timestamps for which we want to pull all of over data. 
+<p>Here we'll define our working folder and the timestamps for which we want to pull all of our data. 
 We've set the script to pull prices from 10 minutes out from the jump at 30 second intervals and then at 5 second intervals from 1 minute out. Feel free to change as you need.</p>
 <p>PRO TIP: copying your file path from windows explorer works really well as long as you replace the back-slashes with forward-slashes</p>
 </div>
@@ -2153,14 +2136,14 @@ This will provide:</p>
 <li>Weighted Average Price</li>
 <li>Last Traded Price</li>
 <li>Selection Status (this can help in the event of late scratchings)</li>
-<li>Reduction Factor (affect on the market if the runner were to be scratched)</li>
+<li>Reduction Factor (effect on the market if the runner were to be scratched)</li>
 <li>Back Ladder (pulls 5 best prices and volume available)</li>
 <li>Lay Ladder (pulls 5 best prices and volume available)</li>
 <li>BSP Near Price</li>
 <li>BSP Far Price</li>
 </ul>
 <p>NOTE: Projected BSP displayed on the app/website is the Near Price - more information about Near/Far Prices and their accuracy can be found <a href="https://betfair-datascientists.github.io/historicData/analysingAndPredictingBSP/">here</a></p>
-<p>NOTE: The function is defined to stop pulling the prices once the market goes in-play. If in-play prices are required, then simply remove the condition for market_book.inplay. However, you will need to insert an inplay flag.</p>
+<p>NOTE: The function is defined to stop pulling the prices once the market goes in-play. If in-play prices are required, then simply remove the condition for market_book.inplay. However, you will need to insert an inplay flag in order to distinguish when the market goes inplay in the csv file.</p>
 </div>
 </div>
 </div>
@@ -2299,7 +2282,7 @@ This will provide:</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="16-the-good-stuff">1.6 The Good Stuff</h3>
-<p>Now comes the really meaty chunk of code that will do the grunt work for us. We'll generate the timestamped prices for each TAR file separately and then loop over them again to generate the selection metadata (This is using a chunk of code from our JSON to CSV Revisited tutorial using the Betfair_Data package. This is super speedy because its mainly written in Rust rather than python)
+<p>Now comes the really meaty chunk of code that will do the grunt work for us. We'll generate the timestamped prices for each TAR file separately and then loop over them again to generate the selection metadata. (This is using a chunk of code from our JSON to CSV Revisited tutorial using the Betfair_Data package. This is super speedy because its mainly written in Rust rather than python)
 In our metadata files we will provide:</p>
 <ul>
 <li>Market ID</li>
@@ -2323,8 +2306,8 @@ In our metadata files we will provide:</p>
 <li>Inplay Last Traded Price</li>
 <li>Inplay Matched Volume</li>
 </ul>
-<p>Note: For markets that don't go in play (like Greyhounds/Place markets), these fields will be empty</p>
-<p>Following this metadata generation, we'll then join the dataframes together and add the "seconds to scheduled off" field, as converting the GMT time in the TAR Files to Melbourne time (this is useful for when markets are timed for early morning before 10am or 11am during daylight savings causing the local event date to be the previous day in GMT) and converting the currency to Australian Dollars using a historical currency conversion.</p>
+<p>Note: For markets that don't go in play (like Greyhounds/Place markets), the 'Inplay' fields will be empty.</p>
+<p>Following this metadata generation, we'll then join the dataframes together and add the "seconds to scheduled off" field, as well as converting the GMT time in the TAR Files to Melbourne time (this is useful for when markets are timed for early morning before 10am (or 11am during daylight savings) which causes the local event date to be the previous day in GMT) and converting the currency to Australian Dollars using a historical currency conversion.</p>
 <p>The final piece will be outputting the files to CSV. The code is setup to output a separate file for each race which reduces the number of rows per race and enables output to be easily opened and checked for completeness. Changing this to output one CSV file per TAR file or one CSV file per day is fairly straightforward.</p>
 </div>
 </div>
@@ -2576,6 +2559,7 @@ In our metadata files we will provide:</p>
 <li>Unsupported API endpoint for a day's racecard - <code>https://apigateway.betfair.com.au/hub/racecard?date=YYYY-MM-DD</code> (simply substitute your day at the end)</li>
 <li>Unsupported API endpoint for market and runner metadata including Barrier, Trainer, Jockey and Best Tote Price - <code>https://apigateway.betfair.com.au/hub/raceevent/market_id</code> (simply substitute your market_id at the end including "1.")</li>
 <li>Carrot Cruncher Horse Racing Model (url=<code>https://betfair-data-supplier-prod.herokuapp.com/api/widgets/kash-ratings-model/datasets?date='+YYYY-MM-DD+'&amp;presenter=RatingsPresenter&amp;csv=true</code>) (simply substitute your date in the middle). These ratings are available back to 18/2/21.</li>
+<li>Iggy Joey Greyhound Model (url=<code>https://betfair-data-supplier-prod.herokuapp.com/api/widgets/iggy-joey/datasets?date='+YYYY-MM-DD+'&amp;presenter=RatingsPresenter&amp;csv=true</code>) (simply substitute your date in the middle)</li>
 </ul>
 <p>Hopefully this tutorial has helped and provides a great resource to be able to process these powerful, if cumbersome, TAR files and assists in your data gathering!</p>
 <p>For further tutorials on how to handle these new CSV files to create a model - check out our suite of other tutorials in the <a href="https://betfair-datascientists.github.io/modelling/howToModel">modelling section</a> </p>

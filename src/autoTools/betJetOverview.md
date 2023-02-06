@@ -2,7 +2,7 @@
 
 BetJet Pro is a third-party betting software tool that uses the Betfair Exchange. Whilst not having capability for automated betting, it provides an easy to use interface for betting and trading compatible across both Mac and PC. 
 
-![BetJet Pro](./img/BetJet1.jpg)
+![BetJet Pro](./img/BetJet1.JPG)
 
 The interface is highly customisable and able to be tailored to anyone's specific needs with sophisticated hotkeys including the aptly named "Get Me Out" button which closes all open trades on a specific market. Switching between ladder view and grid view is easy, with the tool able to easily show where the weight of money is going to predict price movements. 
 

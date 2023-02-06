@@ -17,7 +17,7 @@ For those who wish to write their own automated betting or trading strategies, B
     - Advanced Charting
     - Dutching and Bookmaking tools
     - Trigger based automation 
-    - Excel Spreadhseet integration
+    - Excel Spreadsheet integration
     - Cash-Out
 
 ![Gruss](./img/BetAngel.png) 

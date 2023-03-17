@@ -1,0 +1,53 @@
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+  }
+  
+  .btn-human {
+    background-color: #0066cc;
+    color: #fff;
+    border-color: #0062cc;
+  }
+  
+  .btn-api {
+    background-color: #28a745;
+    color: #fff;
+    border-color: #28a745;
+  }
+  
+  .section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+  
+  .animate {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .fadeInUp {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .fadeInUp.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  

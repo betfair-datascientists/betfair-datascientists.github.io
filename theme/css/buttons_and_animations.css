@@ -211,6 +211,10 @@
   padding-left: 30px; /* add this line to increase the size of the circle */
 }
 
+.selectable-list li::marker {
+  font-size: 20px;
+}
+
 .selectable-list .list-item.selected {
   background-color: slategray;
   color: #ffb80c;

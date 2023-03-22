@@ -41,11 +41,11 @@ hide:
     <div class="grid-container">
         <div class="grid-item"">
           <h2 style="color: #ffb80c;">12.4%</h2>
-          <p>advantage of BSP against Best Tote</p>
+          <p>advantage for BSP against Best Tote</p>
         </div>
         <div class="grid-item">
-          <h2 style="color: #ffb80c;">>76000</h2>
-          <p>Aus Racing events per year</p>
+          <h2 style="color: #ffb80c;">>76k</h2>
+          <p>Australian Racing events per year</p>
         </div>
         <div class="grid-item-side grid-item-large">
           <h2>{Betfair<br>_Exchange}</h2>
@@ -70,7 +70,7 @@ hide:
     </div>
     <ul class="selectable-list">
       <li>
-        <div class="list-item" onclick="selectItem(this);">
+        <div class="list-item selected" onclick="selectItem(this);">
           <img src="/img/List1.png">
           <span>Real-time data</span>
         </div>

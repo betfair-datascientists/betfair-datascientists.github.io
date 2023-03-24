@@ -18,13 +18,13 @@ hide:
         <br>
         <br>
         <br>
-        <b><font size="10">real-time data and</font></b><br>
-        <b><font size="10">lightning-fast execution</font></b><br>
-        <b><font size="10">for trading and betting</font></b><br>
+        <b><font size="10rem">real-time data and</font></b><br>
+        <b><font size="10rem">lightning-fast execution</font></b><br>
+        <b><font size="10rem">for trading and betting</font></b><br>
         <br>
         <br>
-        <b><font size="3">The Betfair Exchange API is a platform </font></b><br>
-        <b><font size="3">for peer-to-peer trading and wagering</font></b><br>
+        <b><font size="3rem">The Betfair Exchange API is a platform </font></b><br>
+        <b><font size="3rem">for peer-to-peer trading and wagering</font></b><br>
         <br>
         <br>
         <a href="mailto:automation@betfair.com.au" class="btn btn-human fadeInUp animate">Contact us</a>
@@ -63,6 +63,7 @@ hide:
         </div>
     </div>
 </div>
+
 
 <div style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
     <div style="flex: 1; text-align: left;">
@@ -167,15 +168,15 @@ hide:
             <p>We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport.</p>
         </div>
         <div class="grid-item">
-            <a href="https://betfair-datascientists.github.io/modelling/howToModel/" style="color: #ffb80c;"><h2>Data Modelling</h2></a>
+            <a href="https://betfair-datascientists.github.io/modelling/howToModel/" style="color: #ffb80c;"><h2>Data </br>Modelling</h2></a>
             <p>Many of our most successful customers use predictive models as the basis for their betting strategies. We have a series of modelling tutorials created by community members ranging from racing to sports.</p>
         </div>
         <div class="grid-item">
-            <a href="https://betfair-datascientists.github.io/autoTools/overview/" style="color: #ffb80c;"><h2>Automation Tools</h2></a>
+            <a href="https://betfair-datascientists.github.io/autoTools/overview/" style="color: #ffb80c;"><h2>Automation</br> Tools</h2></a>
             <p>There are many applications that have been built by external developers using Betfair's Vendor offering that can be used in conjunction with Betfair which can help wagering from more one-click bets to automating your strategies.</p>
         </div>
         <div class="grid-item">
-            <a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ" style="color: #ffb80c;"><h2>Inspiration & Information</h2></a>
+            <a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ" style="color: #ffb80c;"><h2>Inspiration & </br>Information</h2></a>
             <p>There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy.</p>
         </div>
         <div class="grid-item">
@@ -185,11 +186,18 @@ hide:
     </div>
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-    
+
+
+<div style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:0 50px 50px 50px; width: 100%;border-radius: 0 0 10px 10px;">
+    <div style="flex: 1; font-size: 10px; line-height: 1.5; padding: 50px 0 0 0 ;">
+        <a href="mailto:automation@betfair.com.au" class="btn btn-human fadeInUp animate">Contact us</a>
+        <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-api fadeInUp animate">Get Your API Key</a>
+    </div>
+</div>
+
 <!-- <div class="image-box" style="background-color:#ffb80c;display: flex; justify-content: space-between; align-items: center;">
   <img class="image" src="/img/BetfairIcon.jpg" alt="Play Your Way" style="width: 100%; height: 100%; object-fit: cover;">
   <div class="caption hover">Empower your betting strategies with real-time data and lightning-fast execution using the Betfair API.</div>
 </div>
  -->
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">

@@ -25,8 +25,9 @@
   
 .btn-api {
   background-color: #ffb80c;
-  color: #1e1e1e;
+  color: #1e1e1e !important;
   border-color: #1e1e1e;
+  float: right;
   }
   
 .section-heading {
@@ -141,7 +142,7 @@
 }
 
 .grid-item h2 {
-  font-size: 60px;
+  font-size: 2rem;
   font-weight: bold;
   color: #ffb80c;
   text-align: center;
@@ -149,7 +150,7 @@
 }
 
 .grid-item p {
-  font-size: 18px;
+  font-size: 0.8rem;
   margin: 0;
   text-align: center;
   color: #ffb80c;
@@ -175,7 +176,7 @@
 }
 
 .grid-item-large h2 {
-  font-size: 60px;
+  font-size: 2rem;
   font-weight: bold;
   margin:0;
   color: #ffb80c;
@@ -183,7 +184,7 @@
 }
 
 .grid-item-large-left h2 {
-  font-size: 60px;
+  font-size: 2rem;
   font-weight: bold;
   margin:0;
   color: #ffb80c;
@@ -191,14 +192,14 @@
 }
 
 .grid-item-large p {
-  font-size: 18px;
+  font-size: 0.8rem;
   margin: 0;
   color: #ffb80c;
   text-align: center;
 }
 
 .grid-item-large-left p {
-  font-size: 18px;
+  font-size: 0.8rem;
   margin: 0;
   color: #ffb80c;
   text-align: center;
@@ -208,11 +209,12 @@
   cursor: pointer;
   border-radius: 5px;
   padding: 10px;
-  padding-left: 30px; /* add this line to increase the size of the circle */
+  padding-left: 30px;
+  line-height: 1; /* add this line to increase the size of the circle */
 }
 
 .selectable-list li::marker {
-  font-size: 32px !important;
+  font-size: 1rem !important;
 }
 
 .selectable-list .list-item.selected {
@@ -235,7 +237,7 @@
 }
 
 .selectable-list .list-item:first-child span {
-  font-size: 36px; /* or any other font size you prefer */
+  font-size: 1.5rem; /* or any other font size you prefer */
   font-weight: bold;
 }
 
@@ -254,7 +256,7 @@
 }
 
 .grid-item-languages h2 {
-  font-size: 60px;
+  font-size: 3rem;
   font-weight: bold;
   color: #ffb80c;
   text-align: center;
@@ -262,7 +264,7 @@
 }
 
 .grid-item-languages p {
-  font-size: 18px;
+  font-size: 1rem;
   margin: 0;
   text-align: center;
   color: #ffb80c;
@@ -274,4 +276,18 @@
   text-align: center;
   background-color: #000;
   padding: 20px;
+}
+
+.full-screen {
+  padding: 0.1rem 0 0.2rem 0;
+  border: none;
+  background-color: white;
+  color: black;
+  width: 100%;
+}
+
+.full-screen p {
+  margin: 0; /* remove margin */
+  padding: 0.1rem; /* remove padding */
+  line-height: 1.2; /* set the line-height to a smaller value */
 }

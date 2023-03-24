@@ -151,9 +151,9 @@ plugins:
 
 
 extra:
-    rg_footer: '<div style="background-color: white; color: black; width: 60%; padding: 0.1rem 0 0.2rem 0; border-radius: 0.1rem">
-  <p style="font-family: Arial, sans-serif; font-size: 3rem; font-weight: bold;text-align: center;">Think. Is this a bet you really want to place?</p>
-  <p style="font-family: Arial, sans-serif; font-size: 2rem; font-weight: bold;text-align: center;">Call Gambling Help 1800 858 858 <a href="http://www.gamblinghelponline.org.au" style="color: black; text-decoration: underline;">www.gamblinghelponline.org.au</a></p>
+    rg_footer: '<div class="full-screen">
+  <p style="font-family: Arial, sans-serif; font-size: 1.2rem; font-weight: bold;text-align: center;">Think. Is this a bet you really want to place?</p>
+  <p style="font-family: Arial, sans-serif; font-size: 0.8rem; font-weight: bold;text-align: center;">For free and confidential support call 1800 858 858 or visit <a href="http://www.gamblinghelponline.org.au" style="color: black; text-decoration: underline;">www.gamblinghelponline.org.au</a></p>
 </div>'
     generator: false
     # Social Media links (footer)

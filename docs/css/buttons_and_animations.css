@@ -22,6 +22,8 @@
   color: #1e1e1e !important;
   border-color: #1e1e1e !important;
   float: left;
+  width: 15rem;
+  height: 4rem;
   }
 
 .btn-human + .btn-human {
@@ -33,6 +35,7 @@
   color: #1e1e1e !important;
   border-color: #1e1e1e;
   float: right;
+  width: 10rem;
   }
   
 .grid-container {

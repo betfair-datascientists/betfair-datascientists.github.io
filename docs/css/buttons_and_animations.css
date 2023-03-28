@@ -312,7 +312,7 @@
   }
   .grid-container-languages {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 500px 200px 200px 200px 200px;
+    grid-template-rows: 700px 200px 200px 200px 200px;
   }
   .grid-item-changer:hover {
     height: 200px;
@@ -346,6 +346,9 @@
   }
   .small-screen {
     display: block; /* Show the block on smaller screens */
+  }
+  .grid-item-languages:first-child {
+    padding: 0;
   }
 }
 

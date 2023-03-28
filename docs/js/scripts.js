@@ -30,6 +30,7 @@
 
 // get the default image element
 const defaultImage = document.getElementById("default-image");
+const defaultImage1 = document.getElementById("default-image1");
 
 // function to select an item
 function selectItem(item) {
@@ -52,10 +53,12 @@ function selectItem(item) {
   // update the default image with the selected image
   if (item.classList.contains("selected")) {
     defaultImage.src = selectedImage.src;
+    defaultImage1.src = selectedImage.src;
   }
   // update the default image with the default image
   else {
     defaultImage.src = "/img/List1.png";
+    defaultImage1.src = "/img/List1.png";
   }
 }
 

@@ -177,6 +177,7 @@ extra:
 extra_css:
     - assets/stylesheets/betfair.css
     - css/buttons_and_animations.css
+    - css/fonts.css
 
 extra_javascript:
     - js/scripts.js

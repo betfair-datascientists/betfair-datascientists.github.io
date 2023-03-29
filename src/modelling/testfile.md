@@ -9,16 +9,16 @@ hide:
     
 # _
 
-<div style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px 50px 0 50px;border-radius:10px 10px 0 0; width: 100%;">
+<div style="background-color:black; color:#ffb80c;  font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px 50px 0 50px;border-radius:10px 10px 0 0; width: 100%;">
     <img src="/img/automationHubHero.gif" alt="AutoHub" style="width: 100%; height: 100%;">
 </div>
 
-<div class="large-screen" style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: flex-start; padding:0 50px 50px 50px; width: 100%;">
+<div class="large-screen" style="background-color:black; color:#ffb80c;  font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: flex-start; padding:0 50px 50px 50px; width: 100%;">
   <div  class="large-screen" style="display: flex; align-items: center;">
     <div  class="large-screen" style="flex: 1;">
       <div  class="large-screen" style="display: flex; align-items: center; text-align: left;">
         <div>
-          <b><font size="10rem">trade and bet on Betfair using</font></b><br>
+          <b><font size="10rem">Trade and bet on Betfair using</font></b><br>
           <b><font size="10rem">the API with real-time data</font></b><br>
           <b><font size="10rem">and lightning-fast execution</font></b><br>
         </div>
@@ -26,18 +26,18 @@ hide:
           <img src="/modelling/img/API1.gif" alt="API" style="width: 100%; height: 130%;">
         </div>
       </div>
-      <b><font size="3rem">The Betfair Exchange API is a platform </font></b><br>
-      <b><font size="3rem">for peer-to-peer trading and wagering</font></b><br>
-      <a href="https://status.developer.betfair.com/" style="font-size: 0.75rem;text-decoration: underline; font-weight: bold;text-decoration-thickness: 2px;">Check the API Status here</a>
+      <b><font size="3rem">The Betfair Exchange API is a platform for peer-to-peer trading and wagering.</font></b><br>
+      <b><font size="3rem">On the exchange, users can bet against each other rather than against a bookmaker.</font></b><br>
       <br>
-      <div  class="large-screen" style="display: flex; align-items: center; justify-content: center;">
-      <b><font size="6rem">Need Support?</font></b><br>
+      <div  class="large-screen" style="display: flex; align-items: center; justify-content: center; font-family:National2; text-transform: uppercase">
+      <b><font size="10rem">Need Support?</font></b><br>
       <br>
       </div>
       <div  class="large-screen" style="display: flex; justify-content: space-between; padding: 1rem 0 0 0">
         <a href="mailto:automation@betfair.com.au" class="btn btn-human" style="display: flex; align-items: center; justify-content: center;">Aus/NZ<br>Automation Team</a>
         <a href="https://developer.betfair.com/" class="btn btn-human" style="display: flex; align-items: center; justify-content: center;">Not in Australia or<br> New Zealand?</a>
         <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-human" style="display: flex; align-items: center; justify-content: center;">Get Your API Key </a>
+        <a href="https://register.betfair.com.au/account/registration" class="btn btn-human" style="display: flex; align-items: center; justify-content: center;">Join Now</a>
       </div>
       <br>
     </div>
@@ -45,7 +45,7 @@ hide:
 </div>
 
 <div class="small-screen">
-  <div style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: flex-start; padding:0 50px 50px 50px; width: 100%;">
+  <div style="background-color:black; color:#ffb80c; font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: flex-start; padding:0 50px 50px 50px; width: 100%;">
     <div class="small-screen" style="display: flex; align-items: center;">
       <div style="flex: 1;">
         <div style="display: flex; align-items: center; text-align: left;">
@@ -55,11 +55,10 @@ hide:
             <b><font size="6rem">and lightning-fast execution</font></b><br>
           </div>
         </div>
-        <b><font size="3rem">The Betfair Exchange API is a platform </font></b><br>
-        <b><font size="3rem">for peer-to-peer trading and wagering</font></b><br>
-        <a href="https://status.developer.betfair.com/" style="font-size: 0.75rem;text-decoration: underline; font-weight: bold;text-decoration-thickness: 2px;">Check the API Status here</a>
+        <b><font size="3rem">The Betfair Exchange API is a platform for peer-to-peer trading and wagering.</font></b><br>
+        <b><font size="3rem">On the exchange, users can bet against each other rather than against a bookmaker.</font></b><br>
         <br>
-        <div style="display: flex; align-items: center; justify-content: left;">
+        <div style="display: flex; align-items: center; justify-content: left; font-family:National2; text-transform: uppercase">
         <b><font size="6rem">Need Support?</font></b><br>
         <br>
         </div>
@@ -72,13 +71,16 @@ hide:
         <div style="display: flex; justify-content: space-between; padding: 1rem 0 0 0">
           <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-human" style="display: flex; align-items: center; justify-content: center;">Get Your API Key </a>
         </div>
+        <div style="display: flex; justify-content: space-between; padding: 1rem 0 0 0">
+          <a href="https://register.betfair.com.au/account/registration" class="btn btn-human" style="display: flex; align-items: center; justify-content: center;">Join Now</a>
+        </div>
         <br>
       </div>
     </div>
   </div>
 </div>
 
-<div style="background-color:#ffb80c; color:black; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
+<div style="background-color:#ffb80c; color:black; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%; font-family:DIN_Regular">
     <div class="grid-container">
         <div class="grid-item"">
           <h2 style="color: #ffb80c;">12.4%</h2>
@@ -89,7 +91,7 @@ hide:
           <p>Australian Racing events per year</p>
         </div>
         <div class="grid-item-side grid-item-large">
-          <h2>{Dedicated_<br>Team}</h2>
+          <h2>Dedicated<br>Team</h2>
           </br>
           </br>
           <p>We are a service-oriented team dedicated to supporting those accessing the Betfair Exchange through the API. Get access to up-to-date data on the Betfair Exchange, including prices, volumes, and market trends.</p>
@@ -105,7 +107,7 @@ hide:
     </div>
 </div>
 
-<div style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
+<div style="background-color:black; color:#ffb80c;  font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
     <div class="large-screen" style="flex: 1; text-align: center;">
         <img id="default-image" src="/img/List1.png" alt="API" style="width: 100%; height: 100%;">
     </div>
@@ -113,46 +115,46 @@ hide:
       <li>
         <div class="list-item selected" onclick="selectItem(this);">
           <img src="/img/List1.png">
-          <span>Real-time data</span>
+          <span style="text-transform:uppercase">Real-time data</span>
         </div>
       </li>
       <li>
         <div class="list-item" onclick="selectItem(this);">
           <img src="/img/List2.png">
-          <span>Lightning-fast execution</span>
+          <span style="text-transform:uppercase">Lightning-fast execution</span>
         </div>
       </li>
       <li>
         <div class="list-item" onclick="selectItem(this);">
           <img src="/img/List3.png">
-          <span>Automation</span>
+          <span style="text-transform:uppercase">Automation</span>
         </div>
       </li>
       <li>
         <div class="list-item" onclick="selectItem(this);">
           <img src="/img/List4.png">
-          <span>Customisation</span>
+          <span style="text-transform:uppercase">Customisation</span>
         </div>
       </li>
       <li>
         <div class="list-item" onclick="selectItem(this);">
           <img src="/img/List5.png">
-          <span>Integration</span>
+          <span style="text-transform:uppercase">Integration</span>
         </div>
       </li>
     </ul>
 </div>
 
-<div class="small-screen" style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
+<div class="small-screen" style="background-color:black; color:#ffb80c; font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
   <div style="flex: 1; text-align: left;">
         <img id="default-image1" src="/img/List1.png" alt="API" style="width: 100%; height: 100%;">
   </div>
 </div>
 
-<div style="background-color:#ffb80c; color:black; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
+<div style="background-color:#ffb80c; color:black; font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
     <div class="grid-container-left">
         <div class="grid-item-side grid-item-large-left">
-          <h2>{real time and<br>history data}</h2>
+          <h2>real time and<br>history data</h2>
           </br>
           </br>
           <p style="line-height: 1.5;">In addition to a real-time data streaming service, we provide access to a database of historical market data. The Betfair database currently holds almost 1.5 TB of raw and preprocessed market data available in JSON format.</p>
@@ -166,7 +168,7 @@ hide:
     </div>
 </div>
 
-<div style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
+<div style="background-color:black; color:#ffb80c;  font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
     <div class="grid-container-languages">
         <div class="grid-item-languages">
             <h2>Connect to the API in your language of choice</h2></a>
@@ -223,8 +225,8 @@ hide:
     </div>
 </div>
 
-<div style="background-color:#ffb80c; color:black; font-family:Arial; font-size:10px;  align-items: center; padding:25px; width: 100%;">
-    <div style="text-align:center; color: black; font-size: 2.5rem; padding:0 0 25px 0;">
+<div style="background-color:#ffb80c; color:black;  font-family:National2; font-size:10px;  align-items: center; padding:25px; width: 100%; font-weight:bold; text-transform: uppercase">
+    <div style="text-align:center; color: black; font-size: 5rem; padding:0 0 25px 0;">
     <b>Resource Catalogue</b>
     </div>
     <div class="grid-container-centre">
@@ -255,13 +257,13 @@ hide:
     </div>
 </div>
 
-<div style="background-color:black; color:#ffb80c; font-family:Arial; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;border-radius: 0 0 10px 10px;">
+<div style="background-color:black; color:#ffb80c; font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;border-radius: 0 0 10px 10px;">
     <div style="flex: 1; font-size: 10px; line-height: 1.5;">
     </div>
       <div class="grid-container-CTA">
-        <p style="text-align: center; font-size: 1rem;margin: auto">For further assistance,</br> Australia and New Zealand customers can contact us here</p>
+        <p style="text-align: center; font-size: 1rem;margin: auto ;font-family:DIN_Regular">For further assistance,</br> Australia and New Zealand customers can contact us here</p>
         <a href="mailto:automation@betfair.com.au" class="btn btn-api" style="margin: auto">Contact us</a>
-        <p style="text-align: center; font-size: 1rem;margin: auto">Keen to get started? </br>Get your app keys now!</p>
+        <p style="text-align: center; font-size: 1rem;margin: auto; font-family:DIN_Regular">Keen to get started? </br>Get your app keys now!</p>
         <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-api" style="margin: auto">Get Your API Key</a>
       </div>
     </div>

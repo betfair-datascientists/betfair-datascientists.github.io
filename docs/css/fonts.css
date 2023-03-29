@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'DIN_Regular';
+    src: url('../font/DIN.ttf');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+@font-face {
+font-family: 'National2';
+src: url('../font/National2Compressed-Extrabold.otf');
+font-weight: normal;
+font-style: normal;
+}
+  

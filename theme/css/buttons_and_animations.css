@@ -1,8 +1,9 @@
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
+  font-family: 'DIN_Regular';
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: bold;
   line-height: 1.25;
   text-align: center;
   text-decoration: none;
@@ -15,6 +16,7 @@
   user-select: none;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+  text-transform: uppercase;
   }
   
 .btn-human {
@@ -72,12 +74,14 @@
   justify-content: space-between;
   align-items: center;
   text-align: center; /* add text alignment */
+  font-family: 'DIN_Regular';
 }
 
 .grid-item-side {
   padding: 20px;
   border-radius: 10px;
   overflow: hidden;
+  font-family: 'DIN_Regular';
 }
 
 .grid-item h2 {
@@ -86,6 +90,7 @@
   color: #ffb80c;
   text-align: center;
   margin:0;
+  font-family: 'DIN_Regular';
 }
 
 .grid-item p {
@@ -93,6 +98,7 @@
   margin: 0;
   text-align: center;
   color: #ffb80c;
+  font-family: 'DIN_Regular';
 }
 
 /* grid-item-large styles */
@@ -103,6 +109,7 @@
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+  font-family: 'DIN_Regular';
 }
 
 .grid-item-large-left {
@@ -112,22 +119,27 @@
   padding: 20px;
   border-radius: 10px;
   text-align: center;
+  font-family: 'DIN_Regular';
 }
 
 .grid-item-large h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   margin:0;
   color: #ffb80c;
   text-align: center;
+  font-family: 'National2';
+  text-transform: uppercase;
 }
 
 .grid-item-large-left h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   margin:0;
   color: #ffb80c;
   text-align: center;
+  font-family: 'National2';
+  text-transform: uppercase;
 }
 
 .grid-item-large p {
@@ -135,6 +147,7 @@
   margin: 0;
   color: #ffb80c;
   text-align: center;
+  font-family: 'DIN_Regular';
 }
 
 .grid-item-large-left p {
@@ -142,6 +155,7 @@
   margin: 0;
   color: #ffb80c;
   text-align: center;
+  font-family: 'DIN_Regular';
 }
 
 .selectable-list .list-item {
@@ -150,6 +164,7 @@
   padding: 10px;
   padding-left: 30px;
   line-height: 1; /* add this line to increase the size of the circle */
+  font-family: 'DIN_Regular';
 }
 
 .selectable-list li::marker {
@@ -193,11 +208,13 @@
 }
 
 .grid-item-languages h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #ffb80c;
   text-align: center;
   margin:0;
+  font-family: 'National2';
+  text-transform: uppercase;
 }
 
 .grid-item-languages p {
@@ -205,6 +222,7 @@
   margin: 0;
   text-align: center;
   color: #ffb80c;
+  font-family: 'DIN_Regular';
 }
 
 .grid-item-languages a {
@@ -213,6 +231,7 @@
   color: #ffb80c;
   display: flex;
   justify-content: center;
+  font-family: 'DIN_Regular';
 }
 
 .grid-item-languages:first-child {
@@ -263,6 +282,8 @@
   text-align: center;
   margin: 0;
   transition: color 0.3s ease-in-out;
+  font-family: 'DIN_Regular';
+  text-transform: uppercase;
 }
 
 .grid-item-changer a {
@@ -272,6 +293,7 @@
   color: #ffb80c !important;
   transition: opacity 0.3s ease-in-out;
   display: none;
+  font-family: 'DIN_Regular';
 }
 
 .grid-item-changer:hover h2 {

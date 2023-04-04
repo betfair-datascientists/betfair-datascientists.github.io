@@ -54,8 +54,17 @@ import datetime
 import json
 
 # Change this certs path to wherever you're storing your certificates
+
+# Your credentials.json file should look like this:
+
+# {
+#     "username" : "johnsmith123",
+#     "password" : "guest",
+#     "app_key" : "****************"
+# }
+
 with open('credentials.json') as f:
-    cred = jsonload(f)
+    cred = json.load(f)
     my_username = cred['username']
     my_password = cred['password']
     my_app_key = cred['app_key']
@@ -66,6 +75,22 @@ trading = betfairlightweight.APIClient(username=my_username,
                                        certs=certs_path)
 
 trading.login()
+
+# if you're having issues with certs, you can login this way without using certificates (at your own risk)
+
+# with open('credentials.json') as f:
+#     cred = json.load(f)
+#     my_username = cred['username']
+#     my_password = cred['password']
+#     my_app_key = cred['app_key']
+
+# trading = betfairlightweight.APIClient(username=my_username,
+#                                        password=my_password,
+#                                        app_key=my_app_key
+#                                        )
+
+# trading.login_interactive()
+
 ```
 
 **`Out[206]:`**
@@ -385,24 +410,24 @@ def process_runner_books(runner_books):
     :param runner_books:
     :return:
     '''
-    best_back_prices = [runner_book.ex.available_to_back[0].price
-        if runner_book.ex.available_to_back.price
+    best_back_prices = [runner_book.ex.available_to_back[0]['price']
+        if runner_book.ex.available_to_back
         else 1.01
         for runner_book
         in runner_books]
-    best_back_sizes = [runner_book.ex.available_to_back[0].size
-        if runner_book.ex.available_to_back.size
+    best_back_sizes = [runner_book.ex.available_to_back[0]['size']
+        if runner_book.ex.available_to_back
         else 1.01
         for runner_book
         in runner_books]
 
-    best_lay_prices = [runner_book.ex.available_to_lay[0].price
-        if runner_book.ex.available_to_lay.price
+    best_lay_prices = [runner_book.ex.available_to_lay[0]['price']
+        if runner_book.ex.available_to_lay
         else 1000.0
         for runner_book
         in runner_books]
-    best_lay_sizes = [runner_book.ex.available_to_lay[0].size
-        if runner_book.ex.available_to_lay.size
+    best_lay_sizes = [runner_book.ex.available_to_lay[0]['size']
+        if runner_book.ex.available_to_lay
         else 1.01
         for runner_book
         in runner_books]
@@ -433,7 +458,7 @@ def process_runner_books(runner_books):
 
 ``` python
 # Create a price filter. Get all traded and offer data
-price_filter = `betfairlightweight`.filters.price_projection(
+price_filter = betfairlightweight.filters.price_projection(
     price_data=['EX_BEST_OFFERS']
 )
 

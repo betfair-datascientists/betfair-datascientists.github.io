@@ -256,6 +256,14 @@
   line-height: 1.2; /* set the line-height to a smaller value */
 }
 
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  .full-screen {
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
 .grid-container-CTA {
   display: grid;
   grid-template-columns: 1.25fr 0.75fr 1.25fr 0.75fr;

@@ -245,10 +245,11 @@
 .full-screen {
   padding: 0.1rem 0 0.2rem 0;
   border: none;
-  background-color: white !important;
-  color: black !important;
+  background-color: white;
+  --native-dark-bg-color: white !important;
+  --native-dark-font-color: black !important;
+  color: black;
   width: 100%;
-  backdrop-filter: brightness(1);
 }
 
 .full-screen p {

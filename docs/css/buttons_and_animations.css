@@ -245,8 +245,8 @@
 .full-screen {
   padding: 0.1rem 0 0.2rem 0;
   border: none;
-  background-color: white;
-  color: black;
+  background-color: white !important;
+  color: black !important;
   width: 100%;
   backdrop-filter: brightness(1);
 }

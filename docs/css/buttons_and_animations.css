@@ -248,6 +248,8 @@
   background-color: white;
   --native-dark-bg-color: white !important;
   --native-dark-font-color: black !important;
+  --native-dark-link-color: black !important;
+  --native-dark-visited-link-color: black !important;
   color: black;
   width: 100%;
 }

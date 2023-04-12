@@ -250,7 +250,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../modelling/stakingMethods.md" class="md-tabs__link">
+      <a href="../../wagering/stakingMethods/" class="md-tabs__link">
         Wagering
       </a>
     </li>
@@ -437,7 +437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/stakingMethods.md" class="md-nav__link">
+      <a href="../../wagering/stakingMethods/" class="md-nav__link">
         Staking Methods and Bankroll Management
       </a>
     </li>
@@ -1630,7 +1630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/processingTarFiles101.ipynb" class="md-nav__link">
+      <a href="../processingTarFiles101/" class="md-nav__link">
         Take away the pain! Processing TAR Files 101
       </a>
     </li>
@@ -1644,7 +1644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/jsonToCsvRevisited/index.md" class="md-nav__link">
+      <a href="../jsonToCsvRevisited/" class="md-nav__link">
         JSON to CSV | Revisited
       </a>
     </li>
@@ -1658,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/backtestingRatingsTutorial.md" class="md-nav__link">
+      <a href="../backtestingRatingsTutorial/" class="md-nav__link">
         Back testing ratings in Python
       </a>
     </li>
@@ -1672,7 +1672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/automatedBettingAnglesTutorial.ipynb" class="md-nav__link">
+      <a href="../automatedBettingAnglesTutorial/" class="md-nav__link">
         Automated betting angles in Python
       </a>
     </li>
@@ -1686,7 +1686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingMarketMovements/" class="md-nav__link">
         Do they know? Analysing Betfair market formation & market movements
       </a>
     </li>
@@ -1700,7 +1700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingBSP.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingBSP/" class="md-nav__link">
         Wisdom of the crowd? Analysing & understanding BSP
       </a>
     </li>
@@ -1955,12 +1955,12 @@
 <hr />
 <div class="admonition note">
 <p class="admonition-title">Before you start</p>
-<p>This tutorial follows on from our <a href="../how_to_automate_1.ipynb">How to Automate series</a> which stepped through how to create a trading bot for a few different strategies. Make sure you take a look through them first before you start here.</p>
+<p>This tutorial follows on from our <a href="../How_to_Automate_1.ipynb">How to Automate series</a> which stepped through how to create a trading bot for a few different strategies. Make sure you take a look through them first before you start here.</p>
 </div>
 <p>This is the final part of the How to Automate series (for a while at least). In my previous posts we have created a few different strategies, but I haven't actually backtested or simulated any of them yet. How will do we even know if they have any edge? </p>
 <p>Today we test those strategies by running simulations and try to optimise performance.</p>
 <p>But how do we test strategies?</p>
-<p>One method is to follow the steps shown in this fantastic article: <a href="../historicData/backtestingRatingsTutorial.ipynb">Backtesting wagering models with Betfair JSON stream data</a>. But if you already have access to Betfair historic data or you have reccorded it yourself, you are not making full use of your data. This is because the above method will take all the amazing data thats has been collected and only extract a sliver of data from a few time points.</p>
+<p>One method is to follow the steps shown in this fantastic article: <a href="../tutorials/backtestingRatingsTutorial.ipynb">Backtesting wagering models with Betfair JSON stream data</a>. But if you already have access to Betfair historic data or you have reccorded it yourself, you are not making full use of your data. This is because the above method will take all the amazing data thats has been collected and only extract a sliver of data from a few time points.</p>
 <p>Flumine is amazing because it can make full use of the entire dataset to simulate the market from when the market is first created to settlement. Instead of looking at the prices at 3 minutes before the race and assuming we get matched we can for example simulate placing a back bet hours before the race starts and replay exactly what happened in that market second by second to see if we would have gotten matched between the time we placed the bet and when the market settles. This is really cool because we might have a really awesome model that is close to being profitable but not quite and we want to optimise it.</p>
 <p>This will give us the most realistic back testing available and let us test if we are getting matched for the volume and price we want and if we have any edge at all.</p>
 <p>Something that is important to note is that although this is the most realistic backtest you can probably get, it is not 100% accurate. This is because we are simply replaying a market with our orders being added in, we cannot take into account how other market participants react. If we place a huge order e.g. $1000 or more we will likely trigger other peoples bots the market will likely move against us.</p>
@@ -2890,7 +2890,7 @@
 <a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="n">results</span><span class="p">[</span><span class="s1">&#39;cum_profit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;profit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 <a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="s1">&#39;date_time_placed&#39;</span><span class="p">,</span> <span class="s1">&#39;cum_profit&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="post_sim_analysis_v1" src="hta_img/post_sim_analysis_v1.png" /></p>
+<p><img alt="post_sim_analysis_v1" src="../hta_img/post_sim_analysis_v1.png" /></p>
 <p>Before commissions the model is profitable, which is awesome as I didn't think that would be the case. Bruno has mentioned to me that the model in the tutorial was quite "basic" and not profitable, but it seems we got super lucky with a few long shots getting up in March. Lets incorporate commissions into our results and see if it remains profitable:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">gross_profit</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;market_id&#39;</span><span class="p">])[</span><span class="s1">&#39;profit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="c1"># 7% commission rate on greyhounds, commissions calculated on profit at a market level</span>
@@ -2899,7 +2899,7 @@
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">gross_profit</span><span class="p">[</span><span class="s1">&#39;cum_npl&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gross_profit</span><span class="p">[</span><span class="s1">&#39;net_pnl&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
 <a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="n">px</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">gross_profit</span><span class="p">,</span> <span class="n">gross_profit</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="s1">&#39;cum_npl&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="post_sim_analysis_v2" src="hta_img/post_sim_analysis_v2.png" /></p>
+<p><img alt="post_sim_analysis_v2" src="../hta_img/post_sim_analysis_v2.png" /></p>
 <p>We are close, infact we were up a bit at the start but it seems after taking into account commissions we are no longer profitable and end the month down around $800. Lets try two different things to see if we can optimse our strategy: a different staking methodology and also a different time we start placing our bets.</p>
 <p>My theory is that because we are crossing the spread and taking whatever prices are available we are probably losing a bit of our edge there. If we bet when markets are more liquid then we will may lose less. But as markets become more liquid they also tend to become more efficient so lets it could work against us. Nonetheless lets test it out:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Placing bets at 30 seconds instead of 60 seconds</label><label for="__tabbed_4_2">Results Before Commissions</label><label for="__tabbed_4_3">Results After Commissions</label></div>
@@ -2914,10 +2914,10 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><img alt="post_sim_analysis_30secs" src="hta_img/post_sim_analysis_30secs.png" /></p>
+<p><img alt="post_sim_analysis_30secs" src="../hta_img/post_sim_analysis_30secs.png" /></p>
 </div>
 <div class="tabbed-block">
-<p><img alt="post_sim_analysis_30secs_v2" src="hta_img/post_sim_analysis_30secs_v2.png" /></p>
+<p><img alt="post_sim_analysis_30secs_v2" src="../hta_img/post_sim_analysis_30secs_v2.png" /></p>
 </div>
 </div>
 </div>
@@ -2958,10 +2958,10 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><img alt="post_sim_analysis_ps" src="hta_img/post_sim_analysis_ps.png" /></p>
+<p><img alt="post_sim_analysis_ps" src="../hta_img/post_sim_analysis_ps.png" /></p>
 </div>
 <div class="tabbed-block">
-<p><img alt="post_sim_analysis_ps_v2" src="hta_img/post_sim_analysis_ps_v2.png" /></p>
+<p><img alt="post_sim_analysis_ps_v2" src="../hta_img/post_sim_analysis_ps_v2.png" /></p>
 </div>
 </div>
 </div>
@@ -3738,13 +3738,13 @@
         
         
           
-          <a href="../../mentalGame/intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Intro" rel="next">
+          <a href="../processingTarFiles101/" class="md-footer__link md-footer__link--next" aria-label="Next: Take away the pain! Processing TAR Files 101" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   Next
                 </span>
-                Intro
+                Take away the pain! Processing TAR Files 101
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -3,7 +3,7 @@
 ---
 !!! note "Before you start"
 
-    This tutorial follows on from our [How to Automate series](../how_to_automate_1.ipynb) which stepped through how to create a trading bot for a few different strategies. Make sure you take a look through them first before you start here.
+    This tutorial follows on from our [How to Automate series](../How_to_Automate_1.ipynb) which stepped through how to create a trading bot for a few different strategies. Make sure you take a look through them first before you start here.
     
 
 This is the final part of the How to Automate series (for a while at least). In my previous posts we have created a few different strategies, but I haven't actually backtested or simulated any of them yet. How will do we even know if they have any edge? 
@@ -12,7 +12,7 @@ Today we test those strategies by running simulations and try to optimise perfor
 
 But how do we test strategies?
 
-One method is to follow the steps shown in this fantastic article: [Backtesting wagering models with Betfair JSON stream data](../historicData/backtestingRatingsTutorial.ipynb). But if you already have access to Betfair historic data or you have reccorded it yourself, you are not making full use of your data. This is because the above method will take all the amazing data thats has been collected and only extract a sliver of data from a few time points.
+One method is to follow the steps shown in this fantastic article: [Backtesting wagering models with Betfair JSON stream data](../tutorials/backtestingRatingsTutorial.ipynb). But if you already have access to Betfair historic data or you have reccorded it yourself, you are not making full use of your data. This is because the above method will take all the amazing data thats has been collected and only extract a sliver of data from a few time points.
 
 Flumine is amazing because it can make full use of the entire dataset to simulate the market from when the market is first created to settlement. Instead of looking at the prices at 3 minutes before the race and assuming we get matched we can for example simulate placing a back bet hours before the race starts and replay exactly what happened in that market second by second to see if we would have gotten matched between the time we placed the bet and when the market settles. This is really cool because we might have a really awesome model that is close to being profitable but not quite and we want to optimise it.
 

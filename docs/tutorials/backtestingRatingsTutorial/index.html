@@ -19,7 +19,7 @@
     
     
       
-        <title>Backtesting wagering models with Betfair JSON stream data - The Automation Hub</title>
+        <title>Back testing ratings in Python - The Automation Hub</title>
       
     
     
@@ -128,7 +128,7 @@
           <div class="md-header__topic" data-md-component="header-topic">
             <span class="md-ellipsis">
               
-                Backtesting wagering models with Betfair JSON stream data
+                Back testing ratings in Python
               
             </span>
           </div>
@@ -250,7 +250,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../modelling/stakingMethods.md" class="md-tabs__link">
+      <a href="../../wagering/stakingMethods/" class="md-tabs__link">
         Wagering
       </a>
     </li>
@@ -308,13 +308,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../How_to_Automate_1/" class="md-tabs__link">
+      <a href="../How_to_Automate_1/" class="md-tabs__link md-tabs__link--active">
         Tutorials
       </a>
     </li>
@@ -435,7 +437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/stakingMethods.md" class="md-nav__link">
+      <a href="../../wagering/stakingMethods/" class="md-nav__link">
         Staking Methods and Bankroll Management
       </a>
     </li>
@@ -1418,12 +1420,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
       
       
       
@@ -1516,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/processingTarFiles101.ipynb" class="md-nav__link">
+      <a href="../processingTarFiles101/" class="md-nav__link">
         Take away the pain! Processing TAR Files 101
       </a>
     </li>
@@ -1530,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/jsonToCsvRevisited/index.md" class="md-nav__link">
+      <a href="../jsonToCsvRevisited/" class="md-nav__link">
         JSON to CSV | Revisited
       </a>
     </li>
@@ -1542,11 +1546,237 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../historicData/backtestingRatingsTutorial.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Back testing ratings in Python
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Back testing ratings in Python
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#workshop" class="md-nav__link">
+    Workshop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#set-up" class="md-nav__link">
+    Set up
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context" class="md-nav__link">
+    Context
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backtesting-on-betfair" class="md-nav__link">
+    Backtesting on Betfair
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#betfair-stream-data" class="md-nav__link">
+    Betfair Stream Data
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#this-example-backtesting-betfair-hub-thoroughbred-model" class="md-nav__link">
+    This example: backtesting Betfair Hub thoroughbred model
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scrape-the-model-ratings" class="md-nav__link">
+    Scrape The Model Ratings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assembling-the-odds-file" class="md-nav__link">
+    Assembling the odds file
+  </a>
+  
+    <nav class="md-nav" aria-label="Assembling the odds file">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-data" class="md-nav__link">
+    The Data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unpacking-flattening-the-data" class="md-nav__link">
+    Unpacking / flattening the data
+  </a>
+  
+    <nav class="md-nav" aria-label="Unpacking / flattening the data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-tar-load" class="md-nav__link">
+    1: .tar load
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-scan-across-market-states-and-extract-useful-objects" class="md-nav__link">
+    2: Scan across market states and extract useful objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-4-summarise-those-useful-objects-and-write-to-csv" class="md-nav__link">
+    3 &amp; 4: Summarise those useful objects and write to .csv
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extending-this-code" class="md-nav__link">
+    Extending this code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#backtesting-analysis" class="md-nav__link">
+    Backtesting Analysis
+  </a>
+  
+    <nav class="md-nav" aria-label="Backtesting Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-your-master-data" class="md-nav__link">
+    Setting up your master data
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#staking-outcome-functions" class="md-nav__link">
+    Staking + Outcome Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-functions" class="md-nav__link">
+    Evaluation Functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-different-approaches" class="md-nav__link">
+    Testing different approaches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#searching-for-profit" class="md-nav__link">
+    Searching For Profit
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-and-next-steps" class="md-nav__link">
+    Conclusion and Next Steps
+  </a>
+  
+    <nav class="md-nav" aria-label="Conclusion and Next Steps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#over-to-you" class="md-nav__link">
+    Over to you
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-code" class="md-nav__link">
+    Complete code
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    Disclaimer
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1558,7 +1788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/automatedBettingAnglesTutorial.ipynb" class="md-nav__link">
+      <a href="../automatedBettingAnglesTutorial/" class="md-nav__link">
         Automated betting angles in Python
       </a>
     </li>
@@ -1572,7 +1802,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingMarketMovements/" class="md-nav__link">
         Do they know? Analysing Betfair market formation & market movements
       </a>
     </li>
@@ -1586,7 +1816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingBSP.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingBSP/" class="md-nav__link">
         Wisdom of the crowd? Analysing & understanding BSP
       </a>
     </li>
@@ -3913,6 +4143,41 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
       </main>
       
         <footer class="md-footer">
+    
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
+        
+          
+          <a href="../jsonToCsvRevisited/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JSON to CSV | Revisited" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Previous
+                </span>
+                JSON to CSV | Revisited
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../automatedBettingAnglesTutorial/" class="md-footer__link md-footer__link--next" aria-label="Next: Automated betting angles in Python" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                Automated betting angles in Python
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
     <div class="md-footer-meta md-typeset">
       <div class="md-footer-meta__inner md-grid">

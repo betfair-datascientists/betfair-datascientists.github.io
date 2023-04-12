@@ -250,7 +250,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../modelling/stakingMethods.md" class="md-tabs__link">
+      <a href="../../wagering/stakingMethods/" class="md-tabs__link">
         Wagering
       </a>
     </li>
@@ -435,7 +435,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/stakingMethods.md" class="md-nav__link">
+      <a href="../../wagering/stakingMethods/" class="md-nav__link">
         Staking Methods and Bankroll Management
       </a>
     </li>
@@ -1516,7 +1516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/processingTarFiles101.ipynb" class="md-nav__link">
+      <a href="../processingTarFiles101/" class="md-nav__link">
         Take away the pain! Processing TAR Files 101
       </a>
     </li>
@@ -1530,7 +1530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/jsonToCsvRevisited/index.md" class="md-nav__link">
+      <a href="../jsonToCsvRevisited/" class="md-nav__link">
         JSON to CSV | Revisited
       </a>
     </li>
@@ -1544,7 +1544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/backtestingRatingsTutorial.md" class="md-nav__link">
+      <a href="../backtestingRatingsTutorial/" class="md-nav__link">
         Back testing ratings in Python
       </a>
     </li>
@@ -1558,7 +1558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/automatedBettingAnglesTutorial.ipynb" class="md-nav__link">
+      <a href="../automatedBettingAnglesTutorial/" class="md-nav__link">
         Automated betting angles in Python
       </a>
     </li>
@@ -1572,7 +1572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingMarketMovements/" class="md-nav__link">
         Do they know? Analysing Betfair market formation & market movements
       </a>
     </li>
@@ -1586,7 +1586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingBSP.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingBSP/" class="md-nav__link">
         Wisdom of the crowd? Analysing & understanding BSP
       </a>
     </li>
@@ -3495,7 +3495,7 @@ End Date: 2022-07-30
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The second thing that we need to add is related to reserve dogs, and this took me ages to come to this solution, but if you have a better one, please submit a pull request.</p>
 <p>Basically, a single greyhound can be a reserve dog for multiple races on the same day. They each appear as a new row in our data frame. For example, 'MACI REID' is a reserve dog for three different races on the 2022-09-02:</p>
-<p><img alt="reserve_dogs_example" src="hta_img/reserve_dogs_example.png" /></p>
+<p><img alt="reserve_dogs_example" src="../hta_img/reserve_dogs_example.png" /></p>
 </div>
 </div>
 </div>
@@ -10621,16 +10621,16 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If you look closely at the data frame above you might notice that for reserve dogs, they will have a Box number of 9 or 10. There is only ever a max of 8 greyhounds per race therefore we will need to adjust it somehow. I didn't notice this issue for quite a while, but the good thing is the website gives us the info we need to adjust: </p>
-<p><img alt="reserve_dog" src="hta_img/reserve_dog.png" /></p>
+<p><img alt="reserve_dog" src="../hta_img/reserve_dog.png" /></p>
 <p>We can see that Rhinestone Ash is a reserve dog and has the number 9, if you click on rules, you can see what Box it is starting from: </p>
-<p><img alt="reserve_dog_2" src="hta_img/reserve_dog_2.png" /></p>
+<p><img alt="reserve_dog_2" src="../hta_img/reserve_dog_2.png" /></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The problem is, my webscraping is pretty poor, and it would take significant time for me to learn it. But after going through the <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Betting+Type+Definitions#BettingTypeDefinitions-MarketDescription">documentation</a> again, changes to boxes are actually available through the API under the <code>clarifications</code> attribute of <code>marketDescription</code>. You will be able to access this within Flumine as <code>market.market_catalogue.description.clarifications</code>, but it's a bit weird. It returns box changes as a string that looks like this: <img alt="box_changes" src="hta_img/box_changes.png" /></p>
+<p>The problem is, my webscraping is pretty poor, and it would take significant time for me to learn it. But after going through the <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Betting+Type+Definitions#BettingTypeDefinitions-MarketDescription">documentation</a> again, changes to boxes are actually available through the API under the <code>clarifications</code> attribute of <code>marketDescription</code>. You will be able to access this within Flumine as <code>market.market_catalogue.description.clarifications</code>, but it's a bit weird. It returns box changes as a string that looks like this: <img alt="box_changes" src="../hta_img/box_changes.png" /></p>
 <p>Originally I had planned to leave this article as it is since, I've never worked with anything like this before and its already getting pretty long, however huge shoutout to Betfair Quants community and especially <a href="https://github.com/Landrin-br">Brett</a> who provided his solution to working with box changes. </p>
 </div>
 </div>

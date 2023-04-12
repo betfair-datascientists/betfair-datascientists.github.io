@@ -250,7 +250,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../modelling/stakingMethods.md" class="md-tabs__link">
+      <a href="../../wagering/stakingMethods/" class="md-tabs__link">
         Wagering
       </a>
     </li>
@@ -437,7 +437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/stakingMethods.md" class="md-nav__link">
+      <a href="../../wagering/stakingMethods/" class="md-nav__link">
         Staking Methods and Bankroll Management
       </a>
     </li>
@@ -1642,7 +1642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/processingTarFiles101.ipynb" class="md-nav__link">
+      <a href="../processingTarFiles101/" class="md-nav__link">
         Take away the pain! Processing TAR Files 101
       </a>
     </li>
@@ -1656,7 +1656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/jsonToCsvRevisited/index.md" class="md-nav__link">
+      <a href="../jsonToCsvRevisited/" class="md-nav__link">
         JSON to CSV | Revisited
       </a>
     </li>
@@ -1670,7 +1670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/backtestingRatingsTutorial.md" class="md-nav__link">
+      <a href="../backtestingRatingsTutorial/" class="md-nav__link">
         Back testing ratings in Python
       </a>
     </li>
@@ -1684,7 +1684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/automatedBettingAnglesTutorial.ipynb" class="md-nav__link">
+      <a href="../automatedBettingAnglesTutorial/" class="md-nav__link">
         Automated betting angles in Python
       </a>
     </li>
@@ -1698,7 +1698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingMarketMovements/" class="md-nav__link">
         Do they know? Analysing Betfair market formation & market movements
       </a>
     </li>
@@ -1712,7 +1712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingBSP.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingBSP/" class="md-nav__link">
         Wisdom of the crowd? Analysing & understanding BSP
       </a>
     </li>
@@ -2047,7 +2047,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="fav_longshot" src="hta_img/fav_longshot.PNG" /></p>
+<p><img alt="fav_longshot" src="../hta_img/fav_longshot.PNG" /></p>
 </div>
 </div>
 </div>
@@ -2202,13 +2202,13 @@
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>snapshot_last_price_traded = pd.DataFrame(snapshot_last_price_traded, columns=[&#39;selection_id&#39;,&#39;last_traded_price&#39;])
 </code></pre></div>
 <p>So, we end up with a DataFrame like this: </p>
-<p><img alt="snapshot_last_price_traded" src="hta_img/snapshot_last_price_traded.PNG" /></p>
+<p><img alt="snapshot_last_price_traded" src="../hta_img/snapshot_last_price_traded.PNG" /></p>
 <p>Let's sort the rows by the <code>last_traded_price</code> and define a new variable called the <code>fav_selection_id</code> which is the <code>selection_id</code> of the horse we want to bet on (first favourite horse). </p>
 <p>To get the corresponding <code>selection_id</code> we need to select the value from the first row of the <code>selection_id</code> column. As Python starts indexing rows from 0, instead of 1, we will be selecting the 0th index to get the value of the first row. (If your strategy was backing/laying the second favourite you will need to be selecting the 1st index)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>snapshot_last_price_traded = snapshot_last_price_traded.sort_values(by = [&#39;last_traded_price&#39;])
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>fav_selection_id = snapshot_last_price_traded[&#39;selection_id&#39;].iloc[0]
 </code></pre></div>
-<p><img alt="snapshot_last_price_traded_sorted" src="hta_img/snapshot_last_price_traded_sorted.PNG" /></p>
+<p><img alt="snapshot_last_price_traded_sorted" src="../hta_img/snapshot_last_price_traded_sorted.PNG" /></p>
 <p>We also need a way to validate bets so that we don't bet on multiple selections. This is because process_market_book will run every time anyone places or cancels a bet on that market. So we need to prevent multiple bet placements. This is usually easily done by setting <code>max_trade_count = 1</code> however, looking at the <a href="https://github.com/liampauling/flumine/blob/0f12a0f9d200b4a4c36c8bd26c9f4fbe82f8cce1/flumine/strategy/strategy.py#L70">documentation</a> we can see that this is only on a per selection basis. As the favourite horse can change over time then we may end up betting multiple times if the favourite changes. In most situations this probably isn't an issue, as you can just limit betting to a timeframe e.g., from 60 seconds before the jump to 50 seconds before the jump. However, if the market is very illiquid there may not be any bets placed or cancelled in the time frame. So, let's come up with a way that our strategy can only bet once without using the timeframe as a work around.</p>
 <p>According to the <a href="https://github.com/liampauling/flumine/blob/0737461323da409990d3108a158092487506aa7f/flumine/strategy/runnercontext.py">documentation</a> for Flumine we can get the runner_context, which will allow us to collect info on the trades, matched and waiting to be matched. If we loop through all the runners in the market, we can turn that into a DataFrame:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>runner_context = []
@@ -2220,7 +2220,7 @@
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>snapshot_runner_context = pd.DataFrame(snapshot_runner_context, columns=[&#39;selection_id&#39;,&#39;executable_orders&#39;,&#39;live_trade_count&#39;,&#39;trade_count&#39;])
 </code></pre></div>
 <p>This will return a DataFrame like this: </p>
-<p><img alt="runner_context_df" src="hta_img/runner_context_df.png" /></p>
+<p><img alt="runner_context_df" src="../hta_img/runner_context_df.png" /></p>
 <p>Now we can simply just check if the sum last 3 columns equal zero, to validate that no bets have been placed:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>snapshot_runner_context.iloc[:,1:].sum().sum()
 </code></pre></div>
@@ -2358,7 +2358,7 @@
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><img alt="framework_v2" src="hta_img/framework_v2.jpg" /></p>
+<p><img alt="framework_v2" src="../hta_img/framework_v2.jpg" /></p>
 </div>
 </div>
 </div>
@@ -2475,7 +2475,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's also create something that records our bets in a nice csv/excel file so we can review how we went later on. Although this is also called logging it will create a clean csv file called "orders_hta_2.csv" that looks like this:</p>
-<p><img alt="what_orderscsv_looks_like" src="hta_img/what_orderscsv_looks_like.png" /></p>
+<p><img alt="what_orderscsv_looks_like" src="../hta_img/what_orderscsv_looks_like.png" /></p>
 <p>This becomes super useful when we have more than one strategy so we can track how each strategy is performing (it also reads nicely into a pandas DataFrame!). This will also allow us to do some analysis such as check how often our bets get matched. This code is copied from the <a href="https://github.com/betcode-org/flumine/blob/0f12a0f9d200b4a4c36c8bd26c9f4fbe82f8cce1/examples/controls/backtestloggingcontrol.py">examples</a> with some very slight changes.</p>
 </div>
 </div>

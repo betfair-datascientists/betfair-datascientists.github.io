@@ -250,7 +250,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../modelling/stakingMethods.md" class="md-tabs__link">
+      <a href="../../wagering/stakingMethods/" class="md-tabs__link">
         Wagering
       </a>
     </li>
@@ -437,7 +437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/stakingMethods.md" class="md-nav__link">
+      <a href="../../wagering/stakingMethods/" class="md-nav__link">
         Staking Methods and Bankroll Management
       </a>
     </li>
@@ -1663,7 +1663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/processingTarFiles101.ipynb" class="md-nav__link">
+      <a href="../processingTarFiles101/" class="md-nav__link">
         Take away the pain! Processing TAR Files 101
       </a>
     </li>
@@ -1677,7 +1677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/jsonToCsvRevisited/index.md" class="md-nav__link">
+      <a href="../jsonToCsvRevisited/" class="md-nav__link">
         JSON to CSV | Revisited
       </a>
     </li>
@@ -1691,7 +1691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/backtestingRatingsTutorial.md" class="md-nav__link">
+      <a href="../backtestingRatingsTutorial/" class="md-nav__link">
         Back testing ratings in Python
       </a>
     </li>
@@ -1705,7 +1705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/automatedBettingAnglesTutorial.ipynb" class="md-nav__link">
+      <a href="../automatedBettingAnglesTutorial/" class="md-nav__link">
         Automated betting angles in Python
       </a>
     </li>
@@ -1719,7 +1719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingMarketMovements/" class="md-nav__link">
         Do they know? Analysing Betfair market formation & market movements
       </a>
     </li>
@@ -1733,7 +1733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingBSP.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingBSP/" class="md-nav__link">
         Wisdom of the crowd? Analysing & understanding BSP
       </a>
     </li>
@@ -2613,8 +2613,8 @@ The total_price is 17.94
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's go through an example with a simple strategy that I tested many, many times to understand the intricacies of Flumine before we move onto anything more complex. Let's attempt to lay all selections at a price of 1.01, the good thing is as long as this isn't inplay we basically never get matched using this strategy so we can use it to test a tonne of things. The other good thing about Flumine is that by default you can only have 1 trade live (waiting to be matched) per selection at any one time. So running the below code will only place one bet per selection and another will not be placed untill the first get matched.</p>
 <p>If we take a closer look at the <a href="https://betcode-org.github.io/flumine/strategies/">documentation</a> and <a href="https://github.com/liampauling/flumine/blob/62b40ad11988ecab039b3b822bc70779aed64bca/flumine/strategy/strategy.py">source code</a> we can get an idea of the methods available and the ones that are run automatically.</p>
-<p><img alt="documentation" src="hta_img/documentation.png" /></p>
-<p><img alt="BaseStrategy Source Code" src="hta_img/BaseStrategy_documentation.PNG" /></p>
+<p><img alt="documentation" src="../hta_img/documentation.png" /></p>
+<p><img alt="BaseStrategy Source Code" src="../hta_img/BaseStrategy_documentation.PNG" /></p>
 <p>Basically the way Flumine works is any code you have under <code>start</code> runs when you first hit play, then whenever there is an update to the market <code>check_market_book</code> runs and if that returns true then <code>process_market_book</code> and <code>process_orders</code> will run. An update is whenever anyone places/cancels/modifies a bet for that specific market e.g. R7 Flemmington Win. By default Flumine will run continuously without stopping (we will learn how to make it stop later on).</p>
 <p>For something simple like placing a single bet per selection in a race <code>check_market_book</code> and <code>process_market_book</code> are pretty much the only method we really needed to edit. So our code structure will look something like this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>def start():
@@ -2732,7 +2732,7 @@ The total_price is 17.94
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>When we define fresh_avocado as an Avocado class, we need to include multiple attributes such as colour, taste, size and price_per_size. As avocado is a child class of fruit, we can take a look at fruit for what we need to include.</p>
 <p>We need to do the same thing for our LayStrategy. The attributes that we need to include can be found in the documentation for <a href="https://github.com/liampauling/flumine/blob/master/flumine/strategy/strategy.py">BaseStrategy</a>: </p>
-<p><img alt="BaseStrategy_attributes" src="hta_img/BaseStrategy_attributes.PNG" /></p>
+<p><img alt="BaseStrategy_attributes" src="../hta_img/BaseStrategy_attributes.PNG" /></p>
 <p>We can see that some of the attributes have default values such as <code>max_order_exposure</code>, but others have <code>None</code>. You can play around with them, for now lets just set <code>market_filter</code> to only bet on greyhound win markets. If you ever get confused (it happens) you can take a look at the 
 <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Betting+Type+Definitions">Betting Type Definitions</a>.</p>
 <p>This is actually one of the really cool things about Flumine, all you need to do is point it at a particular criteria e.g. all greyhound win markets in Australia and it will run your strategy on all those markets.</p>
@@ -2815,7 +2815,7 @@ The total_price is 17.94
 <p>Basically, the line of code above will enable logging and create a new file called 'how_to_automate_1.log' in the same folder as this Python script. By default Flumine has a tonne of logging which will now be enabled with the line above and write logs to that file. So anytime there is an error we can easily pinpoint what the error is.</p>
 <p>Put that line of code somewhere near the top of your script and it will save you hours wondering why your code doesn't work.</p>
 <p>There is one slight drawback, and that basically everything that indicates your code is running smoothly will now go into the log file instead of printing out in your terminal. I would recommend the first time you run your strategy to open the log file so you can see what Flumine is doing, it will look a little like this:</p>
-<p><img alt="what_log_files_look_like" src="hta_img/what_log_files_look_like.png" /></p>
+<p><img alt="what_log_files_look_like" src="../hta_img/what_log_files_look_like.png" /></p>
 </div>
 </div>
 </div>
@@ -2894,7 +2894,7 @@ The total_price is 17.94
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If we open the log file a few seconds after running the code (you can open it using your code editor or a text editor like notepad) we can see that it shows us what the error is:</p>
-<p><img alt="error_trade" src="hta_img/error_trade.PNG" /> </p>
+<p><img alt="error_trade" src="../hta_img/error_trade.PNG" /> </p>
 <p>(I have spent a lot of time looking through log files...)</p>
 </div>
 </div>
@@ -2923,7 +2923,7 @@ The total_price is 17.94
 <li><a href="../How_to_Automate_4">Part IV</a> - Automating your own model</li>
 <li><a href="../How_to_Automate_5">Part V</a> - How to simulate the Exchange to backtest and optimise our strategies</li>
 </ul>
-<p><img alt="this_is_where_the_fun_begins" src="hta_img/aniki.png" /></p>
+<p><img alt="this_is_where_the_fun_begins" src="../hta_img/aniki.png" /></p>
 </div>
 </div>
 </div>

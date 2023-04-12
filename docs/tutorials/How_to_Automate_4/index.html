@@ -250,7 +250,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../modelling/stakingMethods.md" class="md-tabs__link">
+      <a href="../../wagering/stakingMethods/" class="md-tabs__link">
         Wagering
       </a>
     </li>
@@ -437,7 +437,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/stakingMethods.md" class="md-nav__link">
+      <a href="../../wagering/stakingMethods/" class="md-nav__link">
         Staking Methods and Bankroll Management
       </a>
     </li>
@@ -1616,7 +1616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/processingTarFiles101.ipynb" class="md-nav__link">
+      <a href="../processingTarFiles101/" class="md-nav__link">
         Take away the pain! Processing TAR Files 101
       </a>
     </li>
@@ -1630,7 +1630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/jsonToCsvRevisited/index.md" class="md-nav__link">
+      <a href="../jsonToCsvRevisited/" class="md-nav__link">
         JSON to CSV | Revisited
       </a>
     </li>
@@ -1644,7 +1644,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/backtestingRatingsTutorial.md" class="md-nav__link">
+      <a href="../backtestingRatingsTutorial/" class="md-nav__link">
         Back testing ratings in Python
       </a>
     </li>
@@ -1658,7 +1658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/automatedBettingAnglesTutorial.ipynb" class="md-nav__link">
+      <a href="../automatedBettingAnglesTutorial/" class="md-nav__link">
         Automated betting angles in Python
       </a>
     </li>
@@ -1672,7 +1672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingMarketMovements.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingMarketMovements/" class="md-nav__link">
         Do they know? Analysing Betfair market formation & market movements
       </a>
     </li>
@@ -1686,7 +1686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../historicData/analysingAndPredictingBSP.ipynb" class="md-nav__link">
+      <a href="../analysingAndPredictingBSP/" class="md-nav__link">
         Wisdom of the crowd? Analysing & understanding BSP
       </a>
     </li>
@@ -2140,7 +2140,7 @@
 <a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="hll">    <span class="n">box_win_percent</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;../data/box_win_percentage.csv&#39;</span><span class="p">)</span>
 </span></code></pre></div>
 <p>As a single greyhound can be a reserve dog for multiple races on the same day this creates a second issue for us. FastTrack will list each race a greyhound is a reserve in as a new row. For example, 'MACI REID' is a reserve dog for three different races on the 2022-09-02:</p>
-<p><img alt="reserve_dogs_example" src="hta_img/reserve_dogs_example.png" /></p>
+<p><img alt="reserve_dogs_example" src="../hta_img/reserve_dogs_example.png" /></p>
 <p>When we try lag our data by using <code>.shift(1)</code> like in Bruno's original code it will produce the wrong values for our features. In the above example only the first race The Gardens Race 4 (the third row) will have correct data but all the rows under it will have incorrectly calculated features. We need each of the following rows to be the same as the third row. The solution that I have come up with is a little bit complicated, but it gets the job done:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Solution to reserve dogs</label><label for="__tabbed_1_2">Optimised code</label><label for="__tabbed_1_3">Complete code chunk</label></div>
 <div class="tabbed-content">
@@ -2245,11 +2245,11 @@
 <h2 id="automating-our-predictions">Automating our predictions</h2>
 <p>Before we can do our model predictions, we have one feature left to collect which is the box number a greyhound is racing from. Then we can do our final prediction, renormalise our probabilities so they sum to unity (100%) and start placing bets. We will also add on our Auto-terminate and bet logging code we learnt from previous tutorials.</p>
 <p>If you look closely at the below screenshot, you will notice Rhinestone Ash is number 9. For non-reserve dogs (number one to eight), the number corresponds to the Box number, however reserve dogs will have a number such as 9 or 10 and there are only ever eight boxes. So, if any of the original line up is scratched the reserve dogs will be placed into one of the remaining boxes. FastTrack data won't give us which Box the reserve dog will go into, in fact it will give us Box 9 (which doesn't exist). So, we need some way to find the Box number it is actually racing from. I didn't notice this issue for quite a while, but the good thing is the website gives us the info we need to adjust:</p>
-<p><img alt="reserve_dog" src="hta_img/reserve_dog.png" /></p>
+<p><img alt="reserve_dog" src="../hta_img/reserve_dog.png" /></p>
 <p>If you click on rules, you can see what Box it is starting from:</p>
-<p><img alt="reserve_dog_2" src="hta_img/reserve_dog_2.png" /></p>
+<p><img alt="reserve_dog_2" src="../hta_img/reserve_dog_2.png" /></p>
 <p>After going through the <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Betting+Type+Definitions#BettingTypeDefinitions-MarketDescription">documentation</a> again, changes to boxes are available through the API under the <code>clarifications</code> attribute of <code>marketDescription</code>. You will be able to access this within Flumine as <code>market.market_catalogue.description.clarifications</code>, but it's a bit weird. It returns box changes as a string that looks like this:</p>
-<p><img alt="box_changes" src="hta_img/box_changes.png" /></p>
+<p><img alt="box_changes" src="../hta_img/box_changes.png" /></p>
 <p>Originally, I had planned to leave this post as it is since, I've never worked with anything like this before and its already getting pretty long, however huge shoutout to <a href="https://github.com/Landrin-br">Brett</a> from the Betfair Quants community who provided his solution to working with box changes.</p>
 <div class="highlight"><span class="filename">Brett's Solution</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>    <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">regexp_tokenize</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>    <span class="c1"># my_string is an example string, that you will need to get live from the api via: market.market_catalogue.description.clarifications.replace(&quot;&lt;br&gt; Dog&quot;,&quot;&lt;br&gt;Dog&quot;)</span>
@@ -2267,7 +2267,7 @@
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>    <span class="n">runners_df</span>
 </code></pre></div>
 <p>Running Brett's code will give us a DataFrame like this:</p>
-<p><img alt="runners_df" src="hta_img/runners_df.png" /></p>
+<p><img alt="runners_df" src="../hta_img/runners_df.png" /></p>
 <p>So now, if there are no changes in Boxes we can default to the FastTrack data, and if there are changes, we can replace Box in our original DataFrame (<code>todays_data</code>) with the info from <code>runners_df</code> and then we can merge our <code>box_win_percentage</code> feature across.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>    <span class="c1"># Replace any old Box info in our original dataframe with data available in runners_df</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    <span class="n">runners_df</span> <span class="o">=</span> <span class="n">runners_df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;runner_name&#39;</span><span class="p">)</span>

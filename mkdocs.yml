@@ -9,33 +9,19 @@ site_dir: 'docs'
 # Navigation
 nav:
     - Home: index.md  
+
+    - Wagering:
+        - Staking Methods and Bankroll Management: modelling/stakingMethods.md
+
     - API:
         - API resources: api/apiResources.md
         - How to access the Betfair API: api/apiappkey.md
-        - Tutorials:
-            - API tutorials in R: api/apiRtutorial.md
-            - API tutorial in Python: api/apiPythontutorial.md
-            - How to Automate 1: api/How_to_Automate_1.ipynb
-            - How to Automate 2: api/How_to_Automate_2.ipynb
-            - How to Automate 3: api/How_to_Automate_3.ipynb
-            - How to Automate 4: api/How_to_Automate_4.md
-            - How to Automate 5: api/How_to_Automate_5.md
-        - Golden rules of automation: api/GoldenRulesofAutomation.md
-    - Historic Data: 
-        - Pricing Data Sources: historicData/dataSources.md
-        - Tutorials:
-            - Take away the pain! Processing TAR Files 101: historicData/processingTarFiles101.ipynb
-            #- JSON to CSV in Python: historicData/jsonToCsvTutorial.md
-            - JSON to CSV | Revisited: historicData/jsonToCsvRevisited/index.md
-            - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
-            - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
-            - Do they know? Analysing Betfair market formation & market movements: historicData/analysingAndPredictingMarketMovements.ipynb
-            - Wisdom of the crowd? Analysing & understanding BSP: historicData/analysingAndPredictingBSP.ipynb
+        - API tutorial in R: api/apiRtutorial.md
+        - API tutorial in Python: api/apiPythontutorial.md
             
-
     - Modelling:
         - Intro to modelling: modelling/howToModel.md
-        - Staking Methods and Bankroll Management: modelling/stakingMethods.md
+        - Pricing Data Sources: modelling/dataSources.md
         - Racing:
             - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
             - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb
@@ -53,36 +39,50 @@ nav:
             - How to model the Australian Open: modelling/howToModelTheAusOpen.md
             - Aus Open R Tutorial: modelling/AusOpenRTutorial.md
             - Aus Open Python Tutorial: modelling/AusOpenPythonTutorial.md
-    - Auto Tools: 
-        - Tools Overview: autoTools/overview.md           
+
+    - Automation: 
+        - Golden rules of automation: automation/GoldenRulesofAutomation.md
+        - Tools Overview: automation/overview.md           
         - Bet Angel: 
-            - Overview: autoTools/betAngel/betAngel.md
-            - Beginner's guide: autoTools/betAngelbeginners.md
-            - Intermediate guide: autoTools/betAngelintermediate.md
-            - Advanced guide: autoTools/betAngeladvanced.md
-            - Ratings auto: autoTools/betAngelRatingsAutomation.md
-            - Market fav auto: autoTools/betAngelMarketFavouriteAutomation.md
-            - Tipping auto: autoTools/betAngelTippingAutomation.md
-            - Simultaneous markets: autoTools/betAngelSimultaneousMarkets.md
-            - Kelly criterion staking: autoTools/betAngelKellyStake.md
+            - Overview: automation/betAngel/betAngel.md
+            - Beginner's guide: automation/betAngelbeginners.md
+            - Intermediate guide: automation/betAngelintermediate.md
+            - Advanced guide: automation/betAngeladvanced.md
+            - Ratings auto: automation/betAngelRatingsAutomation.md
+            - Market fav auto: automation/betAngelMarketFavouriteAutomation.md
+            - Tipping auto: automation/betAngelTippingAutomation.md
+            - Simultaneous markets: automation/betAngelSimultaneousMarkets.md
+            - Kelly criterion staking: automation/betAngelKellyStake.md
         - Gruss Betting Assistant:
-            - Overview: autoTools/Gruss/Gruss.md
-            - Setup basic market view and one click betting: autoTools/GrussSettingupbasicmarketview.md
-            - Ratings auto: autoTools/grussRatingsAutomation.md
-            - Market fav auto: autoTools/grussMarketFavouriteAutomation.md
-            - Simultaneous markets: autoTools/grusslSimultaneousMarkets.md
-            - Kelly criterion staking: autoTools/grussKellyStake.md
+            - Overview: automation/Gruss/Gruss.md
+            - Setup basic market view and one click betting: automation/GrussSettingupbasicmarketview.md
+            - Ratings auto: automation/grussRatingsAutomation.md
+            - Market fav auto: automation/grussMarketFavouriteAutomation.md
+            - Simultaneous markets: automation/grusslSimultaneousMarkets.md
+            - Kelly criterion staking: automation/grussKellyStake.md
         - Cymatic Trader: 
-            - Overview: autoTools/CymaticTrader/CymaticTrader.md
-            - Ratings auto: autoTools/cymaticTraderRatingsAutomation.md      
+            - Overview: automation/CymaticTrader/CymaticTrader.md
+            - Ratings auto: automation/cymaticTraderRatingsAutomation.md      
         - Geeks Toy:
-            - Installation and setup: autoTools/GeeksToyinstallationandsetup.md
-            - Setup basic market view and one click betting: autoTools/GeeksToybasicmarketviewstakingandoneclickbetting.md
-            - Optimising refresh settings: autoTools/geeksToyRefreshSettings.md
+            - Installation and setup: automation/GeeksToyinstallationandsetup.md
+            - Setup basic market view and one click betting: automation/GeeksToybasicmarketviewstakingandoneclickbetting.md
+            - Optimising refresh settings: automation/geeksToyRefreshSettings.md
         - Bet Jet Pro:
-            - Overview: autoTools/betJetOverview.md
-    - Contact Us:
-       - Meet the Team: contactUs/test.md
+            - Overview: automation/betJetOverview.md
+    - Tutorials:
+        - How to Automate 1: tutorials/How_to_Automate_1.ipynb
+        - How to Automate 2: tutorials/How_to_Automate_2.ipynb
+        - How to Automate 3: tutorials/How_to_Automate_3.ipynb
+        - How to Automate 4: tutorials/How_to_Automate_4.md
+        - How to Automate 5: tutorials/How_to_Automate_5.md
+        - Take away the pain! Processing TAR Files 101: historicData/processingTarFiles101.ipynb
+        #- JSON to CSV in Python: historicData/jsonToCsvTutorial.md
+        - JSON to CSV | Revisited: historicData/jsonToCsvRevisited/index.md
+        - Back testing ratings in Python: historicData/backtestingRatingsTutorial.md
+        - Automated betting angles in Python: historicData/automatedBettingAnglesTutorial.ipynb
+        - Do they know? Analysing Betfair market formation & market movements: historicData/analysingAndPredictingMarketMovements.ipynb
+        - Wisdom of the crowd? Analysing & understanding BSP: historicData/analysingAndPredictingBSP.ipynb
+
     - Mental Game:
         - Intro: mentalGame/intro.md
         - Part 1: mentalGame/roleOfEmotions.md
@@ -94,6 +94,8 @@ nav:
         - Part 7: mentalGame/InchwormConcept.md
         - Part 8: mentalGame/HighExpectations.md
         - Part 9: mentalGame/TappingYourIntuition.md
+    - Contact Us:
+        - Meet the Team: contactUs/test.md
 
 # Theme settings
 theme:

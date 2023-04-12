@@ -22,3 +22,6 @@ Watch this space as Jared will be writing an entire series of articles related t
 - [Part IV](../winbyBeingGreatatLosing) - Win by Being Great at Losing
 - [Part V](../correctingyouremotions) - Correcting Your Emotions
 - [Part VI](../responsibleGambling) - Responsible Gambling
+- [Part VII](../InchwormConcept) - Maximize Your Learning with the Inchworm Concept
+- [Part VIII](../HighExpectations) - The High Cost of High Expectations
+- [Part IX](../TappingYourIntuition) - Tapping Your Intuition

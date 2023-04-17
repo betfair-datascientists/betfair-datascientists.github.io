@@ -80,6 +80,7 @@ The chance to lay opens the door to betting opportunities you won’t find with 
 Limit bets on the Exchange are simple back and lay bets where a price limit has been set. This is the bet type created when you either back or lay a selection using the instructions above. 
 
 A persistence type is simply the behaviour of a bet if it is not matched when it is first placed. There are three types:
+
 - **Lapse:** This is the default setting and means that when the event starts, any unmatched bets will automatically be cancelled
 - **Keep:** This keeps unmatched bets alive when the market goes in-play. These can be cancelled at any time, but in Australia where in-play sports betting is restricted, they cannot be changed. For in-play racing betting on thoroughbreds and harness, these can be changed at any time. For markets that do not go in-play like Greyhounds, this persistence type is invalid
 - **Take SP/Market On Close:** This causes unmatched bets to accept the BSP where the unmatched portion of the bet is greater than the minimum required bet. For bets smaller than this, they will lapse. For markets that don't support BSP, this persistence type is invalid. These bets cannot be cancelled and no odds limit can be specified.

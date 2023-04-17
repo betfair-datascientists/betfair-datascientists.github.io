@@ -23,7 +23,7 @@ Betfair has a set of customer-facing transactional APIs to allow you to integrat
 
 There are lots of resources available to support you in accessing the API effectively:
 
-- [Golden rules of automation](/api/GoldenRulesofAutomation)
+- [Golden rules of automation](/automation/GoldenRulesofAutomation)
 - [Creating & activating your app key](/api/apiappkey)
 - [Developer Program knowledge base](https://betfairdevelopersupport.zendesk.com/hc/en-us)
 - [Dev Docs](http://developer.betfair.com)
@@ -41,19 +41,19 @@ There are lots of resources available to support you in accessing the API effect
 ---
 ## Historic pricing data
 
-We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the [different data sources](/historicData/dataSources) if you’re not quite sure where to start. We’ve also shared some tips on learning to create [predictive models using this data](/modelling/howToModel), which link in with the models shared in the [modelling section](/modelling).
+We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport – you can take a look at our explanation of the [different data sources](/modelling/dataSources) if you’re not quite sure where to start. We’ve also shared some tips on learning to create [predictive models using this data](/modelling/howToModel), which link in with the models shared in the [modelling section](/modelling).
 
 ### Tutorials
 
-- [JSON to CSV in Python](/historicData/jsonToCsvTutorial)
-- [Backtesting ratings using historic data in Python](/historicData/backtestingRatingsTutorial)
-- [Automated betting angles: no modelling required](/historicData/automatedBettingAnglesTutorial)
-- [Do *#theyknow*? Analysing Betfair market formation and market movements](/historicData/analysingAndPredictingMarketMovements)
-- [Wisdom of the crowd? Analysing & understanding BSP](/historicData/analysingAndPredictingBSP)
+- [JSON to CSV in Python](/tutorials/jsonToCsvTutorial)
+- [Backtesting ratings using historic data in Python](/tutorials/backtestingRatingsTutorial)
+- [Automated betting angles: no modelling required](/tutorials/automatedBettingAnglesTutorial)
+- [Do *#theyknow*? Analysing Betfair market formation and market movements](/tutorials/analysingAndPredictingMarketMovements)
+- [Wisdom of the crowd? Analysing & understanding BSP](/tutorials/analysingAndPredictingBSP)
 
 
 ### Other resources
-- [Betfair data sources](/historicData/dataSources)
+- [Betfair data sources](/modelling/dataSources)
 - [Data processor](https://www.betfairhistoricdata.co.uk/) to generate CSVs from the historic JSON files 
 - [Historic Data FAQs & sample data](https://historicdata.betfair.com/#/help)
 - [Historic Data Specifications](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf)
@@ -77,10 +77,10 @@ Whilst the following tools are not custom built for your approach, they do allow
 
 We’re putting together a collection of articles on how to use some of these third party tools to automate basic strategies, to give you a starting point that you can then work from.
 
-- [Bet Angel Professional](/autoTools/betAngel/betAngel)
-- [Gruss Betting Assistant](/autoTools/Gruss/Gruss)
-- [Cymatic Trader](/autoTools/CymaticTrader/CymaticTrader)
-- [Geeks Toy](/autoTools/GeeksToyinstallationandsetup)
+- [Bet Angel Professional](/automation/betAngel/betAngel)
+- [Gruss Betting Assistant](/automation/Gruss/Gruss)
+- [Cymatic Trader](/automation/CymaticTrader/CymaticTrader)
+- [Geeks Toy](/automation/GeeksToyinstallationandsetup)
 
 --- 
 ## Inspiration & information 

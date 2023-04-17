@@ -1,8 +1,8 @@
 # Value and Odds
 
-```
-This article has been copied from the [Betfair Hub](https://www.betfair.com.au/hub/education/racing-strategy/value-and-odds/) and was written by Daniel O'Sullivan from the [Ratings Bureau](https://www.trb.com.au/index.aspx)
-```
+!!! info "Article"
+    This article has been copied from the [Betfair Hub](https://www.betfair.com.au/hub/education/racing-strategy/value-and-odds/) and was written by Daniel O'Sullivan from the [Ratings Bureau](https://www.trb.com.au/index.aspx)
+
 
 ## Market Price and Winning Chance
 
@@ -28,6 +28,7 @@ Bookmaker fixed odds market add up to much greater than 100% (usually 115% or mo
 Market percentage or overround is simply the sum of the winning chance calculated for each horse in the race (using the above method.)  The table below shows a theoretical eight horse fixed odds bookmaker market sorted from highest winning chance to the lowest winning chance. Against each market price you can see the % winning chance and how much you would need to bet on that horse to collect $100
 
 |**Price**|**Win%**|**Bet**|**Return**|
+| :- | :- | :- | :- |
 |2.8|35.70%|35.7|100|
 |4.4|22.70%|22.7|100|
 |5.5|18.2%|18.2|100|
@@ -36,7 +37,7 @@ Market percentage or overround is simply the sum of the winning chance calculate
 |17|5.9%|5.9|100|
 |21|4.8%|4.8|100|
 |26|3.8%|3.8|100|
-|   |115.40%|$115.40|   |
+||115.40%|$115.40||
 
 There are a few things to note about market percentage and this example:
 

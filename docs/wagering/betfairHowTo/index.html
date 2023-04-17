@@ -12,14 +12,14 @@
         <meta name="author" content="Betfair Data Scientists">
       
       
-        <link rel="canonical" href="https://betfair-datascientists.github.io/wagering/valueAndOdds/">
+        <link rel="canonical" href="https://betfair-datascientists.github.io/wagering/betfairHowTo/">
       
       <link rel="icon" href="../../img/BetfairFavicon.ico">
       <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
     
     
       
-        <title>Value and Odds - The Automation Hub</title>
+        <title>How To: Betfair Exchange - The Automation Hub</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#value-and-odds" class="md-skip">
+        <a href="#how-to-betfair-exchange" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +128,7 @@
           <div class="md-header__topic" data-md-component="header-topic">
             <span class="md-ellipsis">
               
-                Value and Odds
+                How To: Betfair Exchange
               
             </span>
           </div>
@@ -244,15 +244,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../stakingMethods/" class="md-tabs__link md-tabs__link--active">
+      <a href="../stakingMethods/" class="md-tabs__link">
         Wagering
       </a>
     </li>
@@ -409,14 +407,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -451,80 +447,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Value and Odds
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../valueAndOdds/" class="md-nav__link">
         Value and Odds
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#market-price-and-winning-chance" class="md-nav__link">
-    Market Price and Winning Chance
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-market-percentageoverround" class="md-nav__link">
-    What is market percentage/overround?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-value" class="md-nav__link">
-    What is Value?
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#profiting-from-good-and-bad-value" class="md-nav__link">
-    Profiting from good and bad value
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#betting-is-all-about-probability" class="md-nav__link">
-    Betting is all about probability
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1938,113 +1865,98 @@
                   
 
 
-<h1 id="value-and-odds">Value and Odds</h1>
-<div class="admonition info">
-<p class="admonition-title">Article</p>
-<p>This article has been copied from the <a href="https://www.betfair.com.au/hub/education/racing-strategy/value-and-odds/">Betfair Hub</a> and was written by Daniel O'Sullivan from the <a href="https://www.trb.com.au/index.aspx">Ratings Bureau</a></p>
-</div>
-<h2 id="market-price-and-winning-chance">Market Price and Winning Chance</h2>
-<p>All punters are familiar with the concept that the price of a horse determines how much money you get back per $1 bet. For example, if you have a $20 win bet on a horse at a fixed price of $5 and the horse wins, you are returned $100 ($20 x $5)… for a profit of $80.</p>
-<p>However the price of a horse also has another very important meaning. It reflects the market’s opinion on the winning chance of that horse in the race.</p>
-<p><strong>THE EASY WAY TO APPROXIMATE THE WINNING CHANCE OF A HORSE IS TO TAKE 100 AND DIVIDE IT BY THE MARKET PRICE</strong></p>
-<p>For Example:
-- A horse that is $1.80 in the market has a 100 / 1.8 = 55.55% chance of winning
-- A horse that is $2.20 in the market has a 100 / 2.2 = 45.45% chance of winning
-- A horse that is $5.00 in the market has a 100 / 5 = 20% chance of winning
-- A horse that is $11 in the market has a 100 / 11 = 9.1% chance of winning
-- A horse that is $26 in the market has a 100 / 26 = 3.85% chance of winning</p>
-<p>Close to jump time the total BF Exchange market is very close to 100% (see below for an explanation of market percentage) so the prices provide a direct indication of the markets opinion on winning chances.</p>
-<p>Bookmaker fixed odds market add up to much greater than 100% (usually 115% or more) so a direct calculation using the method above will slightly overestimate the winning chance of each horse (the longer the price of the horse the greater the gap.)</p>
-<h2 id="what-is-market-percentageoverround">What is market percentage/overround?</h2>
-<p>Market percentage or overround is simply the sum of the winning chance calculated for each horse in the race (using the above method.)  The table below shows a theoretical eight horse fixed odds bookmaker market sorted from highest winning chance to the lowest winning chance. Against each market price you can see the % winning chance and how much you would need to bet on that horse to collect $100</p>
-<table>
-<thead>
-<tr>
-<th align="left"><strong>Price</strong></th>
-<th align="left"><strong>Win%</strong></th>
-<th align="left"><strong>Bet</strong></th>
-<th align="left"><strong>Return</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">2.8</td>
-<td align="left">35.70%</td>
-<td align="left">35.7</td>
-<td align="left">100</td>
-</tr>
-<tr>
-<td align="left">4.4</td>
-<td align="left">22.70%</td>
-<td align="left">22.7</td>
-<td align="left">100</td>
-</tr>
-<tr>
-<td align="left">5.5</td>
-<td align="left">18.2%</td>
-<td align="left">18.2</td>
-<td align="left">100</td>
-</tr>
-<tr>
-<td align="left">7</td>
-<td align="left">14.3%</td>
-<td align="left">14.3</td>
-<td align="left">100</td>
-</tr>
-<tr>
-<td align="left">10</td>
-<td align="left">10%</td>
-<td align="left">10</td>
-<td align="left">100</td>
-</tr>
-<tr>
-<td align="left">17</td>
-<td align="left">5.9%</td>
-<td align="left">5.9</td>
-<td align="left">100</td>
-</tr>
-<tr>
-<td align="left">21</td>
-<td align="left">4.8%</td>
-<td align="left">4.8</td>
-<td align="left">100</td>
-</tr>
-<tr>
-<td align="left">26</td>
-<td align="left">3.8%</td>
-<td align="left">3.8</td>
-<td align="left">100</td>
-</tr>
-<tr>
-<td align="left"></td>
-<td align="left">115.40%</td>
-<td align="left">$115.40</td>
-<td align="left"></td>
-</tr>
-</tbody>
-</table>
-<p>There are a few things to note about market percentage and this example:</p>
+<h1 id="how-to-betfair-exchange">How To: Betfair Exchange</h1>
+<p>As Australia’s only online betting exchange, Betfair offers a real alternative to betting with a bookmaker. The platform provides a unique range of non-traditional betting methods that can help punters increase payout potential, uncover opportunities and minimise risk.</p>
+<h2 id="so-how-does-betfair-work">So how does Betfair work?</h2>
+<p>You know how traditional betting works? A licensed bookmaker puts up the odds and you take them. They accept your bet and pay out if you win.</p>
+<p>Betfair is different. The Betfair Exchange connects you with punters all over the world to put up your own odds and place bets. With no interference from a bookmaker, the Betfair Exchange invites a real community to interact directly with the odds and control the market, meaning better odds and better value for you.</p>
+<h3 id="how-does-betfair-make-money">How does Betfair make money?</h3>
+<p>You might be wondering: if a bookmaker makes money by beating punters and claiming their losing stake, how does Betfair make theirs?</p>
+<p><strong>The answer is simple – we take a small cut from the punter’s winnings instead.</strong></p>
+<p>Better known as commission, Betfair will charge a small percentage fee or Market Base Rate (or MBR) on all customer winnings. The MBR will vary depending on region or sporting code and is dictated by how much a sporting governing body taxes Betfair for allowing punters to bet on their product on the Betfair Exchange.</p>
+<p>So while bookmakers attempt to make profit off losing punters, the Betfair Exchange encourages you to find an edge to win – and win more! We don’t care how good you are or the rate of money you make. Everyone is welcome to bet at Betfair. You can find out more about commission and other charges <a href="/commission">here</a></p>
+<h2 id="how-do-i-place-a-bet">How do I place a bet?</h2>
+<p>There are two ways to bet at Betfair: you can either back the odds or you can lay them. To “back” the odds means you are betting that something will happen – a traditional way to bet. By “laying” the odds you are doing the reverse: you bet that something will not happen – and you want to be proven right.</p>
+<p>To place your bet, go to your selected market and choose the odds available in either the blue (back) or pink (lay) boxes. Decide how much you want to bet and confirm.</p>
+<p>But what if you don’t like the odds you see? Ask for something better! Simply adjust the odds on your betting slip and place your bet. Your request will be submitted to the exchange platform, waiting for the Betfair community to decide if they will accept (or “match”) your offer.</p>
+<p>Perhaps you are growing tired of being returned with unmatched bets? This is why we introduced the Betfair Starting Price (or Betfair SP). It guarantees that a punter will have their bet locked in at a fixed price, which is based on back and lay bets placed by the community on horse racing, greyhound racing and harness racing markets.</p>
+<h2 id="back-betting">Back Betting</h2>
+<p>Placing a back bet is the standard play for all punters who used a bookmaker. So we’ll keep this brief: in placing a back bet, you are betting on the odds of something to happen. To place your back bet, choose the market selection box in blue. The odds in the blue column are the biggest prices currently available to back in the market. (Those odds are in the selection box on top, while the amount currently available to back at those odds is underneath.)</p>
+<p>When you have chosen a selection, the betting slip will appear. Time to outlay.</p>
+<p>You’ve chosen the best odds available, but maybe you’re not satisfied? You can request even better odds following a few simple steps</p>
+<ol>
+<li>Toggle the odds on your betting slip to your desired price</li>
+<li>Enter your stake amount</li>
+<li>Place your bet to confirm.
+<strong>But be warned:</strong> your bet will be unmatched until another customer (the layer) agrees to your odds and staked amount. So don’t go setting the odds of a $3.00 chance at $10.00 and expect to get matched instantly – or at all!</li>
+</ol>
+<h2 id="lay-betting">Lay Betting</h2>
+<p>When you place a lay bet, you are betting on something not to happen. Before we dive into a market, let’s walk you through the steps for placing a lay bet.</p>
+<ol>
+<li><strong>Choose your market selection:</strong> just like if you’re back betting – but this time, pick the market selection box in pink. The odds here are the smallest price currently available to lay in the market.</li>
+<li><strong>Take the odds available – or set your own:</strong> again, you can adjust the odds box to an even shorter price. But remember: those odds will only be in locked in if another punter (the ‘backer’) matches them.</li>
+<li><strong>Enter your stake:</strong> unlike a back bet, your stake is the money you want to profit from the predicted result (before commission plus any additional fees and charges). It’s also called the ‘backer’s stake’ because you essentially want to keep the money of someone who’s wagering that the same result will happen. (This is the basic idea of bookmaking.) It is not, however, the full amount that will be deducted from your account when you place your lay bet. That number is your ‘liability’.</li>
+<li><strong>Liability explained:</strong> this is the amount you could lose if the result does not fall your way. It is calculated as follows:
+<strong>Liability = lay odds x [backer’s stake – backer’s stake]</strong></li>
+</ol>
+<p>If you wanted to lay the Sydney Swans in the AFL Premiership market at the odds of $8.00 and entered a $10.00 stake, that means there is someone else putting $10.00 on (backing) for the same result to happen at the same odds.</p>
+<p>For the backer it’s $10.00 x $8.00 = $80.00 payout – a $70.00 profit. And that backer’s profit becomes your liability.</p>
+<ol>
+<li><strong>Place your bet:</strong> now you know what liability means, hit that ‘place bet/s’ button and start the lay bet experience.</li>
+</ol>
+<h3 id="why-lay">Why lay?</h3>
+<p>Consider the Melbourne Cup. You’ve got 24 horses in the race. There’s only one winner. Finding that winner can be extremely hard when you’re pouring over different form lines from different states, regions and hemispheres. How do you land on one good back bet?</p>
+<p>Turn to a lay bet and you’re essentially backing the other horses in the race to beat the one you’re laying. On sheer head count alone (23 against one), the odds are stacked in your favour.</p>
+<p>Similar logic works for sport. Let’s say the odds for Jordan Spieth to win the Masters Tournament are too short, but you don’t know who else to back. Place a lay bet on Spieth and you are backing any of his opponents to win instead. Sounds easier, right?</p>
+<p>Just remember though: the bigger the odds for laying, the greater the liability you face. Know your odds and how to minimise risk. Bet wisely and bet with care.</p>
+<h3 id="lay-betting-trading-the-odds">Lay Betting = Trading the Odds</h3>
+<p>The chance to lay opens the door to betting opportunities you won’t find with a traditional bookmaker. We will explore these in more detail later, but here’s a quick snapshot</p>
 <ul>
-<li>The total of all winning chances as expressed by this market is 115.4%. Another way to look at it is to see that if you backed every horse to collect $100, you would need to outlay $115.4… obviously a losing bet.  If market percentages were less than 100% it would mean punters could back every horse in the market and make a profit, regardless of who the winner was.</li>
-<li>The higher the market percentage the greater the average gap between each horses expressed chance of winning and their actual chance of winning. Sometimes you will hear or read about punters complaining about high market percentages and that’s because they provide a greater advantage to bookmakers.</li>
-<li>Conversely, the lower the market percentage the closer each horse is on average to its true winning chance and the better it is for punters. This is one reason why the Exchange market can be benefit for punters. The overall market percentage (even after winning commission) is typically much lower than fixed odds markets.</li>
+<li><strong>Trading on racing and sport:</strong> lay something not to happen at lower odds, then back it at a higher price to secure a profit. You’re playing the betting game here and the result of the event becomes meaningless.</li>
+<li><strong>Lay betting on racing in-play:</strong> consider yourself a form student? Find an edge through video form and more by laying lead horses you know have a weakness at the finish.</li>
+<li><strong>Arbitrage betting:</strong> or ‘arbing’ for short, where you back a selection with a traditional bookmaker, then lay the same selection on the exchange at odds which can secure a profit. Like trading, you’re now letting the result just play out.</li>
 </ul>
-<h2 id="what-is-value">What is Value?</h2>
-<p><strong>VALUE IS THE TERM USED TO DESCRIBE THE RELATIONSHIP BETWEEN A HORSE’S WINNING CHANCE EXPRESSED BY THE BETTING MARKET AND ITS REAL WINNING CHANCE</strong></p>
+<h2 id="persistence-types-and-limit-bets">Persistence Types and Limit Bets</h2>
+<p>Limit bets on the Exchange are simple back and lay bets where a price limit has been set. This is the bet type created when you either back or lay a selection using the instructions above. </p>
+<p>A persistence type is simply the behaviour of a bet if it is not matched when it is first placed. There are three types:
+- <strong>Lapse:</strong> This is the default setting and means that when the event starts, any unmatched bets will automatically be cancelled
+- <strong>Keep:</strong> This keeps unmatched bets alive when the market goes in-play. These can be cancelled at any time, but in Australia where in-play sports betting is restricted, they cannot be changed. For in-play racing betting on thoroughbreds and harness, these can be changed at any time. For markets that do not go in-play like Greyhounds, this persistence type is invalid
+- <strong>Take SP/Market On Close:</strong> This causes unmatched bets to accept the BSP where the unmatched portion of the bet is greater than the minimum required bet. For bets smaller than this, they will lapse. For markets that don't support BSP, this persistence type is invalid. These bets cannot be cancelled and no odds limit can be specified.</p>
+<h2 id="betfair-starting-price-bsp">Betfair Starting Price (BSP)</h2>
+<p>The Betfair Staring Price (BSP) is similar to the tote in that it allows you to take a fair price that's based on the backers and layers in the market.</p>
+<h3 id="how-is-bsp-different-to-the-traditional-starting-price">How is BSP different to the traditional starting price?</h3>
+<p>Traditionally in Australia, the Starting Price for any horse in any race has been determined by the most common prevailing price available in the bookmakers ring at the meet in question. Betfair’s Starting Price is different.</p>
+<p>It’s based on bets placed by both backers and layers in any market. At the start of an event it looks at the relationship between the amount of money requested at SP by opposing customers and any unmatched Exchange bets.</p>
+<p>There’s no margin for profit built in – and that’s why we think it will give you much better value, even after taking account of commission paid on your net winnings.</p>
+<h3 id="where-can-i-bet-on-the-bsp">Where can I bet on the BSP?</h3>
+<p><strong>Australia</strong> – All <strong>thoroughbred</strong> win markets and all place markets. All <strong>harness</strong> win markets and all place markets, except for NSW meetings and any meetings predominantly on Sky 2. Sky 2 meetings are win market only. All <strong>greyhound</strong> win markets and all place markets.</p>
+<p><strong>New Zealand</strong> – All <strong>thoroughbred</strong> win markets. All <strong>greyhound</strong> win markets.</p>
+<p><strong>International</strong> – All <strong>thoroughbred</strong> win markets across selected racing around the world.</p>
+<h3 id="how-to-place-an-sp-bet">How to place an SP bet?</h3>
 <ul>
-<li><strong>Good value</strong> means the horse’s market price is greater than its real chance of winning (often referred to as “over the odds.”) For example, a horse at $2.80 in the market (implied 35.7% chance of winning) that is actually a 40% chance of winning (implied $2.50 market price), is considered good value. $2.80 is considered “over the odds” as the correct price should be $2.50.</li>
-<li><strong>Poor value</strong> means the horse’s market price is less than its real chance of winning (often referred to as “under the odds.”) For example, a horse at $3.00 in the market (implied 33.3% chance of winning) that is actually a 28.6% chance of winning (implied $3.50 price), is considered poor value. $3.00 is considered to be “under the odds” as the correct price should be $3.50.
-Of course the “actual winning chance” of a horse is very much a subjective concept. What one punter views as good value will be viewed as poor value by another punter. It’s only through a very large sample of bets or assessments that you can start to ascertain whether your overall judgement about value is correct or at least sufficient enough to show a profit.</li>
+<li>Outright BSP betting - you can place the full stake of your wager on the BSP, either regardless of the odds (this is a "market_on_close" bet) or you can specify an odds limit (the worst odds you are willing to accept). You can specify a minimum odds for a back bet and a maximum odds for a lay bet (this is a "limit_on_close" bet).</li>
+<li>Unmatched SP Betting - you can take a price at the Back or Lay odds and if your bet is partially matched, you are prompted to ‘Take SP’ for the unmatched amount. By clicking ‘Take SP’ and updating your bet, when the event turns in-play, any unmatched amounts will automatically be matched at the SP price. This also applies to bets that may be fully unmatched when the event turns in-play – the SP provides convenience ensuring you get your stake matched. Note that this only applies to markets which support BSP betting</li>
 </ul>
-<h2 id="profiting-from-good-and-bad-value">Profiting from good and bad value</h2>
-<p>The benefit of the Betfair Exchange is that it gives you the opportunity to profit from horses you have a strong opinion on, whether it be that a horse is good value or particularly poor value.</p>
-<p><strong>Horses that are good value (i.e. available at a better price than their real winning chance) are targets to BACK.</strong></p>
-<p>For example a horse that has a 40% chance of winning (implied correct price of 100 / 40 = $2.50) that is available in the market at $3.00 is providing a value edge of (40 x 3.0) = 120 – 100 = 20%. In the long-term you would make 20% profit on turnover betting in this scenario, less commission (assuming your judgement is correct.)</p>
-<p><strong>Horses you believe that are poor value and under their real price are good targets to LAY, providing you can lay them at the right price.</strong></p>
-<p>For example a horse that in your opinion has a 30% chance of winning (implied correct price of 100 / 30 = $3.33) that is available to lay at $2.50 has a value edge of 25% in your favour. In the long-term you would make 25% profit on total bets held (less commission).</p>
-<h2 id="betting-is-all-about-probability">Betting is all about probability</h2>
-<p>As a punter it’s important to view betting on racing or any other event as a battle of probability. There are no absolutes such as “this horse has no chance” or “this horse is guaranteed to get a perfect run” etc. Everything has a probability or certain percentage chance of occurring.</p>
-<p>The key to successful betting is to find opportunities where the probability of winning expressed by the market is different to what you believe the real probability is. When it comes to betting on the BF Exchange that can mean finding horses that betting market has underestimated, which are good BACK opportunities, or horses the betting market is overestimating, which present as good LAY prospects.</p>
+<h2 id="in-play-betting">In-Play Betting</h2>
+<h3 id="fortune-favours-fast-fingers">Fortune Favours Fast Fingers</h3>
+<p>Sport is the greatest theatre. It can bring a level of uncertainty and unpredictability you won’t find anywhere else. Where the momentum swings like a pendulum, between heartbreak and glory, in a matter of seconds. Think of the ball that escaped Saints player Stephen Milne in the epic 2010 AFL Grand Final. Or the thunderous finish by Chautauqua in the 2017 T J Smith Stakes.</p>
+<p>Moments like these have you wondering, ‘what are the odds of that happening?’</p>
+<p>At Betfair, you can bet in-play on the outcome of a market as the event in question is happening – in real time. That means, you could’ve backed the “The Draw” to occur in the St Kilda v Collingwood Grand Final and Chautauqua to win at Randwick in the split-second that neither seemed possible. Conversely, you could’ve layed South Africa to win the 1999 Cricket World Cup semi final against Australia in the final over.</p>
+<p>There are racing and sports markets with in-play odds you might never find in a pre-play market. All you need is speed and determination!</p>
+<h3 id="a-note-on-in-play-sports-betting">A Note on In-Play Sports Betting</h3>
+<p>In 2015 the Federal Government prohibited Australian customers from betting online on any aspect of a sporting event after that event has begun. Therefore, customers cannot place bets in-play on sporting events via the Betfair App or on desktop. If customers wish to place an in-play bet on a sports market, they must call our telephone betting service on 132 BET (132 238).</p>
+<p>There are two notable exceptions to this – online customers can bet in-play on the AFL Brownlow Medal and politics markets.</p>
+<h3 id="wait-for-the-green-light">Wait for the Green Light</h3>
+<p>In-play betting is no different to backing or laying on a market before the start time. Find the market you’d like to wager on and wait for the in-play status to appear. A market is turned in-play at either the event’s start time or the scheduled start time, depending on the rules specific to the sport. Look out for the green tick above the market selections on desktop, while on the App a green “In Play” tag will appear next to the race number in question when betting is turned live.</p>
+<p>You can place back or lay bets at odds ranging from $1.01 to $1000.00 in-play. Trust us: those prices get matched, and they have occurred before! Where there is a sporting collapse or victory snatched from the jaws of defeat, the big (and small) odds are getting matched on the Betfair Exchange.</p>
+<h3 id="why-wait">Why Wait?</h3>
+<p>In-play betting provides an opportunity for punters to observe initial momentum and tactical arrangements of a race or sporting match before getting involved. The fast-paced nature of horse and harness racing appeals to punters looking for better odds and utilising their judgement of form and speed maps to claim unlikely sources of value.</p>
+<p>For example, if you know a short-priced favourite is a backmarker who will finish strongly, you might find an opportunity to back at better odds in-play versus pre-play. It depends on the prevailing circumstances midrace, but it could lead to opportunities you will never find in relatively static pre-play markets.</p>
+<p>While in-play sports betting is generally less volatile due to matches taking place over a longer period, punters may prefer it as they can weigh up their options with more confidence. It still can lend itself to abrupt changes in odds, which you’ll find in Twenty20 cricket, AFL or soccer, where a wicket or turnover can lead to major changes on the scoreboard, and markets will reflect those differing circumstances in a match.</p>
+<p>A lesser known but key attraction of in-play betting is the opportunity for punters to combine back and lay bets in the pursuit of profit. With markets active right up to the final siren or winning post, punters can place multiple bets at any time on the same selection and improve their position.</p>
+<h2 id="bet-type-summary">Bet Type Summary</h2>
+<p>Here's a summary of the different bet-types you'll encounter on the Betfair Exchange. While all this talk about persistence types, limit bets, market_on_close and limit_on_close may seem confusing at first, it will all become clear in time. </p>
+<p><img alt="jpg" src="../img/bet_types.JPG" /></p>
 
 
   
@@ -2067,41 +1979,6 @@ Of course the “actual winning chance” of a horse is very much a subjective c
       </main>
       
         <footer class="md-footer">
-    
-      <nav class="md-footer__inner md-grid" aria-label="Footer">
-        
-          
-          <a href="../stakingMethods/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Staking Methods and Bankroll Management" rel="prev">
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Previous
-                </span>
-                Staking Methods and Bankroll Management
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../commission/" class="md-footer__link md-footer__link--next" aria-label="Next: Commission and other charges" rel="next">
-            <div class="md-footer__title">
-              <div class="md-ellipsis">
-                <span class="md-footer__direction">
-                  Next
-                </span>
-                Commission and other charges
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
     <div class="md-footer-meta md-typeset">
       <div class="md-footer-meta__inner md-grid">

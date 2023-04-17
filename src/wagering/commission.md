@@ -1,12 +1,12 @@
 # Betfair Commission and Other Charges
 ---
-## BETFAIR COMMISSION.
+## Commission
 
 Betfair Commission. We know it’s scary. We’d rather spend time talking about the great features of the Exchange. We’d rather spend time talking up better odds, which have been proven time and again. We’d rather spend our time talking about anything else, really.
 
 But like any traditional bookmaker, there needs to be some way for Betfair to make money. To keep the Exchange running, help us in improving our products and services – and pay the handsome bloke writing this article. Our pricing model, however, looks a little different to a bookie. Whilst they must interfere with your odds with built-in margins, we don’t. Remember: odds creation is completely decided by you.
 
-### WHAT ARE THE DIFFERENT MARKET BASE RATES? 
+### What are the different market base rates? 
 
 Betfair’s pricing model comes into the picture after the race has been won, when commission is taken from a customer’s net winnings. This is called a Market Base Rate. This rate is the maximum percentage of your winnings that you will pay in commission. To find out what the Market Base Rate is for a market, simply click on the “Rules” section of the Market you wish to place a bet on to find it. The percentage of commission will depend on what type of sport you are betting into, as well as which governing body is overseeing the sporting event. And that can vary from state to state, code to code. 
 
@@ -20,7 +20,7 @@ View this easy-to-read chart for a guide to MBR across racing and sport on the E
 
 ![jpg](../img/market_base_rates.JPG)
 
-### COMMISSION EXAMPLE
+### Example
 
 For example, Victorian thoroughbred racing (i.e. the Melbourne Cup market) has a 7% Market Base Rate. 
 
@@ -32,13 +32,13 @@ The commission is cumulative across a single market and is calculated only on th
 
 It's important to note that commission is charged per market not per event. We’ll talk about the difference between markets and events a bit later. This means if you were to place a bet in the Place market as well in the same race, any losses you incur there will not offset commission in the win market. 
 
-### WHY COMMISSION?
+### Why Commission?
 
 Taxes set by state and territory governments on individual customer winnings are imposed on Australian licensed wagering providers. In addition, these providers must also pay product fees to Australian sporting and racing bodies so they can put up betting markets on their sporting matches and races.
 
 Traditional bookmakers offset any fees and taxes by having a built-in margin on all betting markets. This is made possible because the bookies are setting the odds and can dictate odds movement and creation. And once again, the Betfair Exchange does not set the odds – you do!
 
-## TURNOVER CHARGE
+## Turnover Charge
 
 One of the unique benefits of the Betfair Exchange is the ability for customers to trade in and out (back and lay) as prices on a market fluctuate in the build up to the jump and then in-play, as is famous on the stock market, buy low sell high. 
 
@@ -46,7 +46,7 @@ Unfortunately, Racing NSW have a race field fee approach (the Turnover Model) wh
 
 The Turnover Charge is aimed at customer activity which generates large volumes of back bets without providing to the exchange the corresponding revenue to cover the race field fees imposed. Therefore, without the Turnover Charge, Betfair would be left with a turnover fee payable to Racing NSW but no revenue with which to pay it. 
 
-### WHO WILL PAY THE TURNOVER CHARGE? 
+### Who will pay the Turnover Charge? 
 
 This charge will only apply to customers who during a week (Monday to Sunday GMT time) meet all three of the below criteria: 
 
@@ -56,7 +56,7 @@ This charge will only apply to customers who during a week (Monday to Sunday GMT
 
 Total commission generated is half of the commission paid plus half of the implied commission, calculated by the formula = (commission paid + implied commission) ÷ 2 where implied commission = market losses x 3%
 
-### WHAT IS THE CHARGE? 
+### What is the charge?
 
 The charge will be 3.0% of the aggregate value of matched back bets on NSW thoroughbred markets. 
 
@@ -64,7 +64,7 @@ The charge will be calculated for the period from each Monday to Sunday and will
 
 The charge will only be incurred for any week when a customer’s betting activity meets the criteria. Please note the charge will not be applicable to: (a) any lay bets; or (b) bets on products other than NSW thoroughbreds. 
 
-### HOW WILL I BE NOTIFIED IF I AM REQUIRED TO PAY? 
+### How will I be notified if I am required to pay?
 
 Customers will be contacted directly by Betfair and informed on the first occasion on which this Turnover Charge would have been payable. 
 
@@ -72,24 +72,24 @@ Customers will also be afforded a one-week ‘grace period’ for the first inst
 
 However, if a customer has previously hit Turnover Charge and then hits the revised turnover charge, the charge will be payable and no one week ‘grace period’ will be afforded as this is not the first time the charge has been hit. 
 
-## TRANSACTION CHARGE
+## Transaction Charge
 
 High frequency trading and betting is a wagering proposition unique to the Betfair Exchange and is often an introductory point for many new traders looking to automate their activity using an API or third-party betting tool. To ensure that the Exchange remains accessible and not overloaded with requests from ineffecient transactional behaviour or "rogue" bots, a transaction charge exists for any customer placing over 5000 bets per hour (which is more than 1 per second!)
 
-### WHO WILL PAY THE TRANSACTION CHARGE? 
+### Who will pay the Transaction Charge? 
 
 Only customers who log more than 5000 transactions in one hour from XX:00:00 to XX:59:59 will be required to pay this charge which includes both successful and failed transactions including:
 
 - Any bet that is matched, cancelled or lapsed.
 - Any transaction that fails due to an error.
 
-### WHAT IS A FAILED TRANSACTION?
+### What is a failed transaction?
 
 An action that leads to an API error, resulting in a failed bet placement, failed cancellation or other failed transaction. A summary of common errors, the reasons for them and how to avoid them is detailed below. This list is not exhaustive.
 
 ![jpg](../img/failed_transactions.JPG)
 
-### WHAT IS THE CHARGE? 
+### What is the Transaction Charge? 
 
 At the end of every day, we add up all the transactions you have recorded. If this number is in excess of 5000 in any hour of the day then (based on the 24-hour clock system) then we will multiply the exceeded amount by 0.2p.:
 
@@ -97,15 +97,15 @@ We will offset any transaction fee against total comission. Total commission gen
 
 Any remaining amount will be charged to your account on a daily basis. Should your commission exceed this amount, you will not be charged a transaction fee. Accounts that relate to one person, entity, API subscription or a Master account (Trading version only) with related Sub accounts are treated as one customer for the purposes of transaction charging. Note transaction charges will not be offset against any Premium charges.
 
-### HOW WILL I BE NOTIFIED IF I AM REQUIRED TO PAY? 
+### How will I be notified if I am required to pay?
 
 Customers will be contacted directly by Betfair and informed when this Transaction Charge is payable. We may be able to waive these charges in the first instance, but this will be assessed on an individual basis. We can provide assistance and guidance on best practices and how to avoid these charges in the future based on your specific use case for the Betfair Exchange.
 
-## PREMIUM CHARGE
+## Premium Charge
 
 The Betfair Premium charge is only payable by the top 0.5% of customers, and while most exchange accounts will never encounter it, it is important to become informed about how and when it applies. In its essence, premium charge is a profit-sharing arrangement, whereby successful punters and traders share profit with Betfair to help us grow the exchange to ensure a strong and vibrant future.
 
-### WHO WILL PAY THE PREMIUM CHARGE? 
+### Who will pay the Premium Charge?
 
 Each week Betfair will calculate your ‘gross profits’ made, and your ‘total charges’ generated over the lifetime of your account. The details of these calculations are explained below.
 
@@ -117,17 +117,17 @@ While those conditions accurately describe our most successful customers, they m
 - any single win that constitutes more than 50% of lifetime gross profits will be excluded from the calculation
 - customers will only be considered for the Premium Charge after they have bet in more than 250 markets.
 
-### WHAT IS THE CHARGE? 
+### What is the Premium Charge?
 
 Each week the customers who meet all the conditions set out above will be charged the lesser of:
 
 - The difference between 20% of the previous week’s gross profits and the total charges generated during the week; and
 - The difference between 20% of gross profits and the total charges generated during the lifetime of the account.
 
-### HOW CAN I REDUCE MY PREMIUM CHARGE?
+### How can I reduce my Premium Charge?
 
 Australia and New Zealand customers should reach out directly to their VIP Manager, or the Betfair Pricing Team [here](mailto:pricingenquiries@betfair.com.au) to discuss options.
 
-## SUMMARY
+## Closing thoughts
 
 While ultimately we would prefer to not charge fees, it is necessary to pay the sporting and racing bodies to be able to offer markets on the exchange as well as to invest in our people and infrastructure to ensure a bright future for the exchange. Australian and New Zealand customers are welcome to reach out to us to discuss fees and what we can do to help you at automation@betfair.com.au

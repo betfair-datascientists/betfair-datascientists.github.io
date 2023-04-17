@@ -11,8 +11,8 @@ nav:
     - Home: index.md  
 
     - Wagering:
-        - Commission and other charges: wagering/commission.md
         - Staking Methods and Bankroll Management: wagering/stakingMethods.md
+        - Commission and other charges: wagering/commission.md
 
     - API:
         - API resources: api/apiResources.md

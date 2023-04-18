@@ -276,7 +276,7 @@ You do this by clicking on the 'start time' column heading until the races are i
 
 ![Automating your tipping with Bet Angel](./img/BetAngelRatingsMarketTimes.png)
 
-The Excel spreadsheet used in this tutorial is created in a way that allows it to link multiple markets at the same time. Take a look at the [Betfair automating simultaneous markets tutorial](/thirdPartyTools/betAngelSimultaneousMarkets/) on the hub which will step you through the process so you can take advantage of this feature. 
+The Excel spreadsheet used in this tutorial is created in a way that allows it to link multiple markets at the same time. Take a look at the [Betfair automating simultaneous markets tutorial](/automation/betAngelSimultaneousMarkets/) on the hub which will step you through the process so you can take advantage of this feature. 
 
 
 ### - Linking the spreadsheet

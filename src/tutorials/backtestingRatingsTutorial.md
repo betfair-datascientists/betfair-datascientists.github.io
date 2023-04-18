@@ -7,12 +7,12 @@
 ---
 This tutorial was written by [Tom Bishop](https://github.com/TMBish) and was [originally published on Github](https://github.com/TMBish/bfStreamTutorials/tree/main/01-backtesting). It is shared here with his permission. 
 
-This tutorial follows on logically from the [JSON to CSV tutorial](https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/) we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. 
+This tutorial follows on logically from the [JSON to CSV tutorial](https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/) we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. 
 
 As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/pulls) if you catch some bugs or have other improvements! 
 
 !!! note "Cheat sheet"
-    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/historicData/backtestingRatingsTutorial/#complete-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py).
+    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/tutorials/backtestingRatingsTutorial/#complete-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py).
 
     - To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using [VS code](https://code.visualstudio.com/download)), make sure you've navigated in the terminal to the folder you've saved the script in and then type `py main.py` (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. 
 
@@ -228,7 +228,7 @@ Now what's good about that, for the purposes of our exercise, is that the very n
 
 Because these files are so large and unprocessed this process won't look the same as your normal data ETL in python: where you can read a raw data file (csv, JSON, text etc.) into memory and use python functions to transform into usable format.
 
-I personally had no idea how to use python and `betfairlightweight` to parse these data until I saw [Betfair's very instructive overview](https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/) which you should read for a more detailed look at some of the below code.
+I personally had no idea how to use python and `betfairlightweight` to parse these data until I saw [Betfair's very instructive overview](https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/) which you should read for a more detailed look at some of the below code.
 
 By my count there were 4 key conceptual components that I had to get my head around to understand and be able to re-purpose that code. So if you're like me (a bit confused by some of the steps in that piece) this explanation might help.
 
@@ -277,7 +277,7 @@ def filter_market(market: MarketBook) -> bool:
 
 #### 1: .tar load
 
-- This function I stole from [Betfair's instructional article](https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/)
+- This function I stole from [Betfair's instructional article](https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/)
 - The stream files are downloaded as .tar archive files which are a special kind of file that we'll need to unpack
 - Instead of loading each file into memory this function returns a "generator" which is a special python object that is to be iterated over
 - This basically means it contains the instructions to unpack and scan over files on the fly

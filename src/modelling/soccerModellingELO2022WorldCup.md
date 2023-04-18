@@ -54,7 +54,7 @@ library(lubridate)
 library(showtext)
 ```
 
-Once the required packages are installed and loaded into our R environment we can import the historic match results data. In this case I've downloaded the [Kaggle data set](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017?resource=download) to my local machine so that I can read it in as a CSV - you should be able to do the same using a free Kaggle account. Alternatively this is the same data set you'll receive through participating in the [Betfair World Cup Datathon](/modelling/soccerWorldCup2022Datathon/).
+Once the required packages are installed and loaded into our R environment we can import the historic match results data. In this case I've downloaded the [Kaggle data set](https://www.kaggle.com/datasets/martj42/international-football-results-from-1872-to-2017?resource=download) to my local machine so that I can read it in as a CSV - you should be able to do the same using a free Kaggle account. Alternatively this is the same data set you'll receive through participating in the Betfair World Cup Datathon.
 
 ```{r message=FALSE}
 match_results <- read_csv("results.csv")

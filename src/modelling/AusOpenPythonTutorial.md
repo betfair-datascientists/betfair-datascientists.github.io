@@ -4,7 +4,7 @@
 ### The Task
 This notebook will outline how the Betfair Data Scientists went about modelling the Australian Open for Betfair's Australian Open Datathon. The task is simple: we ask you to predict the winner of every possible Australian Open matchup using data which we provide.
 
-The metric used to determine the winner will be log loss, based on the actual matchups that happen in the Open. For more information on log loss, click [here](http://wiki.fast.ai/index.php/Log_Loss).
+The metric used to determine the winner will be log loss, based on the actual matchups that happen in the Open. For more information on log loss, click [here](https://en.wikipedia.org/wiki/Cross_entropy).
 
 How an outline of our methodology and thought process, read [this](/modelling/howToModelTheAusOpen) article.
 

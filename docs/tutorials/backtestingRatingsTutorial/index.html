@@ -2116,13 +2116,13 @@
 
 <hr />
 <p>This tutorial was written by <a href="https://github.com/TMBish">Tom Bishop</a> and was <a href="https://github.com/TMBish/bfStreamTutorials/tree/main/01-backtesting">originally published on Github</a>. It is shared here with his permission. </p>
-<p>This tutorial follows on logically from the <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/">JSON to CSV tutorial</a> we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. </p>
+<p>This tutorial follows on logically from the <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/">JSON to CSV tutorial</a> we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. </p>
 <p>As always please <a href="mailto:data@betfair.com.au">reach out</a> with feedback, suggestions or queries, or feel free to submit a <a href="https://github.com/betfair-down-under/autoHubTutorials/pulls">pull request</a> if you catch some bugs or have other improvements! </p>
 <div class="admonition note">
 <p class="admonition-title">Cheat sheet</p>
 <ul>
 <li>
-<p>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/historicData/backtestingRatingsTutorial/#complete-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py">download the script from Github</a>.</p>
+<p>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/tutorials/backtestingRatingsTutorial/#complete-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py">download the script from Github</a>.</p>
 </li>
 <li>
 <p>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </p>
@@ -2354,7 +2354,7 @@
 <hr />
 <h3 id="unpacking-flattening-the-data">Unpacking / flattening the data</h3>
 <p>Because these files are so large and unprocessed this process won't look the same as your normal data ETL in python: where you can read a raw data file (csv, JSON, text etc.) into memory and use python functions to transform into usable format.</p>
-<p>I personally had no idea how to use python and <code>betfairlightweight</code> to parse these data until I saw <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/">Betfair's very instructive overview</a> which you should read for a more detailed look at some of the below code.</p>
+<p>I personally had no idea how to use python and <code>betfairlightweight</code> to parse these data until I saw <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/">Betfair's very instructive overview</a> which you should read for a more detailed look at some of the below code.</p>
 <p>By my count there were 4 key conceptual components that I had to get my head around to understand and be able to re-purpose that code. So if you're like me (a bit confused by some of the steps in that piece) this explanation might help.</p>
 <p>I'll assume you don't do any decompression and keep the monthly PRO files as the .tar archives as they are.</p>
 <p>Conceptually the process looks something like this:</p>
@@ -2397,7 +2397,7 @@ First we'll run a bunch of setup code setting up my libraries and creating some 
 </code></pre></div>
 <h4 id="1-tar-load">1: .tar load</h4>
 <ul>
-<li>This function I stole from <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/">Betfair's instructional article</a></li>
+<li>This function I stole from <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/">Betfair's instructional article</a></li>
 <li>The stream files are downloaded as .tar archive files which are a special kind of file that we'll need to unpack</li>
 <li>Instead of loading each file into memory this function returns a "generator" which is a special python object that is to be iterated over</li>
 <li>This basically means it contains the instructions to unpack and scan over files on the fly</li>

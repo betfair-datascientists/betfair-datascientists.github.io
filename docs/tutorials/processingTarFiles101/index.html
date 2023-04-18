@@ -2071,7 +2071,7 @@
 <hr />
 <p>So even though we've got some great tutorials up here on our Automation Hub, a common wish from many an automated customer, is for a simple plug-and-play tutorial and script for parsing the PRO TAR files into CSVs. So here it is, an easy-to-follow tutorial that makes use of existing tutorials by Tom Bishop and others to easily and painlessly process these JSON files into CSVs ready to be modelled.</p>
 <p>And don't worry, this tutorial has plenty of error-handling built in so (hopefully) you won't wake up in the morning to find the script failed at 1AM while you were dreaming of the final straight at Moonee Valley. </p>
-<p>This tutorial will concern itself primarily with racing, however, at the bottom of the page we have also included <a href="https://betfair-datascientists.github.io/historicData/processingTarFiles101/#22-complete-code-sports-processor">complete code</a> suited for parsing sports TAR files including handling for line/handicap markets.</p>
+<p>This tutorial will concern itself primarily with racing, however, at the bottom of the page we have also included <a href="https://betfair-datascientists.github.io/tutorials/processingTarFiles101/#22-complete-code-sports-processor">complete code</a> suited for parsing sports TAR files including handling for line/handicap markets.</p>
 <p>So without further ado, let's jump into it!</p>
 </div>
 </div>
@@ -2082,7 +2082,7 @@
 <h3 id="cheat-sheet">Cheat sheet</h3>
 <ul>
 <li>This is presented as a Jupyter notebook as this format is interactive and lets you run snippets of code from within the notebook. To use this functionality <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/master/processingTarFiles101/tar.ipynb">you'll need to download a copy of the <code>ipynb</code> file locally</a> and open it in a text editor (i.e. VS code).</li>
-<li>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/historicData/processingTarFiles101/#21-complete-code-racing-processor">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/tree/master/processingTarFiles101">download the script from Github</a>.</li>
+<li>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/tutorials/processingTarFiles101/#21-complete-code-racing-processor">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/tree/master/processingTarFiles101">download the script from Github</a>.</li>
 <li>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </li>
 <li>Make sure you amend your data path to point to your data file. We'll be taking in an input of a historical tar file downloaded from the <a href="https://historicdata.betfair.com/#/help">Betfair historic data site</a>. We're using a PRO version, though the code should work on ADVANCED too. This approach won't work with the BASIC data tier. For more information on these files please reach out to us at <a href="mailto:automation@betfair.com.au">automation</a></li>
 <li>We're using the betfairlightweight and betfair_data package to do the heavy lifting</li>
@@ -2365,7 +2365,7 @@ This will provide:</p>
 <li>BSP Near Price</li>
 <li>BSP Far Price</li>
 </ul>
-<p>NOTE: Projected BSP displayed on the app/website is the Near Price - more information about Near/Far Prices and their accuracy can be found <a href="https://betfair-datascientists.github.io/historicData/analysingAndPredictingBSP/">here</a></p>
+<p>NOTE: Projected BSP displayed on the app/website is the Near Price - more information about Near/Far Prices and their accuracy can be found <a href="https://betfair-datascientists.github.io/tutorials/analysingAndPredictingBSP/">here</a></p>
 <p>NOTE: The function is defined to stop pulling the prices once the market goes in-play. If in-play prices are required, then simply remove the condition for market_book.inplay. However, you will need to insert an inplay flag in order to distinguish when the market goes inplay in the csv file.</p>
 </div>
 </div>

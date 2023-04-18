@@ -2167,7 +2167,7 @@
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This tutorial was written by <a href="https://github.com/TMBish">Tom Bishop</a> and was <a href="https://github.com/TMBish/bfStreamTutorials/blob/main/02-angles/article/angles.ipynb">originally published on Github</a>. It is shared here with his permission. </p>
-<p>This tutorial follows on logically from the <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/">JSON to CSV tutorial</a> and <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/">backteseting ratings in Python tutorial</a> we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at those tutorials before diving into this one. </p>
+<p>This tutorial follows on logically from the <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/">JSON to CSV tutorial</a> and <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/">backteseting ratings in Python tutorial</a> we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at those tutorials before diving into this one. </p>
 <p>As always please <a href="mailto:automation@betfair.com.au">reach out</a> with feedback, suggestions or queries, or feel free to submit a <a href="https://github.com/betfair-down-under/autoHubTutorials/pulls">pull request</a> if you catch some bugs or have other improvements! </p>
 </div>
 </div>
@@ -2178,7 +2178,7 @@
 <h3 id="cheat-sheet">Cheat sheet</h3>
 <ul>
 <li>This is presented as a Jupyter notebook as this format is interactive and lets you run snippets of code from wihtin the notebook. To use this functionality <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/master/automatedBettingAngles/automatedBettingAnglesTutorial.ipynb">you'll need to download a copy of the <code>ipynb</code> file locally</a> and open it in a text editor (i.e. VS code).</li>
-<li>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/historicData/automatedBettingAnglesTutorial/#complete-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/404ec04284e2ac3ac2f97f4117c77bf27d72be1e/automatedBettingAngles/main.py">download the script from Github</a>.</li>
+<li>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/tutorials/automatedBettingAnglesTutorial/#complete-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/blob/404ec04284e2ac3ac2f97f4117c77bf27d72be1e/automatedBettingAngles/main.py">download the script from Github</a>.</li>
 <li>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </li>
 <li>Make sure you amend your data path to point to your data file. We'll be taking in an input of a historical tar file downloaded from the <a href="https://historicdata.betfair.com/#/help">Betfair historic data site</a>. We're using a PRO version, though the code should work on ADVANCED too. This approach won't work with the BASIC data tier. </li>
 <li>We're using the <a href="https://github.com/liampauling/betfair/tree/master/betfairlightweight"><code>betfairlightweight</code></a> package to do the heavy lifting</li>
@@ -2322,7 +2322,7 @@
 - Volume Weighted Avg Price (top 3 boxes) 30 seconds before the scheduled jump time
 - The volume traded on the selection
 - The minimum "best available to lay" price offered inplay (which is a measure of how low the selection traded during the race)</p>
-<p>First we'll establish some utility functions needed to parse the data. Most of these were discussed in the previous <a href="https://betfair-datascientists.github.io/historicData/backtestingRatingsTutorial/">backtest your ratings</a> tutorial.</p>
+<p>First we'll establish some utility functions needed to parse the data. Most of these were discussed in the previous <a href="https://betfair-datascientists.github.io/tutorials/backtestingRatingsTutorial/">backtest your ratings</a> tutorial.</p>
 </div>
 </div>
 </div>

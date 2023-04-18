@@ -440,8 +440,6 @@ And there you have it - we've successfully created a model for predicting future
 
 We hope you've found this tutorial useful - if you have any questions regarding predictive data modelling please reach out to [automation@betfair.com.au](mailto:automation@betfair.com.au).
 
-Good luck in the [Datathon](/modelling/soccerWorldCup2022Datathon/)!
-
 --- 
 ### Disclaimer
 

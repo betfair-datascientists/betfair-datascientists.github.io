@@ -16,7 +16,7 @@ You might be wondering: if a bookmaker makes money by beating punters and claimi
 
 Better known as commission, Betfair will charge a small percentage fee or Market Base Rate (or MBR) on all customer winnings. The MBR will vary depending on region or sporting code and is dictated by how much a sporting governing body taxes Betfair for allowing punters to bet on their product on the Betfair Exchange.
 
-So while bookmakers attempt to make profit off losing punters, the Betfair Exchange encourages you to find an edge to win – and win more! We don’t care how good you are or the rate of money you make. Everyone is welcome to bet at Betfair. You can find out more about commission and other charges [here](/commission)
+So while bookmakers attempt to make profit off losing punters, the Betfair Exchange encourages you to find an edge to win – and win more! We don’t care how good you are or the rate of money you make. Everyone is welcome to bet at Betfair. You can find out more about commission and other charges [here](/wagering/commission)
 
 ## How do I place a bet?
 

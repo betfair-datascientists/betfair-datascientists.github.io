@@ -221,7 +221,7 @@ Fill or kill is a useful tool to instruct Bet Angel to cancel (kill) a bet if it
 ---
 ## What next? 
 
-Now that you've got the beginner level sorted, take the next step and have a look at our [Intermediate guide to Bet Angel](/autoTools/betAngelintermediate).
+Now that you've got the beginner level sorted, take the next step and have a look at our [Intermediate guide to Bet Angel](/automation/betAngelintermediate).
 
 ---
 ## Disclaimer

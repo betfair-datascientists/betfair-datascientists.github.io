@@ -1992,7 +1992,7 @@
 <p class="admonition-title">Cheat sheet</p>
 <ul>
 <li>
-<p>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvRevisited/#completed-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/tree/master/jsonToCsvRevisited">download the script from Github</a>.</p>
+<p>If you're looking for the complete code <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvRevisited/#completed-code">head to the bottom of the page</a> or <a href="https://github.com/betfair-down-under/autoHubTutorials/tree/master/jsonToCsvRevisited">download the script from Github</a>.</p>
 </li>
 <li>
 <p>To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using <a href="https://code.visualstudio.com/download">VS code</a>), make sure you've navigated in the terminal to the folder you've saved the script in and then type <code>py main.py</code> (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. </p>
@@ -2028,7 +2028,6 @@
 <hr />
 <h2 id="read-the-documentation">READ. THE. DOCUMENTATION.</h2>
 <p>The <code>betfairlightweight</code> library is doing all the computationally heavy lifting in our script, and speeding it up even slightly could save us a lot of total run time, so we figured we should probably take a look online to see if there were known ways of speeding it up. </p>
-<p>Whoops. <a href="https://liampauling.github.io/betfair/advanced/#performance">There is a page addressing performance</a> on the <code>betfairlightweight</code> docs discussing how to speed up parsing historic files. Although we were pretty upfront in our initial tutorial about our lack of Python coding ability, that's not an excuse for us to not read the instructions...</p>
 <p>Let's implement these changes and see if that's enough to let us keep this article to just a couple of paragraphs!</p>
 <p>Firstly, let's install the speed version of betfairlightweight; it says we should have this by default on Mac but there's no harm in checking anyway.</p>
 <div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">pip install &#39;betfairlightweight[speed]&#39;</span>
@@ -2082,7 +2081,7 @@
 <hr />
 <h2 id="riir-rewrite-it-in-rust">RIIR (Rewrite it in Rust)</h2>
 <p>So we've chosen path two: write a new, faster library. I've been playing round in Rust for the last few years - it's a great, modern, and extremely fast language, with a well-loved mascot (hi Ferris!), but most importantly we know it has really great support for writing fast Python libraries. If this was a movie this is where they would show a montage of us staying up late, chugging coffee, and tapping away at our keyboards, but I'll save you that and instead just give you a <a href="https://github.com/tarb/betfair_data">link to our new library, betfair_data</a>. Quite a bit of effort has gone into making this library as fast as we can, and if there's interest we might write a follow up article that discusses the techniques we used to increase it's speed - let us know if you're keen for that - but for the purpose of this discussion the internals of the library don't really matter.</p>
-<p>To use our library we'll only need to make a few small changes to our script. You can <a href="https://betfair-datascientists.github.io/historicData/jsonToCsvRevisited/#complete-code">jump ahead and see the completed file</a> for this stage, but we'll walk through the main changes step by step below.</p>
+<p>To use our library we'll only need to make a few small changes to our script. You can <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvRevisited/#complete-code">jump ahead and see the completed file</a> for this stage, but we'll walk through the main changes step by step below.</p>
 <p>We need to start by importing the new library - it's available in pypi and can be easily installed with pip.</p>
 <div class="highlight"><span class="filename">Terminal</span><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="go">pip install betfair_data</span>
 </code></pre></div>

@@ -1997,12 +1997,12 @@
 <hr />
 <div class="admonition note">
 <p class="admonition-title">Before you start</p>
-<p>This tutorial follows on from our <a href="../How_to_Automate_1.ipynb">How to Automate series</a> which stepped through how to create a trading bot for a few different strategies. Make sure you take a look through them first before you start here.</p>
+<p>This tutorial follows on from our <a href="../How_to_Automate_1">How to Automate series</a> which stepped through how to create a trading bot for a few different strategies. Make sure you take a look through them first before you start here.</p>
 </div>
 <p>This is the final part of the How to Automate series (for a while at least). In my previous posts we have created a few different strategies, but I haven't actually backtested or simulated any of them yet. How will do we even know if they have any edge? </p>
 <p>Today we test those strategies by running simulations and try to optimise performance.</p>
 <p>But how do we test strategies?</p>
-<p>One method is to follow the steps shown in this fantastic article: <a href="../tutorials/backtestingRatingsTutorial.ipynb">Backtesting wagering models with Betfair JSON stream data</a>. But if you already have access to Betfair historic data or you have reccorded it yourself, you are not making full use of your data. This is because the above method will take all the amazing data thats has been collected and only extract a sliver of data from a few time points.</p>
+<p>One method is to follow the steps shown in this fantastic article: <a href="../backtestingRatingsTutorial">Backtesting wagering models with Betfair JSON stream data</a>. But if you already have access to Betfair historic data or you have reccorded it yourself, you are not making full use of your data. This is because the above method will take all the amazing data thats has been collected and only extract a sliver of data from a few time points.</p>
 <p>Flumine is amazing because it can make full use of the entire dataset to simulate the market from when the market is first created to settlement. Instead of looking at the prices at 3 minutes before the race and assuming we get matched we can for example simulate placing a back bet hours before the race starts and replay exactly what happened in that market second by second to see if we would have gotten matched between the time we placed the bet and when the market settles. This is really cool because we might have a really awesome model that is close to being profitable but not quite and we want to optimise it.</p>
 <p>This will give us the most realistic back testing available and let us test if we are getting matched for the volume and price we want and if we have any edge at all.</p>
 <p>Something that is important to note is that although this is the most realistic backtest you can probably get, it is not 100% accurate. This is because we are simply replaying a market with our orders being added in, we cannot take into account how other market participants react. If we place a huge order e.g. $1000 or more we will likely trigger other peoples bots the market will likely move against us.</p>
@@ -2964,7 +2964,7 @@
 </div>
 </div>
 <p>So the results seem pretty similar to before. After commisions we are down around $700 so we seem to be doing slighlty better.</p>
-<p>Lets try a different staking method instead, this time I have opted for a proportional staking strategy going for a fixed $10 profit on back bets and a fixed $10 liability on lay bets. There is an excellent post <a href="https://betfair-datascientists.github.io/modelling/stakingMethods/">analysing different staking methods</a> and I would encourage everyone to take a look at it. Lets see how our simulation went:</p>
+<p>Lets try a different staking method instead, this time I have opted for a proportional staking strategy going for a fixed $10 profit on back bets and a fixed $10 liability on lay bets. There is an excellent post <a href="https://betfair-datascientists.github.io/wagering/stakingMethods/">analysing different staking methods</a> and I would encourage everyone to take a look at it. Lets see how our simulation went:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Proportional Staking instead of Flat Staking</label><label for="__tabbed_5_2">Results Before Commissions</label><label for="__tabbed_5_3">Results After Commissions</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">

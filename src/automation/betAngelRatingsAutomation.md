@@ -19,7 +19,7 @@ We'll step through how we went about getting Bet Angel Pro to place bets using t
     - Ratings: [Betfair's Data Scientists' thoroughbred ratings model](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/)
     - Rules: [here's the spreadsheet](./assets/BetAngel_ThoroughbredRatingsAutomation.xls) We set up with our macros and rules included, but you'll obviously need to tweak it to suit your strategy and the format of your ratings 
     - Tool: [Bet Angel Pro](https://www.betangel.com/bet-angel-professional/)
-    - Assigning multiple markets to your Excel worksheets in Bet Angel so you don't miss a race: [Betfair automating simultaneous markets tutorial](/thirdPartyTools/betAngelSimultaneousMarkets/)
+    - Assigning multiple markets to your Excel worksheets in Bet Angel so you don't miss a race: [Betfair automating simultaneous markets tutorial](/automation/betAngelSimultaneousMarkets/)
 
 ---
 ### - Set up 
@@ -316,7 +316,7 @@ You do this by clicking on the 'start time' column heading until the races are i
 
 ![Automating a ratings based strategy with Bet Angel](./img/BetAngelRatingsMarketTimes.png)
 
-The Excel spreadsheet used in this tutorial is created in a way that allows it to link multiple markets at the same time. Take a look at the [Betfair automating simultaneous markets tutorial](/thirdPartyTools/betAngelSimultaneousMarkets/) on the hub which will step you through the process so you can take advantage of this feature. 
+The Excel spreadsheet used in this tutorial is created in a way that allows it to link multiple markets at the same time. Take a look at the [Betfair automating simultaneous markets tutorial](/automation/betAngelSimultaneousMarkets/) on the hub which will step you through the process so you can take advantage of this feature. 
 
 ---
 ### - Linking the spreadsheet

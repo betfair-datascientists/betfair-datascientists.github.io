@@ -5,7 +5,7 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/0UfPdeghuN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ---
-This tutorial was written by [Tom Bishop](https://github.com/TMBish) and was [originally published on Github](https://github.com/TMBish/bfStreamTutorials/blob/main/01-hub-backtesting.ipynb). It is shared here with his permission. 
+This tutorial was written by [Tom Bishop](https://github.com/TMBish) and was [originally published on Github](https://github.com/TMBish/bfStreamTutorials/tree/main/01-backtesting). It is shared here with his permission. 
 
 This tutorial follows on logically from the [JSON to CSV tutorial](https://betfair-datascientists.github.io/historicData/jsonToCsvTutorial/) we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. 
 

@@ -13,7 +13,7 @@ To set this up, we need to make sure that there are enough instances of the ‘B
 We've created a special Excel file with macros that will allow up to three markets to be linked at the same time. These macros automatically clear the contents of each sheet when they detect a market change and clear any errors that may occur. If you want to have more worksheets to be linked to different markets, you will need to update the macros accordingly so that they all work independently from one another. 
 
 !!! info "Simultaneous markets spreadsheet"
-    Please note that the above edited excel workbook does not include any automated strategies. You will need to add this in yourself or take a look at our [Multiple market ratings tutorial](/thirdPartyTools/BetAngelMultipleMarketRatings/)
+    Please note that the above edited excel workbook does not include any automated strategies. You will need to add this in yourself or take a look at our [automated market ratings tutorial](/automation/betAngelRatingsAutomation/)
 
 
 ![Automating simultaneous markets](./img/BetAngelSimultaneousMarketsExcel1.jpg)

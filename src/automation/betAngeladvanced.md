@@ -85,7 +85,7 @@ When your automation file is linked to a market it will appear in the ‘Automat
 
 ## Custom columns - Advanced
 
-Please see our [Intermediate guide on custom columns here](/thirdPartyTools/betAngelintermediate) before starting this advanced tutorial. 
+Please see our [Intermediate guide on custom columns here](/automation/betAngelintermediate) before starting this advanced tutorial. 
 
 Custom columns can be very useful to tailor your betting experience when placing manual bets. They can also be used to trigger betting automations. 
 
@@ -151,11 +151,11 @@ For more tutorials on using the Bet Angel Excel function, take a look through ou
     - [Custom Column (Advanced)](https://www.youtube.com/watch?v=-0ShD87g21w)
 
 - [Automation Hub](https://betfair-datascientists.github.io/)
-    - [Ratings Automation tutorial](https://betfair-datascientists.github.io/autoTools/betAngelRatingsAutomation/)
-    - [Market favourite automation](https://betfair-datascientists.github.io/autoTools/betAngelMarketFavouriteAutomation/)
-    - [Tipping automation tutorial](https://betfair-datascientists.github.io/autoTools/betAngelTippingAutomation/)
-    - [Simultaneous markets tutorial](https://betfair-datascientists.github.io/autoTools/betAngelSimultaneousMarkets/)
-    - [Kelly criterion staking tutorial](https://betfair-datascientists.github.io/autoTools/betAngelSimultaneousMarkets/)
+    - [Ratings Automation tutorial](https://betfair-datascientists.github.io/automation/betAngelRatingsAutomation/)
+    - [Market favourite automation](https://betfair-datascientists.github.io/automation/betAngelMarketFavouriteAutomation/)
+    - [Tipping automation tutorial](https://betfair-datascientists.github.io/automation/betAngelTippingAutomation/)
+    - [Simultaneous markets tutorial](https://betfair-datascientists.github.io/automation/betAngelSimultaneousMarkets/)
+    - [Kelly criterion staking tutorial](https://betfair-datascientists.github.io/automation/betAngelSimultaneousMarkets/)
 
 ---
 

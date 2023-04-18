@@ -14,7 +14,7 @@ The idea of this tutorial is to share a way of using existing libraries to make 
 We're not Python natives and acknowledge that there are probably more efficient and neater ways of achieving the same end goal! As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py) if you catch some bugs or have other improvements! 
 
 !!! note "Cheat sheet"
-    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/historicData/csvTutorialMarketSummary/#sample-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py).
+    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/#sample-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py).
 
     - To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using [VS code](https://code.visualstudio.com/download)), make sure you've navigated in the terminal to the folder you've saved the script in and then type `py main.py` (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. 
 

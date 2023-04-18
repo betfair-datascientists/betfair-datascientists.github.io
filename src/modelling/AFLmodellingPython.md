@@ -1429,7 +1429,7 @@ fixture.tail()
 | 206 | 2018-09-29 | 2018 | 1 | 28 | West Coast | Collingwood | MCG |
 
 ### Create Each Feature
-Now let's append next week's DataFrame to our afl_data, match_results and odds DataFrames and then create all the features we used in the [AFL Feature Creation Tutorial](/modelling/AFLmodelPart2). We need to append the games and then feed them into our function so that we can create features for upcoming games.
+Now let's append next week's DataFrame to our afl_data, match_results and odds DataFrames and then create all the features we used in the AFL Feature Creation Tutorial. We need to append the games and then feed them into our function so that we can create features for upcoming games.
 
 ```python
 # Append next week's games to our afl_data DataFrame
@@ -1461,7 +1461,7 @@ features_df.tail()
 
 ---
 ## Create Predictions For the Upcoming Round
-Now that we have our features, we can use our model that we created in [part 3](/modelling/AFLmodelPart3) to predict the next round. First we need to filter our features_df into a training df and a df with next round's features/matches. Then we can use the model created in the last tutorial to create predictions. For simplicity, I have hardcoded the parameters we used in the last tutorial.
+Now that we have our features, we can use our model that we created in part 3 to predict the next round. First we need to filter our features_df into a training df and a df with next round's features/matches. Then we can use the model created in the last tutorial to create predictions. For simplicity, I have hardcoded the parameters we used in the last tutorial.
 
 ```python
 # Get the train df by only taking the games IDs which aren't in the next week df

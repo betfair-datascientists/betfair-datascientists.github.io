@@ -30,10 +30,10 @@ Betfair UK give access to all the historical Stream API data since 2016. It is e
 
 ### Tutorials for working with this data
 
-- [JSON to CSV in Python](/historicData/jsonToCsvTutorial)
-- [JSON to CSV | Revisited](/historicData/jsonToCsvRevisited) - where we make it 30 times faster
-- [Backtesting ratings using historic data in Python](/historicData/backtestingRatingsTutorial)
-- [Automated betting angles: no modelling required](/historicData/automatedBettingAnglesTutorial)
+- [JSON to CSV in Python](/tutorials/jsonToCsvTutorial)
+- [JSON to CSV | Revisited](/tutorials/jsonToCsvRevisited) - where we make it 30 times faster
+- [Backtesting ratings using historic data in Python](/tutorials/backtestingRatingsTutorial)
+- [Automated betting angles: no modelling required](/tutorials/automatedBettingAnglesTutorial)
 
 ---
 ## [Historical racing data](https://promo.betfair.com/betfairsp/prices)

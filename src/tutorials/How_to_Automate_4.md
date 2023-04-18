@@ -445,7 +445,7 @@ Now that we have all our features collected, we can predict our probabilities, r
 
 ```
 
-Now that we have our data nicely set up. We can reference our probabilities by getting the DogName, Track and RaceNum from the Betfair polling API and after that the rest is the same as [How to Automate III](https://betfair-datascientists.github.io/api/How_to_Automate_3/).
+Now that we have our data nicely set up. We can reference our probabilities by getting the DogName, Track and RaceNum from the Betfair polling API and after that the rest is the same as [How to Automate III](https://betfair-datascientists.github.io/tutorials/How_to_Automate_3/).
 
 I also wanted to call out one gotcha that, Brett found that is almost impossible to find unless you are keeping a close eye on your logs. Sometimes the polling API and streaming API doesn't match up when there are scratchings, so we need to check if it does:
 

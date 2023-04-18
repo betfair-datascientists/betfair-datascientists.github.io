@@ -18,7 +18,7 @@ Obviously before you can have an automation you need a model, of one form or ano
 ## Back testing
 Once you've developed the first cut of your model you're going to want to make sure you test your strategy using historical data before you start betting with real money. Although you can never know exactly how a strategy is going to play out in the real world, particularly in terms of the 'butterfly effect' that your activity might have on the wider market, there is a lot you can do to test your theories before putting them into practice.
 
-- We've put together several tutorials on how to use the JSON historical Betfair pricing data which is available back to 2016, including one specifically focused on back testing: [Back testing ratings in Python](https://betfair-datascientists.github.io/historicData/backtestingRatingsTutorial/)
+- We've put together several tutorials on how to use the JSON historical Betfair pricing data which is available back to 2016, including one specifically focused on back testing: [Back testing ratings in Python](https://betfair-datascientists.github.io/tutorials/backtestingRatingsTutorial/)
 - To prevent data leakage it's important to make sure to only use data that is available before the outcome of the event you are modelling begins e.g. the BSP is only known after a Horse Racing market goes in play, therefore make sure you don't include the BSP of the race you're modelling, as you won't have it before the jump when you might be looking to bet. It sounds simple but it's one that catches the best of us more often than we'd like to admit!
 - When back testing make sure to partition your dataset:
     - It is common in data science to split your dataset into training, testing and validation sets, this way you can create and train your strategy on the training dataset and test and validate your strategy on separate datasets.
@@ -96,7 +96,7 @@ If you want to learn more, here are some resources that might be valuable:
 
 - [Meet ups and workshop recordings](https://www.youtube.com/watch?v=zBU5JA4hl1c&list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ)
 - [API resources](https://betfair-datascientists.github.io/api/apiResources/)
-- [Historic pricing data](https://betfair-datascientists.github.io/historicData/dataSources/)
+- [Historic pricing data](https://betfair-datascientists.github.io/modelling/dataSources/)
 - [Modelling tutorials](https://betfair-datascientists.github.io/modelling/howToModel/)
 
 ---

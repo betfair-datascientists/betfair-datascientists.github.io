@@ -16,7 +16,7 @@ If you’re new to these languages, here are some resources that will help get y
 - [What is R?](https://www.r-project.org/about.html)
 - [Download and install R](https://cran.ms.unimelb.edu.au/) – get the language set up on your computer
 - [Download and install RStudio](https://www.rstudio.com/) – you’ll need a program to develop in, and this one is custom-designed to work with R
-- Take a look at the some of the existing R libraries you can use if you want to connect to our API, including [abettor](https://github.com/phillc73/abettor) and our [Data Scientists’ R repo](/api/apiRtutorial.md).
+- Take a look at the some of the existing R libraries you can use if you want to connect to our API, including [abettor](https://github.com/phillc73/abettor) and our [Data Scientists’ R repo](/api/apiRtutorial).
 
 
 ### Language 2: Python
@@ -34,7 +34,7 @@ For our workshops we use historical NBA odds data from the Exchange ([which you 
 - [ESPN.com](http://www.espn.com/nba/)
 - [NBA.com](http://stats.nba.com/)
 - [basketball-reference.com](https://www.basketball-reference.com/)
-- [Stattleship’s API](https://api.stattleship.com/)
+- [Stattleship’s API](https://github.com/stattleship/stattleship-r)
 
 ---
 ## Learn to Program
@@ -47,7 +47,7 @@ These are some of our favourites if you want to learn to use R or Python for dat
 - [Datacamp](https://www.datacamp.com/) – another popular free resource to learn both R and Python for data science
 - [Codeacademy](https://www.codecademy.com/) – free online programming courses with community engagement
 
-We've also shared a [R repo for connecting with our API](/../api/apiRtutorial), which might make that part of the learning process easier for you, if you go down that path.
+We've also shared a [R repo for connecting with our API](/api/apiRtutorial), which might make that part of the learning process easier for you, if you go down that path.
 
 ---
 ## Learn how to model data
@@ -65,5 +65,5 @@ The best way to learn is by doing. Make sure you have a solid foundation knowled
 
 - Make sure you’ve got your [Betfair Basics](https://www.betfair.com.au/hub/education/betfair-basics/the-betfair-exchange/) knowledge solid including [back betting](https://www.betfair.com.au/hub/education/betfair-basics/back-betting/), [lay betting](https://www.betfair.com.au/hub/education/betfair-basics/lay-betting/) and [reading exchange markets](https://www.betfair.com.au/hub/education/betfair-basics/read-an-exchange-market/)
 - Learn about the importance of ratings and [prices](https://www.betfair.com.au/hub/education/racing-strategy/value-and-odds/) and get inspired by the [models](https://www.betfair.com.au/hub/models/) created by our Data Scientists
-- Consider how you could use our [API](/../api/apiappkey) in building and automating your model
+- Consider how you could use our [API](/api/apiappkey) in building and automating your model
 - Find out about how successful some of our customers have been in their [modelling journeys](https://www.youtube.com/watch?v=zBU5JA4hl1c&list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ)

@@ -7225,7 +7225,7 @@ To create these features we will need the opposition's Inside 50s/Rebound 50s. S
 </tbody>
 </table>
 <h3 id="create-each-feature">Create Each Feature</h3>
-<p>Now let's append next week's DataFrame to our afl_data, match_results and odds DataFrames and then create all the features we used in the <a href="/modelling/AFLmodelPart2">AFL Feature Creation Tutorial</a>. We need to append the games and then feed them into our function so that we can create features for upcoming games.</p>
+<p>Now let's append next week's DataFrame to our afl_data, match_results and odds DataFrames and then create all the features we used in the AFL Feature Creation Tutorial. We need to append the games and then feed them into our function so that we can create features for upcoming games.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-78-1" name="__codelineno-78-1" href="#__codelineno-78-1"></a><span class="c1"># Append next week&#39;s games to our afl_data DataFrame</span>
 <a id="__codelineno-78-2" name="__codelineno-78-2" href="#__codelineno-78-2"></a><span class="n">afl_data</span> <span class="o">=</span> <span class="n">afl_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_week_df</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-78-3" name="__codelineno-78-3" href="#__codelineno-78-3"></a>
@@ -7620,7 +7620,7 @@ To create these features we will need the opposition's Inside 50s/Rebound 50s. S
 </table>
 <hr />
 <h2 id="create-predictions-for-the-upcoming-round">Create Predictions For the Upcoming Round</h2>
-<p>Now that we have our features, we can use our model that we created in <a href="/modelling/AFLmodelPart3">part 3</a> to predict the next round. First we need to filter our features_df into a training df and a df with next round's features/matches. Then we can use the model created in the last tutorial to create predictions. For simplicity, I have hardcoded the parameters we used in the last tutorial.</p>
+<p>Now that we have our features, we can use our model that we created in part 3 to predict the next round. First we need to filter our features_df into a training df and a df with next round's features/matches. Then we can use the model created in the last tutorial to create predictions. For simplicity, I have hardcoded the parameters we used in the last tutorial.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-81-1" name="__codelineno-81-1" href="#__codelineno-81-1"></a><span class="c1"># Get the train df by only taking the games IDs which aren&#39;t in the next week df</span>
 <a id="__codelineno-81-2" name="__codelineno-81-2" href="#__codelineno-81-2"></a><span class="n">train_df</span> <span class="o">=</span> <span class="n">features_df</span><span class="p">[</span><span class="o">~</span><span class="n">features_df</span><span class="o">.</span><span class="n">game</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">next_week_df</span><span class="o">.</span><span class="n">game</span><span class="p">)]</span>
 <a id="__codelineno-81-3" name="__codelineno-81-3" href="#__codelineno-81-3"></a>

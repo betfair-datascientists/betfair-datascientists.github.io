@@ -15,8 +15,6 @@ One of the reasons we're excited for this year's World Cup is that the tournamen
 
 Just to make things even better, Betfair are hosting another Datathon to celebrate the 2022 FIFA World Cup! Betfair's Datathons are a series of data modelling competitions run for major sporting tournaments which aim to provide a platform for both aspiring and seasoned data modellers to test their wares at applying their predictive modelling nous in the sporting context.
 
-You can find out more about the 2022 World Cup Datathon and register your interest [here](/modelling/soccerWorldCup2022Datathon/).
-
 Building your own predictive model is a very rewarding and fun exercise, not to mention there is prize money for top performers. While there are many ways to go about creating predictive models, this tutorial aims to give readers a gentle introduction into one of the simpler approaches - **Elo Rating Systems**.
 
 

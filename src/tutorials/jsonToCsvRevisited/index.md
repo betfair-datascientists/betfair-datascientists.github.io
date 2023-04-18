@@ -10,7 +10,7 @@ So we're nearly a year on from our original [JSON to CSV tutorial](../jsonToCsvT
 You might want to stick around because the final results are really something. 
 
 !!! note "Cheat sheet"
-    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/historicData/jsonToCsvRevisited/#completed-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master/jsonToCsvRevisited).
+    - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/tutorials/jsonToCsvRevisited/#completed-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/tree/master/jsonToCsvRevisited).
 
     - To run the code, save it to your machine, open a command prompt, or a terminal in your text editor of choice (we're using [VS code](https://code.visualstudio.com/download)), make sure you've navigated in the terminal to the folder you've saved the script in and then type `py main.py` (or whatever you've called your script file if not main) then hit enter. To stop the code running use Ctrl C. 
 
@@ -53,8 +53,6 @@ Each update can effect any or all of the runners in a market, and, to be fair, w
 ## READ. THE. DOCUMENTATION.
 
 The `betfairlightweight` library is doing all the computationally heavy lifting in our script, and speeding it up even slightly could save us a lot of total run time, so we figured we should probably take a look online to see if there were known ways of speeding it up. 
-
-Whoops. [There is a page addressing performance](https://liampauling.github.io/betfair/advanced/#performance) on the `betfairlightweight` docs discussing how to speed up parsing historic files. Although we were pretty upfront in our initial tutorial about our lack of Python coding ability, that's not an excuse for us to not read the instructions...
 
 Let's implement these changes and see if that's enough to let us keep this article to just a couple of paragraphs!
 
@@ -127,7 +125,7 @@ So we took the path less travelled. And that made all the difference.
 
 So we've chosen path two: write a new, faster library. I've been playing round in Rust for the last few years - it's a great, modern, and extremely fast language, with a well-loved mascot (hi Ferris!), but most importantly we know it has really great support for writing fast Python libraries. If this was a movie this is where they would show a montage of us staying up late, chugging coffee, and tapping away at our keyboards, but I'll save you that and instead just give you a [link to our new library, betfair_data](https://github.com/tarb/betfair_data). Quite a bit of effort has gone into making this library as fast as we can, and if there's interest we might write a follow up article that discusses the techniques we used to increase it's speed - let us know if you're keen for that - but for the purpose of this discussion the internals of the library don't really matter.
 
-To use our library we'll only need to make a few small changes to our script. You can [jump ahead and see the completed file](https://betfair-datascientists.github.io/historicData/jsonToCsvRevisited/#complete-code) for this stage, but we'll walk through the main changes step by step below.
+To use our library we'll only need to make a few small changes to our script. You can [jump ahead and see the completed file](https://betfair-datascientists.github.io/tutorials/jsonToCsvRevisited/#complete-code) for this stage, but we'll walk through the main changes step by step below.
 
 We need to start by importing the new library - it's available in pypi and can be easily installed with pip.
 

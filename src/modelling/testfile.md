@@ -19,14 +19,14 @@ hide:
       <div  class="large-screen" style="display: flex; align-items: center; text-align: left;">
         <div>
           <b><font size="10rem">Trade and bet on Betfair using</font></b><br>
-          <b><font size="10rem">the API with real-time data</font></b><br>
-          <b><font size="10rem">and lightning-fast execution</font></b><br>
+          <b><font size="10rem">our API or choose from a catalogue</font></b><br>
+          <b><font size="10rem">of third party betting tools</font></b><br>
         </div>
         <div style="flex: 1; text-align: right; padding:30px 0 0 30px">
           <img src="/modelling/img/API1.gif" alt="API" style="width: 100%; height: 130%;">
         </div>
       </div>
-      <b><font size="3rem">The Betfair Exchange API is a platform for peer-to-peer trading and wagering.</font></b><br>
+      <b><font size="3rem">The Betfair Exchange is a platform for peer-to-peer trading and wagering.</font></b><br>
       <b><font size="3rem">On the exchange, users can bet against each other rather than against a bookmaker.</font></b><br>
       <br>
       <div  class="large-screen" style="display: flex; align-items: center; justify-content: center; font-family:National2; text-transform: uppercase">
@@ -94,7 +94,7 @@ hide:
           <h2>Dedicated<br>Team</h2>
           </br>
           </br>
-          <p>We are a service-oriented team dedicated to supporting those accessing the Betfair Exchange through the API. Get access to up-to-date data on the Betfair Exchange, including prices, volumes, and market trends.</p>
+          <p>We are a service-oriented team dedicated to supporting those looking to create an automate a betting or trading strategy. Whether you're a seasoned quant or brand new to Betfair, we're here to help.</p>
         </div>
         <div class="grid-item">
           <h2 style="color: #ffb80c;">50ms</h2>

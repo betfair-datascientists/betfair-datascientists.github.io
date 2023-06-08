@@ -26,8 +26,8 @@ hide:
           <img src="/modelling/img/API1.gif" alt="API" style="width: 100%; height: 130%;">
         </div>
       </div>
-      <b><font size="3rem">The Betfair Exchange is a platform for peer-to-peer trading and wagering.</font></b><br>
-      <b><font size="3rem">On the exchange, users can bet against each other rather than against a bookmaker.</font></b><br>
+      <b><font size="3rem">The Betfair Exchange is a unique platform for peer-to-peer trading and wagering.</font></b><br>
+      <b><font size="3rem">We welcome and support winning clients and provide tools for your automation journey.</font></b><br>
       <br>
       <div  class="large-screen" style="display: flex; align-items: center; justify-content: center; font-family:National2; text-transform: uppercase">
       <b><font size="10rem">Need Support?</font></b><br>

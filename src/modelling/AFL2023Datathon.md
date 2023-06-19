@@ -19,7 +19,7 @@ Please direct all questions and submissions to [datathon@betfair.com.au](mailto:
 ## Previous AFL Modelling Meet-Up
 ![png](../img/AFL-Meet-Up.png)
 
-<iframe width="699" height="393" src="https://youtu.be/8Zq87d1AVyI" title="AFL Modelling Meet Up With Stats Insider" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+Check out our Online Meet-Up with Stats Insider on modelling the AFL [here](https://www.youtube.com/watch?v=8Zq87d1AVyI&list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ&index=21)
 
 ## The Specifics
 
@@ -69,3 +69,6 @@ Please name submission file using the following formatting:
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
+### Registration
+
+Register [here](https://forms.gle/WnABDhEz9gHeBRbS6) to receive your submission form and AFL dataset. Additional data can be sourced by utilising the [fitzRoy R package](https://github.com/jimmyday12/fitzRoy)

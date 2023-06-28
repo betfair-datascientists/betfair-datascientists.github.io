@@ -27,7 +27,7 @@ Check out our Online Meet-Up with Stats Insider on modelling the AFL [here](http
 
 ## The Specifics
 
-The Terms and Conditions for the 2023 AFL Datathon Competition can be viewed [here](../assets/Betfairs_TCs_2023_Datathon.pdf)
+The Terms and Conditions for the 2023 AFL Datathon Competition can be viewed [here](../assets/Betfair_TCs_2023_Datathon.pdf)
 
 ### Prizes
 $5,000 in prizes are up for grabs!

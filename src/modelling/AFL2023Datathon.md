@@ -4,6 +4,8 @@
 
 Register [here](https://forms.gle/WnABDhEz9gHeBRbS6) to receive your submission form and AFL dataset. Additional data can be sourced by utilising the [fitzRoy R package](https://github.com/jimmyday12/fitzRoy)
 
+Pre-Register [here](https://forms.gle/2oqgSPYpvcXRRprG6) for our 2023 AFL Brownlow Datathon! This competition will commence in the week beginning August 28th.
+
 ## The Competition
 
 Do you think you have what it takes to predict the scores in AFL matches?
@@ -76,3 +78,5 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 ### Registration
 
 Register [here](https://forms.gle/WnABDhEz9gHeBRbS6) to receive your submission form and AFL dataset. Additional data can be sourced by utilising the [fitzRoy R package](https://github.com/jimmyday12/fitzRoy)
+
+Pre-Register [here](https://forms.gle/2oqgSPYpvcXRRprG6) for our 2023 AFL Brownlow Datathon! This competition will commence in the week beginning August 28th.

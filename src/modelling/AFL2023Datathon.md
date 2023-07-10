@@ -1,8 +1,7 @@
 # Betfair’s 2023 AFL Datathon
 
 ### Registration
-
-Register [here](https://forms.gle/WnABDhEz9gHeBRbS6) to receive your submission form and AFL dataset. Additional data can be sourced by utilising the [fitzRoy R package](https://github.com/jimmyday12/fitzRoy)
+Registrations have now closed.
 
 Pre-Register [here](https://forms.gle/2oqgSPYpvcXRRprG6) for our 2023 AFL Brownlow Datathon! This competition will commence in the week beginning August 28th.
 
@@ -75,8 +74,42 @@ Please name submission file using the following formatting:
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-### Registration
+## Leaderboard
 
-Register [here](https://forms.gle/WnABDhEz9gHeBRbS6) to receive your submission form and AFL dataset. Additional data can be sourced by utilising the [fitzRoy R package](https://github.com/jimmyday12/fitzRoy)
-
-Pre-Register [here](https://forms.gle/2oqgSPYpvcXRRprG6) for our 2023 AFL Brownlow Datathon! This competition will commence in the week beginning August 28th.
+|Entry|RMSE|Rank|Prize_Rank|
+|----------------------|-----|--|--|
+|Hung|13.73|1|1|
+|VFLmodel|13.94|2|2|
+|Robo_Bet_com_au|13.98|3|3|
+|WATP|14.3|4|4|
+|DCL|14.38|5|5|
+|ThisCannotWork|14.52|6||
+|LongShot2|14.86|7|6|
+|craigs-lines|14.95|8|7|
+|BigRig|15.3|9||
+|FreeTheSherrin|15.3|9|8|
+|ItsGotNoChance|15.36|11|9|
+|Pokemon_Hunter|15.96|12|10|
+|RandomShrubbery|15.97|13|11|
+|BruteForce|16.03|14|12|
+|Punta85|16.03|15|13|
+|CA4670|16.11|16|14|
+|VinhoVerde|16.59|17|15|
+|DataWading|16.64|18|16|
+|MulberryBush|17.76|19|17|
+|Footy_Prophet|18.11|20|18|
+|blindfolded-darts|18.99|21|19|
+|Rass|19.04|22|20|
+|KathyKnowsBest|19.63|23|21|
+|LilyMonelli|20.23|24||
+|UpTheBloods|20.33|25|22|
+|lockdawg|20.73|26||
+|Moist_Towelettes|22.09|27|23|
+|IceCold|24.42|28|24|
+|TenNines|24.56|29|25|
+|hamojb|24.91|30|26|
+|RosscosTigers|25.63|31|27|
+|RANDBETWEEN(1150)|26.62|32|28|
+|Atho_9978|26.71|33|29|
+|No_Conscious_Decisions|32.39|34||
+|IMetYouAtTheBool|38.66|35||

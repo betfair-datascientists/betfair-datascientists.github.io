@@ -74,43 +74,44 @@ Please name submission file using the following formatting:
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-## Leaderboard
+## Leaderboard - Round 20
 
 |Entry|RMSE|Rank|Prize_Rank|
 |----------------------|-----|--|--|
-|LongShot2|18.57|1|1|
-|VFLmodel|18.73|2|2|
-|RandomShrubbery|19.04|3|3|
-|WATP|19.23|4|4|
-|DCL|19.33|5|5|
-|ThisCannotWork|19.35|6||
-|FreeTheSherrin|19.36|7|6|
-|VinhoVerde|19.86|8|7|
-|ItsGotNoChance|20.11|9|8|
-|blindfolded-darts|20.12|10|9|
-|DataWading|20.18|11|10|
-|MulberryBush|20.22|12|11|
-|Pokemon_Hunter|20.23|13|12|
-|Punta85|20.37|14|13|
-|KathyKnowsBest|20.76|15|14|
-|craigs-lines|20.79|16|15|
-|BruteForce|20.82|17|16|
-|CA4670|20.89|18|17|
-|Hung|21.17|19|18|
-|Robo_Bet_com_au|21.54|20|19|
-|Footy_Prophet|21.76|21|20|
-|BigRig|22.48|22||
-|hamojb|23.78|23|21|
-|Rass|23.96|24|22|
-|LilyMonelli|24.12|25||
-|UpTheBloods|24.25|26|23|
-|IceCold|24.41|27|24|
-|lockdawg|24.54|28||
-|TenNines|24.77|29|25|
-|Moist_Towelettes|26.44|30|26|
-|RosscosTigers|28.34|31|27|
-|RANDBETWEEN(1150)|29.1|32|28|
-|Atho_9978|29.34|33|29|
-|IMetYouAtTheBool|36.9|34||
-|No_Conscious_Decisions|41.64|35||
+|VFLmodel|19.94|1|1|
+|LongShot2|20.21|2|2|
+|ThisCannotWork|20.24|3||
+|RandomShrubbery|20.37|4|3|
+|FreeTheSherrin|20.53|5|4|
+|WATP|20.65|6|5|
+|DCL|20.7|7|6|
+|blindfolded-darts|20.89|8|7|
+|DataWading|20.93|9|8|
+|KathyKnowsBest|21|10|9|
+|VinhoVerde|21.01|11|10|
+|ItsGotNoChance|21.08|12|11|
+|BruteForce|21.15|13|12|
+|Punta85|21.57|14|13|
+|Pokemon_Hunter|21.57|15|14|
+|craigs-lines|21.63|16|15|
+|MulberryBush|21.76|17|16|
+|CA4670|21.9|18|17|
+|Footy_Prophet|22.59|19|18|
+|Hung|22.67|20|19|
+|Robo_Bet_com_au|22.9|21|20|
+|BigRig|23.16|22||
+|TenNines|23.84|23|21|
+|LilyMonelli|24.01|24||
+|IceCold|24.3|25|22|
+|UpTheBloods|24.75|26|23|
+|hamojb|25.03|27|24|
+|Rass|25.27|28|25|
+|lockdawg|26.01|29||
+|Moist_Towelettes|28.14|30|26|
+|RosscosTigers|28.66|31|27|
+|Atho_9978|29.88|32|28|
+|RANDBETWEEN(1150)|32.05|33|29|
+|IMetYouAtTheBool|38.19|34||
+|No_Conscious_Decisions|41.21|35||
+
 

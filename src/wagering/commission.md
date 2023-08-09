@@ -80,7 +80,7 @@ High frequency trading and betting is a wagering proposition unique to the Betfa
 
 Only customers who log more than 5000 transactions in one hour from XX:00:00 to XX:59:59 will be required to pay this charge which includes both successful and failed transactions including:
 
-- Any bet that is matched, cancelled or lapsed.
+- Any bet that is placed, cancelled or modified.
 - Any transaction that fails due to an error.
 
 ### What is a failed transaction?
@@ -114,6 +114,7 @@ You’ll only be considered for the Premium Charge if your account is in profit 
 The vast majority of customers, and even the majority of those whose betting on Betfair is profitable since they joined, do not meet both these conditions and will not incur the Premium Charge.
 
 While those conditions accurately describe our most successful customers, they might also apply to new customers who have only bet in a few markets, or those whose accounts are in profit because of a significant big win. To ensure that those accounts are not inadvertently charged, we’ve added two further conditions: 
+
 - any single win that constitutes more than 50% of lifetime gross profits will be excluded from the calculation
 - customers will only be considered for the Premium Charge after they have bet in more than 250 markets.
 
@@ -130,4 +131,4 @@ Australia and New Zealand customers should reach out directly to their VIP Manag
 
 ## Closing thoughts
 
-While ultimately we would prefer to not charge fees, it is necessary to pay the sporting and racing bodies to be able to offer markets on the exchange as well as to invest in our people and infrastructure to ensure a bright future for the exchange. Australian and New Zealand customers are welcome to reach out to us to discuss fees and what we can do to help you at automation@betfair.com.au
+While ultimately we would prefer to not charge fees, it is necessary to pay the sporting and racing bodies to be able to offer markets on the exchange as well as to invest in our people and infrastructure to ensure a bright future for the exchange. Australian and New Zealand customers are welcome to reach out to us to discuss fees and what we can do to help you at [automation@betfair.com.au](mailto:automation@betfair.com.au)

@@ -74,7 +74,7 @@ Please name submission file using the following formatting:
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-## Leaderboard - Round 20
+## Leaderboard - Round 22
 
 |Entry|RMSE|Rank|Prize_Rank|
 |----------------------|-----|--|--|

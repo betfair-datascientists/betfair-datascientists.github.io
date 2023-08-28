@@ -10,7 +10,7 @@ hide:
 # _
 
 <div style="background-color:black; color:#ffb80c;  font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px 50px 0 50px;border-radius:10px 10px 0 0; width: 100%;">
-    <img src="/img/automationHubHero.gif" alt="AutoHub" style="width: 100%; height: 100%;">
+    <img src="/img/AutomationHubMotif.png" alt="AutoHub" style="width: 100%; height: 100%;">
 </div>
 
 <div class="large-screen" style="background-color:black; color:#ffb80c;  font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: flex-start; padding:0 50px 50px 50px; width: 100%;">
@@ -42,6 +42,31 @@ hide:
       <br>
     </div>
   </div>
+</div>
+
+<div style="position: relative; background-color: black; font-family: National2; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 50px; border-radius: 10px 10px 0 0; width: 100%;">
+    <img src="/img/AutomationHubMotif.png" alt="AutoHub" style="width: 100%; height: 100%;">
+    <div style="position: absolute; top: 63%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; line-height: 1.05">
+        <b><font size="6rem">TRADE AND BET ON BETFAIR USING OUR API OR CHOOSE</font></b><br>
+        <b><font size="6rem">FROM A CATALOGUE OF THIRD PARTY BETTING TOOLS</font></b><br>
+        <br>
+        <span style="font-family: DIN_Regular; font-size: 0.75rem;">
+            The Betfair Exchange is a unique platform for peer-to-peer trading and wagering.<br>
+            We welcome and support winning clients and provide tools for your automation journey.
+        </span>
+        <br>
+        <br>
+        <br>
+    <div class="button-container">
+        <a href="https://register.betfair.com.au/account/registration" class="btn btn-human">Join Now</a>
+        <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-human">Get Your API Key</a>
+    </div>
+    <br>
+    <br>
+    <div class="text-container">
+    <a href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia or New Zealand?</a>
+    </div>
+    </div>
 </div>
 
 <div class="small-screen">

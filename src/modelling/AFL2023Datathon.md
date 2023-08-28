@@ -3,8 +3,6 @@
 ### Registration
 Registrations have now closed.
 
-Pre-Register [here](https://forms.gle/2oqgSPYpvcXRRprG6) for our 2023 AFL Brownlow Datathon! This competition will commence in the week beginning August 28th.
-
 ## The Competition
 
 Do you think you have what it takes to predict the scores in AFL matches?
@@ -74,45 +72,46 @@ Please name submission file using the following formatting:
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-## Leaderboard - Round 23
+## Leaderboard - Final
 
 |Entry|RMSE|Rank|Prize_Rank|
 |----------------------|-----|--|--|
-|VFLmodel|21.3072757526625|1|1|
-|LongShot2|21.4422009849453|2|2|
-|DataWading|21.7244650325936|3|3|
-|WATP|21.9032866998076|4|4|
-|FreeTheSherrin|21.9130677834606|5|5|
-|DCL|22.0278784844536|6|6|
-|BruteForce|22.0358654261494|7|7|
-|RandomShrubbery|22.356414540896|8|8|
-|ThisCannotWork|22.5244430393418|9||
-|Punta85|22.689764142128|10|9|
-|VinhoVerde|22.7686780119685|11|10|
-|ItsGotNoChance|22.8332464370957|12|11|
-|craigs-lines|23.0044854149435|13|12|
-|Pokemon_Hunter|23.0962444552466|14|13|
-|blindfolded-darts|23.223380391868|15|14|
-|KathyKnowsBest|23.6109337061496|16|15|
-|CA4670|23.7445064657404|17|16|
-|Footy_Prophet|23.7935899064206|18|17|
-|Hung|23.9482398416647|19|18|
-|BigRig|24.0426208855777|20||
-|Robo_Bet_com_au|24.2417283832955|21|19|
-|TenNines|24.2441287279576|22|20|
-|MulberryBush|24.393272556829|23|21|
-|LilyMonelli|24.41538676964|24||
-|IceCold|24.5610673983447|25|22|
-|hamojb|24.5820621140249|26|23|
-|Rass|25.2859833184504|27|24|
-|UpTheBloods|25.4018497014286|28|25|
-|lockdawg|27.3218617042127|29||
-|Atho_9978|28.9687845135152|30|26|
-|RosscosTigers|29.6172675931211|31|27|
-|Moist_Towelettes|29.6812430749824|32|28|
-|RANDBETWEEN(1150)|33.8391386058703|33|29|
-|IMetYouAtTheBool|41.4012498852811|34||
-|No_Conscious_Decisions|41.7349915994903|35||
+|LongShot2|21.747434314553|1|1|
+|VFLmodel|21.791148814752|2|2|
+|DataWading|21.847164830044|3|3|
+|WATP|22.1342181048058|4|4|
+|FreeTheSherrin|22.1888986257142|5|5|
+|DCL|22.2614069334057|6|6|
+|BruteForce|22.6059235108362|7|7|
+|VinhoVerde|22.7513735849069|8|8|
+|craigs-lines|22.8068581303471|9|9|
+|ThisCannotWork|22.8308632180396|10||
+|RandomShrubbery|22.8602773682869|11|10|
+|Pokemon_Hunter|23.0048304106382|12|11|
+|ItsGotNoChance|23.1629193611974|13|12|
+|Punta85|23.2154761599527|14|13|
+|blindfolded-darts|23.3670886790232|15|14|
+|Footy_Prophet|23.6524311646816|16|15|
+|Hung|23.7204277812181|17|16|
+|CA4670|23.8516829129053|18|17|
+|Robo_Bet_com_au|24.0766931185144|19|18|
+|BigRig|24.2201993293935|20||
+|hamojb|24.2561561487205|21|19|
+|TenNines|24.4378463317317|22|20|
+|LilyMonelli|24.4412561052005|23||
+|KathyKnowsBest|24.4514825726376|24|21|
+|IceCold|24.6780660596499|25|22|
+|MulberryBush|25.0928830104828|26|23|
+|Rass|25.1972771897635|27|24|
+|UpTheBloods|25.9750147043055|28|25|
+|lockdawg|26.799409197468|29||
+|Atho_9978|29.0961051230802|30|26|
+|Moist_Towelettes|29.6407892757411|31|27|
+|RosscosTigers|31.3798413706068|32|28|
+|RANDBETWEEN(1150)|33.2088299837391|33|29|
+|No_Conscious_Decisions|40.8837274067161|34||
+|IMetYouAtTheBool|41.5499197752936|35||
+
 
 
 

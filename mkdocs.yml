@@ -24,7 +24,7 @@ nav:
         - API tutorial in Python: api/apiPythontutorial.md
             
     - Modelling:
-        - AFL 2023 Datathon: modelling/AFL2023Datathon.md
+        - Brownlow 2023 Datathon: modelling/Brownlow2023Datathon.md
         - Intro to modelling: modelling/howToModel.md
         - Pricing Data Sources: modelling/dataSources.md
         - Racing:
@@ -159,7 +159,7 @@ plugins:
 
 extra:
     rg_footer: '<div class="full-screen">
-  <p style="font-family: Arial, sans-serif; font-size: 1.2rem; font-weight: bold;text-align: center;">What&#39s gambling really costing you&#x3F</p>
+  <p style="font-family: Arial, sans-serif; font-size: 1.2rem; font-weight: bold;text-align: center;">Imagine what you could be buying instead</p>
   <p style="font-family: Arial, sans-serif; font-size: 0.8rem; font-weight: bold;text-align: center;">For free and confidential support call 1800 858 858 or visit <a href="http://www.gamblinghelponline.org.au" style="color: black; text-decoration: underline;">www.gamblinghelponline.org.au</a></p>
 </div>'
     generator: false

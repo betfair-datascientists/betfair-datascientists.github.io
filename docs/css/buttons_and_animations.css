@@ -1,10 +1,15 @@
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
 .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
   font-family: 'DIN_Regular';
-  font-size: 1rem;
-  font-weight: bold;
-  line-height: 1.25;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -16,22 +21,40 @@
   user-select: none;
   border: 1px solid transparent;
   border-radius: 0.25rem;
-  text-transform: uppercase;
-  }
-  
+  text-transform: capitalize;
+}
+
 .btn-human {
-  background-color: #ffb80c;
-  color: #1e1e1e !important;
-  border-color: #1e1e1e !important;
-  float: left;
-  width: 12.5rem;
-  height: 4rem;
-  }
+  background-color: grey;
+  color: white !important;
+  width: 8rem;
+  height: 2.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 0 5px;
+}
 
 .btn-human + .btn-human {
   margin-left: 1rem;
 }
-  
+
+.text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Aligns text vertically with buttons */
+}
+
+.white-text-link {
+  color: white !important;
+  text-decoration: underline;
+  font-size: 0.5rem;
+  font-family: 'DIN_Regular';
+}
+
 .btn-api {
   background-color: #ffb80c;
   color: #1e1e1e !important;

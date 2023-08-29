@@ -14,11 +14,13 @@ Betfair is giving you the chance to show off your data modelling skills by build
 
 With $5,000 in prizes up for grabs, we’re challenging you to use your modelling skills to your advantage, be that by building your first predictive sports model, improving on an existing design or have a go at something different by adapting your data skills from other fields.
 
-Submissions close at 2:59pm AEST Monday September 25th 2023. - time to get modelling!
+Submissions close at 2:59pm AEST Monday September 25th 2023!
+**Time to get modelling!**
 
-Round by Round updates will be posted in the Quants Discord server with the final results being posted here. For an invite to the discord server, please fill out the form [here](https://forms.office.com/r/ZG9ea1xQj1 )
+Round by Round updates will be posted in the Quants Discord server with the final results being posted here. 
+For an invite to the discord server, please fill out the form [here](https://forms.office.com/r/ZG9ea1xQj1 )
 
-Please direct all questions and submissions to datathon@betfair.com.au.
+Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au).
 
 ## Previous AFL Modelling Meet-Up
 ![png](../img/AFL-Meet-Up.png)
@@ -55,7 +57,7 @@ The 2023 Brownlow Medal Datathon will see entrants provided with a bespoke set o
 
 The goal from there is to use the provided data (or any other data) to build your own model to **predict the probability of a player receiving at least 1 Brownlow vote** in every match for the 2023 season.
 
-With 207 matches and 23 players perside, this is a whopping 9522 predictions!
+With 207 matches and 23 players per side, this is a whopping 9522 predictions!
 
 How you go about building the model is entirely up to you – do you want to build an Elo model, a regression-based model, a Machine Learning algorithm or something entirely different? Get as innovative with it as you want!
 

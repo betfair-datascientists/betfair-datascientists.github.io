@@ -55,12 +55,50 @@
   font-family: 'DIN_Regular';
 }
 
+.grid-container-icons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 90px 30px 120px;
+  gap: 20px;
+}
+
+.grid-container-api {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.75fr 0.5fr;
+}
+
+.grid-container-api > *:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+/* Remove right border from last child in first row */
+.grid-container-api > :nth-child(4) {
+  border-right: none;
+}
+.grid-container-data {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.75fr 0.6fr 0.75fr;
+}
+
+.grid-container-team {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.75fr 0.4fr;
+}
+
 .btn-api {
-  background-color: #ffb80c;
-  color: #1e1e1e !important;
-  border-color: #1e1e1e;
-  float: right;
-  width: 10rem;
+  background-color: grey;
+  color: white !important;
+  width: 12rem;
+  height: 2.5rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-radius: 5px;
   }
   
 .grid-container {
@@ -227,7 +265,8 @@
 }
 
 .grid-item-languages {
-  border-radius: 10px;
+  border-radius: 20px;
+  text-align: center;
 }
 
 .grid-item-languages h2 {
@@ -235,34 +274,27 @@
   font-weight: bold;
   color: #ffb80c;
   text-align: center;
-  margin:0;
+  margin: 0;
   font-family: 'National2';
   text-transform: uppercase;
 }
 
 .grid-item-languages p {
-  font-size: 1rem;
+  font-size: 0.75rem;
   margin: 0;
   text-align: center;
   color: #ffb80c;
   font-family: 'DIN_Regular';
+  align-self: flex-end;
 }
 
 .grid-item-languages a {
-  font-size: 1rem;
+  font-size: 0.75rem;
   text-align: center;
-  color: #ffb80c;
+  color: white !important;
   display: flex;
   justify-content: center;
   font-family: 'DIN_Regular';
-}
-
-.grid-item-languages:first-child {
-  grid-row: 1 / 2;
-  grid-column: 1 / -1;
-  text-align: center;
-  background-color: #000;
-  padding: 20px;
 }
 
 .full-screen {

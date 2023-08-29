@@ -49,7 +49,7 @@ See the list below for the prizes each placing at the end of the competition wil
 | 10 | $100.00 |
 | Total Prize Pool | $5,000.00 | 
 
-Prize winners will be announced, and all prizes will be distributed at the conclusion of the tournament
+Prize winners will be announced at the end of the count and prizes will be distributed in the following days
 
 ### Competition Rules
 

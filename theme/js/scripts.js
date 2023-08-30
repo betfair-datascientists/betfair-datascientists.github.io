@@ -71,3 +71,15 @@ imageBox.addEventListener('mouseover', () => {
 imageBox.addEventListener('mouseout', () => {
   imageBox.classList.remove('show-caption');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  let carouselItems = document.querySelectorAll('.carousel-item');
+  let currentIndex = 0;
+
+  setInterval(function() {
+      carouselItems[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % carouselItems.length;
+      carouselItems[currentIndex].classList.add('active');
+  }, 5000);
+});
+

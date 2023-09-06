@@ -70,7 +70,20 @@
   gap: 20px;
 }
 
+.grid-container-icons-mob {
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(15, 1fr);
+  gap: 20px;
+  display: none;
+}
+
 .grid-container-api {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.75fr 0.5fr;
+}
+
+.grid-container-mob {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 0.75fr 0.5fr;
@@ -344,6 +357,7 @@
 .grid-item-languages {
   border-radius: 20px;
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .grid-item-languages h2 {
@@ -470,10 +484,38 @@
   display: none;
 }
 
+.outer-grid {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0px; /* Adjust the gap between outer grid cells as needed */
+}
+
+.grid-cell {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 150px; /* Adjust the height of outer grid cells as needed */
+}
+
+.inner-grid {
+  display: none;
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.inner-cell {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+
 /* Media query for screens smaller than 768px */
 @media screen and (max-width: 700px) {
-  .grid-container-centre {
-    grid-template-columns: 1fr;
+  .grid-container-icons {
+    display: none;
+  }
+  .grid-container-icons-mob {
+    display: inline-block;
   }
   .grid-container-CTA {
     grid-template-columns: 1fr;
@@ -515,9 +557,42 @@
   .small-screen {
     display: block; /* Show the block on smaller screens */
   }
-  .grid-item-languages:first-child {
-    padding: 0;
+
+  .grid-item-languages {;
+    margin-bottom: 20px;
+    text-align: center;
   }
+
+  .outer-grid {
+    display: grid;
+  }
+  
+  .grid-cell {
+    display: flex;
+  }
+  
+  .inner-grid {
+    display: grid;
+  }
+  
+  .inner-cell {
+    display: flex;
+  }
+  
+  .grid-container-api {
+    display: none;
+  }
+  /* Add horizontal border between row 1 and 2 */
+  .outer-grid > .grid-cell:nth-child(3),
+  .outer-grid > .grid-cell:nth-child(4) {
+    border-top: 2px solid #ccc; /* Adjust border style and color as needed */
+  }
+
+  /* Add vertical border between column 1 and 2 */
+  .outer-grid > .grid-cell:nth-child(2n) {
+    border-left: 2px solid #ccc; /* Adjust border style and color as needed */
+  }
+
 }
 
 @media screen and (min-width: 701px) and (max-width: 850px){

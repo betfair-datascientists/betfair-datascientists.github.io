@@ -109,18 +109,46 @@
   grid-template-rows: 0.75fr 0.4fr;
 }
 
-.grid-container-code {
+.grid-container-code-a {
   display: grid;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(2, auto);
   grid-template-columns: repeat(6, 1fr);
   gap: 5px;
 }
 
+.grid-container-code-b {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+}
+
+.grid-container-code-b-mob {
+  display: none;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(1, 1fr);
+  gap: 5px;
+}
+
+.grid-container-code-mob {
+  display: none;
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+
 .grid-container-carousel {
   display: grid;
-  grid-template-rows: 80px 300px 10px;
+  grid-template-rows: 300px 10px;
   grid-template-columns: 0.25fr 1.5fr 0.25fr;
   gap: 30px;
+}
+
+.grid-container-carousel-mob {
+  display: none;
+  grid-template-rows: 30px 200px 10px;
+  grid-template-columns: 0.25fr 1.5fr 0.1fr;
 }
 
 .carousel-dots {
@@ -203,8 +231,8 @@
 
 .grid-container-left {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 20px;
   margin-bottom: 20px;
 }
@@ -415,10 +443,11 @@
 }
 
 .grid-container-CTA {
-  display: grid;
-  grid-template-columns: 1.25fr 0.5fr 0.5fr 1.25fr;
-  grid-template-rows: auto auto;
-  gap: 10px;
+  display: flex;
+}
+
+.grid-container-CTA-mob {
+  display: none;
 }
 
 .grid-item-changer {
@@ -593,6 +622,39 @@
     border-left: 2px solid #ccc; /* Adjust border style and color as needed */
   }
 
+  .grid-container-code-a {
+    display: none;
+  }
+  
+  .grid-container-code-mob {
+    display: grid;
+  }
+  
+  .grid-container-code-b {
+    display: none;
+  }
+  
+  .grid-container-code-b-mob {
+    display: grid;
+  }
+
+  .carousel-item a {
+    font-size: 0.6rem !important;
+  }
+
+  .carousel-item h2 {
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+  
+  .grid-container-CTA {
+    display: none;
+  }
+  
+  .grid-container-CTA-mob {
+    display: flex;
+  }
+
 }
 
 @media screen and (min-width: 701px) and (max-width: 850px){
@@ -629,6 +691,14 @@
   }
   .small-screen {
     display: block; /* Show the block on smaller screens */
+  }
+
+  .grid-container-carousel {
+    display: none;
+  }
+  
+  .grid-container-carousel-mob {
+    display: grid;
   }
 
 }

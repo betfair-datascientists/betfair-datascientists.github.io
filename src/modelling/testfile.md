@@ -8,8 +8,8 @@ hide:
 <style> .md-typeset h1 { display: none; } </style>
     
 # _
-
-<div style="position: relative; font-family: National2; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 50px; border-radius: 10px 10px 0 0; width: 100%; height: 440px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotif.png'); background-size: cover;">
+<div class="grid-container-CTA">
+<div style="position: relative; font-family: National2; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 50px; border-radius: 10px 10px 0 0; width: 100%; height: 440px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotif.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
     <div style="position: absolute; top: 63%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; line-height: 1.05">
         <b><font size="6rem">TRADE AND BET ON BETFAIR USING OUR API OR CHOOSE</font></b><br>
         <b><font size="6rem">FROM A CATALOGUE OF THIRD PARTY BETTING TOOLS</font></b><br>
@@ -22,8 +22,8 @@ hide:
         <br>
         <br>
         <div class="button-container">
-            <a href="https://register.betfair.com.au/account/registration" class="btn btn-human"style="font-size: 0.9rem">Join Now</a>
-            <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-human"style="font-size: 0.9rem">Get Your API Key</a>
+            <a href="https://register.betfair.com.au/account/registration" class="btn btn-human" style="font-size: 0.9rem">Join Now</a>
+            <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-human" style="font-size: 0.9rem">Get Your API Key</a>
         </div>
         <br>
         <br>
@@ -32,6 +32,30 @@ hide:
         </div>
     </div>
 </div>
+</div>
+<div class="grid-container-CTA-mob">
+<div style="position: relative; font-family: Din_Regular; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 10px; border-radius: 10px 10px 0 0; width: 100%; height: 350px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotifMobile.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div style="position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; line-height: 1.05">
+        <b><font size="3rem">Trade and bet on Betfair using our API or choose from a catalogue of third party betting tools</font></b><br>
+        <br>
+        <br>
+        <div class="button-container" style="width:100%">
+            <a href="https://register.betfair.com.au/account/registration" class="btn btn-human" style="font-size: 0.9rem">Join Now</a>
+        </div>
+        <br>
+        <br>
+        <div class="button-container"  style="width:100%">
+            <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-human" style="font-size: 0.9rem">Get Your API Key</a>
+        </div>
+        <br>
+        <br>
+        <div class="text-container"  style="width:100%">
+            <a href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia or New Zealand?</a>
+        </div>
+    </div>
+</div>
+</div>
+
 
 <div style="background-color:#212121 ; font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:20px 20px 1px; width: 100%;">
   <div <div style="width: 75%; margin: 0 auto; padding: 20px;">
@@ -198,99 +222,157 @@ hide:
     </div>
   </div>
 </div>
-
 </div>
 </div>
 
-<div style="background-color:#212121; color:#ffb80c;  font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;">
-    <div class="grid-container-code" style="width: 85%; margin: 0 auto;">
-        <div class="merged-cell" id="merged-row-1" style="background-color:#212121;font-family:National2;font-size:3rem;text-transform:uppercase;color:white;line-height: 1.1">Connect to the API in your<br> language of choice</div>
-        <div class="merged-cell" id="merged-row-2" style="background-color:#212121;font-family:DIN_Regular;font-size:1rem;color:white;line-height: 1.1">Helper libraries are available for most programming languages, provided either by Betfair or supported by the community so you can focus on the most important aspects instead of wasting time connecting the pieces together.</div> 
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" />
-            <a href="https://github.com/captain-igloo/greentop" style="text-align: center;"><br>C++</a>
+<div style="background-color: #212121; font-family: DIN_Regular; font-size: 10px; display: flex; justify-content: space-between; align-items: center; padding: 0px 20px 0px; width: 100%; height: 600px">
+    <div style="width: 100%; margin: 0 auto; background-color: #212121;">
+        <div class="grid-container-code-b" style="background-color:#212121;width: 75%; margin: 0 auto;">
+            <div style="background-color:#212121;font-family:National2;font-size:3rem;text-transform:uppercase;color:white;line-height: 1.1;text-align:center">Connect to the API in your<br> language of choice
+            </div>
+            <div style="background-color:#212121;font-family:DIN_Regular;font-size:1rem;color:white;line-height: 1.1;text-align:center">Helper libraries are available for most programming languages, provided either by Betfair or supported by the community so you can focus on the most important aspects instead of wasting time connecting the pieces together.
+            </div>
+        </div>        
+        <div class="grid-container-code-b-mob" style="background-color:#212121;width: 100%; margin: 0 auto;">
+            <div style="background-color:#212121;font-family:National2;font-size:1.75rem;text-transform:uppercase;color:white;line-height: 1.1;text-align:center;">Connect to the API in your<br> language of choice
+            </div>
+            <div style="background-color:#212121;font-family:DIN_Regular;font-size:0.6rem;color:white;line-height: 1.1;text-align:center">Helper libraries are available for most programming languages, provided either by Betfair or supported by the community so you can focus on the most important aspects instead of wasting time connecting the pieces together.
+            </div>
         </div>
-          <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clojure/clojure-original.svg" />
-            <a href="https://github.com/jamiei/betfair-aping-sample" style="text-align: center;"><br>Clojure</a>
+        <div class="grid-container-code-a" style="background-color:#212121;width: 75%; margin: 0 auto;"> 
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" />
+                <a href="https://github.com/captain-igloo/greentop" style="text-align: center;"><br>C++</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%;">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clojure/clojure-original.svg" />
+                <a href="https://github.com/jamiei/betfair-aping-sample" style="text-align: center;"><br>Clojure</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" />
+                <a href="https://github.com/betfair/stream-api-sample-code/tree/master/node.js" style="text-align: center;"><br>Node.js</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/perl" style="text-align: center;"><br>Perl</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg" />
+                <a href="https://github.com/city81/betfair-service-ng" style="text-align: center;"><br>Scala</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/python" style="text-align: center;"><br>Python</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/cSharp" style="text-align: center;"><br>C#</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/php" style="text-align: center;"><br>PHP</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain.svg" />
+                <a href="https://github.com/mikecmpbll/betfair" style="text-align: center;"><br>Ruby</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/java" style="text-align: center;"><br>Java</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/javascript" style="text-align: center;"><br>Javascript</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-plain.svg" />
+                <a href="https://github.com/phillc73/abettor"><br>R</a>
+            </div>
         </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" />
-            <a href="https://github.com/betfair/stream-api-sample-code/tree/master/node.js" style="text-align: center;"><br>Node.js</a>
+        <div class="grid-container-code-mob">
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" />
+                <a href="https://github.com/captain-igloo/greentop" style="text-align: center;font-size:0.6rem"><br>C++</a>
+            </div>
+                <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clojure/clojure-original.svg" />
+                <a href="https://github.com/jamiei/betfair-aping-sample" style="text-align: center;font-size:0.6rem"><br>Clojure</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" />
+                <a href="https://github.com/betfair/stream-api-sample-code/tree/master/node.js" style="text-align: center;font-size:0.6rem"><br>Node.js</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/perl" style="text-align: center;font-size:0.6rem"><br>Perl</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg" />
+                <a href="https://github.com/city81/betfair-service-ng" style="text-align: center;font-size:0.6rem"><br>Scala</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/python" style="text-align: center;font-size:0.6rem"><br>Python</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/cSharp" style="text-align: center;font-size:0.6rem"><br>C#</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/php" style="text-align: center;font-size:0.6rem"><br>PHP</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain.svg" />
+                <a href="https://github.com/mikecmpbll/betfair" style="text-align: center;font-size:0.6rem"><br>Ruby</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/java" style="text-align: center;font-size:0.6rem"><br>Java</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
+                <a href="https://github.com/betfair/API-NG-sample-code/tree/master/javascript" style="text-align: center;font-size:0.6rem"><br>Javascript</a>
+            </div>
+            <div class="grid-item-changer"style="width: 110%; height: 110%; padding: 15px">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-plain.svg" />
+                <a href="https://github.com/phillc73/abettor" style="text-align: center;font-size:0.6rem"><br>R</a>
+            </div>
         </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/perl/perl-original.svg" />
-            <a href="https://github.com/betfair/API-NG-sample-code/tree/master/perl" style="text-align: center;"><br>Perl</a>
-        </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scala/scala-original.svg" />
-            <a href="https://github.com/city81/betfair-service-ng" style="text-align: center;"><br>Scala</a>
-        </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original-wordmark.svg" />
-            <a href="https://github.com/betfair/API-NG-sample-code/tree/master/python" style="text-align: center;"><br>Python</a>
-        </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-plain.svg" />
-            <a href="https://github.com/betfair/API-NG-sample-code/tree/master/cSharp" style="text-align: center;"><br>C#</a>
-        </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg" />
-            <a href="https://github.com/betfair/API-NG-sample-code/tree/master/php" style="text-align: center;"><br>PHP</a>
-        </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ruby/ruby-plain.svg" />
-            <a href="https://github.com/mikecmpbll/betfair" style="text-align: center;"><br>Ruby</a>
-        </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
-            <a href="https://github.com/betfair/API-NG-sample-code/tree/master/java" style="text-align: center;"><br>Java</a>
-        </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-plain.svg" />
-            <a href="https://github.com/betfair/API-NG-sample-code/tree/master/javascript" style="text-align: center;"><br>Javascript</a>
-        </div>
-        <div class="grid-item-changer"style="width: 110%; height: 110%">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/rstudio/rstudio-plain.svg" />
-            <a href="https://github.com/phillc73/abettor"><br>R</a>
-        </div>
-    </div>
+    </div> 
 </div>
 
-<div style="background-color:black; font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:10px; width: 100%; height:450px">
-    <div class="grid-container-carousel" style="width: 70%; margin: 0 auto;">
-        <div>
-        </div>
-        <div class="grid-item-title" style="color: white !important;font-family:National2;font-size:3rem; text-align: center">
+<div style="background-color:black; font-family:DIN_Regular; font-size:10px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding:30px; width: 100%; height:450px">
+        <div class="grid-item-title" style="color: white !important;font-family:National2;font-size:2rem;line-height:1.1">
             RESOURCE CATALOGUE
         </div>
-        <div> 
-        </div>
+        <br>
+    <div class="grid-container-carousel" style="width: 100%; margin: 0 auto; text-align: center;">
         <div class="grid-item-title" style="background-image: url('/img/carousel_background_L.png'); background-size: cover;"> 
         </div>
         <div class="grid-item carousel-item active" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;font-weight: 100">API Tutorials</h2>
-            <a href="https://betfair-datascientists.github.io/api/apiResources/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;font-weight: 100;line-height: 1">API <br>Tutorials</h2>
+            <a href="https://betfair-datascientists.github.io/api/apiResources/" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2">Historic Pricing Data</h2>
-            <a href="https://betfair-datascientists.github.io/historicData/dataSources/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. <br> Australian and New Zealand customers can reach out directly for access to our curated database.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Historic <br>Pricing Data</h2>
+            <a href="https://betfair-datascientists.github.io/historicData/dataSources/" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. Australian and New Zealand customers can reach out directly for access to our curated database.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2">Data Modelling</h2>
-            <a href="https://betfair-datascientists.github.io/modelling/howToModel/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Many of our most successful customers use predictive models as the basis for their betting strategies. <br> We have a series of modelling tutorials created by community members ranging from racing to sports.<br> We hold regular datathons where cash prizes can be won.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Data <br>Modelling</h2>
+            <a href="https://betfair-datascientists.github.io/modelling/howToModel/" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">Many of our most successful customers use predictive models as the basis for their betting strategies. <br> We have a series of modelling tutorials created by community members ranging from racing to sports. We hold regular datathons where cash prizes can be won.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2">Automation Tools</h2>
-            <a href="https://betfair-datascientists.github.io/autoTools/overview/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">There are many applications that have been built by external developers which offer exciting features including one-click bets or tools for fully automating your strategies on the exchange. We've developed reviews and tutorials for some of the most popular tools</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Automation <br>Tools</h2>
+            <a href="https://betfair-datascientists.github.io/autoTools/overview/" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">There are many applications that have been built by external developers which offer exciting features including one-click bets or tools for fully automating your strategies on the exchange. We've developed reviews and tutorials for some of the most popular tools.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2">Inspiration & Information</h2>
-            <a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. <br>We're always looking for new and interesting content</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Inspiration and<br> Information</h2>
+            <a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. We're always looking for new and interesting content.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2">Quants Community</h2>
-            <a href="https://forms.office.com/r/1EWBN2uvfq" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">betfair quants is really active Betfair-owned Discord server for people interested in modelling and automation on the Exchange. Our resident experts are always willing and able to share their expertise and experience. <br> Please reach out if you'd like an invitation.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Quants <br>Community</h2>
+            <a href="https://forms.office.com/r/1EWBN2uvfq" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">betfair quants is really active Betfair-owned Discord server for people interested in modelling and automation on the Exchange. Our resident experts are always willing and able to share their expertise and experience. Please reach out if you'd like an invitation.</a>
         </div>
         <div class="grid-item-title" style="background-image: url('/img/carousel_background_R.png'); background-size: cover;"> 
         </div>
@@ -305,6 +387,7 @@ hide:
         <span class="dot"></span> 
         </div>
         </div>
+        
 </div> 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -331,15 +414,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<div style="background-color:black; color:#ffb80c; font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:50px; width: 100%;border-radius: 0 0 10px 10px;">
-    <div style="flex: 1; font-size: 10px; line-height: 1.5;">
-    </div>
-      <div class="grid-container-CTA">
-        <p style="text-align: center; font-size: 1rem;margin: auto ;font-family:DIN_Regular;line-height:1">For one-on-one support, Australian and New Zealand customers can contact us</p>
-        <a href="mailto:automation@betfair.com.au" class="btn btn-api" style="margin: auto;color:black!important; font-size: 0.9rem">Contact us</a>   
-        <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-api" style="margin: auto;color:black!important; font-size: 0.9rem">Get Your API Key</a>
-        <p style="text-align: center; font-size: 2rem;margin: auto; font-family:DIN_Regular;line-height:1"></p>
-      </div>
+<div style="background-color: black; color: #ffb80c; font-family: DIN_Regular; font-size: 10px; display: flex; justify-content: flex-end; align-items: center; padding: width: 100%; border-radius: 0 0 10px 10px;">
+    <div class="grid-container-left" style="flex: 1; font-size: 10px; line-height: 1.5;">
+        <p style="text-align: center; font-size: 1rem; font-family: DIN_Regular; line-height: 1;">For one-on-one support, <br>Australian and New Zealand customers can contact us</p>
+        <a href="mailto:automation@betfair.com.au" class="btn btn-api" style="margin: auto; color: black!important; font-size: 0.9rem;">Contact us</a>   
+        <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-api" style="margin: auto; color: black!important; font-size: 0.9rem;">Get Your API Key</a>
     </div>
 </div>
 

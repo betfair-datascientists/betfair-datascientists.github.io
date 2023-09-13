@@ -146,7 +146,7 @@
 
 .grid-container-carousel {
   display: grid;
-  grid-template-rows: 300px 10px;
+  grid-template-rows: 350px 10px;
   grid-template-columns: 0.25fr 1.5fr 0.25fr;
   gap: 30px;
 }
@@ -239,7 +239,7 @@
 }
 
 .grid-item-title h2{
-  overflow: hidden;
+  margin-top: 0.64em;
   justify-content: space-between;
   align-items: center;
   text-align: center;

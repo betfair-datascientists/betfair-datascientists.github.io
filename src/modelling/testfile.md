@@ -31,12 +31,12 @@ hide:
             <a href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia or New Zealand?</a>
         </div>
     </div>
-</div> 
+</div>
 </div>
 <div class="grid-container-CTA-mob">
 <div style="position: relative; font-family: Din_Regular; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 10px; border-radius: 10px 10px 0 0; width: 100%; height: 350px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotifMobile.PNG'); background-size: cover; background-repeat: no-repeat; background-position: top;">
     <div style="position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; line-height: 1.05">
-        <b><font size="2rem">Trade and bet on Betfair using our API or choose from a catalogue of third party betting tools</font></b><br>
+        <b><font size="2rem !important">Trade and bet on Betfair using our API or choose from a catalogue of third party betting tools</font></b><br>
         <br>
         <br>
         <div class="button-container" style="width:100%">
@@ -176,7 +176,7 @@ hide:
 <div style="background-color:#212121 ; font-family:DIN_Regular; font-size:10px; display: flex; justify-content: space-between; align-items: center; padding:0px 20px 20px; width: 100%;">
   <div <div style="width: 85%; margin: 0 auto;">
     <div class="grid-container-data">
-        <div class="grid-item-languages">
+        <div class="grid-item-hd">
             <a style="text-align: center;font-family:National2;font-size:3rem;line-height: 1.1">REAL TIME AND HISTORICAL DATA</a>
         </div>
         <div class="grid-item-hist">
@@ -187,11 +187,11 @@ hide:
         </div>
     </div>
     <div class="grid-container-data-mob">
-        <div class="grid-item-languages">
-            <a style="text-align: center;font-family:National2;font-size:2rem;line-height: 1.1">REAL TIME AND HISTORICAL DATA</a>
+        <div class="grid-item-hd">
+            <a style="text-align: center;font-family:National2;font-size:1.75rem;line-height: 1.1">REAL TIME AND HISTORICAL DATA</a>
         </div>
-        <div class="grid-item-languages">
-            <a style="text-align: center;line-height: 1.1;font-size: 0.9rem">In addition to a real-time data streaming service, we provide access to a database of historical market data. The Betfair database currently holds almost 1.5TB of raw and preprocessed market data available in JSON format. <br> </a>
+        <div class="grid-item-hd">
+            <a style="text-align: center;line-height: 1.1;font-size: 0.7rem">In addition to a real-time data streaming service, we provide access to a database of historical market data. The Betfair database currently holds almost 1.5TB of raw and preprocessed market data available in JSON format. <br> </a>
         </div>
         <div class="button-container">
             <a href="https://historicdata.betfair.com/#/mydata" class="btn btn-hd" style="font-size: 0.9rem">Our Data Availability Listing</a>
@@ -201,15 +201,15 @@ hide:
   </div>
 </div>
 
-<div style="position: relative; font-family: National2; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding:0px 20px 0px; width: 100%;background-image: url('/img/BACKGROUND_GREY.png'); background-size: cover; height: 100%; background-position: top;">
+<div style="position: relative; font-family: National2; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding:0px 20px 20px; width: 100%;background-image: url('/img/BACKGROUND_GREY.png'); background-size: cover; height: 100%; background-position: top;">
   <div <div style="width: 75%; margin: 0 auto;">
     <div class="grid-container-team">
-        <div class="grid-item-languages">
+        <div class="grid-item-hd">
         <br>
-            <a style="text-align: center;font-family:National2;font-size:3rem;color:black !important;line-height:1.1">DEDICATED TEAM</a>
+            <h2 style="text-align: center;font-family:National2;color:black !important;line-height:1.1">DEDICATED TEAM</h2>
         </div>
-        <div class="grid-item-languages">
-            <a style="text-align: center;line-height: 1.1;font-size:0.75rem;color:black !important; font-family:DIN_Regular">We are a service-oriented team dedicated to supporting those looking to create and automate a betting or trading strategy.<br> Whether you're a seasoned quant or brand new to Betfair, we're here to help.</a>
+        <div class="grid-item-hd">
+            <a style="text-align: center;line-height: 1.1;color:black !important; font-family:DIN_Regular;">We are a service-oriented team dedicated to supporting those looking to create and automate a betting or trading strategy. Whether you're a seasoned quant or brand new to Betfair, we're here to help.</a>
         </div>
     </div>
     <div class="grid-container-api" style="justify-content: space-between; margin: 10px 20px; font-weight:bold;">
@@ -222,30 +222,29 @@ hide:
         <a style="text-align: center;font-family:DIN_Regular;font-size:0.75rem;color:black !important;line-height: 1.1">STREAM UPDATE <br>FREQUENCY</a>
         <a style="text-align: center;font-family:DIN_Regular;font-size:0.75rem;color:black !important;line-height: 1.1">OF HISTORICAL <br>PRICING DATA</a>
         </div>
-    <br>
     <div class="outer-grid">
   <div class="grid-cell" style="height: 110px">
     <div class="inner-grid">
-      <div class="inner-cell"style="text-align: center;font-family:National2;font-size:1.5rem;color:black !important;height: 40px"><span style="font-size: 2.5rem;">12.4</span>%</div>
-      <div class="inner-cell"style="text-align: center;font-family:DIN_Regular;font-size:0.75rem;color:black !important;line-height: 1.1">ADVANTAGE FOR BSP AGAINST BEST TOTE</div>
+      <div class="inner-cell"style="text-align: center;font-family:National2;font-size:1.25rem;color:black !important;height: 40px"><span style="font-size: 2rem;">12.4</span>%</div>
+      <div class="inner-cell"style="text-align: center;font-family:DIN_Regular;font-size:0.7rem;color:black !important;line-height: 1.1">ADVANTAGE FOR BSP AGAINST BEST TOTE</div>
     </div>
   </div>
   <div class="grid-cell" style="height: 110px">
     <div class="inner-grid">
-      <div class="inner-cell"style="text-align: center;font-family:National2;font-size:1.5rem;color:black !important;height: 40px"><span style="font-size: 2.5rem;">76</span>K</div>
-      <div class="inner-cell"style="text-align: center;font-family:DIN_Regular;font-size:0.75rem;color:black !important;line-height: 1.1">AUSTRALIAN RACING EVENTS PER YEAR</div>
+      <div class="inner-cell"style="text-align: center;font-family:National2;font-size:1.25rem;color:black !important;height: 40px"><span style="font-size: 2rem;">76</span>K</div>
+      <div class="inner-cell"style="text-align: center;font-family:DIN_Regular;font-size:0.7rem;color:black !important;line-height: 1.1">AUSTRALIAN RACING EVENTS PER YEAR</div>
     </div>
   </div>
   <div class="grid-cell" style="height: 110px">
     <div class="inner-grid">
-      <div class="inner-cell"style="text-align: center;font-family:National2;font-size:1.5rem;color:black !important;height: 40px"><span style="font-size: 2.5rem;">50</span>ms</div>
-      <div class="inner-cell"style="text-align: center;font-family:DIN_Regular;font-size:0.75rem;color:black !important;line-height: 1.1">STREAM UPDATE FREQUENCY</div>
+      <div class="inner-cell"style="text-align: center;font-family:National2;font-size:1.25rem;color:black !important;height: 40px"><span style="font-size: 2rem;">50</span>ms</div>
+      <div class="inner-cell"style="text-align: center;font-family:DIN_Regular;font-size:0.7rem;color:black !important;line-height: 1.1">STREAM UPDATE FREQUENCY</div>
     </div>
   </div>
   <div class="grid-cell" style="height: 110px">
     <div class="inner-grid">
-      <div class="inner-cell"style="text-align: center;font-family:National2;font-size:1.5rem;color:black !important;height: 40px"><span style="font-size: 2.5rem;">1450</span>GB</div>
-      <div class="inner-cell"style="text-align: center;font-family:DIN_Regular;font-size:0.75rem;color:black !important;line-height: 1.1">OF HISTORICAL PRICING DATA</div>
+      <div class="inner-cell"style="text-align: center;font-family:National2;font-size:1.25rem;color:black !important;height: 40px"><span style="font-size: 2rem;">1450</span>GB</div>
+      <div class="inner-cell"style="text-align: center;font-family:DIN_Regular;font-size:0.7rem;color:black !important;line-height: 1.1">OF HISTORICAL PRICING DATA</div>
     </div>
   </div>
 </div>
@@ -265,7 +264,7 @@ hide:
         <br>
             <div style="background-color:#212121;font-family:National2;font-size:1.75rem;text-transform:uppercase;color:white;line-height: 1.1;text-align:center;">Connect to the API in your<br> language of choice
             </div>
-            <div style="background-color:#212121;font-family:DIN_Regular;font-size:0.6rem;color:white;line-height: 1.1;text-align:center">Helper libraries are available for most programming languages, provided either by Betfair or supported by the community so you can focus on the most important aspects instead of wasting time connecting the pieces together.
+            <div style="background-color:#212121;font-family:DIN_Regular;font-size:0.7rem;color:white;line-height: 1.1;text-align:center">Helper libraries are available for most programming languages, provided either by Betfair or supported by the community so you can focus on the most important aspects instead of wasting time connecting the pieces together.
             </div>
         </div>
         <div class="grid-container-code-a" style="background-color:#212121;width: 75%; margin: 0 auto;"> 
@@ -376,42 +375,48 @@ hide:
 </div>
 <div style="background-color:black; font-family:DIN_Regular; font-size:10px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 0 30px 0 30px; width: 100%; height: 100%;">
         <div class="grid-item-title">
-            <h2 style="color: white !important; font-family: National2; font-size: 3rem; line-height: 1.1;">RESOURCE CATALOGUE</h2>
+            <h2 style="color: white !important; font-family: National2; line-height: 1.1;">RESOURCE CATALOGUE</h2>
         </div>
     <div class="grid-container-carousel" style="width: 100%; margin: 0 auto; text-align: center;">
         <div class="grid-item-title" style="background-image: url('/img/carousel_background_L.png'); background-size: cover;"> 
         </div>
         <div class="grid-item carousel-item active" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;font-weight: 100;line-height: 1">API <br>Tutorials</h2>
-            <a href="https://betfair-datascientists.github.io/api/apiResources/" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;font-weight: 100;line-height: 1">API Tutorials</h2>
+            <br>
+            <a href="https://betfair-datascientists.github.io/api/apiResources/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Historic <br>Pricing Data</h2>
-            <a href="https://betfair-datascientists.github.io/historicData/dataSources/" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. Australian and New Zealand customers can reach out directly for access to our curated database.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Historic Pricing Data</h2>
+            <br>
+            <a href="https://betfair-datascientists.github.io/historicData/dataSources/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. Australian and New Zealand customers can reach out directly for access to our curated database.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Data <br>Modelling</h2>
-            <a href="https://betfair-datascientists.github.io/modelling/howToModel/" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">Many of our most successful customers use predictive models as the basis for their betting strategies. <br> We have a series of modelling tutorials created by community members ranging from racing to sports. We hold regular datathons where cash prizes can be won.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Data Modelling</h2>
+            <br>
+            <a href="https://betfair-datascientists.github.io/modelling/howToModel/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Many of our most successful customers use predictive models as the basis for their betting strategies. <br> We have a series of modelling tutorials created by community members ranging from racing to sports. We hold regular datathons where cash prizes can be won.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Automation <br>Tools</h2>
-            <a href="https://betfair-datascientists.github.io/autoTools/overview/" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">There are many applications that have been built by external developers which offer exciting features including one-click bets or tools for fully automating your strategies on the exchange. We've developed reviews and tutorials for some of the most popular tools.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Automation Tools</h2>
+            <br>
+            <a href="https://betfair-datascientists.github.io/autoTools/overview/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">There are many applications that have been built by external developers which offer exciting features including one-click bets or tools for fully automating your strategies on the exchange. We've developed reviews and tutorials for some of the most popular tools.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Inspiration and<br> Information</h2>
-            <a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. We're always looking for new and interesting content.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Inspiration and Information</h2>
+            <br>
+            <a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. We're always looking for new and interesting content.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Quants <br>Community</h2>
-            <a href="https://forms.office.com/r/ZG9ea1xQj1" style="color: white !important;font-family:DIN_Regular;font-size:1.25rem;line-height: 1">betfair quants is really active Betfair-owned Discord server for people interested in modelling and automation on the Exchange. Our resident experts are always willing and able to share their expertise and experience. Please reach out if you'd like an invitation.</a>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Quants Community</h2>
+            <br>
+            <a href="https://forms.office.com/r/ZG9ea1xQj1" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">betfair quants is really active Betfair-owned Discord server for people interested in modelling and automation on the Exchange. Our resident experts are always willing and able to share their expertise and experience. Please reach out if you'd like an invitation.</a>
         </div>
         <div class="grid-item-title" style="background-image: url('/img/carousel_background_R.png'); background-size: cover;"> 
         </div>
         <div>
         </div>
-        <div class="carousel-dots"> 
+        <div class="carousel-dots">
         <span class="dot"></span>
-        <span class="dot"></span> 
+        <span class="dot"></span>
         <span class="dot"></span> 
         <span class="dot"></span>
         <span class="dot"></span> 
@@ -420,27 +425,27 @@ hide:
     </div>
     <div class="grid-container-carousel-mob" style="width: 100%; margin: 0 auto; text-align: center; height: 100%;">
         <div class="grid-item carousel-item active" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;font-weight: 100;line-height: 1">API Tutorials</h2>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">API <br>Tutorials</h2>
             <a href="https://betfair-datascientists.github.io/api/apiResources/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Historic Pricing Data</h2>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Historic <br>Pricing Data</h2>
             <a href="https://betfair-datascientists.github.io/historicData/dataSources/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. Australian and New Zealand customers can reach out directly for access to our curated database.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Data Modelling</h2>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Data <br>Modelling</h2>
             <a href="https://betfair-datascientists.github.io/modelling/howToModel/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Many of our most successful customers use predictive models as the basis for their betting strategies. <br> We have a series of modelling tutorials created by community members ranging from racing to sports. We hold regular datathons where cash prizes can be won.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Automation Tools</h2>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Automation <br>Tools</h2>
             <a href="https://betfair-datascientists.github.io/autoTools/overview/" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">There are many applications that have been built by external developers which offer exciting features including one-click bets or tools for fully automating your strategies on the exchange. We've developed reviews and tutorials for some of the most popular tools.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Inspiration and Information</h2>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Inspiration and <br>Information</h2>
             <a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. We're always looking for new and interesting content.</a>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Quants Community</h2>
+            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Quants <br>Community</h2>
             <a href="https://forms.office.com/r/ZG9ea1xQj1" style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">betfair quants is really active Betfair-owned Discord server for people interested in modelling and automation on the Exchange. Our resident experts are always willing and able to share their expertise and experience. Please reach out if you'd like an invitation.</a>
         </div>
         <div class="carousel-dots"> 
@@ -483,7 +488,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <div style="background-color: black; color: #ffb80c; font-family: DIN_Regular; font-size: 10px; display: flex; justify-content: flex-end; align-items: center; padding: 0;width: 100%; border-radius: 0 0 10px 10px;">
     <div class="grid-container-left" style="flex: 1; font-size: 10px; line-height: 1.5;">
-        <p style="text-align: center; font-size: 1rem; font-family: DIN_Regular; line-height: 1;">For one-on-one support, <br>AUS and NZ <br>customers can contact us</p>
+        <br>
+        <p style="text-align: center; font-size: 1rem; font-family: DIN_Regular; line-height: 1;">For one-on-one support, AUS and NZ customers can contact us</p>
         <a href="mailto:automation@betfair.com.au" class="btn btn-api" style="margin: auto; color: black!important; font-size: 0.9rem;">Contact us</a>   
         <a href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-api" style="margin: auto; color: black!important; font-size: 0.9rem;">Get Your API Key</a>
         <br>

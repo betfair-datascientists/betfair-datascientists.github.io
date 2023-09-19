@@ -1,5 +1,6 @@
 .button-container {
   display: flex;
+  align-items: center;
   justify-content: center;
 }
 
@@ -66,7 +67,7 @@
 .grid-container-icons {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 90px 30px 120px;
+  grid-template-rows: 90px 30px 140px;
   gap: 20px;
 }
 
@@ -94,13 +95,13 @@
 .grid-container-data {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.75fr 0.6fr 0.75fr;
+  grid-template-rows: 0.75fr 1fr 0.75fr;
 }
 
 .grid-container-data-mob {
   display: none;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.75fr 0.6fr 0.3fr;
+  grid-template-rows: 0.75fr 1.25fr 0.3fr;
 }
 
 .grid-container-mob {
@@ -113,6 +114,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.75fr 0.4fr;
+  padding: 0px;
 }
 
 .grid-container-code-a {
@@ -143,10 +145,17 @@
   gap: 5px;
 }
 
+.grid-container-code-a img {
+  height: 110px;
+}
+
+.grid-container-code-mob img {
+  height: 80px;
+}
 
 .grid-container-carousel {
   display: grid;
-  grid-template-rows: 350px 10px;
+  grid-template-rows: 250px 10px;
   grid-template-columns: 0.25fr 1.5fr 0.25fr;
   gap: 30px;
 }
@@ -154,7 +163,7 @@
 
 .grid-container-carousel-mob {
   display: none;
-  grid-template-rows: 225px 60px;
+  grid-template-rows: 250px 60px;
   grid-template-columns: 1.5fr;
 }
 
@@ -249,7 +258,7 @@
 
 .grid-item h2 {
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: lighter;
   color: #ffb80c;
   text-align: center;
   margin:0;
@@ -267,10 +276,20 @@
 .grid-item-languages {
   border-radius: 20px;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .grid-item-languages h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ffb80c;
+  text-align: center;
+  margin: 0;
+  font-family: 'National2';
+  text-transform: uppercase;
+}
+
+.grid-item-hd h2 {
   font-size: 3rem;
   font-weight: bold;
   color: #ffb80c;
@@ -290,7 +309,16 @@
 }
 
 .grid-item-languages a {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
+  text-align: center;
+  color: white !important;
+  display: flex;
+  justify-content: center;
+  font-family: 'DIN_Regular';
+}
+
+.grid-item-hd a {
+  font-size: 1rem;
   text-align: center;
   color: white !important;
   display: flex;
@@ -345,7 +373,6 @@
   background-color:#212121;
   border: 1px solid transparent;
   border-color: #1e1e1e;
-  padding: 35px;
   border-radius: 10px;
   justify-content: center;
   align-items: center;
@@ -434,7 +461,7 @@
 
 
 /* Media query for screens smaller than 768px */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 749px) {
   .grid-container-icons {
     display: none;
   }
@@ -485,7 +512,6 @@
   }
 
   .grid-item-languages {;
-    margin-bottom: 20px;
     text-align: center;
   }
 
@@ -555,7 +581,8 @@
   .grid-container-data-mob {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 0.75fr 0.6fr 0.3fr;
+    grid-template-rows: 0.75fr 1.3fr 0.3fr;
+    padding: 10px;
   }
   
   .grid-container-data {
@@ -563,7 +590,7 @@
   }
 
   .grid-item-title h2{
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .grid-container-carousel {
@@ -572,11 +599,31 @@
   
   .grid-container-carousel-mob {
     display: grid;
+    padding: 10px;
   }
   
+  .grid-container-team {
+    margin: 0 -15%;
+  }
+
+  .grid-item-languages h2 {
+    font-size: 1.75rem;
+  }
+
+  .grid-item-languages a {
+    font-size: 0.7rem;
+  }
+
+  .grid-item-hd h2 {
+    font-size: 1.75rem;
+  }
+
+  .grid-item-hd a {
+    font-size: 0.7rem;
+  }
 }
 
-@media screen and (min-width: 701px) and (max-width: 850px){
+@media screen and (min-width: 750px) and (max-width: 850px){
   .grid-container-centre {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -625,14 +672,14 @@
 
 }
 
-@media screen and (min-width: 701px) and (max-width: 1050px){
+@media screen and (min-width: 750px) and (max-width: 1050px){
 
   .grid-item-languages a {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   .grid-item-languages p {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
   }
 
   .grid-container-CTA {
@@ -644,7 +691,11 @@
   }
 
   .grid-item-hist a {
-    font-size: 0.75rem !important;
+    font-size: 0.9rem !important;
+  }
+
+  .grid-container-code-a img {
+    height: 80px;
   }
 }
 

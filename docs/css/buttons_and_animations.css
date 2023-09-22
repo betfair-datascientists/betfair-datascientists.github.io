@@ -276,7 +276,11 @@
 .grid-item-languages {
   border-radius: 20px;
   text-align: center;
-  margin-bottom: 10px;
+  margin: 20px 0;
+}
+
+#icons .grid-item-languages p {
+  margin-top:10px;
 }
 
 .grid-item-languages h2 {
@@ -392,7 +396,7 @@
 }
 
 .grid-item-changer a {
-  font-size: 1.2rem;
+  font-size: .75rem;
   margin: 0;
   text-align: center;
   color: #ffb80c !important;
@@ -408,6 +412,7 @@
 .grid-item-changer:hover a {
   display: flex;
   text-align: center;
+  vertical-align:center;
   justify-content: center;
   text-transform: uppercase;
   color: white !important
@@ -509,10 +514,6 @@
   }
   .small-screen {
     display: block; /* Show the block on smaller screens */
-  }
-
-  .grid-item-languages {;
-    text-align: center;
   }
 
   .outer-grid {

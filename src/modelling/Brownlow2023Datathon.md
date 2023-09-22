@@ -6,6 +6,8 @@ Register [here](https://forms.office.com/r/padSktAhB5)
 
 Once you have registered, you will receive the dataset and submission template by email within 2 business days.
 
+Registrations close **4:45PM AEST Friday September 22nd 2023**
+
 ## The Competition
 
 Do you think you have what it takes to predict how the umpires will vote on the Brownlow medal?

@@ -53,6 +53,42 @@ See the list below for the prizes each placing at the end of the competition wil
 
 Prize winners will be announced at the end of the count and prizes will be distributed in the following days
 
+### Final Results
+
+Model|LogLoss|Rank|
+|----------------------------------------|---------|---------|-------------|
+Vertex|5.59971899693986|1|
+Kathys-Lucky-Guesses|5.65064148455871|2|
+ForTheTrees|5.78990422858799|3|
+belleepoque|5.79400002454156|4|
+ChromeBook|5.85635976392115|5|
+FootyProphet|5.90339607366938|6|
+LifesGood|5.96807894493434|7|
+BLT|5.97007252475371|8|
+MyLittlePony|6.04155148419435|9|
+Bwownwow-modew-UwU|6.0417051646312|10|
+RandomShrubbery|6.0833130481194|11|
+Cindy|6.20046166558851|12|
+Midfielders-Medal|6.22448844896409|13|
+NotYourModelV2|6.23632064877733|14|
+PabloEscobar|6.23860449303679|15|
+Snoopy|6.28912469990177|16|
+nzCharlieChooser|6.3362015352423|17|
+random-number-generator|6.35297828843829|18|
+NickyDwillwin|6.62981370403745|19|
+LongRange|6.6834374158962|20|
+Sportsmanifold-com|6.77706578552931|21|
+BrownHighLow|7.31510324865778|22|
+DCL|7.75006150745972|23|
+VinhoVerde|7.87199859723157|24|
+Corebridge-Analytics|8.52861655118625|25|
+WATP|9.70207349246611|26|
+DataWading|24.9278696539264|27|
+craigs-list|31.4775455046783|28|
+boylanc|33.2383077997184|29|
+ReverseBanana|44.9988536000238|30|
+
+
 ### Competition Rules
 
 The 2023 Brownlow Medal Datathon will see entrants provided with a bespoke set of historic AFL data from 2012 until the end of Round 24 2023.

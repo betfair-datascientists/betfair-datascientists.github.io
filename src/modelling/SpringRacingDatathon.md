@@ -27,7 +27,7 @@ For an invite to the discord server, please fill out the form [here](https://for
 
 Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au).
 
-## The specifics
+### The Specifics
 
 The Terms and Conditions for the 2023 Brownlow Medal Datathon Competition can be viewed [here](../assets/SPDMC_2023_TCs.pdf)
 
@@ -51,10 +51,9 @@ See the list below for the prizes each placing at the end of the competition wil
 | Lowest Weekly Score Week 3 | $1000.00 |
 | Lowest Weekly Score Week 4 | $1000.00 |
 | Best New Modeller | $2000.00 |
+| Total Prize Pool | $50,000.00 | 
 
 (for further information see the terms and conditions) 
-
-| Total Prize Pool | $50,000.00 | 
 
 Prize winners will be announced following the final day of racing, and all prizes will be distributed after the conclusion of the final day of racing. 
 
@@ -96,6 +95,7 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 ## Results
 
 Leaderboards will be posted here weekly as well as in the Betfair Quants Discord server
+For an invite to the discord server, please fill out the form [here](https://forms.office.com/r/ZG9ea1xQj1 )
 
 ## Registrations
 

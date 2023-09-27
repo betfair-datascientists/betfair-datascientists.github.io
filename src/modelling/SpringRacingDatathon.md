@@ -78,7 +78,7 @@ See the Terms and Conditions for full Competition rules.
 
 ### Submissions & Judging
 
-The Datathon will be judged using the log-loss method where the log-loss score is calculated using the difference between the predicted probability and the actual outcome. The scoring calculation will involve finding the SUM of the log-loss across all runners in a single race and then finding the AVERAGE log-loss of each race. The entrant with the lowest log-loss will be victorious.
+The Datathon will be judged using the log loss method where the log loss score is calculated using the difference between the predicted probability and the actual outcome. The scoring calculation will involve finding the SUM of the log loss across all runners in a single race and then finding the AVERAGE log loss of each race. The entrant with the lowest log loss will be victorious.
 
 ![png](../img/LogLoss.PNG)
 
@@ -94,7 +94,8 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 
 ## Results
 
-Leaderboards will be posted here weekly as well as in the Betfair Quants Discord server
+Leaderboards will be posted here weekly as well as in the Betfair Quants Discord server.
+
 For an invite to the discord server, please fill out the form [here](https://forms.office.com/r/ZG9ea1xQj1 )
 
 ## Registrations

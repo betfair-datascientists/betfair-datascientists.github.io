@@ -1,5 +1,9 @@
 # Betfair’s 2023 Spring Racing Data Modelling Competition
 
+Powered By:
+
+<img src="../img/PuntingForm.png" alt="png" width="300" />
+
 ## Registrations
 
 Register [here](https://forms.office.com/r/Ax8dibyrFK)

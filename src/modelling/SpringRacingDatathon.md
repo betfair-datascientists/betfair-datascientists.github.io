@@ -1,9 +1,5 @@
 # **Betfair’s 2023 Spring Racing Data Modelling Competition**
 
-Powered By:
-
-<img src="../img/PuntingForm.png" alt="png" width="300" />
-
 ## Registrations
 
 Register [here](https://forms.office.com/r/Ax8dibyrFK)
@@ -14,11 +10,11 @@ Registrations close at **4:59pm AEDT Monday October 23rd, 2023!**
 
 ## The Competition
 
-Do you think you have what it takes to model Victorian Thoroughbred racing this Spring? Betfair is giving you the chance to show off your data modelling skills with a prize pool of $50,000! 
+Do you think you have what it takes to model Victorian thoroughbred racing this Spring? Betfair is giving you the chance to show off your data modelling skills with a prize pool of $50,000! 
 
 The 2023 Spring Racing Data Modelling Competition will see Competition Entrants provided with a bespoke set of Punting Form historic thoroughbred data. 
 
-The goal from there is to use the provided data (or any other data) to build your own model, to predict the winning probability of each selection, on nominated race days and meetings (see below) starting on Saturday 28 October 2023 and concluding on Saturday 18 November. 
+The goal from there is to use the provided data (or any other data) to build your own model, to predict the winning probability of each selection, on nominated race days and meetings (see below) starting on Saturday 28 October 2023 and concluding on Saturday 18 November 2023. 
 
 With $50,000 in prizes up for grabs, we’re challenging you to use your modelling skills to your advantage, be that by building your first predictive racing model, improving on an existing design or have a go at something different by adapting your data skills from other fields. 
 

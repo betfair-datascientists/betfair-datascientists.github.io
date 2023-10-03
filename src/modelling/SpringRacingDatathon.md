@@ -1,4 +1,4 @@
-# Betfair’s 2023 Spring Racing Data Modelling Competition
+# **Betfair’s 2023 Spring Racing Data Modelling Competition**
 
 Powered By:
 

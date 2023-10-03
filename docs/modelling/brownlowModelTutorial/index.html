@@ -14,8 +14,15 @@
       
         <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/brownlowModelTutorial/">
       
+      
+        <link rel="prev" href="../AFLmodellingPython/">
+      
+      
+        <link rel="next" href="../howToModelTheAusOpen/">
+      
+      
       <link rel="icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.3">
     
     
       
@@ -23,15 +30,17 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.79e020e9.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a5377069.min.css">
       
       
 
+
     
+    
+      
     
     
       
@@ -64,9 +73,7 @@
   
   
 
-
-  <script id="__analytics">function __md_analytics(){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");ga("send","event","feedback","click",t,e),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){ga("send","pageview",e.pathname)})});var e=document.createElement("script");e.async=!0,e.src="https://www.google-analytics.com/analytics.js",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
-
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","UA-125973915-1"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","UA-125973915-1",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=UA-125973915-1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
   
@@ -109,7 +116,7 @@
       
   
   <header class="md-header" data-md-component="header">
-    <nav class="md-header__inner md-grid" aria-label="Header">
+    <nav class="md-header__inner md-grid" aria-label="header.title">
       <a href="../.." title="The Automation Hub" class="md-header__button md-logo" aria-label="The Automation Hub" data-md-component="logo">
         
   <img src="../../img/logo.svg" alt="logo">
@@ -161,45 +168,6 @@
       
 
       
-        <label class="md-header__button md-icon" for="__search">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
-          </a>
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
      
       <div class="bf-nav">
         <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
@@ -226,32 +194,21 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
-      Home
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
   
     <li class="md-tabs__item">
-      <a href="../../wagering/betfairHowTo/" class="md-tabs__link">
-        Wagering
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
       </a>
     </li>
   
@@ -260,16 +217,36 @@
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../wagering/betfairHowTo/" class="md-tabs__link">
+          
+  
+  Wagering
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../api/apiResources/" class="md-tabs__link">
-        API
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/apiResources/" class="md-tabs__link">
+          
+  
+  API
+
+        </a>
+      </li>
+    
   
 
       
@@ -278,80 +255,90 @@
   
     
   
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../Brownlow2023Datathon/" class="md-tabs__link">
+          
+  
+  Modelling
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../Brownlow2023Datathon/" class="md-tabs__link md-tabs__link--active">
-        Modelling
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../automation/GoldenRulesofAutomation/" class="md-tabs__link">
-        Automation
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../automation/GoldenRulesofAutomation/" class="md-tabs__link">
+          
+  
+  Automation
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../tutorials/How_to_Automate_1/" class="md-tabs__link">
-        Tutorials
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../mentalGame/intro/" class="md-tabs__link">
-        Mental Game
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorials/How_to_Automate_1/" class="md-tabs__link">
+          
+  
+  Tutorials
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../contactUs/test/" class="md-tabs__link">
-        Contact Us
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mentalGame/intro/" class="md-tabs__link">
+          
+  
+  Mental Game
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contactUs/test/" class="md-tabs__link">
+          
+  
+  Contact Us
+
+        </a>
+      </li>
+    
   
 
       
@@ -370,6 +357,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 
   
 
@@ -390,14 +378,18 @@
     
       
       
-      
-
   
   
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Home
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
       </a>
     </li>
   
@@ -405,470 +397,662 @@
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2">
-          Wagering
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Wagering" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          Wagering
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Wagering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wagering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/betfairHowTo/" class="md-nav__link">
-        Betfair How-To
+        
+  
+  <span class="md-ellipsis">
+    Betfair How-To
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/bettingGlossary/" class="md-nav__link">
-        Betting Glossary
+        
+  
+  <span class="md-ellipsis">
+    Betting Glossary
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/stakingMethods/" class="md-nav__link">
-        Staking Methods and Bankroll Management
+        
+  
+  <span class="md-ellipsis">
+    Staking Methods and Bankroll Management
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/valueAndOdds/" class="md-nav__link">
-        Value and Odds
+        
+  
+  <span class="md-ellipsis">
+    Value and Odds
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/commission/" class="md-nav__link">
-        Commission and other charges
+        
+  
+  <span class="md-ellipsis">
+    Commission and other charges
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3">
-          API
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="API" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          API
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../api/apiResources/" class="md-nav__link">
-        API resources
+        
+  
+  <span class="md-ellipsis">
+    API resources
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../api/apiappkey/" class="md-nav__link">
-        How to access the Betfair API
+        
+  
+  <span class="md-ellipsis">
+    How to access the Betfair API
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../api/apiRtutorial/" class="md-nav__link">
-        API tutorial in R
+        
+  
+  <span class="md-ellipsis">
+    API tutorial in R
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../api/apiPythontutorial/" class="md-nav__link">
-        API tutorial in Python
+        
+  
+  <span class="md-ellipsis">
+    API tutorial in Python
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
     
   
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4">
-          Modelling
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Modelling" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Modelling
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
           
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Modelling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Modelling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../Brownlow2023Datathon/" class="md-nav__link">
-        Brownlow 2023 Datathon
+        
+  
+  <span class="md-ellipsis">
+    Brownlow 2023 Datathon
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../AFL2023Datathon/" class="md-nav__link">
-        AFL 2023 Datathon (concluded)
+        
+  
+  <span class="md-ellipsis">
+    AFL 2023 Datathon (concluded)
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../howToModel/" class="md-nav__link">
-        Intro to modelling
+        
+  
+  <span class="md-ellipsis">
+    Intro to modelling
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../dataSources/" class="md-nav__link">
-        Pricing Data Sources
+        
+  
+  <span class="md-ellipsis">
+    Pricing Data Sources
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_5">
-          Racing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Racing" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_5">
-          <span class="md-nav__icon md-icon"></span>
-          Racing
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Racing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Racing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../fasttrackTutorial/" class="md-nav__link">
-        Greyhound form FastTrack API
+        
+  
+  <span class="md-ellipsis">
+    Greyhound form FastTrack API
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../greyhoundModellingPython/" class="md-nav__link">
-        Greyhound modelling in Python
+        
+  
+  <span class="md-ellipsis">
+    Greyhound modelling in Python
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_6">
-          Soccer
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Soccer" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_6">
-          <span class="md-nav__icon md-icon"></span>
-          Soccer
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Soccer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Soccer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../soccerModellingELO2022WorldCup/" class="md-nav__link">
-        Soccer modelling tutorial in R for 2022 FIFA World Cup
+        
+  
+  <span class="md-ellipsis">
+    Soccer modelling tutorial in R for 2022 FIFA World Cup
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../soccerModellingTutorialPython/" class="md-nav__link">
-        Soccer modelling tutorial in Python
+        
+  
+  <span class="md-ellipsis">
+    Soccer modelling tutorial in Python
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../EPLmlPython/" class="md-nav__link">
-        EPL ML walk through in Python
+        
+  
+  <span class="md-ellipsis">
+    EPL ML walk through in Python
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_7">
-          AFL
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="AFL" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_7">
-          <span class="md-nav__icon md-icon"></span>
-          AFL
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
           
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    AFL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            AFL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../AFLmodellingPython/" class="md-nav__link">
-        AFL modelling walk through in Python
+        
+  
+  <span class="md-ellipsis">
+    AFL modelling walk through in Python
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
@@ -876,1048 +1060,1484 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
       
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Modelling the Brownlow Medal in Python
+        
+  
+  <span class="md-ellipsis">
+    Modelling the Brownlow Medal in Python
+  </span>
+  
+
       </a>
       
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_8">
-          Tennis
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Tennis" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_8">
-          <span class="md-nav__icon md-icon"></span>
-          Tennis
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tennis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            Tennis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../howToModelTheAusOpen/" class="md-nav__link">
-        How to model the Australian Open
+        
+  
+  <span class="md-ellipsis">
+    How to model the Australian Open
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../AusOpenRTutorial/" class="md-nav__link">
-        Aus Open R Tutorial
+        
+  
+  <span class="md-ellipsis">
+    Aus Open R Tutorial
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../AusOpenPythonTutorial/" class="md-nav__link">
-        Aus Open Python Tutorial
+        
+  
+  <span class="md-ellipsis">
+    Aus Open Python Tutorial
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5">
-          Automation
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Automation" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          Automation
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Automation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Automation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/GoldenRulesofAutomation/" class="md-nav__link">
-        Golden rules of automation
+        
+  
+  <span class="md-ellipsis">
+    Golden rules of automation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/overview/" class="md-nav__link">
-        Tools Overview
+        
+  
+  <span class="md-ellipsis">
+    Tools Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_3">
-          Bet Angel
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Bet Angel" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_3">
-          <span class="md-nav__icon md-icon"></span>
-          Bet Angel
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Bet Angel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bet Angel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngel/betAngel/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelbeginners/" class="md-nav__link">
-        Beginner's guide
+        
+  
+  <span class="md-ellipsis">
+    Beginner's guide
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelintermediate/" class="md-nav__link">
-        Intermediate guide
+        
+  
+  <span class="md-ellipsis">
+    Intermediate guide
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngeladvanced/" class="md-nav__link">
-        Advanced guide
+        
+  
+  <span class="md-ellipsis">
+    Advanced guide
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelRatingsAutomation/" class="md-nav__link">
-        Ratings auto
+        
+  
+  <span class="md-ellipsis">
+    Ratings auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelMarketFavouriteAutomation/" class="md-nav__link">
-        Market fav auto
+        
+  
+  <span class="md-ellipsis">
+    Market fav auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelTippingAutomation/" class="md-nav__link">
-        Tipping auto
+        
+  
+  <span class="md-ellipsis">
+    Tipping auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelSimultaneousMarkets/" class="md-nav__link">
-        Simultaneous markets
+        
+  
+  <span class="md-ellipsis">
+    Simultaneous markets
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelKellyStake/" class="md-nav__link">
-        Kelly criterion staking
+        
+  
+  <span class="md-ellipsis">
+    Kelly criterion staking
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_4">
-          Gruss Betting Assistant
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Gruss Betting Assistant" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_4">
-          <span class="md-nav__icon md-icon"></span>
-          Gruss Betting Assistant
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Gruss Betting Assistant
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Gruss Betting Assistant
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/Gruss/Gruss/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/GrussSettingupbasicmarketview/" class="md-nav__link">
-        Setup basic market view and one click betting
+        
+  
+  <span class="md-ellipsis">
+    Setup basic market view and one click betting
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/grussRatingsAutomation/" class="md-nav__link">
-        Ratings auto
+        
+  
+  <span class="md-ellipsis">
+    Ratings auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/grussMarketFavouriteAutomation/" class="md-nav__link">
-        Market fav auto
+        
+  
+  <span class="md-ellipsis">
+    Market fav auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/grusslSimultaneousMarkets/" class="md-nav__link">
-        Simultaneous markets
+        
+  
+  <span class="md-ellipsis">
+    Simultaneous markets
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/grussKellyStake/" class="md-nav__link">
-        Kelly criterion staking
+        
+  
+  <span class="md-ellipsis">
+    Kelly criterion staking
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_5">
-          Cymatic Trader
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Cymatic Trader" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_5">
-          <span class="md-nav__icon md-icon"></span>
-          Cymatic Trader
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cymatic Trader
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Cymatic Trader
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/CymaticTrader/CymaticTrader/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/cymaticTraderRatingsAutomation/" class="md-nav__link">
-        Ratings auto
+        
+  
+  <span class="md-ellipsis">
+    Ratings auto
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_6">
-          Geeks Toy
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Geeks Toy" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_6">
-          <span class="md-nav__icon md-icon"></span>
-          Geeks Toy
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Geeks Toy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Geeks Toy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/GeeksToyinstallationandsetup/" class="md-nav__link">
-        Installation and setup
+        
+  
+  <span class="md-ellipsis">
+    Installation and setup
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/GeeksToybasicmarketviewstakingandoneclickbetting/" class="md-nav__link">
-        Setup basic market view and one click betting
+        
+  
+  <span class="md-ellipsis">
+    Setup basic market view and one click betting
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/geeksToyRefreshSettings/" class="md-nav__link">
-        Optimising refresh settings
+        
+  
+  <span class="md-ellipsis">
+    Optimising refresh settings
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_7">
-          Bet Jet Pro
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Bet Jet Pro" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_7">
-          <span class="md-nav__icon md-icon"></span>
-          Bet Jet Pro
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Bet Jet Pro
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Bet Jet Pro
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betJetOverview/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6">
-          Tutorials
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          Tutorials
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/How_to_Automate_1/" class="md-nav__link">
-        How to Automate 1
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 1
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/How_to_Automate_2/" class="md-nav__link">
-        How to Automate 2
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 2
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/How_to_Automate_3/" class="md-nav__link">
-        How to Automate 3
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 3
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/How_to_Automate_4/" class="md-nav__link">
-        How to Automate 4
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 4
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/How_to_Automate_5/" class="md-nav__link">
-        How to Automate 5
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 5
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/processingTarFiles101/" class="md-nav__link">
-        Take away the pain! Processing TAR Files 101
+        
+  
+  <span class="md-ellipsis">
+    Take away the pain! Processing TAR Files 101
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/jsonToCsvRevisited/" class="md-nav__link">
-        JSON to CSV | Revisited
+        
+  
+  <span class="md-ellipsis">
+    JSON to CSV | Revisited
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/backtestingRatingsTutorial/" class="md-nav__link">
-        Back testing ratings in Python
+        
+  
+  <span class="md-ellipsis">
+    Back testing ratings in Python
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/automatedBettingAnglesTutorial/" class="md-nav__link">
-        Automated betting angles in Python
+        
+  
+  <span class="md-ellipsis">
+    Automated betting angles in Python
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/analysingAndPredictingMarketMovements/" class="md-nav__link">
-        Do they know? Analysing Betfair market formation & market movements
+        
+  
+  <span class="md-ellipsis">
+    Do they know? Analysing Betfair market formation & market movements
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../tutorials/analysingAndPredictingBSP/" class="md-nav__link">
-        Wisdom of the crowd? Analysing & understanding BSP
+        
+  
+  <span class="md-ellipsis">
+    Wisdom of the crowd? Analysing & understanding BSP
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_7">
-          Mental Game
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Mental Game" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
-          <span class="md-nav__icon md-icon"></span>
-          Mental Game
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Mental Game
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Mental Game
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/intro/" class="md-nav__link">
-        Intro
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/roleOfEmotions/" class="md-nav__link">
-        Part 1
+        
+  
+  <span class="md-ellipsis">
+    Part 1
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/mapYourEmotions/" class="md-nav__link">
-        Part 2
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/handlingBadVariance/" class="md-nav__link">
-        Part 3
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/winbyBeingGreatatLosing/" class="md-nav__link">
-        Part 4
+        
+  
+  <span class="md-ellipsis">
+    Part 4
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/correctingyouremotions/" class="md-nav__link">
-        Part 5
+        
+  
+  <span class="md-ellipsis">
+    Part 5
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/responsibleGambling/" class="md-nav__link">
-        Part 6
+        
+  
+  <span class="md-ellipsis">
+    Part 6
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/InchwormConcept/" class="md-nav__link">
-        Part 7
+        
+  
+  <span class="md-ellipsis">
+    Part 7
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/HighExpectations/" class="md-nav__link">
-        Part 8
+        
+  
+  <span class="md-ellipsis">
+    Part 8
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/TappingYourIntuition/" class="md-nav__link">
-        Part 9
+        
+  
+  <span class="md-ellipsis">
+    Part 9
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_8">
-          Contact Us
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Contact Us" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
-          Contact Us
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contact Us
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Contact Us
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../contactUs/test/" class="md-nav__link">
-        Meet the Team
+        
+  
+  <span class="md-ellipsis">
+    Meet the Team
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1967,7 +2587,6 @@
   document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
 }());
 </script>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2075,7 +2694,7 @@
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -2090,185 +2709,185 @@
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>season</th>
-      <th>round</th>
-      <th>venue</th>
-      <th>ID</th>
-      <th>match_id</th>
-      <th>player</th>
-      <th>jumper_no</th>
-      <th>team</th>
-      <th>opposition</th>
-      <th>status</th>
-      <th>team_score</th>
-      <th>opposition_score</th>
-      <th>margin</th>
-      <th>brownlow_votes</th>
-      <th>CP</th>
-      <th>UP</th>
-      <th>ED</th>
-      <th>DE</th>
-      <th>CM</th>
-      <th>GA</th>
-      <th>MI5</th>
-      <th>one_perc</th>
-      <th>BO</th>
-      <th>TOG</th>
-      <th>K</th>
-      <th>HB</th>
-      <th>D</th>
-      <th>M</th>
-      <th>G</th>
-      <th>B</th>
-      <th>T</th>
-      <th>HO</th>
-      <th>I50</th>
-      <th>CL</th>
-      <th>CG</th>
-      <th>R50</th>
-      <th>FF</th>
-      <th>FA</th>
-      <th>AF</th>
-      <th>SC</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date</th>
+<th>season</th>
+<th>round</th>
+<th>venue</th>
+<th>ID</th>
+<th>match_id</th>
+<th>player</th>
+<th>jumper_no</th>
+<th>team</th>
+<th>opposition</th>
+<th>status</th>
+<th>team_score</th>
+<th>opposition_score</th>
+<th>margin</th>
+<th>brownlow_votes</th>
+<th>CP</th>
+<th>UP</th>
+<th>ED</th>
+<th>DE</th>
+<th>CM</th>
+<th>GA</th>
+<th>MI5</th>
+<th>one_perc</th>
+<th>BO</th>
+<th>TOG</th>
+<th>K</th>
+<th>HB</th>
+<th>D</th>
+<th>M</th>
+<th>G</th>
+<th>B</th>
+<th>T</th>
+<th>HO</th>
+<th>I50</th>
+<th>CL</th>
+<th>CG</th>
+<th>R50</th>
+<th>FF</th>
+<th>FA</th>
+<th>AF</th>
+<th>SC</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>76585</th>
-      <td>25/08/2018</td>
-      <td>2018</td>
-      <td>23</td>
-      <td>Optus Stadium</td>
-      <td>12587</td>
-      <td>9711</td>
-      <td>J Stephenson</td>
-      <td>35</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>Away</td>
-      <td>76</td>
-      <td>67</td>
-      <td>9</td>
-      <td>NaN</td>
-      <td>3</td>
-      <td>5</td>
-      <td>5</td>
-      <td>62.5</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>2</td>
-      <td>0</td>
-      <td>87</td>
-      <td>6</td>
-      <td>2</td>
-      <td>8</td>
-      <td>3</td>
-      <td>2</td>
-      <td>1</td>
-      <td>3</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>56</td>
-      <td>56</td>
-    </tr>
-    <tr>
-      <th>76586</th>
-      <td>25/08/2018</td>
-      <td>2018</td>
-      <td>23</td>
-      <td>Optus Stadium</td>
-      <td>12144</td>
-      <td>9711</td>
-      <td>J Thomas</td>
-      <td>24</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>Away</td>
-      <td>76</td>
-      <td>67</td>
-      <td>9</td>
-      <td>NaN</td>
-      <td>6</td>
-      <td>11</td>
-      <td>14</td>
-      <td>82.4</td>
-      <td>0</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>79</td>
-      <td>11</td>
-      <td>6</td>
-      <td>17</td>
-      <td>4</td>
-      <td>1</td>
-      <td>0</td>
-      <td>3</td>
-      <td>0</td>
-      <td>4</td>
-      <td>1</td>
-      <td>4</td>
-      <td>1</td>
-      <td>1</td>
-      <td>3</td>
-      <td>67</td>
-      <td>89</td>
-    </tr>
-    <tr>
-      <th>76587</th>
-      <td>25/08/2018</td>
-      <td>2018</td>
-      <td>23</td>
-      <td>Optus Stadium</td>
-      <td>11549</td>
-      <td>9711</td>
-      <td>T Varcoe</td>
-      <td>18</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>Away</td>
-      <td>76</td>
-      <td>67</td>
-      <td>9</td>
-      <td>NaN</td>
-      <td>7</td>
-      <td>4</td>
-      <td>7</td>
-      <td>53.8</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>2</td>
-      <td>0</td>
-      <td>73</td>
-      <td>6</td>
-      <td>7</td>
-      <td>13</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3</td>
-      <td>0</td>
-      <td>2</td>
-      <td>0</td>
-      <td>4</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>45</td>
-      <td>53</td>
-    </tr>
-  </tbody>
+<tr>
+<th>76585</th>
+<td>25/08/2018</td>
+<td>2018</td>
+<td>23</td>
+<td>Optus Stadium</td>
+<td>12587</td>
+<td>9711</td>
+<td>J Stephenson</td>
+<td>35</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>Away</td>
+<td>76</td>
+<td>67</td>
+<td>9</td>
+<td>NaN</td>
+<td>3</td>
+<td>5</td>
+<td>5</td>
+<td>62.5</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td>87</td>
+<td>6</td>
+<td>2</td>
+<td>8</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>56</td>
+<td>56</td>
+</tr>
+<tr>
+<th>76586</th>
+<td>25/08/2018</td>
+<td>2018</td>
+<td>23</td>
+<td>Optus Stadium</td>
+<td>12144</td>
+<td>9711</td>
+<td>J Thomas</td>
+<td>24</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>Away</td>
+<td>76</td>
+<td>67</td>
+<td>9</td>
+<td>NaN</td>
+<td>6</td>
+<td>11</td>
+<td>14</td>
+<td>82.4</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>79</td>
+<td>11</td>
+<td>6</td>
+<td>17</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>4</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>67</td>
+<td>89</td>
+</tr>
+<tr>
+<th>76587</th>
+<td>25/08/2018</td>
+<td>2018</td>
+<td>23</td>
+<td>Optus Stadium</td>
+<td>11549</td>
+<td>9711</td>
+<td>T Varcoe</td>
+<td>18</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>Away</td>
+<td>76</td>
+<td>67</td>
+<td>9</td>
+<td>NaN</td>
+<td>7</td>
+<td>4</td>
+<td>7</td>
+<td>53.8</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>73</td>
+<td>6</td>
+<td>7</td>
+<td>13</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>45</td>
+<td>53</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -2293,8 +2912,8 @@
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &gt;= 5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean votes if a player has kicked a bag:&quot;</span><span class="p">,</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &gt;= 5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &amp;gt;= 5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean votes if a player has kicked a bag:&quot;</span><span class="p">,</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &amp;gt;= 5&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </code></pre></div>
 
 </div>
@@ -2338,8 +2957,8 @@ Name: brownlow_votes, dtype: float64</code>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &gt;= 2 and D &gt;= 30&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean votes if a player has 30 possies and kicks 2+ goals:&quot;</span><span class="p">,</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &gt;= 2 and D &gt;= 30&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &amp;gt;= 2 and D &amp;gt;= 30&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean votes if a player has 30 possies and kicks 2+ goals:&quot;</span><span class="p">,</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;G &amp;gt;= 2 and D &amp;gt;= 30&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </code></pre></div>
 
 </div>
@@ -2561,7 +3180,7 @@ Name: brownlow_votes, dtype: float64</code>
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -2576,273 +3195,273 @@ Name: brownlow_votes, dtype: float64</code>
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>season</th>
-      <th>round</th>
-      <th>venue</th>
-      <th>ID</th>
-      <th>match_id</th>
-      <th>player</th>
-      <th>jumper_no</th>
-      <th>team</th>
-      <th>opposition</th>
-      <th>status</th>
-      <th>team_score</th>
-      <th>opposition_score</th>
-      <th>margin</th>
-      <th>brownlow_votes</th>
-      <th>CP</th>
-      <th>UP</th>
-      <th>ED</th>
-      <th>DE</th>
-      <th>CM</th>
-      <th>GA</th>
-      <th>MI5</th>
-      <th>one_perc</th>
-      <th>BO</th>
-      <th>TOG</th>
-      <th>K</th>
-      <th>HB</th>
-      <th>D</th>
-      <th>M</th>
-      <th>G</th>
-      <th>B</th>
-      <th>T</th>
-      <th>HO</th>
-      <th>I50</th>
-      <th>CL</th>
-      <th>CG</th>
-      <th>R50</th>
-      <th>FF</th>
-      <th>FA</th>
-      <th>AF</th>
-      <th>SC</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date</th>
+<th>season</th>
+<th>round</th>
+<th>venue</th>
+<th>ID</th>
+<th>match_id</th>
+<th>player</th>
+<th>jumper_no</th>
+<th>team</th>
+<th>opposition</th>
+<th>status</th>
+<th>team_score</th>
+<th>opposition_score</th>
+<th>margin</th>
+<th>brownlow_votes</th>
+<th>CP</th>
+<th>UP</th>
+<th>ED</th>
+<th>DE</th>
+<th>CM</th>
+<th>GA</th>
+<th>MI5</th>
+<th>one_perc</th>
+<th>BO</th>
+<th>TOG</th>
+<th>K</th>
+<th>HB</th>
+<th>D</th>
+<th>M</th>
+<th>G</th>
+<th>B</th>
+<th>T</th>
+<th>HO</th>
+<th>I50</th>
+<th>CL</th>
+<th>CG</th>
+<th>R50</th>
+<th>FF</th>
+<th>FA</th>
+<th>AF</th>
+<th>SC</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>0</th>
-      <td>25/03/2010</td>
-      <td>2010</td>
-      <td>1</td>
-      <td>MCG</td>
-      <td>11559</td>
-      <td>5089</td>
-      <td>J Anderson</td>
-      <td>26</td>
-      <td>Carlton</td>
-      <td>Richmond</td>
-      <td>Away</td>
-      <td>120</td>
-      <td>64</td>
-      <td>56</td>
-      <td>0.0</td>
-      <td>0.024194</td>
-      <td>0.021186</td>
-      <td>0.020599</td>
-      <td>0.021931</td>
-      <td>0.00</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.024411</td>
-      <td>0.017032</td>
-      <td>0.028481</td>
-      <td>0.022008</td>
-      <td>0.019802</td>
-      <td>0.000000</td>
-      <td>0.0000</td>
-      <td>0.029197</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.010204</td>
-      <td>0.014286</td>
-      <td>0.00000</td>
-      <td>0.025</td>
-      <td>0.020075</td>
-      <td>0.019353</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>25/03/2010</td>
-      <td>2010</td>
-      <td>1</td>
-      <td>MCG</td>
-      <td>4060</td>
-      <td>5089</td>
-      <td>E Betts</td>
-      <td>19</td>
-      <td>Carlton</td>
-      <td>Richmond</td>
-      <td>Away</td>
-      <td>120</td>
-      <td>64</td>
-      <td>56</td>
-      <td>0.0</td>
-      <td>0.044355</td>
-      <td>0.014831</td>
-      <td>0.024345</td>
-      <td>0.021804</td>
-      <td>0.05</td>
-      <td>0.133333</td>
-      <td>0.130435</td>
-      <td>0.033333</td>
-      <td>0.0</td>
-      <td>0.025243</td>
-      <td>0.021898</td>
-      <td>0.031646</td>
-      <td>0.026135</td>
-      <td>0.029703</td>
-      <td>0.111111</td>
-      <td>0.1875</td>
-      <td>0.043796</td>
-      <td>0.0</td>
-      <td>0.000000</td>
-      <td>0.014925</td>
-      <td>0.010204</td>
-      <td>0.000000</td>
-      <td>0.00000</td>
-      <td>0.000</td>
-      <td>0.034504</td>
-      <td>0.041125</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>25/03/2010</td>
-      <td>2010</td>
-      <td>1</td>
-      <td>MCG</td>
-      <td>3281</td>
-      <td>5089</td>
-      <td>P Bower</td>
-      <td>18</td>
-      <td>Carlton</td>
-      <td>Richmond</td>
-      <td>Away</td>
-      <td>120</td>
-      <td>64</td>
-      <td>56</td>
-      <td>0.0</td>
-      <td>0.016129</td>
-      <td>0.038136</td>
-      <td>0.044944</td>
-      <td>0.030602</td>
-      <td>0.10</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.100000</td>
-      <td>0.0</td>
-      <td>0.026352</td>
-      <td>0.036496</td>
-      <td>0.031646</td>
-      <td>0.034388</td>
-      <td>0.054455</td>
-      <td>0.000000</td>
-      <td>0.0000</td>
-      <td>0.036496</td>
-      <td>0.0</td>
-      <td>0.009804</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.014286</td>
-      <td>0.00000</td>
-      <td>0.000</td>
-      <td>0.037014</td>
-      <td>0.039311</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>25/03/2010</td>
-      <td>2010</td>
-      <td>1</td>
-      <td>MCG</td>
-      <td>4056</td>
-      <td>5089</td>
-      <td>A Carrazzo</td>
-      <td>44</td>
-      <td>Carlton</td>
-      <td>Richmond</td>
-      <td>Away</td>
-      <td>120</td>
-      <td>64</td>
-      <td>56</td>
-      <td>2.0</td>
-      <td>0.032258</td>
-      <td>0.069915</td>
-      <td>0.059925</td>
-      <td>0.025501</td>
-      <td>0.00</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.024133</td>
-      <td>0.051095</td>
-      <td>0.060127</td>
-      <td>0.055021</td>
-      <td>0.024752</td>
-      <td>0.000000</td>
-      <td>0.0000</td>
-      <td>0.029197</td>
-      <td>0.0</td>
-      <td>0.078431</td>
-      <td>0.074627</td>
-      <td>0.040816</td>
-      <td>0.057143</td>
-      <td>0.04878</td>
-      <td>0.025</td>
-      <td>0.041092</td>
-      <td>0.040822</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>25/03/2010</td>
-      <td>2010</td>
-      <td>1</td>
-      <td>MCG</td>
-      <td>11535</td>
-      <td>5089</td>
-      <td>B Gibbs</td>
-      <td>4</td>
-      <td>Carlton</td>
-      <td>Richmond</td>
-      <td>Away</td>
-      <td>120</td>
-      <td>64</td>
-      <td>56</td>
-      <td>1.0</td>
-      <td>0.032258</td>
-      <td>0.031780</td>
-      <td>0.029963</td>
-      <td>0.022186</td>
-      <td>0.10</td>
-      <td>0.000000</td>
-      <td>0.130435</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.023024</td>
-      <td>0.036496</td>
-      <td>0.025316</td>
-      <td>0.031637</td>
-      <td>0.029703</td>
-      <td>0.074074</td>
-      <td>0.0625</td>
-      <td>0.029197</td>
-      <td>0.0</td>
-      <td>0.009804</td>
-      <td>0.044776</td>
-      <td>0.010204</td>
-      <td>0.000000</td>
-      <td>0.02439</td>
-      <td>0.025</td>
-      <td>0.033250</td>
-      <td>0.033868</td>
-    </tr>
-  </tbody>
+<tr>
+<th>0</th>
+<td>25/03/2010</td>
+<td>2010</td>
+<td>1</td>
+<td>MCG</td>
+<td>11559</td>
+<td>5089</td>
+<td>J Anderson</td>
+<td>26</td>
+<td>Carlton</td>
+<td>Richmond</td>
+<td>Away</td>
+<td>120</td>
+<td>64</td>
+<td>56</td>
+<td>0.0</td>
+<td>0.024194</td>
+<td>0.021186</td>
+<td>0.020599</td>
+<td>0.021931</td>
+<td>0.00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.0</td>
+<td>0.024411</td>
+<td>0.017032</td>
+<td>0.028481</td>
+<td>0.022008</td>
+<td>0.019802</td>
+<td>0.000000</td>
+<td>0.0000</td>
+<td>0.029197</td>
+<td>0.0</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.010204</td>
+<td>0.014286</td>
+<td>0.00000</td>
+<td>0.025</td>
+<td>0.020075</td>
+<td>0.019353</td>
+</tr>
+<tr>
+<th>1</th>
+<td>25/03/2010</td>
+<td>2010</td>
+<td>1</td>
+<td>MCG</td>
+<td>4060</td>
+<td>5089</td>
+<td>E Betts</td>
+<td>19</td>
+<td>Carlton</td>
+<td>Richmond</td>
+<td>Away</td>
+<td>120</td>
+<td>64</td>
+<td>56</td>
+<td>0.0</td>
+<td>0.044355</td>
+<td>0.014831</td>
+<td>0.024345</td>
+<td>0.021804</td>
+<td>0.05</td>
+<td>0.133333</td>
+<td>0.130435</td>
+<td>0.033333</td>
+<td>0.0</td>
+<td>0.025243</td>
+<td>0.021898</td>
+<td>0.031646</td>
+<td>0.026135</td>
+<td>0.029703</td>
+<td>0.111111</td>
+<td>0.1875</td>
+<td>0.043796</td>
+<td>0.0</td>
+<td>0.000000</td>
+<td>0.014925</td>
+<td>0.010204</td>
+<td>0.000000</td>
+<td>0.00000</td>
+<td>0.000</td>
+<td>0.034504</td>
+<td>0.041125</td>
+</tr>
+<tr>
+<th>2</th>
+<td>25/03/2010</td>
+<td>2010</td>
+<td>1</td>
+<td>MCG</td>
+<td>3281</td>
+<td>5089</td>
+<td>P Bower</td>
+<td>18</td>
+<td>Carlton</td>
+<td>Richmond</td>
+<td>Away</td>
+<td>120</td>
+<td>64</td>
+<td>56</td>
+<td>0.0</td>
+<td>0.016129</td>
+<td>0.038136</td>
+<td>0.044944</td>
+<td>0.030602</td>
+<td>0.10</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.100000</td>
+<td>0.0</td>
+<td>0.026352</td>
+<td>0.036496</td>
+<td>0.031646</td>
+<td>0.034388</td>
+<td>0.054455</td>
+<td>0.000000</td>
+<td>0.0000</td>
+<td>0.036496</td>
+<td>0.0</td>
+<td>0.009804</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.014286</td>
+<td>0.00000</td>
+<td>0.000</td>
+<td>0.037014</td>
+<td>0.039311</td>
+</tr>
+<tr>
+<th>3</th>
+<td>25/03/2010</td>
+<td>2010</td>
+<td>1</td>
+<td>MCG</td>
+<td>4056</td>
+<td>5089</td>
+<td>A Carrazzo</td>
+<td>44</td>
+<td>Carlton</td>
+<td>Richmond</td>
+<td>Away</td>
+<td>120</td>
+<td>64</td>
+<td>56</td>
+<td>2.0</td>
+<td>0.032258</td>
+<td>0.069915</td>
+<td>0.059925</td>
+<td>0.025501</td>
+<td>0.00</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.0</td>
+<td>0.024133</td>
+<td>0.051095</td>
+<td>0.060127</td>
+<td>0.055021</td>
+<td>0.024752</td>
+<td>0.000000</td>
+<td>0.0000</td>
+<td>0.029197</td>
+<td>0.0</td>
+<td>0.078431</td>
+<td>0.074627</td>
+<td>0.040816</td>
+<td>0.057143</td>
+<td>0.04878</td>
+<td>0.025</td>
+<td>0.041092</td>
+<td>0.040822</td>
+</tr>
+<tr>
+<th>4</th>
+<td>25/03/2010</td>
+<td>2010</td>
+<td>1</td>
+<td>MCG</td>
+<td>11535</td>
+<td>5089</td>
+<td>B Gibbs</td>
+<td>4</td>
+<td>Carlton</td>
+<td>Richmond</td>
+<td>Away</td>
+<td>120</td>
+<td>64</td>
+<td>56</td>
+<td>1.0</td>
+<td>0.032258</td>
+<td>0.031780</td>
+<td>0.029963</td>
+<td>0.022186</td>
+<td>0.10</td>
+<td>0.000000</td>
+<td>0.130435</td>
+<td>0.000000</td>
+<td>0.0</td>
+<td>0.023024</td>
+<td>0.036496</td>
+<td>0.025316</td>
+<td>0.031637</td>
+<td>0.029703</td>
+<td>0.074074</td>
+<td>0.0625</td>
+<td>0.029197</td>
+<td>0.0</td>
+<td>0.009804</td>
+<td>0.044776</td>
+<td>0.010204</td>
+<td>0.000000</td>
+<td>0.02439</td>
+<td>0.025</td>
+<td>0.033250</td>
+<td>0.033868</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -2860,7 +3479,7 @@ Name: brownlow_votes, dtype: float64</code>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;kicked_a_bag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">5</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;kicked_a_bag&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">G</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span> <span class="mi">5</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -2890,7 +3509,7 @@ Name: brownlow_votes, dtype: float64</code>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;team_won&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">margin</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;team_won&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">margin</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -2905,7 +3524,7 @@ Name: brownlow_votes, dtype: float64</code>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;got_30_possies_2_goals&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">brownlow_data</span><span class="o">.</span><span class="n">G</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">brownlow_data</span><span class="o">.</span><span class="n">D</span> <span class="o">&gt;=</span> <span class="mi">30</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;got_30_possies_2_goals&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">brownlow_data</span><span class="o">.</span><span class="n">G</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">(</span><span class="n">brownlow_data</span><span class="o">.</span><span class="n">D</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span> <span class="mi">30</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -2921,13 +3540,13 @@ Name: brownlow_votes, dtype: float64</code>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">afltables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/afltables_stats.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Season &gt;= 2000&#39;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">afltables</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/afltables_stats.csv&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;Season &amp;gt;= 2000&#39;</span><span class="p">)</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">def</span> <span class="nf">replace_special_characters</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
 <a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>    <span class="n">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;&#39;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>    <span class="n">name_split</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_split</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">name_split</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">2</span><span class="p">:</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>        <span class="n">first_name</span> <span class="o">=</span> <span class="n">name_split</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>        <span class="n">last_name</span> <span class="o">=</span> <span class="n">name_split</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>        <span class="n">name</span> <span class="o">=</span> <span class="n">first_name</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">last_name</span>
@@ -2957,12 +3576,12 @@ Name: brownlow_votes, dtype: float64</code>
 <a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>                                                             <span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 <a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
 <a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="c1"># Filter to only get a dataframe since 2000 and only the top 10 players from each season</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">brownlow_votes_top_10</span> <span class="o">=</span> <span class="n">brownlow_votes_yearly</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;yearly_rank &lt; 11 &amp; season &gt;= 2000&#39;</span><span class="p">)</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="n">brownlow_votes_top_10</span> <span class="o">=</span> <span class="n">brownlow_votes_yearly</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;yearly_rank &amp;lt; 11 &amp;amp; season &amp;gt;= 2000&#39;</span><span class="p">)</span>
 <a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>
 <a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a><span class="n">brownlow_votes_top_10</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
 <a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>
 <a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a><span class="k">def</span> <span class="nf">how_many_times_top_10</span><span class="p">(</span><span class="n">top_10_df</span><span class="p">,</span> <span class="n">player</span><span class="p">,</span> <span class="n">year</span><span class="p">):</span>
-<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>    <span class="n">times</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">top_10_df</span><span class="p">[(</span><span class="n">top_10_df</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">player</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">top_10_df</span><span class="o">.</span><span class="n">season</span> <span class="o">&lt;</span> <span class="n">year</span><span class="p">)])</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>    <span class="n">times</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">top_10_df</span><span class="p">[(</span><span class="n">top_10_df</span><span class="o">.</span><span class="n">player</span> <span class="o">==</span> <span class="n">player</span><span class="p">)</span> <span class="o">&amp;</span><span class="n">amp</span><span class="p">;</span> <span class="p">(</span><span class="n">top_10_df</span><span class="o">.</span><span class="n">season</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="n">year</span><span class="p">)])</span>
 <a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>    <span class="k">return</span> <span class="n">times</span>
 <a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>
 <a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a><span class="n">features</span><span class="p">[</span><span class="s1">&#39;times_in_top_10&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">how_many_times_top_10</span><span class="p">(</span><span class="n">brownlow_votes_top_10</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">player</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">season</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> 
@@ -2974,7 +3593,7 @@ Name: brownlow_votes, dtype: float64</code>
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -2989,41 +3608,41 @@ Name: brownlow_votes, dtype: float64</code>
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>season</th>
-      <th>player</th>
-      <th>team</th>
-      <th>brownlow_votes</th>
-      <th>yearly_rank</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>season</th>
+<th>player</th>
+<th>team</th>
+<th>brownlow_votes</th>
+<th>yearly_rank</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>27</th>
-      <td>2000.0</td>
-      <td>A Koutoufides</td>
-      <td>Carlton</td>
-      <td>19.0</td>
-      <td>4.0</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>2000.0</td>
-      <td>A Mcleod</td>
-      <td>Adelaide</td>
-      <td>20.0</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>105</th>
-      <td>2000.0</td>
-      <td>B Ratten</td>
-      <td>Carlton</td>
-      <td>18.0</td>
-      <td>6.0</td>
-    </tr>
-  </tbody>
+<tr>
+<th>27</th>
+<td>2000.0</td>
+<td>A Koutoufides</td>
+<td>Carlton</td>
+<td>19.0</td>
+<td>4.0</td>
+</tr>
+<tr>
+<th>36</th>
+<td>2000.0</td>
+<td>A Mcleod</td>
+<td>Adelaide</td>
+<td>20.0</td>
+<td>3.0</td>
+</tr>
+<tr>
+<th>105</th>
+<td>2000.0</td>
+<td>B Ratten</td>
+<td>Carlton</td>
+<td>18.0</td>
+<td>6.0</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -3069,7 +3688,7 @@ Name: brownlow_votes, dtype: float64</code>
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -3084,57 +3703,57 @@ Name: brownlow_votes, dtype: float64</code>
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>player</th>
-      <th>team</th>
-      <th>season</th>
-      <th>ave_votes_last_season</th>
-      <th>next_season</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>player</th>
+<th>team</th>
+<th>season</th>
+<th>ave_votes_last_season</th>
+<th>next_season</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>4377</th>
-      <td>P Cripps</td>
-      <td>Carlton</td>
-      <td>2014</td>
-      <td>0.000000</td>
-      <td>2015</td>
-    </tr>
-    <tr>
-      <th>4378</th>
-      <td>P Cripps</td>
-      <td>Carlton</td>
-      <td>2015</td>
-      <td>0.300000</td>
-      <td>2016</td>
-    </tr>
-    <tr>
-      <th>4379</th>
-      <td>P Cripps</td>
-      <td>Carlton</td>
-      <td>2016</td>
-      <td>0.857143</td>
-      <td>2017</td>
-    </tr>
-    <tr>
-      <th>4380</th>
-      <td>P Cripps</td>
-      <td>Carlton</td>
-      <td>2017</td>
-      <td>0.333333</td>
-      <td>2018</td>
-    </tr>
-    <tr>
-      <th>4381</th>
-      <td>P Cripps</td>
-      <td>Carlton</td>
-      <td>2018</td>
-      <td>0.000000</td>
-      <td>2019</td>
-    </tr>
-  </tbody>
+<tr>
+<th>4377</th>
+<td>P Cripps</td>
+<td>Carlton</td>
+<td>2014</td>
+<td>0.000000</td>
+<td>2015</td>
+</tr>
+<tr>
+<th>4378</th>
+<td>P Cripps</td>
+<td>Carlton</td>
+<td>2015</td>
+<td>0.300000</td>
+<td>2016</td>
+</tr>
+<tr>
+<th>4379</th>
+<td>P Cripps</td>
+<td>Carlton</td>
+<td>2016</td>
+<td>0.857143</td>
+<td>2017</td>
+</tr>
+<tr>
+<th>4380</th>
+<td>P Cripps</td>
+<td>Carlton</td>
+<td>2017</td>
+<td>0.333333</td>
+<td>2018</td>
+</tr>
+<tr>
+<th>4381</th>
+<td>P Cripps</td>
+<td>Carlton</td>
+<td>2018</td>
+<td>0.000000</td>
+<td>2019</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -3173,7 +3792,7 @@ Name: brownlow_votes, dtype: float64</code>
 <a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>
 <a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="c1"># for year in range(2011, 2018):</span>
 <a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="c1">#     # Filter the data to only include past data</span>
-<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="c1">#     train_historic = brownlow_data[brownlow_data.season &lt; year].copy()</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="c1">#     train_historic = brownlow_data[brownlow_data.season &amp;lt; year].copy()</span>
 <a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>
 <a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="c1">#     # Convert to an h2o frame</span>
 <a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="c1">#     train_h2o_historic = h2o.H2OFrame(train_historic)</span>
@@ -3206,7 +3825,7 @@ Name: brownlow_votes, dtype: float64</code>
 <a id="__codelineno-18-47" name="__codelineno-18-47" href="#__codelineno-18-47"></a><span class="c1">#     test_historic[&#39;predicted_votes&#39;] = preds.values</span>
 <a id="__codelineno-18-48" name="__codelineno-18-48" href="#__codelineno-18-48"></a>
 <a id="__codelineno-18-49" name="__codelineno-18-49" href="#__codelineno-18-49"></a><span class="c1">#     # Convert negative predictions to 0</span>
-<a id="__codelineno-18-50" name="__codelineno-18-50" href="#__codelineno-18-50"></a><span class="c1">#     test_historic[&#39;predicted_votes_neg_to_0&#39;] = test_historic.predicted_votes.apply(lambda x: 0 if x &lt; 0 else x)</span>
+<a id="__codelineno-18-50" name="__codelineno-18-50" href="#__codelineno-18-50"></a><span class="c1">#     test_historic[&#39;predicted_votes_neg_to_0&#39;] = test_historic.predicted_votes.apply(lambda x: 0 if x &amp;lt; 0 else x)</span>
 <a id="__codelineno-18-51" name="__codelineno-18-51" href="#__codelineno-18-51"></a>
 <a id="__codelineno-18-52" name="__codelineno-18-52" href="#__codelineno-18-52"></a><span class="c1">#     # Create a total match votes column - which calculates the number of votes predicted in each game when the predictions </span>
 <a id="__codelineno-18-53" name="__codelineno-18-53" href="#__codelineno-18-53"></a><span class="c1">#     # are unscaled</span>
@@ -3262,7 +3881,7 @@ Attempting to start a local H2O server...
 <code>C:\Users\zhoui\greyhounds_bruno\greyhound-modelling\venv_greyhounds\lib\site-packages\h2o\backend\server.py:386: UserWarning:   You have a 32-bit version of Java. H2O works best with 64-bit Java.
   Please download the latest 64-bit Java SE JDK from Oracle.
 
-  warn(&#34;  You have a 32-bit version of Java. H2O works best with 64-bit Java.\n&#34;
+  warn("  You have a 32-bit version of Java. H2O works best with 64-bit Java.\n"
 </code>
 </pre>
 </div>
@@ -3277,7 +3896,7 @@ Connecting to H2O server at http://127.0.0.1:54325 ... successful.
 </div>
 </div>
 <div class="output_area">
-<div class="output_html rendered_html output_subarea ">
+<div class="output_html rendered_html output_subarea">
 <div style="overflow:auto"><table style="width:50%"><tr><td>H2O_cluster_uptime:</td>
 <td>03 secs</td></tr>
 <tr><td>H2O_cluster_timezone:</td>
@@ -3344,7 +3963,7 @@ Connecting to H2O server at http://127.0.0.1:54325 ... successful.
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -3359,198 +3978,198 @@ Connecting to H2O server at http://127.0.0.1:54325 ... successful.
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>brownlow_votes</th>
-      <th>error</th>
-      <th>next_year</th>
-      <th>player</th>
-      <th>predicted_votes_scaled</th>
-      <th>season</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>brownlow_votes</th>
+<th>error</th>
+<th>next_year</th>
+<th>player</th>
+<th>predicted_votes_scaled</th>
+<th>season</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>139</th>
-      <td>36.0</td>
-      <td>-3.431041</td>
-      <td>2018</td>
-      <td>D Martin</td>
-      <td>32.568959</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>486</th>
-      <td>33.0</td>
-      <td>0.065131</td>
-      <td>2018</td>
-      <td>P Dangerfield</td>
-      <td>33.065131</td>
-      <td>42357</td>
-    </tr>
-    <tr>
-      <th>619</th>
-      <td>25.0</td>
-      <td>0.243510</td>
-      <td>2018</td>
-      <td>T Mitchell</td>
-      <td>25.243510</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>279</th>
-      <td>23.0</td>
-      <td>-9.267806</td>
-      <td>2018</td>
-      <td>J Kennedy</td>
-      <td>13.732194</td>
-      <td>38323</td>
-    </tr>
-    <tr>
-      <th>376</th>
-      <td>22.0</td>
-      <td>-7.621163</td>
-      <td>2018</td>
-      <td>L Franklin</td>
-      <td>14.378837</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>278</th>
-      <td>21.0</td>
-      <td>-4.494170</td>
-      <td>2018</td>
-      <td>J Kelly</td>
-      <td>16.505830</td>
-      <td>42357</td>
-    </tr>
-    <tr>
-      <th>519</th>
-      <td>20.0</td>
-      <td>-2.909334</td>
-      <td>2018</td>
-      <td>R Sloane</td>
-      <td>17.090666</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>410</th>
-      <td>19.0</td>
-      <td>-7.124114</td>
-      <td>2018</td>
-      <td>M Bontempelli</td>
-      <td>11.875886</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>483</th>
-      <td>18.0</td>
-      <td>-3.734412</td>
-      <td>2018</td>
-      <td>O Wines</td>
-      <td>14.265588</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>121</th>
-      <td>17.0</td>
-      <td>-4.034390</td>
-      <td>2018</td>
-      <td>D Beams</td>
-      <td>12.965610</td>
-      <td>38323</td>
-    </tr>
-    <tr>
-      <th>390</th>
-      <td>16.0</td>
-      <td>-2.797669</td>
-      <td>2018</td>
-      <td>L Parker</td>
-      <td>13.202331</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>561</th>
-      <td>15.0</td>
-      <td>-5.458874</td>
-      <td>2018</td>
-      <td>S Pendlebury</td>
-      <td>9.541126</td>
-      <td>32272</td>
-    </tr>
-    <tr>
-      <th>463</th>
-      <td>15.0</td>
-      <td>-4.892862</td>
-      <td>2018</td>
-      <td>N Fyfe</td>
-      <td>10.107138</td>
-      <td>42357</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>15.0</td>
-      <td>-4.379072</td>
-      <td>2018</td>
-      <td>B Ebert</td>
-      <td>10.620928</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>651</th>
-      <td>15.0</td>
-      <td>1.011272</td>
-      <td>2018</td>
-      <td>Z Merrett</td>
-      <td>16.011272</td>
-      <td>42357</td>
-    </tr>
-    <tr>
-      <th>578</th>
-      <td>14.0</td>
-      <td>2.069385</td>
-      <td>2018</td>
-      <td>T Adams</td>
-      <td>16.069385</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>14.0</td>
-      <td>-4.886668</td>
-      <td>2018</td>
-      <td>B Brown</td>
-      <td>9.113332</td>
-      <td>44374</td>
-    </tr>
-    <tr>
-      <th>172</th>
-      <td>14.0</td>
-      <td>0.211867</td>
-      <td>2018</td>
-      <td>D Zorko</td>
-      <td>14.211867</td>
-      <td>42357</td>
-    </tr>
-    <tr>
-      <th>184</th>
-      <td>14.0</td>
-      <td>-0.620086</td>
-      <td>2018</td>
-      <td>G Ablett</td>
-      <td>13.379914</td>
-      <td>28238</td>
-    </tr>
-    <tr>
-      <th>389</th>
-      <td>14.0</td>
-      <td>-2.811169</td>
-      <td>2018</td>
-      <td>L Neale</td>
-      <td>11.188831</td>
-      <td>42357</td>
-    </tr>
-  </tbody>
+<tr>
+<th>139</th>
+<td>36.0</td>
+<td>-3.431041</td>
+<td>2018</td>
+<td>D Martin</td>
+<td>32.568959</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>486</th>
+<td>33.0</td>
+<td>0.065131</td>
+<td>2018</td>
+<td>P Dangerfield</td>
+<td>33.065131</td>
+<td>42357</td>
+</tr>
+<tr>
+<th>619</th>
+<td>25.0</td>
+<td>0.243510</td>
+<td>2018</td>
+<td>T Mitchell</td>
+<td>25.243510</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>279</th>
+<td>23.0</td>
+<td>-9.267806</td>
+<td>2018</td>
+<td>J Kennedy</td>
+<td>13.732194</td>
+<td>38323</td>
+</tr>
+<tr>
+<th>376</th>
+<td>22.0</td>
+<td>-7.621163</td>
+<td>2018</td>
+<td>L Franklin</td>
+<td>14.378837</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>278</th>
+<td>21.0</td>
+<td>-4.494170</td>
+<td>2018</td>
+<td>J Kelly</td>
+<td>16.505830</td>
+<td>42357</td>
+</tr>
+<tr>
+<th>519</th>
+<td>20.0</td>
+<td>-2.909334</td>
+<td>2018</td>
+<td>R Sloane</td>
+<td>17.090666</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>410</th>
+<td>19.0</td>
+<td>-7.124114</td>
+<td>2018</td>
+<td>M Bontempelli</td>
+<td>11.875886</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>483</th>
+<td>18.0</td>
+<td>-3.734412</td>
+<td>2018</td>
+<td>O Wines</td>
+<td>14.265588</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>121</th>
+<td>17.0</td>
+<td>-4.034390</td>
+<td>2018</td>
+<td>D Beams</td>
+<td>12.965610</td>
+<td>38323</td>
+</tr>
+<tr>
+<th>390</th>
+<td>16.0</td>
+<td>-2.797669</td>
+<td>2018</td>
+<td>L Parker</td>
+<td>13.202331</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>561</th>
+<td>15.0</td>
+<td>-5.458874</td>
+<td>2018</td>
+<td>S Pendlebury</td>
+<td>9.541126</td>
+<td>32272</td>
+</tr>
+<tr>
+<th>463</th>
+<td>15.0</td>
+<td>-4.892862</td>
+<td>2018</td>
+<td>N Fyfe</td>
+<td>10.107138</td>
+<td>42357</td>
+</tr>
+<tr>
+<th>42</th>
+<td>15.0</td>
+<td>-4.379072</td>
+<td>2018</td>
+<td>B Ebert</td>
+<td>10.620928</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>651</th>
+<td>15.0</td>
+<td>1.011272</td>
+<td>2018</td>
+<td>Z Merrett</td>
+<td>16.011272</td>
+<td>42357</td>
+</tr>
+<tr>
+<th>578</th>
+<td>14.0</td>
+<td>2.069385</td>
+<td>2018</td>
+<td>T Adams</td>
+<td>16.069385</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>34</th>
+<td>14.0</td>
+<td>-4.886668</td>
+<td>2018</td>
+<td>B Brown</td>
+<td>9.113332</td>
+<td>44374</td>
+</tr>
+<tr>
+<th>172</th>
+<td>14.0</td>
+<td>0.211867</td>
+<td>2018</td>
+<td>D Zorko</td>
+<td>14.211867</td>
+<td>42357</td>
+</tr>
+<tr>
+<th>184</th>
+<td>14.0</td>
+<td>-0.620086</td>
+<td>2018</td>
+<td>G Ablett</td>
+<td>13.379914</td>
+<td>28238</td>
+</tr>
+<tr>
+<th>389</th>
+<td>14.0</td>
+<td>-2.811169</td>
+<td>2018</td>
+<td>L Neale</td>
+<td>11.188831</td>
+<td>42357</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -3595,7 +4214,7 @@ Connecting to H2O server at http://127.0.0.1:54325 ... successful.
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
 <a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">brownlow_data</span><span class="p">[</span><span class="s1">&#39;SC_rank_match&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">brownlow_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">SC</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SC_rank_match &gt; 20 and season &gt; 2014&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="n">brownlow_data</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SC_rank_match &amp;gt; 20 and season &amp;gt; 2014&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">brownlow_votes</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </code></pre></div>
 
 </div>
@@ -3630,7 +4249,7 @@ Name: brownlow_votes, dtype: int64</code>
 <a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="n">features_with_sc_rank</span><span class="p">[</span><span class="s1">&#39;SC_rank_match&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">features_with_sc_rank</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">SC</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>
 <a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="c1"># Filter out rows with a SC rank of below 20</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="n">features_with_sc_rank_filtered</span> <span class="o">=</span> <span class="n">features_with_sc_rank</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SC_rank_match &lt;= 20&#39;</span><span class="p">)</span>
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="n">features_with_sc_rank_filtered</span> <span class="o">=</span> <span class="n">features_with_sc_rank</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SC_rank_match &amp;lt;= 20&#39;</span><span class="p">)</span>
 </code></pre></div>
 
 </div>
@@ -3650,7 +4269,7 @@ Name: brownlow_votes, dtype: int64</code>
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -3665,221 +4284,221 @@ Name: brownlow_votes, dtype: int64</code>
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>season</th>
-      <th>round</th>
-      <th>venue</th>
-      <th>ID</th>
-      <th>match_id</th>
-      <th>player</th>
-      <th>jumper_no</th>
-      <th>team</th>
-      <th>opposition</th>
-      <th>status</th>
-      <th>team_score</th>
-      <th>opposition_score</th>
-      <th>margin</th>
-      <th>brownlow_votes</th>
-      <th>CP</th>
-      <th>UP</th>
-      <th>ED</th>
-      <th>DE</th>
-      <th>CM</th>
-      <th>GA</th>
-      <th>MI5</th>
-      <th>one_perc</th>
-      <th>BO</th>
-      <th>TOG</th>
-      <th>K</th>
-      <th>HB</th>
-      <th>D</th>
-      <th>M</th>
-      <th>G</th>
-      <th>B</th>
-      <th>T</th>
-      <th>HO</th>
-      <th>I50</th>
-      <th>CL</th>
-      <th>CG</th>
-      <th>R50</th>
-      <th>FF</th>
-      <th>FA</th>
-      <th>AF</th>
-      <th>SC</th>
-      <th>kicked_a_bag</th>
-      <th>is_captain</th>
-      <th>team_won</th>
-      <th>got_30_possies_2_goals</th>
-      <th>times_in_top_10</th>
-      <th>ave_votes_last_season</th>
-      <th>next_year</th>
-      <th>error_last_season</th>
-      <th>SC_rank_match</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date</th>
+<th>season</th>
+<th>round</th>
+<th>venue</th>
+<th>ID</th>
+<th>match_id</th>
+<th>player</th>
+<th>jumper_no</th>
+<th>team</th>
+<th>opposition</th>
+<th>status</th>
+<th>team_score</th>
+<th>opposition_score</th>
+<th>margin</th>
+<th>brownlow_votes</th>
+<th>CP</th>
+<th>UP</th>
+<th>ED</th>
+<th>DE</th>
+<th>CM</th>
+<th>GA</th>
+<th>MI5</th>
+<th>one_perc</th>
+<th>BO</th>
+<th>TOG</th>
+<th>K</th>
+<th>HB</th>
+<th>D</th>
+<th>M</th>
+<th>G</th>
+<th>B</th>
+<th>T</th>
+<th>HO</th>
+<th>I50</th>
+<th>CL</th>
+<th>CG</th>
+<th>R50</th>
+<th>FF</th>
+<th>FA</th>
+<th>AF</th>
+<th>SC</th>
+<th>kicked_a_bag</th>
+<th>is_captain</th>
+<th>team_won</th>
+<th>got_30_possies_2_goals</th>
+<th>times_in_top_10</th>
+<th>ave_votes_last_season</th>
+<th>next_year</th>
+<th>error_last_season</th>
+<th>SC_rank_match</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>0</th>
-      <td>24/03/2012</td>
-      <td>2012</td>
-      <td>1</td>
-      <td>ANZ Stadium</td>
-      <td>11635</td>
-      <td>5343</td>
-      <td>C Bird</td>
-      <td>14</td>
-      <td>Sydney</td>
-      <td>GWS</td>
-      <td>Away</td>
-      <td>100</td>
-      <td>37</td>
-      <td>63</td>
-      <td>0.0</td>
-      <td>0.035842</td>
-      <td>0.041002</td>
-      <td>0.030769</td>
-      <td>0.019378</td>
-      <td>0.000000</td>
-      <td>0.083333</td>
-      <td>0.055556</td>
-      <td>0.019802</td>
-      <td>0.0</td>
-      <td>0.023064</td>
-      <td>0.034562</td>
-      <td>0.037383</td>
-      <td>0.035762</td>
-      <td>0.039409</td>
-      <td>0.105263</td>
-      <td>0.111111</td>
-      <td>0.049296</td>
-      <td>0.0000</td>
-      <td>0.060606</td>
-      <td>0.093333</td>
-      <td>0.063636</td>
-      <td>0.027778</td>
-      <td>0.025</td>
-      <td>0.075</td>
-      <td>0.039041</td>
-      <td>0.032662</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.052632</td>
-      <td>2012.0</td>
-      <td>0.136311</td>
-      <td>6.0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>24/03/2012</td>
-      <td>2012</td>
-      <td>1</td>
-      <td>ANZ Stadium</td>
-      <td>1013</td>
-      <td>5343</td>
-      <td>J Bolton</td>
-      <td>24</td>
-      <td>Sydney</td>
-      <td>GWS</td>
-      <td>Away</td>
-      <td>100</td>
-      <td>37</td>
-      <td>63</td>
-      <td>0.0</td>
-      <td>0.039427</td>
-      <td>0.036446</td>
-      <td>0.028846</td>
-      <td>0.019607</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.049505</td>
-      <td>0.0</td>
-      <td>0.024203</td>
-      <td>0.027650</td>
-      <td>0.040498</td>
-      <td>0.033113</td>
-      <td>0.009852</td>
-      <td>0.052632</td>
-      <td>0.000000</td>
-      <td>0.042254</td>
-      <td>0.0125</td>
-      <td>0.040404</td>
-      <td>0.066667</td>
-      <td>0.009091</td>
-      <td>0.000000</td>
-      <td>0.025</td>
-      <td>0.025</td>
-      <td>0.029819</td>
-      <td>0.038767</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0.526316</td>
-      <td>2012.0</td>
-      <td>-0.833178</td>
-      <td>3.0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>24/03/2012</td>
-      <td>2012</td>
-      <td>1</td>
-      <td>ANZ Stadium</td>
-      <td>1012</td>
-      <td>5343</td>
-      <td>A Goodes</td>
-      <td>37</td>
-      <td>Sydney</td>
-      <td>GWS</td>
-      <td>Away</td>
-      <td>100</td>
-      <td>37</td>
-      <td>63</td>
-      <td>0.0</td>
-      <td>0.032258</td>
-      <td>0.029613</td>
-      <td>0.028846</td>
-      <td>0.023332</td>
-      <td>0.037037</td>
-      <td>0.083333</td>
-      <td>0.055556</td>
-      <td>0.009901</td>
-      <td>0.0</td>
-      <td>0.026196</td>
-      <td>0.029954</td>
-      <td>0.024922</td>
-      <td>0.027815</td>
-      <td>0.029557</td>
-      <td>0.000000</td>
-      <td>0.055556</td>
-      <td>0.014085</td>
-      <td>0.0125</td>
-      <td>0.070707</td>
-      <td>0.040000</td>
-      <td>0.027273</td>
-      <td>0.041667</td>
-      <td>0.025</td>
-      <td>0.000</td>
-      <td>0.025822</td>
-      <td>0.027473</td>
-      <td>0</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>5</td>
-      <td>0.761905</td>
-      <td>2012.0</td>
-      <td>-5.718150</td>
-      <td>14.0</td>
-    </tr>
-  </tbody>
+<tr>
+<th>0</th>
+<td>24/03/2012</td>
+<td>2012</td>
+<td>1</td>
+<td>ANZ Stadium</td>
+<td>11635</td>
+<td>5343</td>
+<td>C Bird</td>
+<td>14</td>
+<td>Sydney</td>
+<td>GWS</td>
+<td>Away</td>
+<td>100</td>
+<td>37</td>
+<td>63</td>
+<td>0.0</td>
+<td>0.035842</td>
+<td>0.041002</td>
+<td>0.030769</td>
+<td>0.019378</td>
+<td>0.000000</td>
+<td>0.083333</td>
+<td>0.055556</td>
+<td>0.019802</td>
+<td>0.0</td>
+<td>0.023064</td>
+<td>0.034562</td>
+<td>0.037383</td>
+<td>0.035762</td>
+<td>0.039409</td>
+<td>0.105263</td>
+<td>0.111111</td>
+<td>0.049296</td>
+<td>0.0000</td>
+<td>0.060606</td>
+<td>0.093333</td>
+<td>0.063636</td>
+<td>0.027778</td>
+<td>0.025</td>
+<td>0.075</td>
+<td>0.039041</td>
+<td>0.032662</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.052632</td>
+<td>2012.0</td>
+<td>0.136311</td>
+<td>6.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>24/03/2012</td>
+<td>2012</td>
+<td>1</td>
+<td>ANZ Stadium</td>
+<td>1013</td>
+<td>5343</td>
+<td>J Bolton</td>
+<td>24</td>
+<td>Sydney</td>
+<td>GWS</td>
+<td>Away</td>
+<td>100</td>
+<td>37</td>
+<td>63</td>
+<td>0.0</td>
+<td>0.039427</td>
+<td>0.036446</td>
+<td>0.028846</td>
+<td>0.019607</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.049505</td>
+<td>0.0</td>
+<td>0.024203</td>
+<td>0.027650</td>
+<td>0.040498</td>
+<td>0.033113</td>
+<td>0.009852</td>
+<td>0.052632</td>
+<td>0.000000</td>
+<td>0.042254</td>
+<td>0.0125</td>
+<td>0.040404</td>
+<td>0.066667</td>
+<td>0.009091</td>
+<td>0.000000</td>
+<td>0.025</td>
+<td>0.025</td>
+<td>0.029819</td>
+<td>0.038767</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0.526316</td>
+<td>2012.0</td>
+<td>-0.833178</td>
+<td>3.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>24/03/2012</td>
+<td>2012</td>
+<td>1</td>
+<td>ANZ Stadium</td>
+<td>1012</td>
+<td>5343</td>
+<td>A Goodes</td>
+<td>37</td>
+<td>Sydney</td>
+<td>GWS</td>
+<td>Away</td>
+<td>100</td>
+<td>37</td>
+<td>63</td>
+<td>0.0</td>
+<td>0.032258</td>
+<td>0.029613</td>
+<td>0.028846</td>
+<td>0.023332</td>
+<td>0.037037</td>
+<td>0.083333</td>
+<td>0.055556</td>
+<td>0.009901</td>
+<td>0.0</td>
+<td>0.026196</td>
+<td>0.029954</td>
+<td>0.024922</td>
+<td>0.027815</td>
+<td>0.029557</td>
+<td>0.000000</td>
+<td>0.055556</td>
+<td>0.014085</td>
+<td>0.0125</td>
+<td>0.070707</td>
+<td>0.040000</td>
+<td>0.027273</td>
+<td>0.041667</td>
+<td>0.025</td>
+<td>0.000</td>
+<td>0.025822</td>
+<td>0.027473</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>0.761905</td>
+<td>2012.0</td>
+<td>-5.718150</td>
+<td>14.0</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -3898,7 +4517,7 @@ Name: brownlow_votes, dtype: int64</code>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">train_baseline</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season &lt; 2017&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="n">train_baseline</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season &amp;lt; 2017&quot;</span><span class="p">)</span>
 <a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="n">holdout</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season == 2017&quot;</span><span class="p">)</span>
 <a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a>
 <a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="n">scale_cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;team_score&#39;</span><span class="p">,</span> <span class="s1">&#39;opposition_score&#39;</span><span class="p">,</span> <span class="s1">&#39;margin&#39;</span><span class="p">,</span> <span class="s1">&#39;CP&#39;</span><span class="p">,</span> <span class="s1">&#39;UP&#39;</span><span class="p">,</span> <span class="s1">&#39;ED&#39;</span><span class="p">,</span> <span class="s1">&#39;DE&#39;</span><span class="p">,</span>
@@ -3990,7 +4609,7 @@ Parse progress: |█████████████████████
 <a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>
 <a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="c1"># Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total</span>
 <a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="n">holdout</span> <span class="o">=</span> <span class="p">(</span><span class="n">holdout</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes</span><span class="o">=</span><span class="n">preds_final_2017_model</span><span class="o">.</span><span class="n">as_data_frame</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_neg_to_0</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="k">else</span> <span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_neg_to_0</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">0</span> <span class="k">else</span> <span class="n">x</span><span class="p">))</span>
 <a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">unscaled_match_votes</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">predicted_votes_neg_to_0</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span>
 <a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_scaled</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes_neg_to_0</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">unscaled_match_votes</span> <span class="o">*</span> <span class="mi">6</span><span class="p">))</span>
 <a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a>
@@ -4032,7 +4651,7 @@ Parse progress: |█████████████████████
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -4047,169 +4666,169 @@ Parse progress: |█████████████████████
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>player</th>
-      <th>team</th>
-      <th>brownlow_votes</th>
-      <th>predicted_votes_scaled</th>
-      <th>SC</th>
-      <th>G</th>
-      <th>mae</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>player</th>
+<th>team</th>
+<th>brownlow_votes</th>
+<th>predicted_votes_scaled</th>
+<th>SC</th>
+<th>G</th>
+<th>mae</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>0</th>
-      <td>D Martin</td>
-      <td>Richmond</td>
-      <td>36.0</td>
-      <td>25.007991</td>
-      <td>0.037862</td>
-      <td>0.064869</td>
-      <td>10.992009</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>P Dangerfield</td>
-      <td>Geelong</td>
-      <td>33.0</td>
-      <td>25.568804</td>
-      <td>0.042441</td>
-      <td>0.070819</td>
-      <td>7.431196</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>T Mitchell</td>
-      <td>Hawthorn</td>
-      <td>25.0</td>
-      <td>19.078639</td>
-      <td>0.036040</td>
-      <td>0.016928</td>
-      <td>5.921361</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>L Franklin</td>
-      <td>Sydney</td>
-      <td>22.0</td>
-      <td>12.574692</td>
-      <td>0.034640</td>
-      <td>0.149203</td>
-      <td>9.425308</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>J Kelly</td>
-      <td>GWS</td>
-      <td>21.0</td>
-      <td>15.198580</td>
-      <td>0.034652</td>
-      <td>0.033772</td>
-      <td>5.801420</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>R Sloane</td>
-      <td>Adelaide</td>
-      <td>20.0</td>
-      <td>15.755535</td>
-      <td>0.037068</td>
-      <td>0.034821</td>
-      <td>4.244465</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>J Kennedy</td>
-      <td>Sydney</td>
-      <td>20.0</td>
-      <td>11.065483</td>
-      <td>0.032014</td>
-      <td>0.030508</td>
-      <td>8.934517</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>M Bontempelli</td>
-      <td>Western Bulldogs</td>
-      <td>19.0</td>
-      <td>13.836173</td>
-      <td>0.033233</td>
-      <td>0.040498</td>
-      <td>5.163827</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>D Beams</td>
-      <td>Brisbane</td>
-      <td>17.0</td>
-      <td>10.073366</td>
-      <td>0.034848</td>
-      <td>0.044998</td>
-      <td>6.926634</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>O Wines</td>
-      <td>Port Adelaide</td>
-      <td>16.0</td>
-      <td>10.511818</td>
-      <td>0.031601</td>
-      <td>0.021967</td>
-      <td>5.488182</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>N Fyfe</td>
-      <td>Fremantle</td>
-      <td>15.0</td>
-      <td>12.782723</td>
-      <td>0.033761</td>
-      <td>0.031680</td>
-      <td>2.217277</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>S Pendlebury</td>
-      <td>Collingwood</td>
-      <td>15.0</td>
-      <td>9.135615</td>
-      <td>0.033855</td>
-      <td>0.013660</td>
-      <td>5.864385</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>B Ebert</td>
-      <td>Port Adelaide</td>
-      <td>15.0</td>
-      <td>7.941416</td>
-      <td>0.032795</td>
-      <td>0.008431</td>
-      <td>7.058584</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>L Parker</td>
-      <td>Sydney</td>
-      <td>15.0</td>
-      <td>12.431929</td>
-      <td>0.031366</td>
-      <td>0.030311</td>
-      <td>2.568071</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Z Merrett</td>
-      <td>Essendon</td>
-      <td>15.0</td>
-      <td>15.017767</td>
-      <td>0.033737</td>
-      <td>0.015362</td>
-      <td>0.017767</td>
-    </tr>
-  </tbody>
+<tr>
+<th>0</th>
+<td>D Martin</td>
+<td>Richmond</td>
+<td>36.0</td>
+<td>25.007991</td>
+<td>0.037862</td>
+<td>0.064869</td>
+<td>10.992009</td>
+</tr>
+<tr>
+<th>1</th>
+<td>P Dangerfield</td>
+<td>Geelong</td>
+<td>33.0</td>
+<td>25.568804</td>
+<td>0.042441</td>
+<td>0.070819</td>
+<td>7.431196</td>
+</tr>
+<tr>
+<th>2</th>
+<td>T Mitchell</td>
+<td>Hawthorn</td>
+<td>25.0</td>
+<td>19.078639</td>
+<td>0.036040</td>
+<td>0.016928</td>
+<td>5.921361</td>
+</tr>
+<tr>
+<th>3</th>
+<td>L Franklin</td>
+<td>Sydney</td>
+<td>22.0</td>
+<td>12.574692</td>
+<td>0.034640</td>
+<td>0.149203</td>
+<td>9.425308</td>
+</tr>
+<tr>
+<th>4</th>
+<td>J Kelly</td>
+<td>GWS</td>
+<td>21.0</td>
+<td>15.198580</td>
+<td>0.034652</td>
+<td>0.033772</td>
+<td>5.801420</td>
+</tr>
+<tr>
+<th>5</th>
+<td>R Sloane</td>
+<td>Adelaide</td>
+<td>20.0</td>
+<td>15.755535</td>
+<td>0.037068</td>
+<td>0.034821</td>
+<td>4.244465</td>
+</tr>
+<tr>
+<th>6</th>
+<td>J Kennedy</td>
+<td>Sydney</td>
+<td>20.0</td>
+<td>11.065483</td>
+<td>0.032014</td>
+<td>0.030508</td>
+<td>8.934517</td>
+</tr>
+<tr>
+<th>7</th>
+<td>M Bontempelli</td>
+<td>Western Bulldogs</td>
+<td>19.0</td>
+<td>13.836173</td>
+<td>0.033233</td>
+<td>0.040498</td>
+<td>5.163827</td>
+</tr>
+<tr>
+<th>8</th>
+<td>D Beams</td>
+<td>Brisbane</td>
+<td>17.0</td>
+<td>10.073366</td>
+<td>0.034848</td>
+<td>0.044998</td>
+<td>6.926634</td>
+</tr>
+<tr>
+<th>9</th>
+<td>O Wines</td>
+<td>Port Adelaide</td>
+<td>16.0</td>
+<td>10.511818</td>
+<td>0.031601</td>
+<td>0.021967</td>
+<td>5.488182</td>
+</tr>
+<tr>
+<th>10</th>
+<td>N Fyfe</td>
+<td>Fremantle</td>
+<td>15.0</td>
+<td>12.782723</td>
+<td>0.033761</td>
+<td>0.031680</td>
+<td>2.217277</td>
+</tr>
+<tr>
+<th>11</th>
+<td>S Pendlebury</td>
+<td>Collingwood</td>
+<td>15.0</td>
+<td>9.135615</td>
+<td>0.033855</td>
+<td>0.013660</td>
+<td>5.864385</td>
+</tr>
+<tr>
+<th>12</th>
+<td>B Ebert</td>
+<td>Port Adelaide</td>
+<td>15.0</td>
+<td>7.941416</td>
+<td>0.032795</td>
+<td>0.008431</td>
+<td>7.058584</td>
+</tr>
+<tr>
+<th>13</th>
+<td>L Parker</td>
+<td>Sydney</td>
+<td>15.0</td>
+<td>12.431929</td>
+<td>0.031366</td>
+<td>0.030311</td>
+<td>2.568071</td>
+</tr>
+<tr>
+<th>14</th>
+<td>Z Merrett</td>
+<td>Essendon</td>
+<td>15.0</td>
+<td>15.017767</td>
+<td>0.033737</td>
+<td>0.015362</td>
+<td>0.017767</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -4260,7 +4879,7 @@ The Average Mean Absolute Error for the top 100 is 2.696
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">train</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season &lt; 2018&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">train</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season &amp;lt; 2018&quot;</span><span class="p">)</span>
 <a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="n">test</span> <span class="o">=</span> <span class="n">features_last_before_train</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;season == 2018&quot;</span><span class="p">)</span>
 <a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># Scale features</span>
@@ -4344,7 +4963,7 @@ Parse progress: |█████████████████████
 <a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
 <a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a><span class="c1"># Scale these predictions - change negatives to 0s and scale so each game predicts 6 votes total</span>
 <a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a><span class="n">test</span> <span class="o">=</span> <span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes</span><span class="o">=</span><span class="n">preds_final_2018_model</span><span class="o">.</span><span class="n">as_data_frame</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_neg_to_0</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span><span class="mi">0</span> <span class="k">else</span> <span class="n">x</span><span class="p">))</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_neg_to_0</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">0</span> <span class="k">else</span> <span class="n">x</span><span class="p">))</span>
 <a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">unscaled_match_votes</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;match_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">predicted_votes_neg_to_0</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span>
 <a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>                  <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">predicted_votes_scaled</span><span class="o">=</span><span class="k">lambda</span> <span class="n">df</span><span class="p">:</span> <span class="n">df</span><span class="o">.</span><span class="n">predicted_votes_neg_to_0</span> <span class="o">/</span> <span class="n">df</span><span class="o">.</span><span class="n">unscaled_match_votes</span> <span class="o">*</span> <span class="mi">6</span><span class="p">))</span>
 <a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>
@@ -4385,7 +5004,7 @@ Parse progress: |█████████████████████
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -4400,191 +5019,191 @@ Parse progress: |█████████████████████
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>player</th>
-      <th>team</th>
-      <th>predicted_votes_scaled</th>
-      <th>match_id</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>player</th>
+<th>team</th>
+<th>predicted_votes_scaled</th>
+<th>match_id</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>0</th>
-      <td>T Mitchell</td>
-      <td>Hawthorn</td>
-      <td>36.577208</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>M Gawn</td>
-      <td>Melbourne</td>
-      <td>20.686854</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>C Oliver</td>
-      <td>Melbourne</td>
-      <td>19.705244</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>D Martin</td>
-      <td>Richmond</td>
-      <td>19.674984</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>B Grundy</td>
-      <td>Collingwood</td>
-      <td>19.136407</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>J Macrae</td>
-      <td>Western Bulldogs</td>
-      <td>18.396814</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>P Dangerfield</td>
-      <td>Geelong</td>
-      <td>18.207483</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>D Beams</td>
-      <td>Brisbane</td>
-      <td>17.280375</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>A Gaff</td>
-      <td>West Coast</td>
-      <td>16.217552</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>L Neale</td>
-      <td>Fremantle</td>
-      <td>16.038782</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>E Yeo</td>
-      <td>West Coast</td>
-      <td>15.866418</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>J Selwood</td>
-      <td>Geelong</td>
-      <td>15.749850</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>D Heppell</td>
-      <td>Essendon</td>
-      <td>15.073503</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>N Fyfe</td>
-      <td>Fremantle</td>
-      <td>14.864971</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Z Merrett</td>
-      <td>Essendon</td>
-      <td>14.597278</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>S Sidebottom</td>
-      <td>Collingwood</td>
-      <td>14.403396</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>J Kennedy</td>
-      <td>Sydney</td>
-      <td>14.297521</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>M Crouch</td>
-      <td>Adelaide</td>
-      <td>13.464205</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>G Ablett</td>
-      <td>Geelong</td>
-      <td>13.403062</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>P Cripps</td>
-      <td>Carlton</td>
-      <td>13.140569</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>R Laird</td>
-      <td>Adelaide</td>
-      <td>13.016825</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>L Franklin</td>
-      <td>Sydney</td>
-      <td>12.562711</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>S Coniglio</td>
-      <td>GWS</td>
-      <td>12.484317</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>J Kelly</td>
-      <td>GWS</td>
-      <td>12.245194</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>J Lloyd</td>
-      <td>Sydney</td>
-      <td>12.019714</td>
-      <td>20</td>
-    </tr>
-  </tbody>
+<tr>
+<th>0</th>
+<td>T Mitchell</td>
+<td>Hawthorn</td>
+<td>36.577208</td>
+<td>20</td>
+</tr>
+<tr>
+<th>1</th>
+<td>M Gawn</td>
+<td>Melbourne</td>
+<td>20.686854</td>
+<td>22</td>
+</tr>
+<tr>
+<th>2</th>
+<td>C Oliver</td>
+<td>Melbourne</td>
+<td>19.705244</td>
+<td>20</td>
+</tr>
+<tr>
+<th>3</th>
+<td>D Martin</td>
+<td>Richmond</td>
+<td>19.674984</td>
+<td>19</td>
+</tr>
+<tr>
+<th>4</th>
+<td>B Grundy</td>
+<td>Collingwood</td>
+<td>19.136407</td>
+<td>22</td>
+</tr>
+<tr>
+<th>5</th>
+<td>J Macrae</td>
+<td>Western Bulldogs</td>
+<td>18.396814</td>
+<td>17</td>
+</tr>
+<tr>
+<th>6</th>
+<td>P Dangerfield</td>
+<td>Geelong</td>
+<td>18.207483</td>
+<td>21</td>
+</tr>
+<tr>
+<th>7</th>
+<td>D Beams</td>
+<td>Brisbane</td>
+<td>17.280375</td>
+<td>15</td>
+</tr>
+<tr>
+<th>8</th>
+<td>A Gaff</td>
+<td>West Coast</td>
+<td>16.217552</td>
+<td>18</td>
+</tr>
+<tr>
+<th>9</th>
+<td>L Neale</td>
+<td>Fremantle</td>
+<td>16.038782</td>
+<td>21</td>
+</tr>
+<tr>
+<th>10</th>
+<td>E Yeo</td>
+<td>West Coast</td>
+<td>15.866418</td>
+<td>20</td>
+</tr>
+<tr>
+<th>11</th>
+<td>J Selwood</td>
+<td>Geelong</td>
+<td>15.749850</td>
+<td>18</td>
+</tr>
+<tr>
+<th>12</th>
+<td>D Heppell</td>
+<td>Essendon</td>
+<td>15.073503</td>
+<td>19</td>
+</tr>
+<tr>
+<th>13</th>
+<td>N Fyfe</td>
+<td>Fremantle</td>
+<td>14.864971</td>
+<td>11</td>
+</tr>
+<tr>
+<th>14</th>
+<td>Z Merrett</td>
+<td>Essendon</td>
+<td>14.597278</td>
+<td>18</td>
+</tr>
+<tr>
+<th>15</th>
+<td>S Sidebottom</td>
+<td>Collingwood</td>
+<td>14.403396</td>
+<td>18</td>
+</tr>
+<tr>
+<th>16</th>
+<td>J Kennedy</td>
+<td>Sydney</td>
+<td>14.297521</td>
+<td>16</td>
+</tr>
+<tr>
+<th>17</th>
+<td>M Crouch</td>
+<td>Adelaide</td>
+<td>13.464205</td>
+<td>16</td>
+</tr>
+<tr>
+<th>18</th>
+<td>G Ablett</td>
+<td>Geelong</td>
+<td>13.403062</td>
+<td>15</td>
+</tr>
+<tr>
+<th>19</th>
+<td>P Cripps</td>
+<td>Carlton</td>
+<td>13.140569</td>
+<td>21</td>
+</tr>
+<tr>
+<th>20</th>
+<td>R Laird</td>
+<td>Adelaide</td>
+<td>13.016825</td>
+<td>19</td>
+</tr>
+<tr>
+<th>21</th>
+<td>L Franklin</td>
+<td>Sydney</td>
+<td>12.562711</td>
+<td>13</td>
+</tr>
+<tr>
+<th>22</th>
+<td>S Coniglio</td>
+<td>GWS</td>
+<td>12.484317</td>
+<td>20</td>
+</tr>
+<tr>
+<th>23</th>
+<td>J Kelly</td>
+<td>GWS</td>
+<td>12.245194</td>
+<td>14</td>
+</tr>
+<tr>
+<th>24</th>
+<td>J Lloyd</td>
+<td>Sydney</td>
+<td>12.019714</td>
+<td>20</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -4646,7 +5265,7 @@ Parse progress: |█████████████████████
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -4661,394 +5280,394 @@ Parse progress: |█████████████████████
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>player</th>
-      <th>team</th>
-      <th>predicted_votes_scaled</th>
-      <th>match_id</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>player</th>
+<th>team</th>
+<th>predicted_votes_scaled</th>
+<th>match_id</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>17</th>
-      <td>M Crouch</td>
-      <td>Adelaide</td>
-      <td>13.464205</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>R Laird</td>
-      <td>Adelaide</td>
-      <td>13.016825</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>B Gibbs</td>
-      <td>Adelaide</td>
-      <td>8.976507</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>D Beams</td>
-      <td>Brisbane</td>
-      <td>17.280375</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>D Zorko</td>
-      <td>Brisbane</td>
-      <td>8.039436</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>58</th>
-      <td>S Martin</td>
-      <td>Brisbane</td>
-      <td>6.835975</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>P Cripps</td>
-      <td>Carlton</td>
-      <td>13.140569</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>K Simpson</td>
-      <td>Carlton</td>
-      <td>7.497976</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>91</th>
-      <td>E Curnow</td>
-      <td>Carlton</td>
-      <td>3.734706</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>B Grundy</td>
-      <td>Collingwood</td>
-      <td>19.136407</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>S Sidebottom</td>
-      <td>Collingwood</td>
-      <td>14.403396</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>A Treloar</td>
-      <td>Collingwood</td>
-      <td>11.173963</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>D Heppell</td>
-      <td>Essendon</td>
-      <td>15.073503</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Z Merrett</td>
-      <td>Essendon</td>
-      <td>14.597278</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>61</th>
-      <td>D Smith</td>
-      <td>Essendon</td>
-      <td>6.367458</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>L Neale</td>
-      <td>Fremantle</td>
-      <td>16.038782</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>N Fyfe</td>
-      <td>Fremantle</td>
-      <td>14.864971</td>
-      <td>11</td>
-    </tr>
-    <tr>
-      <th>75</th>
-      <td>D Mundy</td>
-      <td>Fremantle</td>
-      <td>4.895438</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>S Coniglio</td>
-      <td>GWS</td>
-      <td>12.484317</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>J Kelly</td>
-      <td>GWS</td>
-      <td>12.245194</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>C Ward</td>
-      <td>GWS</td>
-      <td>11.251450</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>P Dangerfield</td>
-      <td>Geelong</td>
-      <td>18.207483</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>J Selwood</td>
-      <td>Geelong</td>
-      <td>15.749850</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>G Ablett</td>
-      <td>Geelong</td>
-      <td>13.403062</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>76</th>
-      <td>J Witts</td>
-      <td>Gold Coast</td>
-      <td>4.745802</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>79</th>
-      <td>J Lyons</td>
-      <td>Gold Coast</td>
-      <td>4.482626</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <th>114</th>
-      <td>D Swallow</td>
-      <td>Gold Coast</td>
-      <td>2.731594</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>0</th>
-      <td>T Mitchell</td>
-      <td>Hawthorn</td>
-      <td>36.577208</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>L Breust</td>
-      <td>Hawthorn</td>
-      <td>9.132324</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>J Gunston</td>
-      <td>Hawthorn</td>
-      <td>7.641945</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>M Gawn</td>
-      <td>Melbourne</td>
-      <td>20.686854</td>
-      <td>22</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>C Oliver</td>
-      <td>Melbourne</td>
-      <td>19.705244</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>J Hogan</td>
-      <td>Melbourne</td>
-      <td>10.510504</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>S Higgins</td>
-      <td>North Melbourne</td>
-      <td>10.682736</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>B Brown</td>
-      <td>North Melbourne</td>
-      <td>9.211568</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>B Cunnington</td>
-      <td>North Melbourne</td>
-      <td>8.949073</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>O Wines</td>
-      <td>Port Adelaide</td>
-      <td>10.948001</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>R Gray</td>
-      <td>Port Adelaide</td>
-      <td>10.017038</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>J Westhoff</td>
-      <td>Port Adelaide</td>
-      <td>7.425425</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>D Martin</td>
-      <td>Richmond</td>
-      <td>19.674984</td>
-      <td>19</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>J Riewoldt</td>
-      <td>Richmond</td>
-      <td>9.981867</td>
-      <td>15</td>
-    </tr>
-    <tr>
-      <th>57</th>
-      <td>K Lambert</td>
-      <td>Richmond</td>
-      <td>6.897522</td>
-      <td>12</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>S Ross</td>
-      <td>St Kilda</td>
-      <td>9.756485</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>J Steven</td>
-      <td>St Kilda</td>
-      <td>8.103860</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>90</th>
-      <td>J Steele</td>
-      <td>St Kilda</td>
-      <td>3.739189</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>J Kennedy</td>
-      <td>Sydney</td>
-      <td>14.297521</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>L Franklin</td>
-      <td>Sydney</td>
-      <td>12.562711</td>
-      <td>13</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>J Lloyd</td>
-      <td>Sydney</td>
-      <td>12.019714</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>A Gaff</td>
-      <td>West Coast</td>
-      <td>16.217552</td>
-      <td>18</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>E Yeo</td>
-      <td>West Coast</td>
-      <td>15.866418</td>
-      <td>20</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>J Redden</td>
-      <td>West Coast</td>
-      <td>10.200779</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>J Macrae</td>
-      <td>Western Bulldogs</td>
-      <td>18.396814</td>
-      <td>17</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>M Bontempelli</td>
-      <td>Western Bulldogs</td>
-      <td>9.317955</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>L Hunter</td>
-      <td>Western Bulldogs</td>
-      <td>8.758631</td>
-      <td>17</td>
-    </tr>
-  </tbody>
+<tr>
+<th>17</th>
+<td>M Crouch</td>
+<td>Adelaide</td>
+<td>13.464205</td>
+<td>16</td>
+</tr>
+<tr>
+<th>20</th>
+<td>R Laird</td>
+<td>Adelaide</td>
+<td>13.016825</td>
+<td>19</td>
+</tr>
+<tr>
+<th>42</th>
+<td>B Gibbs</td>
+<td>Adelaide</td>
+<td>8.976507</td>
+<td>18</td>
+</tr>
+<tr>
+<th>7</th>
+<td>D Beams</td>
+<td>Brisbane</td>
+<td>17.280375</td>
+<td>15</td>
+</tr>
+<tr>
+<th>48</th>
+<td>D Zorko</td>
+<td>Brisbane</td>
+<td>8.039436</td>
+<td>14</td>
+</tr>
+<tr>
+<th>58</th>
+<td>S Martin</td>
+<td>Brisbane</td>
+<td>6.835975</td>
+<td>19</td>
+</tr>
+<tr>
+<th>19</th>
+<td>P Cripps</td>
+<td>Carlton</td>
+<td>13.140569</td>
+<td>21</td>
+</tr>
+<tr>
+<th>51</th>
+<td>K Simpson</td>
+<td>Carlton</td>
+<td>7.497976</td>
+<td>18</td>
+</tr>
+<tr>
+<th>91</th>
+<td>E Curnow</td>
+<td>Carlton</td>
+<td>3.734706</td>
+<td>19</td>
+</tr>
+<tr>
+<th>4</th>
+<td>B Grundy</td>
+<td>Collingwood</td>
+<td>19.136407</td>
+<td>22</td>
+</tr>
+<tr>
+<th>15</th>
+<td>S Sidebottom</td>
+<td>Collingwood</td>
+<td>14.403396</td>
+<td>18</td>
+</tr>
+<tr>
+<th>26</th>
+<td>A Treloar</td>
+<td>Collingwood</td>
+<td>11.173963</td>
+<td>11</td>
+</tr>
+<tr>
+<th>12</th>
+<td>D Heppell</td>
+<td>Essendon</td>
+<td>15.073503</td>
+<td>19</td>
+</tr>
+<tr>
+<th>14</th>
+<td>Z Merrett</td>
+<td>Essendon</td>
+<td>14.597278</td>
+<td>18</td>
+</tr>
+<tr>
+<th>61</th>
+<td>D Smith</td>
+<td>Essendon</td>
+<td>6.367458</td>
+<td>20</td>
+</tr>
+<tr>
+<th>9</th>
+<td>L Neale</td>
+<td>Fremantle</td>
+<td>16.038782</td>
+<td>21</td>
+</tr>
+<tr>
+<th>13</th>
+<td>N Fyfe</td>
+<td>Fremantle</td>
+<td>14.864971</td>
+<td>11</td>
+</tr>
+<tr>
+<th>75</th>
+<td>D Mundy</td>
+<td>Fremantle</td>
+<td>4.895438</td>
+<td>19</td>
+</tr>
+<tr>
+<th>22</th>
+<td>S Coniglio</td>
+<td>GWS</td>
+<td>12.484317</td>
+<td>20</td>
+</tr>
+<tr>
+<th>23</th>
+<td>J Kelly</td>
+<td>GWS</td>
+<td>12.245194</td>
+<td>14</td>
+</tr>
+<tr>
+<th>25</th>
+<td>C Ward</td>
+<td>GWS</td>
+<td>11.251450</td>
+<td>19</td>
+</tr>
+<tr>
+<th>6</th>
+<td>P Dangerfield</td>
+<td>Geelong</td>
+<td>18.207483</td>
+<td>21</td>
+</tr>
+<tr>
+<th>11</th>
+<td>J Selwood</td>
+<td>Geelong</td>
+<td>15.749850</td>
+<td>18</td>
+</tr>
+<tr>
+<th>18</th>
+<td>G Ablett</td>
+<td>Geelong</td>
+<td>13.403062</td>
+<td>15</td>
+</tr>
+<tr>
+<th>76</th>
+<td>J Witts</td>
+<td>Gold Coast</td>
+<td>4.745802</td>
+<td>13</td>
+</tr>
+<tr>
+<th>79</th>
+<td>J Lyons</td>
+<td>Gold Coast</td>
+<td>4.482626</td>
+<td>14</td>
+</tr>
+<tr>
+<th>114</th>
+<td>D Swallow</td>
+<td>Gold Coast</td>
+<td>2.731594</td>
+<td>15</td>
+</tr>
+<tr>
+<th>0</th>
+<td>T Mitchell</td>
+<td>Hawthorn</td>
+<td>36.577208</td>
+<td>20</td>
+</tr>
+<tr>
+<th>41</th>
+<td>L Breust</td>
+<td>Hawthorn</td>
+<td>9.132324</td>
+<td>16</td>
+</tr>
+<tr>
+<th>50</th>
+<td>J Gunston</td>
+<td>Hawthorn</td>
+<td>7.641945</td>
+<td>19</td>
+</tr>
+<tr>
+<th>1</th>
+<td>M Gawn</td>
+<td>Melbourne</td>
+<td>20.686854</td>
+<td>22</td>
+</tr>
+<tr>
+<th>2</th>
+<td>C Oliver</td>
+<td>Melbourne</td>
+<td>19.705244</td>
+<td>20</td>
+</tr>
+<tr>
+<th>30</th>
+<td>J Hogan</td>
+<td>Melbourne</td>
+<td>10.510504</td>
+<td>13</td>
+</tr>
+<tr>
+<th>29</th>
+<td>S Higgins</td>
+<td>North Melbourne</td>
+<td>10.682736</td>
+<td>19</td>
+</tr>
+<tr>
+<th>40</th>
+<td>B Brown</td>
+<td>North Melbourne</td>
+<td>9.211568</td>
+<td>13</td>
+</tr>
+<tr>
+<th>43</th>
+<td>B Cunnington</td>
+<td>North Melbourne</td>
+<td>8.949073</td>
+<td>17</td>
+</tr>
+<tr>
+<th>28</th>
+<td>O Wines</td>
+<td>Port Adelaide</td>
+<td>10.948001</td>
+<td>16</td>
+</tr>
+<tr>
+<th>35</th>
+<td>R Gray</td>
+<td>Port Adelaide</td>
+<td>10.017038</td>
+<td>17</td>
+</tr>
+<tr>
+<th>53</th>
+<td>J Westhoff</td>
+<td>Port Adelaide</td>
+<td>7.425425</td>
+<td>21</td>
+</tr>
+<tr>
+<th>3</th>
+<td>D Martin</td>
+<td>Richmond</td>
+<td>19.674984</td>
+<td>19</td>
+</tr>
+<tr>
+<th>36</th>
+<td>J Riewoldt</td>
+<td>Richmond</td>
+<td>9.981867</td>
+<td>15</td>
+</tr>
+<tr>
+<th>57</th>
+<td>K Lambert</td>
+<td>Richmond</td>
+<td>6.897522</td>
+<td>12</td>
+</tr>
+<tr>
+<th>38</th>
+<td>S Ross</td>
+<td>St Kilda</td>
+<td>9.756485</td>
+<td>17</td>
+</tr>
+<tr>
+<th>46</th>
+<td>J Steven</td>
+<td>St Kilda</td>
+<td>8.103860</td>
+<td>17</td>
+</tr>
+<tr>
+<th>90</th>
+<td>J Steele</td>
+<td>St Kilda</td>
+<td>3.739189</td>
+<td>16</td>
+</tr>
+<tr>
+<th>16</th>
+<td>J Kennedy</td>
+<td>Sydney</td>
+<td>14.297521</td>
+<td>16</td>
+</tr>
+<tr>
+<th>21</th>
+<td>L Franklin</td>
+<td>Sydney</td>
+<td>12.562711</td>
+<td>13</td>
+</tr>
+<tr>
+<th>24</th>
+<td>J Lloyd</td>
+<td>Sydney</td>
+<td>12.019714</td>
+<td>20</td>
+</tr>
+<tr>
+<th>8</th>
+<td>A Gaff</td>
+<td>West Coast</td>
+<td>16.217552</td>
+<td>18</td>
+</tr>
+<tr>
+<th>10</th>
+<td>E Yeo</td>
+<td>West Coast</td>
+<td>15.866418</td>
+<td>20</td>
+</tr>
+<tr>
+<th>34</th>
+<td>J Redden</td>
+<td>West Coast</td>
+<td>10.200779</td>
+<td>16</td>
+</tr>
+<tr>
+<th>5</th>
+<td>J Macrae</td>
+<td>Western Bulldogs</td>
+<td>18.396814</td>
+<td>17</td>
+</tr>
+<tr>
+<th>39</th>
+<td>M Bontempelli</td>
+<td>Western Bulldogs</td>
+<td>9.317955</td>
+<td>16</td>
+</tr>
+<tr>
+<th>45</th>
+<td>L Hunter</td>
+<td>Western Bulldogs</td>
+<td>8.758631</td>
+<td>17</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -5075,7 +5694,7 @@ Parse progress: |█████████████████████
 <div class="output_area">
 <div class="output_html rendered_html output_subarea output_execute_result">
 <div>
-<style scoped="scoped">
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -5090,295 +5709,295 @@ Parse progress: |█████████████████████
 </style>
 <table border="1" class="dataframe">
 <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>date</th>
-      <th>round</th>
-      <th>player</th>
-      <th>team</th>
-      <th>opposition</th>
-      <th>margin</th>
-      <th>SC</th>
-      <th>predicted_votes_scaled</th>
-    </tr>
-  </thead>
+<tr style="text-align: right;">
+<th></th>
+<th>date</th>
+<th>round</th>
+<th>player</th>
+<th>team</th>
+<th>opposition</th>
+<th>margin</th>
+<th>SC</th>
+<th>predicted_votes_scaled</th>
+</tr>
+</thead>
 <tbody>
-    <tr>
-      <th>27236</th>
-      <td>24/08/2018</td>
-      <td>23</td>
-      <td>J Laverde</td>
-      <td>Essendon</td>
-      <td>Port Adelaide</td>
-      <td>22</td>
-      <td>0.028190</td>
-      <td>0.098214</td>
-    </tr>
-    <tr>
-      <th>27237</th>
-      <td>24/08/2018</td>
-      <td>23</td>
-      <td>Z Merrett</td>
-      <td>Essendon</td>
-      <td>Port Adelaide</td>
-      <td>22</td>
-      <td>0.030918</td>
-      <td>0.316848</td>
-    </tr>
-    <tr>
-      <th>27238</th>
-      <td>24/08/2018</td>
-      <td>23</td>
-      <td>D Parish</td>
-      <td>Essendon</td>
-      <td>Port Adelaide</td>
-      <td>22</td>
-      <td>0.030615</td>
-      <td>0.031097</td>
-    </tr>
-    <tr>
-      <th>27239</th>
-      <td>24/08/2018</td>
-      <td>23</td>
-      <td>A Saad</td>
-      <td>Essendon</td>
-      <td>Port Adelaide</td>
-      <td>22</td>
-      <td>0.026069</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>27240</th>
-      <td>24/08/2018</td>
-      <td>23</td>
-      <td>D Smith</td>
-      <td>Essendon</td>
-      <td>Port Adelaide</td>
-      <td>22</td>
-      <td>0.028190</td>
-      <td>0.714852</td>
-    </tr>
-    <tr>
-      <th>27241</th>
-      <td>24/08/2018</td>
-      <td>23</td>
-      <td>D Zaharakis</td>
-      <td>Essendon</td>
-      <td>Port Adelaide</td>
-      <td>22</td>
-      <td>0.034859</td>
-      <td>0.331842</td>
-    </tr>
-    <tr>
-      <th>27242</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>H Ballantyne</td>
-      <td>Fremantle</td>
-      <td>Collingwood</td>
-      <td>-9</td>
-      <td>0.025773</td>
-      <td>0.594485</td>
-    </tr>
-    <tr>
-      <th>27243</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>T Duman</td>
-      <td>Fremantle</td>
-      <td>Collingwood</td>
-      <td>-9</td>
-      <td>0.038205</td>
-      <td>0.068379</td>
-    </tr>
-    <tr>
-      <th>27244</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>J Hamling</td>
-      <td>Fremantle</td>
-      <td>Collingwood</td>
-      <td>-9</td>
-      <td>0.024560</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>27245</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>B Hill</td>
-      <td>Fremantle</td>
-      <td>Collingwood</td>
-      <td>-9</td>
-      <td>0.031837</td>
-      <td>0.755081</td>
-    </tr>
-    <tr>
-      <th>27246</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>E Langdon</td>
-      <td>Fremantle</td>
-      <td>Collingwood</td>
-      <td>-9</td>
-      <td>0.033354</td>
-      <td>0.420121</td>
-    </tr>
-    <tr>
-      <th>27247</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>D Mundy</td>
-      <td>Fremantle</td>
-      <td>Collingwood</td>
-      <td>-9</td>
-      <td>0.023954</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>27248</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>L Neale</td>
-      <td>Fremantle</td>
-      <td>Collingwood</td>
-      <td>-9</td>
-      <td>0.042450</td>
-      <td>1.012576</td>
-    </tr>
-    <tr>
-      <th>27249</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>S Switkowski</td>
-      <td>Fremantle</td>
-      <td>Collingwood</td>
-      <td>-9</td>
-      <td>0.027289</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>27250</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>T Adams</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.030018</td>
-      <td>0.207985</td>
-    </tr>
-    <tr>
-      <th>27251</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>M Cox</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.024864</td>
-      <td>0.017404</td>
-    </tr>
-    <tr>
-      <th>27252</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>J Crisp</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.031534</td>
-      <td>0.022959</td>
-    </tr>
-    <tr>
-      <th>27253</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>B Grundy</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.045482</td>
-      <td>1.118902</td>
-    </tr>
-    <tr>
-      <th>27254</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>B Maynard</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.026076</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>27255</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>B Mihocek</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.025167</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>27256</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>S Pendlebury</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.029715</td>
-      <td>0.888746</td>
-    </tr>
-    <tr>
-      <th>27257</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>T Phillips</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.028199</td>
-      <td>0.009869</td>
-    </tr>
-    <tr>
-      <th>27258</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>S Sidebottom</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.039115</td>
-      <td>0.880034</td>
-    </tr>
-    <tr>
-      <th>27259</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>B Sier</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.023044</td>
-      <td>0.002407</td>
-    </tr>
-    <tr>
-      <th>27260</th>
-      <td>25/08/2018</td>
-      <td>23</td>
-      <td>J Thomas</td>
-      <td>Collingwood</td>
-      <td>Fremantle</td>
-      <td>9</td>
-      <td>0.026986</td>
-      <td>0.001053</td>
-    </tr>
-  </tbody>
+<tr>
+<th>27236</th>
+<td>24/08/2018</td>
+<td>23</td>
+<td>J Laverde</td>
+<td>Essendon</td>
+<td>Port Adelaide</td>
+<td>22</td>
+<td>0.028190</td>
+<td>0.098214</td>
+</tr>
+<tr>
+<th>27237</th>
+<td>24/08/2018</td>
+<td>23</td>
+<td>Z Merrett</td>
+<td>Essendon</td>
+<td>Port Adelaide</td>
+<td>22</td>
+<td>0.030918</td>
+<td>0.316848</td>
+</tr>
+<tr>
+<th>27238</th>
+<td>24/08/2018</td>
+<td>23</td>
+<td>D Parish</td>
+<td>Essendon</td>
+<td>Port Adelaide</td>
+<td>22</td>
+<td>0.030615</td>
+<td>0.031097</td>
+</tr>
+<tr>
+<th>27239</th>
+<td>24/08/2018</td>
+<td>23</td>
+<td>A Saad</td>
+<td>Essendon</td>
+<td>Port Adelaide</td>
+<td>22</td>
+<td>0.026069</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>27240</th>
+<td>24/08/2018</td>
+<td>23</td>
+<td>D Smith</td>
+<td>Essendon</td>
+<td>Port Adelaide</td>
+<td>22</td>
+<td>0.028190</td>
+<td>0.714852</td>
+</tr>
+<tr>
+<th>27241</th>
+<td>24/08/2018</td>
+<td>23</td>
+<td>D Zaharakis</td>
+<td>Essendon</td>
+<td>Port Adelaide</td>
+<td>22</td>
+<td>0.034859</td>
+<td>0.331842</td>
+</tr>
+<tr>
+<th>27242</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>H Ballantyne</td>
+<td>Fremantle</td>
+<td>Collingwood</td>
+<td>-9</td>
+<td>0.025773</td>
+<td>0.594485</td>
+</tr>
+<tr>
+<th>27243</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>T Duman</td>
+<td>Fremantle</td>
+<td>Collingwood</td>
+<td>-9</td>
+<td>0.038205</td>
+<td>0.068379</td>
+</tr>
+<tr>
+<th>27244</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>J Hamling</td>
+<td>Fremantle</td>
+<td>Collingwood</td>
+<td>-9</td>
+<td>0.024560</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>27245</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>B Hill</td>
+<td>Fremantle</td>
+<td>Collingwood</td>
+<td>-9</td>
+<td>0.031837</td>
+<td>0.755081</td>
+</tr>
+<tr>
+<th>27246</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>E Langdon</td>
+<td>Fremantle</td>
+<td>Collingwood</td>
+<td>-9</td>
+<td>0.033354</td>
+<td>0.420121</td>
+</tr>
+<tr>
+<th>27247</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>D Mundy</td>
+<td>Fremantle</td>
+<td>Collingwood</td>
+<td>-9</td>
+<td>0.023954</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>27248</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>L Neale</td>
+<td>Fremantle</td>
+<td>Collingwood</td>
+<td>-9</td>
+<td>0.042450</td>
+<td>1.012576</td>
+</tr>
+<tr>
+<th>27249</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>S Switkowski</td>
+<td>Fremantle</td>
+<td>Collingwood</td>
+<td>-9</td>
+<td>0.027289</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>27250</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>T Adams</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.030018</td>
+<td>0.207985</td>
+</tr>
+<tr>
+<th>27251</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>M Cox</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.024864</td>
+<td>0.017404</td>
+</tr>
+<tr>
+<th>27252</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>J Crisp</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.031534</td>
+<td>0.022959</td>
+</tr>
+<tr>
+<th>27253</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>B Grundy</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.045482</td>
+<td>1.118902</td>
+</tr>
+<tr>
+<th>27254</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>B Maynard</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.026076</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>27255</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>B Mihocek</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.025167</td>
+<td>0.000000</td>
+</tr>
+<tr>
+<th>27256</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>S Pendlebury</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.029715</td>
+<td>0.888746</td>
+</tr>
+<tr>
+<th>27257</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>T Phillips</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.028199</td>
+<td>0.009869</td>
+</tr>
+<tr>
+<th>27258</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>S Sidebottom</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.039115</td>
+<td>0.880034</td>
+</tr>
+<tr>
+<th>27259</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>B Sier</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.023044</td>
+<td>0.002407</td>
+</tr>
+<tr>
+<th>27260</th>
+<td>25/08/2018</td>
+<td>23</td>
+<td>J Thomas</td>
+<td>Collingwood</td>
+<td>Fremantle</td>
+<td>9</td>
+<td>0.026986</td>
+<td>0.001053</td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
@@ -5422,16 +6041,17 @@ Parse progress: |█████████████████████
           
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
     
-      <nav class="md-footer__inner md-grid" aria-label="Footer">
+      <nav class="md-footer__inner md-grid" aria-label="footer.title">
         
           
           <a href="../AFLmodellingPython/" class="md-footer__link md-footer__link--prev" aria-label="Previous: AFL modelling walk through in Python" rel="prev">
@@ -5477,47 +6097,57 @@ Parse progress: |█████████████████████
   
     
     
+    
+    
       
       
     
     <a href="https://twitter.com/Betfair_Aus" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://linkedin.com/company/betfair-australia" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://facebook.com/betfairaustralia" target="_blank" rel="noopener" title="facebook.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://youtube.com/user/betfairaus" target="_blank" rel="noopener" title="youtube.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://github.com/betfair-datascientists" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
     </a>
   
 </div>
@@ -5558,10 +6188,11 @@ Parse progress: |█████████████████████
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6eac0284.min.js"></script>
       
         <script src="../../js/scripts.js"></script>
       

@@ -14,8 +14,15 @@
       
         <link rel="canonical" href="https://betfair-datascientists.github.io/tutorials/processingTarFiles101/">
       
+      
+        <link rel="prev" href="../How_to_Automate_5/">
+      
+      
+        <link rel="next" href="../jsonToCsvRevisited/">
+      
+      
       <link rel="icon" href="../../img/BetfairFavicon.ico">
-      <meta name="generator" content="mkdocs-1.4.1, mkdocs-material-8.5.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.3">
     
     
       
@@ -23,15 +30,17 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.20d9efc8.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.79e020e9.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.cbb835fc.min.css">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a5377069.min.css">
       
       
 
+
     
+    
+      
     
     
       
@@ -64,9 +73,7 @@
   
   
 
-
-  <script id="__analytics">function __md_analytics(){window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-125973915-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");ga("send","event","feedback","click",t,e),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){ga("send","pageview",e.pathname)})});var e=document.createElement("script");e.async=!0,e.src="https://www.google-analytics.com/analytics.js",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
-
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","UA-125973915-1"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","UA-125973915-1",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=UA-125973915-1",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
   
     <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
   
@@ -109,7 +116,7 @@
       
   
   <header class="md-header" data-md-component="header">
-    <nav class="md-header__inner md-grid" aria-label="Header">
+    <nav class="md-header__inner md-grid" aria-label="header.title">
       <a href="../.." title="The Automation Hub" class="md-header__button md-logo" aria-label="The Automation Hub" data-md-component="logo">
         
   <img src="../../img/logo.svg" alt="logo">
@@ -161,45 +168,6 @@
       
 
       
-        <label class="md-header__button md-icon" for="__search">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
-          </a>
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
-        </button>
-      </nav>
-      
-        <div class="md-search__suggest" data-md-component="search-suggest"></div>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
      
       <div class="bf-nav">
         <a class="bf-hidable" href="https://www.betfair.com.au/exchange/plus/"><svg class="exchangeLogo" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#"
@@ -226,32 +194,21 @@
           
             
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
-      Home
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
   
     <li class="md-tabs__item">
-      <a href="../../wagering/betfairHowTo/" class="md-tabs__link">
-        Wagering
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
       </a>
     </li>
   
@@ -260,48 +217,72 @@
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../wagering/betfairHowTo/" class="md-tabs__link">
+          
+  
+  Wagering
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../api/apiResources/" class="md-tabs__link">
-        API
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../modelling/Brownlow2023Datathon/" class="md-tabs__link">
-        Modelling
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/apiResources/" class="md-tabs__link">
+          
+  
+  API
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../automation/GoldenRulesofAutomation/" class="md-tabs__link">
-        Automation
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../modelling/Brownlow2023Datathon/" class="md-tabs__link">
+          
+  
+  Modelling
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../automation/GoldenRulesofAutomation/" class="md-tabs__link">
+          
+  
+  Automation
+
+        </a>
+      </li>
+    
   
 
       
@@ -310,48 +291,54 @@
   
     
   
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../How_to_Automate_1/" class="md-tabs__link">
+          
+  
+  Tutorials
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../How_to_Automate_1/" class="md-tabs__link md-tabs__link--active">
-        Tutorials
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../mentalGame/intro/" class="md-tabs__link">
-        Mental Game
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../mentalGame/intro/" class="md-tabs__link">
+          
+  
+  Mental Game
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../contactUs/test/" class="md-tabs__link">
-        Contact Us
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contactUs/test/" class="md-tabs__link">
+          
+  
+  Contact Us
+
+        </a>
+      </li>
+    
   
 
       
@@ -370,6 +357,7 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
 
   
 
@@ -390,14 +378,18 @@
     
       
       
-      
-
   
   
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        Home
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
       </a>
     </li>
   
@@ -405,1201 +397,1700 @@
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_2">
-          Wagering
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Wagering" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          Wagering
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Wagering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wagering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/betfairHowTo/" class="md-nav__link">
-        Betfair How-To
+        
+  
+  <span class="md-ellipsis">
+    Betfair How-To
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/bettingGlossary/" class="md-nav__link">
-        Betting Glossary
+        
+  
+  <span class="md-ellipsis">
+    Betting Glossary
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/stakingMethods/" class="md-nav__link">
-        Staking Methods and Bankroll Management
+        
+  
+  <span class="md-ellipsis">
+    Staking Methods and Bankroll Management
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/valueAndOdds/" class="md-nav__link">
-        Value and Odds
+        
+  
+  <span class="md-ellipsis">
+    Value and Odds
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../wagering/commission/" class="md-nav__link">
-        Commission and other charges
+        
+  
+  <span class="md-ellipsis">
+    Commission and other charges
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_3">
-          API
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="API" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          API
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../api/apiResources/" class="md-nav__link">
-        API resources
+        
+  
+  <span class="md-ellipsis">
+    API resources
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../api/apiappkey/" class="md-nav__link">
-        How to access the Betfair API
+        
+  
+  <span class="md-ellipsis">
+    How to access the Betfair API
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../api/apiRtutorial/" class="md-nav__link">
-        API tutorial in R
+        
+  
+  <span class="md-ellipsis">
+    API tutorial in R
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../api/apiPythontutorial/" class="md-nav__link">
-        API tutorial in Python
+        
+  
+  <span class="md-ellipsis">
+    API tutorial in Python
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4">
-          Modelling
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Modelling" data-md-level="1">
-        <label class="md-nav__title" for="__nav_4">
-          <span class="md-nav__icon md-icon"></span>
-          Modelling
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Modelling
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Modelling
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/Brownlow2023Datathon/" class="md-nav__link">
-        Brownlow 2023 Datathon
+        
+  
+  <span class="md-ellipsis">
+    Brownlow 2023 Datathon
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/AFL2023Datathon/" class="md-nav__link">
-        AFL 2023 Datathon (concluded)
+        
+  
+  <span class="md-ellipsis">
+    AFL 2023 Datathon (concluded)
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/howToModel/" class="md-nav__link">
-        Intro to modelling
+        
+  
+  <span class="md-ellipsis">
+    Intro to modelling
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/dataSources/" class="md-nav__link">
-        Pricing Data Sources
+        
+  
+  <span class="md-ellipsis">
+    Pricing Data Sources
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_5" type="checkbox" id="__nav_4_5" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_5">
-          Racing
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Racing" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_5">
-          <span class="md-nav__icon md-icon"></span>
-          Racing
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Racing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Racing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/fasttrackTutorial/" class="md-nav__link">
-        Greyhound form FastTrack API
+        
+  
+  <span class="md-ellipsis">
+    Greyhound form FastTrack API
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/greyhoundModellingPython/" class="md-nav__link">
-        Greyhound modelling in Python
+        
+  
+  <span class="md-ellipsis">
+    Greyhound modelling in Python
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_6" type="checkbox" id="__nav_4_6" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_6">
-          Soccer
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Soccer" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_6">
-          <span class="md-nav__icon md-icon"></span>
-          Soccer
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Soccer
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Soccer
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/soccerModellingELO2022WorldCup/" class="md-nav__link">
-        Soccer modelling tutorial in R for 2022 FIFA World Cup
+        
+  
+  <span class="md-ellipsis">
+    Soccer modelling tutorial in R for 2022 FIFA World Cup
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/soccerModellingTutorialPython/" class="md-nav__link">
-        Soccer modelling tutorial in Python
+        
+  
+  <span class="md-ellipsis">
+    Soccer modelling tutorial in Python
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/EPLmlPython/" class="md-nav__link">
-        EPL ML walk through in Python
+        
+  
+  <span class="md-ellipsis">
+    EPL ML walk through in Python
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_7" type="checkbox" id="__nav_4_7" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_7">
-          AFL
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="AFL" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_7">
-          <span class="md-nav__icon md-icon"></span>
-          AFL
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    AFL
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            AFL
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/AFLmodellingPython/" class="md-nav__link">
-        AFL modelling walk through in Python
+        
+  
+  <span class="md-ellipsis">
+    AFL modelling walk through in Python
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/brownlowModelTutorial/" class="md-nav__link">
-        Modelling the Brownlow Medal in Python
+        
+  
+  <span class="md-ellipsis">
+    Modelling the Brownlow Medal in Python
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_4_8" type="checkbox" id="__nav_4_8" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_4_8">
-          Tennis
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Tennis" data-md-level="2">
-        <label class="md-nav__title" for="__nav_4_8">
-          <span class="md-nav__icon md-icon"></span>
-          Tennis
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tennis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            Tennis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/howToModelTheAusOpen/" class="md-nav__link">
-        How to model the Australian Open
+        
+  
+  <span class="md-ellipsis">
+    How to model the Australian Open
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/AusOpenRTutorial/" class="md-nav__link">
-        Aus Open R Tutorial
+        
+  
+  <span class="md-ellipsis">
+    Aus Open R Tutorial
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../modelling/AusOpenPythonTutorial/" class="md-nav__link">
-        Aus Open Python Tutorial
+        
+  
+  <span class="md-ellipsis">
+    Aus Open Python Tutorial
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5">
-          Automation
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Automation" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          Automation
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Automation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Automation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/GoldenRulesofAutomation/" class="md-nav__link">
-        Golden rules of automation
+        
+  
+  <span class="md-ellipsis">
+    Golden rules of automation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/overview/" class="md-nav__link">
-        Tools Overview
+        
+  
+  <span class="md-ellipsis">
+    Tools Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_3">
-          Bet Angel
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Bet Angel" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_3">
-          <span class="md-nav__icon md-icon"></span>
-          Bet Angel
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Bet Angel
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Bet Angel
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngel/betAngel/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelbeginners/" class="md-nav__link">
-        Beginner's guide
+        
+  
+  <span class="md-ellipsis">
+    Beginner's guide
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelintermediate/" class="md-nav__link">
-        Intermediate guide
+        
+  
+  <span class="md-ellipsis">
+    Intermediate guide
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngeladvanced/" class="md-nav__link">
-        Advanced guide
+        
+  
+  <span class="md-ellipsis">
+    Advanced guide
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelRatingsAutomation/" class="md-nav__link">
-        Ratings auto
+        
+  
+  <span class="md-ellipsis">
+    Ratings auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelMarketFavouriteAutomation/" class="md-nav__link">
-        Market fav auto
+        
+  
+  <span class="md-ellipsis">
+    Market fav auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelTippingAutomation/" class="md-nav__link">
-        Tipping auto
+        
+  
+  <span class="md-ellipsis">
+    Tipping auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelSimultaneousMarkets/" class="md-nav__link">
-        Simultaneous markets
+        
+  
+  <span class="md-ellipsis">
+    Simultaneous markets
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betAngelKellyStake/" class="md-nav__link">
-        Kelly criterion staking
+        
+  
+  <span class="md-ellipsis">
+    Kelly criterion staking
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_4" type="checkbox" id="__nav_5_4" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_4">
-          Gruss Betting Assistant
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Gruss Betting Assistant" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_4">
-          <span class="md-nav__icon md-icon"></span>
-          Gruss Betting Assistant
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Gruss Betting Assistant
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Gruss Betting Assistant
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/Gruss/Gruss/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/GrussSettingupbasicmarketview/" class="md-nav__link">
-        Setup basic market view and one click betting
+        
+  
+  <span class="md-ellipsis">
+    Setup basic market view and one click betting
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/grussRatingsAutomation/" class="md-nav__link">
-        Ratings auto
+        
+  
+  <span class="md-ellipsis">
+    Ratings auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/grussMarketFavouriteAutomation/" class="md-nav__link">
-        Market fav auto
+        
+  
+  <span class="md-ellipsis">
+    Market fav auto
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/grusslSimultaneousMarkets/" class="md-nav__link">
-        Simultaneous markets
+        
+  
+  <span class="md-ellipsis">
+    Simultaneous markets
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/grussKellyStake/" class="md-nav__link">
-        Kelly criterion staking
+        
+  
+  <span class="md-ellipsis">
+    Kelly criterion staking
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_5">
-          Cymatic Trader
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Cymatic Trader" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_5">
-          <span class="md-nav__icon md-icon"></span>
-          Cymatic Trader
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cymatic Trader
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Cymatic Trader
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/CymaticTrader/CymaticTrader/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/cymaticTraderRatingsAutomation/" class="md-nav__link">
-        Ratings auto
+        
+  
+  <span class="md-ellipsis">
+    Ratings auto
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_6">
-          Geeks Toy
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Geeks Toy" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_6">
-          <span class="md-nav__icon md-icon"></span>
-          Geeks Toy
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Geeks Toy
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Geeks Toy
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/GeeksToyinstallationandsetup/" class="md-nav__link">
-        Installation and setup
+        
+  
+  <span class="md-ellipsis">
+    Installation and setup
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/GeeksToybasicmarketviewstakingandoneclickbetting/" class="md-nav__link">
-        Setup basic market view and one click betting
+        
+  
+  <span class="md-ellipsis">
+    Setup basic market view and one click betting
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/geeksToyRefreshSettings/" class="md-nav__link">
-        Optimising refresh settings
+        
+  
+  <span class="md-ellipsis">
+    Optimising refresh settings
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     
+    
+    
+    
+    
+      
       
     
     <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_5_7" type="checkbox" id="__nav_5_7" checked>
-      
-      
-      
-      
-        <label class="md-nav__link" for="__nav_5_7">
-          Bet Jet Pro
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Bet Jet Pro" data-md-level="2">
-        <label class="md-nav__title" for="__nav_5_7">
-          <span class="md-nav__icon md-icon"></span>
-          Bet Jet Pro
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Bet Jet Pro
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Bet Jet Pro
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../automation/betJetOverview/" class="md-nav__link">
-        Overview
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
     
   
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_6">
-          Tutorials
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          Tutorials
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
           
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Tutorials
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../How_to_Automate_1/" class="md-nav__link">
-        How to Automate 1
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 1
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../How_to_Automate_2/" class="md-nav__link">
-        How to Automate 2
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 2
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../How_to_Automate_3/" class="md-nav__link">
-        How to Automate 3
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 3
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../How_to_Automate_4/" class="md-nav__link">
-        How to Automate 4
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 4
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../How_to_Automate_5/" class="md-nav__link">
-        How to Automate 5
+        
+  
+  <span class="md-ellipsis">
+    How to Automate 5
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
     
@@ -1607,19 +2098,31 @@
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Take away the pain! Processing TAR Files 101
+          
+  
+  <span class="md-ellipsis">
+    Take away the pain! Processing TAR Files 101
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Take away the pain! Processing TAR Files 101
+        
+  
+  <span class="md-ellipsis">
+    Take away the pain! Processing TAR Files 101
+  </span>
+  
+
       </a>
       
         
@@ -1754,302 +2257,427 @@
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../jsonToCsvRevisited/" class="md-nav__link">
-        JSON to CSV | Revisited
+        
+  
+  <span class="md-ellipsis">
+    JSON to CSV | Revisited
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../backtestingRatingsTutorial/" class="md-nav__link">
-        Back testing ratings in Python
+        
+  
+  <span class="md-ellipsis">
+    Back testing ratings in Python
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../automatedBettingAnglesTutorial/" class="md-nav__link">
-        Automated betting angles in Python
+        
+  
+  <span class="md-ellipsis">
+    Automated betting angles in Python
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../analysingAndPredictingMarketMovements/" class="md-nav__link">
-        Do they know? Analysing Betfair market formation & market movements
+        
+  
+  <span class="md-ellipsis">
+    Do they know? Analysing Betfair market formation & market movements
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../analysingAndPredictingBSP/" class="md-nav__link">
-        Wisdom of the crowd? Analysing & understanding BSP
+        
+  
+  <span class="md-ellipsis">
+    Wisdom of the crowd? Analysing & understanding BSP
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_7">
-          Mental Game
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Mental Game" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
-          <span class="md-nav__icon md-icon"></span>
-          Mental Game
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Mental Game
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Mental Game
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/intro/" class="md-nav__link">
-        Intro
+        
+  
+  <span class="md-ellipsis">
+    Intro
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/roleOfEmotions/" class="md-nav__link">
-        Part 1
+        
+  
+  <span class="md-ellipsis">
+    Part 1
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/mapYourEmotions/" class="md-nav__link">
-        Part 2
+        
+  
+  <span class="md-ellipsis">
+    Part 2
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/handlingBadVariance/" class="md-nav__link">
-        Part 3
+        
+  
+  <span class="md-ellipsis">
+    Part 3
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/winbyBeingGreatatLosing/" class="md-nav__link">
-        Part 4
+        
+  
+  <span class="md-ellipsis">
+    Part 4
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/correctingyouremotions/" class="md-nav__link">
-        Part 5
+        
+  
+  <span class="md-ellipsis">
+    Part 5
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/responsibleGambling/" class="md-nav__link">
-        Part 6
+        
+  
+  <span class="md-ellipsis">
+    Part 6
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/InchwormConcept/" class="md-nav__link">
-        Part 7
+        
+  
+  <span class="md-ellipsis">
+    Part 7
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/HighExpectations/" class="md-nav__link">
-        Part 8
+        
+  
+  <span class="md-ellipsis">
+    Part 8
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../mentalGame/TappingYourIntuition/" class="md-nav__link">
-        Part 9
+        
+  
+  <span class="md-ellipsis">
+    Part 9
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
   
   
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    
+    
+    
+    
       
       
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
-      
-      
-      
-        <label class="md-nav__link" for="__nav_8">
-          Contact Us
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Contact Us" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
-          Contact Us
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+        
           
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contact Us
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Contact Us
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
   
     <li class="md-nav__item">
       <a href="../../contactUs/test/" class="md-nav__link">
-        Meet the Team
+        
+  
+  <span class="md-ellipsis">
+    Meet the Team
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -2099,7 +2727,6 @@
   document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
 }());
 </script>
-
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -2210,12 +2837,12 @@ We've set the script to pull prices from 10 minutes out from the jump at 30 seco
 <div class="input">
 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># splitting race name and returning the parts </span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">def</span> <span class="nf">split_anz_horse_market_name</span><span class="p">(</span><span class="n">market_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">def</span> <span class="nf">split_anz_horse_market_name</span><span class="p">(</span><span class="n">market_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="c1"># return race no, length, race type</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="c1"># input samples: </span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="c1"># &#39;R6 1400m Grp1&#39; -&gt; (&#39;R6&#39;,&#39;1400m&#39;,&#39;grp1&#39;)</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="c1"># &#39;R1 1609m Trot M&#39; -&gt; (&#39;R1&#39;, &#39;1609m&#39;, &#39;trot&#39;)</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="c1"># &#39;R4 1660m Pace M&#39; -&gt; (&#39;R4&#39;, &#39;1660m&#39;, &#39;pace&#39;)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="c1"># &#39;R6 1400m Grp1&#39; -&amp;gt; (&#39;R6&#39;,&#39;1400m&#39;,&#39;grp1&#39;)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="c1"># &#39;R1 1609m Trot M&#39; -&amp;gt; (&#39;R1&#39;, &#39;1609m&#39;, &#39;trot&#39;)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="c1"># &#39;R4 1660m Pace M&#39; -&amp;gt; (&#39;R4&#39;, &#39;1660m&#39;, &#39;pace&#39;)</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">parts</span> <span class="o">=</span> <span class="n">market_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">race_no</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">race_len</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
@@ -2224,19 +2851,19 @@ We've set the script to pull prices from 10 minutes out from the jump at 30 seco
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">race_no</span><span class="p">,</span> <span class="n">race_len</span><span class="p">,</span> <span class="n">race_type</span><span class="p">)</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># filtering markets to those that fit the following criteria</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">def</span> <span class="nf">filter_market</span><span class="p">(</span><span class="n">market</span><span class="p">:</span> <span class="n">bflw</span><span class="o">.</span><span class="n">MarketBook</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> 
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="k">def</span> <span class="nf">filter_market</span><span class="p">(</span><span class="n">market</span><span class="p">:</span> <span class="n">bflw</span><span class="o">.</span><span class="n">MarketBook</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">bool</span><span class="p">:</span> 
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="n">d</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">market_definition</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">d</span> <span class="o">!=</span> <span class="kc">None</span>
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        <span class="ow">and</span> <span class="n">d</span><span class="o">.</span><span class="n">country_code</span> <span class="o">==</span> <span class="s1">&#39;AU&#39;</span> 
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        <span class="ow">and</span> <span class="n">d</span><span class="o">.</span><span class="n">market_type</span> <span class="o">==</span> <span class="s1">&#39;WIN&#39;</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>        <span class="ow">and</span> <span class="p">(</span><span class="n">c</span> <span class="o">:=</span> <span class="n">split_anz_horse_market_name</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span> <span class="o">!=</span> <span class="s1">&#39;trot&#39;</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">&#39;pace&#39;</span> <span class="c1">#strips out Harness Races</span>
 <a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>        <span class="c1">#and (c := split_anz_horse_market_name(d.name)[2]) == &#39;hcap&#39;#can use this to filter by race type</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="c1">#and (c := split_anz_horse_market_name(d.name)[1]) &gt;= &#39;1200&#39; #can use this to filter by race length</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        <span class="c1">#and (c := split_anz_horse_market_name(d.name)[1]) &amp;gt;= &#39;1200&#39; #can use this to filter by race length</span>
 <a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        <span class="p">)</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="c1"># Simply add the below variable name to the market filter function above with the filter value</span>
 <a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="c1"># Equals (== &#39;Value in Quotation&#39; or True/False/None), Does Not Equal (!= &#39;Value in Quotation&#39; or True/False/None) - FOR ALL TYPES</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="c1"># Greater than (&gt;), Greater than or equal to (&gt;=), Less than (&lt;), Less than or equal to (&lt;=) - FOR INT/FLOAT</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="c1"># Greater than (&amp;gt;), Greater than or equal to (&amp;gt;=), Less than (&amp;lt;), Less than or equal to (&amp;lt;=) - FOR INT/FLOAT</span>
 <a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="c1"># For list of value &#39;in&#39;</span>
 <a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
 <a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="c1"># and d.betting_type: str - ODDS, ASIAN_HANDICAP_SINGLES, ASIAN_HANDICAP_DOUBLES or LINE</span>
@@ -2276,20 +2903,20 @@ We've set the script to pull prices from 10 minutes out from the jump at 30 seco
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">prices_path</span> <span class="o">=</span>  <span class="n">file_directory</span><span class="o">+</span><span class="s2">&quot;preplay.csv&quot;</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># rounding to 2 decimal places or returning &#39;&#39; if blank</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">def</span> <span class="nf">as_str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">def</span> <span class="nf">as_str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="c1"># returning smaller of two numbers where min not 0</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">def</span> <span class="nf">min_gr0</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="k">def</span> <span class="nf">min_gr0</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="k">if</span> <span class="n">a</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>        <span class="k">return</span> <span class="n">b</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="k">if</span> <span class="n">b</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="k">return</span> <span class="n">a</span>
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
 <a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
 <a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="c1"># parsing price data and pulling out weighted avg price, matched, min price and max price</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">def</span> <span class="nf">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PriceSize</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">def</span> <span class="nf">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PriceSize</span><span class="p">])</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">traded</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
 <a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>        <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
@@ -2304,8 +2931,8 @@ We've set the script to pull prices from 10 minutes out from the jump at 30 seco
 <a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># starting default values</span>
 <a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>    <span class="p">)</span>
 <a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>
-<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>    <span class="n">wavg_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavg_sum</span> <span class="o">/</span> <span class="n">matched</span><span class="p">)</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> <span class="c1"># dividing sum of wavg by total matched</span>
-<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>    <span class="n">matched</span> <span class="o">=</span> <span class="n">matched</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> 
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>    <span class="n">wavg_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavg_sum</span> <span class="o">/</span> <span class="n">matched</span><span class="p">)</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> <span class="c1"># dividing sum of wavg by total matched</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>    <span class="n">matched</span> <span class="o">=</span> <span class="n">matched</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> 
 <a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>    <span class="n">min_price</span> <span class="o">=</span> <span class="n">min_price</span> <span class="k">if</span> <span class="n">min_price</span> <span class="o">!=</span> <span class="mi">1001</span> <span class="k">else</span> <span class="kc">None</span>
 <a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>    <span class="n">max_price</span> <span class="o">=</span> <span class="n">max_price</span> <span class="k">if</span> <span class="n">max_price</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
 <a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>
@@ -2451,7 +3078,7 @@ This will provide:</p>
 <a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>
 <a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>                    <span class="n">seconds_to_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">market_time</span> <span class="o">-</span> <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
 <a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>
-<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>                    <span class="k">if</span> <span class="n">seconds_to_start</span> <span class="o">&gt;</span> <span class="n">log1_Start</span><span class="p">:</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>                    <span class="k">if</span> <span class="n">seconds_to_start</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">log1_Start</span><span class="p">:</span>
 <a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>
 <a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>                        <span class="c1"># Too early before off to start logging prices</span>
 <a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>                        <span class="k">continue</span>
@@ -2459,14 +3086,14 @@ This will provide:</p>
 <a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>                    <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>
 <a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>                        <span class="c1"># Update data at different time steps depending on seconds to off</span>
-<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>                        <span class="n">wait</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">seconds_to_start</span> <span class="o">&lt;=</span> <span class="n">log2_Start</span><span class="p">,</span> <span class="n">log2_Step</span><span class="p">,</span> <span class="n">log1_Step</span><span class="p">)</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>                        <span class="n">wait</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">seconds_to_start</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">log2_Start</span><span class="p">,</span> <span class="n">log2_Step</span><span class="p">,</span> <span class="n">log1_Step</span><span class="p">)</span>
 <a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>
 <a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>                        <span class="c1"># New Market</span>
 <a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>                        <span class="k">if</span> <span class="n">market_book</span><span class="o">.</span><span class="n">market_id</span> <span class="o">!=</span> <span class="n">marketID</span><span class="p">:</span>
 <a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a>                            <span class="n">marketID</span> <span class="o">=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">market_id</span>
 <a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>                            <span class="n">time</span> <span class="o">=</span>  <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span>
 <a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a>                        <span class="c1"># (wait) seconds elapsed since last write</span>
-<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>                        <span class="k">elif</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">wait</span><span class="p">:</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>                        <span class="k">elif</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">wait</span><span class="p">:</span>
 <a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a>                            <span class="n">time</span> <span class="o">=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span>
 <a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a>                        <span class="c1"># fewer than (wait) seconds elapsed continue to next loop</span>
 <a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a>                        <span class="k">else</span><span class="p">:</span>
@@ -2631,8 +3258,8 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a>                <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="p">,</span>
 <a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>                <span class="c1"># calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (bsp - 1))        </span>
 <a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a>                <span class="n">min_gr0</span><span class="p">(</span>
-<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">back_stake_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
-<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">lay_liability_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">/</span> <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">back_stake_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">lay_liability_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">/</span> <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 <a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a>                <span class="p">)</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
 <a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a>
@@ -2651,7 +3278,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a>                <span class="k">def</span> <span class="nf">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
 <a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a>                    <span class="p">(</span><span class="n">pre_ltp</span><span class="p">,</span> <span class="n">pre_traded</span><span class="p">),</span> <span class="p">(</span><span class="n">post_ltp</span><span class="p">,</span> <span class="n">post_traded</span><span class="p">,</span> <span class="n">sp_traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
 <a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a>
-<a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a>                    <span class="n">inplay_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ps</span><span class="p">:</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span>
+<a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a>                    <span class="n">inplay_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ps</span><span class="p">:</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span>
 <a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a>                        <span class="n">PriceSize</span><span class="p">(</span>
 <a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a>                            <span class="n">price</span><span class="o">=</span><span class="n">post_ps</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> 
 <a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a>                            <span class="n">size</span><span class="o">=</span><span class="n">post_ps</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="nb">next</span><span class="p">((</span><span class="n">pre_ps</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pre_ps</span> <span class="ow">in</span> <span class="n">pre_traded</span> <span class="k">if</span> <span class="n">pre_ps</span><span class="o">.</span><span class="n">price</span> <span class="o">==</span> <span class="n">post_ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
@@ -2752,7 +3379,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-5-170" name="__codelineno-5-170" href="#__codelineno-5-170"></a>        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">back_best</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;atb_ladder&#39;</span><span class="p">]])</span>
 <a id="__codelineno-5-171" name="__codelineno-5-171" href="#__codelineno-5-171"></a>        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">lay_best</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;atl_ladder&#39;</span><span class="p">]])</span>
 <a id="__codelineno-5-172" name="__codelineno-5-172" href="#__codelineno-5-172"></a>        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">seconds_before_scheduled_off</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()))</span>
-<a id="__codelineno-5-173" name="__codelineno-5-173" href="#__codelineno-5-173"></a>        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;seconds_before_scheduled_off &lt; @log1_Start&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-173" name="__codelineno-5-173" href="#__codelineno-5-173"></a>        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;seconds_before_scheduled_off &amp;lt; @log1_Start&#39;</span><span class="p">)</span>
 <a id="__codelineno-5-174" name="__codelineno-5-174" href="#__codelineno-5-174"></a>    <span class="p">)</span>
 <a id="__codelineno-5-175" name="__codelineno-5-175" href="#__codelineno-5-175"></a>
 <a id="__codelineno-5-176" name="__codelineno-5-176" href="#__codelineno-5-176"></a>    <span class="c1">#creating a unique list of market ids</span>
@@ -2788,7 +3415,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-5-206" name="__codelineno-5-206" href="#__codelineno-5-206"></a>        <span class="n">event_date</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <a id="__codelineno-5-207" name="__codelineno-5-207" href="#__codelineno-5-207"></a>        <span class="n">conversion_rate</span><span class="o">=</span><span class="n">CurrencyConverter</span><span class="p">(</span><span class="n">fallback_on_missing_rate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;GBP&#39;</span><span class="p">,</span><span class="s1">&#39;AUD&#39;</span><span class="p">,</span><span class="n">date</span><span class="o">=</span><span class="n">event_date</span><span class="p">)</span>
 <a id="__codelineno-5-208" name="__codelineno-5-208" href="#__codelineno-5-208"></a>        <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">conversion_rate</span>
-<a id="__codelineno-5-209" name="__codelineno-5-209" href="#__codelineno-5-209"></a>        <span class="n">pricing_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-5-209" name="__codelineno-5-209" href="#__codelineno-5-209"></a>        <span class="n">pricing_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <a id="__codelineno-5-210" name="__codelineno-5-210" href="#__codelineno-5-210"></a>        <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <a id="__codelineno-5-211" name="__codelineno-5-211" href="#__codelineno-5-211"></a>        <span class="c1">#reorder the dataframe and write to csv</span>
 <a id="__codelineno-5-212" name="__codelineno-5-212" href="#__codelineno-5-212"></a>        <span class="n">pricing_data</span><span class="o">=</span><span class="n">pricing_data</span><span class="p">[[</span><span class="s1">&#39;event_date&#39;</span><span class="p">,</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;track&#39;</span><span class="p">,</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span><span class="s1">&#39;race_type&#39;</span><span class="p">,</span><span class="s1">&#39;market_id&#39;</span><span class="p">,</span><span class="s1">&#39;selection_id&#39;</span><span class="p">,</span><span class="s1">&#39;selection_name&#39;</span><span class="p">,</span><span class="s2">&quot;selection_status&quot;</span><span class="p">,</span><span class="s1">&#39;reduction_factor&#39;</span><span class="p">,</span><span class="s1">&#39;result&#39;</span><span class="p">,</span><span class="s1">&#39;bsp&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">,</span><span class="s1">&#39;wap&#39;</span><span class="p">,</span><span class="s1">&#39;ltp&#39;</span><span class="p">,</span><span class="s1">&#39;atb_ladder&#39;</span><span class="p">,</span><span class="s1">&#39;atl_ladder&#39;</span><span class="p">,</span><span class="s1">&#39;back_best&#39;</span><span class="p">,</span><span class="s1">&#39;lay_best&#39;</span><span class="p">,</span><span class="s1">&#39;seconds_before_scheduled_off&#39;</span><span class="p">,</span><span class="s1">&#39;sp_near&#39;</span><span class="p">,</span><span class="s1">&#39;sp_far&#39;</span><span class="p">,</span><span class="s1">&#39;pp_min&#39;</span><span class="p">,</span><span class="s1">&#39;pp_max&#39;</span><span class="p">,</span><span class="s1">&#39;pp_wap&#39;</span><span class="p">,</span><span class="s1">&#39;pp_ltp&#39;</span><span class="p">,</span><span class="s1">&#39;pp_volume&#39;</span><span class="p">,</span><span class="s1">&#39;bsp_volume&#39;</span><span class="p">,</span><span class="s1">&#39;ip_min&#39;</span><span class="p">,</span><span class="s1">&#39;ip_max&#39;</span><span class="p">,</span><span class="s1">&#39;ip_wap&#39;</span><span class="p">,</span><span class="s1">&#39;ip_ltp&#39;</span><span class="p">,</span><span class="s1">&#39;ip_volume&#39;</span><span class="p">]]</span>
@@ -2874,12 +3501,12 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="n">log2_Step</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># Seconds between log steps for second data segment</span>
 <a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>
 <a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="c1"># splitting race name and returning the parts </span>
-<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="k">def</span> <span class="nf">split_anz_horse_market_name</span><span class="p">(</span><span class="n">market_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="k">def</span> <span class="nf">split_anz_horse_market_name</span><span class="p">(</span><span class="n">market_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
 <a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>    <span class="c1"># return race no, length, race type</span>
 <a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>    <span class="c1"># input samples: </span>
-<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>    <span class="c1"># &#39;R6 1400m Grp1&#39; -&gt; (&#39;R6&#39;,&#39;1400m&#39;,&#39;grp1&#39;)</span>
-<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>    <span class="c1"># &#39;R1 1609m Trot M&#39; -&gt; (&#39;R1&#39;, &#39;1609m&#39;, &#39;trot&#39;)</span>
-<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>    <span class="c1"># &#39;R4 1660m Pace M&#39; -&gt; (&#39;R4&#39;, &#39;1660m&#39;, &#39;pace&#39;)</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>    <span class="c1"># &#39;R6 1400m Grp1&#39; -&amp;gt; (&#39;R6&#39;,&#39;1400m&#39;,&#39;grp1&#39;)</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>    <span class="c1"># &#39;R1 1609m Trot M&#39; -&amp;gt; (&#39;R1&#39;, &#39;1609m&#39;, &#39;trot&#39;)</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>    <span class="c1"># &#39;R4 1660m Pace M&#39; -&amp;gt; (&#39;R4&#39;, &#39;1660m&#39;, &#39;pace&#39;)</span>
 <a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>    <span class="n">parts</span> <span class="o">=</span> <span class="n">market_name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
 <a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>    <span class="n">race_no</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> 
 <a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>    <span class="n">race_len</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;m&#39;</span><span class="p">)</span>
@@ -2888,19 +3515,19 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">race_no</span><span class="p">,</span> <span class="n">race_len</span><span class="p">,</span> <span class="n">race_type</span><span class="p">)</span>
 <a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a>
 <a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="c1"># filtering markets to those that fit the following criteria</span>
-<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="k">def</span> <span class="nf">filter_market</span><span class="p">(</span><span class="n">market</span><span class="p">:</span> <span class="n">bflw</span><span class="o">.</span><span class="n">MarketBook</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span> 
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="k">def</span> <span class="nf">filter_market</span><span class="p">(</span><span class="n">market</span><span class="p">:</span> <span class="n">bflw</span><span class="o">.</span><span class="n">MarketBook</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">bool</span><span class="p">:</span> 
 <a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a>    <span class="n">d</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">market_definition</span>
 <a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a>    <span class="k">return</span> <span class="p">(</span><span class="n">d</span> <span class="o">!=</span> <span class="kc">None</span>
 <a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a>        <span class="ow">and</span> <span class="n">d</span><span class="o">.</span><span class="n">country_code</span> <span class="o">==</span> <span class="s1">&#39;AU&#39;</span> 
 <a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a>        <span class="ow">and</span> <span class="n">d</span><span class="o">.</span><span class="n">market_type</span> <span class="o">==</span> <span class="s1">&#39;WIN&#39;</span>
 <a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a>        <span class="ow">and</span> <span class="p">(</span><span class="n">c</span> <span class="o">:=</span> <span class="n">split_anz_horse_market_name</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">2</span><span class="p">])</span> <span class="o">!=</span> <span class="s1">&#39;trot&#39;</span> <span class="ow">and</span> <span class="n">c</span> <span class="o">!=</span> <span class="s1">&#39;pace&#39;</span> <span class="c1">#strips out Harness Races</span>
 <a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a>        <span class="c1">#and (c := split_anz_horse_market_name(d.name)[2]) == &#39;hcap&#39;</span>
-<a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a>        <span class="ow">and</span> <span class="p">(</span><span class="n">c</span> <span class="o">:=</span> <span class="n">split_anz_horse_market_name</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="s1">&#39;1200&#39;</span>
+<a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a>        <span class="ow">and</span> <span class="p">(</span><span class="n">c</span> <span class="o">:=</span> <span class="n">split_anz_horse_market_name</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">name</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span><span class="o">=</span> <span class="s1">&#39;1200&#39;</span>
 <a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a>        <span class="p">)</span>
 <a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a>
 <a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a><span class="c1"># Simply add the below variable name to the market filter function above with the filter value</span>
 <a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a><span class="c1"># Equals (== &#39;Value in Quotation&#39; or True/False/None), Does Not Equal (!= &#39;Value in Quotation&#39; or True/False/None) - FOR ALL TYPES</span>
-<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a><span class="c1"># Greater than (&gt;), Greater than or equal to (&gt;=), Less than (&lt;), Less than or equal to (&lt;=) - FOR INT/FLOAT</span>
+<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a><span class="c1"># Greater than (&amp;gt;), Greater than or equal to (&amp;gt;=), Less than (&amp;lt;), Less than or equal to (&amp;lt;=) - FOR INT/FLOAT</span>
 <a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a><span class="c1"># For list of value &#39;in&#39;</span>
 <a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a>
 <a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a><span class="c1"># and d.betting_type: str - ODDS, ASIAN_HANDICAP_SINGLES, ASIAN_HANDICAP_DOUBLES or LINE</span>
@@ -2925,20 +3552,20 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-81" name="__codelineno-7-81" href="#__codelineno-7-81"></a><span class="n">prices_path</span> <span class="o">=</span>  <span class="n">file_directory</span><span class="o">+</span><span class="s2">&quot;preplay.csv&quot;</span>
 <a id="__codelineno-7-82" name="__codelineno-7-82" href="#__codelineno-7-82"></a>
 <a id="__codelineno-7-83" name="__codelineno-7-83" href="#__codelineno-7-83"></a><span class="c1"># rounding to 2 decimal places or returning &#39;&#39; if blank</span>
-<a id="__codelineno-7-84" name="__codelineno-7-84" href="#__codelineno-7-84"></a><span class="k">def</span> <span class="nf">as_str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-7-84" name="__codelineno-7-84" href="#__codelineno-7-84"></a><span class="k">def</span> <span class="nf">as_str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-7-85" name="__codelineno-7-85" href="#__codelineno-7-85"></a>    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
 <a id="__codelineno-7-86" name="__codelineno-7-86" href="#__codelineno-7-86"></a>
 <a id="__codelineno-7-87" name="__codelineno-7-87" href="#__codelineno-7-87"></a><span class="c1"># returning smaller of two numbers where min not 0</span>
-<a id="__codelineno-7-88" name="__codelineno-7-88" href="#__codelineno-7-88"></a><span class="k">def</span> <span class="nf">min_gr0</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<a id="__codelineno-7-89" name="__codelineno-7-89" href="#__codelineno-7-89"></a>    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-7-88" name="__codelineno-7-88" href="#__codelineno-7-88"></a><span class="k">def</span> <span class="nf">min_gr0</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-7-89" name="__codelineno-7-89" href="#__codelineno-7-89"></a>    <span class="k">if</span> <span class="n">a</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-7-90" name="__codelineno-7-90" href="#__codelineno-7-90"></a>        <span class="k">return</span> <span class="n">b</span>
-<a id="__codelineno-7-91" name="__codelineno-7-91" href="#__codelineno-7-91"></a>    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-7-91" name="__codelineno-7-91" href="#__codelineno-7-91"></a>    <span class="k">if</span> <span class="n">b</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-7-92" name="__codelineno-7-92" href="#__codelineno-7-92"></a>        <span class="k">return</span> <span class="n">a</span>
 <a id="__codelineno-7-93" name="__codelineno-7-93" href="#__codelineno-7-93"></a>
 <a id="__codelineno-7-94" name="__codelineno-7-94" href="#__codelineno-7-94"></a>    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <a id="__codelineno-7-95" name="__codelineno-7-95" href="#__codelineno-7-95"></a>
 <a id="__codelineno-7-96" name="__codelineno-7-96" href="#__codelineno-7-96"></a><span class="c1"># parsing price data and pulling out weighted avg price, matched, min price and max price</span>
-<a id="__codelineno-7-97" name="__codelineno-7-97" href="#__codelineno-7-97"></a><span class="k">def</span> <span class="nf">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PriceSize</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<a id="__codelineno-7-97" name="__codelineno-7-97" href="#__codelineno-7-97"></a><span class="k">def</span> <span class="nf">parse_traded</span><span class="p">(</span><span class="n">traded</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">PriceSize</span><span class="p">])</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
 <a id="__codelineno-7-98" name="__codelineno-7-98" href="#__codelineno-7-98"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">traded</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> 
 <a id="__codelineno-7-99" name="__codelineno-7-99" href="#__codelineno-7-99"></a>        <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
 <a id="__codelineno-7-100" name="__codelineno-7-100" href="#__codelineno-7-100"></a>
@@ -2953,8 +3580,8 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-109" name="__codelineno-7-109" href="#__codelineno-7-109"></a>        <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1001</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># starting default values</span>
 <a id="__codelineno-7-110" name="__codelineno-7-110" href="#__codelineno-7-110"></a>    <span class="p">)</span>
 <a id="__codelineno-7-111" name="__codelineno-7-111" href="#__codelineno-7-111"></a>
-<a id="__codelineno-7-112" name="__codelineno-7-112" href="#__codelineno-7-112"></a>    <span class="n">wavg_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavg_sum</span> <span class="o">/</span> <span class="n">matched</span><span class="p">)</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> <span class="c1"># dividing sum of wavg by total matched</span>
-<a id="__codelineno-7-113" name="__codelineno-7-113" href="#__codelineno-7-113"></a>    <span class="n">matched</span> <span class="o">=</span> <span class="n">matched</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> 
+<a id="__codelineno-7-112" name="__codelineno-7-112" href="#__codelineno-7-112"></a>    <span class="n">wavg_sum</span> <span class="o">=</span> <span class="p">(</span><span class="n">wavg_sum</span> <span class="o">/</span> <span class="n">matched</span><span class="p">)</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> <span class="c1"># dividing sum of wavg by total matched</span>
+<a id="__codelineno-7-113" name="__codelineno-7-113" href="#__codelineno-7-113"></a>    <span class="n">matched</span> <span class="o">=</span> <span class="n">matched</span> <span class="k">if</span> <span class="n">matched</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span> 
 <a id="__codelineno-7-114" name="__codelineno-7-114" href="#__codelineno-7-114"></a>    <span class="n">min_price</span> <span class="o">=</span> <span class="n">min_price</span> <span class="k">if</span> <span class="n">min_price</span> <span class="o">!=</span> <span class="mi">1001</span> <span class="k">else</span> <span class="kc">None</span>
 <a id="__codelineno-7-115" name="__codelineno-7-115" href="#__codelineno-7-115"></a>    <span class="n">max_price</span> <span class="o">=</span> <span class="n">max_price</span> <span class="k">if</span> <span class="n">max_price</span> <span class="o">!=</span> <span class="mi">0</span> <span class="k">else</span> <span class="kc">None</span>
 <a id="__codelineno-7-116" name="__codelineno-7-116" href="#__codelineno-7-116"></a>
@@ -3069,7 +3696,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-225" name="__codelineno-7-225" href="#__codelineno-7-225"></a>
 <a id="__codelineno-7-226" name="__codelineno-7-226" href="#__codelineno-7-226"></a>                    <span class="n">seconds_to_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">market_time</span> <span class="o">-</span> <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
 <a id="__codelineno-7-227" name="__codelineno-7-227" href="#__codelineno-7-227"></a>
-<a id="__codelineno-7-228" name="__codelineno-7-228" href="#__codelineno-7-228"></a>                    <span class="k">if</span> <span class="n">seconds_to_start</span> <span class="o">&gt;</span> <span class="n">log1_Start</span><span class="p">:</span>
+<a id="__codelineno-7-228" name="__codelineno-7-228" href="#__codelineno-7-228"></a>                    <span class="k">if</span> <span class="n">seconds_to_start</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">log1_Start</span><span class="p">:</span>
 <a id="__codelineno-7-229" name="__codelineno-7-229" href="#__codelineno-7-229"></a>
 <a id="__codelineno-7-230" name="__codelineno-7-230" href="#__codelineno-7-230"></a>                        <span class="c1"># Too early before off to start logging prices</span>
 <a id="__codelineno-7-231" name="__codelineno-7-231" href="#__codelineno-7-231"></a>                        <span class="k">continue</span>
@@ -3077,14 +3704,14 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-233" name="__codelineno-7-233" href="#__codelineno-7-233"></a>                    <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-7-234" name="__codelineno-7-234" href="#__codelineno-7-234"></a>
 <a id="__codelineno-7-235" name="__codelineno-7-235" href="#__codelineno-7-235"></a>                        <span class="c1"># Update data at different time steps depending on seconds to off</span>
-<a id="__codelineno-7-236" name="__codelineno-7-236" href="#__codelineno-7-236"></a>                        <span class="n">wait</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">seconds_to_start</span> <span class="o">&lt;=</span> <span class="n">log2_Start</span><span class="p">,</span> <span class="n">log2_Step</span><span class="p">,</span> <span class="n">log1_Step</span><span class="p">)</span>
+<a id="__codelineno-7-236" name="__codelineno-7-236" href="#__codelineno-7-236"></a>                        <span class="n">wait</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">seconds_to_start</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">log2_Start</span><span class="p">,</span> <span class="n">log2_Step</span><span class="p">,</span> <span class="n">log1_Step</span><span class="p">)</span>
 <a id="__codelineno-7-237" name="__codelineno-7-237" href="#__codelineno-7-237"></a>
 <a id="__codelineno-7-238" name="__codelineno-7-238" href="#__codelineno-7-238"></a>                        <span class="c1"># New Market</span>
 <a id="__codelineno-7-239" name="__codelineno-7-239" href="#__codelineno-7-239"></a>                        <span class="k">if</span> <span class="n">market_book</span><span class="o">.</span><span class="n">market_id</span> <span class="o">!=</span> <span class="n">marketID</span><span class="p">:</span>
 <a id="__codelineno-7-240" name="__codelineno-7-240" href="#__codelineno-7-240"></a>                            <span class="n">marketID</span> <span class="o">=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">market_id</span>
 <a id="__codelineno-7-241" name="__codelineno-7-241" href="#__codelineno-7-241"></a>                            <span class="n">time</span> <span class="o">=</span>  <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span>
 <a id="__codelineno-7-242" name="__codelineno-7-242" href="#__codelineno-7-242"></a>                        <span class="c1"># (wait) seconds elapsed since last write</span>
-<a id="__codelineno-7-243" name="__codelineno-7-243" href="#__codelineno-7-243"></a>                        <span class="k">elif</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">wait</span><span class="p">:</span>
+<a id="__codelineno-7-243" name="__codelineno-7-243" href="#__codelineno-7-243"></a>                        <span class="k">elif</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">wait</span><span class="p">:</span>
 <a id="__codelineno-7-244" name="__codelineno-7-244" href="#__codelineno-7-244"></a>                            <span class="n">time</span> <span class="o">=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span>
 <a id="__codelineno-7-245" name="__codelineno-7-245" href="#__codelineno-7-245"></a>                        <span class="c1"># fewer than (wait) seconds elapsed continue to next loop</span>
 <a id="__codelineno-7-246" name="__codelineno-7-246" href="#__codelineno-7-246"></a>                        <span class="k">else</span><span class="p">:</span>
@@ -3211,8 +3838,8 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-367" name="__codelineno-7-367" href="#__codelineno-7-367"></a>                <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="p">,</span>
 <a id="__codelineno-7-368" name="__codelineno-7-368" href="#__codelineno-7-368"></a>                <span class="c1"># calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (bsp - 1))        </span>
 <a id="__codelineno-7-369" name="__codelineno-7-369" href="#__codelineno-7-369"></a>                <span class="n">min_gr0</span><span class="p">(</span>
-<a id="__codelineno-7-370" name="__codelineno-7-370" href="#__codelineno-7-370"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">back_stake_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
-<a id="__codelineno-7-371" name="__codelineno-7-371" href="#__codelineno-7-371"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">lay_liability_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">/</span> <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-7-370" name="__codelineno-7-370" href="#__codelineno-7-370"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">back_stake_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
+<a id="__codelineno-7-371" name="__codelineno-7-371" href="#__codelineno-7-371"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">lay_liability_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">/</span> <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 <a id="__codelineno-7-372" name="__codelineno-7-372" href="#__codelineno-7-372"></a>                <span class="p">)</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-7-373" name="__codelineno-7-373" href="#__codelineno-7-373"></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
 <a id="__codelineno-7-374" name="__codelineno-7-374" href="#__codelineno-7-374"></a>
@@ -3231,7 +3858,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-387" name="__codelineno-7-387" href="#__codelineno-7-387"></a>                <span class="k">def</span> <span class="nf">runner_vals</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
 <a id="__codelineno-7-388" name="__codelineno-7-388" href="#__codelineno-7-388"></a>                    <span class="p">(</span><span class="n">pre_ltp</span><span class="p">,</span> <span class="n">pre_traded</span><span class="p">),</span> <span class="p">(</span><span class="n">post_ltp</span><span class="p">,</span> <span class="n">post_traded</span><span class="p">,</span> <span class="n">sp_traded</span><span class="p">)</span> <span class="o">=</span> <span class="n">r</span>
 <a id="__codelineno-7-389" name="__codelineno-7-389" href="#__codelineno-7-389"></a>
-<a id="__codelineno-7-390" name="__codelineno-7-390" href="#__codelineno-7-390"></a>                    <span class="n">inplay_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ps</span><span class="p">:</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span>
+<a id="__codelineno-7-390" name="__codelineno-7-390" href="#__codelineno-7-390"></a>                    <span class="n">inplay_only</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ps</span><span class="p">:</span> <span class="n">ps</span><span class="o">.</span><span class="n">size</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span>
 <a id="__codelineno-7-391" name="__codelineno-7-391" href="#__codelineno-7-391"></a>                        <span class="n">PriceSize</span><span class="p">(</span>
 <a id="__codelineno-7-392" name="__codelineno-7-392" href="#__codelineno-7-392"></a>                            <span class="n">price</span><span class="o">=</span><span class="n">post_ps</span><span class="o">.</span><span class="n">price</span><span class="p">,</span> 
 <a id="__codelineno-7-393" name="__codelineno-7-393" href="#__codelineno-7-393"></a>                            <span class="n">size</span><span class="o">=</span><span class="n">post_ps</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="nb">next</span><span class="p">((</span><span class="n">pre_ps</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pre_ps</span> <span class="ow">in</span> <span class="n">pre_traded</span> <span class="k">if</span> <span class="n">pre_ps</span><span class="o">.</span><span class="n">price</span> <span class="o">==</span> <span class="n">post_ps</span><span class="o">.</span><span class="n">price</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
@@ -3332,7 +3959,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-488" name="__codelineno-7-488" href="#__codelineno-7-488"></a>        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">back_best</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;atb_ladder&#39;</span><span class="p">]])</span>
 <a id="__codelineno-7-489" name="__codelineno-7-489" href="#__codelineno-7-489"></a>        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">lay_best</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;atl_ladder&#39;</span><span class="p">]])</span>
 <a id="__codelineno-7-490" name="__codelineno-7-490" href="#__codelineno-7-490"></a>        <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">seconds_before_scheduled_off</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()))</span>
-<a id="__codelineno-7-491" name="__codelineno-7-491" href="#__codelineno-7-491"></a>        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;seconds_before_scheduled_off &lt; @log1_Start&#39;</span><span class="p">)</span>
+<a id="__codelineno-7-491" name="__codelineno-7-491" href="#__codelineno-7-491"></a>        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;seconds_before_scheduled_off &amp;lt; @log1_Start&#39;</span><span class="p">)</span>
 <a id="__codelineno-7-492" name="__codelineno-7-492" href="#__codelineno-7-492"></a>    <span class="p">)</span>
 <a id="__codelineno-7-493" name="__codelineno-7-493" href="#__codelineno-7-493"></a>
 <a id="__codelineno-7-494" name="__codelineno-7-494" href="#__codelineno-7-494"></a>    <span class="c1">#creating a unique list of market ids</span>
@@ -3368,7 +3995,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-7-524" name="__codelineno-7-524" href="#__codelineno-7-524"></a>        <span class="n">event_date</span><span class="o">=</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;event_date&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <a id="__codelineno-7-525" name="__codelineno-7-525" href="#__codelineno-7-525"></a>        <span class="n">conversion_rate</span><span class="o">=</span><span class="n">CurrencyConverter</span><span class="p">(</span><span class="n">fallback_on_missing_rate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="s1">&#39;GBP&#39;</span><span class="p">,</span><span class="s1">&#39;AUD&#39;</span><span class="p">,</span><span class="n">date</span><span class="o">=</span><span class="n">event_date</span><span class="p">)</span>
 <a id="__codelineno-7-526" name="__codelineno-7-526" href="#__codelineno-7-526"></a>        <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">conversion_rate</span>
-<a id="__codelineno-7-527" name="__codelineno-7-527" href="#__codelineno-7-527"></a>        <span class="n">pricing_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-7-527" name="__codelineno-7-527" href="#__codelineno-7-527"></a>        <span class="n">pricing_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">0</span><span class="p">),</span> <span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <a id="__codelineno-7-528" name="__codelineno-7-528" href="#__codelineno-7-528"></a>        <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <a id="__codelineno-7-529" name="__codelineno-7-529" href="#__codelineno-7-529"></a>        <span class="c1">#reorder the dataframe and write to csv</span>
 <a id="__codelineno-7-530" name="__codelineno-7-530" href="#__codelineno-7-530"></a>        <span class="n">pricing_data</span><span class="o">=</span><span class="n">pricing_data</span><span class="p">[[</span><span class="s1">&#39;event_date&#39;</span><span class="p">,</span><span class="s1">&#39;country&#39;</span><span class="p">,</span><span class="s1">&#39;track&#39;</span><span class="p">,</span><span class="s1">&#39;race&#39;</span><span class="p">,</span><span class="s1">&#39;distance&#39;</span><span class="p">,</span><span class="s1">&#39;race_type&#39;</span><span class="p">,</span><span class="s1">&#39;market_id&#39;</span><span class="p">,</span><span class="s1">&#39;selection_id&#39;</span><span class="p">,</span><span class="s1">&#39;selection_name&#39;</span><span class="p">,</span><span class="s2">&quot;selection_status&quot;</span><span class="p">,</span><span class="s1">&#39;reduction_factor&#39;</span><span class="p">,</span><span class="s1">&#39;result&#39;</span><span class="p">,</span><span class="s1">&#39;bsp&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">,</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">,</span><span class="s1">&#39;wap&#39;</span><span class="p">,</span><span class="s1">&#39;ltp&#39;</span><span class="p">,</span><span class="s1">&#39;atb_ladder&#39;</span><span class="p">,</span><span class="s1">&#39;atl_ladder&#39;</span><span class="p">,</span><span class="s1">&#39;back_best&#39;</span><span class="p">,</span><span class="s1">&#39;lay_best&#39;</span><span class="p">,</span><span class="s1">&#39;seconds_before_scheduled_off&#39;</span><span class="p">,</span><span class="s1">&#39;sp_near&#39;</span><span class="p">,</span><span class="s1">&#39;sp_far&#39;</span><span class="p">,</span><span class="s1">&#39;pp_min&#39;</span><span class="p">,</span><span class="s1">&#39;pp_max&#39;</span><span class="p">,</span><span class="s1">&#39;pp_wap&#39;</span><span class="p">,</span><span class="s1">&#39;pp_ltp&#39;</span><span class="p">,</span><span class="s1">&#39;pp_volume&#39;</span><span class="p">,</span><span class="s1">&#39;bsp_volume&#39;</span><span class="p">,</span><span class="s1">&#39;ip_min&#39;</span><span class="p">,</span><span class="s1">&#39;ip_max&#39;</span><span class="p">,</span><span class="s1">&#39;ip_wap&#39;</span><span class="p">,</span><span class="s1">&#39;ip_ltp&#39;</span><span class="p">,</span><span class="s1">&#39;ip_volume&#39;</span><span class="p">]]</span>
@@ -3420,7 +4047,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="n">log2_Step</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># seconds between log steps for second data segment</span>
 <a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>
 <a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>
-<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="k">def</span> <span class="nf">filter_market</span><span class="p">(</span><span class="n">market</span><span class="p">:</span> <span class="n">bflw</span><span class="o">.</span><span class="n">MarketBook</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="k">def</span> <span class="nf">filter_market</span><span class="p">(</span><span class="n">market</span><span class="p">:</span> <span class="n">bflw</span><span class="o">.</span><span class="n">MarketBook</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">bool</span><span class="p">:</span>
 <a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a>    <span class="n">d</span> <span class="o">=</span> <span class="n">market</span><span class="o">.</span><span class="n">market_definition</span>
 <a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>    <span class="k">return</span> <span class="p">(</span>
 <a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a>        <span class="n">d</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
@@ -3432,7 +4059,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a>
 <a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a><span class="c1"># Simply add the below variable name to the market filter function above with the filter value</span>
 <a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a><span class="c1"># Equals (== &#39;Value in Quotation&#39; or True/False/None), Does Not Equal (!= &#39;Value in Quotation&#39; or True/False/None) - FOR ALL TYPES</span>
-<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="c1"># Greater than (&gt;), Greater than or equal to (&gt;=), Less than (&lt;), Less than or equal to (&lt;=) - FOR INT/FLOAT</span>
+<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="c1"># Greater than (&amp;gt;), Greater than or equal to (&amp;gt;=), Less than (&amp;lt;), Less than or equal to (&amp;lt;=) - FOR INT/FLOAT</span>
 <a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a><span class="c1"># For list of value &#39;in&#39;</span>
 <a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a>
 <a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a><span class="c1"># and d.betting_type: str - ODDS, ASIAN_HANDICAP_SINGLES, ASIAN_HANDICAP_DOUBLES or LINE</span>
@@ -3457,14 +4084,14 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-8-63" name="__codelineno-8-63" href="#__codelineno-8-63"></a><span class="n">prices_path</span> <span class="o">=</span>  <span class="n">file_directory</span><span class="o">+</span><span class="s2">&quot;preplay.csv&quot;</span>
 <a id="__codelineno-8-64" name="__codelineno-8-64" href="#__codelineno-8-64"></a>
 <a id="__codelineno-8-65" name="__codelineno-8-65" href="#__codelineno-8-65"></a><span class="c1"># rounding to 2 decimal places or returning &#39;&#39; if blank</span>
-<a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a><span class="k">def</span> <span class="nf">as_str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a><span class="k">def</span> <span class="nf">as_str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">str</span><span class="p">:</span>
 <a id="__codelineno-8-67" name="__codelineno-8-67" href="#__codelineno-8-67"></a>    <span class="k">return</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">v</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">v</span> <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">str</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
 <a id="__codelineno-8-68" name="__codelineno-8-68" href="#__codelineno-8-68"></a>
 <a id="__codelineno-8-69" name="__codelineno-8-69" href="#__codelineno-8-69"></a><span class="c1"># returning smaller of two numbers where min not 0</span>
-<a id="__codelineno-8-70" name="__codelineno-8-70" href="#__codelineno-8-70"></a><span class="k">def</span> <span class="nf">min_gr0</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<a id="__codelineno-8-71" name="__codelineno-8-71" href="#__codelineno-8-71"></a>    <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-8-70" name="__codelineno-8-70" href="#__codelineno-8-70"></a><span class="k">def</span> <span class="nf">min_gr0</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="nb">float</span><span class="p">:</span>
+<a id="__codelineno-8-71" name="__codelineno-8-71" href="#__codelineno-8-71"></a>    <span class="k">if</span> <span class="n">a</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-8-72" name="__codelineno-8-72" href="#__codelineno-8-72"></a>        <span class="k">return</span> <span class="n">b</span>
-<a id="__codelineno-8-73" name="__codelineno-8-73" href="#__codelineno-8-73"></a>    <span class="k">if</span> <span class="n">b</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-8-73" name="__codelineno-8-73" href="#__codelineno-8-73"></a>    <span class="k">if</span> <span class="n">b</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="mi">0</span><span class="p">:</span>
 <a id="__codelineno-8-74" name="__codelineno-8-74" href="#__codelineno-8-74"></a>        <span class="k">return</span> <span class="n">a</span>
 <a id="__codelineno-8-75" name="__codelineno-8-75" href="#__codelineno-8-75"></a>
 <a id="__codelineno-8-76" name="__codelineno-8-76" href="#__codelineno-8-76"></a>    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
@@ -3577,7 +4204,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-8-183" name="__codelineno-8-183" href="#__codelineno-8-183"></a>
 <a id="__codelineno-8-184" name="__codelineno-8-184" href="#__codelineno-8-184"></a>                    <span class="n">seconds_to_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">market_definition</span><span class="o">.</span><span class="n">market_time</span> <span class="o">-</span> <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
 <a id="__codelineno-8-185" name="__codelineno-8-185" href="#__codelineno-8-185"></a>
-<a id="__codelineno-8-186" name="__codelineno-8-186" href="#__codelineno-8-186"></a>                    <span class="k">if</span> <span class="n">seconds_to_start</span> <span class="o">&gt;</span> <span class="n">log1_Start</span><span class="p">:</span>
+<a id="__codelineno-8-186" name="__codelineno-8-186" href="#__codelineno-8-186"></a>                    <span class="k">if</span> <span class="n">seconds_to_start</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">log1_Start</span><span class="p">:</span>
 <a id="__codelineno-8-187" name="__codelineno-8-187" href="#__codelineno-8-187"></a>
 <a id="__codelineno-8-188" name="__codelineno-8-188" href="#__codelineno-8-188"></a>                        <span class="c1"># Too early before off to start logging prices</span>
 <a id="__codelineno-8-189" name="__codelineno-8-189" href="#__codelineno-8-189"></a>                        <span class="k">continue</span>
@@ -3585,14 +4212,14 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-8-191" name="__codelineno-8-191" href="#__codelineno-8-191"></a>                    <span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-8-192" name="__codelineno-8-192" href="#__codelineno-8-192"></a>
 <a id="__codelineno-8-193" name="__codelineno-8-193" href="#__codelineno-8-193"></a>                        <span class="c1"># Update data at different time steps depending on seconds to off</span>
-<a id="__codelineno-8-194" name="__codelineno-8-194" href="#__codelineno-8-194"></a>                        <span class="n">wait</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">seconds_to_start</span> <span class="o">&lt;=</span> <span class="n">log2_Start</span><span class="p">,</span> <span class="n">log2_Step</span><span class="p">,</span> <span class="n">log1_Step</span><span class="p">)</span>
+<a id="__codelineno-8-194" name="__codelineno-8-194" href="#__codelineno-8-194"></a>                        <span class="n">wait</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">seconds_to_start</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">log2_Start</span><span class="p">,</span> <span class="n">log2_Step</span><span class="p">,</span> <span class="n">log1_Step</span><span class="p">)</span>
 <a id="__codelineno-8-195" name="__codelineno-8-195" href="#__codelineno-8-195"></a>
 <a id="__codelineno-8-196" name="__codelineno-8-196" href="#__codelineno-8-196"></a>                        <span class="c1"># New Market</span>
 <a id="__codelineno-8-197" name="__codelineno-8-197" href="#__codelineno-8-197"></a>                        <span class="k">if</span> <span class="n">market_book</span><span class="o">.</span><span class="n">market_id</span> <span class="o">!=</span> <span class="n">marketID</span><span class="p">:</span>
 <a id="__codelineno-8-198" name="__codelineno-8-198" href="#__codelineno-8-198"></a>                            <span class="n">marketID</span> <span class="o">=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">market_id</span>
 <a id="__codelineno-8-199" name="__codelineno-8-199" href="#__codelineno-8-199"></a>                            <span class="n">time</span> <span class="o">=</span>  <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span>
 <a id="__codelineno-8-200" name="__codelineno-8-200" href="#__codelineno-8-200"></a>                        <span class="c1"># (wait) seconds elapsed since last write</span>
-<a id="__codelineno-8-201" name="__codelineno-8-201" href="#__codelineno-8-201"></a>                        <span class="k">elif</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">wait</span><span class="p">:</span>
+<a id="__codelineno-8-201" name="__codelineno-8-201" href="#__codelineno-8-201"></a>                        <span class="k">elif</span> <span class="p">(</span><span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span> <span class="o">-</span> <span class="n">time</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">wait</span><span class="p">:</span>
 <a id="__codelineno-8-202" name="__codelineno-8-202" href="#__codelineno-8-202"></a>                            <span class="n">time</span> <span class="o">=</span> <span class="n">market_book</span><span class="o">.</span><span class="n">publish_time</span>
 <a id="__codelineno-8-203" name="__codelineno-8-203" href="#__codelineno-8-203"></a>                        <span class="c1"># fewer than (wait) seconds elapsed continue to next loop</span>
 <a id="__codelineno-8-204" name="__codelineno-8-204" href="#__codelineno-8-204"></a>                        <span class="k">else</span><span class="p">:</span>
@@ -3706,8 +4333,8 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-8-312" name="__codelineno-8-312" href="#__codelineno-8-312"></a>                <span class="n">r</span><span class="o">.</span><span class="n">ex</span><span class="o">.</span><span class="n">traded_volume</span><span class="p">,</span>
 <a id="__codelineno-8-313" name="__codelineno-8-313" href="#__codelineno-8-313"></a>                <span class="c1"># calculating SP traded vol as smaller of back_stake_taken or (lay_liability_taken / (BSP - 1))        </span>
 <a id="__codelineno-8-314" name="__codelineno-8-314" href="#__codelineno-8-314"></a>                <span class="n">min_gr0</span><span class="p">(</span>
-<a id="__codelineno-8-315" name="__codelineno-8-315" href="#__codelineno-8-315"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">back_stake_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
-<a id="__codelineno-8-316" name="__codelineno-8-316" href="#__codelineno-8-316"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">lay_liability_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">/</span> <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-8-315" name="__codelineno-8-315" href="#__codelineno-8-315"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">back_stake_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">),</span>
+<a id="__codelineno-8-316" name="__codelineno-8-316" href="#__codelineno-8-316"></a>                    <span class="nb">next</span><span class="p">((</span><span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="k">for</span> <span class="n">pv</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">lay_liability_taken</span> <span class="k">if</span> <span class="n">pv</span><span class="o">.</span><span class="n">size</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>  <span class="o">/</span> <span class="p">((</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 <a id="__codelineno-8-317" name="__codelineno-8-317" href="#__codelineno-8-317"></a>                <span class="p">)</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">actual_sp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
 <a id="__codelineno-8-318" name="__codelineno-8-318" href="#__codelineno-8-318"></a>            <span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">postplay_market</span><span class="o">.</span><span class="n">runners</span> <span class="p">]</span>
 <a id="__codelineno-8-319" name="__codelineno-8-319" href="#__codelineno-8-319"></a>
@@ -3780,7 +4407,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-8-386" name="__codelineno-8-386" href="#__codelineno-8-386"></a>        <span class="o">.</span><span class="n">assign</span><span class="p">(</span>
 <a id="__codelineno-8-387" name="__codelineno-8-387" href="#__codelineno-8-387"></a>            <span class="n">seconds_before_scheduled_off</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">round</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;market_time&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">())</span>
 <a id="__codelineno-8-388" name="__codelineno-8-388" href="#__codelineno-8-388"></a>        <span class="p">)</span>
-<a id="__codelineno-8-389" name="__codelineno-8-389" href="#__codelineno-8-389"></a>        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;seconds_before_scheduled_off &lt; @log1_start&#39;</span><span class="p">)</span>
+<a id="__codelineno-8-389" name="__codelineno-8-389" href="#__codelineno-8-389"></a>        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;seconds_before_scheduled_off &amp;lt; @log1_start&#39;</span><span class="p">)</span>
 <a id="__codelineno-8-390" name="__codelineno-8-390" href="#__codelineno-8-390"></a>    <span class="p">)</span>
 <a id="__codelineno-8-391" name="__codelineno-8-391" href="#__codelineno-8-391"></a>
 <a id="__codelineno-8-392" name="__codelineno-8-392" href="#__codelineno-8-392"></a>    <span class="c1"># Writing each processed market to its own csv file</span>
@@ -3796,7 +4423,7 @@ In our metadata files we will provide:</p>
 <a id="__codelineno-8-402" name="__codelineno-8-402" href="#__codelineno-8-402"></a>        <span class="n">event_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;market_time&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">)</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <a id="__codelineno-8-403" name="__codelineno-8-403" href="#__codelineno-8-403"></a>        <span class="n">conversion_rate</span> <span class="o">=</span> <span class="n">CurrencyConverter</span><span class="p">(</span><span class="n">fallback_on_missing_rate</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;GBP&#39;</span><span class="p">,</span> <span class="s1">&#39;AUD&#39;</span><span class="p">,</span> <span class="n">date</span><span class="o">=</span><span class="n">event_date</span><span class="p">)</span>
 <a id="__codelineno-8-404" name="__codelineno-8-404" href="#__codelineno-8-404"></a>        <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">conversion_rate</span>
-<a id="__codelineno-8-405" name="__codelineno-8-405" href="#__codelineno-8-405"></a>        <span class="n">pricing_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-8-405" name="__codelineno-8-405" href="#__codelineno-8-405"></a>        <span class="n">pricing_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <a id="__codelineno-8-406" name="__codelineno-8-406" href="#__codelineno-8-406"></a>        <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pricing_data</span><span class="p">[</span><span class="s1">&#39;traded_volume&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">decimals</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <a id="__codelineno-8-407" name="__codelineno-8-407" href="#__codelineno-8-407"></a>        <span class="n">pricing_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">file_directory</span> <span class="o">+</span> <span class="n">off</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">fixture</span> <span class="o">+</span> <span class="s1">&#39; - &#39;</span> <span class="o">+</span> <span class="n">market_name</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <a id="__codelineno-8-408" name="__codelineno-8-408" href="#__codelineno-8-408"></a>
@@ -3830,16 +4457,17 @@ In our metadata files we will provide:</p>
           
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
-            Back to top
-          </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
     
-      <nav class="md-footer__inner md-grid" aria-label="Footer">
+      <nav class="md-footer__inner md-grid" aria-label="footer.title">
         
           
           <a href="../How_to_Automate_5/" class="md-footer__link md-footer__link--prev" aria-label="Previous: How to Automate 5" rel="prev">
@@ -3885,47 +4513,57 @@ In our metadata files we will provide:</p>
   
     
     
+    
+    
       
       
     
     <a href="https://twitter.com/Betfair_Aus" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://linkedin.com/company/betfair-australia" target="_blank" rel="noopener" title="linkedin.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://facebook.com/betfairaustralia" target="_blank" rel="noopener" title="facebook.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://youtube.com/user/betfairaus" target="_blank" rel="noopener" title="youtube.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
     </a>
   
+    
+    
     
     
       
       
     
     <a href="https://github.com/betfair-datascientists" target="_blank" rel="noopener" title="github.com" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
     </a>
   
 </div>
@@ -3966,10 +4604,11 @@ In our metadata files we will provide:</p>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.16e2a7d4.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["toc.integrate", "navigation.instant", "navigation.tabs", "navigation.top", "navigation.expand", "navigation.sections", "search.suggest", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.8492ddcf.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6eac0284.min.js"></script>
       
         <script src="../../js/scripts.js"></script>
       

@@ -82,7 +82,7 @@ The Datathon will be judged using the log loss method where the log loss score i
 
 ![png](../img/LogLoss.PNG)
 
-One submission file template will be provided to Competition Entrants along with the updated data set by 11:59am on the day prior to the nominated race day. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format. 
+One submission file template will be available to Competition Entrants on www.betfair.com.au/hub/datathon along with the updated data set by 11:59am on the day prior to the nominated race day. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format. 
 
 For each race, **each Competition Entrant is required to predict the probability of a horse winning the race.** This prediction will then be used against the actual outcome to calculate the model’s score. The sum of the probabilities for every race must equal 1 – being the number accepted winners. 
 
@@ -91,6 +91,10 @@ Please name submission file using the following formatting:
 ‘Spring_Racing_Data_Modelling_Competition_2023_Submission_Form_{Model_Name}.csv’; 
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
+
+## Submission File Template
+
+The submission file template will be loaded here by 11:59am on the day prior to the nominated race day.
 
 ## Results
 

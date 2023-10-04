@@ -1,5 +1,7 @@
 # **Betfair’s 2023 Spring Racing Data Modelling Competition**
 
+![png](../img/SPRING-RACING-MODELLING-DATATHON.png)
+
 ## Registrations
 
 Register [here](https://forms.office.com/r/Ax8dibyrFK)

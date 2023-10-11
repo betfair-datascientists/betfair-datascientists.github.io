@@ -12,5 +12,8 @@
  This file will be updated by 11:59am AEDT the day prior to the nominated race day with the latest data
  - [2023 September 1st-27th](../assets/2023_Sep01_to_current.xlsx)
 
+ Future Data Sample
+ - [2023 September 30th Sample](../assets/PFUpcomingDataSample.xlsx)
+
 ### Specifications
  - [Specifications](../assets/BetfairDatathonPuntingFormDataSpecifications.xlsx)

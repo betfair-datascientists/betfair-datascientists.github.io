@@ -78,12 +78,6 @@ trading.login()
 
 # if you're having issues with certs, you can login this way without using certificates (at your own risk)
 
-# with open('credentials.json') as f:
-#     cred = json.load(f)
-#     my_username = cred['username']
-#     my_password = cred['password']
-#     my_app_key = cred['app_key']
-
 # trading = betfairlightweight.APIClient(username=my_username,
 #                                        password=my_password,
 #                                        app_key=my_app_key

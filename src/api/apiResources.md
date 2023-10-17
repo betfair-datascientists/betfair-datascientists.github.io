@@ -28,4 +28,4 @@ Here are some of the resources we'd recommend taking a look at if you're buildin
 - [Towards Data Science](https://towardsdatascience.com/an-introduction-to-betfair-api-and-how-to-use-it-e3cdbd79c94b) provide a decent basic walk through of how to log in to the polling API and pull market data, with some interesting commentary along the way.
 
 !!! info "Betfair Quants Discord Group"
-    `betfair quants` is really active Betfair-owned Discord group for people interested in modelling and automation on the Exchange. Please [reach out](mailto:automation@betfair.com.au) if you'd like an invitation. 
+    `betfair quants` is really active Betfair-owned Discord group for people interested in modelling and automation on the Exchange. Please [reach out](https://forms.office.com/r/ZG9ea1xQj1) if you'd like an invitation. 

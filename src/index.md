@@ -22,7 +22,7 @@ hide:
         <br>
         <br>
         <div class="button-container">
-            <a target="_blank" href="https://register.betfair.com.au/account/registration" class="btn btn-human" style="font-size: 0.9rem">Join Now</a>
+            <a target="_blank" href="https://register.betfair.com.au/account/registration?utm_source=automation_hub&utm_medium=website&utm_campaign=automation" class="btn btn-human" style="font-size: 0.9rem">Join Now</a>
             <a target="_blank" href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-human" style="font-size: 0.9rem">Get Your API Key</a>
         </div>
         <br>

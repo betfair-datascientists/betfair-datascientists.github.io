@@ -10,7 +10,7 @@ site_dir: 'docs'
 nav:
     - Home: index.md  
 
-    - Historic Data: data/datalisting.md
+    - Historic Data: data/dataListing.md
 
     - Wagering:
         - Betfair How-To: wagering/betfairHowTo.md

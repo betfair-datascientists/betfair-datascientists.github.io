@@ -16,6 +16,7 @@ If, after viewing the data, there's something else you'd like to see, please rea
 ### Disclaimer
  
 By downloading this data, you acknowledge and agree that:
+
  - (a) Betfair does not make any representations, or give any warranties, as to the accuracy or completeness of the data provided; and
  - (b) you use the data at your own risk, and Betfair will not be liable for any loss suffered in using the data.
 

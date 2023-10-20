@@ -98,6 +98,8 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 
 The submission file template will be loaded here by 11:59am on the day prior to the nominated race day.
 
+[example file Caulfield Cup 21/10/2023](../assets/example_submission_file_caulfield_20231021.csv)
+
 ## Dataset updates
 
 Dataset updates will be loaded to the dataset page (link included in your registration confirmation email) by 4:59pm AEDT each Friday prior to the nominated race day.

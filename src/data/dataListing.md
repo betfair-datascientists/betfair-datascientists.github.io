@@ -58,6 +58,13 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2023-08](../assets/ANZ_Greyhounds_2023_08.csv)
  - [Aus & NZ Greyhounds 2023-09](../assets/ANZ_Greyhounds_2023_09.csv)
 
+### Greyhound Predictions Model
+
+ - [Greyhound Model Results 2020](../assets/Iggy_Model_Results_2020.csv)
+ - [Greyhound Model Results 2021](../assets/Iggy_Model_Results_2021.csv)
+ - [Greyhound Model Results 2022](../assets/Iggy_Model_Results_2022.csv)
+ - [Greyhound Model Results 2023 Jan - Sep](../assets/Iggy_Model_Results_2023.csv)
+
 ### Betfair Hub Tipsters - Racing Tips
 
  - [Betfair Hub Tipsters 2023-03](../assets/Hub_2023_03_March_Racing_Results.csv)

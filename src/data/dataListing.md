@@ -34,6 +34,12 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2023-08](../assets/ANZ_Thoroughbreds_2023_08.csv)
  - [Aus & NZ Thoroughbreds 2023-09](../assets/ANZ_Thoroughbreds_2023_09.csv)
 
+### Thoroughbred Predictions Model
+
+ - [Thoroughbred Model Results 2021](../assets/Carrot_Cruncher_Model_Results_2021.csv)
+ - [Thoroughbred Model Results 2022](../assets/Carrot_Cruncher_Model_Results_2022.csv)
+ - [Thoroughbred Model Results 2023 Jan - Sep](../assets/Carrot_Cruncher_Model_Results_2023.csv)
+
 ### Harness
 
  - [Aus & NZ Harness 2023-01](../assets/ANZ_Harness_2023_01.csv)
@@ -46,6 +52,10 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Harness 2023-08](../assets/ANZ_Harness_2023_08.csv)
  - [Aus & NZ Harness 2023-09](../assets/ANZ_Harness_2023_09.csv)
  
+### Harness Predictions Model
+
+ - [Harness Model Results 2023 May - Sep](../assets/Globetrotter_Model_Results_2023.csv)
+
 ### Greyhounds
 
  - [Aus & NZ Greyhounds 2023-01](../assets/ANZ_Greyhounds_2023_01.csv)

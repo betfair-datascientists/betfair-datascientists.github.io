@@ -4,11 +4,7 @@
 
 ## Registrations
 
-Register [here](https://forms.office.com/r/Ax8dibyrFK)
-
-Once you have registered, you will receive the dataset and submission template by email within 2 business days.
-
-Registrations close at **4:59pm AEDT Monday October 23rd, 2023!**
+Registrations have now closed
 
 ## The Competition
 
@@ -110,10 +106,3 @@ Leaderboards will be posted here weekly as well as in the Betfair Quants Discord
 
 For an invite to the discord server, please fill out the form [here](https://forms.office.com/r/ZG9ea1xQj1 )
 
-## Registrations
-
-Register [here](https://forms.office.com/r/Ax8dibyrFK)
-
-Once you have registered, you will receive the dataset and submission template by email within 2 business days.
-
-Registrations close at **4:59pm AEDT Monday October 23rd, 2023!**

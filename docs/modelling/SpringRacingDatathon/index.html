@@ -892,6 +892,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#code-check" class="md-nav__link">
+    Code Check
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2731,8 +2738,7 @@
 <p>The 2023 Spring Racing Data Modelling Competition will see Competition Entrants provided with a bespoke set of Punting Form historic thoroughbred data. </p>
 <p>The goal from there is to use the provided data (or any other data) to build your own model, to predict the winning probability of each selection, on nominated race days and meetings (see below) starting on Saturday 28 October 2023 and concluding on Saturday 18 November 2023. </p>
 <p>With $50,000 in prizes up for grabs, we’re challenging you to use your modelling skills to your advantage, be that by building your first predictive racing model, improving on an existing design or have a go at something different by adapting your data skills from other fields. </p>
-<p>Registrations close at 4:59pm AEDT Monday October 23rd, 2023!<br />
-<strong>Time to get modelling!</strong></p>
+<p><strong>Time to get modelling!</strong></p>
 <p>Progressive updates will be posted here after the conclusion of each race day and in the Betfair Quants Discord Server.</p>
 <p>For an invite to the discord server, please fill out the form <a href="https://forms.office.com/r/ZG9ea1xQj1">here</a></p>
 <p>Please direct all questions and submissions to <a href="mailto:datathon@betfair.com.au">datathon@betfair.com.au</a>.</p>
@@ -2821,13 +2827,21 @@ See the list below for the prizes each placing at the end of the Competition wil
 <p>Your set of predictions will be due before 10:59am AEDT on the nominated race day. All submissions must be emailed to <a href="mailto:datathon@betfair.com.au">datathon@betfair.com.au</a>.</p>
 <p>See the Terms and Conditions for full Competition rules.</p>
 <h3 id="submissions-judging">Submissions &amp; Judging</h3>
-<p>The Datathon will be judged using the log loss method where the log loss score is calculated using the difference between the predicted probability and the actual outcome. The scoring calculation will involve finding the SUM of the log loss across all runners in a single race and then finding the AVERAGE log loss of each race. The entrant with the lowest log loss will be victorious.</p>
+<p>The Datathon will be judged using the log loss method where the log loss score is calculated using the difference between the predicted probability and the actual outcome. The scoring calculation will involve finding the SUM of the log loss across all runners in each race and then finding the AVERAGE log loss of each race. The entrant with the lowest average log loss across all races over the nominated race days will be victorious.</p>
 <p><img alt="png" src="../img/LogLoss.PNG" /></p>
 <p>One submission file template will be available to Competition Entrants on www.betfair.com.au/hub/datathon along with the updated data set by 11:59am on the day prior to the nominated race day. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format. </p>
 <p>For each race, <strong>each Competition Entrant is required to predict the probability of a horse winning the race.</strong> This prediction will then be used against the actual outcome to calculate the model’s score. The sum of the probabilities for every race must equal 1 – being the number accepted winners. </p>
 <p>Please name submission file using the following formatting: </p>
 <p>‘Spring_Racing_Data_Modelling_Competition_2023_Submission_Form_{Model_Name}.csv’; </p>
 <p>To submit your model entry, please send it through to <a href="mailto:datathon@betfair.com.au">datathon@betfair.com.au</a></p>
+<h3 id="code-check">Code Check</h3>
+<p>To be eligible for prize money, each Competition Entrant must provide proof that the code used to create their submission is unique and not similar to that of another Competition Entrant. </p>
+<p>The code requirements are:</p>
+<ul>
+<li>Either 50% of the code or 1000 lines of code (whichever is smaller)</li>
+<li>Feature engineering aspects may be redacted or altered at the discretion of the entrant</li>
+<li>Submitted in a .txt file with the first submission of the competition. If not submitted with the first submission, entrants have until close of the submissions on the second nominated race day</li>
+</ul>
 <h2 id="submission-file-template">Submission File Template</h2>
 <p>The submission file template will be loaded here by 11:59am on the day prior to the nominated race day.</p>
 <p><a href="../assets/example_submission_file_caulfield_20231021.csv">example file Caulfield Cup 21/10/2023</a></p>

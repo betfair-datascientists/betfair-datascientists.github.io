@@ -16,7 +16,6 @@ The goal from there is to use the provided data (or any other data) to build you
 
 With $50,000 in prizes up for grabs, we’re challenging you to use your modelling skills to your advantage, be that by building your first predictive racing model, improving on an existing design or have a go at something different by adapting your data skills from other fields. 
 
-Registrations close at 4:59pm AEDT Monday October 23rd, 2023!  
 **Time to get modelling!**
 
 Progressive updates will be posted here after the conclusion of each race day and in the Betfair Quants Discord Server.
@@ -76,7 +75,7 @@ See the Terms and Conditions for full Competition rules.
 
 ### Submissions & Judging
 
-The Datathon will be judged using the log loss method where the log loss score is calculated using the difference between the predicted probability and the actual outcome. The scoring calculation will involve finding the SUM of the log loss across all runners in a single race and then finding the AVERAGE log loss of each race. The entrant with the lowest log loss will be victorious.
+The Datathon will be judged using the log loss method where the log loss score is calculated using the difference between the predicted probability and the actual outcome. The scoring calculation will involve finding the SUM of the log loss across all runners in each race and then finding the AVERAGE log loss of each race. The entrant with the lowest average log loss across all races over the nominated race days will be victorious.
 
 ![png](../img/LogLoss.PNG)
 
@@ -89,6 +88,16 @@ Please name submission file using the following formatting:
 ‘Spring_Racing_Data_Modelling_Competition_2023_Submission_Form_{Model_Name}.csv’; 
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
+
+### Code Check
+
+To be eligible for prize money, each Competition Entrant must provide proof that the code used to create their submission is unique and not similar to that of another Competition Entrant. 
+
+The code requirements are:
+
+ - Either 50% of the code or 1000 lines of code (whichever is smaller)
+ - Feature engineering aspects may be redacted or altered at the discretion of the entrant
+ - Submitted in a .txt file with the first submission of the competition. If not submitted with the first submission, entrants have until close of the submissions on the second nominated race day
 
 ## Submission File Template
 

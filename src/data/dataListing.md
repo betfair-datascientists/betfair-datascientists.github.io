@@ -94,13 +94,15 @@ By downloading this data, you acknowledge and agree that:
 
 ### AFLW
 
- - [AFLW 2023 R1-R7 All Markets](../assets/AFLW_2023_R1-R7_All_Markets.csv)
- - [AFLW 2023 R1-R7 Match Odds](../assets/AFLW_2023_R1-R7_Match_Odds.csv)
+ - [AFLW 2023 All Markets](../assets/AFLW_2023_All_Markets.csv)
+ - [AFLW 2023 Match Odds](../assets/AFLW_2023_Match_Odds.csv)
 
 ### A-League
 
  - [A-League 2022-2023 All Markets Preplay](../assets/A-League_2022-2023_All_Markets_Preplay.csv)
  - [A-League 2022-2023 Match Odds Markets](../assets/A-League_2022-2023_Match_Odds.csv)
+ - [A-League 2023-2024 All Markets Preplay](../assets/A-League_2023-2024_All_Markets_Preplay.csv)
+ - [A-League 2023-2024 Match Odds Markets](../assets/A-League_2023-2024_Match_Odds.csv)
 
 ### BBL 
 

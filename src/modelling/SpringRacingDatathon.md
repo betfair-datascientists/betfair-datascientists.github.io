@@ -117,3 +117,56 @@ Leaderboards will be posted here weekly as well as in the Betfair Quants Discord
 
 For an invite to the discord server, please fill out the form [here](https://forms.office.com/r/ZG9ea1xQj1 )
 
+|model_name|Score|Rank|
+|---------------------------------------|--------|---|
+|boshea|2.20202849510987|1|
+|BSP|2.20891466779169||
+|ConcensusSCD2023|2.21307684826519|2|
+|KeenAsABean|2.21622755460686|3|
+|HackerHandicapping|2.22364020024497|4|
+|Doriemus|2.24635161726742|5|
+|watptv|2.24925354290461|6|
+|nihaoshijie|2.25746067690203|7|
+|Naomi|2.26565540362391|8|
+|OnMyHighHorse|2.26954206499015|9|
+|BelleEpoque|2.27324889338786|10|
+|ReiningIn|2.29952778612028|11|
+|willingly|2.30431610798469|12|
+|RonW|2.31236201496025|13|
+|Elle-Macpherson|2.3184539131686|14|
+|ShinyNewThings|2.33757548466816|15|
+|Betfair Hub Prediction Model|2.33757797014824||
+|sebnatann|2.34073315618566|16|
+|HorsesAreJustLargeDogsRight|2.34946779155738|17|
+|melatonin|2.35527718919005|18|
+|VinhoVerde|2.35861417154038|19|
+|Skunkworks|2.37759112811249|20|
+|Cfrance|2.39875458466462|21|
+|TopPunter|2.43356493147934|22|
+|Sportpunter|2.44482245488384|23|
+|Gee-Gee-Genius|2.46502045935803|24|
+|ANCR101|2.47707920040049|25|
+|exogen|2.48353629466958|26|
+|tomsguesses|2.52673040663449|27|
+|Craigs-List|2.53395668854249|28|
+|Looney-mods|2.54908111488899|29|
+|Definitely-not-overfitted|2.57252515436117|30|
+|SpicyPredictions|2.63180738701456|31|
+|LiverpoolCapper|2.63793097619283|32|
+|grunet|2.65231719662243|33|
+|Chautauqua|2.69046045740994|34|
+|Vertex|2.72518628858603|35|
+|Katana|2.76074553956356|36|
+|DamienThirst|2.76372425679997|37|
+|High-Hat|2.81746160468562|38|
+|TheDartMethod|2.84888316402265|39|
+|RandomShrubbery|2.87986243547551|40|
+|zazzage|2.89189087364781|41|
+|reliable-lumberjack|2.902634496701|42|
+|236john-KvKid|2.94970857112953|43|
+|bruno|3.12192235135728|44|
+|Moose-Ste|3.12559876677284|45|
+|RockSystems|3.20850498210682|46|
+|Hoover|3.97901948405137|47|
+|jdo|4.98054503383353|48|
+|LOUMMv1|6.52456477885587|49|

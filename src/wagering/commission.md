@@ -125,10 +125,6 @@ Each week the customers who meet all the conditions set out above will be charge
 - The difference between 20% of the previous week’s gross profits and the total charges generated during the week; and
 - The difference between 20% of gross profits and the total charges generated during the lifetime of the account.
 
-### How can I reduce my Premium Charge?
-
-Australia and New Zealand customers should reach out directly to their VIP Manager, or the Betfair Pricing Team [here](mailto:pricingenquiries@betfair.com.au) to discuss options.
-
 ## Closing thoughts
 
 While ultimately we would prefer to not charge fees, it is necessary to pay the sporting and racing bodies to be able to offer markets on the exchange as well as to invest in our people and infrastructure to ensure a bright future for the exchange. Australian and New Zealand customers are welcome to reach out to us to discuss fees and what we can do to help you at [automation@betfair.com.au](mailto:automation@betfair.com.au)

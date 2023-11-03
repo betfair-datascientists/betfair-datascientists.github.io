@@ -106,6 +106,7 @@ The submission file template will be loaded here by 11:59am on the day prior to 
 [example file Caulfield Cup 21/10/2023](../assets/example_submission_file_caulfield_20231021.csv)
 
 [Week 1 Submission File 28/10/2023](../assets/Spring_Racing_Data_Modelling_Competition_2023_Submission_Form_Week_1_{Model_Name}.csv)
+[Week 2 Submission File 04/11/2023](../assets/Spring_Racing_Data_Modelling_Competition_2023_Submission_Form_Week_2_{Model_Name}.csv)
 
 ## Dataset updates
 

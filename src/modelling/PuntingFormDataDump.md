@@ -18,6 +18,7 @@
  - [2023 September 30th Sample](../assets/PFUpcomingDataSample.xlsx)
  - [2023 October 21st Sample](../assets/PFUpcomingDataSample_Caulfield_2023-10-21.xlsx)
  - [Week 1 Future Data - Moonee Valley](../assets/PFUpcomingData_MooneeValley_20231028.xlsx)
+ - [Week 2 Future Data - Flemington](../assets/PFUpcomingData_Flemington_20231104.xlsx)
 
 ### Specifications
  - [Specifications](../assets/BetfairDatathonPuntingFormDataSpecifications.xlsx)

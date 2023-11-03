@@ -11,7 +11,7 @@
 
  This file will be updated by 4:59pm AEDT the day prior to the nominated race day with the latest data
  
- - [2023 September 1st-October 27th](../assets/2023_Sep01_to_current.xlsx)
+ - [2023 September 1st-November 2nd](../assets/2023_Sep01_to_current.xlsx)
 
  Future Data
 

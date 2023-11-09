@@ -93,8 +93,10 @@ By downloading this data, you acknowledge and agree that:
 
 ### AFL 
 
- - [AFL 2023 All Markets Preplay](../assets/2023_AFL_All_Markets_Preplay.csv)
- - [AFL 2023 Match Odds Markets](../assets/2023_AFL_Match_Odds_Inplay.csv)
+ - [AFL 2023 All Markets Preplay](../assets/AFL_2023_All_Markets_Preplay.csv)
+ - [AFL 2023 Match Odds Markets](../assets/AFL_2023_Match_Odds_Inplay.csv)
+ - [AFL 2022 All Markets Preplay](../assets/AFL_2022_All_Markets_Preplay.csv)
+ - [AFL 2022 Match Odds Markets](../assets/AFL_2022_Match_Odds_Inplay.csv)
 
 ### AFLW
 

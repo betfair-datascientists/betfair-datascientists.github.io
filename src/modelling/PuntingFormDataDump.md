@@ -11,7 +11,7 @@
 
  This file will be updated by 4:59pm AEDT the day prior to the nominated race day with the latest data
  
- - [2023 September 1st-November 2nd](../assets/2023_Sep01_to_current.xlsx)
+ - [2023 September 1st-November 9th](../assets/2023_Sep01_to_current.xlsx)
 
  Future Data
 
@@ -19,6 +19,7 @@
  - [2023 October 21st Sample](../assets/PFUpcomingDataSample_Caulfield_2023-10-21.xlsx)
  - [Week 1 Future Data - Moonee Valley](../assets/PFUpcomingData_MooneeValley_20231028.xlsx)
  - [Week 2 Future Data - Flemington](../assets/PFUpcomingData_Flemington_20231104.xlsx)
+ - [Week 3 Future Data - Flemington](../assets/PFUpcomingData_Flem20231111.xlsx)
 
 ### Specifications
  - [Specifications](../assets/BetfairDatathonPuntingFormDataSpecifications.xlsx)

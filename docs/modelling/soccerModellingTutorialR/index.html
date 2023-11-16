@@ -2626,7 +2626,7 @@
 <hr />
 <h2 id="read-data-from-file-and-get-a-raw-dataset">Read data from file and get a raw dataset</h2>
 <h4 id="change-the-data-types-date-column">Change the data types - date column.</h4>
-<p>We need the date column in good order for our tutorial. <a href="../assets/datathon_initial_form_data%20-%20SAMPLE.csv">Here's a sample of the data set</a> we're using for this tutorial.</p>
+<p>We need the date column in good order for our tutorial. <a href="assets/datathon_initial_form_data - SAMPLE.csv">Here's a sample of the data set</a> we're using for this tutorial.</p>
 <p><em>In general, it's a good idea to evaluate data types of all columns that we work with to ensure they are correct.</em></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>df = read_csv(&quot;SoccerData.csv&quot;, guess_max = 2000)
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>df = df %&gt;% mutate(date_GMT = parse_date_time(date_GMT, &#39;%b %d %Y - %I:%M%p&#39;, tz = &quot;GMT&quot;))

@@ -103,7 +103,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-to-model-the-2021-euro-copa-america-python-tutorial" class="md-skip">
+        <a href="#how-to-model-soccer-python-tutorial" class="md-skip">
           Skip to content
         </a>
       
@@ -1123,8 +1123,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#average-pre-match-stats-five-match-average" class="md-nav__link">
-    Average pre-match stats - Five match average
+  <a href="#average-pre-match-stats-ten-match-average" class="md-nav__link">
+    Average pre-match stats - Ten match average
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#average-pre-match-stats-last-5-home-and-last-5-away-matches" class="md-nav__link">
+    Average Pre-Match Stats Last 5 Home and Last 5 Away Matches
   </a>
   
 </li>
@@ -1132,13 +1139,6 @@
           <li class="md-nav__item">
   <a href="#reshape-average-pre-match-stats" class="md-nav__link">
     Reshape average pre-match stats
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#find-the-difference-of-stats-between-teams" class="md-nav__link">
-    Find the difference of stats between teams
   </a>
   
 </li>
@@ -2790,10 +2790,9 @@
                   
 
 
-<h1 id="how-to-model-the-2021-euro-copa-america-python-tutorial">How to model the 2021 Euro &amp; Copa America: Python Tutorial</h1>
-<p>This tutorial was written as part of the 2021 Euro &amp; Copa America Datathon competition</p>
+<h1 id="how-to-model-soccer-python-tutorial">How to model Soccer: Python Tutorial</h1>
 <h2 id="the-task">The Task</h2>
-<p>This notebook will outline how to train a simple classification model to predict the outcome of a soccer match using the dataset provided for the datathon.</p>
+<p>This notebook will outline how to train a classification model to predict the outcome of a soccer match using a dataset provided by https://www.football-data.co.uk/</p>
 <ol>
 <li>Reading data from file and get a raw dataset</li>
 <li>Data cleaning and feature engineering</li>
@@ -2814,45 +2813,53 @@
 <hr />
 <h2 id="read-data-from-file-and-get-a-raw-dataset">Read data from file and get a raw dataset</h2>
 <h4 id="change-the-data-types-date-column">Change the data types - date column.</h4>
-<p>We need the date column in good order for our tutorial. <a href="../assets/datathon_initial_form_data%20-%20SAMPLE.csv">Here's a sample of the data set</a> we're using for this tutorial.</p>
+<p>We need the date column in good order for our tutorial. <a href="../assets/soccerData.csv">Here's the data set</a> we're using for this tutorial.</p>
 <p><em>In general, it's a good idea to evaluate data types of all columns that we work with to ensure they are correct.</em></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;soccerData.csv&#39;</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])</span>
 </code></pre></div>
 <h4 id="get-data-columns-and-create-raw-dataset">Get data columns and create raw dataset</h4>
 <p>For this tutorial, let's take only a few stats columns to work with.</p>
 <p><em>Typically we would explore all features and then decide which data to discard.</em></p>
 <ol>
 <li>Goal counts</li>
+<li>Half Time Goal Counts</li>
 <li>Corners</li>
 <li>Total shots</li>
 <li>Shots on target</li>
 <li>Fouls</li>
-<li>Possession</li>
+<li>Yellow Cards</li>
+<li>Red Cards</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">raw_match_stats</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a> <span class="s1">&#39;date_GMT&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a> <span class="s1">&#39;home_team_name&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a> <span class="s1">&#39;away_team_name&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a> <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a> <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a> <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a> <span class="s1">&#39;away_team_corner_count&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a> <span class="s1">&#39;home_team_shots&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a> <span class="s1">&#39;away_team_shots&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a> <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a> <span class="s1">&#39;away_team_shots_on_target&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a> <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a> <span class="s1">&#39;away_team_fouls&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a> <span class="s1">&#39;home_team_possession&#39;</span><span class="p">,</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a> <span class="s1">&#39;away_team_possession&#39;</span><span class="p">,]]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                <span class="s1">&#39;date&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                <span class="s1">&#39;match_id&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>                <span class="s1">&#39;home_team_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>                <span class="s1">&#39;away_team_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>                <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">,</span> 
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>                <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>                <span class="s1">&#39;home_team_half_time_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>                <span class="s1">&#39;away_team_half_time_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>                <span class="s1">&#39;home_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>                <span class="s1">&#39;away_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>                <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>                <span class="s1">&#39;away_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>                <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>                <span class="s1">&#39;away_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>                <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>                <span class="s1">&#39;away_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>                <span class="s1">&#39;home_team_yellow&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>                <span class="s1">&#39;away_team_yellow&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>                <span class="s1">&#39;home_team_red&#39;</span><span class="p">,</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>                <span class="s1">&#39;away_team_red&#39;</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>                <span class="p">]]</span>
 </code></pre></div>
 <h4 id="clean-data">Clean data</h4>
 <p>As a cleaning step, we order our data by date and drop rows with NA values.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">raw_match_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date_GMT&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">raw_match_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">raw_match_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">raw_match_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="raw-dataset">Raw dataset</h3>
 <p>This raw dataset is structured so that each match has an individual row and stats for both teams are on that row with columns titles "home" and "away".</p>
@@ -2862,210 +2869,270 @@
 <table>
 <thead>
 <tr>
-<th>date_GMT</th>
+<th>date</th>
+<th>match_id</th>
 <th>home_team_name</th>
 <th>away_team_name</th>
 <th>home_team_goal_count</th>
 <th>away_team_goal_count</th>
-<th>home_team_corner_count</th>
-<th>away_team_corner_count</th>
+<th>home_team_half_time_goal_count</th>
+<th>away_team_half_time_goal_count</th>
 <th>home_team_shots</th>
 <th>away_team_shots</th>
 <th>home_team_shots_on_target</th>
 <th>away_team_shots_on_target</th>
 <th>home_team_fouls</th>
 <th>away_team_fouls</th>
-<th>home_team_possession</th>
-<th>away_team_possession</th>
+<th>home_team_corner_count</th>
+<th>away_team_corner_count</th>
+<th>home_team_yellow</th>
+<th>away_team_yellow</th>
+<th>home_team_red</th>
+<th>away_team_red</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>2021-03-31 18:45:00</td>
-<td>Spain</td>
-<td>Kosovo</td>
-<td>3</td>
+<td>6/11/2023</td>
+<td>222305</td>
+<td>Tottenham</td>
+<td>Chelsea</td>
 <td>1</td>
-<td>9.0</td>
-<td>2.0</td>
-<td>25.0</td>
-<td>4.0</td>
-<td>9.0</td>
-<td>2.0</td>
-<td>9.0</td>
-<td>10.0</td>
-<td>80.0</td>
-<td>20.0</td>
-</tr>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Scotland</td>
-<td>Faroe Islands</td>
 <td>4</td>
-<td>0</td>
-<td>1.0</td>
-<td>5.0</td>
-<td>14.0</td>
-<td>8.0</td>
-<td>8.0</td>
-<td>3.0</td>
-<td>9.0</td>
-<td>13.0</td>
-<td>65.0</td>
-<td>35.0</td>
-</tr>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Switzerland</td>
-<td>Finland</td>
-<td>3</td>
-<td>2</td>
-<td>5.0</td>
-<td>2.0</td>
-<td>21.0</td>
-<td>6.0</td>
-<td>9.0</td>
-<td>3.0</td>
-<td>11.0</td>
-<td>7.0</td>
-<td>63.0</td>
-<td>37.0</td>
-</tr>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Lithuania</td>
-<td>Italy</td>
-<td>0</td>
-<td>2</td>
-<td>4.0</td>
-<td>5.0</td>
-<td>8.0</td>
-<td>29.0</td>
-<td>3.0</td>
-<td>11.0</td>
-<td>14.0</td>
-<td>13.0</td>
-<td>34.0</td>
-<td>66.0</td>
-</tr>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Northern Ireland</td>
-<td>Bulgaria</td>
-<td>0</td>
-<td>0</td>
-<td>12.0</td>
-<td>2.0</td>
-<td>16.0</td>
-<td>4.0</td>
-<td>5.0</td>
-<td>2.0</td>
-<td>17.0</td>
-<td>17.0</td>
-<td>70.0</td>
-<td>30.0</td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<td>2014-06-14 16:00:00</td>
-<td>Colombia</td>
-<td>Greece</td>
-<td>3</td>
-<td>0</td>
-<td>4.0</td>
-<td>4.0</td>
-<td>9.0</td>
-<td>13.0</td>
-<td>5.0</td>
-<td>8.0</td>
-<td>20.0</td>
-<td>13.0</td>
-<td>44.0</td>
-<td>56.0</td>
-</tr>
-<tr>
-<td>2014-06-13 22:00:00</td>
-<td>Chile</td>
-<td>Australia</td>
-<td>3</td>
 <td>1</td>
-<td>3.0</td>
-<td>1.0</td>
-<td>7.0</td>
-<td>12.0</td>
-<td>5.0</td>
-<td>3.0</td>
-<td>10.0</td>
-<td>18.0</td>
-<td>59.0</td>
-<td>41.0</td>
-</tr>
-<tr>
-<td>2014-06-13 19:00:00</td>
-<td>Spain</td>
-<td>Netherlands</td>
+<td>1</td>
+<td>8</td>
+<td>17</td>
+<td>5</td>
+<td>8</td>
+<td>12</td>
+<td>21</td>
+<td>1</td>
+<td>6</td>
 <td>1</td>
 <td>5</td>
-<td>4.0</td>
-<td>1.0</td>
-<td>8.0</td>
-<td>6.0</td>
-<td>5.0</td>
-<td>6.0</td>
-<td>6.0</td>
-<td>18.0</td>
-<td>61.0</td>
-<td>39.0</td>
+<td>2</td>
+<td>0</td>
 </tr>
 <tr>
-<td>2014-06-13 16:00:00</td>
-<td>Mexico</td>
-<td>Cameroon</td>
+<td>5/11/2023</td>
+<td>222304</td>
+<td>Luton</td>
+<td>Liverpool</td>
+<td>1</td>
 <td>1</td>
 <td>0</td>
-<td>2.0</td>
-<td>5.0</td>
-<td>7.0</td>
-<td>12.0</td>
-<td>3.0</td>
-<td>4.0</td>
-<td>10.0</td>
-<td>10.0</td>
-<td>55.0</td>
-<td>45.0</td>
+<td>0</td>
+<td>8</td>
+<td>24</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>13</td>
+<td>4</td>
+<td>7</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
 </tr>
 <tr>
-<td>2014-06-12 20:00:00</td>
-<td>Brazil</td>
-<td>Croatia</td>
+<td>5/11/2023</td>
+<td>222303</td>
+<td>Nottm Forest</td>
+<td>Aston Villa</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>13</td>
+<td>3</td>
+<td>3</td>
+<td>6</td>
+<td>9</td>
+<td>0</td>
+<td>10</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4/11/2023</td>
+<td>222299</td>
+<td>Everton</td>
+<td>Brighton</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>10</td>
+<td>7</td>
+<td>4</td>
+<td>2</td>
+<td>15</td>
+<td>5</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>4/11/2023</td>
+<td>222296</td>
+<td>Fulham</td>
+<td>Man Utd</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>18</td>
+<td>12</td>
+<td>3</td>
+<td>5</td>
+<td>9</td>
+<td>15</td>
+<td>9</td>
+<td>4</td>
+<td>5</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>19/08/2000</td>
+<td>213457</td>
+<td>Chelsea</td>
+<td>West Ham</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>17</td>
+<td>12</td>
+<td>10</td>
+<td>5</td>
+<td>19</td>
+<td>14</td>
+<td>7</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>19/08/2000</td>
+<td>213462</td>
+<td>Liverpool</td>
+<td>Bradford</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>16</td>
+<td>3</td>
+<td>10</td>
+<td>2</td>
+<td>8</td>
+<td>8</td>
+<td>6</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>19/08/2000</td>
+<td>213463</td>
+<td>Sunderland</td>
+<td>Arsenal</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>8</td>
+<td>14</td>
+<td>2</td>
+<td>7</td>
+<td>10</td>
+<td>21</td>
+<td>2</td>
+<td>9</td>
 <td>3</td>
 <td>1</td>
-<td>7.0</td>
-<td>3.0</td>
-<td>13.0</td>
-<td>10.0</td>
-<td>5.0</td>
-<td>4.0</td>
-<td>5.0</td>
-<td>19.0</td>
-<td>63.0</td>
-<td>37.0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>19/08/2000</td>
+<td>213464</td>
+<td>Tottenham</td>
+<td>Ipswich</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>20</td>
+<td>15</td>
+<td>6</td>
+<td>5</td>
+<td>14</td>
+<td>13</td>
+<td>3</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>19/08/2000</td>
+<td>213456</td>
+<td>Charlton</td>
+<td>Man City</td>
+<td>4</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>17</td>
+<td>8</td>
+<td>14</td>
+<td>4</td>
+<td>13</td>
+<td>12</td>
+<td>6</td>
+<td>6</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -3073,60 +3140,120 @@
 <h2 id="data-cleaning-and-feature-engineering">Data cleaning and feature engineering</h2>
 <h4 id="target-variable-match-result">Target variable - Match Result</h4>
 <p>Our machine learning model aims to predict the result of a match. This "result" is called the "target variable". Our dataset has no columns showing the match result. We will create two columns for the results for each team. One of these would become the target variable for our ML model.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># create results columns for both home and away teams (W - win, D = Draw, L = Loss).</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># create results columns for both home and away teams (3 - win, 1 = Draw, 0 = Loss).</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;L&#39;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;home_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;D&#39;</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;L&#39;</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;W&#39;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="n">raw_match_stats</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">raw_match_stats</span><span class="p">[</span><span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">],</span> <span class="s1">&#39;away_team_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
 </code></pre></div>
-<h4 id="average-pre-match-stats-five-match-average">Average pre-match stats - Five match average</h4>
+<h4 id="average-pre-match-stats-ten-match-average">Average pre-match stats - Ten match average</h4>
 <p>Great! Now we have a dataset with many rows of data, with each row representing match stats and the match result (this would become our target variable).</p>
 <p>But our goal is to build an ML model that predicts the match result prior to the start of a match. Are the stats from that match what we need to build this ML model? No! When predicting a match outcome BEFORE the start of the match, we are forced to rely on match stats available to us from previous matches.</p>
-<p>Therefore, we need a dataset with the match result (target variable) and stats for each team heading into that match. For this tutorial, we will look at the average stats for each team in the five matches preceding each match.</p>
-<p>Lets look at how we can get the average stats for the previous 5 matches for each team at each match.</p>
+<p>Therefore, we need a dataset with the match result (target variable) and stats for each team heading into that match. For this tutorial, we will look at the average stats for each team in the ten matches preceding each match.</p>
+<p>Lets look at how we can get the average stats for the previous 10 matches for each team at each match.</p>
 <ol>
 <li>Split the raw_match_stats to two datasets (home_team_stats and away_team_stats).</li>
 <li>Stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match).</li>
-<li>At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team).</li>
+<li>At each row of this dataset, get the team name, find the stats for that team during the last 10 matches, and average these stats (avg_stats_per_team).</li>
 <li>Add these stats to the team_stats_per_match dataset.</li>
 </ol>
-<p><em>Why did we chose five matches? Why not 10? Should we average over a time period (matches in the last year perhaps?) rather than a number? What's the least number of matches available for each competing team in the dataset? These are all interesting questions that may improve our model.</em></p>
+<p><em>Why did we chose ten matches? Why not 15? Should we average over a time period (matches in the last year perhaps?) rather than a number? What's the least number of matches available for each competing team in the dataset? These are all interesting questions that may improve our model.</em></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># Split the raw_match_stats to two datasets (home_team_stats and away_team_stats)</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">home_team_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="p">[[</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a> <span class="s1">&#39;date_GMT&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a> <span class="s1">&#39;home_team_name&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a> <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a> <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a> <span class="s1">&#39;home_team_shots&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a> <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a> <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a> <span class="s1">&#39;home_team_possession&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a> <span class="s1">&#39;home_team_result&#39;</span><span class="p">,]]</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="n">away_team_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="p">[[</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a> <span class="s1">&#39;date_GMT&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a> <span class="s1">&#39;away_team_name&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a> <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a> <span class="s1">&#39;date&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a> <span class="s1">&#39;match_id&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a> <span class="s1">&#39;home_team_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a> <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a> <span class="s1">&#39;home_team_half_time_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a> <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a> <span class="s1">&#39;home_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a> <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a> <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a> <span class="s1">&#39;home_team_yellow&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a> <span class="s1">&#39;home_team_red&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a> <span class="s1">&#39;home_team_result&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a> <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a> <span class="s1">&#39;away_team_half_time_goal_count&#39;</span><span class="p">,</span>
 <a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a> <span class="s1">&#39;away_team_corner_count&#39;</span><span class="p">,</span>
 <a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a> <span class="s1">&#39;away_team_shots&#39;</span><span class="p">,</span>
 <a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a> <span class="s1">&#39;away_team_shots_on_target&#39;</span><span class="p">,</span>
 <a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a> <span class="s1">&#39;away_team_fouls&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a> <span class="s1">&#39;away_team_possession&#39;</span><span class="p">,</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a> <span class="s1">&#39;away_team_result&#39;</span><span class="p">,]]</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a> <span class="s1">&#39;away_team_yellow&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a> <span class="s1">&#39;away_team_red&#39;</span><span class="p">]]</span>
 <a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="c1"># rename &quot;home_team&quot; and &quot;away_team&quot; columns</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;home_team_&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;away_team_&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="c1"># stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match)</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="n">team_stats_per_match</span> <span class="o">=</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">away_team_stats</span><span class="p">)</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="n">home_team_stats</span> <span class="o">=</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;home_team_name&#39;</span><span class="p">:</span><span class="s1">&#39;name&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>                                                <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">:</span><span class="s1">&#39;goalsScored&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>                                                <span class="s1">&#39;home_team_half_time_goal_count&#39;</span><span class="p">:</span><span class="s1">&#39;halfTimeGoalsScored&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>                                                <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">:</span><span class="s1">&#39;cornerCount&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>                                                <span class="s1">&#39;home_team_shots&#39;</span><span class="p">:</span><span class="s1">&#39;shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>                                                <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">:</span><span class="s1">&#39;shotsOnTarget&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>                                                <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">:</span><span class="s1">&#39;foulsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a>                                                <span class="s1">&#39;home_team_yellow&#39;</span><span class="p">:</span><span class="s1">&#39;yellowConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>                                                <span class="s1">&#39;home_team_red&#39;</span><span class="p">:</span><span class="s1">&#39;redConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>                                                <span class="s1">&#39;home_team_result&#39;</span><span class="p">:</span><span class="s1">&#39;result&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>                                                <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">:</span><span class="s1">&#39;goalsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>                                                <span class="s1">&#39;away_team_half_time_goal_count&#39;</span><span class="p">:</span><span class="s1">&#39;halfTimeGoalsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a>                                                <span class="s1">&#39;away_team_corner_count&#39;</span><span class="p">:</span><span class="s1">&#39;cornersConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a>                                                <span class="s1">&#39;away_team_shots&#39;</span><span class="p">:</span><span class="s1">&#39;shotsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a>                                                <span class="s1">&#39;away_team_shots_on_target&#39;</span><span class="p">:</span><span class="s1">&#39;shotsOnTargetConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a>                                                <span class="s1">&#39;away_team_fouls&#39;</span><span class="p">:</span><span class="s1">&#39;foulsReceived&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a>                                                <span class="s1">&#39;away_team_yellow&#39;</span><span class="p">:</span><span class="s1">&#39;yellowOpponent&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a>                                                <span class="s1">&#39;away_team_red&#39;</span><span class="p">:</span><span class="s1">&#39;redOpponent&#39;</span><span class="p">})</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="n">away_team_stats</span> <span class="o">=</span> <span class="n">raw_match_stats</span><span class="p">[[</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a> <span class="s1">&#39;date&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a> <span class="s1">&#39;match_id&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a> <span class="s1">&#39;away_team_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a> <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a> <span class="s1">&#39;away_team_half_time_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a> <span class="s1">&#39;away_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a> <span class="s1">&#39;away_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a> <span class="s1">&#39;away_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a> <span class="s1">&#39;away_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a> <span class="s1">&#39;away_team_yellow&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a> <span class="s1">&#39;away_team_red&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a> <span class="s1">&#39;away_team_result&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a> <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a> <span class="s1">&#39;home_team_half_time_goal_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a> <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a> <span class="s1">&#39;home_team_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a> <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a> <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a> <span class="s1">&#39;home_team_yellow&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-64" name="__codelineno-7-64" href="#__codelineno-7-64"></a> <span class="s1">&#39;home_team_red&#39;</span><span class="p">,]]</span>
+<a id="__codelineno-7-65" name="__codelineno-7-65" href="#__codelineno-7-65"></a>
+<a id="__codelineno-7-66" name="__codelineno-7-66" href="#__codelineno-7-66"></a><span class="n">away_team_stats</span> <span class="o">=</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;away_team_name&#39;</span><span class="p">:</span><span class="s1">&#39;name&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-67" name="__codelineno-7-67" href="#__codelineno-7-67"></a>                                                <span class="s1">&#39;away_team_goal_count&#39;</span><span class="p">:</span><span class="s1">&#39;goalsScored&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-68" name="__codelineno-7-68" href="#__codelineno-7-68"></a>                                                <span class="s1">&#39;away_team_half_time_goal_count&#39;</span><span class="p">:</span><span class="s1">&#39;halfTimeGoalsScored&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-69" name="__codelineno-7-69" href="#__codelineno-7-69"></a>                                                <span class="s1">&#39;away_team_corner_count&#39;</span><span class="p">:</span><span class="s1">&#39;cornerCount&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-70" name="__codelineno-7-70" href="#__codelineno-7-70"></a>                                                <span class="s1">&#39;away_team_shots&#39;</span><span class="p">:</span><span class="s1">&#39;shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-71" name="__codelineno-7-71" href="#__codelineno-7-71"></a>                                                <span class="s1">&#39;away_team_shots_on_target&#39;</span><span class="p">:</span><span class="s1">&#39;shotsOnTarget&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-72" name="__codelineno-7-72" href="#__codelineno-7-72"></a>                                                <span class="s1">&#39;away_team_fouls&#39;</span><span class="p">:</span><span class="s1">&#39;foulsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-73" name="__codelineno-7-73" href="#__codelineno-7-73"></a>                                                <span class="s1">&#39;away_team_yellow&#39;</span><span class="p">:</span><span class="s1">&#39;yellowConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-74" name="__codelineno-7-74" href="#__codelineno-7-74"></a>                                                <span class="s1">&#39;away_team_red&#39;</span><span class="p">:</span><span class="s1">&#39;redConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-75" name="__codelineno-7-75" href="#__codelineno-7-75"></a>                                                <span class="s1">&#39;away_team_result&#39;</span><span class="p">:</span><span class="s1">&#39;result&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-76" name="__codelineno-7-76" href="#__codelineno-7-76"></a>                                                <span class="s1">&#39;home_team_goal_count&#39;</span><span class="p">:</span><span class="s1">&#39;goalsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-77" name="__codelineno-7-77" href="#__codelineno-7-77"></a>                                                <span class="s1">&#39;home_team_half_time_goal_count&#39;</span><span class="p">:</span><span class="s1">&#39;halfTimeGoalsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-78" name="__codelineno-7-78" href="#__codelineno-7-78"></a>                                                <span class="s1">&#39;home_team_corner_count&#39;</span><span class="p">:</span><span class="s1">&#39;cornersConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-79" name="__codelineno-7-79" href="#__codelineno-7-79"></a>                                                <span class="s1">&#39;home_team_shots&#39;</span><span class="p">:</span><span class="s1">&#39;shotsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-80" name="__codelineno-7-80" href="#__codelineno-7-80"></a>                                                <span class="s1">&#39;home_team_shots_on_target&#39;</span><span class="p">:</span><span class="s1">&#39;shotsOnTargetConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-81" name="__codelineno-7-81" href="#__codelineno-7-81"></a>                                                <span class="s1">&#39;home_team_fouls&#39;</span><span class="p">:</span><span class="s1">&#39;foulsReceived&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-82" name="__codelineno-7-82" href="#__codelineno-7-82"></a>                                                <span class="s1">&#39;home_team_yellow&#39;</span><span class="p">:</span><span class="s1">&#39;yellowOpponent&#39;</span><span class="p">,</span>
+<a id="__codelineno-7-83" name="__codelineno-7-83" href="#__codelineno-7-83"></a>                                                <span class="s1">&#39;home_team_red&#39;</span><span class="p">:</span><span class="s1">&#39;redOpponent&#39;</span><span class="p">})</span>
+<a id="__codelineno-7-84" name="__codelineno-7-84" href="#__codelineno-7-84"></a>
+<a id="__codelineno-7-85" name="__codelineno-7-85" href="#__codelineno-7-85"></a><span class="c1"># add an additional column to denote whether the team is playing at home or away - this will help us later</span>
+<a id="__codelineno-7-86" name="__codelineno-7-86" href="#__codelineno-7-86"></a><span class="n">home_team_stats</span><span class="p">[</span><span class="s1">&#39;home_or_away&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Home&#39;</span>
+<a id="__codelineno-7-87" name="__codelineno-7-87" href="#__codelineno-7-87"></a><span class="n">away_team_stats</span><span class="p">[</span><span class="s1">&#39;home_or_away&#39;</span><span class="p">]</span><span class="o">=</span><span class="s1">&#39;Away&#39;</span>
+<a id="__codelineno-7-88" name="__codelineno-7-88" href="#__codelineno-7-88"></a>
+<a id="__codelineno-7-89" name="__codelineno-7-89" href="#__codelineno-7-89"></a><span class="c1"># stack these two datasets so that each row is the stats for a team for one match (team_stats_per_match)</span>
+<a id="__codelineno-7-90" name="__codelineno-7-90" href="#__codelineno-7-90"></a><span class="n">team_stats_per_match</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">home_team_stats</span><span class="p">,</span><span class="n">away_team_stats</span><span class="p">])</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team). </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># At each row of this dataset, get the team name, find the stats for that team during the last 10 matches, and average these stats (avg_stats_per_team). </span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="n">avg_stat_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;goals_per_match&#39;</span><span class="p">,</span><span class="s1">&#39;corners_per_match&#39;</span><span class="p">,</span><span class="s1">&#39;shots_per_match&#39;</span><span class="p">,</span><span class="s1">&#39;shotsOnTarget_per_match&#39;</span><span class="p">,</span><span class="s1">&#39;fouls_per_match&#39;</span><span class="p">,</span> <span class="s1">&#39;possession_per_match&#39;</span><span class="p">]</span>
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="n">stats_list</span> <span class="o">=</span> <span class="p">[]</span>
@@ -3136,414 +3263,331 @@
 <a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
 <a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="n">avg_stats_per_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">stats_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">avg_stat_columns</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># Add these stats to the team_stats_per_match dataset.</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team). </span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">team_stats_per_match</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">avg_stats_per_team</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="n">avg_lastTen_stat_columns</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>                    <span class="s1">&#39;average_goalsScored_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>                    <span class="s1">&#39;average_halfTimeGoalsScored_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>                    <span class="s1">&#39;average_cornerCount_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>                    <span class="s1">&#39;average_shots_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>                    <span class="s1">&#39;average_shotsOnTarget_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>                    <span class="s1">&#39;average_foulsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>                    <span class="s1">&#39;average_yellowConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>                    <span class="s1">&#39;average_redConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>                    <span class="s1">&#39;average_result_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>                    <span class="s1">&#39;average_goalsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>                    <span class="s1">&#39;average_halfTimeGoalsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>                    <span class="s1">&#39;average_cornersConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>                    <span class="s1">&#39;average_shotsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>                    <span class="s1">&#39;average_shotsOnTargetConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>                    <span class="s1">&#39;average_foulsReceived_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>                    <span class="s1">&#39;average_yellowOpponent_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>                    <span class="s1">&#39;average_redOpponent_last_ten&#39;</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>                    <span class="p">]</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="n">lastTen_stats_list</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>    <span class="n">team_stats_last_ten_matches</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">team_stats_per_match</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">team_stats_per_match</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>    <span class="n">lastTen_stats_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">team_stats_last_ten_matches</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">18</span><span class="p">])</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="n">avg_lastTen_stats_per_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lastTen_stats_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">avg_lastTen_stat_columns</span><span class="p">)</span>
 </code></pre></div>
+<h4 id="average-pre-match-stats-last-5-home-and-last-5-away-matches">Average Pre-Match Stats Last 5 Home and Last 5 Away Matches</h4>
+<p>Often teams can play better at home than away so it's important to consider whether they are playing at home or away. For example in the AFL, the Brisbane Lions are known to be almost unbeatable at the Gabba (there's a reason it's called the Gabbatoir).
+As such we need to add some additional features.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">avg_lastFiveHome_stat_columns</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>                    <span class="s1">&#39;average_goalsScored_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>                    <span class="s1">&#39;average_halfTimeGoalsScored_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>                    <span class="s1">&#39;average_cornerCount_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>                    <span class="s1">&#39;average_shots_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>                    <span class="s1">&#39;average_shotsOnTarget_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>                    <span class="s1">&#39;average_foulsConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>                    <span class="s1">&#39;average_yellowConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>                    <span class="s1">&#39;average_redConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>                    <span class="s1">&#39;average_result_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>                    <span class="s1">&#39;average_goalsConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>                    <span class="s1">&#39;average_halfTimeGoalsConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>                    <span class="s1">&#39;average_cornersConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>                    <span class="s1">&#39;average_shotsConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>                    <span class="s1">&#39;average_shotsOnTargetConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>                    <span class="s1">&#39;average_foulsReceived_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>                    <span class="s1">&#39;average_yellowOpponent_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>                    <span class="s1">&#39;average_redOpponent_last_five_home&#39;</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>                    <span class="p">]</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="n">lastFive_Home_stats_list</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="n">team_stats_L5_home_matches</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="p">[</span><span class="n">team_stats_per_match</span><span class="p">[</span><span class="s1">&#39;home_or_away&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Home&#39;</span><span class="p">]</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">team_stats_L5_home_matches</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>    <span class="n">team_stats_last_five_home_matches</span> <span class="o">=</span> <span class="n">team_stats_L5_home_matches</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">team_stats_L5_home_matches</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">team_stats_L5_home_matches</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a>    <span class="n">lastFive_Home_stats_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">team_stats_last_five_home_matches</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">18</span><span class="p">])</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="n">avg_lastFiveHome_stats_per_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lastFive_Home_stats_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">avg_lastFiveHome_stat_columns</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">team_stats_L5_home_matches</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">team_stats_L5_home_matches</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">avg_lastFiveHome_stats_per_team</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">avg_lastFiveAway_stat_columns</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>                    <span class="s1">&#39;average_goalsScored_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>                    <span class="s1">&#39;average_halfTimeGoalsScored_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>                    <span class="s1">&#39;average_cornerCount_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>                    <span class="s1">&#39;average_shots_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>                    <span class="s1">&#39;average_shotsOnTarget_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>                    <span class="s1">&#39;average_foulsConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>                    <span class="s1">&#39;average_yellowConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>                    <span class="s1">&#39;average_redConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>                    <span class="s1">&#39;average_result_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>                    <span class="s1">&#39;average_goalsConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>                    <span class="s1">&#39;average_halfTimeGoalsConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>                    <span class="s1">&#39;average_cornersConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>                    <span class="s1">&#39;average_shotsConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>                    <span class="s1">&#39;average_shotsOnTargetConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>                    <span class="s1">&#39;average_foulsReceived_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>                    <span class="s1">&#39;average_yellowOpponent_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>                    <span class="s1">&#39;average_redOpponent_last_five_away&#39;</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>                    <span class="p">]</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="n">lastFive_away_stats_list</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="n">team_stats_L5_away_matches</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="p">[</span><span class="n">team_stats_per_match</span><span class="p">[</span><span class="s1">&#39;home_or_away&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Away&#39;</span><span class="p">]</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">team_stats_L5_away_matches</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>    <span class="n">team_stats_last_five_away_matches</span> <span class="o">=</span> <span class="n">team_stats_L5_away_matches</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">team_stats_L5_away_matches</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">team_stats_L5_away_matches</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">])]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a>    <span class="n">lastFive_away_stats_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">team_stats_last_five_away_matches</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">18</span><span class="p">])</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="n">avg_lastFiveAway_stats_per_team</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">lastFive_away_stats_list</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">avg_lastFiveAway_stat_columns</span><span class="p">)</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a><span class="n">team_stats_L5_away_matches</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">team_stats_L5_away_matches</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">avg_lastFiveAway_stats_per_team</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">team_stats_L5_home_matches</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">team_stats_L5_home_matches</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;team_1_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">team_stats_L5_home_matches</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">team_stats_L5_away_matches</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">team_stats_L5_away_matches</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;team_2_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">team_stats_L5_away_matches</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">home_and_away_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">team_stats_L5_home_matches</span><span class="p">,</span><span class="n">team_stats_L5_away_matches</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span><span class="s1">&#39;match_id&#39;</span><span class="p">])</span>
+</code></pre></div></p>
 <h4 id="reshape-average-pre-match-stats">Reshape average pre-match stats</h4>
 <p>Now that we have the average stats for each team going into every match, we can create a dataset similar to the raw_match_stats, where each row represents both teams from one match.</p>
 <ol>
 <li>Re-segment the home and away teams (name Team 1 and Team 2 rather than home and away).</li>
 <li>Combine at each match to get a dataset with a row representing each match.</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># Re-segment the home and away teams.</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="n">home_team_stats</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),:]</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">away_team_stats</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">):,:]</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;team_1_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;team_2_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">team_stats_per_match</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">avg_lastTen_stats_per_team</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># Re-segment the home and away teams.</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">home_team_stats</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">),:]</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="n">away_team_stats</span> <span class="o">=</span> <span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">team_stats_per_match</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">2</span><span class="p">):,:]</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;team_1_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">home_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;team_2_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="mi">2</span><span class="p">:]]</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="c1"># Combine at each match to get a dataset with a row representing each match. </span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="c1"># drop the NA rows (earliest match for each team, i.e no previous stats)</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="n">away_team_stats</span> <span class="o">=</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:]</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="n">match_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">home_team_stats</span><span class="p">,</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="n">match_stats</span> <span class="o">=</span> <span class="n">match_stats</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Combine at each match to get a dataset with a row representing each match. </span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># drop the NA rows (earliest match for each team, i.e no previous stats)</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="n">match_stats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">home_team_stats</span><span class="p">,</span> <span class="n">away_team_stats</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">match_stats</span> <span class="o">=</span> <span class="n">match_stats</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">match_stats</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">match_stats</span><span class="p">,</span><span class="n">home_and_away_stats</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>                                                                    <span class="s1">&#39;match_id&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>                                                                    <span class="s1">&#39;team_1_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>                                                                    <span class="s1">&#39;team_1_goalsScored&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>                                                                    <span class="s1">&#39;team_1_halfTimeGoalsScored&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>                                                                    <span class="s1">&#39;team_1_cornerCount&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>                                                                    <span class="s1">&#39;team_1_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>                                                                    <span class="s1">&#39;team_1_shotsOnTarget&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>                                                                    <span class="s1">&#39;team_1_foulsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>                                                                    <span class="s1">&#39;team_1_yellowConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>                                                                    <span class="s1">&#39;team_1_redConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>                                                                    <span class="s1">&#39;team_1_result&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>                                                                    <span class="s1">&#39;team_1_goalsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>                                                                    <span class="s1">&#39;team_1_halfTimeGoalsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>                                                                    <span class="s1">&#39;team_1_cornersConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="#__codelineno-16-16"></a>                                                                    <span class="s1">&#39;team_1_shotsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="#__codelineno-16-17"></a>                                                                    <span class="s1">&#39;team_1_shotsOnTargetConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="#__codelineno-16-18"></a>                                                                    <span class="s1">&#39;team_1_foulsReceived&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="#__codelineno-16-19"></a>                                                                    <span class="s1">&#39;team_1_yellowOpponent&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="#__codelineno-16-20"></a>                                                                    <span class="s1">&#39;team_1_redOpponent&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21" href="#__codelineno-16-21"></a>                                                                    <span class="s1">&#39;team_1_home_or_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22" href="#__codelineno-16-22"></a>                                                                    <span class="s1">&#39;team_2_name&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23" href="#__codelineno-16-23"></a>                                                                    <span class="s1">&#39;team_2_goalsScored&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24" href="#__codelineno-16-24"></a>                                                                    <span class="s1">&#39;team_2_halfTimeGoalsScored&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25" href="#__codelineno-16-25"></a>                                                                    <span class="s1">&#39;team_2_cornerCount&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26" href="#__codelineno-16-26"></a>                                                                    <span class="s1">&#39;team_2_shots&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27" href="#__codelineno-16-27"></a>                                                                    <span class="s1">&#39;team_2_shotsOnTarget&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28" href="#__codelineno-16-28"></a>                                                                    <span class="s1">&#39;team_2_foulsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-29" name="__codelineno-16-29" href="#__codelineno-16-29"></a>                                                                    <span class="s1">&#39;team_2_yellowConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-30" name="__codelineno-16-30" href="#__codelineno-16-30"></a>                                                                    <span class="s1">&#39;team_2_redConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31" href="#__codelineno-16-31"></a>                                                                    <span class="s1">&#39;team_2_result&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-32" name="__codelineno-16-32" href="#__codelineno-16-32"></a>                                                                    <span class="s1">&#39;team_2_goalsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-33" name="__codelineno-16-33" href="#__codelineno-16-33"></a>                                                                    <span class="s1">&#39;team_2_halfTimeGoalsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-34" name="__codelineno-16-34" href="#__codelineno-16-34"></a>                                                                    <span class="s1">&#39;team_2_cornersConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-35" name="__codelineno-16-35" href="#__codelineno-16-35"></a>                                                                    <span class="s1">&#39;team_2_shotsConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-36" name="__codelineno-16-36" href="#__codelineno-16-36"></a>                                                                    <span class="s1">&#39;team_2_shotsOnTargetConceded&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-37" name="__codelineno-16-37" href="#__codelineno-16-37"></a>                                                                    <span class="s1">&#39;team_2_foulsReceived&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-38" name="__codelineno-16-38" href="#__codelineno-16-38"></a>                                                                    <span class="s1">&#39;team_2_yellowOpponent&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-39" name="__codelineno-16-39" href="#__codelineno-16-39"></a>                                                                    <span class="s1">&#39;team_2_redOpponent&#39;</span><span class="p">,</span>
+<a id="__codelineno-16-40" name="__codelineno-16-40" href="#__codelineno-16-40"></a>                                                                    <span class="s1">&#39;team_2_home_or_away&#39;</span><span class="p">])</span>
 </code></pre></div>
-<h4 id="find-the-difference-of-stats-between-teams">Find the difference of stats between teams</h4>
-<p>In our ML model, we will take the difference between Team 1 and Team 2 average stats as features. 6 new columns are created for this.</p>
-<p><em>Would we be better off using the raw stats for each team as features?</em></p>
+<h2 id="train-ml-model">Train ML model</h2>
+<p>In our ML model, we will use the raw Team 1 and Team 2 average stats as features.</p>
+<p>Some questions we could ask ourselves about this dataset are: (and there is no easy answer without some experimentation)</p>
+<p><em>Would we be better off using the differential between the teams as features?</em></p>
 <p><em>Can we generate any other useful features from the dataset provided?</em></p>
 <p><em>Do we need to weigh the home and away teams because home teams win more often?</em></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># create columns with average stat differences between the two teams</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;goals_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_goals_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_goals_per_match&#39;</span><span class="p">])</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;corners_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_corners_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_corners_per_match&#39;</span><span class="p">])</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;shots_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_shots_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_shots_per_match&#39;</span><span class="p">])</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;shotsOnTarget_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_shotsOnTarget_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_shotsOnTarget_per_match&#39;</span><span class="p">])</span>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;fouls_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_fouls_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_fouls_per_match&#39;</span><span class="p">])</span>
-<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;possession_per_match_diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_1_possession_per_match&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;team_2_possession_per_match&#39;</span><span class="p">])</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">match_stats</span>
-</code></pre></div>
-<table>
-<thead>
-<tr>
-<th>team_1_date_GMT</th>
-<th>team_1_name</th>
-<th>team_1_goal_count</th>
-<th>team_1_corner_count</th>
-<th>team_1_shots</th>
-<th>team_1_shots_on_target</th>
-<th>team_1_fouls</th>
-<th>team_1_possession</th>
-<th>team_1_result</th>
-<th>team_1_goals_per_match</th>
-<th>...</th>
-<th>team_2_shots_per_match</th>
-<th>team_2_shotsOnTarget_per_match</th>
-<th>team_2_fouls_per_match</th>
-<th>team_2_possession_per_match</th>
-<th>goals_per_match_diff</th>
-<th>corners_per_match_diff</th>
-<th>shots_per_match_diff</th>
-<th>shotsOnTarget_per_match_diff</th>
-<th>fouls_per_match_diff</th>
-<th>possession_per_match_diff</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Spain</td>
-<td>3</td>
-<td>9.0</td>
-<td>25.0</td>
-<td>9.0</td>
-<td>9.0</td>
-<td>80.0</td>
-<td>W</td>
-<td>2.2</td>
-<td>...</td>
-<td>6.6</td>
-<td>2.4</td>
-<td>12.2</td>
-<td>45.0</td>
-<td>1.8</td>
-<td>3.4</td>
-<td>5.2</td>
-<td>2.4</td>
-<td>-1.6</td>
-<td>24.6</td>
-</tr>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Scotland</td>
-<td>4</td>
-<td>1.0</td>
-<td>14.0</td>
-<td>8.0</td>
-<td>9.0</td>
-<td>65.0</td>
-<td>W</td>
-<td>0.8</td>
-<td>...</td>
-<td>9.0</td>
-<td>3.8</td>
-<td>14.0</td>
-<td>46.8</td>
-<td>-0.2</td>
-<td>2.2</td>
-<td>4.6</td>
-<td>2.4</td>
-<td>-0.2</td>
-<td>2.0</td>
-</tr>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Switzerland</td>
-<td>3</td>
-<td>5.0</td>
-<td>21.0</td>
-<td>9.0</td>
-<td>11.0</td>
-<td>63.0</td>
-<td>W</td>
-<td>1.8</td>
-<td>...</td>
-<td>7.6</td>
-<td>2.2</td>
-<td>10.2</td>
-<td>36.0</td>
-<td>0.2</td>
-<td>2.6</td>
-<td>5.2</td>
-<td>3.6</td>
-<td>3.2</td>
-<td>15.8</td>
-</tr>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Lithuania</td>
-<td>0</td>
-<td>4.0</td>
-<td>8.0</td>
-<td>3.0</td>
-<td>14.0</td>
-<td>34.0</td>
-<td>L</td>
-<td>0.8</td>
-<td>...</td>
-<td>15.6</td>
-<td>5.4</td>
-<td>11.4</td>
-<td>64.4</td>
-<td>-1.6</td>
-<td>-4.6</td>
-<td>-7.2</td>
-<td>-3.0</td>
-<td>0.2</td>
-<td>-17.2</td>
-</tr>
-<tr>
-<td>2021-03-31 18:45:00</td>
-<td>Northern Ireland</td>
-<td>0</td>
-<td>12.0</td>
-<td>16.0</td>
-<td>5.0</td>
-<td>17.0</td>
-<td>70.0</td>
-<td>D</td>
-<td>0.8</td>
-<td>...</td>
-<td>8.8</td>
-<td>3.2</td>
-<td>16.2</td>
-<td>48.6</td>
-<td>-0.2</td>
-<td>0.4</td>
-<td>0.0</td>
-<td>-0.2</td>
-<td>-7.0</td>
-<td>-2.8</td>
-</tr>
-<tr>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<td>2014-06-19 16:00:00</td>
-<td>Colombia</td>
-<td>2</td>
-<td>5.0</td>
-<td>8.0</td>
-<td>5.0</td>
-<td>12.0</td>
-<td>40.0</td>
-<td>W</td>
-<td>3.0</td>
-<td>...</td>
-<td>19.0</td>
-<td>8.0</td>
-<td>12.0</td>
-<td>56.0</td>
-<td>1.0</td>
-<td>-4.0</td>
-<td>-10.0</td>
-<td>-3.0</td>
-<td>8.0</td>
-<td>-12.0</td>
-</tr>
-<tr>
-<td>2014-06-18 22:00:00</td>
-<td>Cameroon</td>
-<td>0</td>
-<td>4.0</td>
-<td>12.0</td>
-<td>2.0</td>
-<td>11.0</td>
-<td>43.0</td>
-<td>L</td>
-<td>0.0</td>
-<td>...</td>
-<td>10.0</td>
-<td>4.0</td>
-<td>19.0</td>
-<td>37.0</td>
-<td>-1.0</td>
-<td>2.0</td>
-<td>2.0</td>
-<td>0.0</td>
-<td>-9.0</td>
-<td>8.0</td>
-</tr>
-<tr>
-<td>2014-06-18 19:00:00</td>
-<td>Spain</td>
-<td>0</td>
-<td>7.0</td>
-<td>18.0</td>
-<td>9.0</td>
-<td>14.0</td>
-<td>63.0</td>
-<td>L</td>
-<td>1.0</td>
-<td>...</td>
-<td>7.0</td>
-<td>5.0</td>
-<td>10.0</td>
-<td>59.0</td>
-<td>-2.0</td>
-<td>1.0</td>
-<td>1.0</td>
-<td>0.0</td>
-<td>-4.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<td>2014-06-18 16:00:00</td>
-<td>Australia</td>
-<td>2</td>
-<td>3.0</td>
-<td>6.0</td>
-<td>3.0</td>
-<td>17.0</td>
-<td>50.0</td>
-<td>L</td>
-<td>1.0</td>
-<td>...</td>
-<td>6.0</td>
-<td>6.0</td>
-<td>18.0</td>
-<td>39.0</td>
-<td>-4.0</td>
-<td>0.0</td>
-<td>6.0</td>
-<td>-3.0</td>
-<td>0.0</td>
-<td>2.0</td>
-</tr>
-<tr>
-<td>2014-06-17 19:00:00</td>
-<td>Brazil</td>
-<td>0</td>
-<td>4.0</td>
-<td>12.0</td>
-<td>7.0</td>
-<td>14.0</td>
-<td>50.0</td>
-<td>D</td>
-<td>3.0</td>
-<td>...</td>
-<td>7.0</td>
-<td>3.0</td>
-<td>10.0</td>
-<td>55.0</td>
-<td>2.0</td>
-<td>5.0</td>
-<td>6.0</td>
-<td>2.0</td>
-<td>-5.0</td>
-<td>8.0</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="train-ml-model">Train ML model</h2>
 <p>In this tutorial we will:</p>
 <ol>
-<li>Train a model using 6 feature columns</li>
-<li>Use an 80/20 split in training/test data</li>
+<li>Train a model using 68 feature columns</li>
+<li>Use a datetime split in training/test data (a random 80/20 split could also be used)</li>
 <li>Use accuracy to evaluate our models</li>
 </ol>
 <p><em>It's probably worth evaluating multiple models (several models explained in this tutorial), perhaps use k-fold cross validation, and use metrics other than accuracy to evaluate a model (check the commented out code).</em></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># import required libraries</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_fscore_support</span> <span class="k">as</span> <span class="n">score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">log_loss</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">GaussianProcessClassifier</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="kn">from</span> <span class="nn">sklearn.gaussian_process.kernels</span> <span class="kn">import</span> <span class="n">RBF</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
-<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">AdaBoostClassifier</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
-<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">QuadraticDiscriminantAnalysis</span>
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># import required libraries</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_fscore_support</span> <span class="k">as</span> <span class="n">score</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">log_loss</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="kn">from</span> <span class="nn">sklearn.neural_network</span> <span class="kn">import</span> <span class="n">MLPClassifier</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="kn">from</span> <span class="nn">sklearn.gaussian_process</span> <span class="kn">import</span> <span class="n">GaussianProcessClassifier</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="kn">from</span> <span class="nn">sklearn.gaussian_process.kernels</span> <span class="kn">import</span> <span class="n">RBF</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span><span class="p">,</span> <span class="n">AdaBoostClassifier</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="kn">from</span> <span class="nn">sklearn.discriminant_analysis</span> <span class="kn">import</span> <span class="n">QuadraticDiscriminantAnalysis</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
 </code></pre></div>
 <h4 id="get-data-from-our-dataset">Get data from our dataset</h4>
 <ol>
 <li>Team_1_result column - target variable</li>
-<li>The difference of stats between teams (6 columns) - features</li>
+<li>The raw stats of the two teams (68 columns) - features</li>
 </ol>
 <p><em>Do we need to scale or normalize the feature columns in order for it to make mathematical sense to a ML model? This depends on the type of model we are training, but it's definitely worth investigating in order to achieve a high performing model.</em></p>
 <p><em>We should also investigate the dataset to check if it's balanced on all classes or if it's skewed towards a particular class (i.e are there an equal number of wins, losses and draws?). If not, would this affect model performance?</em></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">target</span> <span class="o">=</span> <span class="n">match_stats</span><span class="p">[[</span><span class="s1">&#39;team_1_result&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;W&#39;</span><span class="p">,</span><span class="s1">&#39;L&#39;</span><span class="p">,</span><span class="s1">&#39;D&#39;</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">features</span> <span class="o">=</span> <span class="n">match_stats</span><span class="p">[[</span><span class="s1">&#39;goals_per_match_diff&#39;</span><span class="p">,</span> <span class="s1">&#39;corners_per_match_diff&#39;</span><span class="p">,</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>       <span class="s1">&#39;shots_per_match_diff&#39;</span><span class="p">,</span> <span class="s1">&#39;shotsOnTarget_per_match_diff&#39;</span><span class="p">,</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>       <span class="s1">&#39;fouls_per_match_diff&#39;</span><span class="p">,</span> <span class="s1">&#39;possession_per_match_diff&#39;</span><span class="p">]]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">match_stats</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># Define features</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;team_1_average_goalsScored_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>            <span class="s1">&#39;team_1_average_halfTimeGoalsScored_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>            <span class="s1">&#39;team_1_average_cornerCount_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>            <span class="s1">&#39;team_1_average_shots_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>            <span class="s1">&#39;team_1_average_shotsOnTarget_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>            <span class="s1">&#39;team_1_average_foulsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>            <span class="s1">&#39;team_1_average_yellowConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>            <span class="s1">&#39;team_1_average_redConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>            <span class="s1">&#39;team_1_average_result_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>            <span class="s1">&#39;team_1_average_goalsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>            <span class="s1">&#39;team_1_average_halfTimeGoalsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>            <span class="s1">&#39;team_1_average_cornersConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>            <span class="s1">&#39;team_1_average_shotsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>            <span class="s1">&#39;team_1_average_shotsOnTargetConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a>            <span class="s1">&#39;team_1_average_foulsReceived_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>            <span class="s1">&#39;team_1_average_yellowOpponent_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a>            <span class="s1">&#39;team_1_average_redOpponent_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>            <span class="s1">&#39;team_2_average_goalsScored_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>            <span class="s1">&#39;team_2_average_halfTimeGoalsScored_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>            <span class="s1">&#39;team_2_average_cornerCount_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a>            <span class="s1">&#39;team_2_average_shots_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a>            <span class="s1">&#39;team_2_average_shotsOnTarget_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-26" name="__codelineno-18-26" href="#__codelineno-18-26"></a>            <span class="s1">&#39;team_2_average_foulsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-27" name="__codelineno-18-27" href="#__codelineno-18-27"></a>            <span class="s1">&#39;team_2_average_yellowConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-28" name="__codelineno-18-28" href="#__codelineno-18-28"></a>            <span class="s1">&#39;team_2_average_redConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-29" name="__codelineno-18-29" href="#__codelineno-18-29"></a>            <span class="s1">&#39;team_2_average_result_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-30" name="__codelineno-18-30" href="#__codelineno-18-30"></a>            <span class="s1">&#39;team_2_average_goalsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-31" name="__codelineno-18-31" href="#__codelineno-18-31"></a>            <span class="s1">&#39;team_2_average_halfTimeGoalsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-32" name="__codelineno-18-32" href="#__codelineno-18-32"></a>            <span class="s1">&#39;team_2_average_cornersConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-33" name="__codelineno-18-33" href="#__codelineno-18-33"></a>            <span class="s1">&#39;team_2_average_shotsConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-34" name="__codelineno-18-34" href="#__codelineno-18-34"></a>            <span class="s1">&#39;team_2_average_shotsOnTargetConceded_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-35" name="__codelineno-18-35" href="#__codelineno-18-35"></a>            <span class="s1">&#39;team_2_average_foulsReceived_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-36" name="__codelineno-18-36" href="#__codelineno-18-36"></a>            <span class="s1">&#39;team_2_average_yellowOpponent_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-37" name="__codelineno-18-37" href="#__codelineno-18-37"></a>            <span class="s1">&#39;team_2_average_redOpponent_last_ten&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-38" name="__codelineno-18-38" href="#__codelineno-18-38"></a>            <span class="s1">&#39;team_1_average_goalsScored_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-39" name="__codelineno-18-39" href="#__codelineno-18-39"></a>            <span class="s1">&#39;team_1_average_halfTimeGoalsScored_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-40" name="__codelineno-18-40" href="#__codelineno-18-40"></a>            <span class="s1">&#39;team_1_average_cornerCount_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-41" name="__codelineno-18-41" href="#__codelineno-18-41"></a>            <span class="s1">&#39;team_1_average_shots_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-42" name="__codelineno-18-42" href="#__codelineno-18-42"></a>            <span class="s1">&#39;team_1_average_shotsOnTarget_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-43" name="__codelineno-18-43" href="#__codelineno-18-43"></a>            <span class="s1">&#39;team_1_average_foulsConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-44" name="__codelineno-18-44" href="#__codelineno-18-44"></a>            <span class="s1">&#39;team_1_average_yellowConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-45" name="__codelineno-18-45" href="#__codelineno-18-45"></a>            <span class="s1">&#39;team_1_average_redConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-46" name="__codelineno-18-46" href="#__codelineno-18-46"></a>            <span class="s1">&#39;team_1_average_result_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-47" name="__codelineno-18-47" href="#__codelineno-18-47"></a>            <span class="s1">&#39;team_1_average_goalsConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-48" name="__codelineno-18-48" href="#__codelineno-18-48"></a>            <span class="s1">&#39;team_1_average_halfTimeGoalsConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-49" name="__codelineno-18-49" href="#__codelineno-18-49"></a>            <span class="s1">&#39;team_1_average_cornersConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-50" name="__codelineno-18-50" href="#__codelineno-18-50"></a>            <span class="s1">&#39;team_1_average_shotsConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-51" name="__codelineno-18-51" href="#__codelineno-18-51"></a>            <span class="s1">&#39;team_1_average_shotsOnTargetConceded_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-52" name="__codelineno-18-52" href="#__codelineno-18-52"></a>            <span class="s1">&#39;team_1_average_foulsReceived_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-53" name="__codelineno-18-53" href="#__codelineno-18-53"></a>            <span class="s1">&#39;team_1_average_yellowOpponent_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-54" name="__codelineno-18-54" href="#__codelineno-18-54"></a>            <span class="s1">&#39;team_1_average_redOpponent_last_five_home&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-55" name="__codelineno-18-55" href="#__codelineno-18-55"></a>            <span class="s1">&#39;team_2_average_goalsScored_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-56" name="__codelineno-18-56" href="#__codelineno-18-56"></a>            <span class="s1">&#39;team_2_average_halfTimeGoalsScored_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-57" name="__codelineno-18-57" href="#__codelineno-18-57"></a>            <span class="s1">&#39;team_2_average_cornerCount_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-58" name="__codelineno-18-58" href="#__codelineno-18-58"></a>            <span class="s1">&#39;team_2_average_shots_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-59" name="__codelineno-18-59" href="#__codelineno-18-59"></a>            <span class="s1">&#39;team_2_average_shotsOnTarget_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-60" name="__codelineno-18-60" href="#__codelineno-18-60"></a>            <span class="s1">&#39;team_2_average_foulsConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-61" name="__codelineno-18-61" href="#__codelineno-18-61"></a>            <span class="s1">&#39;team_2_average_yellowConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-62" name="__codelineno-18-62" href="#__codelineno-18-62"></a>            <span class="s1">&#39;team_2_average_redConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-63" name="__codelineno-18-63" href="#__codelineno-18-63"></a>            <span class="s1">&#39;team_2_average_result_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-64" name="__codelineno-18-64" href="#__codelineno-18-64"></a>            <span class="s1">&#39;team_2_average_goalsConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-65" name="__codelineno-18-65" href="#__codelineno-18-65"></a>            <span class="s1">&#39;team_2_average_halfTimeGoalsConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-66" name="__codelineno-18-66" href="#__codelineno-18-66"></a>            <span class="s1">&#39;team_2_average_cornersConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-67" name="__codelineno-18-67" href="#__codelineno-18-67"></a>            <span class="s1">&#39;team_2_average_shotsConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-68" name="__codelineno-18-68" href="#__codelineno-18-68"></a>            <span class="s1">&#39;team_2_average_shotsOnTargetConceded_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-69" name="__codelineno-18-69" href="#__codelineno-18-69"></a>            <span class="s1">&#39;team_2_average_foulsReceived_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-70" name="__codelineno-18-70" href="#__codelineno-18-70"></a>            <span class="s1">&#39;team_2_average_yellowOpponent_last_five_away&#39;</span><span class="p">,</span>
+<a id="__codelineno-18-71" name="__codelineno-18-71" href="#__codelineno-18-71"></a>            <span class="s1">&#39;team_2_average_redOpponent_last_five_away&#39;</span>
+<a id="__codelineno-18-72" name="__codelineno-18-72" href="#__codelineno-18-72"></a><span class="p">]</span>
 </code></pre></div>
 <h4 id="split-test-and-training-data">Split test and training data</h4>
 <p>We train a model on the training data, and then use test data to evaluate the performance of that model.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">X_train</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">y_train</span><span class="p">,</span><span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">stratify</span> <span class="o">=</span> <span class="n">target</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">train_data</span> <span class="o">=</span> <span class="n">match_stats</span><span class="p">[</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s1">&#39;2018-07-01&#39;</span><span class="p">]</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">test_data</span> <span class="o">=</span> <span class="n">match_stats</span><span class="p">[</span><span class="n">match_stats</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s1">&#39;2018-07-01&#39;</span><span class="p">]</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">X_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="n">X_test</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[</span><span class="n">features</span><span class="p">]</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="n">Y_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="s1">&#39;team_1_result&#39;</span><span class="p">]</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="n">Y_test</span> <span class="o">=</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">&#39;team_1_result&#39;</span><span class="p">]</span>
 </code></pre></div>
 <h4 id="name-and-define-classifiers">Name and define classifiers</h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Logistic Regression&quot;</span><span class="p">,</span><span class="s2">&quot;Linear SVM&quot;</span><span class="p">,</span> <span class="s2">&quot;RBF SVM&quot;</span><span class="p">,</span> <span class="s2">&quot;Gaussian Process&quot;</span><span class="p">,</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>         <span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Neural Net&quot;</span><span class="p">,</span> <span class="s2">&quot;AdaBoost&quot;</span><span class="p">,</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>         <span class="s2">&quot;Naive Bayes&quot;</span><span class="p">,</span> <span class="s2">&quot;QDA&quot;</span><span class="p">]</span>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>    <span class="n">LogisticRegression</span><span class="p">(),</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>    <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>    <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
-<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>    <span class="n">GaussianProcessClassifier</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">RBF</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)),</span>
-<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>    <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
-<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>    <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
-<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>    <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
-<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="n">AdaBoostClassifier</span><span class="p">(),</span>
-<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>    <span class="n">GaussianNB</span><span class="p">(),</span>
-<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>    <span class="n">QuadraticDiscriminantAnalysis</span><span class="p">()]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Logistic Regression&quot;</span><span class="p">,</span><span class="s2">&quot;Linear SVM&quot;</span><span class="p">,</span> <span class="s2">&quot;RBF SVM&quot;</span><span class="p">,</span> <span class="s2">&quot;Gaussian Process&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>         <span class="s2">&quot;Decision Tree&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">,</span> <span class="s2">&quot;Neural Net&quot;</span><span class="p">,</span> <span class="s2">&quot;AdaBoost&quot;</span><span class="p">,</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>         <span class="s2">&quot;Naive Bayes&quot;</span><span class="p">,</span> <span class="s2">&quot;QDA&quot;</span><span class="p">]</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="n">classifiers</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>    <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>    <span class="n">LogisticRegression</span><span class="p">(),</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>    <span class="n">SVC</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">C</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>    <span class="n">GaussianProcessClassifier</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">RBF</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)),</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>    <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>    <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>    <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>    <span class="n">AdaBoostClassifier</span><span class="p">(),</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>    <span class="n">GaussianNB</span><span class="p">(),</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>    <span class="n">QuadraticDiscriminantAnalysis</span><span class="p">()]</span>
 </code></pre></div>
 <h4 id="iterate-through-all-classifiers-and-get-their-accuracy-score">Iterate through all classifiers and get their accuracy score</h4>
 <p>We can use the best performing model to make our predictions.</p>
 <p><em>There are several other metrics in the code that have been commented out which might provide helpful insights on model performance.</em></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">classifiers</span><span class="p">):</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>        <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>        <span class="n">accuracy</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>        <span class="c1"># prediction_proba = clf.predict_proba(X_test)</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>        <span class="c1"># logloss = log_loss(y_test,prediction_proba)</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>        <span class="c1"># precision, recall, fscore, support = score(y_test, prediction)</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>        <span class="c1"># conf_martrix = confusion_matrix(y_test, prediction)</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a>        <span class="c1"># clas_report = classification_report(y_test, prediction)</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">clf</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">classifiers</span><span class="p">):</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    <span class="c1"># Fit the classifier on the training data and make predictions</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>    <span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>    <span class="n">test_data</span><span class="p">[</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_team_1_result&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>    <span class="n">accuracy</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">)</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>    <span class="c1"># prediction_proba = clf.predict_proba(X_test)</span>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>    <span class="c1"># logloss = log_loss(y_test,prediction_proba)</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>    <span class="c1"># precision, recall, fscore, support = score(y_test, prediction)</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>    <span class="c1"># conf_martrix = confusion_matrix(y_test, prediction)</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>    <span class="c1"># clas_report = classification_report(y_test, prediction)</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="c1"># Export the predictions to a CSV file</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a><span class="n">test_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;predictions.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>Nearest Neighbors 0.49295774647887325
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>Logistic Regression 0.5714285714285714
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>Linear SVM 0.5694164989939637
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>RBF SVM 0.46680080482897385
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>Gaussian Process 0.5633802816901409
-<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>Decision Tree 0.5432595573440644
-<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>Random Forest 0.5533199195171026
-<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>Neural Net 0.5573440643863179
-<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a>AdaBoost 0.5573440643863179
-<a id="__codelineno-19-10" name="__codelineno-19-10" href="#__codelineno-19-10"></a>Naive Bayes 0.5331991951710262
-<a id="__codelineno-19-11" name="__codelineno-19-11" href="#__codelineno-19-11"></a>QDA 0.5674044265593562
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>Nearest Neighbors 0.43313373253493015
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>Logistic Regression 0.5359281437125748
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>Linear SVM 0.532435129740519
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>RBF SVM 0.4431137724550898
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>Gaussian Process 0.4286427145708583
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>Decision Tree 0.499001996007984
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>Random Forest 0.49001996007984033
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>Neural Net 0.5069860279441117
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>AdaBoost 0.499500998003992
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>Naive Bayes 0.5149700598802395
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>QDA 0.4865269461077844
 </code></pre></div>
 <hr />
 <h3 id="disclaimer">Disclaimer</h3>

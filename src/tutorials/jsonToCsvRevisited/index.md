@@ -397,7 +397,7 @@ We'll clock that up as a win.
         # defining column headers
         output.write("market_id,event_date,country,track,market_name,selection_id,selection_name,result,bsp,pp_min,pp_max,pp_wap,pp_ltp,pp_volume,ip_min,ip_max,ip_wap,ip_ltp,ip_volume\n")
 
-        for i, g in enumerate(betfair_data.Files(market_paths).bflw()):
+        for i, g in enumerate(bflw.Files(market_paths)):
             print("Market {}".format(i), end='\r')
 
             def get_pre_post_final():

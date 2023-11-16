@@ -93,15 +93,32 @@ By downloading this data, you acknowledge and agree that:
 
 ### AFL 
 
- - [AFL 2023 All Markets Preplay](../assets/AFL_2023_All_Markets_Preplay.csv)
- - [AFL 2023 Match Odds Markets](../assets/AFL_2023_Match_Odds_Inplay.csv)
+ - [AFL 2021 All Markets Preplay](../assets/AFL_2021_All_Markets_Preplay.csv)
+ - [AFL 2021 Match Odds Markets](../assets/AFL_2021_Match_Odds_Inplay.csv)
  - [AFL 2022 All Markets Preplay](../assets/AFL_2022_All_Markets_Preplay.csv)
  - [AFL 2022 Match Odds Markets](../assets/AFL_2022_Match_Odds_Inplay.csv)
+ - [AFL 2023 All Markets Preplay](../assets/AFL_2023_All_Markets_Preplay.csv)
+ - [AFL 2023 Match Odds Markets](../assets/AFL_2023_Match_Odds_Inplay.csv)
 
 ### AFLW
 
+ - [AFLW 2021 All Markets](../assets/AFLW_2021_All_Markets.csv)
+ - [AFLW 2021 Match Odds](../assets/AFLW_2021_Match_Odds.csv)
+ - [AFLW 2022 (S6) All Markets](../assets/AFLW_2022(S6)_All_Markets.csv)
+ - [AFLW 2022 (S6) Match Odds](../assets/AFLW_2022(S6)_Match_Odds.csv)
+ - [AFLW 2022 (S7) All Markets](../assets/AFLW_2022(S7)_All_Markets.csv)
+ - [AFLW 2022 (S7) Match Odds](../assets/AFLW_2022(S7)_Match_Odds.csv)
  - [AFLW 2023 All Markets](../assets/AFLW_2023_All_Markets.csv)
  - [AFLW 2023 Match Odds](../assets/AFLW_2023_Match_Odds.csv)
+
+### NRL
+
+ - [NRL 2021 All Markets](../assets/NRL_2021_All_Markets.csv)
+ - [NRL 2021 Match Odds](../assets/NRL_2021_Match_Odds.csv)
+ - [NRL 2022 All Markets](../assets/NRL_2022_All_Markets.csv)
+ - [NRL 2022 Match Odds](../assets/NRL_2022_Match_Odds.csv)
+ - [NRL 2023 All Markets](../assets/NRL_2023_All_Markets.csv)
+ - [NRL 2023 Match Odds](../assets/NRL_2023_Match_Odds.csv)
 
 ### A-League
 
@@ -112,12 +129,32 @@ By downloading this data, you acknowledge and agree that:
 
 ### BBL 
 
+ - [BBL 2020-2021 All Markets Preplay](../assets/BBL10_All_Markets_Preplay.csv)
+ - [BBL 2020-2021 Match Odds Markets](../assets/BBL10_Match_Odds.csv)
+ - [BBL 2021-2022 All Markets Preplay](../assets/BBL11_All_Markets_Preplay.csv)
+ - [BBL 2021-2022 Match Odds Markets](../assets/BBL11_Match_Odds.csv)
  - [BBL 2022-2023 All Markets Preplay](../assets/BBL12_All_Markets_Preplay.csv)
  - [BBL 2022-2023 Match Odds Markets](../assets/BBL12_Match_Odds.csv)
 
-## Coming Soon
- - WBBL
- - NBL
- - A-League Women's
- - NRL
+### WBBL
 
+ - [WBBL 2020 All Markets Preplay](../assets/WBBL06_All_Markets.csv)
+ - [WBBL 2020 Match Odds Markets](../assets/WBBL06_Match_Odds.csv)
+ - [WBBL 2021 All Markets Preplay](../assets/WBBL07_All_Markets.csv)
+ - [WBBL 2021 Match Odds Markets](../assets/WBBL07_Match_Odds.csv)
+ - [WBBL 2022 All Markets Preplay](../assets/WBBL08_All_Markets.csv)
+ - [WBBL 2022 Match Odds Markets](../assets/WBBL08_Match_Odds.csv)
+ - [WBBL 2023 All Markets Preplay](../assets/WBBL09_All_Markets.csv)
+ - [WBBL 2023 Match Odds Markets](../assets/WBBL09_Match_Odds.csv)
+
+### NBL
+ - [NBL 2021-2022 All Markets Preplay](../assets/NBL_2021-2022_All_Markets.csv)
+ - [NBL 2021-2022 Match Odds Markets](../assets/NBL_2021-2022_Match_Odds.csv)
+ - [NBL 2022-2023 All Markets Preplay](../assets/NBL_2022-2023_All_Markets.csv)
+ - [NBL 2022-2023 Match Odds Markets](../assets/NBL_2022-2023_Match_Odds.csv)
+ - [NBL 2023-2024 All Markets Preplay](../assets/NBL_2023-2024_All_Markets.csv)
+ - [NBL 2023-2024 Match Odds Markets](../assets/NBL_2023-2024_Match_Odds.csv)
+
+## Coming Soon
+
+ - A-League Women's

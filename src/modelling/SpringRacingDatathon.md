@@ -113,7 +113,7 @@ The submission file template will be loaded here by 11:59am on the day prior to 
 
 Dataset updates will be loaded to the dataset page (link included in your registration confirmation email) by 4:59pm AEDT each Friday prior to the nominated race day.
 
-## Results
+## Final Results
 
 Leaderboards will be posted here weekly as well as in the Betfair Quants Discord server.
 
@@ -121,52 +121,61 @@ For an invite to the discord server, please fill out the form [here](https://for
 
 |model_name|Score|Rank|
 |---------------------------------------|--------|---|
-|BSP|2.66096460337926||
-|ConcensusSCD2023|2.66951050471409|1|
-|willingly|2.67722160568938|2|
-|RonW|2.68229975475102|3|
-|OnMyHighHorse|2.68280803908963|4|
-|ShinyNewThings|2.68816129167671|5|
-|Skunkworks|2.68911015592952|6|
-|Naomi|2.6904205079147|7|
-|melatonin|2.6904267648749|8|
-|Doriemus|2.7021051650429|9|
-|watptv|2.70263491092202|10|
-|BetfairHubPredictionsModel|2.71115917909521||
-|KeenAsABean|2.71154493592994|11|
-|BelleEpoque|2.72091255406827|12|
-|Elle-Macpherson|2.72152431356899|13|
-|VinhoVerde|2.72180813102495|14|
-|Sportpunter|2.72586732006104|15|
-|boshea|2.7273904125382|16|
-|nihaoshijie|2.7365928071291|17|
-|sebnatann|2.73666475594045|18|
-|Cfrance|2.73979945431609|19|
-|Gee-Gee-Genius|2.74601807066849|20|
-|tomsguesses|2.75694901969074|21|
-|HorsesAreJustLargeDogsRight|2.7700174308785|22|
-|Definitely-not-overfitted|2.77699459335531|23|
-|Looney-mods|2.81043123518048|24|
-|ANCR101|2.82807449905763|25|
-|Chautauqua|2.83442213118863|26|
-|SpicyPredictions|2.83680915707202|27|
-|zazzage|2.85590625365442|28|
-|exogen|2.86925363179541|29|
-|Vertex|2.87337747221819|30|
-|matouka|2.88112086422855|31|
-|Craigs-List|2.92022818986619|32|
-|grunet|2.93971836405406|33|
-|reliable-lumberjack|2.96160638254584|34|
-|DamienThirst|3.07518291633932|35|
-|TheDartMethod|3.07934150782365|36|
-|Moose-Ste|3.0844682159332|37|
-|236john-KvKid|3.08658995059886|38|
-|TopPunter|3.15814397059494|39|
-|RandomShrubbery|3.1944403487785|40|
-|High-Hat|3.22847155460683|41|
-|RockSystems|3.26794471534217|42|
-|bruno|3.278506507868|43|
-|ReiningIn|3.31598451261996|44|
-|Katana|4.10921461918075|45|
-|HackerHandicapping|5.32808171654579|46|
+|BSP|2.77788996997805||
+|OnMyHighHorse|2.7906939396213|1|
+|willingly|2.79479411408101|2|
+|ShinyNewThings|2.7997219805638|3|
+|melatonin|2.82023873698256|4|
+|Sportpunter|2.82209518025333|5|
+|BetfairHubPredictionsModel|2.82722068224616||
+|ConcensusSCD2023|2.82801203747167|6|
+|nihaoshijie|2.82882380798673|7|
+|Elle-Macpherson|2.82949035955336|8|
+|watptv|2.83220716456428|9|
+|Doriemus|2.83280544288701|10|
+|sebnatann|2.84644233918721|11|
+|VinhoVerde|2.85267147439722|12|
+|Cfrance|2.85483856884689|13|
+|tomsguesses|2.85871078349823|14|
+|RonW|2.86289564706468|15|
+|Gee-Gee-Genius|2.86323498280765|16|
+|BelleEpoque|2.87046918602378|17|
+|HorsesAreJustLargeDogsRight|2.88255972209085|18|
+|ANCR101|2.908669415987|19|
+|Naomi|2.92736405744928|20|
+|Vertex|2.94735261875303|21|
+|Craigs-List|2.97002109980415|22|
+|exogen|2.99524266470316|23|
+|SpicyPredictions|2.99738014682078|24|
+|Chautauqua|3.02877922721002|25|
+|matouka|3.04024295542127|26|
+|reliable-lumberjack|3.04760653609704|27|
+|DamienThirst|3.11828100020267|28|
+|236john-KvKid|3.14292359860204|29|
+|High-Hat|3.15224272966616|30|
+|RandomShrubbery|3.17516493828797|31|
+|Moose-Ste|3.21855177030658|32|
+|KeenAsABean|3.24194972021672|33|
+|TopPunter|3.24471673034183|34|
+|TheDartMethod|3.26158155505263|35|
+|bruno|3.26421531746475|36|
+|ReiningIn|3.3335306628469|37|
+|Skunkworks|3.46770257357916|38|
+|RockSystems|3.58239827522267|39|
+|Hoover|3.73795524949571|40|
+|Definitely-not-overfitted|3.87507506226626|41|
+|Katana|4.49222287728695|42|
+|HackerHandicapping|7.11891434429891|43|
+
+### Contestants who did not submit every week 
+
+|model_name|Score|
+|---------------------------------------|--------|
+|FastandCoefficient|3.87494725084764|
+|jdo|4.55189918624135|
+|LiverpoolCapper|2.92758899437985|
+|boshea|2.73075899282043|
+|Looney-mods|2.81198074377767|
+|zazzage|2.86275935836261|
+|grunet|2.94138126530589|
 

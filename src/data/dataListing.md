@@ -34,12 +34,13 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2023-08](../assets/ANZ_Thoroughbreds_2023_08.csv)
  - [Aus & NZ Thoroughbreds 2023-09](../assets/ANZ_Thoroughbreds_2023_09.csv)
  - [Aus & NZ Thoroughbreds 2023-10](../assets/ANZ_Thoroughbreds_2023_10.csv)
+ - [Aus & NZ Thoroughbreds 2023-11](../assets/ANZ_Thoroughbreds_2023_11.csv)
 
 ### Thoroughbred Predictions Model
 
  - [Thoroughbred Model Results 2021](../assets/Carrot_Cruncher_Model_Results_2021.csv)
  - [Thoroughbred Model Results 2022](../assets/Carrot_Cruncher_Model_Results_2022.csv)
- - [Thoroughbred Model Results 2023 Jan - Oct](../assets/Carrot_Cruncher_Model_Results_2023.csv)
+ - [Thoroughbred Model Results 2023 Jan - Nov](../assets/Carrot_Cruncher_Model_Results_2023.csv)
 
 ### Harness
 
@@ -53,10 +54,11 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Harness 2023-08](../assets/ANZ_Harness_2023_08.csv)
  - [Aus & NZ Harness 2023-09](../assets/ANZ_Harness_2023_09.csv)
  - [Aus & NZ Harness 2023-10](../assets/ANZ_Harness_2023_10.csv)
+ - [Aus & NZ Harness 2023-11](../assets/ANZ_Harness_2023_11.csv)
  
 ### Harness Predictions Model
 
- - [Harness Model Results 2023 May - Oct](../assets/Globetrotter_Model_Results_2023.csv)
+ - [Harness Model Results 2023 May - Nov](../assets/Globetrotter_Model_Results_2023.csv)
 
 ### Greyhounds
 
@@ -70,13 +72,14 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2023-08](../assets/ANZ_Greyhounds_2023_08.csv)
  - [Aus & NZ Greyhounds 2023-09](../assets/ANZ_Greyhounds_2023_09.csv)
  - [Aus & NZ Greyhounds 2023-10](../assets/ANZ_Greyhounds_2023_10.csv)
+ - [Aus & NZ Greyhounds 2023-11](../assets/ANZ_Greyhounds_2023_11.csv)
 
 ### Greyhound Predictions Model
 
  - [Greyhound Model Results 2020](../assets/Iggy_Model_Results_2020.csv)
  - [Greyhound Model Results 2021](../assets/Iggy_Model_Results_2021.csv)
  - [Greyhound Model Results 2022](../assets/Iggy_Model_Results_2022.csv)
- - [Greyhound Model Results 2023 Jan - Oct](../assets/Iggy_Model_Results_2023.csv)
+ - [Greyhound Model Results 2023 Jan - Nov](../assets/Iggy_Model_Results_2023.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 

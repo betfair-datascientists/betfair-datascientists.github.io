@@ -13,6 +13,7 @@ However the price of a horse also has another very important meaning. It reflect
 **THE EASY WAY TO APPROXIMATE THE WINNING CHANCE OF A HORSE IS TO TAKE 100 AND DIVIDE IT BY THE MARKET PRICE**
 
 For Example:
+
 - A horse that is $1.80 in the market has a 100 / 1.8 = 55.55% chance of winning
 - A horse that is $2.20 in the market has a 100 / 2.2 = 45.45% chance of winning
 - A horse that is $5.00 in the market has a 100 / 5 = 20% chance of winning

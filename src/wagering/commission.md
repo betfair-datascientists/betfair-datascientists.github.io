@@ -127,4 +127,6 @@ Each week the customers who meet all the conditions set out above will be charge
 
 ## Closing thoughts
 
-While ultimately we would prefer to not charge fees, it is necessary to pay the sporting and racing bodies to be able to offer markets on the exchange as well as to invest in our people and infrastructure to ensure a bright future for the exchange. Australian and New Zealand customers are welcome to reach out to us to discuss fees and what we can do to help you at [automation@betfair.com.au](mailto:automation@betfair.com.au)
+While ultimately we would prefer to not charge fees, it is necessary to pay the sporting and racing bodies to be able to offer markets on the exchange as well as to invest in our people and infrastructure to ensure a bright future for the exchange. 
+
+Australian and New Zealand customers are welcome to reach out to us to discuss fees and what we can do to help you at [automation@betfair.com.au](mailto:automation@betfair.com.au)

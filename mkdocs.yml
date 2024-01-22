@@ -31,7 +31,7 @@ nav:
         - Intro to modelling: modelling/howToModel.md
         - Pricing Data Sources: modelling/dataSources.md
         - Racing:
-            - Greyhound Topaz API Tutorial (New): modelling/topazTutorial.ipynb
+            - Greyhound Topaz API Tutorial (New): modelling/topazTutorial.md
             - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
             - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb
         - Soccer:
@@ -158,8 +158,6 @@ markdown_extensions:
 plugins:
    - search
    - mknotebooks
-
-
 
 extra:
     rg_footer: '<div class="full-screen">

@@ -12,9 +12,13 @@
         <meta name="author" content="Betfair Data Scientists">
       
       
-        <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/soccerEloTutorialR/">
+        <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/topazTutorial/">
       
       
+        <link rel="prev" href="../dataSources/">
+      
+      
+        <link rel="next" href="../fasttrackTutorial/">
       
       
       <link rel="icon" href="../../img/BetfairFavicon.ico">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Using an Elo approach to model soccer in R - The Automation Hub</title>
+        <title>Greyhound Topaz API Tutorial (New) - The Automation Hub</title>
       
     
     
@@ -96,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#using-an-elo-approach-to-model-soccer-in-r" class="md-skip">
+        <a href="#greyhound-modelling-in-python-using-the-topaz-api" class="md-skip">
           Skip to content
         </a>
       
@@ -128,7 +132,7 @@
           <div class="md-header__topic" data-md-component="header-topic">
             <span class="md-ellipsis">
               
-                Using an Elo approach to model soccer in R
+                Greyhound Topaz API Tutorial (New)
               
             </span>
           </div>
@@ -264,10 +268,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../howToModel/" class="md-tabs__link">
           
   
@@ -766,8 +772,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -776,14 +784,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -797,7 +803,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Modelling
@@ -850,8 +856,10 @@
                 
   
   
+    
   
   
+  
     
     
     
@@ -860,14 +868,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
         
           
           <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
@@ -881,7 +887,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             Racing
@@ -892,10 +898,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../topazTutorial/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Greyhound Topaz API Tutorial (New)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -904,6 +930,71 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Historic Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#to-be-continued" class="md-nav__link">
+    <span class="md-ellipsis">
+      To be continued...
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disclaimer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2690,164 +2781,213 @@
                   
 
 
-<h1 id="using-an-elo-approach-to-model-soccer-in-r">Using an Elo approach to model soccer in R</h1>
-<p>This tutorial was written as part of the 2021 Euro &amp; Copa America Datathon competition</p>
-<h2 id="elo-modelling">Elo modelling</h2>
-<p><a href="https://en.wikipedia.org/wiki/Elo_rating_system">Elo modelling</a> is a commonly-used approach towards creating rating systems in sport. Originally devised by Arpad Elo for ranking chess players, the popularity of Elo modelling has grown massively since its first official use in the 1960s to the point where it is now widely used to model just about every professional sporting code across the globe.</p>
-<p>From a set of Elo ratings we can construct win/loss probabilities for given match-ups between two teams using a simple formula which takes the difference between the two teams' ratings and outputs the probability of each team winning or losing the match. A very basic yet very effective approach!</p>
-<p>To read more the inner workings of Elo models, <a href="http://irep.ntu.ac.uk/id/eprint/42038/1/1400774_Vaughan_Williams.pdf">take a read of this article</a> for a detailed run-down of how the mathematics behind an Elo rating system works in the context of tennis matches.</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script>
+(function() {
+  function addWidgetsRenderer() {
+    var requireJsScript = document.createElement('script');
+    requireJsScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js';
+
+    var mimeElement = document.querySelector('script[type="application/vnd.jupyter.widget-view+json"]');
+    var jupyterWidgetsScript = document.createElement('script');
+    var widgetRendererSrc = 'https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js';
+    var widgetState;
+
+    // Fallback for older version:
+    try {
+      widgetState = mimeElement && JSON.parse(mimeElement.innerHTML);
+
+      if (widgetState && (widgetState.version_major < 2 || !widgetState.version_major)) {
+        widgetRendererSrc = 'jupyter-js-widgets@*/dist/embed.js';
+      }
+    } catch(e) {}
+
+    jupyterWidgetsScript.src = widgetRendererSrc;
+
+    document.body.appendChild(requireJsScript);
+    document.body.appendChild(jupyterWidgetsScript);
+  }
+
+  document.addEventListener('DOMContentLoaded', addWidgetsRenderer);
+}());
+</script>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="greyhound-modelling-in-python-using-the-topaz-api">Greyhound Modelling in Python using the Topaz API</h1>
+<p>Building a greyhound racing model using Python and Machine Learning</p>
+<p>This tutorial is a refreshed version of our previous tutorials utilising the new version of the FastTrack API (now called Topaz). 
+Topaz is a product provided to Betfair Australia &amp; New Zealand customers by Greyhound Racing Victoria (GRV). </p>
+<p>If you would like your own Topaz API key, please contact us <a href="mailto:data@betfair.com.au">here</a>. 
+Access can only be provided to Betfair Australia or New Zealand customers with active accounts</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-<h2 id="elo-models-soccer">Elo Models &amp; Soccer</h2>
-<p>Elo-based systems lend themselves particularly well to modelling soccer, so much so that publicly available Elo ratings systems (<a href="https://www.eloratings.net">www.eloratings.net</a> for international soccer for example)  have been adopted by professional bodies to help seed tournaments and create fairer fixtures.</p>
-<p>This tutorial aims to serve as guide of how to build a basic soccer Elo model with a particular focus on the 2021 editions of the Euro and Copa America, as they served as the subject of Betfair's Datathon.</p>
-<p>To follow along with this tutorial you will need two things:</p>
+<h2 id="overview">Overview</h2>
+<p>This tutorial will walk you through the different steps required to generate Greyhound racing winning probabilities</p>
 <ol>
-<li>This code is written in R, and hence you will need to have <a href="https://www.r-project.org">R</a> and <a href="https://www.rstudio.com">RStudio</a> running on your system if you wish to follow along.</li>
-<li>You will also need the historical data set provided for Betfair's 2021 Euro &amp; Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021, please reach out to <a href="mailto:datathon@betfair.com.au">datathon@betfair.com.au</a> for data access. In the meantime, <a href="assets/datathon_initial_form_data - SAMPLE.csv">click here for a sample of the data</a> which will be enough to allow the code to run effectively.</li>
+<li>Download historic greyhound data from Topaz API</li>
+<li>Cleanse and normalise the data</li>
+<li>Generate features using raw data</li>
+<li>Build and train classification models</li>
+<li>Evaluate models' performances</li>
+<li>Evaluate feature importance</li>
 </ol>
-<p>Let's get started!</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-<h2 id="load-packages-import-data">Load Packages &amp; Import Data</h2>
-<p>The first thing to do is load the packages that will be required to run the Elo model and to read in the historic data from wherever it is stored on your machine.</p>
-<p>The main package to take notice of here is the <code>elo</code> package. As the name suggests, this package is for running Elo models.
-The <code>MLmetrics</code> package will be used towards the end of the tutorial to back-test the accuracy of our model.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>library(readr)
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>library(dplyr)
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>library(lubridate)
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>library(elo)
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>library(MLmetrics)
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>raw_data &lt;- read_csv(&quot;datathon_initial_form_data.csv&quot;)
-</code></pre></div>
-<p>When exploring a new data set, it is always good practice to first get an idea of the what is included in the data set.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>colnames(raw_data)
-</code></pre></div>
-<p>Something noticeable is that the data set does not have a feature included to indicate the result of each match. Let's start by creating two new columns: one showing the result from the home team's perspective and another from the away team's perspective.</p>
-<p>We'll also create a feature to show the margin of the match, i.e. the absolute goal difference between the two sides.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>raw_data &lt;- raw_data %&gt;% 
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  mutate(home_result = case_when(home_team_goal_count &gt; away_team_goal_count ~ 1,
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>                                 home_team_goal_count &lt; away_team_goal_count ~ 0,
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>                                 home_team_goal_count == away_team_goal_count ~ 0.5),
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>  away_result = case_when(home_team_goal_count &lt; away_team_goal_count ~ 1,
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>                          home_team_goal_count &gt; away_team_goal_count ~ 0,
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>                          home_team_goal_count == away_team_goal_count ~ 0.5),
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>  margin = abs(home_team_goal_count - away_team_goal_count))
-</code></pre></div>
-<p>Let's also make sure the date_GMT column is formatted correctly as a date. We can do that using the <code>parse_date_time</code> function from the <code>lubridate</code> package.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>raw_data &lt;- raw_data %&gt;% 
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>  mutate(date_GMT = parse_date_time(raw_data$date_GMT , &quot;mdY_HM&quot;))
-</code></pre></div>
-<hr />
-<h2 id="running-the-elo-model">Running the Elo Model</h2>
-<p>Now comes the fun part - setting the Elo model in action!</p>
-<p>There are a number of steps we could have taken before getting to this point to make the model a touch more complex (and possibly more accurate as a result), however in the interest of keeping this tutorial as accessible and easy to follow as possible let's jump straight into running an Elo model based on our data set.</p>
-<p>To run the Elo model we will need to use the <code>elo.run</code> function from the <code>elo</code> package. The <code>elo.run</code> function requires we input a formula as an argument which tells the function which columns list the two teams, which column is our target/outcome variable, as well as any other features we want to include in our model.</p>
-<p>We can use the <code>home_result</code> column we've created to identify the result from the home team's perspective.</p>
-<p>We can also input a k value which essentially dictates the maximum number of Elo points that can be won or lost in a single match.</p>
-<p>Here we could set k to be a constant (such as 30), however to add an extra layer of (very slight) complexity, we can instead choose to use a variable k value which is dictated by the margin of the match using a formula of <code>k = 30 + 30*margin</code>. This means that for every goal the margin increases by, the k value will increase by 30, starting with a base k value of 30 for draws (<code>margin equals 0</code>). The idea here is simply to help account for and reward/punish teams winning/losing by bigger margins compared to closer matches.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>elo_model &lt;- elo.run(data = raw_data,
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>                     formula = home_result ~ home_team_name + away_team_name + k(30 + 30*margin))
-</code></pre></div>
-<p>Let's take a look at the last few matches in our training sample to get a better view of the Elo model in action.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>elo_results &lt;- elo_model %&gt;%
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  as.data.frame()
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>elo_results %&gt;% tail(n = 10)
-</code></pre></div>
-<p>We can also now check out what the latest Elo rankings for each team in the data set! Let's look at the top 20.</p>
-<p>Keep in mind that teams start with an Elo rating of 1500, so any team with an Elo greater 1500 can be considered above average, while those with Elo ratings below 1500 are therefore below average.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>final_elos &lt;- final.elos(elo_model)
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>final_elos %&gt;% sort(decreasing = TRUE) %&gt;% head(n = 20)
-</code></pre></div>
-<hr />
-<h2 id="accounting-for-draws">Accounting for Draws</h2>
-<p>Something that we need to acknowledge both generally and also in relation to the Euro &amp; Copa America Datathon is that Elo models are best suited to sporting contexts with binary outcomes - i.e. win or lose - however in most soccer fixture we also have the possibility of a draw to account for. We are still able to ensure that Elo ratings update appropriately after a draw using 0.5 wins to denote the situation in which a draw occurs, but when it comes to making probabilistic win predictions using the Elo ratings (see p.A column above for example) things get a little more confusing.</p>
-<p>For the Euro &amp; Copa America Datathon, we also need to consider the fact that draws are a possibility during group stage match-ups, therefore we need to develop a workaround option to include draw probabilities.</p>
-<p>One way to do this - and the method that will be adopted for this tutorial - is to find the historic rate at which two teams of a certain Elo prediction split ending up drawing their matches. For example, how often do matches in which an Elo model deems Team A an 80% chance of winning and Team B a 20% chance of winning result in a draw? How about a 70%-30% split? We can find these draw rates for a range of probability points between 0 and 1 and use them to redistribute win/loss probabilities accordingly.</p>
-<p>Let's start the process by finding historic draw rates. We will bucket matches at 5% increments according to the home team's probability of winning the match according to the model.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>draw_rates &lt;- data.frame(win_prob = elo_model$elos[,3],
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>                        win_loss_draw = elo_model$elos[,4]) %&gt;%
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  mutate(prob_bucket = abs(round((win_prob)*20)) / 20) %&gt;%   # Round the predicted win probabilities to the nearest 0.05
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  group_by(prob_bucket) %&gt;%
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>  summarise(draw_prob = sum(ifelse(win_loss_draw == 0.5, 1, 0)) / n())   # Calculate the rate their was a draw for this win prob - elo package codes a draw as a 0.5
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>draw_rates %&gt;% head(n=20)
-</code></pre></div>
-<p>We now have data which will help us deem how likely a match-up between two teams is to end up in a draw!</p>
-<p>The next step is to merge this data in with our existing data set. We also need to include the win/loss probabilities for each match that we've already found using our Elo model so that we may tweak them to include for the possibility of a draw. We'll also pull in the actual Elo ratings for each team for completeness.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>data_with_probabilities &lt;- raw_data %&gt;% 
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  select(tournament, date_GMT, home_team_name, away_team_name, home_result, away_result) %&gt;%   # Remove some redundant columns
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  mutate(home_elo = elo_results$elo.A - elo_results$update.A,    # Add in home team&#39;s elo rating (need to subtract the points update to obtain pre-match rating)
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>         away_elo = elo_results$elo.B - elo_results$update.B,    # Add in away team&#39;s elo rating (need to subtract the points update to obtain pre-match rating)
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>         home_prob = elo_results$p.A,                            # Add in home team&#39;s win/loss probability
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>         away_prob = 1 - home_prob) %&gt;%                          # Add in away team&#39;s win/loss probability
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>  mutate(prob_bucket = round(20*home_prob)/20) %&gt;%               # Bucket the home team&#39;s win/loss probability into a rounded increment of 0.05
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>  left_join(draw_rates, by = &quot;prob_bucket&quot;) %&gt;%                  # Join in our historic draw rates using the probability buckets
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    relocate(draw_prob, .after = home_prob) %&gt;% 
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>  select(-prob_bucket)
-</code></pre></div>
-<p>Having now brought the draw probability for each match into the data frame, we need to redistribute the win and loss probabilities so that <code>Pr(win) + Pr(draw) + Pr(loss)</code> sums to exactly 1. We can do this by simply subtracting the draw probability from each of the win and loss probabilities in a proportional manner. See below:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>data_with_probabilities &lt;- data_with_probabilities %&gt;% 
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>  mutate(home_prob = home_prob - home_prob * draw_prob,          # Redistribute home team&#39;s probabilities proportionally to create win/draw/loss probabilities
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>         away_prob = away_prob - away_prob * draw_prob)          # Redistribute away team&#39;s probabilities proportionally to create win/draw/loss probabilities
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>data_with_probabilities %&gt;% 
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>  select(home_team_name, away_team_name, home_prob, draw_prob, away_prob) %&gt;% 
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>  tail(n=10)
-</code></pre></div>
-<p>And there you have it! We've now come up with win, draw and loss probabilities for each match-up in our data set!</p>
-<p>Keep in mind that if we were to be focusing on knockout matches (i.e. where no draws are possible), we could have just skipped the previous few steps as we already had binary win-loss probabilities as direct outputs from our Elo model.</p>
-<hr />
-<h2 id="back-testing">Back Testing</h2>
-<p>The last step in our modelling process is to back test against a subset of our data to get an idea of our model's accuracy.</p>
-<p>We can use the <code>MLmetrics</code> package to run a <a href="https://towardsdatascience.com/understanding-binary-cross-entropy-log-loss-a-visual-explanation-a3ac6025181a">log loss</a> function on our subset. </p>
-<p>Let's look at how the model performed when we limit the data set to include only the most recent matches from early 2021.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>matches_2021 &lt;- data_with_probabilities %&gt;% 
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>  filter(year(date_GMT) == 2021) %&gt;%                      # Filter down to only 2021 matches
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>  mutate(home_win = ifelse(home_result == 1, 1, 0),       # Include new columns which show the true outcome of the match
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>         draw = ifelse(home_result == 0.5, 1, 0),
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>         away_win = ifelse(away_result == 1, 1, 0)) %&gt;% 
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>  select(date_GMT, home_team_name, away_team_name, home_prob, draw_prob, away_prob, home_win, draw, away_win)
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a># Run the multinomial log loss function from MLmetrics to output a log loss score for our sample
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>MultiLogLoss(
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>  y_pred = matches_2021[,c(&quot;home_prob&quot;, &quot;draw_prob&quot;, &quot;away_prob&quot;)] %&gt;% as.matrix(),
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>  y_true = matches_2021[,c(&quot;home_win&quot;, &quot;draw&quot;, &quot;away_win&quot;)] %&gt;% as.matrix()
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>)
-</code></pre></div>
-<p>A pretty good result for such a simple Elo model!</p>
-<hr />
-<h2 id="making-future-predictions">Making Future Predictions</h2>
-<p>Okay, so now our Elo model is set in place, we have the latest set of Elo ratings for each team and we've back tested our model. We can now apply our model to future matches to obtain probabilities for match-ups that are yet to occur.</p>
-<p>Again we can do this using the <code>elo</code> package. This time we will use the function <code>elo.prob</code>, which takes two teams and outputs the probability of the first team winning the match-up. Like before, this function only considers win/loss outcomes to be possible, so if we were to also be looking to generate draw probabilities for a future match-up, we can just go through the exact same process as we did previously (i.e. make a binary win/loss prediction, merge in historic draw rates for various probabilities, redistribute accordingly).</p>
-<p>Let's just keep this simple for now though and focus on win and loss probabilities. We'll put together a small dataframe of matches and see what our model thinks - we've gone for hypothetical match-ups of Brazil v Argentina, England v France, Spain v Germany and an obligatory 2006 World Cup rematch of Australia v Italy.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>future_matches &lt;- data.frame(
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  team_a = c(&quot;Brazil&quot;, &quot;England&quot;, &quot;Spain&quot;, &quot;Australia&quot;),
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  team_b = c(&quot;Argentina&quot;, &quot;France&quot;, &quot;Germany&quot;, &quot;Italy&quot;))  %&gt;% 
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>  mutate(elo_a = final_elos[team_a],
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>         elo_b = final_elos[team_b],
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>         team_a_win_prob = elo.prob(elo.A = elo_a,
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>                                    elo.B = elo_b)
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>  )
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>future_matches
-</code></pre></div>
-<hr />
-<h2 id="conclusions-areas-for-improvement">Conclusions &amp; Areas for Improvement</h2>
-<p>Elo modelling can be a surprisingly accurate modelling technique given how simple it is to implement. This tutorial gives a very basic framework from which you are free to build a more intricate model with more detailed inputs and features.</p>
-<p>Some things that you might want to consider adding to this Elo model:</p>
+<h2 id="requirements">Requirements</h2>
 <ul>
-<li>Home ground advantage</li>
-<li>Key match statistics (i.e. shots on target, possession %, etc.)</li>
-<li>Whether the match was a dead rubber (teams may take the foot off the gas if they don't need to win to advance to the next stage of a tournament)</li>
-<li>Selected team line-ups (were key players missing?)</li>
+<li>Coding environment which supports Jupyter Notebooks (e.g. Visual Studio Code)</li>
+<li>Betfair API Key. If you don't have one please follow the steps outlined on the <a href="https://betfair-datascientists.github.io/api/apiappkey/">The Automation Hub</a></li>
+<li>Topaz API Key. If you would like to be considered for a Topaz key, please email <a href="mailto:data@betfair.com.au">data@betfair.com.au</a> (Australian/New Zealand customers only).</li>
+<li>Python Topaz API wrapper. To install this package using pip, type 'pip install topaz_api' into your terminal</li>
 </ul>
-<p>Remember, an Elo model can be as complex or as simple as you want it to be - in some cases it might be better to keep it basic!</p>
-<p>We hope you've found this tutorial useful - if you have any questions regarding predictive data modelling please reach out to <a href="mailto:automation@betfair.com.au">automation@betfair.com.au</a>.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <hr />
-<h3 id="disclaimer">Disclaimer</h3>
+<h2 id="historic-data">Historic Data</h2>
+<p>To get started on building our own Topaz model, first we need to download the historic data from the Topaz API. The API has rate limits in place and so for the purposes of a bulk download of historic data, we will need to implement some way of handling these rate limits in order for us to download the data with a high degree of completeness. After all, the maxim 'Garbage In, Garbage Out' in regards to modelling holds true. If you don't feed your model good, complete data, then you won't have much success.</p>
+<p>In the code block below, there are multiple instances of retries and programmed sleep functions to allow the rate limits to reset. We are also requesting the races for each state in blocks of 7 days.</p>
+<p>NOTE: For state / date-range combinations where there are genuinely no races that occurred, the function will continuously error until it reaches the maximum specified retries before continuing to the next block. This may occur during the pandemic shutdown period in 2020 or the NSW Greyhound racing ban in 2017 or for time periods with the 'NT' jurisdiction where greyhound meetings may be up to 14 days apart.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">from</span> <span class="nn">topaz</span> <span class="kn">import</span> <span class="n">TopazAPI</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">api_key</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  <span class="c1"># Insert your API key</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">topaz_api</span> <span class="o">=</span> <span class="n">TopazAPI</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Generate a date range</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">def</span> <span class="nf">generate_date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">):</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="n">start_date</span> <span class="o">=</span> <span class="n">start_date</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">end_date</span> <span class="o">=</span> <span class="n">end_date</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">date_list</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">current_date</span> <span class="o">=</span> <span class="n">start_date</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="k">while</span> <span class="n">current_date</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="o">=</span> <span class="n">end_date</span><span class="p">:</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="n">date_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">current_date</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">))</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="n">current_date</span> <span class="o">+=</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="k">return</span> <span class="n">date_list</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1"># Input the number of days of historical data required</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="c1"># To input absolute dates rather than a timedelta use &#39;datetime(YYYY,M,D)&#39;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="n">start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">365</span><span class="p">))</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">end_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1"># Generate the date range</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">date_range</span> <span class="o">=</span> <span class="n">generate_date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="c1"># Iterate over 7-day blocks</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_range</span><span class="p">),</span> <span class="mi">6</span><span class="p">):</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="n">start_block_date</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">start_block_date</span><span class="p">)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">end_block_date</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_range</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># Ensure the end date is within the range</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    <span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NZ&#39;</span><span class="p">,</span> <span class="s1">&#39;NT&#39;</span><span class="p">,</span> <span class="s1">&#39;VIC&#39;</span><span class="p">,</span> <span class="s1">&#39;NSW&#39;</span><span class="p">,</span> <span class="s1">&#39;SA&#39;</span><span class="p">,</span> <span class="s1">&#39;WA&#39;</span><span class="p">,</span> <span class="s1">&#39;QLD&#39;</span><span class="p">,</span> <span class="s1">&#39;TAS&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="n">all_races</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="n">retries</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Number of retries</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>        <span class="k">while</span> <span class="n">retries</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>            <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>                <span class="n">races</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_races</span><span class="p">(</span><span class="n">from_date</span><span class="o">=</span><span class="n">start_block_date</span><span class="p">,</span> <span class="n">to_date</span><span class="o">=</span><span class="n">end_block_date</span><span class="p">,</span> <span class="n">owning_authority_code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>                <span class="n">all_races</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">races</span><span class="p">)</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>                <span class="k">break</span>  <span class="c1"># Break out of the loop if successful</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error fetching races for </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>                <span class="n">retries</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>                <span class="k">if</span> <span class="n">retries</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying in 30 seconds...&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>                <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max retries reached. Moving to the next block.&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>            <span class="n">all_races_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_races</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>            <span class="k">continue</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>        <span class="c1"># Extract unique race IDs</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>        <span class="n">race_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_races_df</span><span class="p">[</span><span class="s1">&#39;raceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>        <span class="k">for</span> <span class="n">race_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">race_ids</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing races&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;race&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>            <span class="n">result_retries</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>            <span class="k">while</span> <span class="n">result_retries</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>                <span class="c1"># Use tqdm to create a progress bar</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>                <span class="c1"># Get race run data</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>                <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>                    <span class="n">race_run</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_race_runs</span><span class="p">(</span><span class="n">race_id</span><span class="o">=</span><span class="n">race_id</span><span class="p">)</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>                    <span class="n">file_path</span> <span class="o">=</span> <span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>                    <span class="n">file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>                    <span class="n">header_param</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">file_exists</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>                    <span class="n">race_run</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header_param</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>                    <span class="k">break</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>                <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>                    <span class="n">result_retries</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>                    <span class="k">if</span> <span class="n">result_retries</span> <span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>                    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+</code></pre></div>
+
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+<p>The Topaz race results endpoint requires the passing of a jurisdiction ID as a parameter to pull the results. Simply passing a date range will return no data. This is why we have looped over all jurisdictions in 7 day blocks.</p>
+<p>Bulk downloading the historical data in this way may take a while depending on how many years of data you are requesting. Bruno, the author of one of our previous greyhound modelling tutorials, uses 6 years worth of data for his backtesting. This however is computationally expensive to process in a machine learning model, so we suggest 2-3 years for those just starting out. </p>
+<p>NOTE: In the above code we have exported each state separately to its own csv file. This will keep each file under a million rows ensuring that you can manually inspect the data by opening the file in Excel. This is not required (we will pull in each file to our model before we begin to process the data)</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="to-be-continued">To be continued...</h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="disclaimer">Disclaimer</h2>
 <p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
+</div>
+</div>
+</div>
 
 
 
@@ -2879,6 +3019,41 @@ The <code>MLmetrics</code> package will be used towards the end of the tutorial 
       </main>
       
         <footer class="md-footer">
+    
+      <nav class="md-footer__inner md-grid" aria-label="footer.title">
+        
+          
+          <a href="../dataSources/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pricing Data Sources" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Previous
+                </span>
+                Pricing Data Sources
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../fasttrackTutorial/" class="md-footer__link md-footer__link--next" aria-label="Next: Greyhound form FastTrack API" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  Next
+                </span>
+                Greyhound form FastTrack API
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
     <div class="md-footer-meta md-typeset">
       <div class="md-footer-meta__inner md-grid">

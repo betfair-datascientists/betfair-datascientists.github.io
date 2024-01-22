@@ -27,10 +27,11 @@ nav:
         - API tutorial in Python: api/apiPythontutorial.md
             
     - Modelling:
-        - Spring Racing Data Modelling Competition: modelling/SpringRacingDatathon.md
+        #- Spring Racing Data Modelling Competition: modelling/SpringRacingDatathon.md
         - Intro to modelling: modelling/howToModel.md
         - Pricing Data Sources: modelling/dataSources.md
         - Racing:
+            - Greyhound Topaz API Tutorial (New): modelling/topazTutorial.ipynb
             - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
             - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb
         - Soccer:

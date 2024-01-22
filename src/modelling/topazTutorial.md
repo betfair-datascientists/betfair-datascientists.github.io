@@ -102,7 +102,7 @@ for i in range(0, len(date_range), 6):
         for race_id in tqdm(race_ids, desc="Processing races", unit="race"):
             result_retries = 10
 
-            while result_retries >/ 0:
+            while result_retries > 0:
                 # Use tqdm to create a progress bar
                 # Get race run data
                 try:

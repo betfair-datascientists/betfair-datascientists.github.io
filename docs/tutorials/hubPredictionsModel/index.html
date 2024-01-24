@@ -2353,6 +2353,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#state-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      State Based
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2893,7 +2902,7 @@
 <p>Some of the potential features you could include in such an analysis are:</p>
 <ul>
 <li>Race Type (e.g. Handicaps, Maidens, Group Races etc.)</li>
-<li>Race Distance (segmented into buckets like Spring, Middle, Staying)</li>
+<li>Race Distance (segmented into buckets like Sprint, Middle, Staying)</li>
 <li>Model Rank (How a horse has been rated compared to other horses in the race)</li>
 <li>Number of Runners (Does too many runners introduce too much variance?)</li>
 <li>Implied Value (The difference in implied winning probability between the rated price and the BSP)</li>
@@ -2906,8 +2915,7 @@
 <p>If you decide that a selection is worth backing, either for the confidence the model has in it or the under confidence the market has in it (corresponding to a higher available price than the rated price), then you could use a flat staking model, where you simply decide to put the same amount on every selection regardless of price.</p>
 <p>Proportional staking is also another option. This means taking a fixed stake for a whole market, say $100, and then assigning a proportion of this stake to the implied winning probability given by the rated price.
 If a horse has a rated price of $5, this implies a winning probability of 20% (1/5). So the proportional stake for a $100 total stake would be 20% of $100 or $20.</p>
-<p>If, on the other hand, you believe the selection is worth laying, because the market over values it, then you could use a fixed liability at BSP to lay it. 
-Proportional liability is possible to use as well, except this isn't possible to do at BSP as you can't know what the BSP is going to be to figure out your proportional liability.</p>
+<p>If, on the other hand, you believe the selection is worth laying, because the market over values it, then you could use a fixed or proportional liability at BSP to lay it. There are others too like Kelly and the dreaded Martingale though they are beyond the scope of this article</p>
 <h2 id="analysis-of-the-horse-racing-predictions-model">Analysis of the Horse Racing Predictions Model</h2>
 <p>All of the below graphs showcase the 2023 ratings and results from the predictions model for the top 2 horses in each race using implied value between the rated price and the BSP with negative value (good lays) on the left and positive value (good backs) on the right.</p>
 <p>A profitable strategy could include using a value range between a trough on the left and a peak on the right which shows the highest profitability.
@@ -2948,11 +2956,17 @@ We have previously done <a href="https://betfair-datascientists.github.io/tutori
 <p><img alt="Proportional Back 10 or more runners" src="../img/PB_GT10.png" /></p>
 <p><img alt="Flat Lay Less Than 10 Runners" src="../img/FL_LT10.png" /></p>
 <p><img alt="Flat Lay Win 10 or more runners" src="../img/FL_GT10.png" /></p>
+<h3 id="state-based">State Based</h3>
+<p><img alt="Flat Lay VIC" src="../img/FL_VIC.png" /></p>
+<p><img alt="Flat Lay NSW" src="../img/FL_NSW.png" /></p>
+<p><img alt="Flat Lay WA" src="../img/FL_WA.png" /></p>
+<p><img alt="Flat Lay QLD" src="../img/FL_QLD.png" /></p>
+<p><img alt="Flat Lay All without NSW" src="../img/FL_EXNSW.png" /></p>
 <h2 id="practically-betting-a-value-range">Practically betting a value range</h2>
 <p>If you were to bet a value range, say laying the Top 2 Runners in WA races where the value of the best available price is between -7% and 0%, how would you do that?</p>
 <p>Well, you would need to first calculate what those boundary prices would be. The upper bound of 0% is easy, that's simply the rated price.
 The lower bound of -7% requires a bit of calculation but comes out as:</p>
-<p><img alt="Price Boundary Calculation" src="../img/priceBoundary.JPG" /></p>
+<p><img alt="Price Boundary Calculation" src="../img/priceBoundary.JPG" /> ('7' being your value target)</p>
 <p>For example, if a horse at Ascot had a rated price of $3.85 and the upper and lower boundaries for your betting price would be $3.03 and $3.85 (noting that the prices must be converted to valid Betfair ticks).
 Now to bet this practically, you can easily place a limit BSP lay bet with the 0% price as your upper bound. However, you cannot specify a minimum lay price, so how can you do that?</p>
 <p>Using a third party tool like Bet Angel or a bot directly using the Betfair API, the program can read the available prices and then only bet if the available price is within your range.

@@ -24,7 +24,7 @@ There are several ways in which you could slice and dice the historical ratings 
 Some of the potential features you could include in such an analysis are:
 
 - Race Type (e.g. Handicaps, Maidens, Group Races etc.)
-- Race Distance (segmented into buckets like Spring, Middle, Staying)
+- Race Distance (segmented into buckets like Sprint, Middle, Staying)
 - Model Rank (How a horse has been rated compared to other horses in the race)
 - Number of Runners (Does too many runners introduce too much variance?)
 - Implied Value (The difference in implied winning probability between the rated price and the BSP)
@@ -43,8 +43,7 @@ If you decide that a selection is worth backing, either for the confidence the m
 Proportional staking is also another option. This means taking a fixed stake for a whole market, say $100, and then assigning a proportion of this stake to the implied winning probability given by the rated price.
 If a horse has a rated price of $5, this implies a winning probability of 20% (1/5). So the proportional stake for a $100 total stake would be 20% of $100 or $20.
 
-If, on the other hand, you believe the selection is worth laying, because the market over values it, then you could use a fixed liability at BSP to lay it. 
-Proportional liability is possible to use as well, except this isn't possible to do at BSP as you can't know what the BSP is going to be to figure out your proportional liability.
+If, on the other hand, you believe the selection is worth laying, because the market over values it, then you could use a fixed or proportional liability at BSP to lay it. There are others too like Kelly and the dreaded Martingale though they are beyond the scope of this article
 
 ## Analysis of the Horse Racing Predictions Model
 
@@ -114,6 +113,18 @@ We have previously done [another tutorial](https://betfair-datascientists.github
 
 ![Flat Lay Win 10 or more runners](./img/FL_GT10.png)
 
+### State Based
+
+![Flat Lay VIC](./img/FL_VIC.png)
+
+![Flat Lay NSW](./img/FL_NSW.png)
+
+![Flat Lay WA](./img/FL_WA.png)
+
+![Flat Lay QLD](./img/FL_QLD.png)
+
+![Flat Lay All without NSW](./img/FL_EXNSW.png)
+
 ## Practically betting a value range
 
 If you were to bet a value range, say laying the Top 2 Runners in WA races where the value of the best available price is between -7% and 0%, how would you do that?
@@ -121,7 +132,7 @@ If you were to bet a value range, say laying the Top 2 Runners in WA races where
 Well, you would need to first calculate what those boundary prices would be. The upper bound of 0% is easy, that's simply the rated price.
 The lower bound of -7% requires a bit of calculation but comes out as:
 
-![Price Boundary Calculation](./img/priceBoundary.JPG)
+![Price Boundary Calculation](./img/priceBoundary.JPG) ('7' being your value target)
 
 For example, if a horse at Ascot had a rated price of $3.85 and the upper and lower boundaries for your betting price would be $3.03 and $3.85 (noting that the prices must be converted to valid Betfair ticks).
 Now to bet this practically, you can easily place a limit BSP lay bet with the 0% price as your upper bound. However, you cannot specify a minimum lay price, so how can you do that?

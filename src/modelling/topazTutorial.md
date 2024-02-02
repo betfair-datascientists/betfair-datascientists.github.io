@@ -175,6 +175,7 @@ TopazData = TopazData[['state',
                     'resultMargin',
                     'resultMarginLengths']]
 
+# Dropping all rows with no place - meaning the dog was scratched/reserve not used or the meeting is in the future or was abandoned
 TopazData = TopazData.dropna(subset=['place'], how='all')    
 
 # Dropping duplicate rows
@@ -197,9 +198,7 @@ TrackDict = {
     'Palmerston Nth (NZ)':'Manawatu',
     'Sandown (SAP)':'Sandown Park',
     'Southland (NZ)':'Ascot Park',
-    'Tokoroa (NZ)':'Townsville',
-    'Townsville':'Traralgon',
-    'Traralgon':'Wagga',
+    'Tokoroa (NZ)':'Tokoroa',
     'Waikato (NZ)':'Cambridge',
     'Wanganui (NZ)':'Hatrick',
     'Taranaki (NZ)':'Taranaki',
@@ -212,7 +211,6 @@ TrackDict = {
 TopazData['track'] = TopazData['track'].replace(TrackDict)
 
 # convert our two date fields to datetime
-
 TopazData['meetingDate'] = pd.to_datetime(TopazData['meetingDate'])
 TopazData['meetingDate'] = TopazData['meetingDate'].dt.strftime('%Y-%m-%d')
 
@@ -220,13 +218,11 @@ TopazData['dateWhelped'] = pd.to_datetime(TopazData['dateWhelped'])
 TopazData['dateWhelped'] = TopazData['dateWhelped'].dt.strftime('%Y-%m-%d')
 
 # remove apostrophes from the names
-
 TopazData['dogName']=TopazData['dogName'].str.replace("'","")
 TopazData['sireName']=TopazData['sireName'].str.replace("'","")
 TopazData['damName']=TopazData['damName'].str.replace("'","")
 
-# split out the Last5 column so results for the previous 5 races can be split
-
+# split out the last5 column so results for the previous 5 races can be split
 TopazData['last5'] = TopazData['last5'].astype(str)
 
 # Function to extract numbers from the 'last5' column

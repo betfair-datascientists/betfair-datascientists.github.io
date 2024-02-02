@@ -2974,92 +2974,88 @@ Access can only be provided to Betfair Australia or New Zealand customers with a
 <a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>                    &#39;resultMargin&#39;,
 <a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>                    &#39;resultMarginLengths&#39;]]
 <a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>TopazData = TopazData.dropna(subset=[&#39;place&#39;], how=&#39;all&#39;)    
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a># Dropping duplicate rows
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>TopazData.drop_duplicates(inplace=True)
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>
-<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a># If you want to reset the index after dropping duplicates
-<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>TopazData.reset_index(drop=True, inplace=True)
-<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>
-<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a># Let&#39;s correct the track names to align with Betfair names (Not all tracks in Topaz are on the exchange due to being closed or not hosting TAB-meetings)
-<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a># We&#39;re not using the NZ tracks in this tutorial, however they are included below for completeness
-<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a># The &quot;Straight&quot; tracks at Murray Bridge and Richmond are not differentiated on Betfair but we can treat these later.
-<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>
-<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>TrackDict = {
-<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>    &#39;Auckland (NZ)&#39;:&#39;Manukau&#39;,
-<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>    &#39;Christchurch (NZ)&#39;:&#39;Addington&#39;,
-<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>    &#39;Dport @ HOB&#39;:&#39;Hobart&#39;,
-<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>    &#39;Dport @ LCN&#39;:&#39;Launceston&#39;,
-<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>    &#39;Meadows (MEP)&#39;:&#39;The Meadows&#39;,
-<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>    &#39;Otago (NZ)&#39;:&#39;Forbury Park&#39;,
-<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>    &#39;Palmerston Nth (NZ)&#39;:&#39;Manawatu&#39;,
-<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>    &#39;Sandown (SAP)&#39;:&#39;Sandown Park&#39;,
-<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>    &#39;Southland (NZ)&#39;:&#39;Ascot Park&#39;,
-<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>    &#39;Tokoroa (NZ)&#39;:&#39;Townsville&#39;,
-<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>    &#39;Townsville&#39;:&#39;Traralgon&#39;,
-<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>    &#39;Traralgon&#39;:&#39;Wagga&#39;,
-<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>    &#39;Waikato (NZ)&#39;:&#39;Cambridge&#39;,
-<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>    &#39;Wanganui (NZ)&#39;:&#39;Hatrick&#39;,
-<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>    &#39;Taranaki (NZ)&#39;:&#39;Taranaki&#39;,
-<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>    &#39;Ashburton (NZ)&#39;:&#39;Ashburton&#39;,
-<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>    &#39;Richmond (RIS)&#39;:&#39;Richmond Straight&#39;,
-<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>    &#39;Murray Bridge (MBR)&#39;:&#39;Murray Bridge&#39;,
-<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>    &#39;Murray Bridge (MBS)&#39;:&#39;Murray Bridge Straight&#39;
-<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>}
-<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a>
-<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>TopazData[&#39;track&#39;] = TopazData[&#39;track&#39;].replace(TrackDict)
-<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a>
-<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a># convert our two date fields to datetime
-<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>
-<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>TopazData[&#39;meetingDate&#39;] = pd.to_datetime(TopazData[&#39;meetingDate&#39;])
-<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a>TopazData[&#39;meetingDate&#39;] = TopazData[&#39;meetingDate&#39;].dt.strftime(&#39;%Y-%m-%d&#39;)
-<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a>
-<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>TopazData[&#39;dateWhelped&#39;] = pd.to_datetime(TopazData[&#39;dateWhelped&#39;])
-<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a>TopazData[&#39;dateWhelped&#39;] = TopazData[&#39;dateWhelped&#39;].dt.strftime(&#39;%Y-%m-%d&#39;)
-<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a>
-<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a># remove apostrophes from the names
-<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a>
-<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a>TopazData[&#39;dogName&#39;]=TopazData[&#39;dogName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
-<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a>TopazData[&#39;sireName&#39;]=TopazData[&#39;sireName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
-<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a>TopazData[&#39;damName&#39;]=TopazData[&#39;damName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a># Dropping all rows with no place - meaning the dog was scratched/reserve not used or the meeting is in the future or was abandoned
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>TopazData = TopazData.dropna(subset=[&#39;place&#39;], how=&#39;all&#39;)    
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a># Dropping duplicate rows
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>TopazData.drop_duplicates(inplace=True)
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a># If you want to reset the index after dropping duplicates
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>TopazData.reset_index(drop=True, inplace=True)
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a># Let&#39;s correct the track names to align with Betfair names (Not all tracks in Topaz are on the exchange due to being closed or not hosting TAB-meetings)
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a># We&#39;re not using the NZ tracks in this tutorial, however they are included below for completeness
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a># The &quot;Straight&quot; tracks at Murray Bridge and Richmond are not differentiated on Betfair but we can treat these later.
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>TrackDict = {
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>    &#39;Auckland (NZ)&#39;:&#39;Manukau&#39;,
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>    &#39;Christchurch (NZ)&#39;:&#39;Addington&#39;,
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>    &#39;Dport @ HOB&#39;:&#39;Hobart&#39;,
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>    &#39;Dport @ LCN&#39;:&#39;Launceston&#39;,
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>    &#39;Meadows (MEP)&#39;:&#39;The Meadows&#39;,
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>    &#39;Otago (NZ)&#39;:&#39;Forbury Park&#39;,
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>    &#39;Palmerston Nth (NZ)&#39;:&#39;Manawatu&#39;,
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>    &#39;Sandown (SAP)&#39;:&#39;Sandown Park&#39;,
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>    &#39;Southland (NZ)&#39;:&#39;Ascot Park&#39;,
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>    &#39;Tokoroa (NZ)&#39;:&#39;Tokoroa&#39;,
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>    &#39;Waikato (NZ)&#39;:&#39;Cambridge&#39;,
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>    &#39;Wanganui (NZ)&#39;:&#39;Hatrick&#39;,
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>    &#39;Taranaki (NZ)&#39;:&#39;Taranaki&#39;,
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>    &#39;Ashburton (NZ)&#39;:&#39;Ashburton&#39;,
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>    &#39;Richmond (RIS)&#39;:&#39;Richmond Straight&#39;,
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>    &#39;Murray Bridge (MBR)&#39;:&#39;Murray Bridge&#39;,
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>    &#39;Murray Bridge (MBS)&#39;:&#39;Murray Bridge Straight&#39;
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>}
+<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>
+<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a>TopazData[&#39;track&#39;] = TopazData[&#39;track&#39;].replace(TrackDict)
+<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>
+<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a># convert our two date fields to datetime
+<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>TopazData[&#39;meetingDate&#39;] = pd.to_datetime(TopazData[&#39;meetingDate&#39;])
+<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>TopazData[&#39;meetingDate&#39;] = TopazData[&#39;meetingDate&#39;].dt.strftime(&#39;%Y-%m-%d&#39;)
+<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>
+<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a>TopazData[&#39;dateWhelped&#39;] = pd.to_datetime(TopazData[&#39;dateWhelped&#39;])
+<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a>TopazData[&#39;dateWhelped&#39;] = TopazData[&#39;dateWhelped&#39;].dt.strftime(&#39;%Y-%m-%d&#39;)
+<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>
+<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a># remove apostrophes from the names
+<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a>TopazData[&#39;dogName&#39;]=TopazData[&#39;dogName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
+<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a>TopazData[&#39;sireName&#39;]=TopazData[&#39;sireName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
+<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a>TopazData[&#39;damName&#39;]=TopazData[&#39;damName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
+<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a>
+<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a># split out the last5 column so results for the previous 5 races can be split
+<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a>TopazData[&#39;last5&#39;] = TopazData[&#39;last5&#39;].astype(str)
 <a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>
-<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a># split out the Last5 column so results for the previous 5 races can be split
-<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a>
-<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a>TopazData[&#39;last5&#39;] = TopazData[&#39;last5&#39;].astype(str)
-<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a>
-<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a># Function to extract numbers from the &#39;last5&#39; column
-<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a>def extract_numbers(row):
-<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a>    try:
-<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>        numbers = list(map(int, row.split(&#39;-&#39;)))
-<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a>        # If there are fewer than 5 numbers, pad with zeros
-<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a>        numbers += [0] * (5 - len(numbers))
-<a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a>        return numbers
-<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a>    except ValueError:
-<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a>        # Handle the case where the string cannot be split into integers
-<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>        return [0, 0, 0, 0, 0]
+<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a># Function to extract numbers from the &#39;last5&#39; column
+<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a>def extract_numbers(row):
+<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a>    try:
+<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a>        numbers = list(map(int, row.split(&#39;-&#39;)))
+<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a>        # If there are fewer than 5 numbers, pad with zeros
+<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a>        numbers += [0] * (5 - len(numbers))
+<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a>        return numbers
+<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>    except ValueError:
+<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a>        # Handle the case where the string cannot be split into integers
+<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a>        return [0, 0, 0, 0, 0]
+<a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a>
+<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a># Apply the function to create new columns for each position
+<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a>TopazData[[&#39;positionLastRace&#39;, &#39;positionSecondLastRace&#39;, &#39;positionThirdLastRace&#39;,
+<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>    &#39;positionFourthLastRace&#39;, &#39;positionFifthLastRace&#39;]] = TopazData[&#39;last5&#39;].apply(extract_numbers).apply(pd.Series)
 <a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a>
-<a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a># Apply the function to create new columns for each position
-<a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a>TopazData[[&#39;positionLastRace&#39;, &#39;positionSecondLastRace&#39;, &#39;positionThirdLastRace&#39;,
-<a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a>    &#39;positionFourthLastRace&#39;, &#39;positionFifthLastRace&#39;]] = TopazData[&#39;last5&#39;].apply(extract_numbers).apply(pd.Series)
+<a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a># Convert the &#39;pir&#39; column to string so we can find the dogs position at the last split to determine if it&#39;s a slow or fast finisher
+<a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a>TopazData[&#39;pir&#39;] = TopazData[&#39;pir&#39;].fillna(0)
+<a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a>TopazData[&#39;pir&#39;] = TopazData[&#39;pir&#39;].astype(int).astype(str)
 <a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a>
-<a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a># Convert the &#39;pir&#39; column to string so we can find the dogs position at the last split to determine if it&#39;s a slow or fast finisher
-<a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a>TopazData[&#39;pir&#39;] = TopazData[&#39;pir&#39;].fillna(0)
-<a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a>TopazData[&#39;pir&#39;] = TopazData[&#39;pir&#39;].astype(int).astype(str)
-<a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a>
-<a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a># Extract the second last letter and create a new column &#39;2ndLastPIR&#39;
-<a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a>TopazData[&#39;2ndLastPIR&#39;] = TopazData[&#39;pir&#39;].apply(lambda x: x[-2] if len(x) &gt;= 2 else &#39;&#39;)
-<a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a>
-<a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a># Remove &#39;L&#39; from resultMarginLengths
-<a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a>TopazData[&#39;resultMarginLengths&#39;] = TopazData[&#39;resultMarginLengths&#39;].str.replace(&#39;L&#39;, &#39;&#39;)
+<a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a># Extract the second last letter and create a new column &#39;2ndLastPIR&#39;
+<a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a>TopazData[&#39;2ndLastPIR&#39;] = TopazData[&#39;pir&#39;].apply(lambda x: x[-2] if len(x) &gt;= 2 else &#39;&#39;)
+<a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a>
+<a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a># Remove &#39;L&#39; from resultMarginLengths
+<a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a>TopazData[&#39;resultMarginLengths&#39;] = TopazData[&#39;resultMarginLengths&#39;].str.replace(&#39;L&#39;, &#39;&#39;)
+<a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a>
+<a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a># Dogs that placed 1 and 2 have the same entry in resultMargin and resultMarginLengths
+<a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a># it makes sense to think of these columns as losing margins so logically the dog that won should have 0 for these fields
+<a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a>TopazData.loc[TopazData[&#39;place&#39;] == 1, [&#39;resultMargin&#39;, &#39;resultMarginLengths&#39;]] = 0
 <a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a>
-<a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a># Dogs that placed 1 and 2 have the same entry in resultMargin and resultMarginLengths
-<a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a># it makes sense to think of these columns as losing margins so logically the dog that won should have 0 for these fields
-<a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a>TopazData.loc[TopazData[&#39;place&#39;] == 1, [&#39;resultMargin&#39;, &#39;resultMarginLengths&#39;]] = 0
-<a id="__codelineno-1-125" name="__codelineno-1-125" href="#__codelineno-1-125"></a>
-<a id="__codelineno-1-126" name="__codelineno-1-126" href="#__codelineno-1-126"></a># Forward fill the weight field for each dog from its previous weight. The data here is about 75% complete and doing this may result in some data that&#39;s off by 1-2%
-<a id="__codelineno-1-127" name="__codelineno-1-127" href="#__codelineno-1-127"></a>TopazData = TopazData.sort_values(by=[&#39;dogId&#39;, &#39;meetingDate&#39;])
-<a id="__codelineno-1-128" name="__codelineno-1-128" href="#__codelineno-1-128"></a>TopazData[&#39;weightInKg&#39;] = TopazData.groupby(&#39;dogId&#39;)[&#39;weightInKg&#39;].transform(lambda x: x.ffill())
+<a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a># Forward fill the weight field for each dog from its previous weight. The data here is about 75% complete and doing this may result in some data that&#39;s off by 1-2%
+<a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a>TopazData = TopazData.sort_values(by=[&#39;dogId&#39;, &#39;meetingDate&#39;])
+<a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a>TopazData[&#39;weightInKg&#39;] = TopazData.groupby(&#39;dogId&#39;)[&#39;weightInKg&#39;].transform(lambda x: x.ffill())
 </code></pre></div>
 <p>Here we've cleaned our dataset as much as we can. Next it's on to the feature creation!</p>
 <h2 id="to-be-continued">To be continued...</h2>

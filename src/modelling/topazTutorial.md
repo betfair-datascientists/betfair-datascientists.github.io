@@ -139,7 +139,12 @@ for i in range(0, len(date_range), 6):
                     break
                 except requests.HTTPError as http_err:
                     if http_err.response.status_code == 404:
-                        continue
+                        race_run = topaz_api.get_race_runs(race_id=race_id)
+                        file_path = code + '_DATA.csv'
+                        file_exists = os.path.isfile(file_path)
+                        header_param = not file_exists
+                        race_run.to_csv(code + '_DATA.csv', mode='a', header=header_param, index=False)
+                        break
                 except Exception as e:
                     print(race_id)
                     result_retries -= 1

@@ -40,11 +40,12 @@ from datetime import datetime, timedelta
 from tqdm import tqdm
 import pandas as pd
 from topaz import TopazAPI
+import requests
 
 api_key = ''  # Insert your API key
 topaz_api = TopazAPI(api_key)
 
-# Generate a date range
+# Generate Date List
 def generate_date_range(start_date, end_date):
     start_date = start_date
     end_date = end_date
@@ -59,8 +60,8 @@ def generate_date_range(start_date, end_date):
 
 # Input the number of days of historical data required
 # To input absolute dates rather than a timedelta use 'datetime(YYYY,M,D)'
-start_date = (datetime.today() - timedelta(days=365))
-end_date = (datetime.today() - timedelta(days=1))
+start_date = (datetime.today() - timedelta(days=30))
+end_date = (datetime.today() + timedelta(days=1))
 
 # Generate the date range
 date_range = generate_date_range(start_date, end_date)
@@ -71,8 +72,7 @@ for i in range(0, len(date_range), 6):
     print(start_block_date)
     end_block_date = date_range[min(i + 6, len(date_range) - 1)]  # Ensure the end date is within the range
 
-    codes = ['NT', 'VIC', 'NSW', 'SA', 'WA', 'QLD', 'TAS']
-
+    codes = ['NZ','NT','VIC','NSW','SA','WA','QLD','TAS']
     for code in codes:
         all_races = []
         print(code)
@@ -107,12 +107,41 @@ for i in range(0, len(date_range), 6):
                 # Get race run data
                 try:
                     race_run = topaz_api.get_race_runs(race_id=race_id)
+                    race_result_json = topaz_api.get_race_result(race_id=race_id)
                     file_path = code + '_DATA.csv'
                     file_exists = os.path.isfile(file_path)
                     header_param = not file_exists
+                    
+                    race_result = pd.DataFrame.from_dict([race_result_json])
+                    split_times_df = pd.DataFrame(race_result['splitTimes'].tolist(),index=race_result.index)
+                    
+                    splits_dict = split_times_df.T.stack().to_frame()
+                    splits_dict.reset_index(drop=True, inplace= True)
+                    splits_normalised = pd.json_normalize(splits_dict[0])
+                    
+                    if len(splits_normalised) == 0:
+                        race_run.to_csv(code + '_DATA.csv', mode='a', header=header_param, index=False)
+                        break
+
+                    first_split = splits_normalised[splits_normalised['splitTimeMarker'] == 1]
+                    first_split = first_split[['runId','position','time']]
+                    first_split = first_split.rename(columns={'position':'firstSplitPosition','time':'firstSplitTime'})
+                    second_split = splits_normalised[splits_normalised['splitTimeMarker'] == 2]
+                    second_split = second_split[['runId','position','time']]
+                    second_split = second_split.rename(columns={'position':'secondSplitPosition','time':'secondSplitTime'})
+
+                    split_times = splits_normalised[['runId']]
+                    split_times = pd.merge(split_times,first_split,how='left',on=['runId'])
+                    split_times = pd.merge(split_times,second_split,how='left',on=['runId'])
+
+                    race_run = pd.merge(race_run,split_times,how='left',on=['runId'])
                     race_run.to_csv(code + '_DATA.csv', mode='a', header=header_param, index=False)
                     break
-                except Exception:
+                except requests.HTTPError as http_err:
+                    if http_err.response.status_code == 404:
+                        continue
+                except Exception as e:
+                    print(race_id)
                     result_retries -= 1
                     if result_retries > 0:
                         time.sleep(15)

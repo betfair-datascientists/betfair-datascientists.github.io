@@ -59,8 +59,7 @@ def generate_date_range(start_date, end_date):
     return date_list
 
 # Input the number of days of historical data required
-# To input absolute dates rather than a timedelta use 'datetime(YYYY,M,D)'
-start_date = (datetime.today() - timedelta(days=30))
+start_date = datetime(2020,1,1)
 end_date = (datetime.today() + timedelta(days=1))
 
 # Generate the date range
@@ -139,7 +138,6 @@ for i in range(0, len(date_range), 6):
                     break
                 except requests.HTTPError as http_err:
                     if http_err.response.status_code == 404:
-                        race_run = topaz_api.get_race_runs(race_id=race_id)
                         file_path = code + '_DATA.csv'
                         file_exists = os.path.isfile(file_path)
                         header_param = not file_exists
@@ -206,8 +204,7 @@ TopazData = TopazData[['state',
                     'place',
                     'prizeMoney',
                     'resultTime',
-                    'resultMargin',
-                    'resultMarginLengths']]
+                    'resultMargin']]
 
 # Dropping all rows with no place - meaning the dog was scratched/reserve not used or the meeting is in the future or was abandoned
 TopazData = TopazData.dropna(subset=['place'], how='all')    
@@ -246,10 +243,7 @@ TopazData['track'] = TopazData['track'].replace(TrackDict)
 
 # convert our two date fields to datetime
 TopazData['meetingDate'] = pd.to_datetime(TopazData['meetingDate'])
-TopazData['meetingDate'] = TopazData['meetingDate'].dt.strftime('%Y-%m-%d')
-
 TopazData['dateWhelped'] = pd.to_datetime(TopazData['dateWhelped'])
-TopazData['dateWhelped'] = TopazData['dateWhelped'].dt.strftime('%Y-%m-%d')
 
 # remove apostrophes from the names
 TopazData['dogName']=TopazData['dogName'].str.replace("'","")
@@ -278,15 +272,9 @@ TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace'
 TopazData['pir'] = TopazData['pir'].fillna(0)
 TopazData['pir'] = TopazData['pir'].astype(int).astype(str)
 
-# Extract the second last letter and create a new column '2ndLastPIR'
-TopazData['2ndLastPIR'] = TopazData['pir'].apply(lambda x: x[-2] if len(x) >= 2 else '')
-
-# Remove 'L' from resultMarginLengths
-TopazData['resultMarginLengths'] = TopazData['resultMarginLengths'].str.replace('L', '')
-
-# Dogs that placed 1 and 2 have the same entry in resultMargin and resultMarginLengths
+# Dogs that placed 1 and 2 have the same entry in resultMargin
 # it makes sense to think of these columns as losing margins so logically the dog that won should have 0 for these fields
-TopazData.loc[TopazData['place'] == 1, ['resultMargin', 'resultMarginLengths']] = 0
+TopazData.loc[TopazData['place'] == 1, ['resultMargin']] = 0
 
 # Forward fill the weight field for each dog from its previous weight. The data here is about 75% complete and doing this may result in some data that's off by 1-2%
 TopazData = TopazData.sort_values(by=['dogId', 'meetingDate'])
@@ -295,6 +283,164 @@ TopazData['weightInKg'] = TopazData.groupby('dogId')['weightInKg'].transform(lam
 ```
 
 Here we've cleaned our dataset as much as we can. Next it's on to the feature creation!
+
+## Create the features
+
+```
+#Let's utilise our position columns to generate some win percentages
+TopazData['lastFiveWinPercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] == 1).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 0).sum(axis=1))
+TopazData['lastFiveWinPercentage'].fillna(0,inplace=True)
+TopazData['lastFivePlacePercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] <= 3).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 0).sum(axis=1))
+TopazData['lastFivePlacePercentage'].fillna(0,inplace=True)
+TopazData.replace([np.inf, -np.inf], 0, inplace=True)
+
+#Create a feature for dog's age
+TopazData['dogAge'] = (TopazData['meetingDate'] - TopazData['dateWhelped']).dt.days
+TopazData['dogAge'] = MinMaxScaler().fit_transform(TopazData[['dogAge']])
+
+# Extract the second last letter and create a new column '2ndLastPIR'
+TopazData['2ndLastPIR'] = TopazData['pir'].apply(lambda x: x[-2] if len(x) >= 2 else None)
+TopazData['2ndLastPIR'].fillna(TopazData['place'],inplace=True)
+TopazData['2ndLastPIR'] = TopazData['2ndLastPIR'].astype(int)
+
+# Create a feature that calculates places gained/conceded in the home straight
+TopazData['finishingPlaceMovement'] = TopazData['2ndLastPIR'] - TopazData['place']
+TopazData['finishingPlaceMovement'] = MinMaxScaler().fit_transform(TopazData[['finishingPlaceMovement']])
+
+# Calculate normalised value for dog weight
+TopazData = TopazData.sort_values(by=['raceId'])
+TopazData['weightInKgScaled'] = MinMaxScaler().fit_transform(TopazData[['weightInKg']])
+
+#Scale values as required
+TopazData['prizemoneyLog'] = np.log10(TopazData['prizeMoney'] + 1)
+TopazData['placeLog'] = np.log10(TopazData['place'] + 1)
+TopazData['marginLog'] = np.log10(TopazData['resultMargin'] + 1)
+
+# Calculate median winner time per track/distance
+win_results = TopazData[TopazData['place'] == 1]
+median_win_time = pd.DataFrame(data=win_results[win_results['resultTime'] > 0].groupby(['track', 'distance'])['resultTime'].median()).rename(columns={"resultTime": "runTimeMedian"}).reset_index()
+median_win_time['speedIndex'] = (median_win_time['runTimeMedian'] / median_win_time['distance'])
+median_win_time['speedIndex'] = MinMaxScaler().fit_transform(median_win_time[['speedIndex']])
+
+# Merge with median winner time
+TopazData = TopazData.merge(median_win_time, on=['track', 'distance'], how='left')
+
+# Normalise time comparison
+TopazData['runTimeNorm'] = (TopazData['runTimeMedian'] / TopazData['resultTime']).clip(0.9, 1.1)
+TopazData['runTimeNorm'] = MinMaxScaler().fit_transform(TopazData[['runTimeNorm']])
+
+# Sort the DataFrame by 'RaceId' and 'Box'
+TopazData = TopazData.sort_values(by=['raceId', 'boxNumber'])
+
+# Check if there is an entry equal to boxNumber + 1
+TopazData['hasEntryBoxNumberPlus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(-1) == TopazData['boxNumber'] + 1) | (TopazData['boxNumber'] == 8)
+TopazData['hasEntryBoxNumberMinus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(1) == TopazData['boxNumber'] - 1)
+# Convert boolean values to 1
+TopazData['hasEntryBoxNumberPlus1'] = TopazData['hasEntryBoxNumberPlus1'].astype(int)
+TopazData['hasEntryBoxNumberMinus1'] = TopazData['hasEntryBoxNumberMinus1'].astype(int)
+# Display the resulting DataFrame which shows adjacent Vacant Boxes
+# Box 1 is treated as having a vacant box to the left always as we are looking how much space the dog has to move.
+TopazData['adjacentVacantBoxes'] = 2 - TopazData['hasEntryBoxNumberPlus1'] - TopazData['hasEntryBoxNumberMinus1']
+
+TopazData['win'] = TopazData['place'].apply(lambda x: 1 if x == 1 else 0)
+
+# Calculate box winning percentage for each track/distance
+box_win_percent = pd.DataFrame(data=TopazData.groupby(['track', 'distance', 'boxNumber','adjacentVacantBoxes'])['win'].mean()).rename(columns={"win": "boxWinPercent"}).reset_index()
+# Add to dog results dataframe
+TopazData = TopazData.merge(box_win_percent, on=['track', 'distance', 'boxNumber','adjacentVacantBoxes'], how='left')
+# Display example of barrier winning probabilities
+display(box_win_percent.head(8))
+
+```
+Now we've created some basic features, it's time to create our big group of features where we iterate over different subsets, variables and time points to generate a large number of different features
+
+```
+import itertools
+
+dataset = TopazData.copy()
+dataset['meetingDate'] = pd.to_datetime(dataset['meetingDate'])
+
+# Calculate values for dog, trainer, dam and sire
+subsets = ['dog', 'trainer', 'dam', 'sire']
+
+# Use rolling window of 28, 91 and 365 days
+rolling_windows = ['28D','91D', '365D']
+
+# Features to use for rolling windows calculation
+features = ['runTimeNorm', 'placeLog', 'prizemoneyLog', 'marginLog','finishingPlaceMovement']
+
+# Aggregation functions to apply
+aggregates = ['min', 'max', 'mean', 'median', 'std']
+
+# Keep track of generated feature names
+feature_cols = []
+
+for i in subsets:
+    # Generate rolling window features
+    idnumber = i + 'Id'
+
+    subset_dataframe = dataset[['meetingDate',idnumber] + features]
+    average_df = pd.DataFrame()
+
+    for feature in features:
+        # Group by 'damId' and 'meetingDate' and calculate the average of the current feature
+        feature_average_df = subset_dataframe.groupby([idnumber, 'meetingDate'])[feature].mean().reset_index()
+        # Rename the feature column to indicate it's the average of that feature
+        feature_average_df.rename(columns={feature: f'{feature}{i}DayAverage'}, inplace=True)
+    
+        # If average_df is empty, assign the feature_average_df to it
+        if average_df.empty:
+            average_df = feature_average_df
+        else:
+            # Otherwise, merge feature_average_df with average_df
+            average_df = pd.merge(average_df, feature_average_df, on=[idnumber, 'meetingDate'])
+
+        # Assuming df is your DataFrame
+    column_names = average_df.columns.tolist()
+    # Columns to exclude
+    columns_to_exclude = [idnumber,'meetingDate']
+    # Exclude specified columns from the list
+    column_names_filtered = [col for col in column_names if col not in columns_to_exclude]
+
+    average_df.drop_duplicates(inplace=True)
+    average_df['meetingDate'] = pd.to_datetime(average_df['meetingDate'])
+    average_df = average_df.set_index([idnumber, 'meetingDate']).sort_index() 
+
+    for rolling_window in rolling_windows:
+        print(f'Processing {i} rolling window {rolling_window} days')
+
+        rolling_result = (
+            average_df
+            .reset_index(level=0)
+            .groupby(idnumber)[column_names_filtered]
+            .rolling(rolling_window)  # Use timedelta for rolling window
+            .agg(aggregates)
+            .groupby(level=0)
+            .shift(1)
+        )
+
+        # Generate list of rolling window feature names (eg: RunTime_norm_min_365D)
+        agg_features_cols = [f'{i}_{f}_{a}_{rolling_window}' for f, a in itertools.product(features, aggregates)]
+        # Add features to dataset
+        average_df[agg_features_cols] = rolling_result
+        # Keep track of generated feature names
+        feature_cols.extend(agg_features_cols)
+        average_df.fillna(0, inplace=True)
+    
+    average_df.reset_index(inplace=True)
+    dataset = pd.merge(dataset,average_df,on=[idnumber, 'meetingDate'])
+
+# Only keep data 12 months after the start date of your dataset since we've used a 365D rolling timeframe for some features
+feature_cols = np.unique(feature_cols).tolist()
+dataset = dataset[dataset['meetingDate'] >= '2021-01-01']
+dataset = dataset[['meetingDate','state','track','distance','raceId','raceTypeCode','raceNumber','rugNumber','trainerId','damId','sireId','win','dogAge','weightInKgScaled','lastFiveWinPercentage','lastFivePlacePercentage','boxWinPercent'] + feature_cols]
+
+#The below line will output your dataframe to a csv but may be too large to open in Excel.
+#dataset.to_csv('testing.csv',index=False)
+
+```
+
+Now that we've created our features, lets feed them into our Machine Learning Algorithm to generate some probabilities!
 
 ## To be continued...
 

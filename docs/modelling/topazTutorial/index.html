@@ -1004,6 +1004,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#create-the-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create the features
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#to-be-continued" class="md-nav__link">
     <span class="md-ellipsis">
       To be continued...
@@ -2866,99 +2875,97 @@ Access can only be provided to Betfair Australia or New Zealand customers with a
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="k">return</span> <span class="n">date_list</span>
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
 <a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="c1"># Input the number of days of historical data required</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1"># To input absolute dates rather than a timedelta use &#39;datetime(YYYY,M,D)&#39;</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">start_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">-</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">end_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="c1"># Generate the date range</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="n">date_range</span> <span class="o">=</span> <span class="n">generate_date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="c1"># Iterate over 7-day blocks</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_range</span><span class="p">),</span> <span class="mi">6</span><span class="p">):</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="n">start_block_date</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">start_block_date</span><span class="p">)</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">end_block_date</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_range</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># Ensure the end date is within the range</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NZ&#39;</span><span class="p">,</span><span class="s1">&#39;NT&#39;</span><span class="p">,</span><span class="s1">&#39;VIC&#39;</span><span class="p">,</span><span class="s1">&#39;NSW&#39;</span><span class="p">,</span><span class="s1">&#39;SA&#39;</span><span class="p">,</span><span class="s1">&#39;WA&#39;</span><span class="p">,</span><span class="s1">&#39;QLD&#39;</span><span class="p">,</span><span class="s1">&#39;TAS&#39;</span><span class="p">]</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="n">all_races</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="n">retries</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Number of retries</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>        <span class="k">while</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>            <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>                <span class="n">races</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_races</span><span class="p">(</span><span class="n">from_date</span><span class="o">=</span><span class="n">start_block_date</span><span class="p">,</span> <span class="n">to_date</span><span class="o">=</span><span class="n">end_block_date</span><span class="p">,</span> <span class="n">owning_authority_code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>                <span class="n">all_races</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">races</span><span class="p">)</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>                <span class="k">break</span>  <span class="c1"># Break out of the loop if successful</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error fetching races for </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>                <span class="n">retries</span> <span class="o">-=</span> <span class="mi">1</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>                <span class="k">if</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying in 30 seconds...&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>                <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max retries reached. Moving to the next block.&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>        <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>            <span class="n">all_races_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_races</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>            <span class="k">continue</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>        <span class="c1"># Extract unique race IDs</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>        <span class="n">race_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_races_df</span><span class="p">[</span><span class="s1">&#39;raceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>        <span class="k">for</span> <span class="n">race_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">race_ids</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing races&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;race&quot;</span><span class="p">):</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>            <span class="n">result_retries</span> <span class="o">=</span> <span class="mi">10</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>            <span class="k">while</span> <span class="n">result_retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>                <span class="c1"># Use tqdm to create a progress bar</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>                <span class="c1"># Get race run data</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>                <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>                    <span class="n">race_run</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_race_runs</span><span class="p">(</span><span class="n">race_id</span><span class="o">=</span><span class="n">race_id</span><span class="p">)</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>                    <span class="n">race_result_json</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_race_result</span><span class="p">(</span><span class="n">race_id</span><span class="o">=</span><span class="n">race_id</span><span class="p">)</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>                    <span class="n">file_path</span> <span class="o">=</span> <span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>                    <span class="n">file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>                    <span class="n">header_param</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">file_exists</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>                    <span class="n">race_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">([</span><span class="n">race_result_json</span><span class="p">])</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>                    <span class="n">split_times_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">race_result</span><span class="p">[</span><span class="s1">&#39;splitTimes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span><span class="n">index</span><span class="o">=</span><span class="n">race_result</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>                    <span class="n">splits_dict</span> <span class="o">=</span> <span class="n">split_times_df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>                    <span class="n">splits_dict</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>                    <span class="n">splits_normalised</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">splits_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>
-<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits_normalised</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>                        <span class="n">race_run</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header_param</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>                        <span class="k">break</span>
-<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>
-<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>                    <span class="n">first_split</span> <span class="o">=</span> <span class="n">splits_normalised</span><span class="p">[</span><span class="n">splits_normalised</span><span class="p">[</span><span class="s1">&#39;splitTimeMarker&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
-<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>                    <span class="n">first_split</span> <span class="o">=</span> <span class="n">first_split</span><span class="p">[[</span><span class="s1">&#39;runId&#39;</span><span class="p">,</span><span class="s1">&#39;position&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">]]</span>
-<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>                    <span class="n">first_split</span> <span class="o">=</span> <span class="n">first_split</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;position&#39;</span><span class="p">:</span><span class="s1">&#39;firstSplitPosition&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="s1">&#39;firstSplitTime&#39;</span><span class="p">})</span>
-<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>                    <span class="n">second_split</span> <span class="o">=</span> <span class="n">splits_normalised</span><span class="p">[</span><span class="n">splits_normalised</span><span class="p">[</span><span class="s1">&#39;splitTimeMarker&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
-<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>                    <span class="n">second_split</span> <span class="o">=</span> <span class="n">second_split</span><span class="p">[[</span><span class="s1">&#39;runId&#39;</span><span class="p">,</span><span class="s1">&#39;position&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">]]</span>
-<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>                    <span class="n">second_split</span> <span class="o">=</span> <span class="n">second_split</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;position&#39;</span><span class="p">:</span><span class="s1">&#39;secondSplitPosition&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="s1">&#39;secondSplitTime&#39;</span><span class="p">})</span>
-<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>
-<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>                    <span class="n">split_times</span> <span class="o">=</span> <span class="n">splits_normalised</span><span class="p">[[</span><span class="s1">&#39;runId&#39;</span><span class="p">]]</span>
-<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>                    <span class="n">split_times</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">split_times</span><span class="p">,</span><span class="n">first_split</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;runId&#39;</span><span class="p">])</span>
-<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>                    <span class="n">split_times</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">split_times</span><span class="p">,</span><span class="n">second_split</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;runId&#39;</span><span class="p">])</span>
-<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>
-<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>                    <span class="n">race_run</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">race_run</span><span class="p">,</span><span class="n">split_times</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;runId&#39;</span><span class="p">])</span>
-<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>                    <span class="n">race_run</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header_param</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>                    <span class="k">break</span>
-<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>                <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">http_err</span><span class="p">:</span>
-<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>                    <span class="k">if</span> <span class="n">http_err</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
-<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>                        <span class="n">race_run</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_race_runs</span><span class="p">(</span><span class="n">race_id</span><span class="o">=</span><span class="n">race_id</span><span class="p">)</span>
-<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>                        <span class="n">file_path</span> <span class="o">=</span> <span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span>
-<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>                        <span class="n">file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
-<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>                        <span class="n">header_param</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">file_exists</span>
-<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>                        <span class="n">race_run</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header_param</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>                        <span class="k">break</span>
-<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>                    <span class="nb">print</span><span class="p">(</span><span class="n">race_id</span><span class="p">)</span>
-<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>                    <span class="n">result_retries</span> <span class="o">-=</span> <span class="mi">1</span>
-<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>                    <span class="k">if</span> <span class="n">result_retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-<a id="__codelineno-0-117" name="__codelineno-0-117" href="#__codelineno-0-117"></a>                    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-0-118" name="__codelineno-0-118" href="#__codelineno-0-118"></a>                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="n">start_date</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2020</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">end_date</span> <span class="o">=</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="c1"># Generate the date range</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">date_range</span> <span class="o">=</span> <span class="n">generate_date_range</span><span class="p">(</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">)</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="c1"># Iterate over 7-day blocks</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_range</span><span class="p">),</span> <span class="mi">6</span><span class="p">):</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="n">start_block_date</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">start_block_date</span><span class="p">)</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">end_block_date</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">[</span><span class="nb">min</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">6</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">date_range</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>  <span class="c1"># Ensure the end date is within the range</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    <span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NZ&#39;</span><span class="p">,</span><span class="s1">&#39;NT&#39;</span><span class="p">,</span><span class="s1">&#39;VIC&#39;</span><span class="p">,</span><span class="s1">&#39;NSW&#39;</span><span class="p">,</span><span class="s1">&#39;SA&#39;</span><span class="p">,</span><span class="s1">&#39;WA&#39;</span><span class="p">,</span><span class="s1">&#39;QLD&#39;</span><span class="p">,</span><span class="s1">&#39;TAS&#39;</span><span class="p">]</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">codes</span><span class="p">:</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        <span class="n">all_races</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="n">retries</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1"># Number of retries</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="k">while</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>            <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>                <span class="n">races</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_races</span><span class="p">(</span><span class="n">from_date</span><span class="o">=</span><span class="n">start_block_date</span><span class="p">,</span> <span class="n">to_date</span><span class="o">=</span><span class="n">end_block_date</span><span class="p">,</span> <span class="n">owning_authority_code</span><span class="o">=</span><span class="n">code</span><span class="p">)</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>                <span class="n">all_races</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">races</span><span class="p">)</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>                <span class="k">break</span>  <span class="c1"># Break out of the loop if successful</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error fetching races for </span><span class="si">{</span><span class="n">code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>                <span class="n">retries</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>                <span class="k">if</span> <span class="n">retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Retrying in 30 seconds...&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>                    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>                <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>                    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Max retries reached. Moving to the next block.&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>        <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>            <span class="n">all_races_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_races</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>            <span class="k">continue</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>        <span class="c1"># Extract unique race IDs</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>        <span class="n">race_ids</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_races_df</span><span class="p">[</span><span class="s1">&#39;raceId&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>        <span class="k">for</span> <span class="n">race_id</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">race_ids</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Processing races&quot;</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;race&quot;</span><span class="p">):</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>            <span class="n">result_retries</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>            <span class="k">while</span> <span class="n">result_retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>                <span class="c1"># Use tqdm to create a progress bar</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>                <span class="c1"># Get race run data</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>                <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>                    <span class="n">race_run</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_race_runs</span><span class="p">(</span><span class="n">race_id</span><span class="o">=</span><span class="n">race_id</span><span class="p">)</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>                    <span class="n">race_result_json</span> <span class="o">=</span> <span class="n">topaz_api</span><span class="o">.</span><span class="n">get_race_result</span><span class="p">(</span><span class="n">race_id</span><span class="o">=</span><span class="n">race_id</span><span class="p">)</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>                    <span class="n">file_path</span> <span class="o">=</span> <span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a>                    <span class="n">file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a>                    <span class="n">header_param</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">file_exists</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a>                    <span class="n">race_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">([</span><span class="n">race_result_json</span><span class="p">])</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a>                    <span class="n">split_times_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">race_result</span><span class="p">[</span><span class="s1">&#39;splitTimes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span><span class="n">index</span><span class="o">=</span><span class="n">race_result</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>                    <span class="n">splits_dict</span> <span class="o">=</span> <span class="n">split_times_df</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>                    <span class="n">splits_dict</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>                    <span class="n">splits_normalised</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">splits_dict</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">splits_normalised</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>                        <span class="n">race_run</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header_param</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>                        <span class="k">break</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a>                    <span class="n">first_split</span> <span class="o">=</span> <span class="n">splits_normalised</span><span class="p">[</span><span class="n">splits_normalised</span><span class="p">[</span><span class="s1">&#39;splitTimeMarker&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a>                    <span class="n">first_split</span> <span class="o">=</span> <span class="n">first_split</span><span class="p">[[</span><span class="s1">&#39;runId&#39;</span><span class="p">,</span><span class="s1">&#39;position&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">]]</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a>                    <span class="n">first_split</span> <span class="o">=</span> <span class="n">first_split</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;position&#39;</span><span class="p">:</span><span class="s1">&#39;firstSplitPosition&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="s1">&#39;firstSplitTime&#39;</span><span class="p">})</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a>                    <span class="n">second_split</span> <span class="o">=</span> <span class="n">splits_normalised</span><span class="p">[</span><span class="n">splits_normalised</span><span class="p">[</span><span class="s1">&#39;splitTimeMarker&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">]</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a>                    <span class="n">second_split</span> <span class="o">=</span> <span class="n">second_split</span><span class="p">[[</span><span class="s1">&#39;runId&#39;</span><span class="p">,</span><span class="s1">&#39;position&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">]]</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a>                    <span class="n">second_split</span> <span class="o">=</span> <span class="n">second_split</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;position&#39;</span><span class="p">:</span><span class="s1">&#39;secondSplitPosition&#39;</span><span class="p">,</span><span class="s1">&#39;time&#39;</span><span class="p">:</span><span class="s1">&#39;secondSplitTime&#39;</span><span class="p">})</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a>
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a>                    <span class="n">split_times</span> <span class="o">=</span> <span class="n">splits_normalised</span><span class="p">[[</span><span class="s1">&#39;runId&#39;</span><span class="p">]]</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a>                    <span class="n">split_times</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">split_times</span><span class="p">,</span><span class="n">first_split</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;runId&#39;</span><span class="p">])</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a>                    <span class="n">split_times</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">split_times</span><span class="p">,</span><span class="n">second_split</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;runId&#39;</span><span class="p">])</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a>
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a>                    <span class="n">race_run</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">race_run</span><span class="p">,</span><span class="n">split_times</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;runId&#39;</span><span class="p">])</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a>                    <span class="n">race_run</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header_param</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a>                    <span class="k">break</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a>                <span class="k">except</span> <span class="n">requests</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">http_err</span><span class="p">:</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a>                    <span class="k">if</span> <span class="n">http_err</span><span class="o">.</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">404</span><span class="p">:</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a>                        <span class="n">file_path</span> <span class="o">=</span> <span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a>                        <span class="n">file_exists</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a>                        <span class="n">header_param</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">file_exists</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a>                        <span class="n">race_run</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">code</span> <span class="o">+</span> <span class="s1">&#39;_DATA.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">header_param</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a>                        <span class="k">break</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a>                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a>                    <span class="nb">print</span><span class="p">(</span><span class="n">race_id</span><span class="p">)</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a>                    <span class="n">result_retries</span> <span class="o">-=</span> <span class="mi">1</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a>                    <span class="k">if</span> <span class="n">result_retries</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a>                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a>                    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a>                        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
 </code></pre></div>
 <hr />
 <p>The Topaz race results endpoint requires the passing of a jurisdiction ID as a parameter to pull the results. Simply passing a date range will return no data. This is why we have looped over all jurisdictions in 7 day blocks.</p>
@@ -3005,93 +3012,233 @@ Access can only be provided to Betfair Australia or New Zealand customers with a
 <a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>                    &#39;place&#39;,
 <a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>                    &#39;prizeMoney&#39;,
 <a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>                    &#39;resultTime&#39;,
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>                    &#39;resultMargin&#39;,
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>                    &#39;resultMarginLengths&#39;]]
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a># Dropping all rows with no place - meaning the dog was scratched/reserve not used or the meeting is in the future or was abandoned
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>TopazData = TopazData.dropna(subset=[&#39;place&#39;], how=&#39;all&#39;)    
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a># Dropping duplicate rows
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>TopazData.drop_duplicates(inplace=True)
-<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>
-<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a># If you want to reset the index after dropping duplicates
-<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>TopazData.reset_index(drop=True, inplace=True)
-<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a>
-<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a># Let&#39;s correct the track names to align with Betfair names (Not all tracks in Topaz are on the exchange due to being closed or not hosting TAB-meetings)
-<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a># We&#39;re not using the NZ tracks in this tutorial, however they are included below for completeness
-<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a># The &quot;Straight&quot; tracks at Murray Bridge and Richmond are not differentiated on Betfair but we can treat these later.
-<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>
-<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>TrackDict = {
-<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>    &#39;Auckland (NZ)&#39;:&#39;Manukau&#39;,
-<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>    &#39;Christchurch (NZ)&#39;:&#39;Addington&#39;,
-<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>    &#39;Dport @ HOB&#39;:&#39;Hobart&#39;,
-<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>    &#39;Dport @ LCN&#39;:&#39;Launceston&#39;,
-<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>    &#39;Meadows (MEP)&#39;:&#39;The Meadows&#39;,
-<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>    &#39;Otago (NZ)&#39;:&#39;Forbury Park&#39;,
-<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>    &#39;Palmerston Nth (NZ)&#39;:&#39;Manawatu&#39;,
-<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>    &#39;Sandown (SAP)&#39;:&#39;Sandown Park&#39;,
-<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>    &#39;Southland (NZ)&#39;:&#39;Ascot Park&#39;,
-<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>    &#39;Tokoroa (NZ)&#39;:&#39;Tokoroa&#39;,
-<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>    &#39;Waikato (NZ)&#39;:&#39;Cambridge&#39;,
-<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>    &#39;Wanganui (NZ)&#39;:&#39;Hatrick&#39;,
-<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>    &#39;Taranaki (NZ)&#39;:&#39;Taranaki&#39;,
-<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>    &#39;Ashburton (NZ)&#39;:&#39;Ashburton&#39;,
-<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>    &#39;Richmond (RIS)&#39;:&#39;Richmond Straight&#39;,
-<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>    &#39;Murray Bridge (MBR)&#39;:&#39;Murray Bridge&#39;,
-<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>    &#39;Murray Bridge (MBS)&#39;:&#39;Murray Bridge Straight&#39;
-<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>}
-<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>
-<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a>TopazData[&#39;track&#39;] = TopazData[&#39;track&#39;].replace(TrackDict)
-<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a>
-<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a># convert our two date fields to datetime
-<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>TopazData[&#39;meetingDate&#39;] = pd.to_datetime(TopazData[&#39;meetingDate&#39;])
-<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>TopazData[&#39;meetingDate&#39;] = TopazData[&#39;meetingDate&#39;].dt.strftime(&#39;%Y-%m-%d&#39;)
-<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a>
-<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a>TopazData[&#39;dateWhelped&#39;] = pd.to_datetime(TopazData[&#39;dateWhelped&#39;])
-<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a>TopazData[&#39;dateWhelped&#39;] = TopazData[&#39;dateWhelped&#39;].dt.strftime(&#39;%Y-%m-%d&#39;)
-<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>
-<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a># remove apostrophes from the names
-<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a>TopazData[&#39;dogName&#39;]=TopazData[&#39;dogName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
-<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a>TopazData[&#39;sireName&#39;]=TopazData[&#39;sireName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
-<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a>TopazData[&#39;damName&#39;]=TopazData[&#39;damName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
-<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a>
-<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a># split out the last5 column so results for the previous 5 races can be split
-<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a>TopazData[&#39;last5&#39;] = TopazData[&#39;last5&#39;].astype(str)
-<a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>
-<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a># Function to extract numbers from the &#39;last5&#39; column
-<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a>def extract_numbers(row):
-<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a>    try:
-<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a>        numbers = list(map(int, row.split(&#39;-&#39;)))
-<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a>        # If there are fewer than 5 numbers, pad with zeros
-<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a>        numbers += [0] * (5 - len(numbers))
-<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a>        return numbers
-<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a>    except ValueError:
-<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a>        # Handle the case where the string cannot be split into integers
-<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a>        return [0, 0, 0, 0, 0]
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>                    &#39;resultMargin&#39;]]
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a># Dropping all rows with no place - meaning the dog was scratched/reserve not used or the meeting is in the future or was abandoned
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a>TopazData = TopazData.dropna(subset=[&#39;place&#39;], how=&#39;all&#39;)    
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a># Dropping duplicate rows
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a>TopazData.drop_duplicates(inplace=True)
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a># If you want to reset the index after dropping duplicates
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a>TopazData.reset_index(drop=True, inplace=True)
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a># Let&#39;s correct the track names to align with Betfair names (Not all tracks in Topaz are on the exchange due to being closed or not hosting TAB-meetings)
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a># We&#39;re not using the NZ tracks in this tutorial, however they are included below for completeness
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a># The &quot;Straight&quot; tracks at Murray Bridge and Richmond are not differentiated on Betfair but we can treat these later.
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a>TrackDict = {
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>    &#39;Auckland (NZ)&#39;:&#39;Manukau&#39;,
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a>    &#39;Christchurch (NZ)&#39;:&#39;Addington&#39;,
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a>    &#39;Dport @ HOB&#39;:&#39;Hobart&#39;,
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>    &#39;Dport @ LCN&#39;:&#39;Launceston&#39;,
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>    &#39;Meadows (MEP)&#39;:&#39;The Meadows&#39;,
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a>    &#39;Otago (NZ)&#39;:&#39;Forbury Park&#39;,
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a>    &#39;Palmerston Nth (NZ)&#39;:&#39;Manawatu&#39;,
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a>    &#39;Sandown (SAP)&#39;:&#39;Sandown Park&#39;,
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a>    &#39;Southland (NZ)&#39;:&#39;Ascot Park&#39;,
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a>    &#39;Tokoroa (NZ)&#39;:&#39;Tokoroa&#39;,
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a>    &#39;Waikato (NZ)&#39;:&#39;Cambridge&#39;,
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a>    &#39;Wanganui (NZ)&#39;:&#39;Hatrick&#39;,
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>    &#39;Taranaki (NZ)&#39;:&#39;Taranaki&#39;,
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a>    &#39;Ashburton (NZ)&#39;:&#39;Ashburton&#39;,
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>    &#39;Richmond (RIS)&#39;:&#39;Richmond Straight&#39;,
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>    &#39;Murray Bridge (MBR)&#39;:&#39;Murray Bridge&#39;,
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a>    &#39;Murray Bridge (MBS)&#39;:&#39;Murray Bridge Straight&#39;
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a>}
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>
+<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a>TopazData[&#39;track&#39;] = TopazData[&#39;track&#39;].replace(TrackDict)
+<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a>
+<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a># convert our two date fields to datetime
+<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a>TopazData[&#39;meetingDate&#39;] = pd.to_datetime(TopazData[&#39;meetingDate&#39;])
+<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>TopazData[&#39;dateWhelped&#39;] = pd.to_datetime(TopazData[&#39;dateWhelped&#39;])
+<a id="__codelineno-1-80" name="__codelineno-1-80" href="#__codelineno-1-80"></a>
+<a id="__codelineno-1-81" name="__codelineno-1-81" href="#__codelineno-1-81"></a># remove apostrophes from the names
+<a id="__codelineno-1-82" name="__codelineno-1-82" href="#__codelineno-1-82"></a>TopazData[&#39;dogName&#39;]=TopazData[&#39;dogName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
+<a id="__codelineno-1-83" name="__codelineno-1-83" href="#__codelineno-1-83"></a>TopazData[&#39;sireName&#39;]=TopazData[&#39;sireName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
+<a id="__codelineno-1-84" name="__codelineno-1-84" href="#__codelineno-1-84"></a>TopazData[&#39;damName&#39;]=TopazData[&#39;damName&#39;].str.replace(&quot;&#39;&quot;,&quot;&quot;)
+<a id="__codelineno-1-85" name="__codelineno-1-85" href="#__codelineno-1-85"></a>
+<a id="__codelineno-1-86" name="__codelineno-1-86" href="#__codelineno-1-86"></a># split out the last5 column so results for the previous 5 races can be split
+<a id="__codelineno-1-87" name="__codelineno-1-87" href="#__codelineno-1-87"></a>TopazData[&#39;last5&#39;] = TopazData[&#39;last5&#39;].astype(str)
+<a id="__codelineno-1-88" name="__codelineno-1-88" href="#__codelineno-1-88"></a>
+<a id="__codelineno-1-89" name="__codelineno-1-89" href="#__codelineno-1-89"></a># Function to extract numbers from the &#39;last5&#39; column
+<a id="__codelineno-1-90" name="__codelineno-1-90" href="#__codelineno-1-90"></a>def extract_numbers(row):
+<a id="__codelineno-1-91" name="__codelineno-1-91" href="#__codelineno-1-91"></a>    try:
+<a id="__codelineno-1-92" name="__codelineno-1-92" href="#__codelineno-1-92"></a>        numbers = list(map(int, row.split(&#39;-&#39;)))
+<a id="__codelineno-1-93" name="__codelineno-1-93" href="#__codelineno-1-93"></a>        # If there are fewer than 5 numbers, pad with zeros
+<a id="__codelineno-1-94" name="__codelineno-1-94" href="#__codelineno-1-94"></a>        numbers += [0] * (5 - len(numbers))
+<a id="__codelineno-1-95" name="__codelineno-1-95" href="#__codelineno-1-95"></a>        return numbers
+<a id="__codelineno-1-96" name="__codelineno-1-96" href="#__codelineno-1-96"></a>    except ValueError:
+<a id="__codelineno-1-97" name="__codelineno-1-97" href="#__codelineno-1-97"></a>        # Handle the case where the string cannot be split into integers
+<a id="__codelineno-1-98" name="__codelineno-1-98" href="#__codelineno-1-98"></a>        return [0, 0, 0, 0, 0]
+<a id="__codelineno-1-99" name="__codelineno-1-99" href="#__codelineno-1-99"></a>
+<a id="__codelineno-1-100" name="__codelineno-1-100" href="#__codelineno-1-100"></a># Apply the function to create new columns for each position
+<a id="__codelineno-1-101" name="__codelineno-1-101" href="#__codelineno-1-101"></a>TopazData[[&#39;positionLastRace&#39;, &#39;positionSecondLastRace&#39;, &#39;positionThirdLastRace&#39;,
+<a id="__codelineno-1-102" name="__codelineno-1-102" href="#__codelineno-1-102"></a>    &#39;positionFourthLastRace&#39;, &#39;positionFifthLastRace&#39;]] = TopazData[&#39;last5&#39;].apply(extract_numbers).apply(pd.Series)
 <a id="__codelineno-1-103" name="__codelineno-1-103" href="#__codelineno-1-103"></a>
-<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a># Apply the function to create new columns for each position
-<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a>TopazData[[&#39;positionLastRace&#39;, &#39;positionSecondLastRace&#39;, &#39;positionThirdLastRace&#39;,
-<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>    &#39;positionFourthLastRace&#39;, &#39;positionFifthLastRace&#39;]] = TopazData[&#39;last5&#39;].apply(extract_numbers).apply(pd.Series)
+<a id="__codelineno-1-104" name="__codelineno-1-104" href="#__codelineno-1-104"></a># Convert the &#39;pir&#39; column to string so we can find the dogs position at the last split to determine if it&#39;s a slow or fast finisher
+<a id="__codelineno-1-105" name="__codelineno-1-105" href="#__codelineno-1-105"></a>TopazData[&#39;pir&#39;] = TopazData[&#39;pir&#39;].fillna(0)
+<a id="__codelineno-1-106" name="__codelineno-1-106" href="#__codelineno-1-106"></a>TopazData[&#39;pir&#39;] = TopazData[&#39;pir&#39;].astype(int).astype(str)
 <a id="__codelineno-1-107" name="__codelineno-1-107" href="#__codelineno-1-107"></a>
-<a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a># Convert the &#39;pir&#39; column to string so we can find the dogs position at the last split to determine if it&#39;s a slow or fast finisher
-<a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a>TopazData[&#39;pir&#39;] = TopazData[&#39;pir&#39;].fillna(0)
-<a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a>TopazData[&#39;pir&#39;] = TopazData[&#39;pir&#39;].astype(int).astype(str)
+<a id="__codelineno-1-108" name="__codelineno-1-108" href="#__codelineno-1-108"></a># Dogs that placed 1 and 2 have the same entry in resultMargin
+<a id="__codelineno-1-109" name="__codelineno-1-109" href="#__codelineno-1-109"></a># it makes sense to think of these columns as losing margins so logically the dog that won should have 0 for these fields
+<a id="__codelineno-1-110" name="__codelineno-1-110" href="#__codelineno-1-110"></a>TopazData.loc[TopazData[&#39;place&#39;] == 1, [&#39;resultMargin&#39;]] = 0
 <a id="__codelineno-1-111" name="__codelineno-1-111" href="#__codelineno-1-111"></a>
-<a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a># Extract the second last letter and create a new column &#39;2ndLastPIR&#39;
-<a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a>TopazData[&#39;2ndLastPIR&#39;] = TopazData[&#39;pir&#39;].apply(lambda x: x[-2] if len(x) &gt;= 2 else &#39;&#39;)
-<a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a>
-<a id="__codelineno-1-115" name="__codelineno-1-115" href="#__codelineno-1-115"></a># Remove &#39;L&#39; from resultMarginLengths
-<a id="__codelineno-1-116" name="__codelineno-1-116" href="#__codelineno-1-116"></a>TopazData[&#39;resultMarginLengths&#39;] = TopazData[&#39;resultMarginLengths&#39;].str.replace(&#39;L&#39;, &#39;&#39;)
-<a id="__codelineno-1-117" name="__codelineno-1-117" href="#__codelineno-1-117"></a>
-<a id="__codelineno-1-118" name="__codelineno-1-118" href="#__codelineno-1-118"></a># Dogs that placed 1 and 2 have the same entry in resultMargin and resultMarginLengths
-<a id="__codelineno-1-119" name="__codelineno-1-119" href="#__codelineno-1-119"></a># it makes sense to think of these columns as losing margins so logically the dog that won should have 0 for these fields
-<a id="__codelineno-1-120" name="__codelineno-1-120" href="#__codelineno-1-120"></a>TopazData.loc[TopazData[&#39;place&#39;] == 1, [&#39;resultMargin&#39;, &#39;resultMarginLengths&#39;]] = 0
-<a id="__codelineno-1-121" name="__codelineno-1-121" href="#__codelineno-1-121"></a>
-<a id="__codelineno-1-122" name="__codelineno-1-122" href="#__codelineno-1-122"></a># Forward fill the weight field for each dog from its previous weight. The data here is about 75% complete and doing this may result in some data that&#39;s off by 1-2%
-<a id="__codelineno-1-123" name="__codelineno-1-123" href="#__codelineno-1-123"></a>TopazData = TopazData.sort_values(by=[&#39;dogId&#39;, &#39;meetingDate&#39;])
-<a id="__codelineno-1-124" name="__codelineno-1-124" href="#__codelineno-1-124"></a>TopazData[&#39;weightInKg&#39;] = TopazData.groupby(&#39;dogId&#39;)[&#39;weightInKg&#39;].transform(lambda x: x.ffill())
+<a id="__codelineno-1-112" name="__codelineno-1-112" href="#__codelineno-1-112"></a># Forward fill the weight field for each dog from its previous weight. The data here is about 75% complete and doing this may result in some data that&#39;s off by 1-2%
+<a id="__codelineno-1-113" name="__codelineno-1-113" href="#__codelineno-1-113"></a>TopazData = TopazData.sort_values(by=[&#39;dogId&#39;, &#39;meetingDate&#39;])
+<a id="__codelineno-1-114" name="__codelineno-1-114" href="#__codelineno-1-114"></a>TopazData[&#39;weightInKg&#39;] = TopazData.groupby(&#39;dogId&#39;)[&#39;weightInKg&#39;].transform(lambda x: x.ffill())
 </code></pre></div>
 <p>Here we've cleaned our dataset as much as we can. Next it's on to the feature creation!</p>
+<h2 id="create-the-features">Create the features</h2>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>#Let&#39;s utilise our position columns to generate some win percentages
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>TopazData[&#39;lastFiveWinPercentage&#39;] = ((TopazData[[&#39;positionLastRace&#39;, &#39;positionSecondLastRace&#39;, &#39;positionThirdLastRace&#39;,&#39;positionFourthLastRace&#39;, &#39;positionFifthLastRace&#39;]] == 1).sum(axis=1)) / ((TopazData[[&#39;positionLastRace&#39;, &#39;positionSecondLastRace&#39;, &#39;positionThirdLastRace&#39;,&#39;positionFourthLastRace&#39;, &#39;positionFifthLastRace&#39;]] != 0).sum(axis=1))
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>TopazData[&#39;lastFiveWinPercentage&#39;].fillna(0,inplace=True)
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>TopazData[&#39;lastFivePlacePercentage&#39;] = ((TopazData[[&#39;positionLastRace&#39;, &#39;positionSecondLastRace&#39;, &#39;positionThirdLastRace&#39;,&#39;positionFourthLastRace&#39;, &#39;positionFifthLastRace&#39;]] &lt;= 3).sum(axis=1)) / ((TopazData[[&#39;positionLastRace&#39;, &#39;positionSecondLastRace&#39;, &#39;positionThirdLastRace&#39;,&#39;positionFourthLastRace&#39;, &#39;positionFifthLastRace&#39;]] != 0).sum(axis=1))
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>TopazData[&#39;lastFivePlacePercentage&#39;].fillna(0,inplace=True)
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>TopazData.replace([np.inf, -np.inf], 0, inplace=True)
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>#Create a feature for dog&#39;s age
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>TopazData[&#39;dogAge&#39;] = (TopazData[&#39;meetingDate&#39;] - TopazData[&#39;dateWhelped&#39;]).dt.days
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>TopazData[&#39;dogAge&#39;] = MinMaxScaler().fit_transform(TopazData[[&#39;dogAge&#39;]])
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a># Extract the second last letter and create a new column &#39;2ndLastPIR&#39;
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>TopazData[&#39;2ndLastPIR&#39;] = TopazData[&#39;pir&#39;].apply(lambda x: x[-2] if len(x) &gt;= 2 else None)
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>TopazData[&#39;2ndLastPIR&#39;].fillna(TopazData[&#39;place&#39;],inplace=True)
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>TopazData[&#39;2ndLastPIR&#39;] = TopazData[&#39;2ndLastPIR&#39;].astype(int)
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a># Create a feature that calculates places gained/conceded in the home straight
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>TopazData[&#39;finishingPlaceMovement&#39;] = TopazData[&#39;2ndLastPIR&#39;] - TopazData[&#39;place&#39;]
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>TopazData[&#39;finishingPlaceMovement&#39;] = MinMaxScaler().fit_transform(TopazData[[&#39;finishingPlaceMovement&#39;]])
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a># Calculate normalised value for dog weight
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>TopazData = TopazData.sort_values(by=[&#39;raceId&#39;])
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>TopazData[&#39;weightInKgScaled&#39;] = MinMaxScaler().fit_transform(TopazData[[&#39;weightInKg&#39;]])
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>#Scale values as required
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>TopazData[&#39;prizemoneyLog&#39;] = np.log10(TopazData[&#39;prizeMoney&#39;] + 1)
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>TopazData[&#39;placeLog&#39;] = np.log10(TopazData[&#39;place&#39;] + 1)
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>TopazData[&#39;marginLog&#39;] = np.log10(TopazData[&#39;resultMargin&#39;] + 1)
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a># Calculate median winner time per track/distance
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>win_results = TopazData[TopazData[&#39;place&#39;] == 1]
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>median_win_time = pd.DataFrame(data=win_results[win_results[&#39;resultTime&#39;] &gt; 0].groupby([&#39;track&#39;, &#39;distance&#39;])[&#39;resultTime&#39;].median()).rename(columns={&quot;resultTime&quot;: &quot;runTimeMedian&quot;}).reset_index()
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>median_win_time[&#39;speedIndex&#39;] = (median_win_time[&#39;runTimeMedian&#39;] / median_win_time[&#39;distance&#39;])
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>median_win_time[&#39;speedIndex&#39;] = MinMaxScaler().fit_transform(median_win_time[[&#39;speedIndex&#39;]])
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a># Merge with median winner time
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>TopazData = TopazData.merge(median_win_time, on=[&#39;track&#39;, &#39;distance&#39;], how=&#39;left&#39;)
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a># Normalise time comparison
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>TopazData[&#39;runTimeNorm&#39;] = (TopazData[&#39;runTimeMedian&#39;] / TopazData[&#39;resultTime&#39;]).clip(0.9, 1.1)
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>TopazData[&#39;runTimeNorm&#39;] = MinMaxScaler().fit_transform(TopazData[[&#39;runTimeNorm&#39;]])
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a># Sort the DataFrame by &#39;RaceId&#39; and &#39;Box&#39;
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>TopazData = TopazData.sort_values(by=[&#39;raceId&#39;, &#39;boxNumber&#39;])
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a># Check if there is an entry equal to boxNumber + 1
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>TopazData[&#39;hasEntryBoxNumberPlus1&#39;] = (TopazData.groupby(&#39;raceId&#39;)[&#39;boxNumber&#39;].shift(-1) == TopazData[&#39;boxNumber&#39;] + 1) | (TopazData[&#39;boxNumber&#39;] == 8)
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>TopazData[&#39;hasEntryBoxNumberMinus1&#39;] = (TopazData.groupby(&#39;raceId&#39;)[&#39;boxNumber&#39;].shift(1) == TopazData[&#39;boxNumber&#39;] - 1)
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a># Convert boolean values to 1
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>TopazData[&#39;hasEntryBoxNumberPlus1&#39;] = TopazData[&#39;hasEntryBoxNumberPlus1&#39;].astype(int)
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>TopazData[&#39;hasEntryBoxNumberMinus1&#39;] = TopazData[&#39;hasEntryBoxNumberMinus1&#39;].astype(int)
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a># Display the resulting DataFrame which shows adjacent Vacant Boxes
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a># Box 1 is treated as having a vacant box to the left always as we are looking how much space the dog has to move.
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a>TopazData[&#39;adjacentVacantBoxes&#39;] = 2 - TopazData[&#39;hasEntryBoxNumberPlus1&#39;] - TopazData[&#39;hasEntryBoxNumberMinus1&#39;]
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a>TopazData[&#39;win&#39;] = TopazData[&#39;place&#39;].apply(lambda x: 1 if x == 1 else 0)
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a># Calculate box winning percentage for each track/distance
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a>box_win_percent = pd.DataFrame(data=TopazData.groupby([&#39;track&#39;, &#39;distance&#39;, &#39;boxNumber&#39;,&#39;adjacentVacantBoxes&#39;])[&#39;win&#39;].mean()).rename(columns={&quot;win&quot;: &quot;boxWinPercent&quot;}).reset_index()
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a># Add to dog results dataframe
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a>TopazData = TopazData.merge(box_win_percent, on=[&#39;track&#39;, &#39;distance&#39;, &#39;boxNumber&#39;,&#39;adjacentVacantBoxes&#39;], how=&#39;left&#39;)
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a># Display example of barrier winning probabilities
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>display(box_win_percent.head(8))
+</code></pre></div>
+Now we've created some basic features, it's time to create our big group of features where we iterate over different subsets, variables and time points to generate a large number of different features</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>import itertools
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>dataset = TopazData.copy()
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>dataset[&#39;meetingDate&#39;] = pd.to_datetime(dataset[&#39;meetingDate&#39;])
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a># Calculate values for dog, trainer, dam and sire
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>subsets = [&#39;dog&#39;, &#39;trainer&#39;, &#39;dam&#39;, &#39;sire&#39;]
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a># Use rolling window of 28, 91 and 365 days
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>rolling_windows = [&#39;28D&#39;,&#39;91D&#39;, &#39;365D&#39;]
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a># Features to use for rolling windows calculation
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>features = [&#39;runTimeNorm&#39;, &#39;placeLog&#39;, &#39;prizemoneyLog&#39;, &#39;marginLog&#39;,&#39;finishingPlaceMovement&#39;]
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a># Aggregation functions to apply
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>aggregates = [&#39;min&#39;, &#39;max&#39;, &#39;mean&#39;, &#39;median&#39;, &#39;std&#39;]
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a># Keep track of generated feature names
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>feature_cols = []
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>for i in subsets:
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    # Generate rolling window features
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>    idnumber = i + &#39;Id&#39;
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    subset_dataframe = dataset[[&#39;meetingDate&#39;,idnumber] + features]
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>    average_df = pd.DataFrame()
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    for feature in features:
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>        # Group by &#39;damId&#39; and &#39;meetingDate&#39; and calculate the average of the current feature
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>        feature_average_df = subset_dataframe.groupby([idnumber, &#39;meetingDate&#39;])[feature].mean().reset_index()
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>        # Rename the feature column to indicate it&#39;s the average of that feature
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>        feature_average_df.rename(columns={feature: f&#39;{feature}{i}DayAverage&#39;}, inplace=True)
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>        # If average_df is empty, assign the feature_average_df to it
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>        if average_df.empty:
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>            average_df = feature_average_df
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>        else:
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a>            # Otherwise, merge feature_average_df with average_df
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>            average_df = pd.merge(average_df, feature_average_df, on=[idnumber, &#39;meetingDate&#39;])
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>        # Assuming df is your DataFrame
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>    column_names = average_df.columns.tolist()
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>    # Columns to exclude
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>    columns_to_exclude = [idnumber,&#39;meetingDate&#39;]
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>    # Exclude specified columns from the list
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>    column_names_filtered = [col for col in column_names if col not in columns_to_exclude]
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>    average_df.drop_duplicates(inplace=True)
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>    average_df[&#39;meetingDate&#39;] = pd.to_datetime(average_df[&#39;meetingDate&#39;])
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a>    average_df = average_df.set_index([idnumber, &#39;meetingDate&#39;]).sort_index() 
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>    for rolling_window in rolling_windows:
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>        print(f&#39;Processing {i} rolling window {rolling_window} days&#39;)
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a>        rolling_result = (
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>            average_df
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a>            .reset_index(level=0)
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a>            .groupby(idnumber)[column_names_filtered]
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a>            .rolling(rolling_window)  # Use timedelta for rolling window
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a>            .agg(aggregates)
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>            .groupby(level=0)
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a>            .shift(1)
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a>        )
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a>        # Generate list of rolling window feature names (eg: RunTime_norm_min_365D)
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a>        agg_features_cols = [f&#39;{i}_{f}_{a}_{rolling_window}&#39; for f, a in itertools.product(features, aggregates)]
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a>        # Add features to dataset
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a>        average_df[agg_features_cols] = rolling_result
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a>        # Keep track of generated feature names
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a>        feature_cols.extend(agg_features_cols)
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a>        average_df.fillna(0, inplace=True)
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a>    average_df.reset_index(inplace=True)
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a>    dataset = pd.merge(dataset,average_df,on=[idnumber, &#39;meetingDate&#39;])
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a># Only keep data 12 months after the start date of your dataset since we&#39;ve used a 365D rolling timeframe for some features
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a>feature_cols = np.unique(feature_cols).tolist()
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a>dataset = dataset[dataset[&#39;meetingDate&#39;] &gt;= &#39;2021-01-01&#39;]
+<a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a>dataset = dataset[[&#39;meetingDate&#39;,&#39;state&#39;,&#39;track&#39;,&#39;distance&#39;,&#39;raceId&#39;,&#39;raceTypeCode&#39;,&#39;raceNumber&#39;,&#39;rugNumber&#39;,&#39;trainerId&#39;,&#39;damId&#39;,&#39;sireId&#39;,&#39;win&#39;,&#39;dogAge&#39;,&#39;weightInKgScaled&#39;,&#39;lastFiveWinPercentage&#39;,&#39;lastFivePlacePercentage&#39;,&#39;boxWinPercent&#39;] + feature_cols]
+<a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a>
+<a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a>#The below line will output your dataframe to a csv but may be too large to open in Excel.
+<a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a>#dataset.to_csv(&#39;testing.csv&#39;,index=False)
+</code></pre></div>
+<p>Now that we've created our features, lets feed them into our Machine Learning Algorithm to generate some probabilities!</p>
 <h2 id="to-be-continued">To be continued...</h2>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>

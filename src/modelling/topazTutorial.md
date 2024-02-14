@@ -164,7 +164,7 @@ NOTE: In the above code we have exported each state separately to its own csv fi
 
 Let's pull all of our state files and get cleaning on this data!
 
-```
+```py title="Cleaning The Data"
 codes = ['NT','VIC','NSW','SA','WA','QLD','TAS']
 
 TopazData = pd.DataFrame()
@@ -286,7 +286,7 @@ Here we've cleaned our dataset as much as we can. Next it's on to the feature cr
 
 ## Create the features
 
-```
+```py title="Creating Basic Features"
 #Let's utilise our position columns to generate some win percentages
 TopazData['lastFiveWinPercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] == 1).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 0).sum(axis=1))
 TopazData['lastFiveWinPercentage'].fillna(0,inplace=True)
@@ -354,7 +354,7 @@ display(box_win_percent.head(8))
 ```
 Now we've created some basic features, it's time to create our big group of features where we iterate over different subsets, variables and time points to generate a large number of different features
 
-```
+```py title="Creating Bulk Features"
 import itertools
 
 dataset = TopazData.copy()

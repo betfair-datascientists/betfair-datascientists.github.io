@@ -81,14 +81,22 @@ for i in range(0, len(date_range), 6):
                 races = topaz_api.get_races(from_date=start_block_date, to_date=end_block_date, owning_authority_code=code)
                 all_races.append(races)
                 break  # Break out of the loop if successful
-            except Exception as e:
-                print(f"Error fetching races for {code}: {e}")
-                retries -= 1
-                if retries > 0:
-                    print(f"Retrying in 30 seconds...")
-                    time.sleep(30)
+            except requests.HTTPError as http_err:
+                if http_err.response.status_code == 429:
+                    retries -= 1
+                    if retries > 0:
+                        print(f"Rate limited. Retrying in 60 seconds...")
+                        time.sleep(60)
+                    else:
+                        print("Max retries reached. Moving to the next block.")
                 else:
-                    print("Max retries reached. Moving to the next block.")
+                    print(f"Error fetching races for {code}: {http_err.response.status_code}")
+                    retries -= 1
+                    if retries > 0:
+                        print(f"Retrying in 30 seconds...")
+                        time.sleep(30)
+                    else:
+                        print("Max retries reached. Moving to the next block.")
 
         try:
             all_races_df = pd.concat(all_races, ignore_index=True)

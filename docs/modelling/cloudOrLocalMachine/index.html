@@ -12,13 +12,13 @@
         <meta name="author" content="Betfair Data Scientists">
       
       
-        <link rel="canonical" href="https://betfair-datascientists.github.io/automation/betAngelintermediate/">
+        <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/cloudOrLocalMachine/">
       
       
-        <link rel="prev" href="../betAngelbeginners/">
+        <link rel="prev" href="../dataSources/">
       
       
-        <link rel="next" href="../betAngeladvanced/">
+        <link rel="next" href="../topazTutorial/">
       
       
       <link rel="icon" href="../../img/BetfairFavicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Intermediate guide - The Automation Hub</title>
+        <title>Cloud or Local - The Automation Hub</title>
       
     
     
@@ -100,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bet-angel-an-intermediate-guide" class="md-skip">
+        <a href="#cloud-based-virtual-machines-vs-local-machines-in-machine-learning" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
           <div class="md-header__topic" data-md-component="header-topic">
             <span class="md-ellipsis">
               
-                Intermediate guide
+                Cloud or Local
               
             </span>
           </div>
@@ -268,11 +268,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../modelling/howToModel/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../howToModel/" class="md-tabs__link">
           
   
   Modelling
@@ -286,13 +288,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../GoldenRulesofAutomation/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../automation/GoldenRulesofAutomation/" class="md-tabs__link">
           
   
   Automation
@@ -793,8 +793,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -803,14 +805,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -824,7 +824,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Modelling
@@ -838,7 +838,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/howToModel/" class="md-nav__link">
+      <a href="../howToModel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -859,7 +859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/dataSources/" class="md-nav__link">
+      <a href="../dataSources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -877,10 +877,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../modelling/cloudOrLocalMachine/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Cloud or Local
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -889,6 +909,104 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-your-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding Your Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pros-cons" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pros &amp; Cons
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Pros & Cons">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Machine
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-computing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Computing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cost-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cost Considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -943,7 +1061,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/topazTutorial/" class="md-nav__link">
+      <a href="../topazTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -964,7 +1082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/fasttrackTutorial/" class="md-nav__link">
+      <a href="../fasttrackTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -985,7 +1103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/greyhoundModellingPython/" class="md-nav__link">
+      <a href="../greyhoundModellingPython/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1056,7 +1174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/soccerModellingELO2022WorldCup/" class="md-nav__link">
+      <a href="../soccerModellingELO2022WorldCup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1077,7 +1195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/soccerModellingTutorialPython/" class="md-nav__link">
+      <a href="../soccerModellingTutorialPython/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1098,7 +1216,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/EPLmlPython/" class="md-nav__link">
+      <a href="../EPLmlPython/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1169,7 +1287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/AFLmodellingPython/" class="md-nav__link">
+      <a href="../AFLmodellingPython/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1190,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/brownlowModelTutorial/" class="md-nav__link">
+      <a href="../brownlowModelTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1261,7 +1379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/howToModelTheAusOpen/" class="md-nav__link">
+      <a href="../howToModelTheAusOpen/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1282,7 +1400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/AusOpenRTutorial/" class="md-nav__link">
+      <a href="../AusOpenRTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1303,7 +1421,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../modelling/AusOpenPythonTutorial/" class="md-nav__link">
+      <a href="../AusOpenPythonTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1336,8 +1454,6 @@
       
   
   
-    
-  
   
   
     
@@ -1348,12 +1464,14 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
@@ -1367,7 +1485,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Automation
@@ -1381,7 +1499,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GoldenRulesofAutomation/" class="md-nav__link">
+      <a href="../../automation/GoldenRulesofAutomation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1402,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../automation/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1420,8 +1538,6 @@
                 
   
   
-    
-  
   
   
     
@@ -1432,12 +1548,14 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6_3" >
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="">
@@ -1451,7 +1569,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             Bet Angel
@@ -1465,7 +1583,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betAngel/betAngel/" class="md-nav__link">
+      <a href="../../automation/betAngel/betAngel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1486,7 +1604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betAngelbeginners/" class="md-nav__link">
+      <a href="../../automation/betAngelbeginners/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1504,30 +1622,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Intermediate guide
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../automation/betAngelintermediate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1536,116 +1634,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-ladder-interface" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Ladder interface
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#in-play-trader-view" class="md-nav__link">
-    <span class="md-ellipsis">
-      In-Play trader view
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#custom-columns" class="md-nav__link">
-    <span class="md-ellipsis">
-      Custom Columns
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#offset-bets" class="md-nav__link">
-    <span class="md-ellipsis">
-      Offset Bets
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dutching" class="md-nav__link">
-    <span class="md-ellipsis">
-      Dutching
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#bookmaking" class="md-nav__link">
-    <span class="md-ellipsis">
-      Bookmaking
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#charting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Charting
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-next" class="md-nav__link">
-    <span class="md-ellipsis">
-      What next?
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#disclaimer" class="md-nav__link">
-    <span class="md-ellipsis">
-      Disclaimer
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1658,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betAngeladvanced/" class="md-nav__link">
+      <a href="../../automation/betAngeladvanced/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1679,7 +1667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betAngelRatingsAutomation/" class="md-nav__link">
+      <a href="../../automation/betAngelRatingsAutomation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1700,7 +1688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betAngelMarketFavouriteAutomation/" class="md-nav__link">
+      <a href="../../automation/betAngelMarketFavouriteAutomation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1721,7 +1709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betAngelTippingAutomation/" class="md-nav__link">
+      <a href="../../automation/betAngelTippingAutomation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1742,7 +1730,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betAngelSimultaneousMarkets/" class="md-nav__link">
+      <a href="../../automation/betAngelSimultaneousMarkets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1763,7 +1751,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betAngelKellyStake/" class="md-nav__link">
+      <a href="../../automation/betAngelKellyStake/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1834,7 +1822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Gruss/Gruss/" class="md-nav__link">
+      <a href="../../automation/Gruss/Gruss/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1855,7 +1843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GrussSettingupbasicmarketview/" class="md-nav__link">
+      <a href="../../automation/GrussSettingupbasicmarketview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1876,7 +1864,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grussRatingsAutomation/" class="md-nav__link">
+      <a href="../../automation/grussRatingsAutomation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1897,7 +1885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grussMarketFavouriteAutomation/" class="md-nav__link">
+      <a href="../../automation/grussMarketFavouriteAutomation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1918,7 +1906,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grusslSimultaneousMarkets/" class="md-nav__link">
+      <a href="../../automation/grusslSimultaneousMarkets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1939,7 +1927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../grussKellyStake/" class="md-nav__link">
+      <a href="../../automation/grussKellyStake/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2010,7 +1998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CymaticTrader/CymaticTrader/" class="md-nav__link">
+      <a href="../../automation/CymaticTrader/CymaticTrader/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2031,7 +2019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cymaticTraderRatingsAutomation/" class="md-nav__link">
+      <a href="../../automation/cymaticTraderRatingsAutomation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2102,7 +2090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GeeksToyinstallationandsetup/" class="md-nav__link">
+      <a href="../../automation/GeeksToyinstallationandsetup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2123,7 +2111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../GeeksToybasicmarketviewstakingandoneclickbetting/" class="md-nav__link">
+      <a href="../../automation/GeeksToybasicmarketviewstakingandoneclickbetting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2144,7 +2132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../geeksToyRefreshSettings/" class="md-nav__link">
+      <a href="../../automation/geeksToyRefreshSettings/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2215,7 +2203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../betJetOverview/" class="md-nav__link">
+      <a href="../../automation/betJetOverview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2868,143 +2856,74 @@
                   
 
 
-<h1 id="bet-angel-an-intermediate-guide">Bet Angel: An Intermediate guide</h1>
+<h1 id="cloud-based-virtual-machines-vs-local-machines-in-machine-learning">Cloud Based Virtual Machines VS Local Machines in Machine Learning</h1>
 <hr />
-<h2 id="the-ladder-interface">The Ladder interface</h2>
-<p>The Bet Angel Ladder interface allows you to gain a deeper view of how bets are being placed on a small number of runners as opposed to the high-level overview of a market that we get from the ‘One-Click’ view. This also allows you to get an idea of any potential trends and help you make a more informed decision about your own bets.</p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate1.png" /></p>
-<p>By default, the ladder interface will show you the first three runners in a market. A handy button to keep in mind is the ‘123’ button which will automatically adjust which runners you see and order them in ascending price order with the favourite placed in ‘Ladder 1’ position. </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate2.png" /></p>
-<p>You can also easily specify the runners you would like to look at by simply selecting them from the drop-down box above each ladder. </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate3.png" /></p>
-<p>Just like the ‘One-click screen’, you can click within the blue (back) or pink (lay) columns to place a bet at those specific odds, allowing you to not only get a more detailed view of what the market is doing but quickly place bets of your own.  </p>
-<h2 id="in-play-trader-view">In-Play trader view</h2>
-<p>The in-play trader view is an alternative way to look and place bets on markets which are in-play. It gives an overview of the highest and lowest price points traded for runners and allows you to easily place bets onto the market.  </p>
-<p>To open the in-play trader view:  </p>
-<p>click the in-play trader icon <img alt="Bet Angel beginner guide" src="../img/intermediate15.png" /> near the top right of the main Bet Angel screen.</p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate4.png" /></p>
-<p>Once you’ve clicked the button, a new window will open up showing every runner in the race. </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate5.png" /></p>
-<p>As you can see, there are a number of dots and lines which give us specific information relating to where bets are being placed for each runner. The blue dot indicates the last back price, the pink shows the last lay price and the yellow indicates the last traded price. The grey bar gives us the highest and lowest traded range of that particular runner.  </p>
-<p>You’ll also notice that there are a number of options that you can use to customize your experience with the tool depending on what information is important to you.   </p>
+<h2 id="introduction">Introduction</h2>
+<p>In the world of machine learning, where datasets can become enormous and the computational power required to train a ML model increases, there is some debate circulating in the circles of the Automation world as to the benefits of using a local desktop or laptop (with or without GPU augmentation) versus utilisation of cloud serves (also known as “someone else’s computer”)</p>
+<p>Local machines, with their tangible presence and direct accessibility, have long been the cornerstone of ML models. From individual laptops to high-performance desktops, these setups offer users a sense of control and familiarity. However, as ML models grow in complexity and dataset sizes swell, the limitations of local hardware become increasingly apparent.</p>
+<p>On the other hand, cloud services emerge as a compelling alternative, promising virtually limitless computational resources on-demand. With services like Amazon Web Services (AWS), Google Cloud Platform (GCP), and Microsoft Azure, modellers can tap into vast arrays of CPUs, GPUs, and specialized accelerators, paying only for what they use. Yet, transitioning to the cloud introduces its own set of challenges, including cost management, security concerns, and navigating the myriad of available services.</p>
+<h2 id="understanding-your-requirements">Understanding Your Requirements</h2>
+<p>To approach this, it is vital that you understand what you are trying to do and in what context a cloud based machine might be more functional than a local machine.</p>
+<p>One potential solution to this conundrum would be to initially utilise a cloud-based solution to understand the computational requirements of your use-case, as you can easily increase or decrease processing power as required (which is effectively the same as trying out many different physical graphics cards or CPUs without investing time or money in physically performing this task). Once you understand the requirements, you could then look at investing in your own local machine tailored to your requirements. </p>
+<p>How then do you assess what your requirements are? Well first you should consider how you would look to implement a betting model. </p>
 <ul>
-<li>At the top left of the window from left to right, you can hide the blue, pink and yellow dots to simplify your view</li>
-<li>change the window to reflect the win percentage scale or tick scale</li>
-<li>sort your runner list depending of a range of factors</li>
-<li>change the height of your runner rows</li>
-<li>adjust the labels for the dots to reflect different information</li>
+<li>If your requirements involve intensive in-situ calculations as well as dependency on low latency, then it’s likely worth investing in that cloud server with high processing power. This could be something like calculating in-play probabilities on Horse Racing and then placing bets. </li>
+<li>If your requirements involve calculating probabilities for all races at the start of the day using a static dataset and then placing bets at BSP, a local machine should be sufficient for your requirements.</li>
+<li>For latency sensitive strategies which don’t involve intensive in-situ calculations then a hybrid model could be considered (a basic cloud server for betting and local machine for processing)</li>
 </ul>
-<p>You can also use the in-play trader view to place bets just like in the one-click screen or ladder view. You can customise what betting action to take when the left mouse button is clicked (place a back bet, a lay bet or even set that the left mouse button will back while the right button lays).  </p>
-<p>By default, the odds that bets are placed at and the runner you bet on in this view will be determined by the location of your mouse cursor.  </p>
-<p>It pays to be mindful of this when using this view, especially if you have confirm bets turned off as an accidental click on the in-play trader view may cause you to place a bet that you didn’t want. This being said, the price that bets are placed at can be easily changed to a different factor such as the best available back price instead of the mouse cursor location.  </p>
-<h2 id="custom-columns">Custom Columns</h2>
-<p>Custom columns are an extremely helpful way to speed up how you bet in Bet Angel markets. They allow you customize not only the information that you see in the one-click betting screen, but also lets you place specific bets faster into the market. This is particularly useful when placing bets in-play and speed is a considerable factor for your strategy.</p>
-<p>To get started with your own custom columns </p>
+<p><img alt="Requirements" src="../img/Requirements.png" /></p>
+<h2 id="pros-cons">Pros &amp; Cons</h2>
+<p>Let’s discuss the nuances between using local machines and the cloud for ML tasks. By delving into the strengths, weaknesses, and trade-offs of each approach, we aim to equip modeller with the insights necessary to make informed decisions tailored to their specific needs and objectives. </p>
+<h3 id="local-machine">Local Machine</h3>
+<p><strong>Pros</strong></p>
 <ul>
-<li>click the yellow star icon which will bring up the custom column's editor. </li>
+<li><strong>Control and Privacy:</strong> With a local machine, you have full control over your hardware and data, ensuring privacy and security, which is crucial when dealing with sensitive datasets or proprietary algorithms.</li>
+<li><strong>Low User Latency:</strong> Working directly on a local machine often results in lower latency, especially for tasks that require frequent interaction or real-time feedback, such as model development and experimentation.</li>
+<li><strong>No Dependency on Internet Connectivity:</strong> Since all computations are performed locally, you're not reliant on stable internet connectivity, making it suitable for environments with limited or intermittent internet access.</li>
+<li><strong>One-time Cost:</strong> While purchasing a high-performance local machine can be initially expensive, there are no ongoing subscription fees, making it cost-effective over the long term, especially for users with consistent computational needs.</li>
 </ul>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate6.png" /></p>
-<p>Once the editor window pops up: </p>
+<p><strong>Cons</strong></p>
 <ul>
-<li>Click ‘New’ </li>
-<li>Then enter a Profile Name for your custom column and click ‘OK’ </li>
-<li>Choose from the configure options (see below) </li>
-<li>Then click ‘Save Column’ </li>
+<li><strong>Limited Scalability:</strong> The computational power of a local machine is finite and may not scale easily to handle large datasets or complex models, limiting the scope of your machine learning experiments.</li>
+<li><strong>Hardware Constraints:</strong> Upgrading hardware components, such as CPUs or GPUs, can be costly and time-consuming, potentially leading to bottlenecks in performance or compatibility issues with newer algorithms or frameworks.</li>
+<li><strong>Maintenance Overhead:</strong> Maintaining hardware infrastructure, installing software dependencies, and troubleshooting technical issues fall entirely on the user, consuming valuable time and resources that could be dedicated to actual model development and research.</li>
+<li><strong>Risk of Data Loss:</strong> Local machines are susceptible to hardware failures, theft, or natural disasters, putting your data at risk unless proper backup and disaster recovery measures are implemented.</li>
 </ul>
-<p>You will have a range of options to configure your columns: </p>
+<h3 id="cloud-computing">Cloud Computing</h3>
+<p><strong>Pros</strong></p>
 <ul>
-<li>
-<p>Custom Column Profiles – Create multiple profiles for different betting strategies that you may implement. Each profile can have different columns that do different things and these profiles allow you to easily switch between different modes depending on what you’re wanting to do in Bet Angel. </p>
-</li>
-<li>
-<p>General: </p>
+<li><strong>Scalability and Flexibility:</strong> Cloud platforms offer virtually unlimited scalability, allowing you to seamlessly scale up or down based on fluctuating computational demands, making it ideal for handling large-scale machine learning tasks or “bursty” workloads.</li>
+<li><strong>Wide Range of Services:</strong> Cloud providers offer a diverse array of managed services, including pre-configured virtual machines, GPU instances, and specialized AI accelerators, streamlining the setup and deployment of machine learning workflows.</li>
+<li><strong>Pay-as-you-go Pricing:</strong> Cloud computing follows a pay-as-you-go pricing model, where you only pay for the resources you consume, eliminating upfront hardware costs and providing cost-effective solutions for both small-scale experiments and large-scale production deployments.</li>
+<li><strong>Collaboration and Accessibility:</strong> Cloud platforms facilitate seamless collaboration among team members, enabling real-time sharing of data, code, and models regardless of geographical location, fostering a more collaborative and productive research environment.</li>
+</ul>
+<p><strong>Cons</strong></p>
 <ul>
-<li>Title – Give your column a name to make it easily identifiable (this will be the name of the column in the column chooser list and title in the column header on the Bet Angel screen)</li>
-<li>ToolTip – a custom info box that appears when the mouse is hovered over your custom column </li>
-<li>Action – Specify what happens when you click on the column, whether it places a back or lay bet, cancels a bet or triggers an automation to run </li>
-<li>Button colour – customise the colour of your column to make it easily distinguishable </li>
-<li>Display – Choose whether each box within your custom column is populated with the runners odds or text </li>
+<li><strong>Potential Security Risks:</strong> Entrusting sensitive data to a third-party cloud provider raises concerns about data privacy, security breaches, and regulatory compliance, necessitating robust encryption, access controls, and compliance measures to mitigate risks.</li>
+<li><strong>Vendor Lock-in:</strong> Adopting proprietary cloud services may result in vendor lock-in, where migrating to a different provider or transitioning back to on-premises infrastructure becomes challenging and costly due to dependencies on vendor-specific APIs and services.</li>
+<li><strong>Latency and Network Overhead:</strong> Cloud computing relies on internet connectivity, which introduces latency and network overhead, particularly for data-intensive machine learning tasks, potentially impacting performance and responsiveness.</li>
+<li><strong>Cost Management Complexity:</strong> While pay-as-you-go pricing offers cost flexibility, it also requires diligent monitoring and optimization to prevent cost overruns, as cloud bills can quickly escalate due to unexpected usage spikes, idle resources, or inefficient configurations.</li>
 </ul>
-</li>
-<li>
-<p>Odds – If you decide to have odds populated in your custom column, you can choose from: </p>
+<h2 id="cost-considerations">Cost Considerations</h2>
+<p><a href="https://medium.com/the-mission/why-building-your-own-deep-learning-computer-is-10x-cheaper-than-aws-b1c91b55ce8c">This article</a> maintains that building a local machine is cheaper than a cloud solution in the long run, especially when scaling up for models that require greater computing power. They performed a cost analysis to build your own local machine versus paying for cloud services (Analysis performed in 2018 in $USD)</p>
+<p><img alt="Comparison1" src="../img/Comparison1.png" /></p>
+<p><img alt="Comparison2" src="../img/Comparison2.png" /></p>
+<p>As you can see, costs can begin to scale quickly when using cloud-based services, however, this is dependent on your computing requirements. In addition, there may also be the requirement to pay for your data storage when you’re not using the machine. </p>
+<h2 id="hardware">Hardware</h2>
+<p>If you make the decision to go down the route of a local machine, then it is possible to find second hand machines available at the fraction of the cost of a ready made new machine or building your own from new parts. The caveat here being that it is the responsibility of the user to ensure that any second hand hardware is properly wiped to safeguard the user’s data and privacy. </p>
+<p>Here are some aspects to consider when exploring this route:</p>
 <ul>
-<li>fixed odds,  </li>
-<li>ticks offset from the best back price </li>
-<li>ticks offset from the best lay price  </li>
-<li>a percentage offset from best lay price </li>
+<li><strong>Cost Savings:</strong> Second-hand hardware typically comes at a fraction of the cost of new equipment. This can be particularly advantageous for those on a tight budget or individuals who are just starting out in machine learning and want to experiment without significant financial investment.</li>
+<li><strong>Availability of High-End Components:</strong> As technology advances, high-performance hardware becomes more accessible in the second-hand market. You may find GPUs, CPUs, or even entire workstations with specifications that were considered top-of-the-line just a few years ago but are now available at significantly reduced prices.</li>
+<li><strong>DIY Upgrades and Customization:</strong> Buying second-hand hardware allows for customization and upgrades tailored to your specific machine learning requirements. You can mix and match components, such as adding more RAM or swapping out GPUs, to create a setup optimized for your workload.</li>
+<li><strong>Environmental Sustainability:</strong> Opting for second-hand hardware promotes sustainability by extending the lifespan of electronic devices and reducing electronic waste. By reusing existing equipment, you contribute to minimizing the environmental footprint associated with manufacturing new hardware.</li>
+<li><strong>Risks and Caveats:</strong> While purchasing second-hand hardware can offer substantial cost savings, it also comes with certain risks and caveats. Older hardware may lack support for the latest software frameworks or may be prone to hardware failures due to wear and tear. Additionally, warranties and technical support may be limited or non-existent, requiring users to be proficient in troubleshooting and maintenance.</li>
+<li><strong>Research and Due Diligence:</strong> Before making a purchase, it's essential to research the specifications, performance benchmarks, and compatibility of the second-hand hardware with your machine learning tasks. Look for reputable sellers or platforms that offer warranties, return policies, or verification of the hardware's condition to minimize the risk of receiving faulty or subpar equipment.</li>
+<li><strong>Consider Future Scalability:</strong> While second-hand hardware may meet your current needs, consider your future scalability requirements. Will the hardware be able to accommodate larger datasets or more computationally intensive models as your projects grow? Planning for future upgrades or expansion can help ensure that your investment remains viable in the long term.</li>
 </ul>
-</li>
-<li>
-<p>Stake – This allows you to program a pre-determined stake that can be triggered when you click in the column, essentially giving you your own bet placement shortcut buttons.  </p>
-</li>
-</ul>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate7.png" /></p>
-<p>Once you have set up your custom column the way that you would like it to operate, the next step is to make it visible on your screen so you can use it.  </p>
-<ul>
-<li>Select your custom column name from the drop down box next to the yellow star icon </li>
-<li>Click on <img alt="Bet Angel beginner guide" src="../img/intermediate16.png" /> icon</li>
-<li>Scroll through the list and choose your custom column</li>
-</ul>
-<p>Your custom column should now be added to the right of the existing columns (see image below) </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate8.png" /></p>
-<p>If you haven’t created a profile for your custom columns, click the settings button (see below), then choose columns where pop up window will appear. Find your custom column from the list and tick the box next to it. </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate9.png" /></p>
-<h2 id="offset-bets">Offset Bets</h2>
-<p>Offset bets are extremely easy to achieve in Bet Angel thanks to a simple to use tool at the top of the One-click screen. Here you can choose to use a number of different offset bet actions and specify the number of ticks or percentage that you want your offset bet to be placed at.  </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate10.png" /></p>
-<p>In the above example, if I placed a back bet on the runner named “1. Andrew Swagger”, the back bet will be placed at $55 and then Bet Angel will automatically place a lay bet on the same runner 2 ticks lower.  </p>
-<h2 id="dutching">Dutching</h2>
-<p>The dutching screen within Bet Angel is often overlooked by Bet Angel users but is extremely handy, especially if your preference is lower risk (and lower profit/loss). The dutching screen will only place back bets into a market (while the bookmaking screen will only place lay bets-see next section). Bet Angel makes dutching a lot easier by allowing you to select a number of runners within a market that you think that the runner may be amongst and place bets with a specific stake, achieve a target profit or set a minimum stake for Bet Angel to use.  </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate11.png" /></p>
-<p>In the above example, we’ve selected 5 runners, out of a market of 10, who we think could possibly win the race. Our aim in this scenario is to come away with a profit of $20 if one of our selected runners win. Bet Angel will do all the calculations for you to work out the odds and stake for each runner, but you do have the ability to override a specific runners target profit – especially handy if you're not completely confident that a particular runner will win or not but you hold more or less confidence than the rest of your selections.  </p>
-<p>For example, for 8. Nobodys Puppet, which the best available back price is 10.5, we may think that there is still a possibility for it to win, so we can override the target profit for that runner to be $0 which will mean that if it wins, we won't make any profit but we also won't lose our stake.  </p>
-<p>You’ll notice that there are 3 check box columns: Back, Lay and Manual. These refer to the odds that you’ll be using. If the back-check box is selected, then you’ll be using the best available back odds and the same concept applies if you have the lay check box selected. Manual will allow you to set your own odds for bets to be placed onto the market.  </p>
-<p>Bet Angel will also display the total stake for all of the bets to be placed based on your settings as well as the potential profit (indicated in green) should one of your selections win and the potential loss should they lose (indicated in red).  </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate12.png" /></p>
-<p>For a more in depth run-through of the Dutching functionality, check out the Bet Angel YouTube video <a href="https://www.youtube.com/watch?v=sK5OSmjfOUk">here</a>. </p>
-<h2 id="bookmaking">Bookmaking</h2>
-<p>The bookmaking screen operates almost identically to the Dutching screen except that it will only place lay bets into the market. The aim of the game in this screen to create a book that ends up being over 100% so that we can secure a profit.  </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate13.png" /></p>
-<p>To see an example of the bookmaking screen in action, take a look at the Bet Angel video on Youtube <a href="https://www.youtube.com/watch?v=2QgD0mElPxc">here</a>. </p>
-<h2 id="charting">Charting</h2>
-<p>One of the main benefits to using programs such as Bet Angel is the functionality that allows you to gain a more in depth insight into how a market is going, see trends and help you make smarter calls when it comes to placing your own bets. Charts within Bet Angel takes the information from the Betfair exchange and illustrates it in a way that allows you to interpret complex data in a more concise visual format. Advanced charting is a feature that is easily accessed from the One-click, Ladder and manual bet screens and can be accessed by clicking the graph icon next to a runners name. </p>
-<p><img alt="Bet Angel beginner guide" src="../img/intermediate14.png" /></p>
-<p>From here, a chart window will appear with various graphs and options to change the type of graph and the data being displayed.  </p>
-<p>For more detail and information regarding Bet Angels advanced charts, check out their video tutorial <a href="https://www.youtube.com/watch?time_continue=1261&amp;v=kvlB080Mteg&amp;feature=emb_title">here</a>.  </p>
-<h2 id="resources">Resources</h2>
-<ul>
-<li>
-<p><a href="https://www.youtube.com/playlist?list=PLvw8KRdyfOY33tlo_L5L7puekU4ligj4I">Betfair's interview with Bet Angel's creator, Peter Webb</a></p>
-</li>
-<li>
-<p><a href="https://www.betangel.com/user-guide/">Bet Angel user guide</a></p>
-<ul>
-<li><a href="https://www.betangel.com/user-guide/ladder_interface.html?ms=GgBAAAQAFBAIASA%3D&amp;st=MA%3D%3D&amp;sct=MA%3D%3D&amp;mw=Mzkx">Ladder Mode</a></li>
-<li><a href="https://www.betangel.com/user-guide/bet_angel___inplay_trader.html?ms=GgBAAAQAEEAIASA%3D&amp;st=MA%3D%3D&amp;sct=MjAw&amp;mw=Mzkx">In-Play trader view</a></li>
-<li><a href="https://www.betangel.com/user-guide/custom_columns.html?ms=GgAAAAAAEEAI&amp;q=Q3VzdG9tIENvbHVtbnM%3D&amp;st=Mg%3D%3D&amp;sct=MA%3D%3D&amp;mw=Mzkx">Custom columns</a></li>
-<li><a href="https://www.betangel.com/user-guide/offsetting_by_ticks_or_percentages.html">Offset bets</a></li>
-<li><a href="https://www.betangel.com/user-guide/bet_angel_advanced_dutching.html?ms=GgAAAAAAMUAI&amp;q=RHV0Y2hpbmc%3D&amp;st=Mg%3D%3D&amp;sct=MA%3D%3D&amp;mw=Mzkx">Dutching</a></li>
-<li><a href="https://www.betangel.com/user-guide/bookmaking____being_the_bookmaker_.html?ms=AgAAAAAAAg%3D%3D&amp;q=Qm9va21ha2luZw%3D%3D&amp;st=Mg%3D%3D&amp;sct=MA%3D%3D&amp;mw=MzIw">Bookmaking</a></li>
-</ul>
-</li>
-<li>
-<p><a href="https://www.youtube.com/user/betangeltv">Youtube</a></p>
-<ul>
-<li><a href="https://www.youtube.com/watch?v=CBfqOQgtVLo&amp;list=PLVgQjBRi6AcmcuL11TtqQUHC4NbmWsUZl">Ladder Mode</a></li>
-<li><a href="https://www.youtube.com/watch?v=z5tLOl-miYU&amp;t=37s">In-Play trader view</a></li>
-<li><a href="https://www.youtube.com/watch?v=YxAl2qOnY8c">Custom Columns</a></li>
-<li><a href="https://www.youtube.com/watch?v=sK5OSmjfOUk">Dutching</a></li>
-<li><a href="https://www.youtube.com/watch?v=2QgD0mElPxc">Bookmaking</a></li>
-</ul>
-</li>
-</ul>
-<hr />
-<h2 id="what-next">What next?</h2>
-<p>Now that you've got the intermediate level sorted, take the next step and have a look at our <a href="/automation/betAngeladvanced">Advanced guide to Bet Angel</a>.</p>
-<hr />
-<h2 id="disclaimer">Disclaimer</h2>
-<p>Note that whilst automated strategies are fun and rewarding to create, we can't promise that your betting strategy will be profitable, and we make no representations in relation to the information on this page. If you're implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred.  Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>All in all, there is much to consider in this debate. Careful consideration of computing and betting requirements, budget and future-proofing should be entered into before making a decision on this front. However, whatever you have is a good place to start, so start there and only buy more when you run out of RAM, disk space or patience!</p>
+<p>As always, there are many wise minds in our Quants Discord server with experience and advice on implementing these solutions who are more than happy to share their expertise. If you’d like to join the discussion, <a href="https://forms.office.com/r/ZG9ea1xQj1">fill out the form here</a></p>
 
 
 
@@ -3040,7 +2959,7 @@
       <nav class="md-footer__inner md-grid" aria-label="footer.title">
         
           
-          <a href="../betAngelbeginners/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Beginner&#39;s guide" rel="prev">
+          <a href="../dataSources/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Pricing Data Sources" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -3049,20 +2968,20 @@
                 <span class="md-footer__direction">
                   Previous
                 </span>
-                Beginner's guide
+                Pricing Data Sources
               </div>
             </div>
           </a>
         
         
           
-          <a href="../betAngeladvanced/" class="md-footer__link md-footer__link--next" aria-label="Next: Advanced guide" rel="next">
+          <a href="../topazTutorial/" class="md-footer__link md-footer__link--next" aria-label="Next: Greyhound Topaz API Tutorial (New)" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   Next
                 </span>
-                Advanced guide
+                Greyhound Topaz API Tutorial (New)
               </div>
             </div>
             <div class="md-footer__button md-icon">

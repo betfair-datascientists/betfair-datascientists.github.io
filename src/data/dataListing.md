@@ -37,6 +37,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2023-11](../assets/ANZ_Thoroughbreds_2023_11.csv)
  - [Aus & NZ Thoroughbreds 2023-12](../assets/ANZ_Thoroughbreds_2023_12.csv)
  - [Aus & NZ Thoroughbreds 2024-01](../assets/ANZ_Thoroughbreds_2024_01.csv)
+ - [Aus & NZ Thoroughbreds 2024-02](../assets/ANZ_Thoroughbreds_2024_02.csv)
 
 ### Thoroughbred Predictions Model
 
@@ -60,6 +61,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Harness 2023-11](../assets/ANZ_Harness_2023_11.csv)
  - [Aus & NZ Harness 2023-12](../assets/ANZ_Harness_2023_12.csv)
  - [Aus & NZ Harness 2024-01](../assets/ANZ_Harness_2024_01.csv)
+ - [Aus & NZ Harness 2024-02](../assets/ANZ_Harness_2024_02.csv)
  
 ### Harness Predictions Model
 
@@ -81,6 +83,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2023-11](../assets/ANZ_Greyhounds_2023_11.csv)
  - [Aus & NZ Greyhounds 2023-12](../assets/ANZ_Greyhounds_2023_12.csv)
  - [Aus & NZ Greyhounds 2024-01](../assets/ANZ_Greyhounds_2024_01.csv)
+ - [Aus & NZ Greyhounds 2024-02](../assets/ANZ_Greyhounds_2024_02.csv)
 
 ### Greyhound Predictions Model
 
@@ -102,6 +105,7 @@ By downloading this data, you acknowledge and agree that:
  - [Betfair Hub Tipsters 2023-10](../assets/Hub_2023_10_October_Racing_Results.csv)
  - [Betfair Hub Tipsters 2023-11](../assets/Hub_2023_11_November_Racing_Results.csv)
  - [Betfair Hub Tipsters 2023-12](../assets/Hub_2023_12_December_Racing_Results.csv)
+ - [Betfair Hub Tipsters 2024-01](../assets/Hub_2024_01_January_Racing_Results.csv)
 
 ## Australian Sport
 
@@ -133,6 +137,8 @@ By downloading this data, you acknowledge and agree that:
  - [NRL 2022 Match Odds](../assets/NRL_2022_Match_Odds.csv)
  - [NRL 2023 All Markets](../assets/NRL_2023_All_Markets.csv)
  - [NRL 2023 Match Odds](../assets/NRL_2023_Match_Odds.csv)
+ - [NRL 2024 All Markets](../assets/NRL_2024_All_Markets.csv)
+ - [NRL 2024 Match Odds](../assets/NRL_2024_Match_Odds.csv)
 
 ### A-League
 

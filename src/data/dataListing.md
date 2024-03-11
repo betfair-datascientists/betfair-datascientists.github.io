@@ -122,6 +122,8 @@ By downloading this data, you acknowledge and agree that:
  - [AFL 2022 Match Odds Markets](../assets/AFL_2022_Match_Odds.csv)
  - [AFL 2023 All Markets](../assets/AFL_2023_All_Markets.csv)
  - [AFL 2023 Match Odds Markets](../assets/AFL_2023_Match_Odds.csv)
+ - [AFL 2024 All Markets](../assets/AFL_2024_All_Markets.csv)
+ - [AFL 2024 Match Odds Markets](../assets/AFL_2024_Match_Odds.csv)
 
 ### AFLW
 

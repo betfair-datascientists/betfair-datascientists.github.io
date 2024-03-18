@@ -122,7 +122,11 @@ for tab_number in unique_tab_numbers:
 
 ```
 
-Finally lets assign the sum the probabilities across all outcomes, renormalise and assign the cashback prices.
+Finally lets assign the sum the probabilities across all outcomes, renormalise and assign the cashback prices. 
+It is expected that the efficient market overround will be over 100% to deal with the runner being voided. This is normal for back markets but not usually for lay markets.
+
+If you wanted to calculate a price where you wanted to include an edge for yourself, you would multiply the column 'CASHBACK_WIN_PERCENTAGE' by a number greater than 1 for lay bets and less than 1 for back bets.
+This implies that should those bets get matched, you have positive expected value on these bets.
 
 ``` py title="Calculate and assign the cashback prices"
 

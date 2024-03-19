@@ -119,4 +119,4 @@ Here we've just used a win market price to calculate a price for the cashback 2n
 
 If you have any questions or want to learn more, [join the Discord server](https://forms.office.com/r/ZG9ea1xQj1) or Australian/New Zealand customers can email us at automation@betfair.com.au. 
 
-We're also endeavouring to provide a simple excel tool for this purpose so watch this space!
+We've also done this in a simple excel sheet to use for a single race - [Download Excel](../assets/RacingCalculatorTool.xlsx)

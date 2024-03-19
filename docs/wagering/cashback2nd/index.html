@@ -2861,83 +2861,41 @@ Here we've calculated our efficient win price based on the best available price 
 <a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="n">cashbacksecond</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">cashbacksecond</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
 </code></pre></div>
-<p>We now need to calculate the probability that this runner will finish in 2nd place given that another runner has won the race. This method draws on the work of the Harville paper "Assigning Probabilities to the Outcomes of Multi-Entry Competitions" whose method can also be used to calculate place and exotics probabilities</p>
-<div class="highlight"><span class="filename">Calculate 'Probability_Second_Given_X_Wins' for each unique tab_number</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Calculate &#39;Probability_Second_Given_X_Wins&#39; for each unique tab_number</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span> <span class="n">tab_number</span> <span class="ow">in</span> <span class="n">unique_tab_numbers</span><span class="p">:</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="c1"># Calculate the denominator (1 - IMPLIED_WIN_PERCENTAGE_{X})</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;SCALED_WIN_PROBABILITY_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="c1"># This line is how we find the probability of the runner &quot;winning&quot; the race (i.e. coming second) depending on which other runner actually won the race</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Probability_Second_Given_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">_Wins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;SCALED_WIN_PROBABILITY&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">denominator</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="c1"># Calculate the &#39;Probability_Second_Given_{X}_Wins&#39; column, handling the case where &#39;IMPLIED_WIN_PERCENTAGE_{X}&#39; is 0</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;SCALED_WIN_PROBABILITY_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Probability_Second_Given_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">_Wins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="c1"># If &#39;TAB_NUMBER&#39; equals tab_number, set Prob_Win_With_2nd_Dog_Being_{tab_number} to 0</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;TAB_NUMBER&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tab_number</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Probability_Second_Given_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">_Wins&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-</code></pre></div>
-<p>Now lets calculate the probability of the runner finishing in second place across all scenarios</p>
-<div class="highlight"><span class="filename">Calculate 'Probability_Second' column</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Calculate &#39;Probability_Second&#39; column</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;Probability_Second&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="p">[[</span><span class="sa">f</span><span class="s1">&#39;Probability_Second_Given_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">_Wins&#39;</span> <span class="k">for</span> <span class="n">tab_number</span> <span class="ow">in</span> <span class="n">unique_tab_numbers</span><span class="p">]]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Calculate the number of non-zero entries in the &#39;Probability_Second_Given_{tab_number}_Wins&#39; columns</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">num_non_zero_entries</span> <span class="o">=</span> <span class="p">(</span><span class="n">cashbacksecond</span><span class="p">[[</span><span class="sa">f</span><span class="s1">&#39;Probability_Second_Given_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">_Wins&#39;</span> <span class="k">for</span> <span class="n">tab_number</span> <span class="ow">in</span> <span class="n">unique_tab_numbers</span><span class="p">]]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Add 1 to the number of non-zero entries</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">num_non_zero_entries</span> <span class="o">+=</span> <span class="mi">1</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Divide the sum of &#39;Probability_Second_Given_{tab_number}_Wins&#39; by (the number of non-zero entries + 1)</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;Probability_Second&#39;</span><span class="p">]</span> <span class="o">/=</span> <span class="n">num_non_zero_entries</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># Assign probability of specific runner coming 2nd</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="n">sub_dataframes</span> <span class="o">=</span> <span class="p">[]</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="k">for</span> <span class="n">tab_number</span> <span class="ow">in</span> <span class="n">unique_tab_numbers</span><span class="p">:</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="c1"># Filter the main DataFrame based on &#39;TAB_NUMBER&#39; == X</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">sub_df</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;TAB_NUMBER&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tab_number</span><span class="p">][[</span><span class="s1">&#39;WIN_MARKET_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Probability_Second&#39;</span><span class="p">]]</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="c1"># Rename the &#39;Probability_Second&#39; column to &#39;Probability_Second_{X}&#39;</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="n">sub_df</span> <span class="o">=</span> <span class="n">sub_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;Probability_Second&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Probability_Second_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">})</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="c1"># Append the sub-dataframe to the list</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>    <span class="n">sub_dataframes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sub_df</span><span class="p">)</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="c1"># Merge sub-dataframes back to the main dataframe on &#39;WIN_MARKET_ID&#39;</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="k">for</span> <span class="n">sub_df</span> <span class="ow">in</span> <span class="n">sub_dataframes</span><span class="p">:</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>    <span class="n">cashbacksecond</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cashbacksecond</span><span class="p">,</span> <span class="n">sub_df</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WIN_MARKET_ID&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="c1"># Now cashbacksecond DataFrame contains the new columns &#39;Probability_Second_{X}&#39; for each unique tab_number</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="n">cashbacksecond</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="n">cashbacksecond</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
-</code></pre></div>
 <p>Now to assign the proper cashback price we need to subtract the percentage of the market that represents the runner that will be voided and then renormalise the probabilities for the remaining outcomes</p>
-<div class="highlight"><span class="filename">Calculate probability of winning given that a certain dog comes 2nd</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Calculate probability of winning given that a certain dog comes 2nd</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">for</span> <span class="n">tab_number</span> <span class="ow">in</span> <span class="n">unique_tab_numbers</span><span class="p">:</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="c1"># Calculate the denominator (1 - Probability_Second_{X})</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="c1"># This is the line where we remove the cashback2nd runner from our market</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Probability_Second_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="c1"># Create the new column Prob_Win_With_2nd_Dog_Being_{X}</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Prob_Win_With_2nd_Dog_Being_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;SCALED_WIN_PROBABILITY&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">denominator</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="c1"># If Probability_Second_{tab_number} is 0, set Prob_Win_With_2nd_Dog_Being_{tab_number} to 0</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Probability_Second_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Prob_Win_With_2nd_Dog_Being_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="c1"># If &#39;TAB_NUMBER&#39; equals tab_number, set Prob_Win_With_2nd_Dog_Being_{tab_number} to 0</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>    <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;TAB_NUMBER&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tab_number</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Prob_Win_With_2nd_Dog_Being_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight"><span class="filename">Calculate probability of winning given that a certain dog comes 2nd</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Calculate probability of winning given that a certain dog comes 2nd</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">for</span> <span class="n">tab_number</span> <span class="ow">in</span> <span class="n">unique_tab_numbers</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="c1"># Calculate the denominator (1 - Probability_Second_{X})</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="c1"># This is the line where we remove the cashback2nd runner from our market</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;SCALED_WIN_PROBABILITY_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="c1"># Create the new column Prob_Win_With_2nd_Dog_Being_{X}</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Prob_Win_With_2nd_Dog_Being_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;SCALED_WIN_PROBABILITY&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">denominator</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="c1"># If Probability_Second_{tab_number} is 0, set Prob_Win_With_2nd_Dog_Being_{tab_number} to 0</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;SCALED_WIN_PROBABILITY_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Prob_Win_With_2nd_Dog_Being_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="c1"># If &#39;TAB_NUMBER&#39; equals tab_number, set Prob_Win_With_2nd_Dog_Being_{tab_number} to 0</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">cashbacksecond</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;TAB_NUMBER&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">tab_number</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Prob_Win_With_2nd_Dog_Being_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div>
 <p>Finally lets assign the sum the probabilities across all outcomes, renormalise and assign the cashback prices. 
 It is expected that the efficient market overround will be over 100% to deal with the runner being voided. This is normal for back markets but not usually for lay markets.</p>
 <p>If you wanted to calculate a price where you wanted to include an edge for yourself, you would multiply the column 'CASHBACK_WIN_PERCENTAGE' by a number greater than 1 for lay bets and less than 1 for back bets.
 This implies that should those bets get matched, you have positive expected value on these bets.</p>
-<div class="highlight"><span class="filename">Calculate and assign the cashback prices</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Select the relevant columns</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">prob_columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Prob_Win_With_2nd_Dog_Being_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">tab_number</span> <span class="ow">in</span> <span class="n">unique_tab_numbers</span><span class="p">]</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># Sum the selected columns row-wise</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">total_probability</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="n">prob_columns</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># Count the number of non-zero entries in the selected columns</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">non_zero_count</span> <span class="o">=</span> <span class="p">(</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="n">prob_columns</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># Divide the total probability by the count of non-zero entries to get the average</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">cashback_percentage</span> <span class="o">=</span> <span class="n">total_probability</span> <span class="o">/</span> <span class="n">non_zero_count</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># Assign the calculated average to the &#39;CASHBACK_WIN_PERCENTAGE&#39; column</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;CASHBACK_WIN_PERCENTAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashback_percentage</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># Assign the cashback price</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;CASHBACK_PRICE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;CASHBACK_WIN_PERCENTAGE&#39;</span><span class="p">]</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="c1"># This is necessary across a very small number of markets where the resulting probability may be greater than 100% - usually markets with 3 runners with 1 runner being priced &lt;$1.10</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;CASHBACK_PRICE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;CASHBACK_PRICE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="mf">1.01</span><span class="p">)</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># Remove unnecessary columns</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">cashbacksecond</span><span class="o">=</span><span class="n">cashbacksecond</span><span class="p">[[</span><span class="s1">&#39;LOCAL_MEETING_DATE&#39;</span><span class="p">,</span><span class="s1">&#39;TRACK&#39;</span><span class="p">,</span><span class="s1">&#39;STATE_CODE&#39;</span><span class="p">,</span><span class="s1">&#39;RACE_NO&#39;</span><span class="p">,</span><span class="s1">&#39;WIN_MARKET_ID&#39;</span><span class="p">,</span><span class="s1">&#39;SELECTION_ID&#39;</span><span class="p">,</span><span class="s1">&#39;TAB_NUMBER&#39;</span><span class="p">,</span><span class="s1">&#39;SELECTION_NAME&#39;</span><span class="p">,</span><span class="s1">&#39;BEST_AVAIL_BACK_AT_SCHEDULED_OFF&#39;</span><span class="p">,</span><span class="s1">&#39;CASHBACK_PRICE&#39;</span><span class="p">]]</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="c1"># Print the first few rows of the dataframe</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="nb">print</span><span class="p">(</span><span class="n">cashbacksecond</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="c1"># Export to csv</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="n">cashbacksecond</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Cashback2nd_Probabilties.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight"><span class="filename">Calculate and assign the cashback prices</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Select the relevant columns</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">prob_columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Prob_Win_With_2nd_Dog_Being_</span><span class="si">{</span><span class="n">tab_number</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">tab_number</span> <span class="ow">in</span> <span class="n">unique_tab_numbers</span><span class="p">]</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># Sum the selected columns row-wise</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">total_probability</span> <span class="o">=</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="n">prob_columns</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># Count the number of non-zero entries in the selected columns</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="n">non_zero_count</span> <span class="o">=</span> <span class="p">(</span><span class="n">cashbacksecond</span><span class="p">[</span><span class="n">prob_columns</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># Divide the total probability by the count of non-zero entries to get the average</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="n">cashback_percentage</span> <span class="o">=</span> <span class="n">total_probability</span> <span class="o">/</span> <span class="n">non_zero_count</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># Assign the calculated average to the &#39;CASHBACK_WIN_PERCENTAGE&#39; column</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;CASHBACK_WIN_PERCENTAGE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashback_percentage</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># Assign the cashback price</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;CASHBACK_PRICE&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">cashbacksecond</span><span class="p">[</span><span class="s1">&#39;CASHBACK_WIN_PERCENTAGE&#39;</span><span class="p">]</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># Remove unnecessary columns</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="n">cashbacksecond</span><span class="o">=</span><span class="n">cashbacksecond</span><span class="p">[[</span><span class="s1">&#39;LOCAL_MEETING_DATE&#39;</span><span class="p">,</span><span class="s1">&#39;TRACK&#39;</span><span class="p">,</span><span class="s1">&#39;STATE_CODE&#39;</span><span class="p">,</span><span class="s1">&#39;RACE_NO&#39;</span><span class="p">,</span><span class="s1">&#39;WIN_MARKET_ID&#39;</span><span class="p">,</span><span class="s1">&#39;SELECTION_ID&#39;</span><span class="p">,</span><span class="s1">&#39;TAB_NUMBER&#39;</span><span class="p">,</span><span class="s1">&#39;SELECTION_NAME&#39;</span><span class="p">,</span><span class="s1">&#39;BEST_AVAIL_BACK_AT_SCHEDULED_OFF&#39;</span><span class="p">,</span><span class="s1">&#39;CASHBACK_PRICE&#39;</span><span class="p">]]</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># Print the first few rows of the dataframe</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">cashbacksecond</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># Export to csv</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="n">cashbacksecond</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Cashback2nd_Probabilities.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <table>
 <thead>
@@ -2974,7 +2932,7 @@ This implies that should those bets get matched, you have positive expected valu
 <td>3</td>
 <td>Bounding Over</td>
 <td>$6.40</td>
-<td>$5.57</td>
+<td>$5.54</td>
 </tr>
 <tr>
 <td>1/02/2024</td>
@@ -2985,7 +2943,7 @@ This implies that should those bets get matched, you have positive expected valu
 <td>1</td>
 <td>Whistle Away</td>
 <td>$7.80</td>
-<td>$6.75</td>
+<td>$6.72</td>
 </tr>
 <tr>
 <td>1/02/2024</td>
@@ -2996,7 +2954,7 @@ This implies that should those bets get matched, you have positive expected valu
 <td>4</td>
 <td>Gone On Green</td>
 <td>$9.80</td>
-<td>$8.45</td>
+<td>$8.41</td>
 </tr>
 <tr>
 <td>1/02/2024</td>
@@ -3007,7 +2965,7 @@ This implies that should those bets get matched, you have positive expected valu
 <td>8</td>
 <td>Serrai</td>
 <td>$10.00</td>
-<td>$8.62</td>
+<td>$8.58</td>
 </tr>
 <tr>
 <td>1/02/2024</td>
@@ -3018,7 +2976,7 @@ This implies that should those bets get matched, you have positive expected valu
 <td>7</td>
 <td>Snowy Waugh</td>
 <td>$18.00</td>
-<td>$15.42</td>
+<td>$15.34</td>
 </tr>
 <tr>
 <td>1/02/2024</td>
@@ -3029,7 +2987,7 @@ This implies that should those bets get matched, you have positive expected valu
 <td>6</td>
 <td>Pocket Say Itch</td>
 <td>$50.00</td>
-<td>$42.62</td>
+<td>$42.42</td>
 </tr>
 <tr>
 <td>1/02/2024</td>
@@ -3040,7 +2998,7 @@ This implies that should those bets get matched, you have positive expected valu
 <td>5</td>
 <td>City Steamer</td>
 <td>$170.00</td>
-<td>$144.64</td>
+<td>$143.99</td>
 </tr>
 </tbody>
 </table>

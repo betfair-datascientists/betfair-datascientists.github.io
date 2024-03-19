@@ -54,56 +54,6 @@ cashbacksecond = cashbacksecond.drop_duplicates()
 
 ```
 
-We now need to calculate the probability that this runner will finish in 2nd place given that another runner has won the race. This method draws on the work of the Harville paper "Assigning Probabilities to the Outcomes of Multi-Entry Competitions" whose method can also be used to calculate place and exotics probabilities
-
-``` py title="Calculate 'Probability_Second_Given_X_Wins' for each unique tab_number"
-
-# Calculate 'Probability_Second_Given_X_Wins' for each unique tab_number
-for tab_number in unique_tab_numbers:
-    # Calculate the denominator (1 - IMPLIED_WIN_PERCENTAGE_{X})
-    denominator = 1 - cashbacksecond[f'SCALED_WIN_PROBABILITY_{tab_number}']
-    # This line is how we find the probability of the runner "winning" the race (i.e. coming second) depending on which other runner actually won the race
-    cashbacksecond[f'Probability_Second_Given_{tab_number}_Wins'] = cashbacksecond['SCALED_WIN_PROBABILITY'] / denominator
-    # Calculate the 'Probability_Second_Given_{X}_Wins' column, handling the case where 'IMPLIED_WIN_PERCENTAGE_{X}' is 0
-    cashbacksecond.loc[cashbacksecond[f'SCALED_WIN_PROBABILITY_{tab_number}'] == 0, f'Probability_Second_Given_{tab_number}_Wins'] = 0
-    # If 'TAB_NUMBER' equals tab_number, set Prob_Win_With_2nd_Dog_Being_{tab_number} to 0
-    cashbacksecond.loc[cashbacksecond['TAB_NUMBER'] == tab_number, f'Probability_Second_Given_{tab_number}_Wins'] = 0
-
-```
-
-Now lets calculate the probability of the runner finishing in second place across all scenarios
-
-``` py title="Calculate 'Probability_Second' column"
-
-# Calculate 'Probability_Second' column
-cashbacksecond['Probability_Second'] = cashbacksecond[[f'Probability_Second_Given_{tab_number}_Wins' for tab_number in unique_tab_numbers]].sum(axis=1)
-# Calculate the number of non-zero entries in the 'Probability_Second_Given_{tab_number}_Wins' columns
-num_non_zero_entries = (cashbacksecond[[f'Probability_Second_Given_{tab_number}_Wins' for tab_number in unique_tab_numbers]] != 0).sum(axis=1)
-# Add 1 to the number of non-zero entries
-num_non_zero_entries += 1
-# Divide the sum of 'Probability_Second_Given_{tab_number}_Wins' by (the number of non-zero entries + 1)
-cashbacksecond['Probability_Second'] /= num_non_zero_entries
-
-# Assign probability of specific runner coming 2nd
-sub_dataframes = []
-for tab_number in unique_tab_numbers:
-    # Filter the main DataFrame based on 'TAB_NUMBER' == X
-    sub_df = cashbacksecond[cashbacksecond['TAB_NUMBER'] == tab_number][['WIN_MARKET_ID', 'Probability_Second']]
-    # Rename the 'Probability_Second' column to 'Probability_Second_{X}'
-    sub_df = sub_df.rename(columns={'Probability_Second': f'Probability_Second_{tab_number}'})
-    # Append the sub-dataframe to the list
-    sub_dataframes.append(sub_df)
-
-# Merge sub-dataframes back to the main dataframe on 'WIN_MARKET_ID'
-for sub_df in sub_dataframes:
-    cashbacksecond = pd.merge(cashbacksecond, sub_df, on=['WIN_MARKET_ID'], how='left')
-
-# Now cashbacksecond DataFrame contains the new columns 'Probability_Second_{X}' for each unique tab_number
-cashbacksecond = cashbacksecond.fillna(0)
-cashbacksecond = cashbacksecond.drop_duplicates()
-
-```
-
 Now to assign the proper cashback price we need to subtract the percentage of the market that represents the runner that will be voided and then renormalise the probabilities for the remaining outcomes
 
 ``` py title="Calculate probability of winning given that a certain dog comes 2nd"
@@ -112,11 +62,11 @@ Now to assign the proper cashback price we need to subtract the percentage of th
 for tab_number in unique_tab_numbers:
     # Calculate the denominator (1 - Probability_Second_{X})
     # This is the line where we remove the cashback2nd runner from our market
-    denominator = 1 - cashbacksecond[f'Probability_Second_{tab_number}']
+    denominator = 1 - cashbacksecond[f'SCALED_WIN_PROBABILITY_{tab_number}']
     # Create the new column Prob_Win_With_2nd_Dog_Being_{X}
     cashbacksecond[f'Prob_Win_With_2nd_Dog_Being_{tab_number}'] = cashbacksecond['SCALED_WIN_PROBABILITY'] / denominator
     # If Probability_Second_{tab_number} is 0, set Prob_Win_With_2nd_Dog_Being_{tab_number} to 0
-    cashbacksecond.loc[cashbacksecond[f'Probability_Second_{tab_number}'] == 0, f'Prob_Win_With_2nd_Dog_Being_{tab_number}'] = 0
+    cashbacksecond.loc[cashbacksecond[f'SCALED_WIN_PROBABILITY_{tab_number}'] == 0, f'Prob_Win_With_2nd_Dog_Being_{tab_number}'] = 0
     # If 'TAB_NUMBER' equals tab_number, set Prob_Win_With_2nd_Dog_Being_{tab_number} to 0
     cashbacksecond.loc[cashbacksecond['TAB_NUMBER'] == tab_number, f'Prob_Win_With_2nd_Dog_Being_{tab_number}'] = 0
 
@@ -142,27 +92,25 @@ cashback_percentage = total_probability / non_zero_count
 cashbacksecond['CASHBACK_WIN_PERCENTAGE'] = cashback_percentage
 # Assign the cashback price
 cashbacksecond['CASHBACK_PRICE'] = 1 / cashbacksecond['CASHBACK_WIN_PERCENTAGE']
-# This is necessary across a very small number of markets where the resulting probability may be greater than 100% - usually markets with 3 runners with 1 runner being priced <$1.10
-cashbacksecond['CASHBACK_PRICE'] = cashbacksecond['CASHBACK_PRICE'].clip(lower=1.01)
 # Remove unnecessary columns
 cashbacksecond=cashbacksecond[['LOCAL_MEETING_DATE','TRACK','STATE_CODE','RACE_NO','WIN_MARKET_ID','SELECTION_ID','TAB_NUMBER','SELECTION_NAME','BEST_AVAIL_BACK_AT_SCHEDULED_OFF','CASHBACK_PRICE']]
 # Print the first few rows of the dataframe
 print(cashbacksecond.head)
 # Export to csv
-cashbacksecond.to_csv('Cashback2nd_Probabilties.csv',index=False)
+cashbacksecond.to_csv('Cashback2nd_Probabilities.csv',index=False)
 
 ```
 
 LOCAL_MEETING_DATE | TRACK | RACE_NO | WIN_MARKET_ID | SELECTION_ID | TAB_NUMBER | SELECTION_NAME |  WIN_PRICE |  CASHBACK_PRICE
 ----------|-------------|---|-----------|----------|---|-----------------|---------|-------
 1/02/2024 | Albion Park | 1 | 224245223 | 62990490 | 2 | Cleopatra Hayze |  $2.22  |  $2.07
-1/02/2024 | Albion Park | 1 | 224245223 | 65520447 | 3 | Bounding Over |  $6.40  |  $5.57
-1/02/2024 | Albion Park | 1 | 224245223 | 65328340 | 1 | Whistle Away |  $7.80  |  $6.75
-1/02/2024 | Albion Park | 1 | 224245223 | 65520448 | 4 | Gone On Green |  $9.80  |  $8.45
-1/02/2024 | Albion Park | 1 | 224245223 | 65520449 | 8 | Serrai |  $10.00  |  $8.62
-1/02/2024 | Albion Park | 1 | 224245223 | 64876290 | 7 | Snowy Waugh |  $18.00  |  $15.42
-1/02/2024 | Albion Park | 1 | 224245223 | 54266223 | 6 | Pocket Say Itch |  $50.00  |  $42.62
-1/02/2024 | Albion Park | 1 | 224245223 | 59147471 | 5 | City Steamer |  $170.00  |  $144.64
+1/02/2024 | Albion Park | 1 | 224245223 | 65520447 | 3 | Bounding Over |  $6.40  |  $5.54
+1/02/2024 | Albion Park | 1 | 224245223 | 65328340 | 1 | Whistle Away |  $7.80  |  $6.72
+1/02/2024 | Albion Park | 1 | 224245223 | 65520448 | 4 | Gone On Green |  $9.80  |  $8.41
+1/02/2024 | Albion Park | 1 | 224245223 | 65520449 | 8 | Serrai |  $10.00  |  $8.58
+1/02/2024 | Albion Park | 1 | 224245223 | 64876290 | 7 | Snowy Waugh |  $18.00  |  $15.34
+1/02/2024 | Albion Park | 1 | 224245223 | 54266223 | 6 | Pocket Say Itch |  $50.00  |  $42.42
+1/02/2024 | Albion Park | 1 | 224245223 | 59147471 | 5 | City Steamer |  $170.00  |  $143.99
 
 ## Conclusion
 

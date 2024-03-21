@@ -99,7 +99,7 @@ for i in range(0, len(date_range), 6):
                         print("Max retries reached. Moving to the next block.")
 
         try:
-            all_races_df = pd.concat(all_races, ignore_index=True)
+            all_races_df = pd.concat([all_races], ignore_index=True)
         except ValueError:
             continue
 
@@ -265,12 +265,12 @@ TopazData['last5'] = TopazData['last5'].astype(str)
 def extract_numbers(row):
     try:
         numbers = list(map(int, row.split('-')))
-        # If there are fewer than 5 numbers, pad with zeros
-        numbers += [0] * (5 - len(numbers))
+        # If there are fewer than 5 numbers, pad with tens
+        numbers += [10] * (5 - len(numbers))
         return numbers
     except ValueError:
         # Handle the case where the string cannot be split into integers
-        return [0, 0, 0, 0, 0]
+        return [10,10,10,10,10]
 
 # Apply the function to create new columns for each position
 TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace',

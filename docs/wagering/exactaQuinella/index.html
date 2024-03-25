@@ -710,6 +710,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2937,28 +2946,34 @@ Now lets calculate the probability of each runner finishing second to every othe
 </code></pre></div>
 <p>Finally we'll calculate the exacta probability by multiplying these two probabilites together. The quinella probability is found by simply adding the probability of the exacta combination with reverse selections.</p>
 <p>E.g. Quinella Prob (1-2) = Exacta Prob (1-2) + Exacta Prob (2-1)</p>
-<p>```</p>
-<h1 id="create-a-new-column-for-exacta-combinations">Create a new column for exacta combinations</h1>
-<p>exacta_combinations['exacta_combination'] = exacta_combinations['exacta_first'].astype(str) + ' | ' + exacta_combinations['exacta_second'].astype(str)</p>
-<h1 id="create-a-column-for-exacta-odds">Create a column for exacta odds</h1>
-<p>exacta_combinations['exacta_probability'] = exacta_combinations['SCALED_WIN_PROBABILITY'] * exacta_combinations['Probability_Second_Given_Wins']</p>
-<h1 id="assuming-exacta_combinations-is-your-dataframe-containing-the-combinations">Assuming exacta_combinations is your DataFrame containing the combinations</h1>
-<p>exacta_combinations = exacta_combinations[exacta_combinations['exacta_first'] != exacta_combinations['exacta_second']]
-exacta_combinations = exacta_combinations.dropna(subset=['exacta_probability'])</p>
-<h1 id="create-a-copy-of-the-dataframe-with-columns-win_market_id-exacta_second-exacta_first-exacta_odds">Create a copy of the DataFrame with columns 'WIN_MARKET_ID', 'exacta_second', 'exacta_first', 'exacta_odds'</h1>
-<p>exacta_combinations_reverse = exacta_combinations[['WIN_MARKET_ID', 'exacta_second', 'exacta_first', 'exacta_probability']].copy()
-exacta_combinations_reverse.rename(columns={'exacta_probability':'reverse_exacta','exacta_first':'exacta_first_reverse','exacta_second':'exacta_second_reverse'},inplace=True)</p>
-<h1 id="merge-the-reverse-dataframe-together-with-the-original-dataframe-to-find-the-exacta-probability-for-the-reverse-combination">Merge the reverse dataframe together with the original dataframe to find the exacta probability for the reverse combination</h1>
-<p>exacta_combinations=pd.merge(exacta_combinations,exacta_combinations_reverse,how='left',left_on = ['WIN_MARKET_ID', 'exacta_first', 'exacta_second'],right_on = ['WIN_MARKET_ID', 'exacta_second_reverse', 'exacta_first_reverse'])
-exacta_combinations['exacta_odds'] = 1/exacta_combinations['exacta_probability']</p>
-<h1 id="calculating-quinella_odds-by-summing-the-exacta_odds-for-each-combination">Calculating quinella_odds by summing the exacta_odds for each combination</h1>
-<p>exacta_combinations['quinella_probability'] = exacta_combinations['exacta_probability']+exacta_combinations['reverse_exacta']
-exacta_combinations['quinella_odds'] = 1/exacta_combinations['quinella_probability']</p>
-<h1 id="discard-extra-columns">Discard extra columns</h1>
-<p>exacta_combinations=exacta_combinations[['WIN_MARKET_ID','exacta_first','exacta_second','exacta_combination','exacta_probability','exacta_odds','quinella_probability','quinella_odds']]</p>
-<h1 id="display-the-result">Display the result</h1>
-<p>print(exacta_combinations)
-exacta_combinations.to_csv('exacta_combinations.csv',index=False)</p>
+<div class="highlight"><span class="filename">What are the odds?</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># Create a new column for exacta combinations</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_combination&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_first&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39; | &#39;</span> <span class="o">+</span> <span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_second&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># Create a column for exacta odds</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;SCALED_WIN_PROBABILITY&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;Probability_Second_Given_Wins&#39;</span><span class="p">]</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># Assuming exacta_combinations is your DataFrame containing the combinations</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="n">exacta_combinations</span> <span class="o">=</span> <span class="n">exacta_combinations</span><span class="p">[</span><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_first&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_second&#39;</span><span class="p">]]</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="n">exacta_combinations</span> <span class="o">=</span> <span class="n">exacta_combinations</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;exacta_probability&#39;</span><span class="p">])</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># Create a copy of the DataFrame with columns &#39;WIN_MARKET_ID&#39;, &#39;exacta_second&#39;, &#39;exacta_first&#39;, &#39;exacta_odds&#39;</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="n">exacta_combinations_reverse</span> <span class="o">=</span> <span class="n">exacta_combinations</span><span class="p">[[</span><span class="s1">&#39;WIN_MARKET_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;exacta_second&#39;</span><span class="p">,</span> <span class="s1">&#39;exacta_first&#39;</span><span class="p">,</span> <span class="s1">&#39;exacta_probability&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="n">exacta_combinations_reverse</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;exacta_probability&#39;</span><span class="p">:</span><span class="s1">&#39;reverse_exacta&#39;</span><span class="p">,</span><span class="s1">&#39;exacta_first&#39;</span><span class="p">:</span><span class="s1">&#39;exacta_first_reverse&#39;</span><span class="p">,</span><span class="s1">&#39;exacta_second&#39;</span><span class="p">:</span><span class="s1">&#39;exacta_second_reverse&#39;</span><span class="p">},</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># Merge the reverse dataframe together with the original dataframe to find the exacta probability for the reverse combination</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="n">exacta_combinations</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">exacta_combinations</span><span class="p">,</span><span class="n">exacta_combinations_reverse</span><span class="p">,</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span><span class="n">left_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;WIN_MARKET_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;exacta_first&#39;</span><span class="p">,</span> <span class="s1">&#39;exacta_second&#39;</span><span class="p">],</span><span class="n">right_on</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;WIN_MARKET_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;exacta_second_reverse&#39;</span><span class="p">,</span> <span class="s1">&#39;exacta_first_reverse&#39;</span><span class="p">])</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_odds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_probability&#39;</span><span class="p">]</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="c1"># Calculating quinella_odds by summing the exacta_odds for each combination</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;quinella_probability&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;exacta_probability&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;reverse_exacta&#39;</span><span class="p">]</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;quinella_odds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">exacta_combinations</span><span class="p">[</span><span class="s1">&#39;quinella_probability&#39;</span><span class="p">]</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="c1"># Discard extra columns</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="n">exacta_combinations</span><span class="o">=</span><span class="n">exacta_combinations</span><span class="p">[[</span><span class="s1">&#39;WIN_MARKET_ID&#39;</span><span class="p">,</span><span class="s1">&#39;exacta_first&#39;</span><span class="p">,</span><span class="s1">&#39;exacta_second&#39;</span><span class="p">,</span><span class="s1">&#39;exacta_combination&#39;</span><span class="p">,</span><span class="s1">&#39;exacta_probability&#39;</span><span class="p">,</span><span class="s1">&#39;exacta_odds&#39;</span><span class="p">,</span><span class="s1">&#39;quinella_probability&#39;</span><span class="p">,</span><span class="s1">&#39;quinella_odds&#39;</span><span class="p">]]</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="c1"># Display the result</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="nb">print</span><span class="p">(</span><span class="n">exacta_combinations</span><span class="p">)</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="n">exacta_combinations</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;exacta_combinations.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="conclusion">Conclusion</h2>
 <p>This approach can also be used to calculate place market probabilities by simply finding the average probability of the runner finishing second (though be aware that the complexity will be much higher for a 3rd or 4th place market than just a 2nd place market).
 Here we've just used a win market price to calculate a price for the exacta and quinella markets, but this approach can easily be applied to a model's rated place like the Betfair Hub Thoroughbred and Greyhound predictions models!</p>

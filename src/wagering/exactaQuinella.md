@@ -154,7 +154,7 @@ Finally we'll calculate the exacta probability by multiplying these two probabil
 
 E.g. Quinella Prob (1-2) = Exacta Prob (1-2) + Exacta Prob (2-1)
 
-```
+```py title="What are the odds?"
 # Create a new column for exacta combinations
 exacta_combinations['exacta_combination'] = exacta_combinations['exacta_first'].astype(str) + ' | ' + exacta_combinations['exacta_second'].astype(str)
 
@@ -182,6 +182,7 @@ exacta_combinations=exacta_combinations[['WIN_MARKET_ID','exacta_first','exacta_
 # Display the result
 print(exacta_combinations)
 exacta_combinations.to_csv('exacta_combinations.csv',index=False)
+```
 
 ## Conclusion
 

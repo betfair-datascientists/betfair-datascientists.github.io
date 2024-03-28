@@ -326,12 +326,15 @@ TopazData['marginLog'] = np.log10(TopazData['resultMargin'] + 1)
 
 # Calculate median winner time per track/distance
 win_results = TopazData[TopazData['place'] == 1]
-median_win_time = pd.DataFrame(data=win_results[win_results['resultTime'] > 0].groupby(['track', 'distance'])['resultTime'].median()).rename(columns={"resultTime": "runTimeMedian"}).reset_index()
+
+grouped_data = win_results.groupby(['track', 'distance', 'meetingDate'])['resultTime'].median().reset_index()
+median_win_time = pd.DataFrame(grouped_data.groupby(['track', 'distance']).apply(lambda x: x.sort_values('meetingDate').set_index('meetingDate')['resultTime'].shift(1).rolling('365D', min_periods=1).median())).reset_index()
+median_win_time.rename(columns={"resultTime": "runTimeMedian"},inplace=True)
 median_win_time['speedIndex'] = (median_win_time['runTimeMedian'] / median_win_time['distance'])
 median_win_time['speedIndex'] = MinMaxScaler().fit_transform(median_win_time[['speedIndex']])
 
 # Merge with median winner time
-TopazData = TopazData.merge(median_win_time, on=['track', 'distance'], how='left')
+TopazData = TopazData.merge(median_win_time, how='left', on=['track', 'distance','meetingDate'])
 
 # Normalise time comparison
 TopazData['runTimeNorm'] = (TopazData['runTimeMedian'] / TopazData['resultTime']).clip(0.9, 1.1)
@@ -349,16 +352,22 @@ TopazData['hasEntryBoxNumberMinus1'] = TopazData['hasEntryBoxNumberMinus1'].asty
 # Display the resulting DataFrame which shows adjacent Vacant Boxes
 # Box 1 is treated as having a vacant box to the left always as we are looking how much space the dog has to move.
 TopazData['adjacentVacantBoxes'] = 2 - TopazData['hasEntryBoxNumberPlus1'] - TopazData['hasEntryBoxNumberMinus1']
+# Calculate 'hasAtLeast1VacantBox'
+TopazData['hasAtLeast1VacantBox'] = (TopazData['adjacentVacantBoxes'] > 0).astype(int)
 
 TopazData['win'] = TopazData['place'].apply(lambda x: 1 if x == 1 else 0)
 
-# Calculate box winning percentage for each track/distance
-box_win_percent = pd.DataFrame(data=TopazData.groupby(['track', 'distance', 'boxNumber','adjacentVacantBoxes'])['win'].mean()).rename(columns={"win": "boxWinPercent"}).reset_index()
-# Add to dog results dataframe
-TopazData = TopazData.merge(box_win_percent, on=['track', 'distance', 'boxNumber','adjacentVacantBoxes'], how='left')
-# Display example of barrier winning probabilities
-display(box_win_percent.head(8))
+grouped_data = TopazData.groupby(['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate'])['win'].mean().reset_index()
+grouped_data.set_index('meetingDate', inplace=True)
 
+# Apply rolling mean calculation to the aggregated data
+box_win_percent = grouped_data.groupby(['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox']).apply(lambda x: x.sort_values('meetingDate')['win'].shift(1).rolling('365D', min_periods=1).mean()).reset_index()
+
+# Reset index and rename columns
+box_win_percent.columns = ['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate', 'rolling_box_win_percentage']
+
+# Add to dog results dataframe
+TopazData = TopazData.merge(box_win_percent, on=['track', 'distance', 'meetingDate','boxNumber','hasAtLeast1VacantBox'], how='left')
 ```
 Now we've created some basic features, it's time to create our big group of features where we iterate over different subsets, variables and time points to generate a large number of different features
 
@@ -440,8 +449,36 @@ for i in subsets:
 
 # Only keep data 12 months after the start date of your dataset since we've used a 365D rolling timeframe for some features
 feature_cols = np.unique(feature_cols).tolist()
-dataset = dataset[dataset['meetingDate'] >= '2021-01-01']
-dataset = dataset[['meetingDate','state','track','distance','raceId','raceTypeCode','raceNumber','rugNumber','trainerId','damId','sireId','win','dogAge','weightInKgScaled','lastFiveWinPercentage','lastFivePlacePercentage','boxWinPercent'] + feature_cols]
+dataset = dataset[dataset['meetingDate'] >= '2018-01-01']
+dataset = dataset[[
+                'meetingDate',
+                'state',
+                'track',
+                'distance',
+                'raceId',
+                'raceTypeCode',
+                'raceNumber',
+                'boxNumber',
+                'rugNumber',
+                'runId',
+                'dogId',
+                'dogName',
+                'weightInKg',
+                'sex',
+                'trainerId',
+                'trainerState',
+                'damId',
+                'damName',
+                'sireId',
+                'sireName',
+                'win',
+                'dogAge',
+                'lastFiveWinPercentage',
+                'lastFivePlacePercentage',
+                'weightInKgScaled',
+                'rolling_box_win_percentage']
+                 + feature_cols
+                ]
 
 #The below line will output your dataframe to a csv but may be too large to open in Excel.
 #dataset.to_csv('testing.csv',index=False)

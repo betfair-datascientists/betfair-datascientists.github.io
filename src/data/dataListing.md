@@ -47,6 +47,13 @@ By downloading this data, you acknowledge and agree that:
  - [Thoroughbred Model Results 2023](../assets/Kash_Model_Results_2023.csv)
  - [Thoroughbred Model Results 2024 Jan - Mar](../assets/Kash_Model_Results_2024_01-03.csv)
 
+### Top 5 Model
+
+ - [Top 5 Model Results 2021](../assets/Top5_Model_Results_2021.csv)
+ - [Top 5 Model Results 2022](../assets/Top5_Model_Results_2022.csv)
+ - [Top 5 Model Results 2023](../assets/Top5_Model_Results_2023.csv)
+ - [Top 5 Model Results 2024 Jan - Mar](../assets/Top5_Model_Results_2024_01-03.csv)
+
 ### Harness
 
  - [Aus & NZ Harness 2023-01](../assets/ANZ_Harness_2023_01.csv)

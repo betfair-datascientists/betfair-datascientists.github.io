@@ -49,6 +49,8 @@ By downloading this data, you acknowledge and agree that:
 
 ### Top 5 Model
 
+ - [Top 5 Model Results 2019](../assets/Top5_Model_Results_2019.csv)
+ - [Top 5 Model Results 2020](../assets/Top5_Model_Results_2020.csv)
  - [Top 5 Model Results 2021](../assets/Top5_Model_Results_2021.csv)
  - [Top 5 Model Results 2022](../assets/Top5_Model_Results_2022.csv)
  - [Top 5 Model Results 2023](../assets/Top5_Model_Results_2023.csv)

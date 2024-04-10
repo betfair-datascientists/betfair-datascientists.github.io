@@ -6,6 +6,8 @@ Register [here](https://forms.office.com/r/23gT5gNvXL)
 
 Once you have registered, you will receive the dataset and submission template by email within 2 business days.
 
+The Competition is open to persons who are an existing customer of Betfair as of 15 April 2024
+
 Registrations close **4:59PM AEST Monday May 6th 2024**
 
 ## The Competition
@@ -107,3 +109,5 @@ For an invite to the discord server, please fill out the form [here](https://for
 Register [here](https://forms.office.com/r/23gT5gNvXL)
 
 Once you have registered, you will receive the dataset and submission template by email within 2 business days.
+
+The Competition is open to persons who are an existing customer of Betfair as of 15 April 2024

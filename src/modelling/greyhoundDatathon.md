@@ -28,7 +28,7 @@ Please direct all questions and submissions to [datathon@betfair.com.au](mailto:
 
 ## The specifics
 
-The Terms and Conditions for the 2024 Brownlow Medal Datathon Competition can be viewed [here](../assets/Greyhound_2024_TCs.pdf)
+The Terms and Conditions for the 2024 Greyhound Racing Datathon can be viewed [here](../assets/Greyhound_2024_TCs.pdf)
 
 ### Prizes
 
@@ -83,6 +83,12 @@ The Datathon will be judged using the log loss method where the log loss score i
 One submission file template will be available to Competition Entrants on www.betfair.com.au/hub/datathon by 11:59am on the nominated race day. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format. 
 
 For each race, **each Competition Entrant is required to predict the probability of a dog winning the race.** This prediction will then be used against the actual outcome to calculate the model’s score. The sum of the probabilities for every race must equal 1 – being the number of accepted winners. 
+
+## Submission File Template
+
+The submission file template will be loaded here by 11:59am on the nominated race day.
+
+ - [example file  10/04/2024](../assets/examples_submission_file_20240410.csv)
 
 Please name submission file using the following formatting: 
 

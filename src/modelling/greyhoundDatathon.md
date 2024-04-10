@@ -92,7 +92,7 @@ The submission file template will be loaded here by 11:59am on the nominated rac
 
 Please name submission file using the following formatting: 
 
-‘Greyhound_Racing_Dathon_2024_Submission_Form_{Model_Name}.csv’; 
+‘Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}.csv’; 
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 

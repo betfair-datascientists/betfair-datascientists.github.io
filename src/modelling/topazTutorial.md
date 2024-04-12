@@ -34,18 +34,20 @@ In the code block below, there are multiple instances of retries and programmed 
 NOTE: For state / date-range combinations where there are genuinely no races that occurred, the function will continuously error until it reaches the maximum specified retries before continuing to the next block. This may occur during the pandemic shutdown period in 2020 or the NSW Greyhound racing ban in 2017 or for time periods with the 'NT' jurisdiction where greyhound meetings may be up to 14 days apart.
 
 ```py title="Downloading Historic Data"
-import os
+import pandas as pd
+from tqdm import tqdm
 import time
 from datetime import datetime, timedelta
-from tqdm import tqdm
-import pandas as pd
 from topaz import TopazAPI
+from sklearn.preprocessing import MinMaxScaler 
+import numpy as np
 import requests
+import os
 
-api_key = ''  # Insert your API key
+api_key = '' #Insert your API key 
 topaz_api = TopazAPI(api_key)
 
-# Generate Date List
+# Your existing function to generate date range
 def generate_date_range(start_date, end_date):
     start_date = start_date
     end_date = end_date
@@ -58,20 +60,20 @@ def generate_date_range(start_date, end_date):
 
     return date_list
 
-# Input the number of days of historical data required
+# Example usage:
 start_date = datetime(2020,1,1)
-end_date = (datetime.today() + timedelta(days=1))
+end_date = (datetime.today() - timedelta(days=1))
 
 # Generate the date range
 date_range = generate_date_range(start_date, end_date)
 
 # Iterate over 7-day blocks
-for i in range(0, len(date_range), 6):
+for i in range(0, len(date_range), 10):
     start_block_date = date_range[i]
     print(start_block_date)
-    end_block_date = date_range[min(i + 6, len(date_range) - 1)]  # Ensure the end date is within the range
+    end_block_date = date_range[min(i + 9, len(date_range) - 1)]  # Ensure the end date is within the range
 
-    codes = ['NZ','NT','VIC','NSW','SA','WA','QLD','TAS']
+    codes = ['VIC','NSW','QLD','TAS','SA','WA','NT','NZ']
     for code in codes:
         all_races = []
         print(code)
@@ -85,8 +87,8 @@ for i in range(0, len(date_range), 6):
                 if http_err.response.status_code == 429:
                     retries -= 1
                     if retries > 0:
-                        print(f"Rate limited. Retrying in 60 seconds...")
-                        time.sleep(60)
+                        print(f"Rate limited. Retrying in 121 seconds...")
+                        time.sleep(121)
                     else:
                         print("Max retries reached. Moving to the next block.")
                 else:
@@ -108,7 +110,7 @@ for i in range(0, len(date_range), 6):
 
         for race_id in tqdm(race_ids, desc="Processing races", unit="race"):
             result_retries = 10
-
+            
             while result_retries > 0:
                 # Use tqdm to create a progress bar
                 # Get race run data
@@ -142,6 +144,7 @@ for i in range(0, len(date_range), 6):
                     split_times = pd.merge(split_times,second_split,how='left',on=['runId'])
 
                     race_run = pd.merge(race_run,split_times,how='left',on=['runId'])
+                    race_run.drop_duplicates(inplace=True)
                     race_run.to_csv(code + '_DATA.csv', mode='a', header=header_param, index=False)
                     break
                 except requests.HTTPError as http_err:
@@ -249,62 +252,41 @@ TrackDict = {
 
 TopazData['track'] = TopazData['track'].replace(TrackDict)
 
-# convert our two date fields to datetime
 TopazData['meetingDate'] = pd.to_datetime(TopazData['meetingDate'])
 TopazData['dateWhelped'] = pd.to_datetime(TopazData['dateWhelped'])
 
-# remove apostrophes from the names
 TopazData['dogName']=TopazData['dogName'].str.replace("'","")
 TopazData['sireName']=TopazData['sireName'].str.replace("'","")
 TopazData['damName']=TopazData['damName'].str.replace("'","")
 
-# split out the last5 column so results for the previous 5 races can be split
 TopazData['last5'] = TopazData['last5'].astype(str)
 
 # Function to extract numbers from the 'last5' column
 def extract_numbers(row):
     try:
         numbers = list(map(int, row.split('-')))
-        # If there are fewer than 5 numbers, pad with tens
+        # If there are fewer than 5 numbers, pad with zeros
         numbers += [10] * (5 - len(numbers))
         return numbers
     except ValueError:
         # Handle the case where the string cannot be split into integers
-        return [10,10,10,10,10]
+        return [10, 10, 10, 10, 10]
 
 # Apply the function to create new columns for each position
 TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace',
     'positionFourthLastRace', 'positionFifthLastRace']] = TopazData['last5'].apply(extract_numbers).apply(pd.Series)
 
-# Convert the 'pir' column to string so we can find the dogs position at the last split to determine if it's a slow or fast finisher
-TopazData['pir'] = TopazData['pir'].fillna(0)
-TopazData['pir'] = TopazData['pir'].astype(int).astype(str)
 
-# Dogs that placed 1 and 2 have the same entry in resultMargin
-# it makes sense to think of these columns as losing margins so logically the dog that won should have 0 for these fields
-TopazData.loc[TopazData['place'] == 1, ['resultMargin']] = 0
-
-# Forward fill the weight field for each dog from its previous weight. The data here is about 75% complete and doing this may result in some data that's off by 1-2%
-TopazData = TopazData.sort_values(by=['dogId', 'meetingDate'])
-TopazData['weightInKg'] = TopazData.groupby('dogId')['weightInKg'].transform(lambda x: x.ffill())
-
-```
-
-Here we've cleaned our dataset as much as we can. Next it's on to the feature creation!
-
-## Create the features
-
-```py title="Creating Basic Features"
 #Let's utilise our position columns to generate some win percentages
-TopazData['lastFiveWinPercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] == 1).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 0).sum(axis=1))
+TopazData['lastFiveWinPercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] == 1).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 10).sum(axis=1))
 TopazData['lastFiveWinPercentage'].fillna(0,inplace=True)
-TopazData['lastFivePlacePercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] <= 3).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 0).sum(axis=1))
+TopazData['lastFivePlacePercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] <= 3).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 10).sum(axis=1))
 TopazData['lastFivePlacePercentage'].fillna(0,inplace=True)
 TopazData.replace([np.inf, -np.inf], 0, inplace=True)
 
-#Create a feature for dog's age
-TopazData['dogAge'] = (TopazData['meetingDate'] - TopazData['dateWhelped']).dt.days
-TopazData['dogAge'] = MinMaxScaler().fit_transform(TopazData[['dogAge']])
+# Convert the 'pir' column to string
+TopazData['pir'] = TopazData['pir'].fillna(0)
+TopazData['pir'] = TopazData['pir'].astype(int).astype(str)
 
 # Extract the second last letter and create a new column '2ndLastPIR'
 TopazData['2ndLastPIR'] = TopazData['pir'].apply(lambda x: x[-2] if len(x) >= 2 else None)
@@ -313,11 +295,8 @@ TopazData['2ndLastPIR'] = TopazData['2ndLastPIR'].astype(int)
 
 # Create a feature that calculates places gained/conceded in the home straight
 TopazData['finishingPlaceMovement'] = TopazData['2ndLastPIR'] - TopazData['place']
-TopazData['finishingPlaceMovement'] = MinMaxScaler().fit_transform(TopazData[['finishingPlaceMovement']])
 
-# Calculate normalised value for dog weight
-TopazData = TopazData.sort_values(by=['raceId'])
-TopazData['weightInKgScaled'] = MinMaxScaler().fit_transform(TopazData[['weightInKg']])
+TopazData['weightInKgScaled'] = TopazData.groupby('raceId')['weightInKg'].transform(lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten())
 
 #Scale values as required
 TopazData['prizemoneyLog'] = np.log10(TopazData['prizeMoney'] + 1)
@@ -328,8 +307,10 @@ TopazData['marginLog'] = np.log10(TopazData['resultMargin'] + 1)
 win_results = TopazData[TopazData['place'] == 1]
 
 grouped_data = win_results.groupby(['track', 'distance', 'meetingDate'])['resultTime'].median().reset_index()
+
 median_win_time = pd.DataFrame(grouped_data.groupby(['track', 'distance']).apply(lambda x: x.sort_values('meetingDate').set_index('meetingDate')['resultTime'].shift(1).rolling('365D', min_periods=1).median())).reset_index()
 median_win_time.rename(columns={"resultTime": "runTimeMedian"},inplace=True)
+
 median_win_time['speedIndex'] = (median_win_time['runTimeMedian'] / median_win_time['distance'])
 median_win_time['speedIndex'] = MinMaxScaler().fit_transform(median_win_time[['speedIndex']])
 
@@ -344,8 +325,8 @@ TopazData['runTimeNorm'] = MinMaxScaler().fit_transform(TopazData[['runTimeNorm'
 TopazData = TopazData.sort_values(by=['raceId', 'boxNumber'])
 
 # Check if there is an entry equal to boxNumber + 1
-TopazData['hasEntryBoxNumberPlus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(-1) == TopazData['boxNumber'] + 1) | (TopazData['boxNumber'] == 8)
-TopazData['hasEntryBoxNumberMinus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(1) == TopazData['boxNumber'] - 1)
+TopazData['hasEntryBoxNumberPlus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(1) == TopazData['boxNumber'] + 1) | (TopazData['boxNumber'] == 8)
+TopazData['hasEntryBoxNumberMinus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(-1) == TopazData['boxNumber'] - 1)
 # Convert boolean values to 1
 TopazData['hasEntryBoxNumberPlus1'] = TopazData['hasEntryBoxNumberPlus1'].astype(int)
 TopazData['hasEntryBoxNumberMinus1'] = TopazData['hasEntryBoxNumberMinus1'].astype(int)
@@ -368,6 +349,22 @@ box_win_percent.columns = ['track', 'distance', 'boxNumber', 'hasAtLeast1VacantB
 
 # Add to dog results dataframe
 TopazData = TopazData.merge(box_win_percent, on=['track', 'distance', 'meetingDate','boxNumber','hasAtLeast1VacantBox'], how='left')
+```
+
+Here we've cleaned our dataset as much as we can. Next it's on to the feature creation!
+
+## Create the features
+
+```py title="Creating Basic Features"
+
+# resultMargin has the same value for 1st and 2nd placed dogs, but should be 0 for the 1st placed dog.
+TopazData.loc[TopazData['place'] == 1, ['resultMargin']] = 0
+
+TopazData['dogAge'] = (TopazData['meetingDate'] - TopazData['dateWhelped']).dt.days
+scaler = MinMaxScaler()
+TopazData['dogAgeScaled'] = TopazData.groupby('raceId')['dogAge'].transform(lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten())
+
+
 ```
 Now we've created some basic features, it's time to create our big group of features where we iterate over different subsets, variables and time points to generate a large number of different features
 
@@ -449,7 +446,7 @@ for i in subsets:
 
 # Only keep data 12 months after the start date of your dataset since we've used a 365D rolling timeframe for some features
 feature_cols = np.unique(feature_cols).tolist()
-dataset = dataset[dataset['meetingDate'] >= '2018-01-01']
+dataset = dataset[dataset['meetingDate'] >= '2021-01-01']
 dataset = dataset[[
                 'meetingDate',
                 'state',
@@ -472,13 +469,19 @@ dataset = dataset[[
                 'sireId',
                 'sireName',
                 'win',
-                'dogAge',
+                'dogAgeScaled',
                 'lastFiveWinPercentage',
                 'lastFivePlacePercentage',
                 'weightInKgScaled',
                 'rolling_box_win_percentage']
                  + feature_cols
                 ]
+
+feature_cols.extend(['dogAgeScaled',
+                'lastFiveWinPercentage',
+                'lastFivePlacePercentage',
+                'weightInKgScaled',
+                'rolling_box_win_percentage'])
 
 #The below line will output your dataframe to a csv but may be too large to open in Excel.
 #dataset.to_csv('testing.csv',index=False)
@@ -487,7 +490,159 @@ dataset = dataset[[
 
 Now that we've created our features, lets feed them into our Machine Learning Algorithm to generate some probabilities!
 
-## To be continued...
+## Training
+
+```py title="Training the model"
+
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.gaussian_process import GaussianProcessClassifier
+from sklearn.gaussian_process.kernels import RBF
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
+from sklearn.linear_model import LogisticRegression
+
+# Gradient Boosting Machines libraries
+from lightgbm import LGBMClassifier
+from xgboost import XGBClassifier
+from catboost import CatBoostClassifier
+
+# Common models parameters
+verbose       = 0
+learning_rate = 0.1
+n_estimators  = 500
+
+# Train different types of models
+models = {
+    'GradientBoostingClassifier': GradientBoostingClassifier(verbose=verbose, learning_rate=learning_rate, n_estimators=n_estimators, max_depth=8, max_features=8),
+    'RandomForestClassifier':     RandomForestClassifier(verbose=verbose, n_estimators=n_estimators, max_depth=20, max_features=8, min_samples_leaf=5,min_samples_split=10),
+    'LGBMClassifier':             LGBMClassifier(learning_rate=learning_rate, n_estimators=n_estimators, force_col_wise=True,num_leaves=80,verbose=-1),
+    'XGBClassifier':              XGBClassifier(verbosity=verbose, learning_rate=learning_rate, n_estimators=n_estimators, max_depth = 8, subsample = 1.0, objective='binary:logistic'),
+    'CatBoostClassifier':         CatBoostClassifier(verbose=verbose, learning_rate=learning_rate, n_estimators=n_estimators, depth=8, l2_leaf_reg=10),
+    'KNeighborsClassifier':       KNeighborsClassifier(n_neighbors=15,weights='distance',p=2),
+    'DecisionTreeClassifier':     DecisionTreeClassifier(max_depth=20,min_samples_split=10,min_samples_leaf=5,max_features=8),
+    'MLPClassifier':              MLPClassifier(hidden_layer_sizes=100,activation='relu',solver='adam', alpha=0.0001),
+    'AdaBoostClassifier':         AdaBoostClassifier(n_estimators=n_estimators,learning_rate=learning_rate,algorithm='SAMME'),
+    'GuassianNB':                 GaussianNB(),
+    'QuadDiscriminantAnalysis':   QuadraticDiscriminantAnalysis(),
+    'LogisticsRegression':        LogisticRegression(verbose=0, solver='liblinear',max_iter=5000000, C=10,penalty='l2')
+}
+
+import pickle
+from sklearn.metrics import log_loss
+import time
+
+dataset.fillna(0,inplace=True)
+
+# Split the data into train and test data
+train_data = dataset[dataset['meetingDate'] < '2023-01-01'].reset_index(drop=True)
+test_data = dataset[dataset['meetingDate'] >= '2023-01-01'].reset_index(drop=True)
+
+train_x, train_y = train_data[feature_cols], train_data['win']
+test_x, test_y = test_data[feature_cols], test_data['win']
+
+for key, model in models.items():
+    print(f'Fitting model {key}')
+    start_time = time.time()  # Record start time
+    model.fit(train_x, train_y)
+    end_time = time.time()  # Record end time
+    print(f"Training time for {key}: {end_time - start_time} seconds")
+    # Calculate log loss
+    train_preds = model.predict_proba(train_x)
+    train_loss = log_loss(train_y, train_preds)
+    print(f"Log loss for {key} on train data: {train_loss}")
+
+
+# Calculate probabilities for each model on the test dataset
+probs_columns = ['StartPrice_probability']
+
+for key, model in models.items():
+    probs_column_key = f'prob_{key}'
+    # Calculate runner win probability
+    dog_win_probs = model.predict_proba(test_x)[:, 1]
+    test_data[probs_column_key] = dog_win_probs
+    # Normalise probabilities
+    test_data[probs_column_key] = test_data.groupby('raceId', group_keys=False)[f'prob_{key}'].apply(
+        lambda x: x / sum(x))
+    predicted_winners = test_data.groupby('raceId', group_keys=False)[f'prob_{key}'].apply(lambda x: x == max(x))
+    probs_columns.append(probs_column_key)
+    # Dump the pickle
+    with open(key + '_.pickle.dat', 'wb') as f:
+        pickle.dump(model, f)
+
+test_data.to_csv('testing_set_predictions.csv', index=False)
+
+```
+
+Alright, now that we've trained the models, let's have a look at the log loss calculations for each model and the time taken to train each model
+
+|Model|Training Time|Log Loss|
+|--------------------------------|-------|-------|
+|AdaBoostClassifier|6248|0.532|
+|XGBClassifier|2599|0.278|
+|RandomForestClassifier|1930|0.269|
+|MLPClassifier|1513|0.376|
+|GradientBoostingClassifier|1278|0.308|
+|LogisticsRegression|492|0.378|
+|CatBoostClassifier|200|0.355|
+|LGBMClassifier|92|0.305|
+|QuadDiscriminantAnalysis|29|3.641|
+|DecisionTreeClassifier|6|0.278|
+|GuassianNB|3|7.015|
+|KNeighborsClassifier|1|0.00000935|
+
+As we can see some models took a lot longer than others to train, with the longest being the AdaBoostClassifier taking close to 2 hours and KNeighbours Classifier at 1 second. 
+The log loss values also differ significantly between models. We've only used one set of parameters for training each model. You could try using a GridSearch to find the best parameters for each model.
+
+Another method of comparing the accuracy of a model is the Brier Score. Let's compare the Brier score for a couple of the highest performing models (i.e. with the lowest log loss) and graph the feature importance for one of the models.
+
+Here's a great explanation of the differences between log loss and Brier score for machine learning models - [more info](https://www.dratings.com/log-loss-vs-brier-score/)
+
+```py title="Finding the Brier Score and finding feature importance"
+from sklearn.metrics import brier_score_loss
+import matplotlib.pyplot as plt
+
+# Calculate Brier score for each model on the test data
+brier_scores = {}
+for key, model in models.items():
+    prob_col_key = f'prob_{key}'
+    brier_score = brier_score_loss(test_y, test_data[prob_col_key])
+    brier_scores[key] = brier_score
+    print(f"Brier score for {key}: {brier_score}")
+
+# Plot feature importance for each model
+for key, model in models.items():
+    if hasattr(model, 'feature_importances_'):
+        plt.figure(figsize=(10, 70))
+        if hasattr(model, 'plot_importance'):
+            model.plot_importance(ax=plt.gca(), importance_type='gain', title=f'Feature Importance - {key}')
+        else:
+            feature_importance = model.feature_importances_
+            sorted_idx = np.argsort(feature_importance)
+            plt.barh(train_x.columns[sorted_idx], feature_importance[sorted_idx])
+            plt.xlabel("Feature Importance")
+            plt.ylabel("Features")
+            plt.title(f"Feature Importance - {key}")
+        plt.show()
+    else:
+        print(f"No feature importance available for {key}")
+
+```
+
+```
+Brier score for LGBMClassifier: 0.11015042860939694
+Brier score for LogisticsRegression: 0.10978107663467736
+```
+
+![png](../img/featureImportanceLGBM.png)
+
+## To be continued
+
+The next step will be to do some backtesting on prior results to find a profitable betting angle
 
 ## Disclaimer
 

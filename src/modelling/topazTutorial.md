@@ -61,7 +61,7 @@ def generate_date_range(start_date, end_date):
     return date_list
 
 # Example usage:
-start_date = datetime(2020,1,1)
+start_date = datetime(2024,2,19)
 end_date = (datetime.today() - timedelta(days=1))
 
 # Generate the date range
@@ -73,7 +73,7 @@ for i in range(0, len(date_range), 10):
     print(start_block_date)
     end_block_date = date_range[min(i + 9, len(date_range) - 1)]  # Ensure the end date is within the range
 
-    codes = ['VIC','NSW','QLD','TAS','SA','WA','NT','NZ']
+    codes = ['NT','VIC','NSW','SA','WA','QLD','TAS','NZ']
     for code in codes:
         all_races = []
         print(code)

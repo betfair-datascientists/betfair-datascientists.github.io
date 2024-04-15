@@ -974,6 +974,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#faqs" class="md-nav__link">
+    <span class="md-ellipsis">
+      FAQs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#results" class="md-nav__link">
     <span class="md-ellipsis">
       Results
@@ -3011,6 +3020,19 @@ See the list below for the prizes each placing at the end of the competition wil
 <p>Please name submission file using the following formatting: </p>
 <p>‘Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}.csv’; </p>
 <p>To submit your model entry, please send it through to <a href="mailto:datathon@betfair.com.au">datathon@betfair.com.au</a></p>
+<h2 id="faqs">FAQs</h2>
+<p><strong>Will I receive a confirmation email once I submit my entry?</strong>
+No</p>
+<p><strong>If I notice an error with my submission, can I resubmit?</strong>
+Yes, only the last entry received before the submission deadline will be considered for scoring</p>
+<p><strong>How is the log loss calculated for a runner assigned a probability of exactly zero or exactly one?</strong>
+A placeholder value of 0.000001 or 0.999999 (respectively) will be assigned in place of these values</p>
+<p><strong>What happens if the race is a dead heat?</strong>
+The race will be removed from the competition scoring</p>
+<p><strong>What happens if there is a scratching after the submission deadline?</strong>
+All probabilities for remaining runners will be renormalised so the field is equal to 1</p>
+<p><strong>What happens if there is a scratching before the submission deadline?</strong>
+The runner may be removed from the submission or assigned a null or 0 probability. If a probability is entered, this probability will be removed and remaining probabilities will be renormalised as per the above</p>
 <h2 id="results">Results</h2>
 <p>Leaderboards will be posted here daily as well as in the Betfair Quants Discord server.</p>
 <p>For an invite to the discord server, please fill out the form <a href="https://forms.office.com/r/ZG9ea1xQj1">here</a></p>

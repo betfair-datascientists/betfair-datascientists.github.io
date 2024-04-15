@@ -98,6 +98,26 @@ Please name submission file using the following formatting:
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
+## FAQs
+
+**Will I receive a confirmation email once I submit my entry?**
+No
+
+**If I notice an error with my submission, can I resubmit?**
+Yes, only the last entry received before the submission deadline will be considered for scoring
+
+**How is the log loss calculated for a runner assigned a probability of exactly zero or exactly one?**
+A placeholder value of 0.000001 or 0.999999 (respectively) will be assigned in place of these values
+
+**What happens if the race is a dead heat?**
+The race will be removed from the competition scoring
+
+**What happens if there is a scratching after the submission deadline?**
+All probabilities for remaining runners will be renormalised so the field is equal to 1
+
+**What happens if there is a scratching before the submission deadline?**
+The runner may be removed from the submission or assigned a null or 0 probability. If a probability is entered, this probability will be removed and remaining probabilities will be renormalised as per the above
+
 ## Results
 
 Leaderboards will be posted here daily as well as in the Betfair Quants Discord server.

@@ -61,7 +61,7 @@ def generate_date_range(start_date, end_date):
     return date_list
 
 # Example usage:
-start_date = datetime(2024,2,19)
+start_date = datetime(2020,1,1)
 end_date = (datetime.today() - timedelta(days=1))
 
 # Generate the date range
@@ -259,6 +259,15 @@ TopazData['dogName']=TopazData['dogName'].str.replace("'","")
 TopazData['sireName']=TopazData['sireName'].str.replace("'","")
 TopazData['damName']=TopazData['damName'].str.replace("'","")
 
+
+```
+
+Here we've cleaned our dataset as much as we can. Next it's on to the feature creation!
+
+## Create the features
+
+```py title="Creating Basic Features"
+
 TopazData['last5'] = TopazData['last5'].astype(str)
 
 # Function to extract numbers from the 'last5' column
@@ -349,13 +358,6 @@ box_win_percent.columns = ['track', 'distance', 'boxNumber', 'hasAtLeast1VacantB
 
 # Add to dog results dataframe
 TopazData = TopazData.merge(box_win_percent, on=['track', 'distance', 'meetingDate','boxNumber','hasAtLeast1VacantBox'], how='left')
-```
-
-Here we've cleaned our dataset as much as we can. Next it's on to the feature creation!
-
-## Create the features
-
-```py title="Creating Basic Features"
 
 # resultMargin has the same value for 1st and 2nd placed dogs, but should be 0 for the 1st placed dog.
 TopazData.loc[TopazData['place'] == 1, ['resultMargin']] = 0
@@ -363,7 +365,6 @@ TopazData.loc[TopazData['place'] == 1, ['resultMargin']] = 0
 TopazData['dogAge'] = (TopazData['meetingDate'] - TopazData['dateWhelped']).dt.days
 scaler = MinMaxScaler()
 TopazData['dogAgeScaled'] = TopazData.groupby('raceId')['dogAge'].transform(lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten())
-
 
 ```
 Now we've created some basic features, it's time to create our big group of features where we iterate over different subsets, variables and time points to generate a large number of different features
@@ -639,6 +640,82 @@ Brier score for LogisticsRegression: 0.10978107663467736
 ```
 
 ![png](../img/featureImportanceLGBM.png)
+
+## Grid Search
+
+For our first round of training our model, we have used some suggested parameters for each diifferent type of machine learning model. However, perhaps these parameters aren't suited to our use case. In this case we should use a technique called 'Grid Search' to find the best hyperparameters for one of the machine learning models (in this case we'll use LGBM). A grid search methodically tests different hyperparameter combinations, checking each one's performance through cross-validation. This helps pinpoint the best setup that maximises the model's performance metric, like accuracy or area under the curve (AUC).
+
+With LightGBM, which relies heavily on hyperparameters like learning rate, maximum tree depth, and regularization parameters, a grid search is essential. By trying out various combinations of these hyperparameters, we can fine-tune the model for superior predictive performance. LightGBM's speed advantage makes grid search even more appealing. Since it's built for efficiency, the computational burden of grid searching is reduced compared to other algorithms. This means we can explore a wide range of hyperparameters without waiting forever. As above, the AdaBoost Classifier took 1.75 hours to train just once, so for this model would not be appropriate for a Grid Search. LGBM took only 90 seconds, so a grid search of 3 folds for 18 different hyperparameter combinations (54 fits) would take around 80 minutes - much more acceptable.
+
+```py title="Grid Search for LGBM"
+
+from sklearn.model_selection import GridSearchCV
+from sklearn.metrics import brier_score_loss, log_loss
+
+# Define parameter grid for LGBMClassifier
+param_grid = {
+    'learning_rate': [0.01, 0.1],
+    'n_estimators': [100, 200, 500],
+    'num_leaves': [20, 40, 80]
+}
+
+# Initialize LGBMClassifier
+lgbm = LGBMClassifier(force_col_wise=True, verbose=-1)
+
+# Initialize variables to keep track of the best model
+best_score_product = float('inf')
+best_params = None
+best_model = None
+
+# Initialize GridSearchCV
+grid_search = GridSearchCV(estimator=lgbm, param_grid=param_grid, scoring='neg_log_loss', cv=3, verbose=2, n_jobs=-1)
+
+# Fit GridSearchCV
+grid_search.fit(train_data.drop(columns=['win']), train_data['win'])
+
+# Print results
+print("GridSearchCV Results:")
+print("Best parameters found:", grid_search.best_params_)
+print("Best negative log loss found:", grid_search.best_score_)
+
+# Loop over each parameter combination
+for params, mean_score, scores in grid_search.grid_scores_:
+    lgbm.set_params(**params)
+    lgbm.fit(train_data.drop(columns=['win']), train_data['win'])
+    
+    # Calculate log loss
+    preds = lgbm.predict_proba(train_data.drop(columns=['win']))
+    logloss = log_loss(train_data['win'], preds)
+    
+    # Calculate Brier score
+    brier = brier_score_loss(train_data['win'], preds[:, 1])
+    
+    # Calculate the product of log loss and Brier score
+    score_product = logloss * brier
+    
+    print(f"Parameters: {params}, Log Loss: {logloss}, Brier Score: {brier}, Product: {score_product}")
+    
+    # Update the best model if this combination has a lower score product
+    if score_product < best_score_product:
+        best_score_product = score_product
+        best_params = params
+        best_model = lgbm
+
+# Predict probabilities using the best model
+test_data['win_probability'] = best_model.predict_proba(test_data.drop(columns=['win']))[:, 1]
+
+# Select desired columns
+selected_columns = ['meetingDate', 'state', 'track', 'distance', 'raceId', 'raceTypeCode', 'raceNumber', 'boxNumber', 'rugNumber', 'dogId', 'dogName', 'win', 'win_probability']
+test_data = test_data[selected_columns]
+
+# Export DataFrame to CSV
+test_data.to_csv('test_data_with_probabilities.csv', index=False)
+
+# Dump the pickle for the best model
+with open('best_lgbm_model.pickle', 'wb') as f:
+    pickle.dump(best_model, f)
+
+```
 
 ## To be continued
 

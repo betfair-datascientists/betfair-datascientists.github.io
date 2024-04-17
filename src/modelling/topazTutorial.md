@@ -894,7 +894,7 @@ race_types = {
 
 
 # Create 'RACE_TYPE_GROUP' column by mapping values from 'race_type' column
-race_types['RACE_TYPE_GROUP'] = race_types['race_type'].map(race_types)
+race_types['RACE_TYPE_GROUP'] = race_types['RACE_TYPE'].map(race_types)
 
 backtesting.to_csv('backtesting_results.csv',index=False)
 

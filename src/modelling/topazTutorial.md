@@ -678,6 +678,10 @@ print("Best parameters found:", grid_search.best_params_)
 print("Best negative log loss found:", grid_search.best_score_)
 
 # Predict probabilities using the best model
+best_model = LGBMClassifier(force_col_wise=True, verbose=3, n_estimators=grid_search.best_params_['n_estimators'],learning_rate=grid_search.best_params_['learning_rate'],num_leaves=grid_search.best_params_['num_leaves'])
+best_model.fit(train_x, train_y)
+
+# Predict probabilities using the best model
 test_data['win_probability'] = best_model.predict_proba(test_x)[:, 1]
 
 # Select desired columns
@@ -692,10 +696,217 @@ with open('best_lgbm_model.pickle', 'wb') as f:
     pickle.dump(best_model, f)
 
 ```
+```
+Fitting 3 folds for each of 27 candidates, totalling 81 fits
+[CV 1/3] END learning_rate=0.01, n_estimators=100, num_leaves=50;, score=-0.387 total time=  36.8s
+[CV 2/3] END learning_rate=0.01, n_estimators=100, num_leaves=50;, score=-0.387 total time=  39.6s
+[CV 3/3] END learning_rate=0.01, n_estimators=100, num_leaves=50;, score=-0.386 total time=  47.6s
+[CV 1/3] END learning_rate=0.01, n_estimators=100, num_leaves=80;, score=-0.387 total time= 1.0min
+[CV 2/3] END learning_rate=0.01, n_estimators=100, num_leaves=80;, score=-0.386 total time=  53.8s
+[CV 3/3] END learning_rate=0.01, n_estimators=100, num_leaves=80;, score=-0.385 total time= 1.0min
+
+#
+# Output trimmed
+#
+
+GridSearchCV Results:
+Best parameters found: {'learning_rate': 0.01, 'n_estimators': 500, 'num_leaves': 120}
+Best negative log loss found: -0.3791625785797655
+```
+
+## Analysing profitability
+
+Let's explore now how we can take our model's probability predictions and compare them to actual market data. We'll join them onto the Betfair BSP datasets and then apply some segmentation to see if we can choose a segment for a staking strategy.
+For this profitability analysis, we have used proportional staking where the model's probability is multipled by 100 to calculate a stake (e.g. 0.07 x 100 = $7) and then bets placed at BSP.
+
+It's important to be cautious when segmenting the data, especially if more than one segment is applied, that the set of datapoints is not too small to expose the strategy to overfitting. E.g. Picking races in QLD between 320m and 330m on a Monday night would most likely result in overfitting and unreproducable results. This page [here](https://valuebettingblog.com/advanced-betting-calculator/) has a great tool to help assess if the strategy is overfitted.
+
+```py title="Joining model predictions with Betfair data"
+import pandas as pd
+from datetime import datetime
+
+# Define the start and end date for iteration
+start_date = datetime(2023, 1, 1)
+end_date = datetime(2024, 3, 1) #enter first day of previous month
+
+# List to store DataFrames
+dfs = []
+
+# Iterate over months and years
+current_date = start_date
+while current_date <= end_date:
+    # Generate the URL
+    url = f'https://betfair-datascientists.github.io/data/assets/ANZ_Greyhounds_{current_date.year}_{current_date.month:02d}.csv'
+    
+    try:
+        # Read CSV data into a DataFrame directly from the URL
+        df = pd.read_csv(url)
+        dfs.append(df)
+        print(f"Processed: {url}")
+    except Exception as e:
+        print(f"Failed to fetch data from: {url}, Error: {e}")
+
+    # Move to the next month
+    current_date = current_date.replace(day=1) + pd.DateOffset(months=1)
+
+# Concatenate all DataFrames into one
+final_df = pd.concat(dfs, ignore_index=True)
+final_df=final_df[[
+                'LOCAL_MEETING_DATE',
+                'SCHEDULED_RACE_TIME',
+                'ACTUAL_OFF_TIME',
+                'TRACK',
+                'STATE_CODE',
+                'RACE_NO',
+                'WIN_MARKET_ID',
+                'DISTANCE',
+                'RACE_TYPE',
+                'SELECTION_ID',
+                'TAB_NUMBER',
+                'SELECTION_NAME',
+                'WIN_RESULT',
+                'WIN_BSP',
+                'BEST_AVAIL_BACK_AT_SCHEDULED_OFF'
+                ]]
+
+final_df = final_df[final_df['STATE_CODE'] != 'NZ']
+final_df = final_df.dropna(subset=['WIN_BSP'])
+final_df = final_df.dropna(subset=['BEST_AVAIL_BACK_AT_SCHEDULED_OFF'])
+final_df['LOCAL_MEETING_DATE']=pd.to_datetime(final_df['LOCAL_MEETING_DATE']).dt.date
+
+test_data=pd.read_csv('test_data_with_probabilities.csv',dtype={'raceNumber':'int64','boxNumber':'int64','rugNumber':'int64'})
+test_data['track'] = test_data['track'].replace('Richmond Straight', 'Richmond')
+test_data['track'] = test_data['track'].replace('Murray Bridge Straight', 'Murray Bridge')
+test_data['meetingDate'] = pd.to_datetime(test_data['meetingDate']).dt.date
+test_data=test_data[[
+    'meetingDate',
+    'track',
+    'raceNumber',
+    'boxNumber',
+    'rugNumber',
+    'win_probability'
+]]
+
+import numpy as np
+
+backtesting = pd.merge(final_df,
+                       test_data,
+                       how='left',
+                       left_on=['LOCAL_MEETING_DATE','TRACK','RACE_NO','TAB_NUMBER'],
+                       right_on=['meetingDate','track','raceNumber','rugNumber'])
+
+backtesting.dropna(subset=['win_probability'],inplace=True)
+
+backtesting=backtesting[[
+                'LOCAL_MEETING_DATE',
+                'SCHEDULED_RACE_TIME',
+                'ACTUAL_OFF_TIME',
+                'TRACK',
+                'STATE_CODE',
+                'RACE_NO',
+                'WIN_MARKET_ID',
+                'DISTANCE',
+                'RACE_TYPE',
+                'SELECTION_ID',
+                'boxNumber',
+                'TAB_NUMBER',
+                'SELECTION_NAME',
+                'WIN_RESULT',
+                'WIN_BSP',
+                'BEST_AVAIL_BACK_AT_SCHEDULED_OFF',
+                'win_probability'
+                ]]
+
+backtesting['MODEL_RANK'] = backtesting.groupby('WIN_MARKET_ID')['win_probability'].rank(ascending=False)
+backtesting['MODEL_VALUE'] = backtesting['win_probability'] - 1/backtesting['BEST_AVAIL_BACK_AT_SCHEDULED_OFF']
+
+# Assuming df is your DataFrame
+backtesting['PROPORTIONAL_BACK'] = np.where(backtesting['WIN_RESULT'] == 'WINNER',
+                        backtesting['win_probability'] * 100 * (backtesting['WIN_BSP'] - 1),
+                        backtesting['win_probability'] * -100)
+
+# This is a non-exhaustive list of race types from the Betfair Pricing Data which groups together different race types. 
+# The greyhound race grading system is convoluted and varies by state
+race_types = {
+            'B8':'Other',
+            'FFA':'Ungraded',
+            'Final':'Prestige',
+            'G3/4/5':'Graded',
+            'Gr':'Graded',
+            'Gr1':'Graded',
+            'Gr1/2':'Graded',
+            'Gr1/2/3':'Graded',
+            'Gr2/3':'Graded',
+            'Gr2/3/4':'Graded',
+            'Gr3':'Graded',
+            'Gr3/4':'Graded',
+            'Gr3/4/5':'Graded',
+            'Gr4':'Graded',
+            'Gr4/5':'Graded',
+            'Gr4/5/6':'Graded',
+            'Gr5':'Graded',
+            'Gr5/6':'Graded',
+            'Gr5/Mdn':'Graded',
+            'Gr6':'Graded',
+            'Gr6/7':'Graded',
+            'Gr7':'Graded',
+            'Grp1':'Prestige',
+            'Grp2':'Prestige',
+            'Grp3':'Prestige',
+            'Heat':'Heat',
+            'Inv':'Other',
+            'Juv':'Novice',
+            'Juv/Grad':'Novice',
+            'Juv/Mdn':'Novice',
+            'Listed':'Prestige',
+            'M1':'Masters',
+            'M1/2':'Masters',
+            'M1/2/3':'Masters',
+            'M1/M2':'Masters',
+            'M1/M2/M3':'Masters',
+            'M12':'Masters',
+            'M2':'Masters',
+            'M2/3':'Masters',
+            'M2/M3':'Masters',
+            'M3':'Masters',
+            'M3/4':'Masters',
+            'M4/5':'Masters',
+            'M4/6':'Masters',
+            'M4/M5':'Masters',
+            'M5':'Masters',
+            'M6':'Masters',
+            'Mdn':'Maiden',
+            'Mdn/Gr4/5':'Maiden',
+            'Mdn/Gr5':'Maiden',
+            'Mdn/Gr6':'Maiden',
+            'Mdn/Juv':'Maiden',
+            'N/G':'Ungraded',
+            'Nov':'Novice',
+            'Nov/Mdn':'Novice',
+            'Nvce':'Novice',
+            'Prov':'Other',
+            'Rest':'Win Restricted',
+            'S/E':'Other',
+            'SE':'Other',
+            'Semi':'Other',
+            'Vets':'Other',
+            }
+
+
+# Create 'RACE_TYPE_GROUP' column by mapping values from 'race_type' column
+race_types['RACE_TYPE_GROUP'] = race_types['race_type'].map(race_types)
+
+backtesting.to_csv('backtesting_results.csv',index=False)
+
+```
+
+Once we've exported this to a csv file, we've conducted some basic excel analysis to segment the predictions. All figures quoted below are before commission and may not be reflective of actual profitability. These segments are intended as ideas only.
+
+![png](../img/profitabilityAnalysis.png)
 
 ## To be continued
 
-The next step will be to do some backtesting on prior results to find a profitable betting angle
+The next step will be to pick a segment to bet into and load up today's predictions
 
 ## Disclaimer
 

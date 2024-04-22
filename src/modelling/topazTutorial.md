@@ -717,7 +717,7 @@ Best negative log loss found: -0.3791625785797655
 ## Analysing profitability
 
 Let's explore now how we can take our model's probability predictions and compare them to actual market data. We'll join them onto the Betfair BSP datasets and then apply some segmentation to see if we can choose a segment for a staking strategy.
-For this profitability analysis, we have used proportional staking where the model's probability is multipled by 100 to calculate a stake (e.g. 0.07 x 100 = $7) and then bets placed at BSP.
+For this profitability analysis, we have used proportional staking where the model's probability is multipled by 100 to calculate a stake (e.g. 0.07 x 100 = $7) and then bets placed at BSP. Note that we haven't renormalised the probabilities to 1 for each race using the grid search, you can choose to do this for calculating proportional stakes if you wish. If you are using the probabilitity to form a rated price then normalisation **will be required.**
 
 It's important to be cautious when segmenting the data, especially if more than one segment is applied, that the set of datapoints is not too small to expose the strategy to overfitting. E.g. Picking races in QLD between 320m and 330m on a Monday night would most likely result in overfitting and unreproducable results. This page [here](https://valuebettingblog.com/advanced-betting-calculator/) has a great tool to help assess if the strategy is overfitted.
 
@@ -904,9 +904,539 @@ Once we've exported this to a csv file, we've conducted some basic excel analysi
 
 ![png](../img/profitabilityAnalysis.png)
 
-## To be continued
+## Creating new ratings
 
-The next step will be to pick a segment to bet into and load up today's predictions
+The next step will be to update the historical dataset with fresh data
+
+```py title="Updating the historical data"
+
+from datetime import datetime, timedelta
+import pandas as pd
+
+codes = ['WA','VIC','SA','TAS','NSW','QLD','NT']
+
+TopazData = pd.DataFrame()
+
+for code in codes:
+    StateData = pd.read_csv(code+'_DATA.csv', low_memory=False)
+    StateData['state'] = code
+    TopazData = pd.concat([TopazData, StateData])
+
+TopazData.dropna(subset=['place'], inplace=True)
+
+# Find the maximum value in the 'meetingDate' column
+max_meeting_date = TopazData['meetingDate'].max()
+# Remove time information from the max_meeting_date and format it to '%Y-%m-%d'
+max_meeting_date = pd.to_datetime(max_meeting_date, format='%Y-%m-%dT%H:%M:%S.%fZ').strftime('%Y-%m-%d')
+
+# Convert max_meeting_date to datetime object
+max_meeting_date = pd.to_datetime(max_meeting_date)
+
+# Add one day to max_meeting_date
+max_meeting_date_plus_one_day = max_meeting_date + timedelta(days=1)
+
+print("Max meeting date plus one day:", max_meeting_date_plus_one_day)
+
+api_key = '' #Insert your API key 
+topaz_api = TopazAPI(api_key)
+
+# Your existing function to generate date range
+def generate_date_range(start_date, end_date):
+    start_date = start_date
+    end_date = end_date
+
+    date_list = []
+    current_date = start_date
+    while current_date <= end_date:
+        date_list.append(current_date.strftime("%Y-%m-%d"))
+        current_date += timedelta(days=1)
+
+    return date_list
+
+# Example usage:
+start_date = max_meeting_date_plus_one_day
+end_date = datetime.today()
+
+# Generate the date range
+date_range = generate_date_range(start_date, end_date)
+
+# Iterate over 7-day blocks
+for i in range(0, len(date_range), 7):
+    start_block_date = date_range[i]
+    print(start_block_date)
+    end_block_date = date_range[min(i + 6, len(date_range) - 1)]  # Ensure the end date is within the range
+
+    codes = ['WA','VIC','SA','TAS','NSW','QLD','NT']
+    for code in codes:
+        all_races = []
+        print(code)
+        retries = 10  # Number of retries
+        while retries > 0:
+            try:
+                races = topaz_api.get_races(from_date=start_block_date, to_date=end_block_date, owning_authority_code=code)
+                all_races.append(races)
+                break  # Break out of the loop if successful
+            except requests.HTTPError as http_err:
+                if http_err.response.status_code == 429:
+                    retries -= 1
+                    if retries > 0:
+                        print(f"Rate limited. Retrying in 121 seconds...")
+                        time.sleep(121)
+                    else:
+                        print("Max retries reached. Moving to the next block.")
+                else:
+                    print(f"Error fetching races for {code}: {http_err.response.status_code}")
+                    retries -= 1
+                    if retries > 0:
+                        print(f"Retrying in 30 seconds...")
+                        time.sleep(30)
+                    else:
+                        print("Max retries reached. Moving to the next block.")
+
+        try:
+            all_races_df = pd.concat(all_races, ignore_index=True)
+        except ValueError:
+            continue
+
+        # Extract unique race IDs
+        race_ids = list(all_races_df['raceId'].unique())
+
+        for race_id in tqdm(race_ids, desc="Processing races", unit="race"):
+            result_retries = 10
+            
+            while result_retries > 0:
+                # Use tqdm to create a progress bar
+                # Get race run data
+                try:
+                    race_run = topaz_api.get_race_runs(race_id=race_id)
+                    race_result_json = topaz_api.get_race_result(race_id=race_id)
+                    file_path = code + '_DATA.csv'
+                    file_exists = os.path.isfile(file_path)
+                    header_param = not file_exists
+                    
+                    race_result = pd.DataFrame.from_dict([race_result_json])
+                    split_times_df = pd.DataFrame(race_result['splitTimes'].tolist(),index=race_result.index)
+                    
+                    splits_dict = split_times_df.T.stack().to_frame()
+                    splits_dict.reset_index(drop=True, inplace= True)
+                    splits_normalised = pd.json_normalize(splits_dict[0])
+                    
+                    if len(splits_normalised) == 0:
+                        race_run.to_csv(code + '_DATA.csv', mode='a', header=header_param, index=False)
+                        break
+
+                    first_split = splits_normalised[splits_normalised['splitTimeMarker'] == 1]
+                    first_split = first_split[['runId','position','time']]
+                    first_split = first_split.rename(columns={'position':'firstSplitPosition','time':'firstSplitTime'})
+                    second_split = splits_normalised[splits_normalised['splitTimeMarker'] == 2]
+                    second_split = second_split[['runId','position','time']]
+                    second_split = second_split.rename(columns={'position':'secondSplitPosition','time':'secondSplitTime'})
+
+                    split_times = splits_normalised[['runId']]
+                    split_times = pd.merge(split_times,first_split,how='left',on=['runId'])
+                    split_times = pd.merge(split_times,second_split,how='left',on=['runId'])
+
+                    race_run = pd.merge(race_run,split_times,how='left',on=['runId'])
+                    race_run.drop_duplicates(inplace=True)
+                    race_run.to_csv(code + '_DATA.csv', mode='a', header=header_param, index=False)
+                    break
+                except requests.HTTPError as http_err:
+                    if http_err.response.status_code == 404:
+                        file_path = code + '_DATA.csv'
+                        file_exists = os.path.isfile(file_path)
+                        header_param = not file_exists
+                        race_run.to_csv(code + '_DATA.csv', mode='a', header=header_param, index=False)
+                        break
+                except Exception as e:
+                    print(race_id)
+                    result_retries -= 1
+                    if result_retries > 0:
+                        time.sleep(15)
+                    else:
+                        time.sleep(120)
+
+```
+
+The next step will be to load up our database
+
+```py title="Load up the database and begin the preprocessing"
+
+from datetime import datetime
+
+codes = ['WA','VIC','SA','TAS','NSW','QLD','NT']
+
+TopazData = pd.DataFrame()
+
+for code in codes:
+    StateData = pd.read_csv(code+'_DATA.csv',low_memory=False)
+    StateData['state']=code
+    TopazData = pd.concat([TopazData,StateData])
+
+one_year_ago = datetime.today() - timedelta(days=365)
+
+TopazData['meetingDateNaive'] = pd.to_datetime(TopazData['meetingDate'], format='%Y-%m-%dT%H:%M:%S.%fZ', utc=True).dt.tz_localize(None)
+
+TodaysTopazData = TopazData[(TopazData['meetingDateNaive'] >= datetime.today() - timedelta(days=1)) & 
+                             (TopazData['scratched'] == False) & 
+                             (pd.notna(TopazData['boxNumber']))
+                             ]
+
+print(TodaysTopazData.shape)
+
+TopazData = TopazData[TopazData['meetingDateNaive'] >= one_year_ago]
+
+TopazData.dropna(subset=['place'],inplace=True)
+
+TopazData = pd.concat([TopazData,TodaysTopazData])
+
+TopazData = TopazData[['state',    
+                    'track',
+                    'distance',
+                    'raceId',
+                    'meetingDate',
+                    'raceTypeCode',
+                    'runId',
+                    'dogId',
+                    'dogName',
+                    'weightInKg',
+                    'gradedTo',
+                    'rating',
+                    'raceNumber',
+                    'boxNumber',
+                    'rugNumber',
+                    'sex',
+                    'trainerId',
+                    'trainerState',
+                    'damId',
+                    'damName',
+                    'sireId',
+                    'sireName',
+                    'dateWhelped',
+                    'last5',
+                    'pir',
+                    'place',
+                    'prizeMoney',
+                    'resultTime',
+                    'resultMargin']]
+
+# Assuming your DataFrame is named 'TopazData'
+TopazData.drop_duplicates(inplace=True)
+
+# If you want to reset the index after dropping duplicates
+TopazData.reset_index(drop=True, inplace=True)
+
+TrackDict = {
+
+'Auckland (NZ)':'Manukau',
+'Christchurch (NZ)':'Addington',
+'Dport @ HOB':'Hobart',
+'Dport @ LCN':'Launceston',
+'Meadows (MEP)':'The Meadows',
+'Otago (NZ)':'Forbury Park',
+'Palmerston Nth (NZ)':'Manawatu',
+'Sandown (SAP)':'Sandown Park',
+'Southland (NZ)':'Ascot Park',
+'Tokoroa (NZ)':'Tokoroa',
+'Waikato (NZ)':'Cambridge',
+'Wanganui (NZ)':'Hatrick',
+'Taranaki (NZ)':'Taranaki',
+'Ashburton (NZ)':'Ashburton',
+'Richmond (RIS)':'Richmond Straight',
+'Murray Bridge (MBR)':'Murray Bridge',
+'Murray Bridge (MBS)':'Murray Bridge Straight'
+}
+
+TopazData['track'] = TopazData['track'].replace(TrackDict)
+
+TopazData['meetingDate'] = pd.to_datetime(TopazData['meetingDate'])
+TopazData['dateWhelped'] = pd.to_datetime(TopazData['dateWhelped'])
+
+TopazData['dogName']=TopazData['dogName'].str.replace("'","")
+TopazData['sireName']=TopazData['sireName'].str.replace("'","")
+TopazData['damName']=TopazData['damName'].str.replace("'","")
+
+```
+
+Next, we'll generate the same features for our dataset
+
+```py title = "generate new features"
+
+TopazData['last5'] = TopazData['last5'].astype(str)
+
+# Function to extract numbers from the 'last5' column
+def extract_numbers(row):
+    try:
+        numbers = list(map(int, row.split('-')))
+        # If there are fewer than 5 numbers, pad with zeros
+        numbers += [10] * (5 - len(numbers))
+        return numbers
+    except ValueError:
+        # Handle the case where the string cannot be split into integers
+        return [10, 10, 10, 10, 10]
+
+# Apply the function to create new columns for each position
+TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace',
+    'positionFourthLastRace', 'positionFifthLastRace']] = TopazData['last5'].apply(extract_numbers).apply(pd.Series)
+
+#Let's utilise our position columns to generate some win percentages
+TopazData['lastFiveWinPercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] == 1).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 10).sum(axis=1))
+TopazData['lastFiveWinPercentage'].fillna(0,inplace=True)
+TopazData['lastFivePlacePercentage'] = ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] <= 3).sum(axis=1)) / ((TopazData[['positionLastRace', 'positionSecondLastRace', 'positionThirdLastRace','positionFourthLastRace', 'positionFifthLastRace']] != 10).sum(axis=1))
+TopazData['lastFivePlacePercentage'].fillna(0,inplace=True)
+TopazData.replace([np.inf, -np.inf], 0, inplace=True)
+
+# resultMargin has the same value for 1st and 2nd placed dogs, but should be 0 for the 1st placed dog.
+TopazData.loc[TopazData['place'] == 1, ['resultMargin']] = 0
+
+TopazData['dogAge'] = (TopazData['meetingDate'] - TopazData['dateWhelped']).dt.days
+scaler = MinMaxScaler()
+TopazData['dogAgeScaled'] = TopazData.groupby('raceId')['dogAge'].transform(lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten())
+
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.impute import SimpleImputer
+
+scaler = MinMaxScaler()
+TopazData = TopazData.sort_values(by=['dogId','meetingDate'])
+TopazData['weightInKg'] = TopazData.groupby('dogId')['weightInKg'].transform(lambda x: x.ffill())
+TopazData['damId'] = TopazData.groupby('dogId')['damId'].transform(lambda x: x.ffill())
+TopazData['sireId'] = TopazData.groupby('dogId')['sireId'].transform(lambda x: x.ffill())
+
+imputer = SimpleImputer(strategy='mean')
+TopazData['weightInKg'] = imputer.fit_transform(TopazData[['weightInKg']])
+
+TopazData['weightInKgScaled'] = TopazData.groupby('raceId')['weightInKg'].transform(lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten())
+
+# Convert the 'pir' column to string
+TopazData['pir'] = TopazData['pir'].fillna(0)
+TopazData['pir'] = TopazData['pir'].astype(int).astype(str)
+
+# Extract the second last letter and create a new column '2ndLastPIR'
+TopazData['2ndLastPIR'] = TopazData['pir'].apply(lambda x: x[-2] if len(x) >= 2 else None)
+TopazData['2ndLastPIR'].fillna(TopazData['place'],inplace=True)
+TopazData['2ndLastPIR'].fillna(0,inplace=True)
+TopazData['2ndLastPIR'] = TopazData['2ndLastPIR'].astype(int)
+
+# Create a feature that calculates places gained/conceded in the home straight
+TopazData['finishingPlaceMovement'] = TopazData['2ndLastPIR'] - TopazData['place']
+
+TopazData.fillna(0,inplace=True)
+
+#Scale values as required
+TopazData['prizemoneyLog'] = np.log10(TopazData['prizeMoney'] + 1)
+TopazData['placeLog'] = np.log10(TopazData['place'] + 1)
+TopazData['marginLog'] = np.log10(TopazData['resultMargin'] + 1)
+
+# Calculate median winner time per track/distance
+win_results = TopazData[TopazData['place'] == 1]
+
+grouped_data = win_results.groupby(['track', 'distance', 'meetingDate'])['resultTime'].median().reset_index()
+
+median_win_time = pd.DataFrame(grouped_data.groupby(['track', 'distance']).apply(lambda x: x.sort_values('meetingDate').set_index('meetingDate')['resultTime'].shift(1).rolling('365D', min_periods=1).median())).reset_index()
+median_win_time.rename(columns={"resultTime": "runTimeMedian"},inplace=True)
+
+median_win_time['speedIndex'] = (median_win_time['runTimeMedian'] / median_win_time['distance'])
+median_win_time['speedIndex'] = MinMaxScaler().fit_transform(median_win_time[['speedIndex']])
+
+# Merge with median winner time
+TopazData = TopazData.merge(median_win_time, how='left', on=['track', 'distance','meetingDate'])
+
+# Normalise time comparison
+TopazData['runTimeNorm'] = (TopazData['runTimeMedian'] / TopazData['resultTime']).clip(0.9, 1.1)
+TopazData['runTimeNorm'].fillna(0, inplace=True)
+TopazData['runTimeNorm'] = TopazData.groupby('raceId')['runTimeNorm'].transform(lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten())
+
+# Sort the DataFrame by 'RaceId' and 'Box'
+TopazData = TopazData.sort_values(by=['raceId', 'boxNumber'])
+
+# Check if there is an entry equal to boxNumber + 1
+TopazData['hasEntryBoxNumberPlus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(1) == TopazData['boxNumber'] + 1) | (TopazData['boxNumber'] == 8)
+TopazData['hasEntryBoxNumberMinus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(-1) == TopazData['boxNumber'] - 1)
+# Convert boolean values to 1
+TopazData['hasEntryBoxNumberPlus1'] = TopazData['hasEntryBoxNumberPlus1'].astype(int)
+TopazData['hasEntryBoxNumberMinus1'] = TopazData['hasEntryBoxNumberMinus1'].astype(int)
+# Display the resulting DataFrame which shows adjacent Vacant Boxes
+# Box 1 is treated as having a vacant box to the left always as we are looking how much space the dog has to move.
+TopazData['adjacentVacantBoxes'] = 2 - TopazData['hasEntryBoxNumberPlus1'] - TopazData['hasEntryBoxNumberMinus1']
+# Calculate 'hasAtLeast1VacantBox'
+TopazData['hasAtLeast1VacantBox'] = (TopazData['adjacentVacantBoxes'] > 0).astype(int)
+TopazData['hasAtLeast1VacantBox'] = TopazData.groupby('raceId')['hasAtLeast1VacantBox'].transform(lambda x: scaler.fit_transform(x.values.reshape(-1, 1)).flatten())
+
+TopazData['win'] = TopazData['place'].apply(lambda x: 1 if x == 1 else 0)
+
+grouped_data = TopazData.groupby(['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate'])['win'].mean().reset_index()
+grouped_data.set_index('meetingDate', inplace=True)
+
+# Apply rolling mean calculation to the aggregated data
+box_win_percent = grouped_data.groupby(['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox']).apply(lambda x: x.sort_values('meetingDate')['win'].shift(1).rolling('365D', min_periods=1).mean()).reset_index()
+
+# Reset index and rename columns
+box_win_percent.columns = ['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate', 'rolling_box_win_percentage']
+
+# Add to dog results dataframe
+TopazData = TopazData.merge(box_win_percent, on=['track', 'distance', 'meetingDate','boxNumber','hasAtLeast1VacantBox'], how='left')
+
+import itertools
+
+dataset = TopazData.copy()
+dataset['meetingDate'] = pd.to_datetime(dataset['meetingDate'])
+
+# Calculate values for dog, trainer, dam and sire
+subsets = ['dog', 'trainer', 'dam', 'sire']
+
+# Use rolling window of 28, 91 and 365 days
+rolling_windows = ['28D','91D', '365D']
+
+# Features to use for rolling windows calculation
+features = ['runTimeNorm', 'placeLog', 'prizemoneyLog', 'marginLog','finishingPlaceMovement']
+
+# Aggregation functions to apply
+aggregates = ['min', 'max', 'mean', 'median', 'std']
+
+# Keep track of generated feature names
+feature_cols = []
+
+for i in subsets:
+    # Generate rolling window features
+    idnumber = i + 'Id'
+
+    subset_dataframe = dataset[['meetingDate',idnumber] + features]
+    average_df = pd.DataFrame()
+
+    for feature in features:
+        # Group by 'damId' and 'meetingDate' and calculate the average of the current feature
+        feature_average_df = subset_dataframe.groupby([idnumber, 'meetingDate'])[feature].mean().reset_index()
+        # Rename the feature column to indicate it's the average of that feature
+        feature_average_df.rename(columns={feature: f'{feature}{i}DayAverage'}, inplace=True)
+    
+        # If average_df is empty, assign the feature_average_df to it
+        if average_df.empty:
+            average_df = feature_average_df
+        else:
+            # Otherwise, merge feature_average_df with average_df
+            average_df = pd.merge(average_df, feature_average_df, on=[idnumber, 'meetingDate'])
+
+        # Assuming df is your DataFrame
+    column_names = average_df.columns.tolist()
+    # Columns to exclude
+    columns_to_exclude = [idnumber,'meetingDate']
+    # Exclude specified columns from the list
+    column_names_filtered = [col for col in column_names if col not in columns_to_exclude]
+
+    average_df.drop_duplicates(inplace=True)
+    average_df['meetingDate'] = pd.to_datetime(average_df['meetingDate'])
+    average_df = average_df.set_index([idnumber, 'meetingDate']).sort_index() 
+
+    for rolling_window in rolling_windows:
+        print(f'Processing {i} rolling window {rolling_window} days')
+
+        rolling_result = (
+            average_df
+            .reset_index(level=0)
+            .groupby(idnumber)[column_names_filtered]
+            .rolling(rolling_window)  # Use timedelta for rolling window
+            .agg(aggregates)
+            .groupby(level=0)
+            .shift(1)
+        )
+
+        # Generate list of rolling window feature names (eg: RunTime_norm_min_365D)
+        agg_features_cols = [f'{i}_{f}_{a}_{rolling_window}' for f, a in itertools.product(features, aggregates)]
+        # Add features to dataset
+        average_df[agg_features_cols] = rolling_result
+        # Keep track of generated feature names
+        feature_cols.extend(agg_features_cols)
+        average_df.fillna(0, inplace=True)
+    
+    average_df.reset_index(inplace=True)
+    dataset = pd.merge(dataset,average_df,on=[idnumber, 'meetingDate'])
+
+
+feature_cols = np.unique(feature_cols).tolist()
+dataset = dataset[[
+                'meetingDate',
+                'state',
+                'track',
+                'distance',
+                'raceId',
+                'raceTypeCode',
+                'raceNumber',
+                'boxNumber',
+                'rugNumber',
+                'runId',
+                'dogId',
+                'dogName',
+                'weightInKg',
+                'sex',
+                'trainerId',
+                'trainerState',
+                'damId',
+                'damName',
+                'sireId',
+                'sireName',
+                'win',
+                'dogAgeScaled',
+                'lastFiveWinPercentage',
+                'lastFivePlacePercentage',
+                'weightInKgScaled',
+                'rolling_box_win_percentage',
+                'hasAtLeast1VacantBox']
+                 + feature_cols
+                ]
+
+feature_cols.extend(['dogAgeScaled',
+                'lastFiveWinPercentage',
+                'lastFivePlacePercentage',
+                'weightInKgScaled',
+                'rolling_box_win_percentage',
+                'hasAtLeast1VacantBox'])
+
+```
+
+Finally, let's apply our trained model to today's races
+
+```py title="Generate today's ratings"
+import joblib  # For loading the model
+import pandas as pd  # For data manipulation
+
+# Load the trained model
+model = joblib.load('best_lgbm_model.pickle')
+
+# Load and preprocess the new data
+dataset.fillna(0,inplace=True)
+dataset.drop_duplicates(subset=['raceId','dogId'],inplace=True)
+
+filtered_dataset = dataset[dataset['raceTypeCode'] != 'QT']
+
+# Remove rows where raceId appears only once
+counts = filtered_dataset['raceId'].value_counts()
+repeated_raceIds = counts[counts > 1].index
+final_dataset = filtered_dataset[filtered_dataset['raceId'].isin(repeated_raceIds)]
+
+# Loop through each column and convert int64 to int32 and float64 to float32
+for col in final_dataset.columns:
+    if final_dataset[col].dtype == 'int64':
+        final_dataset.loc[:, col] = final_dataset[col].astype('int32')
+    elif final_dataset[col].dtype == 'float64':
+        final_dataset.loc[:, col] = final_dataset[col].astype('float32')
+
+# Split the data into train and test data
+
+final_dataset['meetingDateNaive'] = pd.to_datetime(final_dataset['meetingDate'], format='%Y-%m-%dT%H:%M:%S.%fZ', utc=True).dt.tz_localize(None)
+todays_runners = final_dataset[final_dataset['meetingDateNaive'] >= datetime.today() - timedelta(days=1)].reset_index(drop=True)
+
+# Apply the same preprocessing steps as used for training data
+# (e.g., scaling, encoding categorical variables, handling missing values)
+todays_runners_features = todays_runners[feature_cols]
+todays_runners['win_probability'] = model.predict_proba(todays_runners_features)[:, 1]
+# Select desired columns
+selected_columns = ['meetingDate', 'state', 'track', 'distance', 'raceId', 'raceTypeCode', 'raceNumber', 'boxNumber', 'rugNumber', 'dogId', 'dogName', 'win', 'win_probability']
+todays_runners = todays_runners[selected_columns]
+todays_runners['win_probability'] = todays_runners.groupby('raceId', group_keys=False)['win_probability'].apply(lambda x: x / sum(x))
+# Export DataFrame to CSV
+todays_runners.to_csv('todays_greyhound_ratings.csv', index=False)
+
+```
+## To be continued
 
 ## Disclaimer
 

@@ -1159,7 +1159,7 @@ TopazData['damName']=TopazData['damName'].str.replace("'","")
 
 Next, we'll generate the same features for our dataset
 
-```py title = "generate new features"
+```py title="generate new features"
 
 TopazData['last5'] = TopazData['last5'].astype(str)
 

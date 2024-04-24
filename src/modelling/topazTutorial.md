@@ -682,7 +682,8 @@ best_model = LGBMClassifier(force_col_wise=True, verbose=3, n_estimators=grid_se
 best_model.fit(train_x, train_y)
 
 # Predict probabilities using the best model
-test_data['win_probability'] = best_model.predict_proba(test_x)[:, 1]
+dog_win_probs = best_model.predict_proba(test_x)[:, 1]
+test_data['win_probability'] = test_data.groupby('raceId', group_keys=False)['dog_win_probs'].apply(lambda x: x / sum(x))
 
 # Select desired columns
 selected_columns = ['meetingDate', 'state', 'track', 'distance', 'raceId', 'raceTypeCode', 'raceNumber', 'boxNumber', 'rugNumber', 'dogId', 'dogName', 'win', 'win_probability']
@@ -717,7 +718,7 @@ Best negative log loss found: -0.3791625785797655
 ## Analysing profitability
 
 Let's explore now how we can take our model's probability predictions and compare them to actual market data. We'll join them onto the Betfair BSP datasets and then apply some segmentation to see if we can choose a segment for a staking strategy.
-For this profitability analysis, we have used proportional staking where the model's probability is multipled by 100 to calculate a stake (e.g. 0.07 x 100 = $7) and then bets placed at BSP. Note that we haven't renormalised the probabilities to 1 for each race using the grid search, you can choose to do this for calculating proportional stakes if you wish. If you are using the probabilitity to form a rated price then normalisation **will be required.**
+For this profitability analysis, we have used proportional staking where the model's probability is multipled by 100 to calculate a stake (e.g. 0.07 x 100 = $7) and then bets placed at BSP. 
 
 It's important to be cautious when segmenting the data, especially if more than one segment is applied, that the set of datapoints is not too small to expose the strategy to overfitting. E.g. Picking races in QLD between 320m and 330m on a Monday night would most likely result in overfitting and unreproducable results. This page [here](https://valuebettingblog.com/advanced-betting-calculator/) has a great tool to help assess if the strategy is overfitted.
 
@@ -775,8 +776,6 @@ final_df = final_df.dropna(subset=['BEST_AVAIL_BACK_AT_SCHEDULED_OFF'])
 final_df['LOCAL_MEETING_DATE']=pd.to_datetime(final_df['LOCAL_MEETING_DATE']).dt.date
 
 test_data=pd.read_csv('test_data_with_probabilities.csv',dtype={'raceNumber':'int64','boxNumber':'int64','rugNumber':'int64'})
-test_data['track'] = test_data['track'].replace('Richmond Straight', 'Richmond')
-test_data['track'] = test_data['track'].replace('Murray Bridge Straight', 'Murray Bridge')
 test_data['meetingDate'] = pd.to_datetime(test_data['meetingDate']).dt.date
 test_data=test_data[[
     'meetingDate',

@@ -51,12 +51,14 @@ TOPAZ_API_KEY = ''
 # Define the states you require
 JURISDICTION_CODES = ['NSW','QLD','WA','TAS','NT','NZ','WA','SA']
 
-# Define the start and end date for the historic data download
-start_date = datetime(2020,1,1)
-end_date = (datetime.today() - timedelta(days=1))
 '''
 It is pythonic convention to define hard-coded variables (like credentials) in all caps. Variables whose value may change in use should be defined in lowercase with underscore spacing
 '''
+
+# Define the start and end date for the historic data download
+start_date = datetime(2020,1,1)
+end_date = (datetime.today() - timedelta(days=1))
+
 
 def generate_date_range(start_date, end_date):
     ''' 
@@ -256,6 +258,15 @@ Simply calling the function without assigning the output as a variable will resu
 '''
 
 TopazDataAll = load_topaz_data(JURISDICTION_CODES,'HISTORICAL')
+
+def discard_using_dates(dataset,start_date):
+
+    dataset['meetingDateNaive'] = pd.to_datetime(dataset['meetingDate'], format='%Y-%m-%dT%H:%M:%S.%fZ', utc=True).dt.tz_localize(None)
+    dataset = dataset[dataset['meetingDateNaive'] >= start_date]
+
+    return dataset
+
+TopazDataAll = discard_using_dates(TopazDataAll,start_date)
 
 def discard_scratched_runners_data(TopazDataAll):
     '''
@@ -708,6 +719,8 @@ def generate_rollingFeatures(TopazData):
 
 dataset, feature_cols = generate_rollingFeatures(TopazData)
 
+from dateutil.relativedelta import relativedelta
+
 def generate_feature_list(feature_cols):
     '''
     This function converts the numpy series to a list for later use
@@ -717,15 +730,6 @@ def generate_feature_list(feature_cols):
     return feature_cols
 
 feature_cols = generate_feature_list(feature_cols)
-
-def discard_first_year(dataset,start_date):
-    '''
-    This function discards the first 12 months of the dataset. 
-    This is done because the generate_rollingFeatures function utilises 365 days as one of the windows, and so to maintain data integrity, any data between the beginning of the dataset and 12 months afterwards is now 'unclean' and should be discarded
-    '''
-    dataset = dataset[dataset['meetingDate'] >= start_date + timedelta(years=1)]
-
-    return dataset
 
 DATASET_COLUMNS_TO_KEEP = [
                     'meetingDate',
@@ -749,7 +753,7 @@ DATASET_COLUMNS_TO_KEEP = [
                     'sireId',
                     'sireName',
                     'win',
-                    'speed_index',
+                    'speedIndex',
                     'dogAgeScaled',
                     'lastFiveWinPercentage',
                     'lastFivePlacePercentage',
@@ -761,28 +765,33 @@ def generate_modelling_dataset(dataset, feature_cols):
     '''
     This function extends the list of feature columns from the generate_rollingFeatures function by adding the features we previously created, and then keeps only the columns specified to prepare the dataset for training by the algorithm
     '''
-    # Extend the feature_cols list
-    feature_cols.extend(['dogAgeScaled',
+    
+    # Trim the dataset
+    dataset = dataset[DATASET_COLUMNS_TO_KEEP + feature_cols]
+
+        # Extend the feature_cols list
+    feature_cols.extend(['speedIndex',
+                'dogAgeScaled',
                 'lastFiveWinPercentage',
                 'lastFivePlacePercentage',
                 'weightInKgScaled',
                 'rolling_box_win_percentage',
                 'hasAtLeast1VacantBox'])
-    
-    # Trim the dataset
-    dataset = dataset[DATASET_COLUMNS_TO_KEEP + feature_cols]
 
     # Fill any missing values with 0 as a final step before training
     dataset.fillna(0,inplace=True)
 
     # Drop any duplicate runIds
-    dataset.drop_duplicates(subset=['runId'],inplace=True)
+    dataset = dataset.drop_duplicates(subset=['runId'])
     
     return dataset, feature_cols
 
-dataset = discard_first_year(dataset,start_date)
+discard_before_date = start_date + relativedelta(years=1)
+
+dataset = discard_using_dates(dataset,discard_before_date)
 
 dataset, feature_cols = generate_modelling_dataset(dataset, feature_cols)
+
 
 ```
 
@@ -879,9 +888,13 @@ def train_test_split(final_dataset,end_date):
     This is to enable testing of the trained model on an unseen test set to establish statistical metrics regarding its accuracy
     There are other ways to split a dataset into test and training sets, however this method is useful for the purposes of backtesting profitability
     '''
+    final_dataset['meetingDateNaive'] = pd.to_datetime(final_dataset['meetingDate'], format='%Y-%m-%dT%H:%M:%S.%fZ', utc=True).dt.tz_localize(None)
     # Split the data into train and test data
-    train_data = final_dataset[final_dataset['meetingDate'] < end_date - timedelta(years=1)].reset_index(drop=True)
-    test_data = final_dataset[final_dataset['meetingDate'] >= end_date - timedelta(years=1)].reset_index(drop=True)
+    train_data = final_dataset[final_dataset['meetingDateNaive'] < end_date - relativedelta(years=1)].reset_index(drop=True)
+    test_data = final_dataset[final_dataset['meetingDateNaive'] >= end_date - relativedelta(years=1)].reset_index(drop=True)
+
+    train_data.drop(columns=['meetingDateNaive'], inplace=True)
+    test_data.drop(columns=['meetingDateNaive'], inplace=True)
 
     return test_data, train_data
 
@@ -932,7 +945,7 @@ def train_models(models,train_x, train_y, test_x, test_y, test_data):
         test_data['predicted_winner'] = test_data.groupby('raceId', group_keys=False)[f'prob_{key}'].apply(lambda x: x == max(x))
 
         # Calculate log loss
-        test_loss = log_loss(train_y, test_data[prob_col_key])
+        test_loss = log_loss(test_y, test_data[prob_col_key])
         print(f"Log loss for {key} on test data: {test_loss}")
 
         # Calculate Brier Score

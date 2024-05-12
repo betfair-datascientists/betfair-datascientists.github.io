@@ -49,7 +49,7 @@ import itertools
 TOPAZ_API_KEY = ''
 
 # Define the states you require
-JURISDICTION_CODES = ['NSW','QLD','WA','TAS','NT','NZ','WA','SA']
+JURISDICTION_CODES = ['NSW','QLD','WA','TAS','NT','NZ','VIC','SA']
 
 '''
 It is pythonic convention to define hard-coded variables (like credentials) in all caps. Variables whose value may change in use should be defined in lowercase with underscore spacing

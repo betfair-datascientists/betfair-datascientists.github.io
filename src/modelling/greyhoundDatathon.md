@@ -2,13 +2,7 @@
 
 ## Registrations
 
-Register [here](https://forms.office.com/r/23gT5gNvXL)
-
-Once you have registered, you will receive the dataset and submission template by email within 2 business days.
-
-The Competition is open to persons who are an existing customer of Betfair as of 15 April 2024
-
-Registrations close **4:59PM AEST Monday May 6th 2024**
+Registrations have closed.
 
 ## The Competition
 
@@ -82,7 +76,7 @@ The Datathon will be judged using the log loss method where the log loss score i
 
 ![png](../img/LogLoss.PNG)
 
-One submission file template will be available to Competition Entrants on www.betfair.com.au/hub/datathon by 11:59am on the nominated race day. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format. 
+One submission file template will be available to Competition Entrants on this page by 11:59am on the nominated race day. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format. 
 
 For each race, **each Competition Entrant is required to predict the probability of a dog winning the race.** This prediction will then be used against the actual outcome to calculate the model’s score. The sum of the probabilities for every race must equal 1 – being the number of accepted winners. 
 
@@ -95,6 +89,17 @@ The submission file template will be loaded here by 11:59am on the nominated rac
 Please name submission file using the following formatting: 
 
 ‘Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}.csv’; 
+
+### Submission Template
+
+ - Day 1 - [submission file - 13/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240513.csv)
+
+### Historic Form Data
+
+All entrants received a bulk historic data file upon registration
+
+ - [Form Data Update](../assets/Form_dataset_20240411-20240512.csv)
+ - [Pricing Data Update](../assets/Pricing_dataset_20240401-20240512.csv)
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
@@ -124,10 +129,3 @@ Leaderboards will be posted here daily as well as in the Betfair Quants Discord 
 
 For an invite to the discord server, please fill out the form [here](https://forms.office.com/r/ZG9ea1xQj1 )
 
-## Registrations
- 
-Register [here](https://forms.office.com/r/23gT5gNvXL)
-
-Once you have registered, you will receive the dataset and submission template by email within 2 business days.
-
-The Competition is open to persons who are an existing customer of Betfair as of 15 April 2024

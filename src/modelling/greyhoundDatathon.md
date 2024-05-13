@@ -110,7 +110,7 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 |YaLikeDags|2.4852|5|4|
 |PlusEvOnly|2.4932|6|5|
 |RapidRacer|2.4966|7|6|
-|TinHare|2.5050|8|7|
+|TinHare|2.505|8|7|
 |Cortina|2.5067|9|8|
 |Nightingale|2.5178|10|9|
 |Analytique|2.5183|11|10|
@@ -127,7 +127,7 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 |RonW|2.6487|22|19|
 |blahboy|2.6579|23|20|
 |CanGetThirsty|2.6626|24|21|
-|LightningBolter|2.7000|25||
+|LightningBolter|2.7|25||
 |RandomShrubbery|2.7023|26|22|
 |Greys-V1|2.7227|27|23|
 |XtremeRollers|2.7295|28||
@@ -143,7 +143,9 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 |BiggyModel|2.8302|38||
 |HarbourBoostinator|2.8376|39||
 |Katana|2.9701|40|28|
+|EbbingFlowing|2.9047|40|28|
 |Flash-Reality|3.0948|41|29|
+
 
 The following models are ineligible for prize money:
 

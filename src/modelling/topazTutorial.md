@@ -979,22 +979,22 @@ trim_and_export_test_data(all_models_test_data)
 
 Alright, now that we've trained the models, let's have a look at the log loss calculations for each model and the time taken to train each model
 
-|Model|Training Time|Log Loss|
-|--------------------------------|-------|-------|
-|AdaBoostClassifier|6248|0.532|
-|XGBClassifier|2599|0.278|
-|RandomForestClassifier|1930|0.269|
-|MLPClassifier|1513|0.376|
-|GradientBoostingClassifier|1278|0.308|
-|LogisticsRegression|492|0.378|
-|CatBoostClassifier|200|0.355|
-|LGBMClassifier|92|0.305|
-|QuadDiscriminantAnalysis|29|3.641|
-|DecisionTreeClassifier|6|0.278|
-|GuassianNB|3|7.015|
-|KNeighborsClassifier|1|0.00000935|
+|Model|Training Time|Log Loss|Brier Score|
+|--------------------------------|-------|-------|-------|
+|AdaBoostClassifier|14287|0.7561|0.1367|
+|RandomForestClassifier|4575|0.7495|0.1365|
+|GradientBoostingClassifier|2799|0.7488|0.1364|
+|MLPClassifier|2468|0.7464|0.1364|
+|Logistics Regression|448|0.7466|0.1364|
+|CatBoostClassifier|304|0.7453|0.1364|
+|XGBClassifier|194|0.7494|0.1364|
+|LGBMClassifier|144|0.7476|0.1364|
+|QuadDiscriminantAnalysis|50|1.2495|0.1364|
+|DecisionTreeClassifier|16|1.6094|0.1366|
+|GuassianNB|8|1.5375|0.1364|
+|KNeighborsClassifier|3|1.1889|0.1366|
 
-As we can see some models took a lot longer than others to train, with the longest being the AdaBoostClassifier taking close to 2 hours and KNeighbours Classifier at 1 second. 
+As we can see some models took a lot longer than others to train, with the longest being the AdaBoostClassifier taking close to 4 hours and KNeighbours Classifier at 3 seconds. 
 We've only used one set of parameters for training each model. You could try using a GridSearch to find the best parameters for each model.
 
 Here's a great explanation of the differences between log loss and Brier score for machine learning models - [more info](https://www.dratings.com/log-loss-vs-brier-score/)
@@ -1040,7 +1040,7 @@ plot_feature_importance(models)
 
 For our first round of training our model, we have used some suggested parameters for each diifferent type of machine learning model. However, perhaps these parameters aren't suited to our use case. In this case we should use a technique called 'Grid Search' to find the best hyperparameters for one of the machine learning models (in this case we'll use LGBM). A grid search methodically tests different hyperparameter combinations, checking each one's performance through cross-validation. This helps pinpoint the best setup that maximises the model's performance metric, like accuracy or area under the curve (AUC).
 
-With LightGBM, which relies heavily on hyperparameters like learning rate, maximum tree depth, and regularization parameters, a grid search is essential. By trying out various combinations of these hyperparameters, we can fine-tune the model for superior predictive performance. LightGBM's speed advantage makes grid search even more appealing. Since it's built for efficiency, the computational burden of grid searching is reduced compared to other algorithms. This means we can explore a wide range of hyperparameters without waiting forever. As above, the AdaBoost Classifier took 1.75 hours to train just once, so for this model would not be appropriate for a Grid Search. LGBM took only 90 seconds, so a grid search of 3 folds for 27 different hyperparameter combinations (81 fits) would take around 120 minutes - much more acceptable.
+With LightGBM, which relies heavily on hyperparameters like learning rate, maximum tree depth, and regularization parameters, a grid search is essential. By trying out various combinations of these hyperparameters, we can fine-tune the model for superior predictive performance. LightGBM's speed advantage makes grid search even more appealing. Since it's built for efficiency, the computational burden of grid searching is reduced compared to other algorithms. This means we can explore a wide range of hyperparameters without waiting forever. As above, the AdaBoost Classifier almost 4 hours to train just once, so for this model would not be appropriate for a Grid Search. LGBM took only 150 seconds, so a grid search of 3 folds for 27 different hyperparameter combinations (81 fits) would take around 200 minutes - much more acceptable.
 
 ```py title="Grid Search for LGBM"
 

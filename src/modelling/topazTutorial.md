@@ -85,7 +85,7 @@ def define_topaz_api(api_key):
 
     return topaz_api
 
-def download_topaz_data(topaz_api,date_range,codes,datatype):
+def download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sleep_time):
     '''
     The parameters passed here are:
         1. The TopazAPI instance with our credentials
@@ -108,7 +108,7 @@ def download_topaz_data(topaz_api,date_range,codes,datatype):
 
             print(code)
 
-            retries = 10  # Number of retries
+            retries = number_of_retries  # Number of retries
             '''
             In this code block we are attempting to download a list of raceIds by passing our JURISDICTION_CODES and date range.
             The sleep functions are included to allow time for the rate limits to reset and any other errors to clear.
@@ -124,16 +124,16 @@ def download_topaz_data(topaz_api,date_range,codes,datatype):
                     if http_err.response.status_code == 429:
                         retries -= 1
                         if retries > 0:
-                            print(f"Rate limited. Retrying in 2 minutes...")
-                            time.sleep(121)
+                            print(f"Rate limited. Retrying in {sleep_time * 5/60} minutes...")
+                            time.sleep(sleep_time * 5)
                         else:
                             print("Max retries reached. Moving to the next block.")
                     else:
                         print(f"Error fetching races for {code}: {http_err.response.status_code}")
                         retries -= 1
                         if retries > 0:
-                            print(f"Retrying in 30 seconds...")
-                            time.sleep(30)
+                            print(f"Retrying in {sleep_time} seconds...")
+                            time.sleep(sleep_time)
                         else:
                             print("Max retries reached. Moving to the next block.")
 
@@ -150,7 +150,7 @@ def download_topaz_data(topaz_api,date_range,codes,datatype):
             
             # Use tqdm to create a progress bar
             for race_id in tqdm(race_ids, desc="Processing races", unit="race"):
-                result_retries = 10
+                result_retries = number_of_retries
                 '''
                 Here we utilise the retries function again to maximise the chances of our data being complete.
                 We spend some time here gathering the splitPosition and splitTime. While these fields are not utilised in the completed model, the process to extract this data has been included here for the sake of completeness only, as it is not straightforward.
@@ -161,13 +161,10 @@ def download_topaz_data(topaz_api,date_range,codes,datatype):
                     try:
                         race_run = topaz_api.get_race_runs(race_id=race_id)
                         race_result_json = topaz_api.get_race_result(race_id=race_id)
-                        
                         file_exists = os.path.isfile(file_path)
                         header_param = not file_exists
-                        
-                        race_result = pd.DataFrame.from_dict([race_result_json])
+                        race_result = pd.DataFrame.from_dict(race_result_json)
                         split_times_df = pd.DataFrame(race_result['splitTimes'].tolist(),index=race_result.index)
-                        
                         splits_dict = split_times_df.T.stack().to_frame()
                         splits_dict.reset_index(drop=True, inplace= True)
                         splits_normalised = pd.json_normalize(splits_dict[0])
@@ -198,12 +195,12 @@ def download_topaz_data(topaz_api,date_range,codes,datatype):
                             race_run.to_csv(file_path, mode='a', header=header_param, index=False)
                             break
                     except Exception as e:
-                        print(race_id)
                         result_retries -= 1
                         if result_retries > 0:
-                            time.sleep(15)
+                            time.sleep(sleep_time)
                         else:
-                            time.sleep(120)
+                            race_run.to_csv(file_path, mode='a', header=header_param, index=False)
+                            break
 ```
 
 ---
@@ -219,7 +216,7 @@ NOTE: In the above code we have exported each state separately to its own csv fi
 Let's pull all of our state files and get cleaning on this data!
 
 ```py title="Cleaning The Data"
-def collect_topaz_data(api_key,codes,start_date,end_date,datatype):
+def collect_topaz_data(api_key,codes,start_date,end_date,datatype,number_of_retries,sleep_time):
     '''
     This function here combines our three previously defined functions into one neat function in the correct order of execution.
     As the data is written to csv files, we do not need to return anything at the end of the function. This also means that it is not necessary to define a variable as the output of a function
@@ -228,10 +225,90 @@ def collect_topaz_data(api_key,codes,start_date,end_date,datatype):
 
     topaz_api = define_topaz_api(api_key)
     
-    download_topaz_data(topaz_api,date_range,codes,datatype)
+    download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sleep_time)
 
-collect_topaz_data(TOPAZ_API_KEY,JURISDICTION_CODES,start_date,end_date,'HISTORICAL')
+''' 
+The word 'HISTORICAL' is used here because we are gathering data for races that have already resulted and we want to store the data separately to any data that we download for future races where we will use the word 'UPCOMING'
+This is because many of the datapoints will be blank for future races and will corrupt our historical data
 
+When calling a function that we have defined with arguments, we will need to pass parameters into the function for it to run. 
+The parameter names don't necessarily need to match between the function definition and the function call, because it will use the position of the parameter for this purpose.
+However, the data types should match, otherwise the function may fail. (i.e. don't pass a 'string parameter' into a function where a 'list' is expected)
+'''
+
+collect_topaz_data(TOPAZ_API_KEY,JURISDICTION_CODES,start_date,end_date,'HISTORICAL',10,30)
+
+'''
+
+This is what the data may look like once exported
+
+[
+{ "trackCode":"GAW"  },
+{ "track":"Gawler"  },
+{ "distance":"531"  },
+{ "raceId":"184204888"  },
+{ "meetingDate":"2017-01-01T00:00:00.000Z"  },
+{ "raceTypeCode":"6"  },
+{ "raceType":"Grade 6"  },
+{ "runId":"184931091"  },
+{ "dogId":"641470451"  },
+{ "dogName":"CHANCE IT"  },
+{ "weightInKg":"26.4"  },
+{ "incomingGrade":"5"  },
+{ "outgoingGrade":"5"  },
+{ "gradedTo":"Field"  },
+{ "rating":"89"  },
+{ "raceNumber":"6"  },
+{ "boxNumber":"8"  },
+{ "boxDrawnOrder":""  },
+{ "rugNumber":"8"  },
+{ "startPrice":"18"  },
+{ "place":"1"  },
+{ "unplaced":""  },
+{ "unplacedCode":""  },
+{ "scratched":"FALSE"  },
+{ "prizeMoney":"630"  },
+{ "resultTime":"31.73"  },
+{ "resultMargin":"0.0035"  },
+{ "resultMarginLengths":"0.25L"  },
+{ "startPaceCode":""  },
+{ "jumpCode":""  },
+{ "runLineCode":""  },
+{ "firstSecond":"BOPA ALLEN"  },
+{ "colourCode":"BK"  },
+{ "sex":"Bitch"  },
+{ "comment":""  },
+{ "ownerId":"2069410086"  },
+{ "trainerId":"-146035"  },
+{ "ownerName":"Bewley Hosking"  },
+{ "ownerState":"SA"  },
+{ "trainerName":"Kevin Bewley"  },
+{ "trainerSuburb":"Lewiston"  },
+{ "trainerState":"SA"  },
+{ "trainerDistrict":""  },
+{ "trainerPostCode":"5501"  },
+{ "isQuad":""  },
+{ "isBestBet":""  },
+{ "damId":"-390299"  },
+{ "damName":"TA TA"  },
+{ "sireId":"-339746"  },
+{ "sireName":"MAGIC SPRITE"  },
+{ "dateWhelped":"2013-08-08T00:00:00.000Z"  },
+{ "totalFormCount":"0"  },
+{ "last5":"4-2-6-2-3"  },
+{ "isLateScratching":"FALSE"  },
+{ "bestTime":"NBT"  },
+{ "bestFinishTrackAndDistance":"31.5"  },
+{ "pir":"0"  },
+{ "careerPrizeMoney":"8935"  },
+{ "averageSpeed":"63.885"  },
+{ "firstSplitPosition":"1"  },
+{ "firstSplitTime":"3.21"  },
+{ "secondSplitPosition":"1"  },
+{ "secondSplitTime":"16.32"  }
+]
+
+'''
 def load_topaz_data(codes,datatype):
     '''
     This function here will loop over our previously written csv files and load them into one dataframe.
@@ -239,44 +316,47 @@ def load_topaz_data(codes,datatype):
     If the python kernel needs to be reset for whatever reason, all stored variables are lost - so storing the data in csv files means we can just load up the files directly rather than spending another 24 hours re-downloading all the data
     '''
     # initialise the dataframe
-    TopazDataAll = pd.DataFrame()
+    topaz_data_all = pd.DataFrame()
 
     # loop over all csv files
     for code in codes:
-        # Read the csv force two columns into datetime format
-        StateData = pd.read_csv(code+'_DATA_'+datatype+'.csv',low_memory=False,parse_dates=['meetingDate','dateWhelped'])
+        try:
+            state_data = pd.read_csv(code+'_DATA_'+datatype+'.csv',low_memory=False,parse_dates=['meetingDate','dateWhelped'])
+        except FileNotFoundError:
+            pass 
         # Add the state as a column
-        StateData['state']=code
+        state_data['state']=code
         # Concatenate the dataframes
-        TopazDataAll = pd.concat([TopazDataAll,StateData])
+        topaz_data_all = pd.concat([topaz_data_all,state_data])
 
-    return TopazDataAll
+    return topaz_data_all
 
 '''
 Because this new function returns a dataframe as the output, we need to define the output of the function as a named variable. This name can be different to the name of the variable named after the 'return' operation.
 Simply calling the function without assigning the output as a variable will result in the function's output not being defined which will affect our downstream operations.
 '''
 
-TopazDataAll = load_topaz_data(JURISDICTION_CODES,'HISTORICAL')
+topaz_data_all = load_topaz_data(JURISDICTION_CODES,'HISTORICAL')
 
 def discard_using_dates(dataset,start_date):
 
     dataset['meetingDateNaive'] = pd.to_datetime(dataset['meetingDate'], format='%Y-%m-%dT%H:%M:%S.%fZ', utc=True).dt.tz_localize(None)
     dataset = dataset[dataset['meetingDateNaive'] >= start_date]
+    dataset = dataset.drop(columns=['meetingDateNaive'])
 
     return dataset
 
-TopazDataAll = discard_using_dates(TopazDataAll,start_date)
+topaz_data_all = discard_using_dates(topaz_data_all,start_date)
 
-def discard_scratched_runners_data(TopazDataAll):
+def discard_scratched_runners_data(topaz_data_all):
     '''
     This function will discard all scratched runners and abandoned races by dropping all rows where place = None
     Note that this should only be done for past races, as upcoming races will also have place = None, because they have not been run yet, and so dropping these would remove all upcoming races
     '''
     # Discard scratched runners and abandoned races
-    TopazDataAll.dropna(subset=['place'], how='all', inplace=True)
+    topaz_data_all.dropna(subset=['place'], how='all', inplace=True)
     
-    return TopazDataAll
+    return topaz_data_all
 
 TOPAZ_COLUMNS_TO_KEEP = ['state',    
                         'track',
@@ -308,7 +388,7 @@ TOPAZ_COLUMNS_TO_KEEP = ['state',
                         'resultTime',
                         'resultMargin']
 
-def discard_unnecessary_columns(TopazDataAll,columns):
+def discard_unnecessary_columns(topaz_data_all,columns):
     '''
     This function serves to keep only the subset of columns that we will use for our model.
     Columns have been discarded because:
@@ -321,18 +401,23 @@ def discard_unnecessary_columns(TopazDataAll,columns):
     Each race a dog runs will have a unique runId which is why this column is ideal for identifying duplicates
     '''
     # Keep the required columns
-    TopazData = TopazDataAll[columns]
+    topaz_data = topaz_data_all[columns]
 
     # Drop duplicate runIds
-    TopazData = TopazData.drop_duplicates(subset=['runId'])
+    topaz_data = topaz_data.drop_duplicates(subset=['runId'])
 
     # Reset the index
-    TopazData.reset_index(drop=True, inplace=True)
+    topaz_data.reset_index(drop=True, inplace=True)
 
-    return TopazData
+    return topaz_data
 
-TopazDataAll = discard_scratched_runners_data(TopazDataAll)
-TopazData = discard_unnecessary_columns(TopazDataAll,TOPAZ_COLUMNS_TO_KEEP)
+'''
+For all function where the defined variable name is the same as the parameter name included in the function call, this means we are doing an 'inplace' modification of the existing dataframe
+The variable here is being mutated and will not be the same after the application of the function. This means that if the function is run twice, the second run may fail because the variable has changed
+'''
+topaz_data_all = discard_scratched_runners_data(topaz_data_all)
+
+topaz_data = discard_unnecessary_columns(topaz_data_all,TOPAZ_COLUMNS_TO_KEEP)
 
 # Let's correct the track names to align with Betfair names (Not all tracks in Topaz are on the exchange due to being closed or not hosting TAB-meetings)
 # We're not using the NZ tracks in this tutorial, however they are included below for completeness
@@ -358,29 +443,29 @@ TRACK_DICTIONARY= {
                     'Murray Bridge (MBS)':'Murray Bridge'
                     }
 
-def clean_track_data(TopazData,TrackDict):
+def clean_track_data(topaz_data, track_dict):
     '''
     This function replaces the track names in Topaz with the track names as they are displayed on the Betfair Exchange.
     This is important for performing our historical backtesting later on
     '''
-    TopazData['track'] = TopazData['track'].replace(TrackDict)
+    topaz_data['track'] = topaz_data['track'].replace(track_dict)
 
-    return TopazData
+    return topaz_data
 
-TopazData = clean_track_data(TopazData,TRACK_DICTIONARY)
+topaz_data = clean_track_data(topaz_data,TRACK_DICTIONARY)
 
-def correct_result_margin(TopazData):
+def correct_result_margin(topaz_data):
     '''
     resultMargin has the same value for 1st and 2nd placed dogs, but should be 0 for the 1st placed dog.
     This function simply replaces the entered value for resultMargin with 0 if the place value = 1
     '''
     # Replace margin to make sense for our model
-    TopazData.loc[TopazData['place'] == 1, ['resultMargin']] = 0
+    topaz_data.loc[topaz_data['place'] == 1, ['resultMargin']] = 0
 
-    return TopazData
+    return topaz_data
 
-TopazData = correct_result_margin(TopazData)
-
+# Here we will mutate the dataframe to make the correction in resultMargin
+topaz_data = correct_result_margin(topaz_data)
 
 ```
 
@@ -390,20 +475,21 @@ Here we've cleaned our dataset as much as we can. Next it's on to the feature cr
 
 ```py title="Creating Basic Features"
 
-def generate_dogAge(TopazData):
+def generate_dogAge(topaz_data):
     '''
     This function creates a dogAge variable by subtracting the race date from the dateWhelped (i.e. date of birth).
     '''
     # Subtract dateWhelped from meetingDate
-    TopazData['dogAge'] = (TopazData['meetingDate'] - TopazData['dateWhelped']).dt.days
+    topaz_data['dogAge'] = (topaz_data['meetingDate'] - topaz_data['dateWhelped']).dt.days
 
-    return TopazData
+    return topaz_data
 
-TopazData = generate_dogAge(TopazData)
+# Here we will mutate the dataframe to calculate the dog's age
+topaz_data = generate_dogAge(topaz_data)
 
 LAST_FIVE_RACE_COLUMNS = ['posL1R', 'posL2R', 'posL3R','posL4R', 'posL5R']
 
-def extract_form(TopazData):
+def extract_form(topaz_data):
 
     ''' 
     This function splits the last5 variable, which is a column of 5 characters or less that contain the dogs finishing position in the last 5 races. 
@@ -413,7 +499,7 @@ def extract_form(TopazData):
     We have chosen 10 as the padding value because a greyhound can never finish in 10th place owing to the maximum field size of 8 in greyhound racing.
     '''
     # Ensure variable is a string
-    TopazData['last5'] = TopazData['last5'].astype(str)
+    topaz_data['last5'] = topaz_data['last5'].astype(str)
     # Function to extract numbers from the 'last5' column
     def extract_numbers(row):
         try:
@@ -426,35 +512,35 @@ def extract_form(TopazData):
             return [10, 10, 10, 10, 10]
 
     # Apply the function to create new columns for each position
-    TopazData[LAST_FIVE_RACE_COLUMNS] = TopazData['last5'].apply(extract_numbers).apply(pd.Series)
+    topaz_data[LAST_FIVE_RACE_COLUMNS] = topaz_data['last5'].apply(extract_numbers).apply(pd.Series)
 
-    return TopazData
+    return topaz_data
 
-TopazData = extract_form(TopazData)
+topaz_data = extract_form(topaz_data)
 
-def generate_winPercentage(TopazData):
+def generate_winPercentage(topaz_data):
     '''
     This function generates a percentage of the dog's previous 5 races in which it has either won or placed in the top 3. 
     For generating the win percentage we take the number of '1's from the the position columns we generated previously and divides by the number of columns that are not equal to 10 which we previously defined as races that did not exist
     For generating the top 3 place percentage by dividing the number of places which are less than or equal to 3.
     '''
     # Generate win percentage from the last 5 races
-    TopazData['lastFiveWinPercentage'] = ((TopazData[LAST_FIVE_RACE_COLUMNS] == 1).sum(axis=1)) / ((TopazData[LAST_FIVE_RACE_COLUMNS] != 10).sum(axis=1))
+    topaz_data['lastFiveWinPercentage'] = ((topaz_data[LAST_FIVE_RACE_COLUMNS] == 1).sum(axis=1)) / ((topaz_data[LAST_FIVE_RACE_COLUMNS] != 10).sum(axis=1))
     
     # Fill any empty values with 0
-    TopazData['lastFiveWinPercentage'].fillna(0,inplace=True)
+    topaz_data['lastFiveWinPercentage'].fillna(0,inplace=True)
 
     # Generate top 3 place percentage from the last 5 races
-    TopazData['lastFivePlacePercentage'] = ((TopazData[LAST_FIVE_RACE_COLUMNS] <= 3).sum(axis=1)) / ((TopazData[LAST_FIVE_RACE_COLUMNS] != 10).sum(axis=1))
+    topaz_data['lastFivePlacePercentage'] = ((topaz_data[LAST_FIVE_RACE_COLUMNS] <= 3).sum(axis=1)) / ((topaz_data[LAST_FIVE_RACE_COLUMNS] != 10).sum(axis=1))
     
     # Fill any empty values with 0
-    TopazData['lastFivePlacePercentage'].fillna(0,inplace=True)
+    topaz_data['lastFivePlacePercentage'].fillna(0,inplace=True)
 
-    return TopazData
+    return topaz_data
 
-TopazData = generate_winPercentage(TopazData)
+topaz_data = generate_winPercentage(topaz_data)
 
-def generate_finishingPlaceMovement(TopazData):
+def generate_finishingPlaceMovement(topaz_data):
     '''
     This function attempts to determine if the dog has a tendency to fall back in the field towards the end of the race or it finishes very strongly by finding the difference between its final place and its field position at the last split.
     We first fill empty rows and convert to a string, before extracting the second last character from the string. 
@@ -462,29 +548,39 @@ def generate_finishingPlaceMovement(TopazData):
 
     If the pir variable only has 1 character, then it corresponds to the final placing and so the fillna operation used on the 2ndLastPIR variable simply fills its final place, assigning a finishingPlaceMovement of 0
     '''
-    # Fill any empty values for pir with 0
-    TopazData['pir'] = TopazData['pir'].fillna(0)
 
-    # Convert the 'pir' column to string
-    TopazData['pir'] = TopazData['pir'].astype(int).astype(str)
+    # fill missing values with the place value
+    topaz_data['pir'] = topaz_data['pir'].fillna(topaz_data['place'])
+
+    # fill any missing values with 8 and force into a string format
+    topaz_data['pir'] = topaz_data['pir'].fillna(8).astype(str)
+
+    # replace any non-integer values with '8'
+    topaz_data['pir'] = topaz_data['pir'].str.replace('[fFTDPS.]', '8', regex=True)
 
     # Extract the second last letter and create a new column '2ndLastPIR'
-    TopazData['2ndLastPIR'] = TopazData['pir'].apply(lambda x: x[-2] if len(x) >= 2 else None)
+    topaz_data['2ndLastPIR'] = topaz_data['pir'].apply(lambda x: x[-2] if len(x) >= 2 else None)
 
     # Fill any empty values for 2ndLastPIR with the dog's place
-    TopazData['2ndLastPIR'].fillna(TopazData['place'],inplace=True)
+    topaz_data['2ndLastPIR'] = topaz_data['2ndLastPIR'].fillna(topaz_data['place'])
+
+    # fill any missing values with 8
+    topaz_data['2ndLastPIR'] = topaz_data['2ndLastPIR'].fillna(8)
 
     # Convert the column to integer format
-    TopazData['2ndLastPIR'] = TopazData['2ndLastPIR'].astype(int)
+    topaz_data['2ndLastPIR'] = topaz_data['2ndLastPIR'].astype(int)
+
+    # force pir back to integer format
+    topaz_data['pir'] = topaz_data['pir'].astype(int)
     
     # Create a feature that calculates places gained/conceded in the home straight
-    TopazData['finishingPlaceMovement'] = TopazData['2ndLastPIR'] - TopazData['place']
+    topaz_data['finishingPlaceMovement'] = topaz_data['2ndLastPIR'] - topaz_data['place']
 
-    return TopazData
+    return topaz_data
 
-TopazData = generate_finishingPlaceMovement(TopazData)
+topaz_data = generate_finishingPlaceMovement(topaz_data)
 
-def scale_values(TopazData):
+def scale_values(topaz_data):
 
     '''
     This function scales the 'dogAge' and 'weightInKg' columns based on the 'raceId' groups using Min-Max scaling. 
@@ -492,19 +588,19 @@ def scale_values(TopazData):
     These transformations are performed to ensure that the data follows a more Gaussian distribution and meets the assumptions of certain statistical analyses. 
     '''
     # Scale existing values using MinMaxScaler
-    TopazData['dogAgeScaled'] = TopazData.groupby('raceId')['dogAge'].transform(lambda x: MinMaxScaler().fit_transform(x.values.reshape(-1, 1)).flatten())
-    TopazData['weightInKgScaled'] = TopazData.groupby('raceId')['weightInKg'].transform(lambda x: MinMaxScaler().fit_transform(x.values.reshape(-1, 1)).flatten())
+    topaz_data['dogAgeScaled'] = topaz_data.groupby('raceId')['dogAge'].transform(lambda x: MinMaxScaler().fit_transform(x.values.reshape(-1, 1)).flatten())
+    topaz_data['weightInKgScaled'] = topaz_data.groupby('raceId')['weightInKg'].transform(lambda x: MinMaxScaler().fit_transform(x.values.reshape(-1, 1)).flatten())
     
     # Transform existing values using log functions
-    TopazData['prizemoneyLog'] = np.log10(TopazData['prizeMoney'] + 1)
-    TopazData['placeLog'] = np.log10(TopazData['place'] + 1)
-    TopazData['marginLog'] = np.log10(TopazData['resultMargin'] + 1)
+    topaz_data['prizemoneyLog'] = np.log10(topaz_data['prizeMoney'] + 1)
+    topaz_data['placeLog'] = np.log10(topaz_data['place'] + 1)
+    topaz_data['marginLog'] = np.log10(topaz_data['resultMargin'] + 1)
 
-    return TopazData
+    return topaz_data
 
-TopazData = scale_values(TopazData)
+topaz_data = scale_values(topaz_data)
 
-def generate_runTimeNorm(TopazData):
+def generate_runTimeNorm(topaz_data):
     '''
     This function finds the rolling 365 day median win time for each track/distance combination by creating a dataframe that contains only winning runs
     The median time is then compared to the dog's actual result time and then a normalised value is attained.
@@ -514,7 +610,7 @@ def generate_runTimeNorm(TopazData):
     '''
     
     # Calculate median winner time per track/distance
-    win_results = TopazData[TopazData['place'] == 1]
+    win_results = topaz_data[topaz_data['place'] == 1]
 
     # Find the median for each unique combination of track, distance and meetingDate
     grouped_data = win_results.groupby(['track', 'distance', 'meetingDate'])['resultTime'].median().reset_index()
@@ -532,22 +628,22 @@ def generate_runTimeNorm(TopazData):
     median_win_time['speedIndex'] = MinMaxScaler().fit_transform(median_win_time[['speedIndex']])
 
     # Merge with median winner time
-    TopazData = TopazData.merge(median_win_time, how='left', on=['track', 'distance','meetingDate'])
+    topaz_data = topaz_data.merge(median_win_time, how='left', on=['track', 'distance','meetingDate'])
 
     # Normalise time comparison
-    TopazData['runTimeNorm'] = (TopazData['runTimeMedian'] / TopazData['resultTime']).clip(0.9, 1.1)
+    topaz_data['runTimeNorm'] = (topaz_data['runTimeMedian'] / topaz_data['resultTime']).clip(0.9, 1.1)
 
-    # Fill the empty values with 0
-    TopazData['runTimeNorm'].fillna(0, inplace=True)
+    # Fill the empty values with 1
+    topaz_data['runTimeNorm'].fillna(1, inplace=True)
 
     # Apply the MinMaxScaler
-    TopazData['runTimeNorm'] = TopazData.groupby('raceId')['runTimeNorm'].transform(lambda x: MinMaxScaler().fit_transform(x.values.reshape(-1, 1)).flatten())
+    topaz_data['runTimeNorm'] = topaz_data.groupby('raceId')['runTimeNorm'].transform(lambda x: MinMaxScaler().fit_transform(x.values.reshape(-1, 1)).flatten())
 
-    return TopazData
+    return topaz_data
 
-TopazData = generate_runTimeNorm(TopazData)
+topaz_data = generate_runTimeNorm(topaz_data)
 
-def generate_adjacentVacantBox_state(TopazData):
+def generate_adjacentVacantBox_state(topaz_data):
     '''
     This function determines whether the dog has at least one vacant box directly next to them at the beginning of the race. 
     In greyhound racing, especially for very short races, a dog with more room to move at the beginning of the race is less likely to be bumped (or 'checked') if it has a vacant box next to it. 
@@ -559,34 +655,34 @@ def generate_adjacentVacantBox_state(TopazData):
     '''
 
     # Sort the DataFrame by 'RaceId' and 'Box'
-    TopazData = TopazData.sort_values(by=['raceId', 'boxNumber'])
+    topaz_data = topaz_data.sort_values(by=['raceId', 'boxNumber'])
 
     # Check if there is an entry equal to boxNumber plus or minues one
-    TopazData['hasEntryBoxNumberPlus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(1) == TopazData['boxNumber'] + 1) | (TopazData['boxNumber'] == 8)
-    TopazData['hasEntryBoxNumberMinus1'] = (TopazData.groupby('raceId')['boxNumber'].shift(-1) == TopazData['boxNumber'] - 1)
+    topaz_data['hasEntryBoxNumberPlus1'] = (topaz_data.groupby('raceId')['boxNumber'].shift(1) == topaz_data['boxNumber'] + 1) | (topaz_data['boxNumber'] == 8)
+    topaz_data['hasEntryBoxNumberMinus1'] = (topaz_data.groupby('raceId')['boxNumber'].shift(-1) == topaz_data['boxNumber'] - 1)
 
     # Convert boolean values to 1
-    TopazData['hasEntryBoxNumberPlus1'] = TopazData['hasEntryBoxNumberPlus1'].astype(int)
-    TopazData['hasEntryBoxNumberMinus1'] = TopazData['hasEntryBoxNumberMinus1'].astype(int)
+    topaz_data['hasEntryBoxNumberPlus1'] = topaz_data['hasEntryBoxNumberPlus1'].astype(int)
+    topaz_data['hasEntryBoxNumberMinus1'] = topaz_data['hasEntryBoxNumberMinus1'].astype(int)
     
     # Calculate 'hasAtLeast1VacantBox'
-    TopazData['hasAtLeast1VacantBox'] = (TopazData['hasEntryBoxNumberPlus1'] + TopazData['hasEntryBoxNumberMinus1']> 0).astype(int)
+    topaz_data['hasAtLeast1VacantBox'] = (topaz_data['hasEntryBoxNumberPlus1'] + topaz_data['hasEntryBoxNumberMinus1']> 0).astype(int)
 
-    return TopazData
+    return topaz_data
 
-TopazData = generate_adjacentVacantBox_state(TopazData)
+topaz_data = generate_adjacentVacantBox_state(topaz_data)
 
-def generate_boxWinPercentage(TopazData):
+def generate_boxWinPercentage(topaz_data):
     ''' 
     This function creates a rolling win percentage for each combination of 'track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate'
     The purpose of this is to help the model determine if the box placement and presence of vacant adjacent boxes can give the dog an improved chance of winning the race
     The shift(1) is used to ensure that the results of that meetingDate are excluded from the calculation to prevent data leakage
     '''
     # Create a win column
-    TopazData['win'] = TopazData['place'].apply(lambda x: 1 if x == 1 else 0)
+    topaz_data['win'] = topaz_data['place'].apply(lambda x: 1 if x == 1 else 0)
 
     # Find the mean (win percentage) for each 'track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate' combination
-    grouped_data = TopazData.groupby(['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate'])['win'].mean().reset_index()
+    grouped_data = topaz_data.groupby(['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate'])['win'].mean().reset_index()
 
     # set the index to be the meeting date for the rolling window calculation
     grouped_data.set_index('meetingDate', inplace=True)
@@ -598,11 +694,11 @@ def generate_boxWinPercentage(TopazData):
     box_win_percent.columns = ['track', 'distance', 'boxNumber', 'hasAtLeast1VacantBox', 'meetingDate', 'rolling_box_win_percentage']
     
     # Add to dog results dataframe
-    TopazData = TopazData.merge(box_win_percent, on=['track', 'distance', 'meetingDate','boxNumber','hasAtLeast1VacantBox'], how='left')
+    topaz_data = topaz_data.merge(box_win_percent, on=['track', 'distance', 'meetingDate','boxNumber','hasAtLeast1VacantBox'], how='left')
 
-    return TopazData
+    return topaz_data
 
-TopazData = generate_boxWinPercentage(TopazData)
+topaz_data = generate_boxWinPercentage(topaz_data)
 ```
 Now we've created some basic features, it's time to create our big group of features where we iterate over different subsets, variables and time points to generate a large number of different features
 
@@ -620,7 +716,7 @@ FEATURES = ['runTimeNorm', 'placeLog', 'prizemoneyLog', 'marginLog','finishingPl
 # Aggregation functions to apply
 AGGREGATES = ['min', 'max', 'mean', 'median', 'std']
 
-def generate_rollingFeatures(TopazData):
+def generate_rollingFeatures(topaz_data):
 
     '''
     This function generates rolling window features for subsets including dog, trainer, dam, and sire.
@@ -634,10 +730,10 @@ def generate_rollingFeatures(TopazData):
     Finally, the function returns the dataset with generated features added and a list of column names representing the generated rolling window features.
     The function enables the creation of a bulk set of features to be created using statistical aggregates, which will be entrusted to the algorithm to sort through which ones have significance
 
-    We create a copy of the TopazData dataframe rather than modifying it directly in case of issues with this function. It means that this cell can simply be rerun instead of having to reload and reprocess the entire database
+    We create a copy of the topaz_data dataframe rather than modifying it directly in case of issues with this function. It means that this cell can simply be rerun instead of having to reload and reprocess the entire database
     '''
     # Create a copy of the dataframe and ensure meetingDate is in datetime format
-    dataset = TopazData.copy()
+    dataset = topaz_data.copy()
     dataset['meetingDate'] = pd.to_datetime(dataset['meetingDate'])
 
     # Keep track of generated feature names
@@ -717,7 +813,7 @@ def generate_rollingFeatures(TopazData):
 
     return dataset, feature_cols
 
-dataset, feature_cols = generate_rollingFeatures(TopazData)
+dataset, feature_cols = generate_rollingFeatures(topaz_data)
 
 from dateutil.relativedelta import relativedelta
 
@@ -765,11 +861,11 @@ def generate_modelling_dataset(dataset, feature_cols):
     '''
     This function extends the list of feature columns from the generate_rollingFeatures function by adding the features we previously created, and then keeps only the columns specified to prepare the dataset for training by the algorithm
     '''
-    
+
     # Trim the dataset
     dataset = dataset[DATASET_COLUMNS_TO_KEEP + feature_cols]
 
-        # Extend the feature_cols list
+    # Extend the feature_cols list
     feature_cols.extend(['speedIndex',
                 'dogAgeScaled',
                 'lastFiveWinPercentage',
@@ -779,10 +875,10 @@ def generate_modelling_dataset(dataset, feature_cols):
                 'hasAtLeast1VacantBox'])
 
     # Fill any missing values with 0 as a final step before training
-    dataset.fillna(0,inplace=True)
+    dataset = dataset.fillna(0,inplace=True)
 
     # Drop any duplicate runIds
-    dataset = dataset.drop_duplicates(subset=['runId'])
+    dataset.drop_duplicates(subset=['runId'],inplace=True)
     
     return dataset, feature_cols
 
@@ -809,11 +905,6 @@ from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.linear_model import LogisticRegression
-
-import pickle
-from sklearn.metrics import log_loss
-from sklearn.metrics import brier_score_loss
-import time
 
 # Gradient Boosting Machines libraries
 from lightgbm import LGBMClassifier
@@ -900,7 +991,7 @@ def train_test_split(final_dataset,end_date):
 
 test_data, train_data = train_test_split(final_dataset,end_date)
 
-def generate_xy(test_data, train_data):
+def generate_xy(test_data, train_data, feature_cols):
     '''
     This function separates the target column 'win' from the actual features of the dataset and also seperates the training features from the race metadata which is not being used for the training (e.g. raceId)
     '''
@@ -909,7 +1000,12 @@ def generate_xy(test_data, train_data):
 
     return train_x, train_y, test_x, test_y
 
-train_x, train_y, test_x, test_y = generate_xy(test_data, train_data)
+train_x, train_y, test_x, test_y = generate_xy(test_data, train_data, feature_cols)
+
+import pickle
+from sklearn.metrics import log_loss
+from sklearn.metrics import brier_score_loss
+import time
 
 def train_models(models,train_x, train_y, test_x, test_y, test_data):
     '''
@@ -926,7 +1022,7 @@ def train_models(models,train_x, train_y, test_x, test_y, test_data):
     for key, model in models.items():
         
         prob_col_key = f'prob_{key}'
-        print(f'Fitting model {key} for {model}')
+        print(f'Fitting model {key}')
 
         # time and train the model
         start_time = time.time()  # Record start time
@@ -956,12 +1052,14 @@ def train_models(models,train_x, train_y, test_x, test_y, test_data):
         probs_columns.append(prob_col_key)
 
         # Dump the pickle file
-        with open(key + '_.pickle.dat', 'wb') as f:
+        with open(key + '_.pickle', 'wb') as f:
             pickle.dump(model, f)
 
     return test_data, probs_columns
 
 all_models_test_data, probs_columns = train_models(models,train_x, train_y, test_x, test_y, test_data)
+
+BACKTESTING_COLUMNS = ['meetingDate','state','track','race_number','boxNumber','rugNumber']
 
 BACKTESTING_COLUMNS = ['meetingDate','state','track','race_number','boxNumber','rugNumber']
 
@@ -1245,6 +1343,25 @@ def create_backtesting_dataset(betfair_results,best_model_test_data):
 
 backtesting = create_backtesting_dataset(betfair_results,test_data)
 
+def create_backtesting_dataset(betfair_results,best_model_test_data):
+    '''
+    This function merges together our model predictions with the retrieved Betfair data
+    '''
+
+    # merge dataframes
+    backtesting = pd.merge(betfair_results,
+                        best_model_test_data,
+                        how='left',
+                        left_on=['LOCAL_MEETING_DATE','TRACK','RACE_NO','TAB_NUMBER'],
+                        right_on=['meetingDate','track','raceNumber','rugNumber'])
+    
+    # Drop Betfair races where our model didn't have a prediction
+    backtesting.dropna(subset=['win_probability'],inplace=True)
+
+    return backtesting
+
+backtesting = create_backtesting_dataset(betfair_results,test_data)
+
 def generate_backtesting_columns(backtesting):
     '''
     This function generates additional columns for the purposes of profitability testing.
@@ -1368,13 +1485,13 @@ The next step will be to load up our database, and update with recent results
 
 ```py title="Load up the database and begin the preprocessing"
 
-def generate_historic_data_enddate(TopazDataAll):
+def generate_historic_data_enddate(topaz_data_all):
     '''
     This function finds the date to which the Topaz Historical Data has been downloaded, and then generates a datetime variable which equals the following date
     
     '''
     # Find the maximum value in the 'meetingDate' column
-    max_meeting_date = TopazDataAll['meetingDate'].max()
+    max_meeting_date = topaz_data_all['meetingDate'].max()
 
     # Remove time information from the max_meeting_date and format it to '%Y-%m-%d'
     max_meeting_date = pd.to_datetime(max_meeting_date, format='%Y-%m-%dT%H:%M:%S.%fZ').strftime('%Y-%m-%d')
@@ -1392,42 +1509,12 @@ def generate_historic_data_enddate(TopazDataAll):
 
     return max_meeting_date_plus_one_day, yesterday
 
-TopazDataAll = load_topaz_data(JURISDICTION_CODES,'HISTORICAL')
+topaz_data_all = load_topaz_data(JURISDICTION_CODES,'HISTORICAL')
 
-max_meeting_date_plus_one_day, yesterday = generate_historic_data_enddate(TopazDataAll)
+max_meeting_date_plus_one_day, yesterday = generate_historic_data_enddate(topaz_data_all)
 
-# Collect upcoming race data - note the use of 'UPCOMING' here.
-collect_topaz_data(TOPAZ_API_KEY,JURISDICTION_CODES,max_meeting_date_plus_one_day,yesterday,'UPCOMING')
-
-def topaz_last_12_months(TopazDataHistorical):
-    '''
-    This function generates a timezone naive column and then discards all data except the previous 12 months.
-    The Topaz API meetingDate is timezone aware and filtering using datetime.today() - timedelta(years=1) isn't possible. 
-    Removing the timezone will create errors with the dogAge function so creating a timezone naive copy is the best way to accomplish this before discarding it
-    '''
-    # Create the naive meetingDate
-    TopazDataHistorical['meetingDateNaive'] = pd.to_datetime(TopazData['meetingDate'], format='%Y-%m-%dT%H:%M:%S.%fZ', utc=True).dt.tz_localize(None)
-    
-    # Discard all but the last 12 months
-    TopazDataHistorical = TopazDataHistorical[TopazDataHistorical['meetingDateNaive'] >= datetime.today() - timedelta(years=1)]
-    
-    return TopazDataHistorical
-
-def load_topaz_preprocessing_data(codes,datatype):
-    '''
-    This function combines 4 of our previous functions to load our existing topaz historical data into a dataframe from our database and perform some basic cleaning and then keep only the last 12 months for preprocessing
-    '''
-    TopazDataHistorical = load_topaz_data(codes,datatype)
-
-    TopazDataHistorical = discard_scratched_runners_data(TopazDataHistorical)
-
-    TopazDataHistorical = topaz_last_12_months(TopazDataHistorical)
-
-    TopazDataHistorical = discard_unnecessary_columns(TopazDataHistorical,TOPAZ_COLUMNS_TO_KEEP)
-
-    return TopazDataHistorical
-
-TopazDataHistorical = load_topaz_preprocessing_data(JURISDICTION_CODES,'HISTORICAL')
+# Update historical dataset up to and including yesterday's races
+collect_topaz_data(TOPAZ_API_KEY,JURISDICTION_CODES,max_meeting_date_plus_one_day,yesterday,'HISTORICAL',1,5)
 
 ```
 
@@ -1469,9 +1556,10 @@ def login(trading):
 def greyhound_market_filter():
     # Define the greyhound market filter
     market_filter = filters.market_filter(
-        event_type_ids=[4339],  # For horse racing
+        event_type_ids=[4339],  # For greyhound racing
         market_countries=['AU'],  # For Australia
-        market_type_codes=['WIN']  # For win markets
+        market_type_codes=['WIN'],
+        venues = ['Geelong','Horsham','Warragul']  # For win markets
     )
 
     return market_filter
@@ -1481,7 +1569,7 @@ def process_runner_books(runner_books):
     selection_ids = [runner_book.selection_id for runner_book in runner_books]
 
     df = pd.DataFrame({
-        'selectionId': selection_ids,
+        'selection_id': selection_ids,
     })
     return df
 
@@ -1497,15 +1585,14 @@ def generate_greyhound_catalogue(trading,market_filter):
     return greyhound_market_catalogues
 
 RUNNER_DATA_COLUMNS = [
-            'marketStart',
-            'track',
-            'raceNumber',
-            'raceType',
-            'winMarketId',
-            'selectionId',
-            'rugNumber',
-            'boxNumber',
-            'dogName'
+            'market_start',
+            'venue',
+            'race_no',
+            'win_market_id',
+            'selection_id',
+            'tab_number',
+            'runner_name',
+            'boxNumber'
             ]
 
 def initilise_dataframe():
@@ -1526,25 +1613,24 @@ def process_market_clarifications(runners_df,clarifications):
     A clarification will look like: "<br>Box changes:<br>Dog 9. Tralee Blaze starts from box no. 8<br><br>Dog 6. That Other One starts from box no. 2<br><br>"
     '''
     # Define the clarifications dataframe
-    market_clarifications = pd.DataFrame(regexp_tokenize(clarifications, PATTERN1), columns = ['dogName'])
+    market_clarifications = pd.DataFrame(regexp_tokenize(clarifications, PATTERN1), columns = ['runner_name'])
 
     # Remove dog name from runner_number
-    market_clarifications['rugNumber'] = market_clarifications['dogName'].str.split(r'. ').str[0]
+    market_clarifications['tab_number'] = market_clarifications['runner_name'].str.split(r'. ').str[0]
 
     # Extract box number from clarifications
     market_clarifications['boxNumber'] = regexp_tokenize(clarifications, PATTERN2)
 
     # Keep only boxNumber and rugNumber
-    market_clarifications=market_clarifications[['rugNumber','boxNumber']]
+    market_clarifications=market_clarifications[['tab_number','boxNumber']]
 
     # Merge the clarifications with the original dataframe
-    runners_df = pd.merge(runners_df,market_clarifications,how='left',on=['rugNumber'])
+    runners_df = pd.merge(runners_df,market_clarifications,how='left',on=['tab_number'])
 
     # Any runners with no clarifications will start in the box that matches the rugNumber
-    runners_df['boxNumber'].fillna(runners_df['rugNumber'],inplace=True)
+    runners_df['boxNumber'].fillna(runners_df['tab_number'],inplace=True)
 
     return runners_df
-
 
 def collect_greyhound_market_data(trading,greyhound_market_catalogues,data):
     '''
@@ -1601,30 +1687,29 @@ def collect_greyhound_market_data(trading,greyhound_market_catalogues,data):
                 # define the runner name for non-empty runner_catalogues
                 if runner_catalogue is not None:
                     runner_name = runner_catalogue.runner_name
-                    runners_df.loc[runners_df['selectionId'] == runner.selection_id, 'dogName'] = runner_name
+                    runners_df.loc[runners_df['selection_id'] == runner.selection_id, 'runner_name'] = runner_name
 
             # Assign market variables to the dataframe
-            runners_df['winMarketId'] = market_id
+            runners_df['win_market_id'] = market_id
             runners_df['marketName'] = market_name
             runners_df['eventName'] = event_name
-            runners_df['marketStart'] = market_start_time
+            runners_df['market_start'] = market_start_time
 
             # Adjust the timezone from UTC to AEST
-            runners_df['marketStart'] = runners_df['marketStart'] + timedelta(hours=10)
+            runners_df['market_start'] = runners_df['market_start'] + timedelta(hours=10)
 
             # Perform string split operations 
-            runners_df['track']=runners_df['eventName'].str.split(' \(').str[0]
-            runners_df['raceNumber']=runners_df['marketName'].str.split(r' ').str[0]
-            runners_df['raceNumber']=runners_df['raceNumber'].str.split('R').str[1]
-            runners_df['raceType']=runners_df['marketName'].str.split(r'm ').str[1]
-            runners_df['rugNumber']=runners_df['dogName'].str.split(r'. ').str[0]
-            runners_df['dogName']=runners_df['dogName'].str.split('\. ').str[1]
+            runners_df['venue']=runners_df['eventName'].str.split(' \(').str[0]
+            runners_df['race_no']=runners_df['marketName'].str.split(r' ').str[0]
+            runners_df['race_no']=runners_df['race_no'].str.split('R').str[1]
+            runners_df['tab_number']=runners_df['runner_name'].str.split(r'. ').str[0]
+            runners_df['runner_name']=runners_df['runner_name'].str.split('\. ').str[1]
 
             # Call the process_market_clarifications function. If there no reserve runners running then the boxNumber = rugNumber
             try:
                 runners_df = process_market_clarifications(runners_df,clarifications)
             except TypeError:
-                runners_df['boxNumber'] = runners_df['rugNumber']
+                runners_df['boxNumber'] = runners_df['tab_number']
 
             # concatenate the dataframes together
             data=pd.concat([data,runners_df], sort=False)
@@ -1632,8 +1717,6 @@ def collect_greyhound_market_data(trading,greyhound_market_catalogues,data):
     # Keep only required columns
     data = data[RUNNER_DATA_COLUMNS]
     data = pd.DataFrame(data)
-    
-    print(data.head)
 
     return data
 
@@ -1653,98 +1736,178 @@ def download_betfair_market_data():
     
     data = collect_greyhound_market_data(trading,greyhound_market_catalogues,data)
 
+    data.to_csv('betfair_data.csv',index=False)
+
     return data
 
 betfair_data = download_betfair_market_data()
 
-def upcoming_topaz_data(codes,datatype,betfair_data):
+def delete_old_upcoming_races(codes):
+    '''
+    This function here will loop over our previously written csv files with upcoming race data and then delete them, so we can load fresh data without duplication
+    '''
+
+    # loop over all csv files
+    for code in codes:
+        # Read only the header of the CSV file
+        try:
+            with open(code+'_DATA_UPCOMING.csv', 'r') as file:
+                header = file.readline().strip().split(',')  # Read the header and split into columns
+                StateData = pd.DataFrame(columns=header)  # Create a DataFrame with the header columns
+        except FileNotFoundError:
+            continue  # Skip to the next file if the current one is not found
+
+        # Write the header back to the CSV file
+        StateData.to_csv(code+'_DATA_UPCOMING.csv', index=False)
+
+def upcoming_topaz_data(codes,datatype,betfair_data,number_of_retries,sleep_time):
     '''
     This function loads our upcoming races, discards the Topaz API boxNumber and adds the boxNumber information retrieved from the Betfair API
     '''
+    # Delete the upcoming races data we loaded previously
+    delete_old_upcoming_races(codes)
+
+    # We define this variable inside the function because it will vary with the function
+    today = pd.to_datetime(datetime.today())
+
+    # Collect today's topaz race information
+    collect_topaz_data(TOPAZ_API_KEY,JURISDICTION_CODES,today,today,datatype,number_of_retries,sleep_time)
+    
     # Load today's race information
-    TodaysTopazData = load_topaz_data(codes,datatype)
+    todays_topaz_data = load_topaz_data(codes,datatype)
 
     # Keep only required Betfair information
-    betfair_fields = betfair_data[['track','raceNumber','rugNumber','boxNumber']]
+    betfair_fields = betfair_data[['venue','race_no','tab_number','boxNumber']]
 
     # Discard the Topaz API boxNumber information
-    TodaysTopazData.drop(columns=['boxNumber'], inplace=True)
+    todays_topaz_data.drop(columns=['boxNumber'], inplace=True)
 
     # Merge the Betfair boxNumber information
-    TodaysTopazData = pd.merge(TodaysTopazData,betfair_fields,how='left',on=['track','raceNumber','rugNumber'])
+    todays_topaz_data = pd.merge(todays_topaz_data,betfair_fields,how='left',left_on=['track','raceNumber','rugNumber'], right_on=['venue','race_no','tab_number'])
 
-    return TodaysTopazData
+    return todays_topaz_data
 
-TodaysTopazData = (JURISDICTION_CODES,'UPCOMING',betfair_data)
+todays_topaz_data = upcoming_topaz_data(JURISDICTION_CODES,'UPCOMING',betfair_data,1,5)
 
-def concatenate_data(TopazDataHistorical,TodaysTopazData):
+def load_topaz_preprocessing_data(codes,datatype,start_date):
+    '''
+    This function combines 4 of our previous functions to load our existing topaz historical data into a dataframe from our database and perform some basic cleaning and then keep only the last 12 months for preprocessing
+    '''
+    topaz_data_historical = load_topaz_data(codes,datatype)
+
+    topaz_data_historical = discard_scratched_runners_data(topaz_data_historical)
+
+    topaz_data_historical = discard_using_dates(topaz_data_historical,start_date)
+
+    topaz_data_historical = discard_unnecessary_columns(topaz_data_historical,TOPAZ_COLUMNS_TO_KEEP)
+
+    return topaz_data_historical
+
+start_date = datetime.today() - relativedelta(years=1)
+
+topaz_data_historical = load_topaz_preprocessing_data(JURISDICTION_CODES,'HISTORICAL',start_date)
+
+def concatenate_data(topaz_data_historical,todays_topaz_data):
     
     # Concatenate the last 12 months of Topaz Data with today's races
-    TopazDataPreProcessing = pd.concat([TopazDataHistorical,TodaysTopazData])
+    topaz_data_pre_processing = pd.concat([topaz_data_historical,todays_topaz_data])
 
-    return TopazDataPreProcessing
+    return topaz_data_pre_processing
 
-TopazDataPreProcessing = concatenate_data(TopazDataHistorical,TodaysTopazData)
+topaz_data_pre_processing = concatenate_data(topaz_data_historical,todays_topaz_data)
+
+def forward_fill_dog_weight(df):
+    # Sort the DataFrame by dogId and meetingDate
+    df.sort_values(['dogId', 'meetingDate'], inplace=True)
+
+    # Replace zero values in weightInKg with NaN
+    df['weightInKg'].replace(0, pd.NA, inplace=True)
+
+    # Forward fill NaN values within each dogId group
+    df['weightInKg'] = df.groupby('dogId')['weightInKg'].ffill()
+
+    # Replace remaining NaN values with 0
+    df['weightInKg'].fillna(0, inplace=True)
+
+    return df
 ```
 
 The final step now will be to apply all of our previously defined functions to the last 12 months of Topaz data to create our rolling window features before, finally, we can apply our trained model (in the form of a pickle file) to today's field and output our ratings ready to put in the market
 
 ```py title="Generate today's ratings"
-def preprocess_data_for_today(TopazDataPreProcessing):
+def preprocess_data_for_today(topaz_data_pre_processing):
     '''
     This function will apply all of our previously defined functions to our dataset in order to generate all the features required for today's races
     '''
+    topaz_data_pre_processing = forward_fill_dog_weight(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = clean_track_data(TopazDataPreProcessing)
+    topaz_data_pre_processing = clean_track_data(topaz_data_pre_processing,TRACK_DICTIONARY)
 
-    TopazDataPreProcessing = extract_form(TopazDataPreProcessing)
+    topaz_data_pre_processing = extract_form(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = correct_result_margin(TopazDataPreProcessing)
+    topaz_data_pre_processing = correct_result_margin(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = generate_dogAge(TopazDataPreProcessing)
+    topaz_data_pre_processing = generate_dogAge(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = generate_winPercentage(TopazDataPreProcessing)
+    topaz_data_pre_processing = generate_winPercentage(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = generate_finishingPlaceMovement(TopazDataPreProcessing)
+    topaz_data_pre_processing = generate_finishingPlaceMovement(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = scale_values(TopazDataPreProcessing)
+    topaz_data_pre_processing = scale_values(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = generate_runTimeNorm(TopazDataPreProcessing)
+    topaz_data_pre_processing = generate_runTimeNorm(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = generate_adjacentVacantBox_state(TopazDataPreProcessing)
+    topaz_data_pre_processing = generate_adjacentVacantBox_state(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = generate_boxWinPercentage(TopazDataPreProcessing)
+    topaz_data_pre_processing = generate_boxWinPercentage(topaz_data_pre_processing)
 
-    TopazDataPreProcessing, feature_cols = generate_rollingFeatures(TopazDataPreProcessing)
+    topaz_data_pre_processing, feature_cols = generate_rollingFeatures(topaz_data_pre_processing)
 
     feature_cols = generate_feature_list(feature_cols)
 
-    TopazDataPreProcessing, feature_cols = generate_modelling_dataset(TopazDataPreProcessing, feature_cols)
+    topaz_data_pre_processing, feature_cols = generate_modelling_dataset(topaz_data_pre_processing, feature_cols)
 
-    TopazDataPreProcessing = remove_races(TopazDataPreProcessing)
+    topaz_data_pre_processing = remove_races(topaz_data_pre_processing)
 
-    TopazDataPreProcessing = downcast_data(TopazDataPreProcessing)
+    topaz_data_pre_processing = downcast_data(topaz_data_pre_processing)
 
-    return TopazDataPreProcessing
+    return topaz_data_pre_processing, feature_cols
 
-TopazDataPreProcessing = preprocess_data_for_today(TopazDataPreProcessing)
+topaz_data_pre_processing, feature_cols = preprocess_data_for_today(topaz_data_pre_processing)
 
-def todays_fields(TopazDataPreProcessing):
+def todays_fields(topaz_data_pre_processing):
     '''
     This function removes all race data except for today's races before we load our trained model
     '''
     # Create our naive meetingDate
-    TopazDataPreProcessing['meetingDateNaive'] = pd.to_datetime(TopazDataPreProcessing['meetingDate'], format='%Y-%m-%dT%H:%M:%S.%fZ', utc=True).dt.tz_localize(None)
+    topaz_data_pre_processing['meetingDateNaive'] = pd.to_datetime(topaz_data_pre_processing['meetingDate'], format='%Y-%m-%dT%H:%M:%S.%fZ', utc=True).dt.tz_localize(None)
 
     # Keep only today's races
-    todays_runners = TopazDataPreProcessing[TopazDataPreProcessing['meetingDateNaive'] > datetime.today() - timedelta(days=1)].reset_index(drop=True)
+    todays_runners = topaz_data_pre_processing[topaz_data_pre_processing['meetingDateNaive'] > datetime.today() - timedelta(days=1)].reset_index(drop=True)
     
     # Discard the naive meetingDate
     todays_runners.drop(columns=['meetingDateNaive'], inplace=True)
 
     return todays_runners
-    
-todays_runners = todays_fields(TopazDataPreProcessing)
+
+todays_runners = discard_using_dates(topaz_data_pre_processing)
+
+todays_runners.to_csv('todays_runners.csv',index=False)
+
+'''
+We export the dataframes to csv so that it allows us to simply reload the files if our environment crashes for whatever reason
+'''
+# todays_runners = pd.read_csv('todays_runners.csv')
+# betfair_data = pd.read_csv('betfair_data.csv')
+
+```
+
+Here follows two blocks of code where we can either apply our GridSearch model or our suite of different ML algorithms
+
+```py title="Grid Search"
+''' 
+This block of code is intended for use in loading the model trained using the GridSearch and apply the model to generate today's probabilities
+'''
 
 import joblib
 
@@ -1798,6 +1961,86 @@ def join_betfair_data(todays_greyhound_ratings,betfair_data):
     return betfair_data
 
 betfair_data = join_betfair_data(todays_greyhound_ratings,betfair_data)
+```
+
+```py title="Algorithm Suite"
+''' 
+This block of code is intended for use in loading all the different models trained by the various algorithms to generate today's probabilities
+
+'''
+
+import os
+import joblib
+import re
+
+folder_path = 'INSERT FOLDER PATH'
+
+def find_pickle_files(folder_path):
+
+    all_files = os.listdir(folder_path)
+    pickle_files = [file for file in all_files if file.endswith('_.pickle')]
+    file_model_mapping = {}
+
+    for pickle_file in pickle_files:
+        file_path = os.path.join(folder_path, pickle_file)
+        model = joblib.load(file_path)
+        file_model_mapping[pickle_file] = model
+
+    return file_model_mapping
+
+MODEL_RATINGS_COLUMNS = ['state',
+                         'track',
+                         'raceNumber', 
+                         'boxNumber',
+                         'rugNumber']
+
+def apply_trained_model(file_model_mapping, todays_runners, feature_cols):
+
+    todays_runners_features = todays_runners[feature_cols]
+
+    model_list = []
+
+    for filename, model in file_model_mapping.items():
+
+        todays_runners[f'win_probability_{filename}'] = model.predict_proba(todays_runners_features)[:, 1]
+
+        model_list.append(f'win_probability_{filename}')
+
+    return todays_runners, model_list
+
+file_model_mapping = find_pickle_files(folder_path)
+
+todays_greyhound_ratings, model_list = apply_trained_model(file_model_mapping, todays_runners, feature_cols)
+
+todays_greyhound_ratings = todays_greyhound_ratings[MODEL_RATINGS_COLUMNS + model_list]
+
+def join_betfair_data(todays_greyhound_ratings,betfair_data):
+    '''
+    This function will join our Betfair market and runner information with today's model ratings
+    '''
+    # Merge the dataframes
+    betfair_data = pd.merge(betfair_data,todays_greyhound_ratings,how='left',left_on=['venue','race_no','tab_number'],right_on=['track','raceNumber','rugNumber'])
+    
+    for i in model_list:
+
+        betfair_data[i] = betfair_data.groupby('win_market_id',group_keys=False)[i].apply(lambda x: x / sum(x))
+
+        this_model = betfair_data.copy()
+        this_model = this_model[['market_start',
+                                 'venue',
+                                 'race_no',
+                                 'win_market_id',
+                                 'selection_id',
+                                 'tab_number',
+                                 'runner_name',
+                                 i]]
+        this_model.rename(columns={i:'probability'},inplace=True)
+        match = re.search(r'(\w+)_(\w+)\.pickle', i)
+        model_name = match.group(2)
+        this_model.to_csv(model_name+'.csv',index=False)
+
+join_betfair_data(todays_greyhound_ratings,betfair_data)
+
 
 ```
 

@@ -101,52 +101,52 @@ All entrants received a bulk historic data file upon registration
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-### Leaderboard - After Day 2
+### Leaderboard - After Day 3
 
 |Model|Log Loss|Rank|PrizeRank|
 |-----------------------------|---------|----|----|
-|BSP|2.4242|1||
-|InLimbo|2.4629|2|1|
-|Mach7|2.4671|3|2|
-|TinHare|2.4816|4|3|
-|YaLikeDags|2.4836|5|4|
-|selling-full-rune-200k|2.4853|6|5|
-|RapidRacer|2.4955|7|6|
-|willingly|2.5029|8|7|
-|RIPPED|2.5078|9|8|
-|Analytique|2.5163|10|9|
-|FirstDayFudge|2.5277|11|10|
-|Nightingale|2.5428|12|11|
-|FashionModel|2.5507|13|12|
-|blahboy|2.5587|14|13|
-|NormalChannels|2.5601|15|14|
-|WeDontTalkAboutBruno|2.5638|16|15|
-|Cortina|2.5747|17|16|
-|WisdomOfTheCrowd|2.6159|18||
-|Iggy|2.6363|19||
-|RandomShrubbery|2.6406|20|17|
-|RonW|2.6466|21|18|
-|ScrapingTheDulux|2.6633|22|19|
-|EbbingFlowing|2.69|23|20|
-|CanGetThirsty|2.7015|24|21|
-|Greys-V1|2.7068|25|22|
-|Vertex|2.7101|26|23|
-|LightningBolter|2.7154|27||
-|BiggyModel|2.7373|28||
-|Mutt-Maestro|2.7374|29|24|
-|PlusEvOnly|2.746|30|25|
-|BelowAverage|2.7501|31|26|
-|crowbar|2.7508|32|27|
-|GradientGlider|2.7537|33||
-|LeafyDecisions|2.7594|34||
-|Purrfection|2.7629|35||
-|DreamWeaver|2.7701|36||
-|XtremeRollers|2.7702|37||
-|LogisticalLegend|2.7907|38||
-|Fat-bot|2.8312|39|28|
-|HarbourBoostinator|2.8487|40||
-|Katana|2.9679|41|29|
-|Flash-Reality|3.015|42|30|
+|BSP|2.3924|1||
+|selling-full-rune-200k|2.4436|2|1|
+|Mach7|2.4587|3|2|
+|RapidRacer|2.4748|4|3|
+|TinHare|2.4769|5|4|
+|InLimbo|2.4803|6|5|
+|YaLikeDags|2.4882|7|6|
+|willingly|2.4887|8|7|
+|RIPPED|2.4915|9|8|
+|FirstDayFudge|2.5039|10|9|
+|blahboy|2.5161|11|10|
+|Analytique|2.519|12|11|
+|NormalChannels|2.5331|13|12|
+|Cortina|2.5373|14|13|
+|WeDontTalkAboutBruno|2.5441|15|14|
+|Nightingale|2.5775|16|15|
+|WisdomOfTheCrowd|2.5839|17||
+|RandomShrubbery|2.6091|18|16|
+|EbbingFlowing|2.6158|19|17|
+|Iggy|2.624|20||
+|RonW|2.6295|21|18|
+|FashionModel|2.638|22|19|
+|ScrapingTheDulux|2.6386|23|20|
+|BiggyModel|2.6856|24||
+|Vertex|2.6944|25|21|
+|CanGetThirsty|2.6956|26|22|
+|LightningBolter|2.71|27||
+|Greys-V1|2.7152|28|23|
+|PlusEvOnly|2.7155|29|24|
+|Mutt-Maestro|2.7178|30|25|
+|GradientGlider|2.7233|31||
+|DreamWeaver|2.7683|32||
+|LeafyDecisions|2.7733|33||
+|Purrfection|2.7736|34||
+|LogisticalLegend|2.7764|35||
+|XtremeRollers|2.7821|36||
+|BelowAverage|2.7928|37|26|
+|HarbourBoostinator|2.8478|38||
+|crowbar|2.8501|39|27|
+|Flash-Reality|2.956|40|28|
+|Katana|2.9593|41|29|
+
 
 
 

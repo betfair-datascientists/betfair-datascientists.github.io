@@ -91,6 +91,7 @@ Please name submission file using the following formatting:
  - Day 2 - [submission file - 13/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240514.csv)
  - Day 3 - [submission file - 13/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240515.csv)
  - Day 4 - [submission file - 13/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240516.csv)
+ - Day 5 - [submission file - 13/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240517.csv)
 
 ### Historic Form Data
 
@@ -101,51 +102,50 @@ All entrants received a bulk historic data file upon registration
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-### Leaderboard - After Day 3
+### Leaderboard - After Day 4
 
 |Model|Log Loss|Rank|PrizeRank|
 |-----------------------------|---------|----|----|
-|BSP|2.3924|1||
-|selling-full-rune-200k|2.4436|2|1|
-|Mach7|2.4587|3|2|
-|RapidRacer|2.4748|4|3|
-|TinHare|2.4769|5|4|
-|InLimbo|2.4803|6|5|
-|YaLikeDags|2.4882|7|6|
-|willingly|2.4887|8|7|
-|RIPPED|2.4915|9|8|
-|FirstDayFudge|2.5039|10|9|
-|blahboy|2.5161|11|10|
-|Analytique|2.519|12|11|
-|NormalChannels|2.5331|13|12|
-|Cortina|2.5373|14|13|
-|WeDontTalkAboutBruno|2.5441|15|14|
-|Nightingale|2.5775|16|15|
-|WisdomOfTheCrowd|2.5839|17||
-|RandomShrubbery|2.6091|18|16|
-|EbbingFlowing|2.6158|19|17|
-|Iggy|2.624|20||
-|RonW|2.6295|21|18|
-|FashionModel|2.638|22|19|
-|ScrapingTheDulux|2.6386|23|20|
-|BiggyModel|2.6856|24||
-|Vertex|2.6944|25|21|
-|CanGetThirsty|2.6956|26|22|
-|LightningBolter|2.71|27||
-|Greys-V1|2.7152|28|23|
-|PlusEvOnly|2.7155|29|24|
-|Mutt-Maestro|2.7178|30|25|
-|GradientGlider|2.7233|31||
-|DreamWeaver|2.7683|32||
-|LeafyDecisions|2.7733|33||
-|Purrfection|2.7736|34||
-|LogisticalLegend|2.7764|35||
-|XtremeRollers|2.7821|36||
-|BelowAverage|2.7928|37|26|
-|HarbourBoostinator|2.8478|38||
-|crowbar|2.8501|39|27|
-|Flash-Reality|2.956|40|28|
-|Katana|2.9593|41|29|
+|BSP|2.3673|1||
+|selling-full-rune-200k|2.3989|2|1|
+|Mach7|2.4324|3|2|
+|TinHare|2.446|4|3|
+|RapidRacer|2.4475|5|4|
+|willingly|2.4536|6|5|
+|RIPPED|2.4618|7|6|
+|YaLikeDags|2.4621|8|7|
+|InLimbo|2.4735|9|8|
+|FirstDayFudge|2.4841|10|9|
+|Analytique|2.4882|11|10|
+|Cortina|2.4986|12|11|
+|blahboy|2.5131|13|12|
+|NormalChannels|2.5289|14|13|
+|WeDontTalkAboutBruno|2.5351|15|14|
+|WisdomOfTheCrowd|2.5566|16||
+|EbbingFlowing|2.5617|17|15|
+|Nightingale|2.58|18|16|
+|RandomShrubbery|2.5841|19|17|
+|ScrapingTheDulux|2.608|20|18|
+|Iggy|2.6088|21||
+|FashionModel|2.6284|22|19|
+|PlusEvOnly|2.6502|23|20|
+|CanGetThirsty|2.6598|24|21|
+|BiggyModel|2.6639|25||
+|Vertex|2.6679|26|22|
+|Greys-V1|2.6874|27|23|
+|Mutt-Maestro|2.7037|28|24|
+|GradientGlider|2.7073|29||
+|LightningBolter|2.7114|30||
+|DreamWeaver|2.7448|31||
+|Purrfection|2.7493|32||
+|LogisticalLegend|2.751|33||
+|LeafyDecisions|2.7579|34||
+|XtremeRollers|2.7776|35||
+|BelowAverage|2.7791|36|25|
+|HarbourBoostinator|2.8463|37||
+|crowbar|2.9219|38|26|
+|Katana|2.9648|39|27|
+|Flash-Reality|3.0363|40|28|
 
 
 

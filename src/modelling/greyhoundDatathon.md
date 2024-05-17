@@ -103,50 +103,51 @@ All entrants received a bulk historic data file upon registration
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-### Leaderboard - After Day 4
+### Leaderboard - After Day 5
 
 |Model|Log Loss|Rank|PrizeRank|
 |-----------------------------|---------|----|----|
-|BSP|2.3673|1||
-|selling-full-rune-200k|2.3989|2|1|
-|Mach7|2.4324|3|2|
-|TinHare|2.446|4|3|
-|RapidRacer|2.4475|5|4|
-|willingly|2.4536|6|5|
-|RIPPED|2.4618|7|6|
-|YaLikeDags|2.4621|8|7|
-|InLimbo|2.4735|9|8|
-|FirstDayFudge|2.4841|10|9|
-|Analytique|2.4882|11|10|
-|Cortina|2.4986|12|11|
-|blahboy|2.5131|13|12|
-|NormalChannels|2.5289|14|13|
-|WeDontTalkAboutBruno|2.5351|15|14|
-|WisdomOfTheCrowd|2.5566|16||
-|EbbingFlowing|2.5617|17|15|
-|Nightingale|2.58|18|16|
-|RandomShrubbery|2.5841|19|17|
-|ScrapingTheDulux|2.608|20|18|
-|Iggy|2.6088|21||
-|FashionModel|2.6284|22|19|
-|PlusEvOnly|2.6502|23|20|
-|CanGetThirsty|2.6598|24|21|
-|BiggyModel|2.6639|25||
-|Vertex|2.6679|26|22|
-|Greys-V1|2.6874|27|23|
-|Mutt-Maestro|2.7037|28|24|
-|GradientGlider|2.7073|29||
-|LightningBolter|2.7114|30||
-|DreamWeaver|2.7448|31||
-|Purrfection|2.7493|32||
-|LogisticalLegend|2.751|33||
-|LeafyDecisions|2.7579|34||
-|XtremeRollers|2.7776|35||
-|BelowAverage|2.7791|36|25|
-|HarbourBoostinator|2.8463|37||
-|crowbar|2.9219|38|26|
-|Katana|2.9648|39|27|
-|Flash-Reality|3.0363|40|28|
+|BSP|2.3419|1||
+|selling-full-rune-200k|2.3688|2|1|
+|Mach7|2.4123|3|2|
+|RapidRacer|2.4143|4|3|
+|willingly|2.428|5|4|
+|TinHare|2.4383|6|5|
+|Analytique|2.4479|7|6|
+|YaLikeDags|2.45|8|7|
+|FirstDayFudge|2.4519|9|8|
+|RIPPED|2.454|10|9|
+|InLimbo|2.465|11|10|
+|Cortina|2.4794|12|11|
+|NormalChannels|2.4816|13|12|
+|WeDontTalkAboutBruno|2.4845|14|13|
+|blahboy|2.5013|15|14|
+|WisdomOfTheCrowd|2.5211|16||
+|Nightingale|2.5219|17|15|
+|EbbingFlowing|2.5231|18|16|
+|RandomShrubbery|2.5497|19|17|
+|PlusEvOnly|2.5805|20|18|
+|ScrapingTheDulux|2.587|21|19|
+|Iggy|2.5878|22||
+|CanGetThirsty|2.6107|23|20|
+|BiggyModel|2.6324|24||
+|Greys-V1|2.6416|25|21|
+|Vertex|2.6455|26|22|
+|Mutt-Maestro|2.6554|27|23|
+|GradientGlider|2.6885|28||
+|LightningBolter|2.7027|29||
+|DreamWeaver|2.7203|30||
+|Purrfection|2.7269|31||
+|LogisticalLegend|2.7363|32||
+|LeafyDecisions|2.7364|33||
+|XtremeRollers|2.7525|34||
+|BelowAverage|2.7581|35|24|
+|FashionModel|2.8059|36|25|
+|HarbourBoostinator|2.8275|37||
+|crowbar|2.8328|38|26|
+|Katana|2.9455|39|27|
+|Flash-Reality|2.9676|40|28|
+
 
 
 

@@ -93,6 +93,7 @@ Please name submission file using the following formatting:
  - Day 4 - [submission file - 16/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240516.csv)
  - Day 5 - [submission file - 17/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240517.csv)
  - Day 6 - [submission file - 18/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240518.csv)
+ - Day 7 - [submission file - 19/05/2024](../assets/Greyhound_Racing_Datathon_2024_Submission_Form_{Model_Name}_20240519.csv)
 
 ### Historic Form Data
 

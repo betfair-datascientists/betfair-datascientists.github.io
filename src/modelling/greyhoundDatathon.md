@@ -104,50 +104,50 @@ All entrants received a bulk historic data file upon registration
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-### Leaderboard - After Day 6
+### Leaderboard - Final
 
 |Model|Log Loss|Rank|PrizeRank|
 |-----------------------------|---------|----|----|
-|BSP|2.3762|1||
-|selling-full-rune-200k|2.3961|2|1|
-|Mach7|2.4231|3|2|
-|RapidRacer|2.4247|4|3|
-|willingly|2.4448|5|4|
-|InLimbo|2.4451|6|5|
-|TinHare|2.4453|7|6|
-|FirstDayFudge|2.4545|8|7|
-|YaLikeDags|2.4551|9|8|
-|RIPPED|2.4593|10|9|
-|Analytique|2.4743|11|10|
-|Cortina|2.4807|12|11|
-|blahboy|2.4964|13|12|
-|NormalChannels|2.5055|14|13|
-|WeDontTalkAboutBruno|2.5088|15|14|
-|EbbingFlowing|2.5164|16|15|
-|WisdomOfTheCrowd|2.5212|17||
-|Nightingale|2.5312|18|16|
-|RandomShrubbery|2.544|19|17|
-|ScrapingTheDulux|2.581|20|18|
-|Iggy|2.5881|21||
-|PlusEvOnly|2.5961|22|19|
-|CanGetThirsty|2.6106|23|20|
-|BiggyModel|2.6206|24||
-|Greys-V1|2.6257|25|21|
-|Vertex|2.6351|26|22|
-|Mutt-Maestro|2.6391|27|23|
-|GradientGlider|2.7056|28||
-|DreamWeaver|2.7138|29||
-|LightningBolter|2.7178|30||
-|Purrfection|2.7249|31||
-|LogisticalLegend|2.7285|32||
-|LeafyDecisions|2.737|33||
-|XtremeRollers|2.7506|34||
-|BelowAverage|2.766|35|24|
-|crowbar|2.8126|36|25|
-|HarbourBoostinator|2.8174|37||
-|FashionModel|2.8955|38|26|
-|Flash-Reality|2.9224|39|27|
-|Katana|2.9298|40|28|
+|BSP|2.3723|1||
+|selling-full-rune-200k|2.3888|2|1|
+|Mach7|2.4258|3|2|
+|RapidRacer|2.4303|4|3|
+|willingly|2.4436|5|4|
+|TinHare|2.4438|6|5|
+|InLimbo|2.4496|7|6|
+|RIPPED|2.4579|8|7|
+|YaLikeDags|2.4594|9|8|
+|FirstDayFudge|2.4652|10|9|
+|Analytique|2.479|11|10|
+|Cortina|2.4829|12|11|
+|NormalChannels|2.5061|13|12|
+|blahboy|2.515|14|13|
+|WisdomOfTheCrowd|2.5226|15||
+|EbbingFlowing|2.525|16|14|
+|RandomShrubbery|2.5442|17|15|
+|Nightingale|2.5511|18|16|
+|ScrapingTheDulux|2.5679|19|17|
+|PlusEvOnly|2.5832|20|18|
+|Iggy|2.5937|21||
+|CanGetThirsty|2.6179|22|19|
+|BiggyModel|2.6245|23||
+|Greys-V1|2.6251|24|20|
+|Vertex|2.6413|25|21|
+|Mutt-Maestro|2.6427|26|22|
+|DreamWeaver|2.7206|27||
+|GradientGlider|2.7217|28||
+|Purrfection|2.7256|29||
+|LightningBolter|2.7266|30||
+|LogisticalLegend|2.7371|31||
+|LeafyDecisions|2.7453|32||
+|XtremeRollers|2.7517|33||
+|BelowAverage|2.767|34|23|
+|crowbar|2.7975|35|24|
+|HarbourBoostinator|2.8245|36||
+|Flash-Reality|2.8792|37|25|
+|FashionModel|2.933|38|26|
+|Katana|2.937|39|27|
+
 
 
 The following models are ineligible for prize money:

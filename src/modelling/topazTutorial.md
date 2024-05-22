@@ -157,50 +157,60 @@ def download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sl
                 
                 '''
                 while result_retries > 0:
+                    # Check if we already have a file for this jurisdiction
+                    file_exists = os.path.isfile(file_path)
+                    # Set the header_param to the opposite Bool
+                    header_param = not file_exists
                     # Get race run data
+                    race_run = topaz_api.get_race_runs(race_id=race_id)
+                    
                     try:
-                        race_run = topaz_api.get_race_runs(race_id=race_id)
+                        # Get the race result data
                         race_result_json = topaz_api.get_race_result(race_id=race_id)
-                        file_exists = os.path.isfile(file_path)
-                        header_param = not file_exists
-                        race_result = pd.DataFrame.from_dict(race_result_json)
+
+                        # Flatten the JSON response into a dataframe
+                        race_result = pd.json_normalize(race_result_json)
+
+                        # Separate the split times and flatten them
                         split_times_df = pd.DataFrame(race_result['splitTimes'].tolist(),index=race_result.index)
                         splits_dict = split_times_df.T.stack().to_frame()
                         splits_dict.reset_index(drop=True, inplace= True)
                         splits_normalised = pd.json_normalize(splits_dict[0])
                         
-                        if len(splits_normalised) == 0:
-                            race_run.to_csv(file_path, mode='a', header=header_param, index=False)
-                            break
+                        if len(splits_normalised) > 0:
+                            
+                            # Create a dataframe from the first split
+                            first_split = splits_normalised[splits_normalised['splitTimeMarker'] == 1]
+                            first_split = first_split[['runId','position','time']]
+                            first_split = first_split.rename(columns={'position':'firstSplitPosition','time':'firstSplitTime'})
 
-                        first_split = splits_normalised[splits_normalised['splitTimeMarker'] == 1]
-                        first_split = first_split[['runId','position','time']]
-                        first_split = first_split.rename(columns={'position':'firstSplitPosition','time':'firstSplitTime'})
-                        second_split = splits_normalised[splits_normalised['splitTimeMarker'] == 2]
-                        second_split = second_split[['runId','position','time']]
-                        second_split = second_split.rename(columns={'position':'secondSplitPosition','time':'secondSplitTime'})
+                            # Create a dataframe from the second split
+                            second_split = splits_normalised[splits_normalised['splitTimeMarker'] == 2]
+                            second_split = second_split[['runId','position','time']]
+                            second_split = second_split.rename(columns={'position':'secondSplitPosition','time':'secondSplitTime'})
 
-                        split_times = splits_normalised[['runId']]
-                        split_times = pd.merge(split_times,first_split,how='left',on=['runId'])
-                        split_times = pd.merge(split_times,second_split,how='left',on=['runId'])
+                            # Create a dataframe from the runIds, then merge the first and second split dataframes
+                            split_times = splits_normalised[['runId']]
+                            split_times = pd.merge(split_times,first_split,how='left',on=['runId'])
+                            split_times = pd.merge(split_times,second_split,how='left',on=['runId'])
 
-                        race_run = pd.merge(race_run,split_times,how='left',on=['runId'])
-                        race_run.drop_duplicates(inplace=True)
-                        race_run.to_csv(file_path, mode='a', header=header_param, index=False)
-                        break
+                            # Attach the split times to the original race_run dataframe
+                            race_run = pd.merge(race_run,split_times,how='left',on=['runId'])
+
                     except requests.HTTPError as http_err:
                         if http_err.response.status_code == 404:
-                            file_exists = os.path.isfile(file_path)
-                            header_param = not file_exists
-                            race_run.to_csv(file_path, mode='a', header=header_param, index=False)
                             break
-                    except Exception as e:
+
+                    except Exception:
                         result_retries -= 1
                         if result_retries > 0:
                             time.sleep(sleep_time)
                         else:
-                            race_run.to_csv(file_path, mode='a', header=header_param, index=False)
                             break
+                    
+                    finally:
+                        race_run.drop_duplicates(inplace=True)
+                        race_run.to_csv(file_path, mode='a', header=header_param, index=False)
 ```
 
 ---
@@ -495,7 +505,7 @@ def extract_form(topaz_data):
     This function splits the last5 variable, which is a column of 5 characters or less that contain the dogs finishing position in the last 5 races. 
     First we define it as a string in order to extract all the characters, as some of them may be letters (e.g. F = Fell, D = Disqualified)
 
-    We then create five seperate columns for each race, and fill any blank cells with 10. Cells may be blank because the dog could have run fewer than 5 previous races.
+    We then create five separate columns for each race, and fill any blank cells with 10. Cells may be blank because the dog could have run fewer than 5 previous races.
     We have chosen 10 as the padding value because a greyhound can never finish in 10th place owing to the maximum field size of 8 in greyhound racing.
     '''
     # Ensure variable is a string
@@ -1557,9 +1567,9 @@ def greyhound_market_filter():
     # Define the greyhound market filter
     market_filter = filters.market_filter(
         event_type_ids=[4339],  # For greyhound racing
-        market_countries=['AU'],  # For Australia
-        market_type_codes=['WIN'],
-        venues = ['Geelong','Horsham','Warragul']  # For win markets
+        market_countries=['AU','NZ'],  # For Australia and New Zealand
+        market_type_codes=['WIN'],# For win markets
+        venues = []  # Specify specific venues if required
     )
 
     return market_filter
@@ -1660,7 +1670,7 @@ def collect_greyhound_market_data(trading,greyhound_market_catalogues,data):
         event_name = market_catalogue.event.name
         market_start_time = market_catalogue.description.market_time
 
-        # Try to access clarifications and replace a known string replacement to prepare it for our regex functuon
+        # Try to access clarifications and replace a known string replacement to prepare it for our regex function
         try:
             clarifications = market_catalogue.description.clarifications.replace("<br> Dog","<br>Dog")
         except AttributeError:

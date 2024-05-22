@@ -161,10 +161,10 @@ def download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sl
                     file_exists = os.path.isfile(file_path)
                     # Set the header_param to the opposite Bool
                     header_param = not file_exists
-                    # Get race run data
-                    race_run = topaz_api.get_race_runs(race_id=race_id)
                     
                     try:
+                        # Get race run data
+                        race_run = topaz_api.get_race_runs(race_id=race_id)
                         # Get the race result data
                         race_result_json = topaz_api.get_race_result(race_id=race_id)
 
@@ -211,6 +211,7 @@ def download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sl
                     finally:
                         race_run.drop_duplicates(inplace=True)
                         race_run.to_csv(file_path, mode='a', header=header_param, index=False)
+                        break
 ```
 
 ---

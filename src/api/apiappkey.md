@@ -15,6 +15,15 @@ There are four steps involved in getting access to our API
     Customers are able to access our API to embed it into their programs and automate their strategies
     Please [reach out](mailto:api@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
 ---
+
+## New Zealand customers
+**All requests to Betfair sites from IP addresses located in New Zealand must now call endpoints ending in '.com.au'** (requests to '.com' endpoints will be blocked).
+
+All sites containing the url 'developer.betfair.com' do not currently have an active alternative 'developer.betfair.com.au' endpoint. This is currently being worked on being rectified by developers at Betfair UK.
+In the meantime, New Zealand customers are advised to utilise a VPN or VPS with an Australian IP address to access these sites until further advised. 
+
+Betfair apologises for any inconvenience caused.
+
 ### Find your SSOID token
 The simplest way to setup your browser with the SSOID is to follow <a href="https://identitysso.betfair.com/view/login?product=home.betfair.int&url=https%3A%2F%2Fwww.betfair.com.au%2F" target="_blank">this link</a> and log in - this will allow for the SSOID to be automatically populated in the next step. 
 

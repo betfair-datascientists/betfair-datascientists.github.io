@@ -13,7 +13,7 @@ Betfair is giving you the chance to show off your data modelling skills by build
 
 With $5,000 in prizes up for grabs, we’re challenging you to use your modelling skills to your advantage, be that by building your first predictive sports model, improving on an existing design or have a go at something different by adapting your data skills from other fields.
 
-This year’s AFL in-season datathon over all 4 rounds in July, presenting a perfect opportunity for keen sports and data enthusiasts to get involved and put your skills to the test against the masses in order to compete for both prizes and ultimate glory!
+This year's AFL in-season datathon, over all 4 rounds in July, presents the perfect opportunity for keen sports and data enthusiasts to get involved. Put your skills to the test against the masses to compete for both prizes and ultimate glory!
 
 Submissions close at 12:00pm AEST on each match day in rounds 17 - 20 (a total of 12 submissions)
 

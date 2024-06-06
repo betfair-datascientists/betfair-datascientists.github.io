@@ -2055,9 +2055,17 @@ join_betfair_data(todays_greyhound_ratings,betfair_data)
 
 ```
 
-## To be continued
+## Betting our rated prices
 
-The final step here is to fire up flumine to place bets on our rated prices... Stay tuned!
+Now that we've created our rated prices, let's start betting on them!
+
+Our (How to Automate Part III)[https://betfair-datascientists.github.io/tutorials/How_to_Automate_3/#running-our-strategy] tutorial runs through how to bet ratings from a csv file. This code can be adapted here to use our model ratings like we would the Iggy Greyhound Prediction Model ratings.
+
+## Conclusion
+
+While creating models can be fun and rewarding, actually placing bets with real money can be a bit daunting. We recommend reading through our series of articles on the (Mental Game of Wagering)[https://betfair-datascientists.github.io/mentalGame/intro/] to help witth the pyschological parts of wagering that can be especially challenging.
+
+Hopefully this tutorial has helped you to discover the world of greyhound modelling and has given you plenty of ideas for your models moving forward! While you may find that one machine learning algorithm may have slight advantages over another, as someone who is wiser than me once said "[there is] usually much more value to be obtained coming up with some killer features than spending the same time coming mucking around with every algorithm under the sun."
 
 ## Disclaimer
 

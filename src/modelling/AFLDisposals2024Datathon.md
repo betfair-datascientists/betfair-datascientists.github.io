@@ -23,7 +23,7 @@ Please direct all questions and submissions to [datathon@betfair.com.au](mailto:
 
 ## The Specifics
 
-The Terms and Conditions for the 2024 AFL Player Disposals Datathon can be viewed [here](../assets/AFL_Player_Disposals_TCs_2024.pdf)
+The Terms and Conditions for the 2024 AFL Player Disposals Datathon can be viewed [here](../assets/AFL_Disposals_2024_TCs.pdf)
 
 ### Prizes
 $5,000 in prizes are up for grabs!

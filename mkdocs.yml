@@ -36,8 +36,8 @@ nav:
         - Cloud or Local: modelling/cloudOrLocalMachine.md
         - Racing:
             - Greyhound Topaz API Tutorial (New): modelling/topazTutorial.md
-            - Greyhound form FastTrack API: modelling/fasttrackTutorial.ipynb
-            - Greyhound modelling in Python: modelling/greyhoundModellingPython.ipynb
+            - Greyhound form FastTrack API (Old): modelling/fasttrackTutorial.ipynb
+            - Greyhound modelling in Python (Old): modelling/greyhoundModellingPython.ipynb
         - Soccer:
             - Soccer modelling tutorial in R for 2022 FIFA World Cup: modelling/soccerModellingELO2022WorldCup.md
             #- Elo soccer tutorial in R: modelling/soccerEloTutorialR.md
@@ -46,6 +46,7 @@ nav:
             - EPL ML walk through in Python: modelling/EPLmlPython.md
 
         - AFL:
+            - Player Disposal Lines: modelling/AFLPlayerDisposalsTutorial.md
             - AFL modelling walk through in Python: modelling/AFLmodellingPython.md
             - Modelling the Brownlow Medal in Python: modelling/brownlowModelTutorial.ipynb
         - Tennis:

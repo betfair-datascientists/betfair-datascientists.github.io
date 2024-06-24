@@ -49,7 +49,7 @@ When you place a lay bet, you are betting on something not to happen. Before we 
 2. **Take the odds available – or set your own:** again, you can adjust the odds box to an even shorter price. But remember: those odds will only be in locked in if another punter (the ‘backer’) matches them.
 3. **Enter your stake:** unlike a back bet, your stake is the money you want to profit from the predicted result (before commission plus any additional fees and charges). It’s also called the ‘backer’s stake’ because you essentially want to keep the money of someone who’s wagering that the same result will happen. (This is the basic idea of bookmaking.) It is not, however, the full amount that will be deducted from your account when you place your lay bet. That number is your ‘liability’.
 4. **Liability explained:** this is the amount you could lose if the result does not fall your way. It is calculated as follows:
-**Liability = lay odds x [backer’s stake – backer’s stake]**
+**Liability = [lay odds x backer’s stake] – backer’s stake**
 
 If you wanted to lay the Sydney Swans in the AFL Premiership market at the odds of $8.00 and entered a $10.00 stake, that means there is someone else putting $10.00 on (backing) for the same result to happen at the same odds.
 

@@ -15,7 +15,7 @@ With $5,000 in prizes up for grabs, we’re challenging you to use your modellin
 
 This year's AFL in-season datathon, over all 4 rounds in July, presents the perfect opportunity for keen sports and data enthusiasts to get involved. Put your skills to the test against the masses to compete for both prizes and ultimate glory!
 
-Submissions close at 12:00pm AEST on each match day in rounds 17 - 20 (a total of 12 submissions)
+Submissions close at at 5:00pm AEST on Fridays and 12:00pm AEST on Saturday & Sunday on each match day in rounds 17 - 20 (a total of 12 submissions)
 
 Weekly leaderboard updates will be published here throughout the competition so be sure to check back to follow your model’s competition ranking.
 
@@ -52,7 +52,7 @@ The goal from there is to use the provided data (or any other data) to build you
 
 How you go about building the model is entirely up to you – do you want to build an Elo model, a regression-based model, a Machine Learning algorithm or something entirely different? Get as innovative with it as you want!
 
-Your set of predictions will be due by 12:00pm AEST on the day of each nominated match (Friday, Saturday and Sunday of each round) – all submissions must be emailed to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
+Your set of predictions will be due by 5:00pm AEST on Fridays and 12:00pm AEST on Saturday & Sunday on the day of each nominated match – all submissions must be emailed to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
 See the Terms and Conditions for full competition rules.
 
@@ -62,7 +62,7 @@ All entrants received a bulk historic data file upon registration. Data updates 
 
 ## Submission File Template
 
-All submission file templates will be loaded here by 12:00pm AEST on the Friday before the commencement of the round.
+All submission file templates will be loaded here by 10:00am AEST on the Friday before the commencement of the round.
 
 ### Submissions & Judging
 

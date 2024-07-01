@@ -60,9 +60,13 @@ See the Terms and Conditions for full competition rules.
 
 All entrants received a bulk historic data file upon registration. Data updates will be posted here throughout the competition.
 
+- [Round 13 - Round 15 Data Update](../assets/data_update_R13-R15.csv)
+
 ## Submission File Template
 
 All submission file templates will be loaded here by 10:00am AEST on the Friday before the commencement of the round.
+
+- [Example Submission File](../assets/exampleSubmissionFile.csv)
 
 ### Submissions & Judging
 

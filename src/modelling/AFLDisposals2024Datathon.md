@@ -61,6 +61,7 @@ See the Terms and Conditions for full competition rules.
 All entrants received a bulk historic data file upon registration. Data updates will be posted here throughout the competition.
 
 - [Round 13 - Round 15 Data Update](../assets/data_update_R13-R15.csv)
+- [Round 16 Data Update](../assets/data_update_R16.csv)
 
 ## Submission File Template
 

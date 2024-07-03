@@ -25,6 +25,9 @@ As always please [reach out](mailto:data@betfair.com.au) with feedback, suggesti
     - You can [watch our workshop working through this tutorial on YouTube.](https://www.youtube.com/watch?v=0UfPdeghuN8)
 
 ---
+
+**This article was written more than 2 years ago and some packages used here will have changed since the article was written. Continue at your peril**
+
 ### Set up
 
 I'm going to be using a jupyter notebook for this investigation which is a special type of data analysis output that is used to combine code, outputs and explanatory text in a readable single document. It's mostly closely associated with python data analysis code which is the language I'll be using here also. The entire body of python code used will be repeated at the bottom of the article where you can copy it and repurpose it for yourself.

@@ -84,11 +84,36 @@ Please name submission file using the following formatting:
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-## Leaderboard 
+## Leaderboard - Week 1
 
-Leaderboards will be posted here daily as well as in the Betfair Quants Discord server.
-
-For an invite to the discord server, please fill out the form [here](https://forms.office.com/r/ZG9ea1xQj1 )
+|modelName|RMSE|Rank|PrizeRank|
+|-----------------------------------------|------|--|--|
+|ManualModel|3.9515|1||
+|Plugger|3.9839|2|1|
+|BAAALLLL|3.994|3|2|
+|GoTheBloods|3.9944|4|3|
+|PassThePill|4.0072|5|4|
+|RandomShrubbery|4.0228|6|5|
+|WormBurner|4.0408|7||
+|Roys|4.0589|8|6|
+|crowbar|4.0596|9|7|
+|blahboy|4.1066|10|8|
+|player-gf-insta-as-a-feature|4.1154|11|9|
+|TheBrew|4.1304|12|10|
+|willingly|4.1401|13|11|
+|randint(5,30)|4.1473|14|12|
+|Nightingale|4.1667|15|13|
+|cyggy|4.1698|16|14|
+|CaptainsChoice|4.1932|17|15|
+|Gigi|4.2098|18|16|
+|TheAintz|4.2212|19||
+|MedianOnly|4.279|20|17|
+|watpTV|4.3106|21|18|
+|RNG|4.4106|22|19|
+|DisposalDoctor|4.4758|23|20|
+|GoSwans|4.5031|24|21|
+|Pudds|4.6095|25|22|
+|RealWeak|4.8635|26|23|
 
 ## FAQs
 

@@ -131,6 +131,7 @@ By downloading this data, you acknowledge and agree that:
  - [Betfair Hub Tipsters 2024-03](../assets/Hub_2024_03_March_Racing_Results.csv)
  - [Betfair Hub Tipsters 2024-04](../assets/Hub_2024_04_April_Racing_Results.csv)
  - [Betfair Hub Tipsters 2024-05](../assets/Hub_2024_05_May_Racing_Results.csv)
+ - [Betfair Hub Tipsters 2024-06](../assets/Hub_2024_06_June_Racing_Results.csv)
 
 ## Australian Sport
 

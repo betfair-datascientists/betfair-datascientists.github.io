@@ -1004,21 +1004,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="FAQs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#registration_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Registration
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -2960,8 +2945,7 @@
 
 <h1 id="betfairs-2024-afl-player-disposals-datathon">Betfair’s 2024 AFL Player Disposals Datathon</h1>
 <h3 id="registration">Registration</h3>
-<p>Registrations open 9:00am AEST 13 June, 2024 and close at 4:59pm AEST 1 July, 2024.</p>
-<p><a href="https://forms.office.com/r/xFwrC4LhEF">Register Here</a></p>
+<p>Registrations are closed</p>
 <h2 id="the-competition">The Competition</h2>
 <p>Do you think you have what it takes to predict how many disposals a player will have in an AFL match?</p>
 <p>Betfair is giving you the chance to show off your data modelling skills by building a predictive model for the rounds 17 - 20 of the 2024 AFL Season.</p>
@@ -3041,6 +3025,7 @@ The goal from there is to use the provided data (or any other data) to build you
 <ul>
 <li><a href="../assets/data_update_R13-R15.csv">Round 13 - Round 15 Data Update</a></li>
 <li><a href="../assets/data_update_R16.csv">Round 16 Data Update</a></li>
+<li><a href="../assets/data_update_R17.csv">Round 17 Data Update</a></li>
 </ul>
 <h2 id="submission-file-template">Submission File Template</h2>
 <p>All submission file templates will be loaded here by 10:00am AEST on the Friday before the commencement of the round.</p>
@@ -3050,7 +3035,7 @@ The goal from there is to use the provided data (or any other data) to build you
 </ul>
 <h3 id="submissions-judging">Submissions &amp; Judging</h3>
 <p>The Datathon will be judged using the <a href="https://en.wikipedia.org/wiki/Root-mean-square_deviation">root-mean-square-error</a> (RMSE) method. The winner will be the Competition Entrant with the lowest average RMSE per player over all matches that take place between Round 17 and Round 20; 36 in total.</p>
-<p>One submission file template will be provided to Competition Entrants along with the data set upon registration. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format.</p>
+<p>One submission file template will be provided to Competition Entrants along with the data set upon registration. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format, not .numbers or .xlsx.</p>
 <p>For each player named in the squad of 26 for each team in that round, each entrant is required to predict <strong>the total number of disposals of each player in the match.</strong> This prediction will then be used against the player's actual disposal count to calculate the model’s RMSE. Only players who actually take the field will be considered for scoring purposes. This means that players named as emergencies or as substitutes that do not take the field will be excluded from the scoring. </p>
 <p>Please name submission file using the following formatting:</p>
 <ul>
@@ -3070,157 +3055,157 @@ The goal from there is to use the provided data (or any other data) to build you
 <tbody>
 <tr>
 <td>Plugger</td>
-<td>4.9632</td>
+<td>4.876</td>
 <td>1</td>
 <td>1</td>
 </tr>
 <tr>
 <td>PassThePill</td>
-<td>5.0099</td>
+<td>4.8936</td>
 <td>2</td>
 <td>2</td>
 </tr>
 <tr>
 <td>GoTheBloods</td>
-<td>5.0146</td>
+<td>4.9317</td>
 <td>3</td>
 <td>3</td>
-</tr>
-<tr>
-<td>RandomShrubbery</td>
-<td>5.045</td>
-<td>4</td>
-<td>4</td>
 </tr>
 <tr>
 <td>ManualModel</td>
-<td>5.0499</td>
-<td>5</td>
+<td>4.9497</td>
+<td>4</td>
 <td></td>
 </tr>
 <tr>
 <td>crowbar</td>
-<td>5.0969</td>
+<td>5.0014</td>
+<td>5</td>
+<td>4</td>
+</tr>
+<tr>
+<td>blahboy</td>
+<td>5.0117</td>
 <td>6</td>
 <td>5</td>
 </tr>
 <tr>
-<td>WormBurner</td>
-<td>5.1197</td>
-<td>7</td>
-<td></td>
-</tr>
-<tr>
 <td>BAAALLLL</td>
-<td>5.1255</td>
-<td>8</td>
+<td>5.0131</td>
+<td>7</td>
 <td>6</td>
 </tr>
 <tr>
-<td>blahboy</td>
-<td>5.1548</td>
-<td>9</td>
+<td>RandomShrubbery</td>
+<td>5.0349</td>
+<td>8</td>
 <td>7</td>
 </tr>
 <tr>
-<td>willingly</td>
-<td>5.185</td>
+<td>WormBurner</td>
+<td>5.0526</td>
+<td>9</td>
+<td></td>
+</tr>
+<tr>
+<td>player-gf-insta-as-a-feature</td>
+<td>5.1049</td>
 <td>10</td>
 <td>8</td>
 </tr>
 <tr>
-<td>cyggy</td>
-<td>5.2081</td>
+<td>Roys</td>
+<td>5.11</td>
 <td>11</td>
 <td>9</td>
 </tr>
 <tr>
-<td>Roys</td>
-<td>5.2218</td>
+<td>cyggy</td>
+<td>5.1268</td>
 <td>12</td>
 <td>10</td>
 </tr>
 <tr>
-<td>player-gf-insta-as-a-feature</td>
-<td>5.2386</td>
+<td>Nightingale</td>
+<td>5.1438</td>
 <td>13</td>
 <td>11</td>
 </tr>
 <tr>
-<td>Nightingale</td>
-<td>5.2427</td>
+<td>randint(5,30)</td>
+<td>5.1537</td>
 <td>14</td>
 <td>12</td>
 </tr>
 <tr>
-<td>Gigi</td>
-<td>5.2657</td>
+<td>willingly</td>
+<td>5.1572</td>
 <td>15</td>
 <td>13</td>
 </tr>
 <tr>
-<td>randint(5,30)</td>
-<td>5.2675</td>
+<td>TheBrew</td>
+<td>5.1671</td>
 <td>16</td>
 <td>14</td>
 </tr>
 <tr>
-<td>TheBrew</td>
-<td>5.2987</td>
+<td>Gigi</td>
+<td>5.1917</td>
 <td>17</td>
 <td>15</td>
 </tr>
 <tr>
-<td>CaptainsChoice</td>
-<td>5.3102</td>
+<td>RNG</td>
+<td>5.273</td>
 <td>18</td>
 <td>16</td>
 </tr>
 <tr>
 <td>TheAintz</td>
-<td>5.4626</td>
+<td>5.2983</td>
 <td>19</td>
 <td></td>
 </tr>
 <tr>
-<td>watpTV</td>
-<td>5.4736</td>
+<td>CaptainsChoice</td>
+<td>5.3231</td>
 <td>20</td>
 <td>17</td>
 </tr>
 <tr>
-<td>RNG</td>
-<td>5.49</td>
+<td>watpTV</td>
+<td>5.4159</td>
 <td>21</td>
 <td>18</td>
 </tr>
 <tr>
 <td>MedianOnly</td>
-<td>5.5667</td>
+<td>5.622</td>
 <td>22</td>
 <td>19</td>
 </tr>
 <tr>
-<td>Pudds</td>
-<td>5.7261</td>
+<td>GoSwans</td>
+<td>5.6863</td>
 <td>23</td>
 <td>20</td>
 </tr>
 <tr>
-<td>GoSwans</td>
-<td>5.7421</td>
+<td>Pudds</td>
+<td>5.7071</td>
 <td>24</td>
 <td>21</td>
 </tr>
 <tr>
 <td>DisposalDoctor</td>
-<td>6.0519</td>
+<td>6.0501</td>
 <td>25</td>
 <td>22</td>
 </tr>
 <tr>
 <td>RealWeak</td>
-<td>6.1908</td>
+<td>6.2705</td>
 <td>26</td>
 <td>23</td>
 </tr>
@@ -3237,9 +3222,6 @@ The goal from there is to use the provided data (or any other data) to build you
 <p>The prediction for that player will stand</p>
 <p><strong>What happens if a player is named as an emergency or as a substitute and does not take the field at any point?</strong></p>
 <p>The player will be removed from the competition scoring for that match</p>
-<h3 id="registration_1">Registration</h3>
-<p>Registrations open 9:00am AEST 13 June, 2024 and close at 4:59pm AEST 1 July, 2024.</p>
-<p><a href="https://forms.office.com/r/xFwrC4LhEF">Register Here</a></p>
 
 
 

@@ -1284,13 +1284,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#to-be-continued" class="md-nav__link">
+  <a href="#home-ground-advantage" class="md-nav__link">
     <span class="md-ellipsis">
-      To be continued
+      Home Ground Advantage
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="To be continued">
+    <nav class="md-nav" aria-label="Home Ground Advantage">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3075,6 +3075,9 @@
 <a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a>                                    <span class="s1">&#39;shots_at_goal&#39;</span><span class="p">,</span>
 <a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a>                                    <span class="s1">&#39;spoils&#39;</span>
 <a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a>                                    <span class="p">]]</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="c1"># This creates an unedited copy of the dataframe that will be used for calculating player level data</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="n">player_data</span> <span class="o">=</span> <span class="n">afl_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>                                
 </code></pre></div>
 <p>All the data here is split out by player, however, it is clear to anyone that watches AFL, a player's disposal count very much depends on the performance of the whole team. A defender will get a higher number of disposals if the team concedes a lot of forward 50 entries and a lower number if they don't. Here we will apply some functions to group this data by team, both for and against, and then concatenate it with the players individual data before we generate our features ready for training</p>
 <div class="highlight"><span class="filename">Processing the data</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">afl_data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;venue_name&#39;</span><span class="p">:</span><span class="s1">&#39;match_venue&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -3199,7 +3202,8 @@
 <a id="__codelineno-3-120" name="__codelineno-3-120" href="#__codelineno-3-120"></a>
 <a id="__codelineno-3-121" name="__codelineno-3-121" href="#__codelineno-3-121"></a><span class="n">afl_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;afl_data.csv&#39;</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<h2 id="to-be-continued">To be continued</h2>
+<h2 id="home-ground-advantage">Home Ground Advantage</h2>
+<p>The next section here will be very prescriptive in how we define home ground advantage and neutral grounds. There are instances where a team will play another team at a venue that they both share as home ground and so true home ground advantage is lost (i.e. Richmond v Collingwood at the MCG), and so it may make sense for the purposes of the model to define both of these teams as being home teams (in terms of crowd, travel and ground dimensions). Additionally, we will define a function that </p>
 <h3 id="disclaimer">Disclaimer</h3>
 <p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
 

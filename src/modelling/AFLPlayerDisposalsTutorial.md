@@ -199,6 +199,9 @@ afl_data = afl_data[[
                                     'spoils'
                                     ]]
 
+# This creates an unedited copy of the dataframe that will be used for calculating player level data
+player_data = afl_data.copy()                                
+
 ```
 
 All the data here is split out by player, however, it is clear to anyone that watches AFL, a player's disposal count very much depends on the performance of the whole team. A defender will get a higher number of disposals if the team concedes a lot of forward 50 entries and a lower number if they don't. Here we will apply some functions to group this data by team, both for and against, and then concatenate it with the players individual data before we generate our features ready for training
@@ -329,7 +332,9 @@ afl_data.to_csv('afl_data.csv',index=False)
 
 ```
 
-## To be continued
+## Home Ground Advantage
+
+The next section here will be very prescriptive in how we define home ground advantage and neutral grounds. There are instances where a team will play another team at a venue that they both share as home ground and so true home ground advantage is lost (i.e. Richmond v Collingwood at the MCG), and so it may make sense for the purposes of the model to define both of these teams as being home teams (in terms of crowd, travel and ground dimensions). Additionally, we will define a function that calls out as neutral, grounds for which neither team is the home team.
 
 ### Disclaimer
 

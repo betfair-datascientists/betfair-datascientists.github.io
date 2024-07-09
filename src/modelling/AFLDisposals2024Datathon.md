@@ -1,9 +1,8 @@
 # Betfair’s 2024 AFL Player Disposals Datathon
 
 ### Registration
-Registrations open 9:00am AEST 13 June, 2024 and close at 4:59pm AEST 1 July, 2024.
 
-[Register Here](https://forms.office.com/r/xFwrC4LhEF)
+Registrations are closed
 
 ## The Competition
 
@@ -62,6 +61,7 @@ All entrants received a bulk historic data file upon registration. Data updates 
 
 - [Round 13 - Round 15 Data Update](../assets/data_update_R13-R15.csv)
 - [Round 16 Data Update](../assets/data_update_R16.csv)
+- [Round 17 Data Update](../assets/data_update_R17.csv)
 
 ## Submission File Template
 
@@ -74,7 +74,7 @@ All submission file templates will be loaded here by 10:00am AEST on the Friday 
 
 The Datathon will be judged using the [root-mean-square-error](https://en.wikipedia.org/wiki/Root-mean-square_deviation) (RMSE) method. The winner will be the Competition Entrant with the lowest average RMSE per player over all matches that take place between Round 17 and Round 20; 36 in total.
 
-One submission file template will be provided to Competition Entrants along with the data set upon registration. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format.
+One submission file template will be provided to Competition Entrants along with the data set upon registration. Submissions must follow the template set out in the submission file template provided and must be submitted in a csv format, not .numbers or .xlsx.
 
 For each player named in the squad of 26 for each team in that round, each entrant is required to predict **the total number of disposals of each player in the match.** This prediction will then be used against the player's actual disposal count to calculate the model’s RMSE. Only players who actually take the field will be considered for scoring purposes. This means that players named as emergencies or as substitutes that do not take the field will be excluded from the scoring. 
 
@@ -88,33 +88,32 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 
 |modelName|RMSE|Rank|PrizeRank|
 |-----------------------------------------|------|--|--|
-|Plugger|4.9632|1|1|
-|PassThePill|5.0099|2|2|
-|GoTheBloods|5.0146|3|3|
-|RandomShrubbery|5.045|4|4|
-|ManualModel|5.0499|5||
-|crowbar|5.0969|6|5|
-|WormBurner|5.1197|7||
-|BAAALLLL|5.1255|8|6|
-|blahboy|5.1548|9|7|
-|willingly|5.185|10|8|
-|cyggy|5.2081|11|9|
-|Roys|5.2218|12|10|
-|player-gf-insta-as-a-feature|5.2386|13|11|
-|Nightingale|5.2427|14|12|
-|Gigi|5.2657|15|13|
-|randint(5,30)|5.2675|16|14|
-|TheBrew|5.2987|17|15|
-|CaptainsChoice|5.3102|18|16|
-|TheAintz|5.4626|19||
-|watpTV|5.4736|20|17|
-|RNG|5.49|21|18|
-|MedianOnly|5.5667|22|19|
-|Pudds|5.7261|23|20|
-|GoSwans|5.7421|24|21|
-|DisposalDoctor|6.0519|25|22|
-|RealWeak|6.1908|26|23|
-
+|Plugger|4.876|1|1|
+|PassThePill|4.8936|2|2|
+|GoTheBloods|4.9317|3|3|
+|ManualModel|4.9497|4||
+|crowbar|5.0014|5|4|
+|blahboy|5.0117|6|5|
+|BAAALLLL|5.0131|7|6|
+|RandomShrubbery|5.0349|8|7|
+|WormBurner|5.0526|9||
+|player-gf-insta-as-a-feature|5.1049|10|8|
+|Roys|5.11|11|9|
+|cyggy|5.1268|12|10|
+|Nightingale|5.1438|13|11|
+|randint(5,30)|5.1537|14|12|
+|willingly|5.1572|15|13|
+|TheBrew|5.1671|16|14|
+|Gigi|5.1917|17|15|
+|RNG|5.273|18|16|
+|TheAintz|5.2983|19||
+|CaptainsChoice|5.3231|20|17|
+|watpTV|5.4159|21|18|
+|MedianOnly|5.622|22|19|
+|GoSwans|5.6863|23|20|
+|Pudds|5.7071|24|21|
+|DisposalDoctor|6.0501|25|22|
+|RealWeak|6.2705|26|23|
 
 ## FAQs
 
@@ -137,12 +136,6 @@ The prediction for that player will stand
 **What happens if a player is named as an emergency or as a substitute and does not take the field at any point?**
 
 The player will be removed from the competition scoring for that match
-
-### Registration
-Registrations open 9:00am AEST 13 June, 2024 and close at 4:59pm AEST 1 July, 2024.
-
-[Register Here](https://forms.office.com/r/xFwrC4LhEF)
-
 
 
 

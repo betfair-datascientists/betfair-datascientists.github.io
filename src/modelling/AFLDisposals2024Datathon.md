@@ -69,6 +69,7 @@ All submission file templates will be loaded here by 10:00am AEST on the Friday 
 
 - [Example Submission File](../assets/exampleSubmissionFile.csv)
 - [Week 1 Submission File](../assets/AFL_Disposals_Datathon_2024_Submission_Form_{Model_Name}_Week_1.csv)
+- [Week 2 Submission File](../assets/AFL_Disposals_Datathon_2024_Submission_Form_{Model_Name}_Week_2.csv)
 
 ### Submissions & Judging
 

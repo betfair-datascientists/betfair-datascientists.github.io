@@ -1,6 +1,6 @@
 # How to access the Betfair API
 
-Betfair has it’s own [Exchange API](http://developer.betfair.com). You can use it to programmatically retrieve live markets, automate successful trading strategies or create your own customised trading interface. Professional punters use it for these functions and many more.
+Betfair has it’s own [Exchange API](https://betfair-developer-docs.atlassian.net/). You can use it to programmatically retrieve live markets, automate successful trading strategies or create your own customised trading interface. Professional punters use it for these functions and many more.
 
 This guide helps Australian and New Zealand customers with obtaining their Betfair API Key. If you’re outside of these two regions please go to the [UK's Developer Program website](http://developer.betfair.com).
 
@@ -31,7 +31,7 @@ After logging in, you’ll be sent to the main Betfair website. *Note: it may no
 
 ---
 ### Register your application
-Navigate to the <a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/" target="_blank">API-NG accounts visualiser</a>.
+Navigate to the <a href="https://apps.betfair.com.au/visualisers/api-ng-account-operations/" target="_blank">API-NG accounts visualiser</a>.
 
 If you’ve followed step 1 correctly, your SSOID token should be automatically populated in the visualiser.
 

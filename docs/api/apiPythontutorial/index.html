@@ -3094,16 +3094,16 @@ In the meantime, New Zealand customers are advised to utilise a VPN or VPS with 
 <p>Here are some other useful links for accessing our API:</p>
 <ul>
 <li><a href="../../api/apiappkey">How to create an API app key</a></li>
-<li><a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni">Developer Docs</a> - the official dev docs for Betfair's API</li>
-<li><a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a> - Useful for exploring what the API has to offer</li>
-<li><a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/">Account API Visualiser</a></li>
+<li><a href="https://betfair-developer-docs.atlassian.net/">Developer Docs</a> - the official dev docs for Betfair's API</li>
+<li><a href="https://apps.betfair.com.au/visualisers/api-ng-sports-operations/">Sports API Visualiser</a> - Useful for exploring what the API has to offer</li>
+<li><a href="https://apps.betfair.com.au/visualisers/api-ng-account-operations/">Account API Visualiser</a></li>
 <li><a href="https://github.com/liampauling/betfair/tree/master/examples">Examples using <code>betfairlightweight</code></a></li>
 <li>There's a more <a href="../../index">complete list of resources here</a></li>
 </ul>
 <hr />
 <h2 id="getting-started">Getting Started</h2>
 <h3 id="setting-up-your-certificates">Setting Up Your Certificates</h3>
-<p>To use the API securely, Betfair recommends generating certificates. The <code>betfairlightweight</code> package requires this to login non-interactively. For detailed instructions on how to generate certificates on a windows machine, follow the <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Certificate+Generation+With+XCA">instructions outlined here</a>. For alternate instructions for Windows, or for Mac/Linux machines, follow the <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login">instructions outlined here</a>. You should then create a folder for your certs, perhaps named 'certs' and grab the path location.</p>
+<p>To use the API securely, Betfair recommends generating certificates. The <code>betfairlightweight</code> package requires this to login non-interactively. For detailed instructions on how to generate certificates on a windows machine, follow the <a href="https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages/2687673/Certificate+Generation+With+XCA">instructions outlined here</a>. For alternate instructions for Windows, or for Mac/Linux machines, follow the <a href="https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages/2687915/Non-Interactive+bot+login">instructions outlined here</a>. You should then create a folder for your certs, perhaps named 'certs' and grab the path location.</p>
 <h3 id="installing-betfairlightweight">Installing <code>betfairlightweight</code></h3>
 <p>We also need to install <code>betfairlightweight</code>. To do this, simply use pip install <code>betfairlightweight</code> in the cmd prompt/terminal. If this doesn't work, you will have to Google your error. If you're just starting out with Python, you may have to add Python to your environment variables.</p>
 <hr />
@@ -3157,7 +3157,7 @@ In the meantime, New Zealand customers are advised to utilise a VPN or VPS with 
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="o">&lt;</span><span class="n">LoginResource</span><span class="o">&gt;</span>
 </code></pre></div>
 <h3 id="get-event-ids">Get Event IDs</h3>
-<p>Betfair's API has a number of operations. For example, if you want to list the market book for a market, you would use the listMarketBook operation. These endpoints are shown in the <a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a> and in the docs. They are also listed below:</p>
+<p>Betfair's API has a number of operations. For example, if you want to list the market book for a market, you would use the listMarketBook operation. These endpoints are shown in the <a href="https://apps.betfair.com.au/visualisers/api-ng-sports-operations/">Sports API Visualiser</a> and in the docs. They are also listed below:</p>
 <h4 id="sports-api">Sports API</h4>
 <ul>
 <li>listEventTypes</li>
@@ -3178,7 +3178,7 @@ In the meantime, New Zealand customers are advised to utilise a VPN or VPS with 
 <li>listClearedOrders</li>
 <li>listMarketProfitAndLoss</li>
 </ul>
-<p>The Account Operations API operations/endpoints <a href="https://docs.developer.betfair.com/visualisers/api-ng-account-operations/">can be found here</a>.</p>
+<p>The Account Operations API operations/endpoints <a href="https://apps.betfair.com.au/visualisers/api-ng-account-operations/">can be found here</a>.</p>
 <p>First we need to grab the 'Event Type Id'. Each sport has a different ID. Below we will find the ids for all sports by requesting the event_type_ids without a filter.</p>
 <p><strong><code>In [43]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Grab all event type ids. This will return a list which we will iterate over to print out the id and the name of the sport</span>
@@ -3620,7 +3620,7 @@ In the meantime, New Zealand customers are advised to utilise a VPN or VPS with 
 <h3 id="get-market-catalogues">Get Market Catalogues</h3>
 <p>If we want to know the various market names that there are for a particular event, as well as how much has been matched on each market, we want to request data from the <code>listMarketCatalogue</code> operation. We can provide a number of filters, including the Competition ID, the Event ID, the Venue etc. to the filter.</p>
 <p>We must also specify the maximum number of results, and if we want additional data like the event data or runner data, we can also request that.</p>
-<p>For a more comprehensive understanding of the options for filters and what we can request, please have a look at the <a href="https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/">Sports API Visualiser</a>. The options listed under market filter should be put into a filter, whilst the others should be arguments to the relevant operation function in <code>betfairlightweight</code>.</p>
+<p>For a more comprehensive understanding of the options for filters and what we can request, please have a look at the <a href="https://apps.betfair.com.au/visualisers/api-ng-sports-operations/">Sports API Visualiser</a>. The options listed under market filter should be put into a filter, whilst the others should be arguments to the relevant operation function in <code>betfairlightweight</code>.</p>
 <p>For example, if we want all the markets for Moonee Valley, we should use the following filters and arguments.</p>
 <p><strong><code>In [210]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">market_catalogue_filter</span> <span class="o">=</span> <span class="n">betfairlightweight</span><span class="o">.</span><span class="n">filters</span><span class="o">.</span><span class="n">market_filter</span><span class="p">(</span><span class="n">event_ids</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;28971066&#39;</span><span class="p">])</span>
@@ -4090,7 +4090,7 @@ In the meantime, New Zealand customers are advised to utilise a VPN or VPS with 
 <p>Now that we have the market book in an easy to read DataFrame, we can go ahead and start placing orders based on the market book. Although it is a simple (and probably not profitable) strategy, in the next few sections we will be backing the favourite and adjusting our orders.</p>
 <h3 id="placing-orders">Placing Orders</h3>
 <p>To place an order we use the <code>placeOrders</code> operation. A handy component of <code>placeOrders</code> is that you can send your strategy along with the runner that you want to back, so it is extremely easy to analyse how your strategy performed later. Let's place a 5 dollar back bet on the favourite at $7 call this strategy <code>'back_the_fav'</code>.</p>
-<p>Note that if you are placing a limit order you must specify a price which is allowed by Betfair. For example, the price 6.3 isn't allowed, whereas 6.4 is, as prices go up by 20c increments at that price range. You can read about <a href="https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements">tick points here</a>.</p>
+<p>Note that if you are placing a limit order you must specify a price which is allowed by Betfair. For example, the price 6.3 isn't allowed, whereas 6.4 is, as prices go up by 20c increments at that price range. You can read about <a href="https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages/2687496/placeOrders">tick points here</a>.</p>
 <p><strong><code>In [232]:</code></strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Get the favourite&#39;s price and selection id</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">fav_selection_id</span> <span class="o">=</span> <span class="n">runners_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">runners_df</span><span class="p">[</span><span class="s1">&#39;Best Back Price&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(),</span> <span class="s1">&#39;Selection ID&#39;</span><span class="p">]</span>

@@ -6,10 +6,11 @@ Here are some of the resources we'd recommend taking a look at if you're buildin
 
 ## The basics
 - [Creating & activating your app key](/api/apiappkey)
-- [Dev Docs](http://developer.betfair.com)
+- [Dev Docs](https://betfair-developer-docs.atlassian.net/)
+- [FAQ](https://support.developer.betfair.com/hc/en-us)
 - [Developer Program knowledge base](https://betfairdevelopersupport.zendesk.com/hc/en-us)
 - [Developer Forum](https://forum.developer.betfair.com/) where you can share your experiences and find out what's worked for other clients
-- [Stream API](https://docs.developer.betfair.com/plugins/servlet/mobile?contentId=6094862#content/view/6094862) where you can find an intro to the stream api
+- [Stream API](https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages/2687396/Exchange+Stream+API) where you can find an intro to the stream api
 
 !!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
@@ -21,8 +22,8 @@ Here are some of the resources we'd recommend taking a look at if you're buildin
 - [The UK’s Github repo](https://github.com/betfair) including libraries for other languages
 
 ## Visualisers
-- [Exchange Sports API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) for testing market-related queries
-- [Exchange Account API visualiser](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/) for testing account-related queries
+- [Exchange Sports API visualiser](https://apps.betfair.com.au/visualisers/api-ng-sports-operations/) for testing market-related queries
+- [Exchange Account API visualiser](https://apps.betfair.com.au/visualisers/api-ng-account-operations/) for testing account-related queries
 
 ## Other resources
 - [Towards Data Science](https://towardsdatascience.com/an-introduction-to-betfair-api-and-how-to-use-it-e3cdbd79c94b) provide a decent basic walk through of how to log in to the polling API and pull market data, with some interesting commentary along the way.

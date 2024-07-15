@@ -23,9 +23,9 @@ Betfair apologises for any inconvenience caused.
 Here are some other useful links for accessing our API:
 
 - [How to create an API app key](../../api/apiappkey)
-- [Developer Docs](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni) - the official dev docs for Betfair's API
-- [Sports API Visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) - Useful for exploring what the API has to offer
-- [Account API Visualiser](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/)
+- [Developer Docs](https://betfair-developer-docs.atlassian.net/) - the official dev docs for Betfair's API
+- [Sports API Visualiser](https://apps.betfair.com.au/visualisers/api-ng-sports-operations/) - Useful for exploring what the API has to offer
+- [Account API Visualiser](https://apps.betfair.com.au/visualisers/api-ng-account-operations/ )
 - [Examples using `betfairlightweight`](https://github.com/liampauling/betfair/tree/master/examples)
 - There's a more [complete list of resources here](../../index)
 
@@ -34,7 +34,7 @@ Here are some other useful links for accessing our API:
 
 ### Setting Up Your Certificates
 
-To use the API securely, Betfair recommends generating certificates. The `betfairlightweight` package requires this to login non-interactively. For detailed instructions on how to generate certificates on a windows machine, follow the [instructions outlined here](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Certificate+Generation+With+XCA). For alternate instructions for Windows, or for Mac/Linux machines, follow the [instructions outlined here](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/Non-Interactive+%28bot%29+login). You should then create a folder for your certs, perhaps named 'certs' and grab the path location.
+To use the API securely, Betfair recommends generating certificates. The `betfairlightweight` package requires this to login non-interactively. For detailed instructions on how to generate certificates on a windows machine, follow the [instructions outlined here](https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages/2687673/Certificate+Generation+With+XCA). For alternate instructions for Windows, or for Mac/Linux machines, follow the [instructions outlined here](https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages/2687915/Non-Interactive+bot+login). You should then create a folder for your certs, perhaps named 'certs' and grab the path location.
 
 ### Installing `betfairlightweight`
 
@@ -102,7 +102,7 @@ trading.login()
 ```
 
 ### Get Event IDs
-Betfair's API has a number of operations. For example, if you want to list the market book for a market, you would use the listMarketBook operation. These endpoints are shown in the [Sports API Visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/) and in the docs. They are also listed below:
+Betfair's API has a number of operations. For example, if you want to list the market book for a market, you would use the listMarketBook operation. These endpoints are shown in the [Sports API Visualiser](https://apps.betfair.com.au/visualisers/api-ng-sports-operations/) and in the docs. They are also listed below:
 
 #### Sports API
 
@@ -124,7 +124,7 @@ Betfair's API has a number of operations. For example, if you want to list the m
 - listClearedOrders
 - listMarketProfitAndLoss
 
-The Account Operations API operations/endpoints [can be found here](https://docs.developer.betfair.com/visualisers/api-ng-account-operations/).
+The Account Operations API operations/endpoints [can be found here](https://apps.betfair.com.au/visualisers/api-ng-account-operations/).
 
 First we need to grab the 'Event Type Id'. Each sport has a different ID. Below we will find the ids for all sports by requesting the event_type_ids without a filter.
 
@@ -345,7 +345,7 @@ If we want to know the various market names that there are for a particular even
 
 We must also specify the maximum number of results, and if we want additional data like the event data or runner data, we can also request that.
 
-For a more comprehensive understanding of the options for filters and what we can request, please have a look at the [Sports API Visualiser](https://docs.developer.betfair.com/visualisers/api-ng-sports-operations/). The options listed under market filter should be put into a filter, whilst the others should be arguments to the relevant operation function in `betfairlightweight`.
+For a more comprehensive understanding of the options for filters and what we can request, please have a look at the [Sports API Visualiser](https://apps.betfair.com.au/visualisers/api-ng-sports-operations/). The options listed under market filter should be put into a filter, whilst the others should be arguments to the relevant operation function in `betfairlightweight`.
 
 For example, if we want all the markets for Moonee Valley, we should use the following filters and arguments.
 
@@ -506,7 +506,7 @@ Now that we have the market book in an easy to read DataFrame, we can go ahead a
 
 To place an order we use the `placeOrders` operation. A handy component of `placeOrders` is that you can send your strategy along with the runner that you want to back, so it is extremely easy to analyse how your strategy performed later. Let's place a 5 dollar back bet on the favourite at $7 call this strategy `'back_the_fav'`.
 
-Note that if you are placing a limit order you must specify a price which is allowed by Betfair. For example, the price 6.3 isn't allowed, whereas 6.4 is, as prices go up by 20c increments at that price range. You can read about [tick points here](https://docs.developer.betfair.com/display/1smk3cen4v3lu3yomq5qye0ni/placeOrders#placeOrders-BetfairPriceIncrements).
+Note that if you are placing a limit order you must specify a price which is allowed by Betfair. For example, the price 6.3 isn't allowed, whereas 6.4 is, as prices go up by 20c increments at that price range. You can read about [tick points here](https://betfair-developer-docs.atlassian.net/wiki/spaces/1smk3cen4v3lu3yomq5qye0ni/pages/2687496/placeOrders).
 
 **`In [232]:`**
 

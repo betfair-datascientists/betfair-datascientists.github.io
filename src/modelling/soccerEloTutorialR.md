@@ -18,8 +18,7 @@ This tutorial aims to serve as guide of how to build a basic soccer Elo model wi
 To follow along with this tutorial you will need two things:
 
 1. This code is written in R, and hence you will need to have [R](https://www.r-project.org) and [RStudio](https://www.rstudio.com) running on your system if you wish to follow along.
-2. You will also need the historical data set provided for Betfair's 2021 Euro & Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021, please reach out to [datathon@betfair.com.au](mailto:datathon@betfair.com.au) for data access. In the meantime, [click here for a sample of the data](assets/datathon_initial_form_data - SAMPLE.csv) which will be enough to allow the code to run effectively.
-
+2. You will also need the historical data set provided for Betfair's 2021 Euro & Copa America Datathon. For full access to the data set including international soccer fixtures from 2014 to 2021, please reach out to [datathon@betfair.com.au](mailto:datathon@betfair.com.au) for data access.
 
 Let's get started!
 

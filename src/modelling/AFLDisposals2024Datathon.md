@@ -87,33 +87,29 @@ Please name submission file using the following formatting:
 
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
-## Leaderboard - Week 2
+## Leaderboard - Week 3
 
 |modelName|RMSE|Rank|PrizeRank|
 |-----------------------------------------|------|--|--|
-|Plugger|4.902|1|1|
-|PassThePill|4.914|2|2|
-|GoTheBloods|4.9443|3|3|
-|crowbar|4.9745|4|4|
-|Gigi|5.0659|5|5|
-|WormBurner|5.075|6||
-|willingly|5.0985|7|6|
-|BAAALLLL|5.0993|8|7|
-|ManualModel|5.1001|9||
-|RandomShrubbery|5.1004|10|8|
-|cyggy|5.1122|11|9|
-|Nightingale|5.122|12|10|
-|TheAintz|5.1694|13||
-|TheBrew|5.1705|14|11|
-|CaptainsChoice|5.2556|15|12|
-|randint(5,30)|5.2717|16|13|
-|blahboy|5.2816|17|14|
-|watpTV|5.3619|18|15|
-|RNG|5.5987|19|16|
-|Pudds|5.7006|20|17|
-|MedianOnly|5.7327|21|18|
-|DisposalDoctor|5.889|22|19|
-|Roys|6.3956|23|20|
+|Plugger|4.9446|1|1|
+|PassThePill|4.9577|2|2|
+|crowbar|4.9829|3|3|
+|GoTheBloods|5.0413|4|4|
+|Gigi|5.0838|5|5|
+|willingly|5.1218|6|6|
+|Nightingale|5.1626|7|7|
+|TheAintz|5.2004|8||
+|TheBrew|5.2005|9|8|
+|RandomShrubbery|5.225|10|9|
+|CaptainsChoice|5.226|11|10|
+|BAAALLLL|5.2307|12|11|
+|cyggy|5.2469|13|12|
+|WormBurner|5.2788|14||
+|randint(5,30)|5.3192|15|13|
+|blahboy|5.3847|16|14|
+|watpTV|5.4543|17|15|
+|Pudds|5.6756|18|16|
+|DisposalDoctor|5.8211|19|17|
 
 
 ## FAQs

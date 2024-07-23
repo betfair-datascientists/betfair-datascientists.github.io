@@ -63,6 +63,7 @@ All entrants received a bulk historic data file upon registration. Data updates 
 - [Round 16 Data Update](../assets/data_update_R16.csv)
 - [Round 17 Data Update](../assets/data_update_R17.csv)
 - [Round 18 Data Update](../assets/data_update_R18.csv)
+- [Round 19 Data Update](../assets/data_update_R19.csv)
 
 ## Submission File Template
 

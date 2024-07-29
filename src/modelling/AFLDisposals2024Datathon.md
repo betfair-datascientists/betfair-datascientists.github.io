@@ -92,7 +92,7 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 ## Leaderboard - Final
 
 |modelName|RMSE|PrizeRank|
-|-----------------------------------------|------|--|--|
+|-----------------------------------------|------|--|
 |Plugger|4.9736|1|
 |crowbar|4.9987|2|
 |PassThePill|4.9995|3|

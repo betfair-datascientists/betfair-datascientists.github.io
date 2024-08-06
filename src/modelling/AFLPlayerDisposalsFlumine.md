@@ -1,10 +1,10 @@
-# AFL Player Disposals Tutorial
+# AFL Player Disposals Tutorial - Part 2
 
 This article draws on the content from the [AFL Player Disposals Tutorial](https://betfair-datascientists.github.io/modelling/AFLPlayerDisposalsTutorial/). 
 You will need a predictions file from that model to follow along with this betting tutorial.
 
 Here we will take our predictions and then bet into the AFL Player Disposal Markets. 
-These markets are loaded on the day of the match, and so if there no AFL match starting today then there will likely be no markets up.
+These markets are loaded on the day of the match, and so if there is no AFL match starting today then there will likely be no markets up.
 
 ## Requirements
 

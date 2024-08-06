@@ -20,7 +20,7 @@ nav:
         - Value and Odds: wagering/valueAndOdds.md
         - Commission and other charges: wagering/commission.md
         - Hub Predictions Model: wagering/hubPredictionsModel.md
-        #- Cashback 2nd Markets: wagering/cashback2nd.md
+        - Cashback 2nd Markets: wagering/cashback2nd.md
         - Exactas & Quinella: wagering/exactaQuinella.md
 
     - API:
@@ -30,25 +30,23 @@ nav:
         - API tutorial in Python: api/apiPythontutorial.md
             
     - Modelling:
-        - AFL Player Disposals Datathon: modelling/AFLDisposals2024Datathon.md
         - Intro to modelling: modelling/howToModel.md
         - Pricing Data Sources: modelling/dataSources.md
         - Cloud or Local: modelling/cloudOrLocalMachine.md
-        - Racing:
-            - Greyhound Topaz API Tutorial (New): modelling/topazTutorial.md
-            - Greyhound form FastTrack API (Old): modelling/fasttrackTutorial.ipynb
-            - Greyhound modelling in Python (Old): modelling/greyhoundModellingPython.ipynb
-        - Soccer:
-            - Soccer modelling tutorial in R for 2022 FIFA World Cup: modelling/soccerModellingELO2022WorldCup.md
-            #- Elo soccer tutorial in R: modelling/soccerEloTutorialR.md
-            - Soccer modelling tutorial in Python: modelling/soccerModellingTutorialPython.md
-            #- Soccer modelling tutorial in R: modelling/soccerModellingTutorialR.md
-            - EPL ML walk through in Python: modelling/EPLmlPython.md
-
         - AFL:
             - Player Disposal Lines: modelling/AFLPlayerDisposalsTutorial.md
             - AFL modelling walk through in Python: modelling/AFLmodellingPython.md
             - Modelling the Brownlow Medal in Python: modelling/brownlowModelTutorial.ipynb
+        - Racing:
+            - Greyhound Topaz API (Python): modelling/topazTutorial.md
+            - Greyhound FastTrack API (Python): modelling/fasttrackTutorial.ipynb
+            - Greyhound modelling (Python): modelling/greyhoundModellingPython.ipynb
+        - Soccer:
+            - Soccer modelling (Python): modelling/soccerModellingTutorialPython.md
+            - EPL Machine Learning (Python): modelling/EPLmlPython.md
+            - Soccer modelling (R) - 2022 FIFA World Cup: modelling/soccerModellingELO2022WorldCup.md
+            - Elo soccer tutorial (R): modelling/soccerEloTutorialR.md
+            - Soccer modelling (R): modelling/soccerModellingTutorialR.md
         - Tennis:
             - How to model the Australian Open: modelling/howToModelTheAusOpen.md
             - Aus Open R Tutorial: modelling/AusOpenRTutorial.md

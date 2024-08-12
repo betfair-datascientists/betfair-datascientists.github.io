@@ -148,5 +148,5 @@ A lesser known but key attraction of in-play betting is the opportunity for punt
 
 Here's a summary of the different bet-types you'll encounter on the Betfair Exchange. While all this talk about persistence types, limit bets, market_on_close and limit_on_close may seem confusing at first, it will all become clear in time. 
 
-![jpg](../img/bet_types.JPG)
+![jpg](../img/persistence_types.png)
 

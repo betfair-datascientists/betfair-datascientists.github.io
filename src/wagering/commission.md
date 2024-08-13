@@ -18,7 +18,7 @@ Betfair Commission is automatically removed from your winnings when the market i
 
 View this easy-to-read chart for a guide to MBR across racing and sport on the Exchange.
 
-![jpg](../img/market_base_rates.JPG)
+![jpg](../img/MBR_Graphic.png)
 
 ### Example
 

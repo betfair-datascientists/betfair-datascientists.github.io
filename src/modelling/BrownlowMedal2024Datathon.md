@@ -26,7 +26,7 @@ Please direct all questions and submissions to [datathon@betfair.com.au](mailto:
 
 ## The Specifics
 
-The Terms and Conditions for the 2024 Brownlow Medal Datathon can be viewed [here](../assets/Brownlow_Medal_2024_TCs.pdf)
+The Terms and Conditions for the 2024 Brownlow Medal Datathon can be viewed [here](../assets/Brownlow_Medal_Datathon_2024_TCs.pdf)
 
 ### Prizes
 $5,000 in prizes are up for grabs!

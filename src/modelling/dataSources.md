@@ -7,7 +7,8 @@ For more information on how to use this data to make your own predictive model, 
 ---
 ## [Historical Stream API data](https://historicdata.betfair.com/#/mydata)
 
-Betfair UK give access to all the historical Stream API data since 2016. It is excellent to use in building models and back testing strategies, however isn't necessarily in an easily accessible format for everyone. 
+Betfair UK give access to all the historical Stream API data since 2016. It is excellent to use in building models and back testing strategies, however isn't necessarily in an easily accessible format for everyone.
+Australian and New Zealand customers should email us at data@betfair.com.au before purchasing any data from this site.
 
 ### What you need to know about this data source:
 
@@ -34,6 +35,7 @@ Betfair UK give access to all the historical Stream API data since 2016. It is e
 - [JSON to CSV | Revisited](/tutorials/jsonToCsvRevisited) - where we make it 30 times faster
 - [Backtesting ratings using historic data in Python](/tutorials/backtestingRatingsTutorial)
 - [Automated betting angles: no modelling required](/tutorials/automatedBettingAnglesTutorial)
+- [TAR Files 101](/tutorials/processingTarFiles101)
 
 ---
 ## [Historical racing data](https://promo.betfair.com/betfairsp/prices)
@@ -43,7 +45,7 @@ This is an excellent resource if you are interested in racing and like to see ma
 ### What you need to know about this data source:
 
 - CSV format
-- Free to download
+- Free to download, no login required
 - All Australian and overseas races, dating back to the beginning of the Exchange
 - Available as a single file per day, per country, win or place market
 - Market snapshot by runner, including
@@ -53,4 +55,30 @@ This is an excellent resource if you are interested in racing and like to see ma
     - Winner
 
 ---
+
+## [Sports and Racing CSV Files - Australia and New Zealand](/data/dataListing)
+
+### What you need to know about this data source:
+
+- CSV format
+- Free to download, no login required
+- All Australian and New Zealand races, dating back to January 2023 in monthly blocks, separated by racing code
+- Market snapshot by runner, including
+    - Max and min matched prices and volume, pre-play and in-play
+    - Weighted average price, pre-play and in-play
+    - BSP & Result (Win & Place)
+    - Best Available Prices & Market Overrounds at Scheduled Race Start Time
+- Select Australian Sports leagues, dating back to 2020
+    - AFL & AFLW
+    - A-League & A-League Women's
+    - BBL & WBBL
+    - NRL
+    - NBL
+- Condensed historical ratings files with results for Betfair Hub Tipsters and Prediction Models
+    - [Iggy Greyhound Predictions Model](https://www.betfair.com.au/hub/racing/greyhound-tips/greyhound-predictions-model/)
+    - [Kash Thoroughbred Predictions Model](https://www.betfair.com.au/hub/racing/horse-racing/predictions-model/)
+    - [Top 5 Thoroughbred Predictions Model](https://www.betfair.com.au/hub/racing/horse-racing/top-5-predictions/)
+    - [Globetrotter Harness Predictions Model](https://www.betfair.com.au/hub/racing/harness/harness-racing-predictions/)
+ ---
+
 If none of these options suit your needs please contact us at data@betfair.com.au to discuss other potential options.

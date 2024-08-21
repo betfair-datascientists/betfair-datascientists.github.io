@@ -19,6 +19,7 @@ This year's AFL Brownlow Medal Datathon, over all rounds in the 2024 Home and Aw
 Submissions close at at 2:59pm AEST on the day of the count - Monday September 23rd, 2024.
 
 Leaderboard updates will be published in the Discord Server throughout the count so be sure to check the #datathon channel in the Discord server. [Join The Discord Conversation](https://forms.office.com/r/ZG9ea1xQj1)
+
 A final leaderboard will be posted here following the completion of the count.
 
 Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
@@ -58,15 +59,11 @@ Your set of predictions will be due by 2:59pm AEST on Monday September 23rd, 202
 
 See the Terms and Conditions for full competition rules.
 
-### Historic Disposals Data
-
-All entrants received a bulk historic data file upon registration.
-
 ## Submission File Template
 
 The submission file templates will be emailed to each person upon registration and will also be posted here.
 
-### Submissions & Judging
+## Submissions & Judging
 
 The Datathon will be judged using the [root-mean-square-error](https://en.wikipedia.org/wiki/Root-mean-square_deviation) (RMSE) method. The winner will be the Competition Entrant with the lowest average RMSE per player over all matches in the 2024 AFL Home and Away Season
 
@@ -83,6 +80,8 @@ Please name submission file using the following formatting:
 To submit your model entry, please send it through to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
 ## Leaderboard - Final
+
+Check back later
 
 ## FAQs
 
@@ -113,7 +112,11 @@ The actual algorithm used from a rules perspective does not matter. However, any
 
 Your predictions will be normalised so that the predictions for the match sum to 6.
 
+### Registration
 
+Registrations open at 12:00pm AEST on 26 August 2024, registrations close at 4:59pm AEST on 20 September 2024.
+
+To enter the Competition (Competition Entrant), an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/EKGM2RV6kR)
 
 
 

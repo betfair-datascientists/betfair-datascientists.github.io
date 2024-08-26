@@ -1,5 +1,7 @@
 # Betfair’s 2024 Brownlow Medal Datathon
 
+![png](../img/BROWNLOW_DATATHON_BANNER.png)
+
 ### Registration
 
 Registrations open at 12:00pm AEST on 26 August 2024, registrations close at 4:59pm AEST on 20 September 2024.
@@ -23,6 +25,10 @@ Leaderboard updates will be published in the Discord Server throughout the count
 A final leaderboard will be posted here following the completion of the count.
 
 Please direct all questions and submissions to [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
+
+## How To Build A Model
+
+Check out our tutorial on modelling the [Brownlow Medal](../modelling/brownlowModelTutorial.ipynb)!
 
 ## The Specifics
 

@@ -51,7 +51,7 @@ By downloading this data, you acknowledge and agree that:
  - [Thoroughbred Model Results 2021](../assets/Kash_Model_Results_2021.csv)
  - [Thoroughbred Model Results 2022](../assets/Kash_Model_Results_2022.csv)
  - [Thoroughbred Model Results 2023](../assets/Kash_Model_Results_2023.csv)
- - [Thoroughbred Model Results 2024 Jan - Jul](../assets/Kash_Model_Results_2024_01-07.csv)
+ - [Thoroughbred Model Results 2024 Jan - Aug](../assets/Kash_Model_Results_2024_01-08.csv)
 
 ### Top 5 Model
 
@@ -60,7 +60,7 @@ By downloading this data, you acknowledge and agree that:
  - [Top 5 Model Results 2021](../assets/Top5_Model_Results_2021.csv)
  - [Top 5 Model Results 2022](../assets/Top5_Model_Results_2022.csv)
  - [Top 5 Model Results 2023](../assets/Top5_Model_Results_2023.csv)
- - [Top 5 Model Results 2024 Jan - Jul](../assets/Top5_Model_Results_2024_01-07.csv)
+ - [Top 5 Model Results 2024 Jan - Aug](../assets/Top5_Model_Results_2024_01-08.csv)
 
 ### Harness
 
@@ -88,7 +88,7 @@ By downloading this data, you acknowledge and agree that:
 ### Harness Predictions Model
 
  - [Harness Model Results 2023](../assets/Globetrotter_Model_Results_2023.csv)
- - [Harness Model Results 2024 Jan - Jul](../assets/Globetrotter_Model_Results_2024_01-07.csv)
+ - [Harness Model Results 2024 Jan - Aug](../assets/Globetrotter_Model_Results_2024_01-08.csv)
 
 ### Greyhounds
 
@@ -114,13 +114,17 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2024-08](../assets/ANZ_Greyhounds_2024_08.csv)
 
 
-### Greyhound Predictions Model
+### Greyhound Predictions Model (Iggy Version 1 - Now Deprecated)
 
  - [Greyhound Model Results 2020](../assets/Iggy_Model_Results_2020.csv)
  - [Greyhound Model Results 2021](../assets/Iggy_Model_Results_2021.csv)
  - [Greyhound Model Results 2022](../assets/Iggy_Model_Results_2022.csv)
  - [Greyhound Model Results 2023](../assets/Iggy_Model_Results_2023.csv)
- - [Greyhound Model Results 2024 Jan - Jul](../assets/Iggy_Model_Results_2024_01-07.csv)
+ - [Greyhound Model Results 2024 Jan - Aug](../assets/Iggy_Model_Results_2024_01-08.csv)
+
+### Greyhound Predictions Model (Iggy Version 2 - New)
+
+ - [Greyhound Model Results 2024 Aug - Aug](../assets/Iggy_Model_V2_Results_2024_08.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 

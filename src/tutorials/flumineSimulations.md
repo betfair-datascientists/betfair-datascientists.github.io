@@ -163,7 +163,7 @@ for tar_path in tar_files:
 
 ```
 
-### Step 2
+### Step 2 Run the simulation
 
 ```py title="Running the simulation"
 

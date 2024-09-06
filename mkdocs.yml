@@ -12,6 +12,7 @@ nav:
 
     - Data: 
         - CSV Files: data/dataListing.md
+        - Historic Data Site: data/usingHistoricDataSite.md
 
     - Wagering:
         - Betfair How-To: wagering/betfairHowTo.md
@@ -89,6 +90,7 @@ nav:
         - How to Automate 3: tutorials/How_to_Automate_3.ipynb
         - How to Automate 4: tutorials/How_to_Automate_4.md
         - How to Automate 5: tutorials/How_to_Automate_5.md
+        - Flumine Simulations: tutorials/flumineSimulations.md
         - Take away the pain! Processing TAR Files 101: tutorials/processingTarFiles101.ipynb
         #- JSON to CSV in Python: tutorials/jsonToCsvTutorial.md
         - JSON to CSV | Revisited: tutorials/jsonToCsvRevisited/index.md

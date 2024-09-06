@@ -8,7 +8,7 @@ We know that the process of downloading and extracting these data files can be a
 !!! note "Data tiers"
     There are three tiers of historic data available on this site. You can download samples of each tier of data [here](https://historicdata.betfair.com/#/help).
 
-    The biggest difference is between the free and paid data. The free data includes a lot of information about the market, but no volume, and only last traded price per minute, not a full price ladder. The two paid tiers include the same data, just at different frequencies. If your strategy isn't particularly price sensitive and doesn't need volume as a variable then you'll probably be fine with the free tier, however if you need to see a more granular view of the market then you should probably consider the paid advanced or pro tiers. 
+    The biggest difference is between the free and paid data. The free data includes a lot of information about the market, but no volume, and only last traded price per minute, not a full price ladder. The two paid tiers include the same data, just at different frequencies. If your strategy isn't particularly price sensitive and doesn't need volume as a variable then you'll probably be fine with the free tier, however if you need to see a more granular view of the market then you should probably consider the paid advanced or pro tiers. Australian and NZ Customers should contact us at [data@betfair.com.au](mailto:data@betfair.com.au) to discuss access to the PRO level data.
 
     A full catalogue of the values included in each data tier is available [here](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf).
     

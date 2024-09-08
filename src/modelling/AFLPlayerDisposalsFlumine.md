@@ -236,7 +236,7 @@ class PlayerDisposalsBets(BaseStrategy):
             # Merge the dataframes together on the player name
             afl_players_df = pd.merge(runners_df,self.disposals_df,how="left",on=['player_name'])
             # Calculate the difference between our line and the market line
-            afl_players_df['prediction_differential'] = afl_players_df['disposals_predictions'] - afl_players_df['disposals_market_line']
+            afl_players_df['prediction_differential'] = afl_players_df['disposals_prediction'] - afl_players_df['disposals_market_line']
             # Set the index as the selection_id
             afl_players_df.set_index('selection_id')
             # Loop over each runner in the market ['Over XX.5 Disposals','Under XX.5 Disposals']

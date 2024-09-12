@@ -162,14 +162,18 @@ def download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sl
                     # Set the header_param to the opposite Bool
                     header_param = not file_exists
                     
-                    try:
-                        # Get race run data
-                        race_run = topaz_api.get_race_runs(race_id=race_id)
+                    try:                        
                         # Get the race result data
                         race_result_json = topaz_api.get_race_result(race_id=race_id)
 
                         # Flatten the JSON response into a dataframe
                         race_result = pd.json_normalize(race_result_json)
+
+                        race_run_df = pd.DataFrame(race_result['runs'].tolist(),index=race_result.index)
+                        race_run = race_run_df.T.stack().to_frame()
+                        race_run.reset_index(drop=True, inplace= True)
+                        race_run_normalised = pd.json_normalize(race_run[0])
+                        race_run_normalised.to_csv('race_run_test.csv',mode='a',header=True)
 
                         # Separate the split times and flatten them
                         split_times_df = pd.DataFrame(race_result['splitTimes'].tolist(),index=race_result.index)
@@ -195,13 +199,13 @@ def download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sl
                             split_times = pd.merge(split_times,second_split,how='left',on=['runId'])
 
                             # Attach the split times to the original race_run dataframe
-                            race_run = pd.merge(race_run,split_times,how='left',on=['runId'])
+                            race_run = pd.merge(race_run_normalised,split_times,how='left',on=['runId'])
 
                     except requests.HTTPError as http_err:
                         if http_err.response.status_code == 404:
                             break
 
-                    except Exception:
+                    except Exception as e:
                         result_retries -= 1
                         if result_retries > 0:
                             time.sleep(sleep_time)

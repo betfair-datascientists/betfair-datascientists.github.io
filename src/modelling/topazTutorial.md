@@ -198,8 +198,11 @@ def download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sl
                             split_times = pd.merge(split_times,first_split,how='left',on=['runId'])
                             split_times = pd.merge(split_times,second_split,how='left',on=['runId'])
 
+                        try:
                             # Attach the split times to the original race_run dataframe
                             race_run = pd.merge(race_run_normalised,split_times,how='left',on=['runId'])
+                        except Exception:
+                            race_run=race_run_normalised
 
                     except requests.HTTPError as http_err:
                         if http_err.response.status_code == 404:

@@ -1,6 +1,10 @@
 # How does a Data Scientist model the Brownlow?
+
 This article has been written by Liam from [Crow Data Science](https://www.crowdatascience.com/) for the [Betfair 2024 AFL Brownlow Medal Datathon](../modelling/BrownlowMedal2024Datathon.md).
-You can chat with Liam in the [Betfair Quants Discord Server](https://forms.office.com/r/ZG9ea1xQj1) or chat to him on Twitter/x (@crow_data_sigh)
+You can chat with Liam in the [Betfair Quants Discord Server](https://forms.office.com/r/ZG9ea1xQj1) or on Twitter/X (@crow_data_sigh)
+
+---
+
 ## Intro
 
 The Brownlow Medal is the AFL’s most prestigious individual award. The pinnacle of achievement in Australian Rules Football, awarded to the ‘Best and Fairest’ of a home and away season. 
@@ -8,15 +12,20 @@ The Brownlow Medal is the AFL’s most prestigious individual award. The pinnacl
 Each game, the umpires award a total of 6 votes to the players they judge to be best afield:
 
  - 3 votes to the best player
- - 2 votes to the 2nd best
- - 1 vote to the 3rd best player.
+ - 2 votes to the 2nd best player
+ - 1 vote to the 3rd best player
  
 In 2024, each game featured at most 46 players (23 from each team), with only 3 of those players able to receive votes.
 
-Just as the game has evolved in terms of game style and tactics over the last century, so has the way umpires adjudicate worthy Brownlow vote recipients. How have umpires changed the way they vote? What are the metrics most predictive of votes?
+Just as the game has evolved in terms of game style and tactics over the last century, so has the way umpires adjudicate worthy Brownlow vote recipients. 
+
+**How have umpires changed the way they vote? What are the metrics most predictive of votes?**
+
 ## Disposals
 
-A disposal is the basic currency of footy stats, the first statistic that pundits and fans alike point to as a source of how well a player performed. Rudimentary sure, but a stat with a lot of historical data. Do umpires hold the same view, more disposals means better player? Have there been any noticeable trends in voting patterns?
+A disposal is the basic currency of footy stats, the first statistic that pundits and fans alike point to as a source of how well a player performed. Rudimentary sure, but a stat with a lot of historical data. 
+
+**Do umpires hold the same view, more disposals means better player? Have there been any noticeable trends in voting patterns?**
 
 In 2023, the average player polling a vote had 25.5 disposals, while players polling no votes averaged 15.1 disposals per game.
 
@@ -28,7 +37,7 @@ We can visualise this as a percentage increase on the AFL average for that seaso
 
 ![png](../img/percentageDiffDisposalsBrownlowVotes.png)
 
-The period between 1995 to 2005 saw high disposal players take the lion's share of the votes, similar to the modern era from 2010 and peaking in 2022. Players polling 3 votes in 2021 achieved an average of 30.1.8 disposals while the average per player was 15.88 disposals, an increase of 90% on the AFL average, the peak difference seen with available data.
+The period between 1995 to 2005 saw high disposal players take the lion's share of the votes, similar to the modern era from 2010 and peaking in 2022. Players polling 3 votes in 2021 achieved an average of 30.18 disposals while the average per player was 15.88 disposals, an increase of 90% on the AFL average, the peak difference seen with available data.
 
 Players that generate these types of high disposal games are overwhelmingly midfielders, which leads to accusation that the Brownlow medal has “become” a midfielders award. I’d argue that it’s almost always been a midfielders award. The more you possess and dispose of the ball, the more times the umpires sees you which can lead to more votes being awarded.
 
@@ -37,6 +46,7 @@ Players that generate these types of high disposal games are overwhelmingly midf
 ![png](../img/distDisposalsBrownlowVotes.png)
 
 The spread of votes across disposal counts is quite wide. Quite a few cases where players with less than 20 disposals recorded votes. Of the 373 players to claim 30+ disposals in a game, only 50% of players polled any votes in 2023. Players with 40+ disposals polled votes 76% of the time, of which 69% polled 3 votes in 2023.
+
 ## AFL Player Ratings
 
 Disposals are quite a simple metric so let’s look at one of the more advanced metrics, AFL PR. This metric takes into account actions undertaken by players and what that action resulted in. Players get points for completing high equity plays, such as intercepting the ball in a dangerous position or turning a contested ball into a possession for a teammate. Players generally average 9 AFL PR points per game, with elite players generating 20 or more points in a game. 
@@ -54,6 +64,7 @@ We can look at the average rating points per voting outcome over time. Data is a
 ![png](../img/avgPlayerRatingBrownlowVotes.png)
 
 There doesn’t seem to be a noticeable trend when either looking at a basic stat like disposals or an advanced stat like Player Ratings. It is comforting to see a clear distinction between 3, 2 and 1 votes which implies that field umpires do understand which players have been best on ground (to at least some degree) and that it’s not just a random sample of top players.
+
 ## AFL Fantasy and SuperCoach Points
 
 The metrics of AFL Fantasy (AF) and SuperCoach (SC) are probably the most used statistics used to evaluate a player's performance. AF is a linear combination of 9 match statistics, each assigned a value which is then summed to give a player their final score. SC is similar to the previously mentioned AFL player ratings, using a basic equity model on actions in game. SC also uses a match scaling method, ensuring that an equal number of points are assigned every game. 
@@ -67,6 +78,7 @@ SC and AF provide some good separation, 50+ AF and 50+ SC are good cutoffs that 
 ![png](../img/superCoachFantasyPoints.png)
 
 Looking back at the previous density plots, this isn’t a problem exclusive to AF and SC. While the means in each group of votes may be higher, there is significant overlap in the distributions of the target variables, like disposals and Player Ratings.
+
 ## Coaches Votes
 
 The Brownlow is an opinionated vote, and what better feature to analyse than more opinions! At the conclusion of each game, the coaches of each team name their top 5 players, with the best on ground getting 5 votes and fifth best getting 1 vote. The votes are then combined from the 2 opposing coaches, the highest possible votes for a player being 10. Let’s see how well Coaches Votes (CV) inform Brownlow Votes.
@@ -80,6 +92,7 @@ The following table displays this correlation.
 ![png](../img/convertingCoachesVotes.png)
 
 Coaches Votes are by far the best indicator of Brownlow Votes. 10 Vote players imply that both coaches thought this player was best on ground and it seems that the umpires also tend to agree.
+
 ## Interactions
 
 Interactions are a fundamental part of modelling, a way to effectively combine features to better predict outcomes. If you’re using a linear model, you’ll need to specify which features you want to interact, while an ML technique like XGBoost will handle this for you with the right hyperparameters set. Another option is to create your features as a combination of features, commonly called **“feature engineering”.**
@@ -90,7 +103,8 @@ Let’s look at the interaction between the 2 most important features, Coaches V
 
 The interaction between AF and CV reveals quite a lot about how votes can be distributed. Players with low Coaches Votes can poll votes with high enough Fantasy score, implying that the amount of actions a player is involved in can influence umpires. On the contrary, a high Coaches Votes tally and middling Fantasy score can result in being awarded Votes. These two features are just one example of an interaction that works well due to the metrics being somewhat uncorrelated. One is an in-game counting metric, the other is an opinion and this juxtaposition works great when combined.
 
-This is just one example of an interaction, no doubt there's many more that yield similar and varied insights. 
+This is just one example of an interaction, no doubt there's many more that yield similar and varied insights.
+
 ## Notes and Additional Features
 
 For those unfamiliar with Aussie Rules Football, the 2020 season featured shortened game lengths, with each quarter being played for 16 minutes. You can either exclude the 2020 season or scale up certain metrics by 25% returning the quarter lengths to the standard 20 minutes.
@@ -106,7 +120,7 @@ Other features I’d recommend investigating include:
 
 I’ve built my Brownlow medal model using 80+ features trained on an XGBoost classification model. 
 
-After training on 2012 to 2023 data, these are the top top 7 most important features according to my Brownlow Medal model:
+After training on 2012 to 2023 data, these are the top 7 most important features according to my Brownlow Medal model:
 
     1.	Coaches Votes
     2.	Fantasy Points
@@ -121,6 +135,9 @@ After training on 2012 to 2023 data, these are the top top 7 most important feat
 The Brownlow Medal presents a very tough modelling problem, and for those participating in the Betfair Datathon, I wish you the best of luck! 
 
 You can follow my predictions and insights as @crow_data_sigh on twitter, and in the #Datathon channel in the [Betfair Quants Discord Server](https://forms.office.com/r/ZG9ea1xQj1).
-### Disclaimer
+
+---
+
+### Disclaimer (Betfair Team)
 
 Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.

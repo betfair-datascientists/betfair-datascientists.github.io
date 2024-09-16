@@ -1209,9 +1209,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#disclaimer" class="md-nav__link">
+  <a href="#disclaimer-betfair-team" class="md-nav__link">
     <span class="md-ellipsis">
-      Disclaimer
+      Disclaimer (Betfair Team)
     </span>
   </a>
   
@@ -3077,25 +3077,28 @@
 
 <h1 id="how-does-a-data-scientist-model-the-brownlow">How does a Data Scientist model the Brownlow?</h1>
 <p>This article has been written by Liam from <a href="https://www.crowdatascience.com/">Crow Data Science</a> for the <a href="../BrownlowMedal2024Datathon/">Betfair 2024 AFL Brownlow Medal Datathon</a>.
-You can chat with Liam in the <a href="https://forms.office.com/r/ZG9ea1xQj1">Betfair Quants Discord Server</a> or chat to him on Twitter/x (@crow_data_sigh)</p>
+You can chat with Liam in the <a href="https://forms.office.com/r/ZG9ea1xQj1">Betfair Quants Discord Server</a> or on Twitter/X (@crow_data_sigh)</p>
+<hr />
 <h2 id="intro">Intro</h2>
 <p>The Brownlow Medal is the AFL’s most prestigious individual award. The pinnacle of achievement in Australian Rules Football, awarded to the ‘Best and Fairest’ of a home and away season. </p>
 <p>Each game, the umpires award a total of 6 votes to the players they judge to be best afield:</p>
 <ul>
 <li>3 votes to the best player</li>
-<li>2 votes to the 2nd best</li>
-<li>1 vote to the 3rd best player.</li>
+<li>2 votes to the 2nd best player</li>
+<li>1 vote to the 3rd best player</li>
 </ul>
 <p>In 2024, each game featured at most 46 players (23 from each team), with only 3 of those players able to receive votes.</p>
-<p>Just as the game has evolved in terms of game style and tactics over the last century, so has the way umpires adjudicate worthy Brownlow vote recipients. How have umpires changed the way they vote? What are the metrics most predictive of votes?</p>
+<p>Just as the game has evolved in terms of game style and tactics over the last century, so has the way umpires adjudicate worthy Brownlow vote recipients. </p>
+<p><strong>How have umpires changed the way they vote? What are the metrics most predictive of votes?</strong></p>
 <h2 id="disposals">Disposals</h2>
-<p>A disposal is the basic currency of footy stats, the first statistic that pundits and fans alike point to as a source of how well a player performed. Rudimentary sure, but a stat with a lot of historical data. Do umpires hold the same view, more disposals means better player? Have there been any noticeable trends in voting patterns?</p>
+<p>A disposal is the basic currency of footy stats, the first statistic that pundits and fans alike point to as a source of how well a player performed. Rudimentary sure, but a stat with a lot of historical data. </p>
+<p><strong>Do umpires hold the same view, more disposals means better player? Have there been any noticeable trends in voting patterns?</strong></p>
 <p>In 2023, the average player polling a vote had 25.5 disposals, while players polling no votes averaged 15.1 disposals per game.</p>
 <p><img alt="png" src="../img/avgDisposalsBrownlowVotes.png" /></p>
 <p>There does seem to be an increase in the amount of disposals needed to poll votes, but this seems to be in line with the general increase in average disposals per player. </p>
 <p>We can visualise this as a percentage increase on the AFL average for that season.</p>
 <p><img alt="png" src="../img/percentageDiffDisposalsBrownlowVotes.png" /></p>
-<p>The period between 1995 to 2005 saw high disposal players take the lion's share of the votes, similar to the modern era from 2010 and peaking in 2022. Players polling 3 votes in 2021 achieved an average of 30.1.8 disposals while the average per player was 15.88 disposals, an increase of 90% on the AFL average, the peak difference seen with available data.</p>
+<p>The period between 1995 to 2005 saw high disposal players take the lion's share of the votes, similar to the modern era from 2010 and peaking in 2022. Players polling 3 votes in 2021 achieved an average of 30.18 disposals while the average per player was 15.88 disposals, an increase of 90% on the AFL average, the peak difference seen with available data.</p>
 <p>Players that generate these types of high disposal games are overwhelmingly midfielders, which leads to accusation that the Brownlow medal has “become” a midfielders award. I’d argue that it’s almost always been a midfielders award. The more you possess and dispose of the ball, the more times the umpires sees you which can lead to more votes being awarded.</p>
 <p><strong>How does the distribution of disposals for the 2023 season look?</strong></p>
 <p><img alt="png" src="../img/distDisposalsBrownlowVotes.png" /></p>
@@ -3128,7 +3131,7 @@ You can chat with Liam in the <a href="https://forms.office.com/r/ZG9ea1xQj1">Be
 <p>Let’s look at the interaction between the 2 most important features, Coaches Votes and Fantasy Points.</p>
 <p><img alt="png" src="../img/groupingCoachesVotesFantasyPoints.png" /></p>
 <p>The interaction between AF and CV reveals quite a lot about how votes can be distributed. Players with low Coaches Votes can poll votes with high enough Fantasy score, implying that the amount of actions a player is involved in can influence umpires. On the contrary, a high Coaches Votes tally and middling Fantasy score can result in being awarded Votes. These two features are just one example of an interaction that works well due to the metrics being somewhat uncorrelated. One is an in-game counting metric, the other is an opinion and this juxtaposition works great when combined.</p>
-<p>This is just one example of an interaction, no doubt there's many more that yield similar and varied insights. </p>
+<p>This is just one example of an interaction, no doubt there's many more that yield similar and varied insights.</p>
 <h2 id="notes-and-additional-features">Notes and Additional Features</h2>
 <p>For those unfamiliar with Aussie Rules Football, the 2020 season featured shortened game lengths, with each quarter being played for 16 minutes. You can either exclude the 2020 season or scale up certain metrics by 25% returning the quarter lengths to the standard 20 minutes.</p>
 <p>Since votes are awarded on a per game basis, it makes sense to scale numerical features per game. If 10 players all have over 30 disposals, how does the umpire (or model) pick out a potential winner (other than using other statistics)? Scaling so that the metric centres on 0 with a standard deviation of 1 can help the model find significant differences from the mean, as outlined in the first graph. Players with 75% more than the average are more likely to poll votes, and it makes sense to exploit these facts.</p>
@@ -3140,7 +3143,7 @@ You can chat with Liam in the <a href="https://forms.office.com/r/ZG9ea1xQj1">Be
 <li>Kicks. Players with 25+ kicks poll votes 60% of the time.</li>
 </ul>
 <p>I’ve built my Brownlow medal model using 80+ features trained on an XGBoost classification model. </p>
-<p>After training on 2012 to 2023 data, these are the top top 7 most important features according to my Brownlow Medal model:</p>
+<p>After training on 2012 to 2023 data, these are the top 7 most important features according to my Brownlow Medal model:</p>
 <div class="highlight"><pre><span></span><code>1.  Coaches Votes
 2.  Fantasy Points
 3.  SuperCoach Points
@@ -3152,7 +3155,8 @@ You can chat with Liam in the <a href="https://forms.office.com/r/ZG9ea1xQj1">Be
 <h2 id="final-thoughts">Final Thoughts</h2>
 <p>The Brownlow Medal presents a very tough modelling problem, and for those participating in the Betfair Datathon, I wish you the best of luck! </p>
 <p>You can follow my predictions and insights as @crow_data_sigh on twitter, and in the #Datathon channel in the <a href="https://forms.office.com/r/ZG9ea1xQj1">Betfair Quants Discord Server</a>.</p>
-<h3 id="disclaimer">Disclaimer</h3>
+<hr />
+<h3 id="disclaimer-betfair-team">Disclaimer (Betfair Team)</h3>
 <p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
 
 

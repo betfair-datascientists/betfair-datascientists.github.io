@@ -28,7 +28,7 @@ Please direct all questions and submissions to [datathon@betfair.com.au](mailto:
 
 ## How To Build A Model
 
-Check out our tutorial on modelling the [Brownlow Medal](../modelling/brownlowModelTutorial.ipynb)!
+Check out our tutorial on modelling the [Brownlow Medal](../modelling/brownlowModelTutorial.ipynb)! and this article on [How a Data Scientist models the Brownlow medal](../modelling/modellingTheBrownlowMedal.md) written by Liam from [Crow Data Science](https://www.crowdatascience.com/)
 
 ## The Specifics
 

@@ -4,9 +4,7 @@
 
 ### Registration
 
-Registrations open at 12:00pm AEST on 26 August 2024, registrations close at 4:59pm AEST on 20 September 2024.
-
-To enter the Competition (Competition Entrant), an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/EKGM2RV6kR)
+Registrations have closed
 
 ## The Competition
 
@@ -117,13 +115,6 @@ The actual algorithm used from a rules perspective does not matter. However, any
 **What happens if my predictions do not sum to 6 for a match?**
 
 Your predictions will be normalised so that the predictions for the match sum to 6.
-
-### Registration
-
-Registrations open at 12:00pm AEST on 26 August 2024, registrations close at 4:59pm AEST on 20 September 2024.
-
-To enter the Competition (Competition Entrant), an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/EKGM2RV6kR)
-
 
 
 

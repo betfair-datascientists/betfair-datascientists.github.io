@@ -246,18 +246,6 @@ away_team_stats['home_or_away']='Away'
 team_stats_per_match = pd.concat([home_team_stats,away_team_stats])
 ```
 
-``` Python
-# At each row of this dataset, get the team name, find the stats for that team during the last 10 matches, and average these stats (avg_stats_per_team). 
-
-avg_stat_columns = ['goals_per_match','corners_per_match','shots_per_match','shotsOnTarget_per_match','fouls_per_match', 'possession_per_match']
-stats_list = []
-for index, row in team_stats_per_match.iterrows():
-    team_stats_last_five_matches = team_stats_per_match.loc[(team_stats_per_match['name']==row['name']) & (team_stats_per_match['date_GMT']<row['date_GMT'])].sort_values(by=['date_GMT'], ascending=False)
-    stats_list.append(team_stats_last_five_matches.iloc[0:5,:].mean(axis=0).values[0:6])
-
-avg_stats_per_team = pd.DataFrame(stats_list, columns=avg_stat_columns)
-```
-
 ``` Python 
 # At each row of this dataset, get the team name, find the stats for that team during the last 5 matches, and average these stats (avg_stats_per_team). 
 

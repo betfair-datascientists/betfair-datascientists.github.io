@@ -18,7 +18,7 @@ This year's AFL Brownlow Medal Datathon, over all rounds in the 2024 Home and Aw
 
 Submissions close at at 2:59pm AEST on the day of the count - Monday September 23rd, 2024.
 
-Leaderboard updates will be published in the Discord Server throughout the count so be sure to check the #datathon channel in the Discord server. [Join The Discord Conversation](https://forms.office.com/r/ZG9ea1xQj1)
+Leaderboard updates will be published in the Discord Server throughout the count so be sure to check the #datathon channel in the [Discord server](https://forms.office.com/r/ZG9ea1xQj1)
 
 A final leaderboard will be posted here following the completion of the count.
 
@@ -26,7 +26,7 @@ Please direct all questions and submissions to [datathon@betfair.com.au](mailto:
 
 ## How To Build A Model
 
-Check out our tutorial on modelling the [Brownlow Medal](../modelling/brownlowModelTutorial.ipynb)! and this article on [How a Data Scientist models the Brownlow medal](../modelling/modellingTheBrownlowMedal.md) written by Liam from [Crow Data Science](https://www.crowdatascience.com/)
+Check out our tutorial on modelling the [Brownlow Medal](../modelling/brownlowModelTutorial.ipynb) and this article on [How a Data Scientist models the Brownlow medal](../modelling/modellingTheBrownlowMedal.md) written by Liam from [Crow Data Science](https://www.crowdatascience.com/)
 
 ## The Specifics
 
@@ -63,9 +63,6 @@ Your set of predictions will be due by 2:59pm AEST on Monday September 23rd, 202
 
 See the Terms and Conditions for full competition rules.
 
-## Submission File Template
-
-The submission file templates will be emailed to each person upon registration and will also be posted here.
 
 ## Submissions & Judging
 
@@ -85,7 +82,56 @@ To submit your model entry, please send it through to [datathon@betfair.com.au](
 
 ## Leaderboard - Final
 
-Check back later
+|model|RMSE|Rank|PrizeRank|
+|-------------------------|-------|----|---------|
+Leisurinho|0.36457|1|1|
+Countach|0.36464|2|2|
+minotaur|0.36756|3|3|
+WisdomOfTheCrowd|0.36809|4||
+GoRoys|0.37004|5|4|
+Crowbar|0.37062|6|5|
+HenryTheGreenEngine|0.37093|7|6|
+RandomShrubbery|0.37183|8|7|
+PickleRickSanchez|0.37192|9|8|
+BenHarvey|0.37206|10||
+Optibrebs|0.37412|11|9|
+UtaniGranHur|0.37529|12|10|
+WheeloRatings|0.37581|13|11|
+GoSwans2024|0.37582|14|12|
+ThrowingDarts|0.3763|15||
+ConspiracyAgainstHeeney|0.37697|16|13|
+GoTheBloodsV66|0.37971|17|14|
+chicken|0.3804|18|15|
+EyeNoBall|0.38079|19|16|
+InsufficientIntent|0.38101|20|17|
+KickADropPunt|0.38268|21|18|
+FeelingDustyRegression|0.38363|22||
+FeelingDustyMultiClass|0.38494|23||
+GoodGrief|0.38553|24|19|
+Pudds|0.38558|25|20|
+craigslist|0.38651|26|21|
+willingly|0.38753|27|22|
+TrackMyBrownlow|0.38871|28|23|
+ChatGptDidNotHelp|0.3904|29|24|
+TheLoser|0.3915|30|25|
+FoxyWeighted|0.39199|31|26|
+DrinkCard|0.39311|32|27|
+BlakesModel|0.39426|33|28|
+SturdyBrownlowPredictor|0.39563|34|29|
+MidfieldersMedal|0.40051|35|30|
+CoachesVotes|0.402|36||
+charlieChooser|0.40963|37|31|
+Nightingale|0.41426|38|32|
+watpTV|0.4206|39|33|
+Wade|0.42968|40|34|
+BurntToast|0.43111|41|35|
+PEBrownlow|0.44863|42|36|
+BlueAndYellow|0.46218|43|37|
+blahboy|0.46377|44|38|
+cregh|0.51075|45|39|
+CorebridgeAnalytics|0.56966|46|40|
+
+
 
 ## FAQs
 

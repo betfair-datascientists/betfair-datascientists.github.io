@@ -435,29 +435,9 @@ In this tutorial we will:
 2. Use a datetime split in training/test data (a random 80/20 split could also be used)
 3. Use accuracy to evaluate our models
 
-*It's probably worth evaluating multiple models (several models explained in this tutorial), perhaps use k-fold cross validation, and use metrics other than accuracy to evaluate a model (check the commented out code).*
-
-``` Python
-# import required libraries
-
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import precision_recall_fscore_support as score, confusion_matrix, roc_auc_score, classification_report, log_loss
-
-from sklearn.neural_network import MLPClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.gaussian_process import GaussianProcessClassifier
-from sklearn.gaussian_process.kernels import RBF
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
-from sklearn.naive_bayes import GaussianNB
-from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
-from sklearn.linear_model import LogisticRegression
-```
-
 #### Get data from our dataset
 
-1. Team_1_result column - target variable
+1. Team_1_goalsScored and Team_2_goalsScored columns - target variables
 2. The raw stats of the two teams (68 columns) - features
 
 *Do we need to scale or normalize the feature columns in order for it to make mathematical sense to a ML model? This depends on the type of model we are training, but it's definitely worth investigating in order to achieve a high performing model.*
@@ -543,36 +523,39 @@ features = ['team_1_average_goalsScored_last_ten',
 #### Split test and training data
 
 We train a model on the training data, and then use test data to evaluate the performance of that model.
+For adding future predictions, all you need to do is add the team names and match dates to the original dataset, and then fill all remaining cells with zeros. 
+Then process the entire script again **except** for the first and second instance of the loops: **for name, reg in zip(names, regressors):**
 
 ``` Python
 train_data = match_stats[match_stats['date'] < '2018-07-01']
 test_data = match_stats[match_stats['date'] >= '2018-07-01']
+test_data = test_data[test_data['date'] < '2023-11-01']
+upcoming_matches = match_stats[match_stats['date'] >= '2023-11-01']
 
 X_train = train_data[features]
 X_test = test_data[features]
-Y_train = train_data['team_1_result']
-Y_test = test_data['team_1_result']
+Y_train_team1 = train_data['team_1_goalsScored']
+Y_test_team1 = test_data['team_1_goalsScored']
+Y_train_team2 = train_data['team_2_goalsScored']
+Y_test_team2 = test_data['team_2_goalsScored']
+
 ```
 
 #### Name and define classifiers
 
 ``` Python
-names = ["Nearest Neighbors", "Logistic Regression","Linear SVM", "RBF SVM", "Gaussian Process",
-         "Decision Tree", "Random Forest", "Neural Net", "AdaBoost",
-         "Naive Bayes", "QDA"]
+import pickle
+from sklearn.metrics import mean_squared_error, r2_score
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
 
-classifiers = [
-    KNeighborsClassifier(3),
-    LogisticRegression(),
-    SVC(kernel="linear", C=0.025, probability=True),
-    SVC(gamma=2, C=1, probability=True),
-    GaussianProcessClassifier(1.0 * RBF(1.0)),
-    DecisionTreeClassifier(max_depth=5),
-    RandomForestClassifier(max_depth=5, n_estimators=10, max_features=1),
-    MLPClassifier(alpha=1, max_iter=1000),
-    AdaBoostClassifier(),
-    GaussianNB(),
-    QuadraticDiscriminantAnalysis()]
+# Define the names and regressors (replacing classifiers)
+names = ["Nearest Neighbors", "Linear Regression", "Random Forest"]
+
+regressors = [
+    LinearRegression(),
+    RandomForestRegressor(max_depth=5, n_estimators=10, max_features=1),
+]
 ```
 
 #### Iterate through all classifiers and get their accuracy score
@@ -583,36 +566,81 @@ We can use the best performing model to make our predictions.
 
 ``` Python
 
-for name, clf in zip(names, classifiers):
-    # Fit the classifier on the training data and make predictions
-    clf.fit(X_train, Y_train)
-    test_data[name + '_team_1_result'] = clf.predict(X_test)
-    accuracy = clf.score(X_test, Y_test)
 
-    # prediction_proba = clf.predict_proba(X_test)
-    # logloss = log_loss(y_test,prediction_proba)
-    # precision, recall, fscore, support = score(y_test, prediction)
-    # conf_martrix = confusion_matrix(y_test, prediction)
-    # clas_report = classification_report(y_test, prediction)
+# Define file paths for saving the models
+model_save_paths = {name: f'{name}_model.pkl' for name in names}
 
-    print(name, accuracy)
+# Train models and save them as pickle files for team_1_goalsScored
+for name, reg in zip(names, regressors):
+    # Fit the regressor on the training data for team_1_goalsScored
+    reg.fit(X_train, Y_train_team1)
+    
+    # Save the model to a pickle file
+    with open(model_save_paths[name] + '_team1', 'wb') as f:
+        pickle.dump(reg, f)
+    
+    # Make predictions on the test data
+    test_data[name + '_team_1_goalsScored'] = reg.predict(X_test)
+    mse_team1 = mean_squared_error(Y_test_team1, test_data[name + '_team_1_goalsScored'])
+    r2_team1 = r2_score(Y_test_team1, test_data[name + '_team_1_goalsScored'])
+    
+    # Print evaluation metrics for each regressor
+    print(f'{name} Team 1 GoalsScored MSE: {mse_team1}')
+    print(f'{name} Team 1 GoalsScored R^2: {r2_team1}')
 
-# Export the predictions to a CSV file
-test_data.to_csv('predictions.csv', index=False)
+# Train models and save them as pickle files for team_2_goalsScored
+for name, reg in zip(names, regressors):
+    # Fit the regressor on the training data for team_2_goalsScored
+    reg.fit(X_train, Y_train_team2)
+    
+    # Save the model to a pickle file
+    with open(model_save_paths[name] + '_team2', 'wb') as f:
+        pickle.dump(reg, f)
+    
+    # Make predictions on the test data
+    test_data[name + '_team_2_goalsScored'] = reg.predict(X_test)
+    mse_team2 = mean_squared_error(Y_test_team2, test_data[name + '_team_2_goalsScored'])
+    r2_team2 = r2_score(Y_test_team2, test_data[name + '_team_2_goalsScored'])
+    
+    # Print evaluation metrics for each regressor
+    print(f'{name} Team 2 GoalsScored MSE: {mse_team2}')
+    print(f'{name} Team 2 GoalsScored R^2: {r2_team2}')
+
+# Apply the saved models to the 'upcoming_matches' dataframe for team_1_goalsScored and team_2_goalsScored
+for name, reg in zip(names, regressors):
+    # Load the models from the pickle files
+    with open(model_save_paths[name] + '_team1', 'rb') as f:
+        loaded_model_team1 = pickle.load(f)
+    with open(model_save_paths[name] + '_team2', 'rb') as f:
+        loaded_model_team2 = pickle.load(f)
+    
+    # Predict team_1_goalsScored and team_2_goalsScored for upcoming matches
+    upcoming_matches[name + '_team_1_goalsScored'] = loaded_model_team1.predict(upcoming_matches[features])
+    upcoming_matches[name + '_team_2_goalsScored'] = loaded_model_team2.predict(upcoming_matches[features])
+
+# Export the predictions for upcoming matches to a CSV file
+upcoming_matches=upcoming_matches[['date'
+                                    'match_id',
+                                    'team_1_name',
+                                    'team_2_name',
+                                    'Linear Regression_team_1_goalsScored',
+                                    'Linear Regression_team_2_goalsScored',
+                                    'Random Forest_team_1_goalsScored',
+                                    'Random Forest_team_2_goalsScored'
+                                    ]]
+upcoming_matches.to_csv('upcoming_matches_goals_predictions.csv', index=False)
+
 ```
 
 ``` 
-Nearest Neighbors 0.43313373253493015
-Logistic Regression 0.5359281437125748
-Linear SVM 0.532435129740519
-RBF SVM 0.4431137724550898
-Gaussian Process 0.4286427145708583
-Decision Tree 0.499001996007984
-Random Forest 0.49001996007984033
-Neural Net 0.5069860279441117
-AdaBoost 0.499500998003992
-Naive Bayes 0.5149700598802395
-QDA 0.4865269461077844
+Linear Regression Team 1 GoalsScored MSE: 1.522465266087107
+Linear Regression Team 1 GoalsScored R^2: 0.13841091659062565
+Random Forest Team 1 GoalsScored MSE: 1.6425479380651578
+Random Forest Team 1 GoalsScored R^2: 0.07045408264010466
+Linear Regression Team 2 GoalsScored MSE: 1.3558499706310188
+Linear Regression Team 2 GoalsScored R^2: 0.0872627399230429
+Random Forest Team 2 GoalsScored MSE: 1.4035225808343477
+Random Forest Team 2 GoalsScored R^2: 0.05517027500419036
 ```
 
 --- 

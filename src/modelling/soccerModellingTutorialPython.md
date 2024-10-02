@@ -2,12 +2,12 @@
 
 ## The Task
 
-This notebook will outline how to train a classification model to predict the outcome of a soccer match using a dataset provided by https://www.football-data.co.uk/
+This notebook will outline how to train a classification model to predict the score of a soccer match using a dataset provided by https://www.football-data.co.uk/
 
 1. Reading data from file and get a raw dataset
 2. Data cleaning and feature engineering
 3. Training a model
-4. The tutorial covers the thought process of manipulating the dataset (why and how), some simple data cleaning, feature engineering and training a classification model.
+4. The tutorial covers the thought process of manipulating the dataset (why and how), some simple data cleaning, feature engineering and training a regression model.
 
 The tutorial **DOES NOT** delve deep into the fundamentals of machine learning, advanced feature engineering or model tuning.
 
@@ -96,7 +96,7 @@ raw_match_stats = raw_match_stats.dropna(inplace=True)
 
 This raw dataset is structured so that each match has an individual row and stats for both teams are on that row with columns titles "home" and "away".
 
-Our goal is to build a machine learning (ML) model that can predict the result of a soccer match. Given that we have some match stats, we will aim to use that information to predict a WIN, LOSS or DRAW.
+Our goal is to build a machine learning (ML) model that can predict the score of a soccer match. Given that we have some match stats, we will aim to use that information to predict a WIN, LOSS or DRAW.
 
 ``` Python
 raw_match_stats
@@ -541,7 +541,7 @@ Y_test_team2 = test_data['team_2_goalsScored']
 
 ```
 
-#### Name and define classifiers
+#### Train the model using a regression algorithm
 
 ``` Python
 import pickle
@@ -556,16 +556,6 @@ regressors = [
     LinearRegression(),
     RandomForestRegressor(max_depth=5, n_estimators=10, max_features=1),
 ]
-```
-
-#### Iterate through all classifiers and get their accuracy score
-
-We can use the best performing model to make our predictions.
-
-*There are several other metrics in the code that have been commented out which might provide helpful insights on model performance.*
-
-``` Python
-
 
 # Define file paths for saving the models
 model_save_paths = {name: f'{name}_model.pkl' for name in names}

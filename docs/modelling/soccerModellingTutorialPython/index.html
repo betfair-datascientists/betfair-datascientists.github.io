@@ -1489,6 +1489,75 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#feature-importance-charts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Feature importance charts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#import-matplotlibpyplot-as-plt-import-numpy-as-np-after-training-the-models-extract-and-plot-feature-importances-def-plot_feature_importancemodel-model_name-features-plot-horizontal-feature-importances-with-a-taller-figure-if-hasattrmodel-feature_importances_-random-forest-feature-importances-importances-modelfeature_importances_-indices-npargsortimportances-1-adjust-the-figure-size-for-a-taller-plot-pltfigurefigsize8-10-plttitleffeature-importances-model_name-create-a-horizontal-bar-chart-pltbarhrangelenindices-importancesindices-aligncenter-pltyticksrangelenindices-featuresi-for-i-in-indices-pltgcainvert_yaxis-invert-y-axis-to-have-the-most-important-feature-at-the-top-plttight_layout-pltshow-elif-hasattrmodel-coef_-linear-regression-feature-importances-magnitude-of-coefficients-importances-npabsmodelcoef_-indices-npargsortimportances-1-adjust-the-figure-size-for-a-taller-plot-pltfigurefigsize8-10-plttitleffeature-importances-model_name-create-a-horizontal-bar-chart-pltbarhrangelenindices-importancesindices-aligncenter-pltyticksrangelenindices-featuresi-for-i-in-indices-pltgcainvert_yaxis-invert-y-axis-to-have-the-most-important-feature-at-the-top-plttight_layout-pltshow-for-name-reg-in-zipnames-regressors-plot-for-team-1-goals-scored-plot_feature_importancereg-name-team-1-goalsscored-features-plot-for-team-2-goals-scored-plot_feature_importancereg-name-team-2-goalsscored-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      import matplotlib.pyplot as plt
+import numpy as np
+
+# After training the models, extract and plot feature importances
+
+def plot_feature_importance(model, model_name, features):
+    &quot;&quot;&quot;Plot horizontal feature importances with a taller figure.&quot;&quot;&quot;
+    if hasattr(model, &#39;feature_importances_&#39;):
+        # Random Forest feature importances
+        importances = model.feature_importances_
+        indices = np.argsort(importances)[::-1]
+
+        # Adjust the figure size for a taller plot
+        plt.figure(figsize=(8, 10))
+        plt.title(f&#39;Feature Importances: {model_name}&#39;)
+
+        # Create a horizontal bar chart
+        plt.barh(range(len(indices)), importances[indices], align=&#39;center&#39;)
+        plt.yticks(range(len(indices)), [features[i] for i in indices])
+        plt.gca().invert_yaxis()  # Invert y-axis to have the most important feature at the top
+        plt.tight_layout()
+        plt.show()
+
+    elif hasattr(model, &#39;coef_&#39;):
+        # Linear Regression feature importances (magnitude of coefficients)
+        importances = np.abs(model.coef_)
+        indices = np.argsort(importances)[::-1]
+
+        # Adjust the figure size for a taller plot
+        plt.figure(figsize=(8, 10))
+        plt.title(f&#39;Feature Importances: {model_name}&#39;)
+
+        # Create a horizontal bar chart
+        plt.barh(range(len(indices)), importances[indices], align=&#39;center&#39;)
+        plt.yticks(range(len(indices)), [features[i] for i in indices])
+        plt.gca().invert_yaxis()  # Invert y-axis to have the most important feature at the top
+        plt.tight_layout()
+        plt.show()
+
+for name, reg in zip(names, regressors):
+    # Plot for team 1 goals scored
+    plot_feature_importance(reg, name + &#39; Team 1 GoalsScored&#39;, features)
+
+    # Plot for team 2 goals scored
+    plot_feature_importance(reg, name + &#39; Team 2 GoalsScored&#39;, features)
+
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="import matplotlib.pyplot as plt import numpy as np # After training the models, extract and plot feature importances def plot_feature_importance(model, model_name, features): """Plot horizontal feature importances with a taller figure.""" if hasattr(model, 'feature_importances_'): # Random Forest feature importances importances = model.feature_importances_ indices = np.argsort(importances)[::-1] # Adjust the figure size for a taller plot plt.figure(figsize=(8, 10)) plt.title(f'Feature Importances: {model_name}') # Create a horizontal bar chart plt.barh(range(len(indices)), importances[indices], align='center') plt.yticks(range(len(indices)), [features[i] for i in indices]) plt.gca().invert_yaxis() # Invert y-axis to have the most important feature at the top plt.tight_layout() plt.show() elif hasattr(model, 'coef_'): # Linear Regression feature importances (magnitude of coefficients) importances = np.abs(model.coef_) indices = np.argsort(importances)[::-1] # Adjust the figure size for a taller plot plt.figure(figsize=(8, 10)) plt.title(f'Feature Importances: {model_name}') # Create a horizontal bar chart plt.barh(range(len(indices)), importances[indices], align='center') plt.yticks(range(len(indices)), [features[i] for i in indices]) plt.gca().invert_yaxis() # Invert y-axis to have the most important feature at the top plt.tight_layout() plt.show() for name, reg in zip(names, regressors): # Plot for team 1 goals scored plot_feature_importance(reg, name + ' Team 1 GoalsScored', features) # Plot for team 2 goals scored plot_feature_importance(reg, name + ' Team 2 GoalsScored', features)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#disclaimer" class="md-nav__link">
     <span class="md-ellipsis">
       Disclaimer
@@ -3885,7 +3954,7 @@ Then process the entire script again <strong>except</strong> for the first and s
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
 <a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># Define the names and regressors (replacing classifiers)</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Nearest Neighbors&quot;</span><span class="p">,</span> <span class="s2">&quot;Linear Regression&quot;</span><span class="p">,</span> <span class="s2">&quot;Random Forest&quot;</span><span class="p">]</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Linear Regression&quot;</span><span class="p">,</span><span class="s2">&quot;Random Forest&quot;</span><span class="p">]</span>
 <a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>
 <a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="n">regressors</span> <span class="o">=</span> <span class="p">[</span>
 <a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>    <span class="n">LinearRegression</span><span class="p">(),</span>
@@ -3944,7 +4013,7 @@ Then process the entire script again <strong>except</strong> for the first and s
 <a id="__codelineno-18-63" name="__codelineno-18-63" href="#__codelineno-18-63"></a>    <span class="n">upcoming_matches</span><span class="p">[</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;_team_2_goalsScored&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">loaded_model_team2</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">upcoming_matches</span><span class="p">[</span><span class="n">features</span><span class="p">])</span>
 <a id="__codelineno-18-64" name="__codelineno-18-64" href="#__codelineno-18-64"></a>
 <a id="__codelineno-18-65" name="__codelineno-18-65" href="#__codelineno-18-65"></a><span class="c1"># Export the predictions for upcoming matches to a CSV file</span>
-<a id="__codelineno-18-66" name="__codelineno-18-66" href="#__codelineno-18-66"></a><span class="n">upcoming_matches</span><span class="o">=</span><span class="n">upcoming_matches</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span>
+<a id="__codelineno-18-66" name="__codelineno-18-66" href="#__codelineno-18-66"></a><span class="n">upcoming_matches</span><span class="o">=</span><span class="n">upcoming_matches</span><span class="p">[[</span><span class="s1">&#39;date&#39;</span><span class="p">,</span>
 <a id="__codelineno-18-67" name="__codelineno-18-67" href="#__codelineno-18-67"></a>                                    <span class="s1">&#39;match_id&#39;</span><span class="p">,</span>
 <a id="__codelineno-18-68" name="__codelineno-18-68" href="#__codelineno-18-68"></a>                                    <span class="s1">&#39;team_1_name&#39;</span><span class="p">,</span>
 <a id="__codelineno-18-69" name="__codelineno-18-69" href="#__codelineno-18-69"></a>                                    <span class="s1">&#39;team_2_name&#39;</span><span class="p">,</span>
@@ -3964,7 +4033,53 @@ Then process the entire script again <strong>except</strong> for the first and s
 <a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a>Random Forest Team 2 GoalsScored MSE: 1.4035225808343477
 <a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a>Random Forest Team 2 GoalsScored R^2: 0.05517027500419036
 </code></pre></div>
-<hr />
+<h4 id="feature-importance-charts">Feature importance charts</h4>
+<h2 id="import-matplotlibpyplot-as-plt-import-numpy-as-np-after-training-the-models-extract-and-plot-feature-importances-def-plot_feature_importancemodel-model_name-features-plot-horizontal-feature-importances-with-a-taller-figure-if-hasattrmodel-feature_importances_-random-forest-feature-importances-importances-modelfeature_importances_-indices-npargsortimportances-1-adjust-the-figure-size-for-a-taller-plot-pltfigurefigsize8-10-plttitleffeature-importances-model_name-create-a-horizontal-bar-chart-pltbarhrangelenindices-importancesindices-aligncenter-pltyticksrangelenindices-featuresi-for-i-in-indices-pltgcainvert_yaxis-invert-y-axis-to-have-the-most-important-feature-at-the-top-plttight_layout-pltshow-elif-hasattrmodel-coef_-linear-regression-feature-importances-magnitude-of-coefficients-importances-npabsmodelcoef_-indices-npargsortimportances-1-adjust-the-figure-size-for-a-taller-plot-pltfigurefigsize8-10-plttitleffeature-importances-model_name-create-a-horizontal-bar-chart-pltbarhrangelenindices-importancesindices-aligncenter-pltyticksrangelenindices-featuresi-for-i-in-indices-pltgcainvert_yaxis-invert-y-axis-to-have-the-most-important-feature-at-the-top-plttight_layout-pltshow-for-name-reg-in-zipnames-regressors-plot-for-team-1-goals-scored-plot_feature_importancereg-name-team-1-goalsscored-features-plot-for-team-2-goals-scored-plot_feature_importancereg-name-team-2-goalsscored-features"><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># After training the models, extract and plot feature importances</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="k">def</span> <span class="nf">plot_feature_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot horizontal feature importances with a taller figure.&quot;&quot;&quot;</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a>    <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;feature_importances_&#39;</span><span class="p">):</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>        <span class="c1"># Random Forest feature importances</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>        <span class="n">importances</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a>        <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>        <span class="c1"># Adjust the figure size for a taller plot</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Feature Importances: </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a>        <span class="c1"># Create a horizontal bar chart</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)),</span> <span class="n">importances</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)),</span> <span class="p">[</span><span class="n">features</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">])</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>  <span class="c1"># Invert y-axis to have the most important feature at the top</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a>    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;coef_&#39;</span><span class="p">):</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a>        <span class="c1"># Linear Regression feature importances (magnitude of coefficients)</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a>        <span class="n">importances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a>        <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a>
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a>        <span class="c1"># Adjust the figure size for a taller plot</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Feature Importances: </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a>
+<a id="__codelineno-20-33" name="__codelineno-20-33" href="#__codelineno-20-33"></a>        <span class="c1"># Create a horizontal bar chart</span>
+<a id="__codelineno-20-34" name="__codelineno-20-34" href="#__codelineno-20-34"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)),</span> <span class="n">importances</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+<a id="__codelineno-20-35" name="__codelineno-20-35" href="#__codelineno-20-35"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)),</span> <span class="p">[</span><span class="n">features</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">])</span>
+<a id="__codelineno-20-36" name="__codelineno-20-36" href="#__codelineno-20-36"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>  <span class="c1"># Invert y-axis to have the most important feature at the top</span>
+<a id="__codelineno-20-37" name="__codelineno-20-37" href="#__codelineno-20-37"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<a id="__codelineno-20-38" name="__codelineno-20-38" href="#__codelineno-20-38"></a>        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="__codelineno-20-39" name="__codelineno-20-39" href="#__codelineno-20-39"></a>
+<a id="__codelineno-20-40" name="__codelineno-20-40" href="#__codelineno-20-40"></a><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">reg</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">names</span><span class="p">,</span> <span class="n">regressors</span><span class="p">):</span>
+<a id="__codelineno-20-41" name="__codelineno-20-41" href="#__codelineno-20-41"></a>    <span class="c1"># Plot for team 1 goals scored</span>
+<a id="__codelineno-20-42" name="__codelineno-20-42" href="#__codelineno-20-42"></a>    <span class="n">plot_feature_importance</span><span class="p">(</span><span class="n">reg</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; Team 1 GoalsScored&#39;</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
+<a id="__codelineno-20-43" name="__codelineno-20-43" href="#__codelineno-20-43"></a>
+<a id="__codelineno-20-44" name="__codelineno-20-44" href="#__codelineno-20-44"></a>    <span class="c1"># Plot for team 2 goals scored</span>
+<a id="__codelineno-20-45" name="__codelineno-20-45" href="#__codelineno-20-45"></a>    <span class="n">plot_feature_importance</span><span class="p">(</span><span class="n">reg</span><span class="p">,</span> <span class="n">name</span> <span class="o">+</span> <span class="s1">&#39; Team 2 GoalsScored&#39;</span><span class="p">,</span> <span class="n">features</span><span class="p">)</span>
+</code></pre></div></h2>
 <h3 id="disclaimer">Disclaimer</h3>
 <p>Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.</p>
 

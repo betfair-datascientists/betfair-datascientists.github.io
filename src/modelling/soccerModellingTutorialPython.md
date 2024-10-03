@@ -550,7 +550,7 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.linear_model import LinearRegression
 
 # Define the names and regressors (replacing classifiers)
-names = ["Nearest Neighbors", "Linear Regression", "Random Forest"]
+names = ["Linear Regression","Random Forest"]
 
 regressors = [
     LinearRegression(),
@@ -609,7 +609,7 @@ for name, reg in zip(names, regressors):
     upcoming_matches[name + '_team_2_goalsScored'] = loaded_model_team2.predict(upcoming_matches[features])
 
 # Export the predictions for upcoming matches to a CSV file
-upcoming_matches=upcoming_matches[['date'
+upcoming_matches=upcoming_matches[['date',
                                     'match_id',
                                     'team_1_name',
                                     'team_2_name',
@@ -619,6 +619,7 @@ upcoming_matches=upcoming_matches[['date'
                                     'Random Forest_team_2_goalsScored'
                                     ]]
 upcoming_matches.to_csv('upcoming_matches_goals_predictions.csv', index=False)
+
 
 ```
 
@@ -633,6 +634,57 @@ Random Forest Team 2 GoalsScored MSE: 1.4035225808343477
 Random Forest Team 2 GoalsScored R^2: 0.05517027500419036
 ```
 
+#### Feature importance charts
+
+``` Python
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# After training the models, extract and plot feature importances
+
+def plot_feature_importance(model, model_name, features):
+    """Plot horizontal feature importances with a taller figure."""
+    if hasattr(model, 'feature_importances_'):
+        # Random Forest feature importances
+        importances = model.feature_importances_
+        indices = np.argsort(importances)[::-1]
+        
+        # Adjust the figure size for a taller plot
+        plt.figure(figsize=(8, 10))
+        plt.title(f'Feature Importances: {model_name}')
+        
+        # Create a horizontal bar chart
+        plt.barh(range(len(indices)), importances[indices], align='center')
+        plt.yticks(range(len(indices)), [features[i] for i in indices])
+        plt.gca().invert_yaxis()  # Invert y-axis to have the most important feature at the top
+        plt.tight_layout()
+        plt.show()
+
+    elif hasattr(model, 'coef_'):
+        # Linear Regression feature importances (magnitude of coefficients)
+        importances = np.abs(model.coef_)
+        indices = np.argsort(importances)[::-1]
+        
+        # Adjust the figure size for a taller plot
+        plt.figure(figsize=(8, 10))
+        plt.title(f'Feature Importances: {model_name}')
+        
+        # Create a horizontal bar chart
+        plt.barh(range(len(indices)), importances[indices], align='center')
+        plt.yticks(range(len(indices)), [features[i] for i in indices])
+        plt.gca().invert_yaxis()  # Invert y-axis to have the most important feature at the top
+        plt.tight_layout()
+        plt.show()
+
+for name, reg in zip(names, regressors):
+    # Plot for team 1 goals scored
+    plot_feature_importance(reg, name + ' Team 1 GoalsScored', features)
+    
+    # Plot for team 2 goals scored
+    plot_feature_importance(reg, name + ' Team 2 GoalsScored', features)
+
+```
 --- 
 ### Disclaimer
 

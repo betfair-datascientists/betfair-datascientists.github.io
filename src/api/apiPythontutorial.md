@@ -12,11 +12,6 @@ This tutorial will also assume that you have a basic understanding of what an AP
 ## New Zealand customers
 **All requests to Betfair sites from IP addresses located in New Zealand must now call endpoints ending in '.com.au'** (requests to '.com' endpoints will be blocked).
 
-All sites containing the url 'developer.betfair.com' do not currently have an active alternative 'developer.betfair.com.au' endpoint. This is currently being worked on being rectified by developers at Betfair UK.
-In the meantime, New Zealand customers are advised to utilise a VPN or VPS with an Australian IP address to access these sites until further advised. 
-
-Betfair apologises for any inconvenience caused.
-
 ---
 ## Quick Links
 

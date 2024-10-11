@@ -1058,41 +1058,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#grouping-players-by-teamsimport-pandas-as-pd-load-the-csv-file-into-a-dataframe-df-pdread_csvbrownlow_medal_datathon_2024_submission_formcsv-step-1-replace-spaces-with-underscores-in-player_team-column-dfplayer_team-dfplayer_teamstrreplace-_-step-2-create-a-list-of-unique-player_team-values-unique_teams-dfplayer_teamunique-step-3-iterate-over-unique-teams-and-get-unique-player_id-values-for-each-team-team_player_ids-for-team-in-unique_teams-create-a-sub-dataframe-for-each-team-sub_df-dfdfplayer_team-team-get-the-list-of-unique-player_ids-for-that-team-unique_player_ids-sub_dfplayer_iduniquetolist-store-in-dictionary-with-team-as-key-team_player_idsteam-unique_player_ids-dfrunner_name-dfplayer_first_name-dfplayer_last_name-player_ids_df-dfplayer_idrunner_namedrop_duplicates-player_ids_dfplayer_id-player_ids_dfplayer_idastypestr" class="md-nav__link">
-    <span class="md-ellipsis">
-      Grouping players by teamsimport pandas as pd
-
-# Load the CSV file into a dataframe
-df = pd.read_csv(&#39;Brownlow_Medal_Datathon_2024_Submission_Form.csv&#39;)
-
-# Step 1: Replace spaces with underscores in &#39;player_team&#39; column
-df[&#39;player_team&#39;] = df[&#39;player_team&#39;].str.replace(&#39; &#39;, &#39;_&#39;)
-
-# Step 2: Create a list of unique &#39;player_team&#39; values
-unique_teams = df[&#39;player_team&#39;].unique()
-
-# Step 3: Iterate over unique teams and get unique &#39;player_id&#39; values for each team
-team_player_ids = {}
-for team in unique_teams:
-    # Create a sub-dataframe for each team
-    sub_df = df[df[&#39;player_team&#39;] == team]
-
-    # Get the list of unique player_ids for that team
-    unique_player_ids = sub_df[&#39;player_id&#39;].unique().tolist()
-
-    # Store in dictionary with team as key
-    team_player_ids[team] = unique_player_ids
-
-df[&#39;runner_name&#39;] = df[&#39;player_first_name&#39;] + &#39; &#39; + df[&#39;player_last_name&#39;]
-player_ids_df = df[[&#39;player_id&#39;,&#39;runner_name&#39;]].drop_duplicates()
-player_ids_df[&#39;player_id&#39;] = player_ids_df[&#39;player_id&#39;].astype(str)
-
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#team-to-poll-most-votes" class="md-nav__link">
     <span class="md-ellipsis">
       Team To Poll Most Votes
@@ -3311,7 +3276,7 @@ We will then use the results of these simulations to generate rated prices for s
 </ul>
 <p>We'll create a dictionary of lists which will contain each team as the key and a list of player_ids as the value.
 We'll also create a dataframe containing the player ids and the players' full names so we can match to the Betfair data.</p>
-<h2 id="grouping-players-by-teamsimport-pandas-as-pd-load-the-csv-file-into-a-dataframe-df-pdread_csvbrownlow_medal_datathon_2024_submission_formcsv-step-1-replace-spaces-with-underscores-in-player_team-column-dfplayer_team-dfplayer_teamstrreplace-_-step-2-create-a-list-of-unique-player_team-values-unique_teams-dfplayer_teamunique-step-3-iterate-over-unique-teams-and-get-unique-player_id-values-for-each-team-team_player_ids-for-team-in-unique_teams-create-a-sub-dataframe-for-each-team-sub_df-dfdfplayer_team-team-get-the-list-of-unique-player_ids-for-that-team-unique_player_ids-sub_dfplayer_iduniquetolist-store-in-dictionary-with-team-as-key-team_player_idsteam-unique_player_ids-dfrunner_name-dfplayer_first_name-dfplayer_last_name-player_ids_df-dfplayer_idrunner_namedrop_duplicates-player_ids_dfplayer_id-player_ids_dfplayer_idastypestr"><div class="highlight"><span class="filename">Grouping players by teams</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight"><span class="filename">Grouping players by teams</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Load the CSV file into a dataframe</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Brownlow_Medal_Datathon_2024_Submission_Form.csv&#39;</span><span class="p">)</span>
@@ -3337,7 +3302,8 @@ We'll also create a dataframe containing the player ids and the players' full na
 <a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;runner_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;player_first_name&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;player_last_name&#39;</span><span class="p">]</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="n">player_ids_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;player_id&#39;</span><span class="p">,</span><span class="s1">&#39;runner_name&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
 <a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="n">player_ids_df</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">player_ids_df</span><span class="p">[</span><span class="s1">&#39;player_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
-</code></pre></div></h2>
+</code></pre></div>
+<hr />
 <h2 id="team-to-poll-most-votes">Team To Poll Most Votes</h2>
 <div class="highlight"><span class="filename">Team To Poll Most Votes</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>

@@ -159,6 +159,7 @@ We'll create a dictionary of lists which will contain each team as the key and a
 We'll also create a dataframe containing the player ids and the players' full names so we can match to the Betfair data.
 
 ```py title="Grouping players by teams"
+
 import pandas as pd
 
 # Load the CSV file into a dataframe

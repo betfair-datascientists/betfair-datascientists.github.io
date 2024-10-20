@@ -196,6 +196,8 @@ By downloading this data, you acknowledge and agree that:
  - [A-League 2022-2023 Match Odds Markets](../assets/A-League_2022-2023_Match_Odds.csv)
  - [A-League 2023-2024 All Markets](../assets/A-League_2023-2024_All_Markets.csv)
  - [A-League 2023-2024 Match Odds Markets](../assets/A-League_2023-2024_Match_Odds.csv)
+ - [A-League 2024-2025 All Markets](../assets/A-League_2024-2025_All_Markets.csv)
+ - [A-League 2024-2025 Match Odds Markets](../assets/A-League_2024-2025_Match_Odds.csv)
 
 ### A-League Womens
 

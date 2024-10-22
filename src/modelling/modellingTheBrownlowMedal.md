@@ -1,6 +1,6 @@
 # How does a Data Scientist model the Brownlow?
 
-This article has been written by Liam from [Crow Data Science](https://www.crowdatascience.com/) for the [Betfair 2024 AFL Brownlow Medal Datathon](../modelling/BrownlowMedal2024Datathon.md).
+This article has been written by Liam from [Crow Data Science](https://www.crowdatascience.com/)
 You can chat with Liam in the [Betfair Quants Discord Server](https://forms.office.com/r/ZG9ea1xQj1) or on Twitter/X (@crow_data_sigh)
 
 ---

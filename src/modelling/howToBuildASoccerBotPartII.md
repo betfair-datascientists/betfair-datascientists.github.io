@@ -530,7 +530,7 @@ We'll quickly process our tar files using our super fast **Rust**-driven tutoria
 
 By doing so we've created a csv file where we can easily pick out the markets we want to use. (You can skip this step and use the flumine process of check_market_book to filter out unwanted markets)
 
- - [EPL Market CSV File](src/modelling/assets/EPL_Markets.csv)
+ - [EPL Market CSV File](../modelling/assets/EPL_Markets.csv)
 
 !!! info "Market Ids"
     Market ids in the stream files are denoted by "1.XXXXXXXXX", however in the provided csv file we have removed the "1.".

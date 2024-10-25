@@ -509,11 +509,11 @@ Now our model outputs for Arsenal v Leicester look like:
 | 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 0 - 1                     | 8.7         |
 | 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 0 - 2                     | 46.97       |
 | 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 1 - 0                     | 4.33        |
-| 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 1-Jan                     | 11.72       |
-| 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 1-Feb                     | 63.26       |
+| 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 1 - 1                     | 11.72       |
+| 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 1 - 2                     | 63.26       |
 | 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 2 - 0                     | 8.63        |
-| 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 2-Jan                     | 23.36       |
-| 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 2-Feb                     | 126.13      |
+| 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 2 - 1                     | 23.36       |
+| 13/08/2022 | Arsenal v Leicester | Half Time Score                     | 2 - 2                     | 126.13      |
 | 13/08/2022 | Arsenal v Leicester | Half Time Score                     | Any Unquoted              | 18.5        |
 
 ## Flumine Simulation

@@ -541,7 +541,7 @@ By doing so we've created a csv file where we can easily pick out the markets we
 
 ```py title="Remove '1.' from market_id in Python"
 
-df['market_id'] = df['market_id'].apply(lambda x: str(x).ljust(9, '0')[:9])
+df['MARKET_ID'] = df['MARKET_ID'].apply(lambda x: str(x).ljust(9, '0')[:9])
 
 ```
 
@@ -593,7 +593,7 @@ The following section will iterate over all files in your folder, so the options
 tar_files = glob.glob(os.path.join(source_folder, '*.tar'))
 
 def retrieve_betfair_markets():
-    markets = pd.read_csv('C:/Users/motykam/Downloads/EPL_Markets.csv',dtype={'MARKET_ID' : str})
+    markets = pd.read_csv('EPL_Markets.csv',dtype={'MARKET_ID' : str})
 
     markets = markets['MARKET_ID'].tolist()
 

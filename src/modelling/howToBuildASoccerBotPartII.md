@@ -1,6 +1,6 @@
 # How To Build A Betfair Soccer Bot Part 2
 
-This is a continuation of the tutorial - [How To Build A Betfair Soccer Bot Part 2](../modelling/howToBuildASoccerBotPartI.md)
+This is a continuation of the tutorial - [How To Build A Betfair Soccer Bot Part 1](../modelling/howToBuildASoccerBotPartI.md)
 
 **"I've trained a model, but how can I use it to bet with?"**
 

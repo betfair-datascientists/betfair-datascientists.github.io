@@ -1022,7 +1022,7 @@ csv_file = destination+'soccer_simulation_ensemble.csv'
 df = pd.read_csv(csv_file,dtype={'market_id':'str'})
 market_ids = df['market_id'].unique().tolist()
 # Define the folder to iterate over
-folder_path = 'C:/Users/motykam/Downloads/EPLStreamFiles'
+folder_path = 'FOLDER WHERE THE DECOMPRESSED STREAM FILES ARE STORED'
 
 # Iterate over files in the folder
 for filename in os.listdir(folder_path):

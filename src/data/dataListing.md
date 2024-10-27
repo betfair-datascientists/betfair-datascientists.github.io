@@ -231,6 +231,8 @@ By downloading this data, you acknowledge and agree that:
  - [WBBL 2022 Match Odds Markets](../assets/WBBL08_Match_Odds.csv)
  - [WBBL 2023 All Markets](../assets/WBBL09_All_Markets.csv)
  - [WBBL 2023 Match Odds Markets](../assets/WBBL09_Match_Odds.csv)
+ - [WBBL 2024 All Markets](../assets/WBBL10_All_Markets.csv)
+ - [WBBL 2024 Match Odds Markets](../assets/WBBL10_Match_Odds.csv)
 
 ### NBL
  - [NBL 2021-2022 All Markets](../assets/NBL_2021-2022_All_Markets.csv)

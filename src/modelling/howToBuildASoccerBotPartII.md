@@ -158,12 +158,12 @@ df['Double Chance_Home Or Draw'] = df['Match Odds_Home'] + df['Match Odds_The Dr
 df['Double Chance_Draw Or Away'] = df['Match Odds_The Draw'] + df['Match Odds_Away']
 
 # Match Odds & Both Teams to Score
-df['Match Odds And Both Teams To Score_Home/Yes'] = df['Match Odds_Home'] * df['Both Teams To Score?_Yes']
-df['Match Odds And Both Teams To Score_Home/No'] = df['Match Odds_Home'] * df['Both Teams To Score?_No']
-df['Match Odds And Both Teams To Score_Draw/Yes'] = df['Match Odds_The Draw'] * df['Both Teams To Score?_Yes']
-df['Match Odds And Both Teams To Score_Draw/No'] = df['Match Odds_The Draw'] * df['Both Teams To Score?_No']
-df['Match Odds And Both Teams To Score_Away/Yes'] = df['Match Odds_Away'] * df['Both Teams To Score?_Yes']
-df['Match Odds And Both Teams To Score_Away/No'] = df['Match Odds_Away'] * df['Both Teams To Score?_No']
+df['Match Odds And Both Teams To Score_Home/Yes'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j < 0.5]].sum(axis=1)
+df['Match Odds And Both Teams To Score_Home/No'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j > 0.5]].sum(axis=1)
+df['Match Odds And Both Teams To Score_Draw/Yes'] = df['Match Odds_The Draw'] - df['home_0_x_away_0']
+df['Match Odds And Both Teams To Score_Draw/No'] = df['home_0_x_away_0']
+df['Match Odds And Both Teams To Score_Away/Yes'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j and i < 0.5]].sum(axis=1)
+df['Match Odds And Both Teams To Score_Away/No'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j and i > 0.5]].sum(axis=1)
 
 # Correct Score
 df['Correct Score_0 - 0'] = df['home_0_x_away_0']
@@ -235,20 +235,20 @@ df['Away Over/Under 2.5 Goals_Over 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for 
 df['Away Over/Under 2.5 Goals_Under 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j < 2.5]].sum(axis=1)
 
 # Match Odds & O/U 2.5 Goals
-df['Match Odds And Over/Under 2.5 Goals_Home/Over 2.5 Goals'] = df['Match Odds_Home'] * df['Over/Under 2.5 Goals_Over 2.5 Goals']
-df['Match Odds And Over/Under 2.5 Goals_Home/Under 2.5 Goals'] = df['Match Odds_Home'] * df['Over/Under 2.5 Goals_Under 2.5 Goals']
-df['Match Odds And Over/Under 2.5 Goals_Draw/Over 2.5 Goals'] = df['Match Odds_The Draw'] * df['Over/Under 2.5 Goals_Over 2.5 Goals']
-df['Match Odds And Over/Under 2.5 Goals_Draw/Under 2.5 Goals'] = df['Match Odds_The Draw'] * df['Over/Under 2.5 Goals_Under 2.5 Goals']
-df['Match Odds And Over/Under 2.5 Goals_Away/Over 2.5 Goals'] = df['Match Odds_Away'] * df['Over/Under 2.5 Goals_Over 2.5 Goals']
-df['Match Odds And Over/Under 2.5 Goals_Away/Under 2.5 Goals'] = df['Match Odds_Away'] * df['Over/Under 2.5 Goals_Under 2.5 Goals']
+df['Match Odds And Over/Under 2.5 Goals_Home/Over 2.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Home/Under 2.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Draw/Over 2.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Draw/Under 2.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Away/Over 2.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Away/Under 2.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
 
 # Match Odds & O/U 3.5 Goals
-df['Match Odds And Over/Under 3.5 Goals_Home/Over 3.5 Goals'] = df['Match Odds_Home'] * df['Over/Under 3.5 Goals_Over 3.5 Goals']
-df['Match Odds And Over/Under 3.5 Goals_Home/Under 3.5 Goals'] = df['Match Odds_Home'] * df['Over/Under 3.5 Goals_Under 3.5 Goals']
-df['Match Odds And Over/Under 3.5 Goals_Draw/Over 3.5 Goals'] = df['Match Odds_The Draw'] * df['Over/Under 3.5 Goals_Over 3.5 Goals']
-df['Match Odds And Over/Under 3.5 Goals_Draw/Under 3.5 Goals'] = df['Match Odds_The Draw'] * df['Over/Under 3.5 Goals_Under 3.5 Goals']
-df['Match Odds And Over/Under 3.5 Goals_Away/Over 3.5 Goals'] = df['Match Odds_Away'] * df['Over/Under 3.5 Goals_Over 3.5 Goals']
-df['Match Odds And Over/Under 3.5 Goals_Away/Under 3.5 Goals'] = df['Match Odds_Away'] * df['Over/Under 3.5 Goals_Under 3.5 Goals']
+df['Match Odds And Over/Under 2.5 Goals_Home/Over 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Home/Under 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Draw/Over 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Draw/Under 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Away/Over 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
+df['Match Odds And Over/Under 2.5 Goals_Away/Under 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
 
 # Home Win To Nil
 df['Home Win To Nil_Yes'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j == 0]].sum(axis=1)

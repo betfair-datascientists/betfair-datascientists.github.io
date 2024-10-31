@@ -113,6 +113,7 @@ from nba_api.live.nba.endpoints import boxscore
 from nba_api.stats.static import teams
 from nba_api.stats.endpoints import leaguegamefinder
 from tqdm import tqdm
+import numpy as np
 
 nba_teams = teams.get_teams()
 teams = [team for team in nba_teams]
@@ -127,6 +128,33 @@ for team_id in id_list:
 
 league_dataframe['GAME_DATE'] = pd.to_datetime(league_dataframe['GAME_DATE'])
 unique_game_ids = league_dataframe.loc[league_dataframe['GAME_DATE'] >= '2019-10-01', 'GAME_ID'].unique().astype(str).tolist()
+
+# List of required columns
+required_columns = [
+    'gameId', 'gameTimeLocal', 'gameTimeUTC', 'duration', 'gameCode',
+    'gameStatusText', 'gameStatus', 'regulationPeriods', 'period',
+    'arenaId', 'arenaName', 'arenaCity', 'arenaState', 'arenaCountry',
+    'arenaTimezone', 'teamId', 'teamName', 'teamCity', 'teamTricode',
+    'score', 'teamStatus', 'status', 'order', 'personId', 'jerseyNum',
+    'position', 'starter', 'oncourt', 'played', 'name', 'nameI',
+    'firstName', 'familyName', 'statistics.assists', 'statistics.blocks',
+    'statistics.blocksReceived', 'statistics.fieldGoalsAttempted',
+    'statistics.fieldGoalsMade', 'statistics.fieldGoalsPercentage',
+    'statistics.foulsOffensive', 'statistics.foulsDrawn',
+    'statistics.foulsPersonal', 'statistics.foulsTechnical',
+    'statistics.freeThrowsAttempted', 'statistics.freeThrowsMade',
+    'statistics.freeThrowsPercentage', 'statistics.minus',
+    'statistics.minutes', 'statistics.minutesCalculated', 'statistics.plus',
+    'statistics.plusMinusPoints', 'statistics.points',
+    'statistics.pointsFastBreak', 'statistics.pointsInThePaint',
+    'statistics.pointsSecondChance', 'statistics.reboundsDefensive',
+    'statistics.reboundsOffensive', 'statistics.reboundsTotal',
+    'statistics.steals', 'statistics.threePointersAttempted',
+    'statistics.threePointersMade', 'statistics.threePointersPercentage',
+    'statistics.turnovers', 'statistics.twoPointersAttempted',
+    'statistics.twoPointersMade', 'statistics.twoPointersPercentage',
+    'notPlayingReason', 'notPlayingDescription'
+]
 
 for matchup in tqdm(unique_game_ids, desc="Processing Matchups", unit="matchup"):
     try:
@@ -161,13 +189,18 @@ for matchup in tqdm(unique_game_ids, desc="Processing Matchups", unit="matchup")
         merged_df = pd.merge(game_information, team_info, on='key')
         merged_df = merged_df.drop(columns=['key'])
 
+        # Add missing columns with NaN values
+        for column in required_columns:
+            if column not in merged_df.columns:
+                merged_df[column] = np.nan
+
+        # Reorder the DataFrame to ensure all required columns are included
+        merged_df = merged_df[required_columns]
+
         merged_df.to_csv('nba_player_data.csv', index=False, mode='a', header=False)
     
     except Exception:
         continue
-
-    finally:
-        unique_game_ids.remove(matchup)
 
 ```
 

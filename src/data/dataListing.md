@@ -45,6 +45,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2024-07](../assets/ANZ_Thoroughbreds_2024_07.csv)
  - [Aus & NZ Thoroughbreds 2024-08](../assets/ANZ_Thoroughbreds_2024_08.csv)
  - [Aus & NZ Thoroughbreds 2024-09](../assets/ANZ_Thoroughbreds_2024_09.csv)
+ - [Aus & NZ Thoroughbreds 2024-10](../assets/ANZ_Thoroughbreds_2024_10.csv)
 
 ### Thoroughbred Predictions Model
 
@@ -85,6 +86,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Harness 2024-07](../assets/ANZ_Harness_2024_07.csv)
  - [Aus & NZ Harness 2024-08](../assets/ANZ_Harness_2024_08.csv)
  - [Aus & NZ Harness 2024-09](../assets/ANZ_Harness_2024_09.csv)
+ - [Aus & NZ Harness 2024-10](../assets/ANZ_Harness_2024_10.csv)
 
 ### Harness Predictions Model
 
@@ -114,6 +116,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2024-07](../assets/ANZ_Greyhounds_2024_07.csv)
  - [Aus & NZ Greyhounds 2024-08](../assets/ANZ_Greyhounds_2024_08.csv)
  - [Aus & NZ Greyhounds 2024-09](../assets/ANZ_Greyhounds_2024_09.csv)
+ - [Aus & NZ Greyhounds 2024-10](../assets/ANZ_Greyhounds_2024_10.csv) 
 
 ### Greyhound Predictions Model (Iggy Version 1 - Now Deprecated)
 
@@ -209,6 +212,8 @@ By downloading this data, you acknowledge and agree that:
  - [A-League Womens 2022-2023 Match Odds Markets](../assets/A-League_Womens_2022-2023_Match_Odds.csv)
  - [A-League Womens 2023-2024 All Markets](../assets/A-League_Womens_2023-2024_All_Markets.csv)
  - [A-League Womens 2023-2024 Match Odds Markets](../assets/A-League_Womens_2023-2024_Match_Odds.csv)
+ - [A-League Womens 2024-2025 All Markets](../assets/A-League_Womens_2024-2025_All_Markets.csv)
+ - [A-League Womens 2024-2025 Match Odds Markets](../assets/A-League_Womens_2024-2025_Match_Odds.csv)
 
 ### BBL 
 

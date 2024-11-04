@@ -1,0 +1,874 @@
+Date,Code,State,Venue,Tipster,Market_Id,Selection_Id,Bet_Type,Best_Bet,Bet_Text,Selection_Name,Win_Lose, Bsp ,  Tipster_Profit  ,  Back_Profit  ,  Lay_Profit  
+1/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,233780715,72851424,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,2. My Monroe ,0,1.34,-$2.00 ,-$2.00 , $5.47 
+1/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,233780680,61219235,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,7. Lydia Wave,1,2.83, $1.70 , $1.70 ,-$1.00 
+1/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,233780720,73793204,LAY,FALSE,Rated Price: 4 | Stake: 1 Units,7. Dior Wick,0,8, $0.13 ,-$1.00 , $0.13 
+1/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,233780695,51685843,LAY,FALSE,Rated Price: 6 | Stake: 1 Units,7. Ebby Justice,0,9.36, $0.11 ,-$1.00 , $0.11 
+1/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,233780705,62908809,LAY,FALSE,Rated Price: 6.5 | Stake: 2 Units,4. Zeus Keeping,0,12.31, $0.16 ,-$2.00 , $0.16 
+1/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,233780700,56272350,LAY,TRUE,Rated Price: 5.5 | Stake: 2 Units,8. Scarlet Oak,0,17.56, $0.11 ,-$2.00 , $0.11 
+1/10/2024,Harness,QLD,Albion Park,Ryan Spice,233779514,67083333,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,7. Aroda,0,1.77,-$2.00 ,-$2.00 , $2.42 
+1/10/2024,Harness,QLD,Albion Park,Ryan Spice,233779522,28658211,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,7. Tairlaw Toll,0,2.18,-$2.00 ,-$2.00 , $1.58 
+1/10/2024,Harness,QLD,Albion Park,Ryan Spice,233779512,74308437,BACK,TRUE,Rated Price: 1.8 | Stake: 2 Units,9. Sun Wukong,0,2.36,-$2.00 ,-$2.00 , $1.37 
+1/10/2024,Harness,WA,Gloucester Park,Scott Hill,233788712,28467512,LAY,FALSE,Rated Price: 3 | Stake: 2 Units,3. Hengheng,0,2.22, $1.52 ,-$2.00 , $1.52 
+1/10/2024,Harness,WA,Gloucester Park,Scott Hill,233788712,860095,BACK,FALSE,Rated Price: 2.8 | Stake: 2 Units,5. Benji,1,2.4, $2.60 , $2.60 ,-$2.00 
+1/10/2024,Harness,WA,Gloucester Park,Scott Hill,233788706,42403661,BACK,FALSE,Rated Price: 2.2 | Stake: 2 Units,2. Seven No Trumps,0,2.72,-$2.00 ,-$2.00 , $1.08 
+1/10/2024,Harness,WA,Gloucester Park,Scott Hill,233788709,43701142,BACK,FALSE,Rated Price: 2.5 | Stake: 3 Units,9. Jaxon Morgan,1,9.57, $23.91 , $23.91 ,-$3.00 
+1/10/2024,Harness,NSW,Menangle,Will Norman,233781677,74308400,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,6. Peace Out,0,2.57,-$2.00 ,-$2.00 , $1.18 
+1/10/2024,Harness,NSW,Menangle,Will Norman,233781671,73498832,BACK,FALSE,Rated Price: 2.3 | Stake: 1 Units,7. Last Clansman,0,2.58,-$1.00 ,-$1.00 , $0.59 
+1/10/2024,Harness,SA,Port Pirie,Mark Lawrence,233775773,57926070,BACK,TRUE,Rated Price: 1.8 | Stake: 2 Units,6. Always Torque Tome,1,2.62, $3.01 , $3.01 ,-$2.00 
+1/10/2024,Harness,SA,Port Pirie,Mark Lawrence,233775775,20944037,LAY,TRUE,Rated Price: 6.5 | Stake: 2 Units,3. Brie,0,9.17, $0.23 ,-$2.00 , $0.23 
+1/10/2024,Harness,VIC,Swan Hill,Brett & Darren Carroll,233780268,73953102,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,7. Blake Bolac,1,2.36, $2.53 , $2.53 ,-$2.00 
+1/10/2024,Harness,VIC,Swan Hill,Brett & Darren Carroll,233780275,38262853,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,3. Mynameisruby,0,2.42,-$1.00 ,-$1.00 , $0.65 
+1/10/2024,Harness,VIC,Swan Hill,Brett & Darren Carroll,233780264,2943657,LAY,TRUE,Rated Price: 7 | Stake: 1 Units,11. Chirripo,0,4.27, $0.28 ,-$1.00 , $0.28 
+1/10/2024,Harness,VIC,Swan Hill,Brett & Darren Carroll,233780279,74301158,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,7. La Frank,0,5.64,-$1.00 ,-$1.00 , $0.20 
+1/10/2024,Thoroughbred,NSW,Newcastle,Linton Chataway,233718850,74226923,LAY,TRUE,Rated Price: 4.8 | Stake: 1 Units,14. Ti Amo Tanto,0,6.2, $0.17 ,-$1.00 , $0.17 
+1/10/2024,Thoroughbred,NSW,Newcastle,Mitch Lewis,233718835,71373456,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,8. Lady Ichikawa,1,2.32, $2.38 , $2.38 ,-$2.00 
+1/10/2024,Thoroughbred,NSW,Newcastle,Mitch Lewis,233718860,926641,BACK,TRUE,Rated Price: 2.7 | Stake: 2 Units,4. Be Real,0,3.41,-$2.00 ,-$2.00 , $0.75 
+1/10/2024,Thoroughbred,VIC,Tatura,Glenn Ingram,233720164,74338773,BACK,TRUE,Rated Price: 5 | Stake: 2 Units,5. Shamrock Bay,1,3.95, $5.49 , $5.49 ,-$2.00 
+1/10/2024,Thoroughbred,VIC,Tatura,Jackson Oldham,233720147,3996901,BACK,TRUE,Rated Price: 1.65 | Stake: 2 Units,7. Finale ,1,1.47, $0.87 , $0.87 ,-$2.00 
+1/10/2024,Thoroughbred,VIC,Tatura,Jackson Oldham,233720163,84508,LAY,TRUE,Rated Price: 4.4 | Stake: 1 Units,6. Sea Mist,0,3.9, $0.32 ,-$1.00 , $0.32 
+2/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,233830221,73919574,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,7. Paw Barton,0,2.44,-$1.00 ,-$1.00 , $0.65 
+2/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,233830251,74461750,BACK,FALSE,Rated Price: 2.65 | Stake: 1 Units,3. Little Darl ,0,4.1,-$1.00 ,-$1.00 , $0.30 
+2/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,233830231,71868559,BACK,TRUE,Rated Price: 3.5 | Stake: 2 Units,4. Lethal Avenger,0,4.8,-$2.00 ,-$2.00 , $0.49 
+2/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,233835941,66654117,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,2. Infamous,1,2.43, $2.66 , $2.66 ,-$2.00 
+2/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,233835953,67504296,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,3. Sergeant Green,0,2.66,-$1.00 ,-$1.00 , $0.56 
+2/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,233835964,65487671,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,1. Swift Mike,0,3.38,-$1.00 ,-$1.00 , $0.39 
+2/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,233835936,67504189,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,4. Such A Life,0,5.4,-$2.00 ,-$2.00 , $0.42 
+2/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,233835941,70822340,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,3. Goof Ball,0,8.11, $0.26 ,-$2.00 , $0.26 
+2/10/2024,Harness,NSW,Bathurst,Will Norman,233830183,45490507,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,6. Rebounder,0,3.07,-$2.00 ,-$2.00 , $0.90 
+2/10/2024,Harness,NSW,Bathurst,Will Norman,233830189,273172,BACK,TRUE,Rated Price: 2.7 | Stake: 2 Units,1. Valentini,1,4.68, $6.84 , $6.84 ,-$2.00 
+2/10/2024,Harness,NSW,Bathurst,Will Norman,233830204,722333,BACK,FALSE,Rated Price: 7 | Stake: 1 Units,7. Uncle Tony,0,7.67,-$1.00 ,-$1.00 , $0.14 
+2/10/2024,Harness,NSW,Bathurst,Will Norman,233830204,72585610,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,6. Sonny Writer,0,9.93,-$1.00 ,-$1.00 , $0.10 
+2/10/2024,Harness,NSW,Bathurst,Will Norman,233830192,40112072,BACK,FALSE,Rated Price: 6 | Stake: 1 Units,9. Magic Matteo,0,10.19,-$1.00 ,-$1.00 , $0.10 
+2/10/2024,Harness,NSW,Bathurst,Will Norman,233830201,23626513,BACK,FALSE,Rated Price: 9 | Stake: 1 Units,3. Dottie Feels Good,0,11.55,-$1.00 ,-$1.00 , $0.09 
+2/10/2024,Harness,NSW,Bathurst,Will Norman,233830201,5248450,BACK,FALSE,Rated Price: 3.5 | Stake: 2 Units,5. The Ringmaster,0,11.62,-$2.00 ,-$2.00 , $0.18 
+2/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,233780211,74459603,BACK,FALSE,Rated Price:  | Stake: 2 Units,11. Justa Star ,1,1.42, $0.78 , $0.78 ,-$2.00 
+2/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,233780228,70633037,BACK,TRUE,Rated Price:  | Stake: 3 Units,2. Riche Damour,0,3.36,-$3.00 ,-$3.00 , $1.18 
+2/10/2024,Thoroughbred,VIC,Cranbourne,Glenn Ingram,233780379,74459884,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,2. Champagne Tonight,0,3.87,-$2.00 ,-$2.00 , $0.65 
+2/10/2024,Thoroughbred,VIC,Cranbourne,Jackson Oldham,233780415,74459924,LAY,TRUE,Rated Price: 4.2 | Stake: 1 Units,3. Platinum Destroyer ,1,3.44,-$1.00 , $2.27 ,-$1.00 
+2/10/2024,Thoroughbred,VIC,Cranbourne,Jackson Oldham,233780379,74459884,BACK,TRUE,Rated Price: 2.4 | Stake: 2 Units,2. Champagne Tonight,0,3.87,-$2.00 ,-$2.00 , $0.65 
+2/10/2024,Thoroughbred,VIC,Cranbourne,Jackson Oldham,233780442,4156073,BACK,FALSE,Rated Price: 3.7 | Stake: 2 Units,3. Gangitano,0,5.26,-$2.00 ,-$2.00 , $0.44 
+2/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,233780371,67039940,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,12. Sunlord,0,2.66,-$1.00 ,-$1.00 , $0.56 
+2/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,233780343,74459390,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,2. Flying Aurelius,1,2.78, $3.31 , $3.31 ,-$2.00 
+2/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,233780357,74459405,LAY,TRUE,Rated Price: 5 | Stake: 1 Units,5. Tiz Enuf,0,5.55, $0.20 ,-$1.00 , $0.20 
+2/10/2024,Thoroughbred,QLD,Eagle Farm,The Leg Up,233780350,74459402,LAY,FALSE,Rated Price: 4.8 | Stake: 1 Units,15. Starsonus,0,3.1, $0.44 ,-$1.00 , $0.44 
+2/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,233780500,74459792,BACK,FALSE,Rated Price: 2.2 | Stake: 3 Units,10. Mergeila,0,2.22,-$3.00 ,-$3.00 , $2.21 
+2/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,233780484,69390012,BACK,TRUE,Rated Price: 2.4 | Stake: 4 Units,1. Need Some Luck,0,2.45,-$4.00 ,-$4.00 , $2.48 
+2/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,233780452,68891001,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,5. Monte Veebee,0,3.34,-$1.00 ,-$1.00 , $0.38 
+2/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,233780492,74459787,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,11. Wembanyama,0,5.49, $0.20 ,-$1.00 , $0.20 
+3/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,233868798,52842206,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,1. Orson Apatite,0,2.68,-$2.00 ,-$2.00 , $1.11 
+3/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,233868813,72414557,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,8. Hilltop Prince,0,3.66,-$1.00 ,-$1.00 , $0.35 
+3/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,233868803,68020169,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,8. Autumn Storm,1,3.87, $5.34 , $5.34 ,-$2.00 
+3/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,233868808,54310943,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,4. Waikarie Molly,1,5.56,-$2.00 , $8.48 ,-$2.00 
+3/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,233879925,61826998,LAY,FALSE,Rated Price: 4.4 | Stake: 2 Units,6. Bagman ,1,3.11,-$2.00 , $3.92 ,-$2.00 
+3/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,233879890,73643839,LAY,FALSE,Rated Price: 5.5 | Stake: 2 Units,8. Paw Vortex ,0,3.25, $0.83 ,-$2.00 , $0.83 
+3/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,233879890,73222014,BACK,TRUE,Rated Price: 3.85 | Stake: 2 Units,3. Paw Qwan,0,3.33,-$2.00 ,-$2.00 , $0.80 
+3/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,233879910,61288688,LAY,TRUE,Rated Price: 3.6 | Stake: 2 Units,5. Ethanol Water,1,4.44,-$2.00 , $6.40 ,-$2.00 
+3/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,233879895,74469849,LAY,FALSE,Rated Price: 6 | Stake: 2 Units,8. Spritely Sian,0,6.4, $0.34 ,-$2.00 , $0.34 
+3/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,233868336,68712766,BACK,TRUE,Rated Price: 4.5 | Stake: 2 Units,2. King Tide,1,1.4, $0.74 , $0.74 ,-$2.00 
+3/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,233868345,72852823,BACK,TRUE,Rated Price: 2.6 | Stake: 2 Units,8. Aydens Warrior,1,2.4, $2.60 , $2.60 ,-$2.00 
+3/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,233868356,71110020,BACK,FALSE,Rated Price: 7 | Stake: 1 Units,4. Promises Three,1,2.6, $1.49 , $1.49 ,-$1.00 
+3/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,233868315,43328394,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,5. Agland Luai,1,2.72, $1.60 , $1.60 ,-$1.00 
+3/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,233868360,7080272,LAY,TRUE,Rated Price: 3 | Stake: 1 Units,6. Law Book,0,3.05, $0.45 ,-$1.00 , $0.45 
+3/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,233868320,66331899,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,6. Siska Lucy,0,5.67, $0.40 ,-$2.00 , $0.40 
+3/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,233870055,28170282,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,1. Micton Mouse,1,1.8, $1.49 , $1.49 ,-$2.00 
+3/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,233870043,40685919,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,4. Nai Harn Bay,0,1.99,-$1.00 ,-$1.00 , $0.94 
+3/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,233870045,74461833,BACK,TRUE,Rated Price: 1.9 | Stake: 3 Units,3. Artist,0,2.82,-$3.00 ,-$3.00 , $1.53 
+3/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,233870047,51503083,LAY,TRUE,Rated Price: 8 | Stake: 1 Units,5. Kimchi,0,10.5, $0.10 ,-$1.00 , $0.10 
+3/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,233870049,72610125,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,5. Freight Shaker,0,15.01,-$2.00 ,-$2.00 , $0.13 
+3/10/2024,Harness,NSW,Penrith,Will Norman,233868699,71085491,LAY,FALSE,Rated Price: 3 | Stake: 2 Units,1. Golly Gee Fellas,1,1.72,-$2.00 , $1.34 ,-$2.00 
+3/10/2024,Harness,NSW,Penrith,Will Norman,233868705,74190754,BACK,TRUE,Rated Price: 2.6 | Stake: 3 Units,8. Maurlen Boy,0,4,-$3.00 ,-$3.00 , $0.93 
+3/10/2024,Harness,NSW,Penrith,Will Norman,233868702,22929207,LAY,FALSE,Rated Price: 9 | Stake: 1 Units,1. Accelere,0,6, $0.19 ,-$1.00 , $0.19 
+3/10/2024,Thoroughbred,VIC,Ballarat,Glenn Ingram,233833263,74493804,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,5. Fields Of Courage,0,3.52,-$2.00 ,-$2.00 , $0.74 
+3/10/2024,Thoroughbred,QLD,Ipswich,The Leg Up,233830148,74493515,LAY,FALSE,Rated Price: 2.4 | Stake:  1 Units,6. Autora,0,1.47, $1.98 ,-$1.00 , $1.98 
+4/10/2024,Greyhounds,VIC,Geelong,Michael Tye,233889895,67009493,LAY,FALSE,Rated Price: 3.8 | Stake: 2 Units,1. Verdi ,1,2.06,-$2.00 , $1.97 ,-$2.00 
+4/10/2024,Greyhounds,VIC,Geelong,Michael Tye,233889870,74537944,BACK,FALSE,Rated Price: 2.75 | Stake: 2 Units,8. Mac And Cheese ,0,2.19,-$2.00 ,-$2.00 , $1.56 
+4/10/2024,Greyhounds,VIC,Geelong,Michael Tye,233889900,73645015,BACK,FALSE,Rated Price: 2.4 | Stake: 2 Units,1. Paw Mantra ,0,2.71,-$2.00 ,-$2.00 , $1.09 
+4/10/2024,Greyhounds,VIC,Geelong,Michael Tye,233889875,74079997,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,3. My Mum Rocks ,1,3.51,-$2.00 , $4.67 ,-$2.00 
+4/10/2024,Greyhounds,VIC,Geelong,Michael Tye,233889875,73918888,BACK,TRUE,Rated Price: 4.2 | Stake: 3 Units,2. Canya Vivi ,0,4.08,-$3.00 ,-$3.00 , $0.91 
+4/10/2024,Greyhounds,VIC,Geelong,Michael Tye,233889860,74537935,BACK,FALSE,Rated Price: 6.5 | Stake: 1 Units,8. Fleetwood Odin ,0,8.98,-$1.00 ,-$1.00 , $0.12 
+4/10/2024,Harness,VIC,Geelong,Brett & Darren Carroll,233888779,68065045,BACK,FALSE,Rated Price: 1.6 | Stake: 2 Units,3. Golden Tribe,1,1.58, $1.08 , $1.08 ,-$2.00 
+4/10/2024,Harness,VIC,Geelong,Brett & Darren Carroll,233888767,66760318,BACK,TRUE,Rated Price: 1.5 | Stake: 3 Units,6. Mister Blindside,0,1.72,-$3.00 ,-$3.00 , $3.88 
+4/10/2024,Harness,VIC,Geelong,Brett & Darren Carroll,233888782,3320488,LAY,TRUE,Rated Price: 16 | Stake: 2 Units,4. Valiente,0,11.61, $0.18 ,-$2.00 , $0.18 
+4/10/2024,Harness,WA,Gloucester Park,Scott Hill,233888842,74528846,BACK,FALSE,Rated Price: 1.5 | Stake: 3 Units,3. Water Lou,0,1.4,-$3.00 ,-$3.00 , $6.98 
+4/10/2024,Harness,WA,Gloucester Park,Scott Hill,233888830,48300257,BACK,TRUE,Rated Price: 1.65 | Stake: 3 Units,6. Magnus Victor,0,1.51,-$3.00 ,-$3.00 , $5.47 
+4/10/2024,Harness,WA,Gloucester Park,Scott Hill,233888845,74528850,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,5. Louie Dior,0,2.48,-$2.00 ,-$2.00 , $1.26 
+4/10/2024,Harness,WA,Gloucester Park,Scott Hill,233888833,3935402,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,2. Dark Eyes,1,3.1, $3.91 , $3.91 ,-$2.00 
+4/10/2024,Harness,WA,Gloucester Park,Scott Hill,233888848,40878779,LAY,FALSE,Rated Price: 4 | Stake: 3 Units,5. Steno,0,7.07, $0.46 ,-$3.00 , $0.46 
+4/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,233870404,74493554,BACK,FALSE,Rated Price:  | Stake: 1 Units,1. Bunker Bob,1,2.2, $1.12 , $1.12 ,-$1.00 
+4/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,233870439,62632629,LAY,FALSE,Rated Price:  | Stake: 1 Units,2. Zulu Angel,0,2.21, $0.77 ,-$1.00 , $0.77 
+4/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,233870434,74493580,BACK,FALSE,Rated Price:  | Stake: 1 Units,10. Goddess Of Rock,0,3.95,-$1.00 ,-$1.00 , $0.32 
+4/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,233870427,41642208,BACK,FALSE,Rated Price:  | Stake: 1 Units,4. Launnie Nights,1,4.63, $3.38 , $3.38 ,-$1.00 
+4/10/2024,Thoroughbred,VIC,Moonee Valley,Glenn Ingram,233868852,66240100,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,2. Lazy Susan,1,3.2, $4.09 , $4.09 ,-$2.00 
+4/10/2024,Thoroughbred,VIC,Moonee Valley,Glenn Ingram,233868843,72679645,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,5. Muktamil,0,3.42,-$2.00 ,-$2.00 , $0.77 
+4/10/2024,Thoroughbred,NSW,Moruya,Mitch Lewis,233868688,70139127,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,5. Body Bob,0,3.28,-$1.00 ,-$1.00 , $0.39 
+4/10/2024,Thoroughbred,NSW,Moruya,Mitch Lewis,233868673,50931345,BACK,TRUE,Rated Price: 3 | Stake: 3 Units,1. Alicia Roma,0,3.58,-$3.00 ,-$3.00 , $1.05 
+4/10/2024,Thoroughbred,NSW,Moruya,Mitch Lewis,233868668,74537414,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,4. Ulysses Blue,1,4.3,-$1.00 , $2.97 ,-$1.00 
+4/10/2024,Thoroughbred,QLD,Rockhampton,The Leg Up,233870109,70632836,LAY,FALSE,Rated Price: 6.5 | Stake: 1 Units,7. Bo Bo Beware,0,3.75, $0.34 ,-$1.00 , $0.34 
+4/10/2024,Thoroughbred,QLD,Sunshine Coast,Linton Chataway,233871854,74537358,BACK,FALSE,Rated Price: 1.4 | Stake: 5 Units,1. Merchant Flyer,1,1.47, $2.19 , $2.19 ,-$5.00 
+4/10/2024,Thoroughbred,QLD,Sunshine Coast,Linton Chataway,233871800,74537333,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,16. Trevatt Court,1,2.5, $2.79 , $2.79 ,-$2.00 
+4/10/2024,Thoroughbred,QLD,Sunshine Coast,Linton Chataway,233871836,74537353,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,1. Badda Boom Baby,0,8.63, $0.12 ,-$1.00 , $0.12 
+5/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,233966421,74233948,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,1. Aussie Bluff,0,1.58,-$3.00 ,-$3.00 , $4.81 
+5/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,233966426,74494858,LAY,TRUE,Rated Price: 3 | Stake: 2 Units,4. Cheers Jax,0,1.9, $2.07 ,-$2.00 , $2.07 
+5/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,233966386,61792023,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,1. Balmerino,0,2.14,-$2.00 ,-$2.00 , $1.63 
+5/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,233966401,68091748,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,8. Kuro,0,5.21,-$1.00 ,-$1.00 , $0.22 
+5/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,233961751,39317048,BACK,FALSE,Rated Price: 1.25 | Stake: 3 Units,7. Leap to Fame,1,1.39, $1.09 , $1.09 ,-$3.00 
+5/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,233961748,25156592,BACK,FALSE,Rated Price: 1.5 | Stake: 2 Units,3. Im Ready Jet,0,1.62,-$2.00 ,-$2.00 , $3.00 
+5/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,233961763,68855424,LAY,TRUE,Rated Price: 4 | Stake: 1 Units,1. Showsomejoy,0,1.73, $1.27 ,-$1.00 , $1.27 
+5/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,233961760,74494255,BACK,TRUE,Rated Price: 1.5 | Stake: 3 Units,5. Aardie B Miki,1,1.83, $2.32 , $2.32 ,-$3.00 
+5/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,233961754,68837885,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,10. Kingman,0,3.89,-$2.00 ,-$2.00 , $0.64 
+5/10/2024,Harness,NSW,Menangle,Will Norman,233961890,45169608,BACK,TRUE,Rated Price: 2.3 | Stake: 3 Units,2. King Tintin,1,1.85, $2.37 , $2.37 ,-$3.00 
+5/10/2024,Harness,NSW,Menangle,Will Norman,233961893,71345660,BACK,FALSE,Rated Price: 2.3 | Stake: 2 Units,11. Ludacrous,0,2.18,-$2.00 ,-$2.00 , $1.58 
+5/10/2024,Harness,NSW,Menangle,Will Norman,233961899,10862402,BACK,FALSE,Rated Price: 2.7 | Stake: 1 Units,3. Funky Monkey,0,3.04,-$1.00 ,-$1.00 , $0.46 
+5/10/2024,Harness,WA,Northam,Scott Hill,233961806,45951556,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,1. Low Flyin,0,2.64,-$2.00 ,-$2.00 , $1.13 
+5/10/2024,Harness,WA,Northam,Scott Hill,233961808,1347079,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,5. Make It Quick,1,2.88, $1.75 , $1.75 ,-$1.00 
+5/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,233870505,74537984,BACK,TRUE,Rated Price: 2.8 | Stake: 2 Units,16. Navyonthehighway,1,2.36, $2.53 , $2.53 ,-$2.00 
+5/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,233870484,68890243,BACK,FALSE,Rated Price: 3.2 | Stake: 1 Units,3. Dont Forget Jack,0,2.68,-$1.00 ,-$1.00 , $0.55 
+5/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,233870512,46314950,BACK,FALSE,Rated Price: 2.6 | Stake: 1 Units,7. Headwall,0,3.07,-$1.00 ,-$1.00 , $0.45 
+5/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,233870491,74537978,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,10. Aerial Dancer,0,4.68, $0.25 ,-$1.00 , $0.25 
+5/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,233870464,1497348,BACK,FALSE,Rated Price: 8 | Stake: 1 Units,9. Feathertop,0,5.8,-$1.00 ,-$1.00 , $0.19 
+5/10/2024,Thoroughbred,VIC,Flemington,Glenn Ingram,233868906,68638418,BACK,TRUE,Rated Price: 2.5 | Stake: 3 Units,5. Moby Dick,0,2.3,-$3.00 ,-$3.00 , $2.15 
+5/10/2024,Thoroughbred,VIC,Flemington,Jackson Oldham,233868933,74538317,BACK,TRUE,Rated Price: 1.99 | Stake: 3 Units,4. Declichy Boulevard,0,2.44,-$3.00 ,-$3.00 , $1.94 
+5/10/2024,Thoroughbred,VIC,Flemington,Jackson Oldham,233868960,61791218,BACK,FALSE,Rated Price: 3.4 | Stake: 3 Units,16. Berkshire Breeze,0,3.7,-$3.00 ,-$3.00 , $1.03 
+5/10/2024,Thoroughbred,VIC,Flemington,Jackson Oldham,233868915,74538307,LAY,FALSE,Rated Price: 7 | Stake: 2 Units,2. Rumble Town,0,6.78, $0.32 ,-$2.00 , $0.32 
+5/10/2024,Thoroughbred,VIC,Flemington,Jackson Oldham,233870726,74538325,BACK,FALSE,Rated Price: 16 | Stake: 1 Units,8. Lofty Arch,0,11.1,-$1.00 ,-$1.00 , $0.09 
+5/10/2024,Thoroughbred,NSW,Newcastle,Joshua Ingram,233919102,74572094,BACK,FALSE,Rated Price:  | Stake: 1 Units,7. Iowna Benz,1,1.4, $0.36 , $0.36 ,-$1.00 
+5/10/2024,Thoroughbred,NSW,Newcastle,Joshua Ingram,233919106,59082964,BACK,TRUE,Rated Price:  | Stake: 3 Units,3. Creek,0,2.64,-$3.00 ,-$3.00 , $1.65 
+5/10/2024,Thoroughbred,NSW,Newcastle,Joshua Ingram,233919097,74572089,BACK,FALSE,Rated Price:  | Stake: 1 Units,10. Rockbarton Island,0,5.69,-$1.00 ,-$1.00 , $0.19 
+5/10/2024,Thoroughbred,NSW,Newcastle,Joshua Ingram,233919116,66790013,LAY,FALSE,Rated Price:  | Stake: 1 Units,6. Super Zippi,0,5.94, $0.18 ,-$1.00 , $0.18 
+6/10/2024,Harness,VIC,Cranbourne,Brett & Darren Carroll,234012717,55245280,BACK,FALSE,Rated Price: 1.9 | Stake: 1 Units,6. Triple Vinnies,0,2.19,-$1.00 ,-$1.00 , $0.78 
+6/10/2024,Harness,VIC,Cranbourne,Brett & Darren Carroll,234012715,60415821,BACK,TRUE,Rated Price: 1.6 | Stake: 3 Units,9. Oprah Double You,0,2.46,-$3.00 ,-$3.00 , $1.91 
+6/10/2024,Harness,VIC,Cranbourne,Brett & Darren Carroll,234012725,61792617,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,7. Aliza Hill,1,3.8, $2.60 , $2.60 ,-$1.00 
+6/10/2024,Harness,VIC,Cranbourne,Brett & Darren Carroll,234012719,49145379,LAY,TRUE,Rated Price: 10 | Stake: 1 Units,6. Judes Dude,1,4.3,-$1.00 , $3.07 ,-$1.00 
+6/10/2024,Thoroughbred,VIC,Bendigo,Chris Camilleri,233961210,74572694,BACK,FALSE,Rated Price: 1.5 | Stake: 4 Units,9. Shockletz,1,1.55, $2.05 , $2.05 ,-$4.00 
+6/10/2024,Thoroughbred,VIC,Bendigo,Chris Camilleri,233961194,74572672,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,7. Romani Ite Domum,1,2.48, $4.13 , $4.13 ,-$3.00 
+6/10/2024,Thoroughbred,VIC,Bendigo,Chris Camilleri,233961250,4471434,BACK,FALSE,Rated Price: 1.8 | Stake: 3 Units,5. Sure,0,2.52,-$3.00 ,-$3.00 , $1.84 
+6/10/2024,Thoroughbred,VIC,Bendigo,Chris Camilleri,233961226,73443632,BACK,FALSE,Rated Price: 2.8 | Stake: 2 Units,4. Winnasedge,1,2.93, $3.59 , $3.59 ,-$2.00 
+6/10/2024,Thoroughbred,VIC,Bendigo,Chris Camilleri,233961218,74572703,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,11. Swifties ,1,3.65,-$2.00 , $4.93 ,-$2.00 
+6/10/2024,Thoroughbred,VIC,Bendigo,Glenn Ingram,233961226,73443632,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,4. Winnasedge,1,2.93, $3.59 , $3.59 ,-$2.00 
+7/10/2024,Greyhounds,VIC,Shepparton,Michael Tye,234055798,64163486,BACK,TRUE,Rated Price: 1.9 | Stake: 2 Units,6. Pepper Rush ,0,2.39,-$2.00 ,-$2.00 , $1.34 
+7/10/2024,Greyhounds,VIC,Shepparton,Michael Tye,234055818,60987857,LAY,FALSE,Rated Price: 4 | Stake: 2 Units,6. Ayia Neighbour,0,4.2, $0.58 ,-$2.00 , $0.58 
+7/10/2024,Greyhounds,VIC,Shepparton,Michael Tye,234055803,72916847,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,3. Highway Hooligan,1,5.18,-$2.00 , $7.77 ,-$2.00 
+7/10/2024,Greyhounds,VIC,Shepparton,Michael Tye,234055813,45023567,BACK,FALSE,Rated Price: 2.85 | Stake: 1 Units,8. Lektra April ,0,6.8,-$1.00 ,-$1.00 , $0.16 
+7/10/2024,Greyhounds,VIC,Shepparton,Michael Tye,234055793,71263698,BACK,FALSE,Rated Price: 15 | Stake: 1 Units,1. Leave Me In ,0,8.94,-$1.00 ,-$1.00 , $0.12 
+7/10/2024,Greyhounds,VIC,Shepparton,Michael Tye,234055778,49844864,LAY,FALSE,Rated Price: 6.5 | Stake: 1 Units,5. Avianna ,0,9.82, $0.11 ,-$1.00 , $0.11 
+7/10/2024,Greyhounds,VIC,Shepparton,Michael Tye,234055788,70666277,LAY,FALSE,Rated Price: 7 | Stake: 1 Units,6. Ultimate Eclipse,0,10.67, $0.10 ,-$1.00 , $0.10 
+7/10/2024,Harness,WA,Pinjarra,Scott Hill,234066869,53126802,BACK,TRUE,Rated Price: 1.2 | Stake: 5 Units,4. Blaze Away,0,1.35,-$5.00 ,-$5.00 , $13.29 
+7/10/2024,Harness,WA,Pinjarra,Scott Hill,234066877,43034602,BACK,FALSE,Rated Price: 1.65 | Stake: 3 Units,6. Sweet Lucifer,1,1.78, $2.18 , $2.18 ,-$3.00 
+7/10/2024,Harness,WA,Pinjarra,Scott Hill,234066873,51216993,BACK,FALSE,Rated Price: 3.3 | Stake: 1 Units,6. Our Sandy Shore,0,4.76,-$1.00 ,-$1.00 , $0.25 
+7/10/2024,Harness,WA,Pinjarra,Scott Hill,234066865,74308263,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,5. Heza Whizard,0,5.52,-$1.00 ,-$1.00 , $0.21 
+7/10/2024,Harness,WA,Pinjarra,Scott Hill,234066875,51150105,LAY,FALSE,Rated Price: 4 | Stake: 3 Units,5. Our Vinnie,0,7.83, $0.41 ,-$3.00 , $0.41 
+7/10/2024,Harness,WA,Pinjarra,Scott Hill,234066875,43017836,BACK,FALSE,Rated Price: 12 | Stake: 1 Units,10. Heavenly Wage,0,12.02,-$1.00 ,-$1.00 , $0.08 
+7/10/2024,Thoroughbred,NSW,Muswellbrook,Joshua Ingram,234012876,2503559,BACK,TRUE,Rated Price:  | Stake: 3 Units,3. Bonding,0,2.02,-$3.00 ,-$3.00 , $2.65 
+7/10/2024,Thoroughbred,NSW,Muswellbrook,Joshua Ingram,234012896,69161501,BACK,FALSE,Rated Price:  | Stake: 2 Units,1. Thundering Soul,0,2.96,-$2.00 ,-$2.00 , $0.92 
+7/10/2024,Thoroughbred,NSW,Muswellbrook,Joshua Ingram,234012881,3211114,BACK,FALSE,Rated Price:  | Stake: 2 Units,2. Bush Telegraph,0,7.86,-$2.00 ,-$2.00 , $0.26 
+7/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234012689,74572070,BACK,TRUE,Rated Price: 2 | Stake: 4 Units,2. Bonita Queen,0,2.44,-$4.00 ,-$4.00 , $2.50 
+7/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234012697,67531778,BACK,FALSE,Rated Price: 2.3 | Stake: 3 Units,2. I Am Unstoppable,0,2.51,-$3.00 ,-$3.00 , $1.79 
+7/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234012665,74572066,LAY,TRUE,Rated Price: 6.5 | Stake: 1 Units,8. Koning,0,5.7, $0.19 ,-$1.00 , $0.19 
+8/10/2024,Harness,QLD,Albion Park,Ryan Spice,234105047,50354199,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,4. My Rumour Has It,1,2.12, $2.08 , $2.08 ,-$2.00 
+8/10/2024,Harness,QLD,Albion Park,Ryan Spice,234105059,8967962,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,9. Targaryen,0,2.43,-$2.00 ,-$2.00 , $1.30 
+8/10/2024,Harness,WA,Gloucester Park,Scott Hill,234104764,48616929,BACK,FALSE,Rated Price: 2.2 | Stake: 2 Units,3. Frankie J Holden,0,3.56,-$2.00 ,-$2.00 , $0.73 
+8/10/2024,Harness,WA,Gloucester Park,Scott Hill,234104761,47472249,BACK,FALSE,Rated Price: 3.3 | Stake: 1 Units,12. Strike Master,0,4.04,-$1.00 ,-$1.00 , $0.31 
+8/10/2024,Harness,WA,Gloucester Park,Scott Hill,234104770,38405938,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,4. Thomson Bay,0,5.11,-$2.00 ,-$2.00 , $0.45 
+8/10/2024,Harness,NSW,Menangle,Will Norman,234102820,73498832,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,7. Last Clansman,1,2.44, $2.68 , $2.68 ,-$2.00 
+8/10/2024,Harness,NSW,Menangle,Will Norman,234102826,69869579,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,1. Better Harley,1,2.61, $2.99 , $2.99 ,-$2.00 
+8/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234102609,39610815,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,7. Salsboy,1,1.6, $1.12 , $1.12 ,-$2.00 
+8/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234102603,70355475,BACK,TRUE,Rated Price: 2.4 | Stake: 2 Units,10. Better Saint,0,2.34,-$2.00 ,-$2.00 , $1.39 
+8/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234102601,37398239,LAY,TRUE,Rated Price: 7.5 | Stake: 1 Units,5. Therockgod,0,3.61, $0.36 ,-$1.00 , $0.36 
+8/10/2024,Thoroughbred,NSW,Goulburn,Linton Chataway,234058892,74615602,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,4. Aranese,0,4.33, $0.27 ,-$1.00 , $0.27 
+8/10/2024,Thoroughbred,NSW,Goulburn,Mitch Lewis,234058918,64762878,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,2. Cable Express,0,1.78,-$1.00 ,-$1.00 , $1.15 
+8/10/2024,Thoroughbred,NSW,Goulburn,Mitch Lewis,234058902,62632201,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,1. City Gold Ready,0,1.8,-$2.00 ,-$2.00 , $2.25 
+8/10/2024,Thoroughbred,NSW,Goulburn,Mitch Lewis,234058917,74615627,LAY,TRUE,Rated Price: 3 | Stake: 2 Units,11. Dashing Rupert,1,2.51,-$2.00 , $2.72 ,-$2.00 
+8/10/2024,Thoroughbred,NSW,Goulburn,Mitch Lewis,234058922,3628202,BACK,TRUE,Rated Price: 2.4 | Stake: 2 Units,1. Suspect,0,3.46,-$2.00 ,-$2.00 , $0.73 
+8/10/2024,Thoroughbred,VIC,Wangaratta,Glenn Ingram,234055003,74615657,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,2. Brulante,1,1.85, $2.37 , $2.37 ,-$3.00 
+8/10/2024,Thoroughbred,VIC,Wangaratta,Jackson Oldham,234055019,74615670,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,2. Charcoals,1,2.06, $1.97 , $1.97 ,-$2.00 
+8/10/2024,Thoroughbred,VIC,Wangaratta,Jackson Oldham,234055051,72239723,LAY,TRUE,Rated Price: 4.4 | Stake: 2 Units,8. Littlebourkestreet,0,5.73, $0.39 ,-$2.00 , $0.39 
+8/10/2024,Thoroughbred,VIC,Wangaratta,The Leg Up,234055051,72239723,LAY,FALSE,Rated Price: 5 | Stake:  1 Units,8. Littlebourkestreet,0,5.73, $0.20 ,-$1.00 , $0.20 
+9/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234148886,74264759,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,8. Chemical Erosion,0,1.7,-$2.00 ,-$2.00 , $2.66 
+9/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234148911,64122721,BACK,FALSE,Rated Price: 1.95 | Stake: 2 Units,4. Zipping Minaj ,1,2.59, $2.96 , $2.96 ,-$2.00 
+9/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234148901,62295186,BACK,FALSE,Rated Price: 3.15 | Stake: 2 Units,1. Jackpot Jewel ,1,2.62, $3.01 , $3.01 ,-$2.00 
+9/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234148896,65388477,LAY,TRUE,Rated Price: 4.8 | Stake: 2 Units,2. Gayle Bale ,1,3.25,-$2.00 , $4.19 ,-$2.00 
+9/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234148921,74461758,LAY,FALSE,Rated Price: 5 | Stake: 2 Units,8. Up Hill Shiloh ,0,3.9, $0.64 ,-$2.00 , $0.64 
+9/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234148876,74745237,BACK,FALSE,Rated Price: 3.15 | Stake: 2 Units,7. Oregon Janet ,0,8.04,-$2.00 ,-$2.00 , $0.26 
+9/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234148916,73919578,BACK,FALSE,Rated Price: 8 | Stake: 1 Units,3. Oregon Hutan ,0,14.06,-$1.00 ,-$1.00 , $0.07 
+9/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234148293,71618483,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,3. Rocky Ride,1,2.13, $3.15 , $3.15 ,-$3.00 
+9/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234148273,66005818,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,4. Sergeant Green,0,2.76,-$2.00 ,-$2.00 , $1.06 
+9/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234148258,69608271,LAY,FALSE,Rated Price: 5 | Stake: 2 Units,7. Tigger,1,5.05,-$2.00 , $7.53 ,-$2.00 
+9/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234148278,3359460,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,2. Vanilla Slice,0,5.22, $0.44 ,-$2.00 , $0.44 
+9/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234148263,70351228,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,4. Chapman Beach,0,5.5,-$1.00 ,-$1.00 , $0.21 
+9/10/2024,Harness,NSW,Bathurst,Will Norman,234147874,65733323,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,4. Xcite Me,1,1.74, $1.38 , $1.38 ,-$2.00 
+9/10/2024,Harness,NSW,Bathurst,Will Norman,234147856,60579781,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,4. Valentini,0,3.48,-$1.00 ,-$1.00 , $0.38 
+9/10/2024,Harness,NSW,Bathurst,Will Norman,234147859,43637018,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,9. Alwaysbmypony,0,5.05,-$1.00 ,-$1.00 , $0.23 
+9/10/2024,Harness,NSW,Bathurst,Will Norman,234147853,21859555,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,6. Volando Denario,0,34.53,-$1.00 ,-$1.00 , $0.03 
+9/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234148558,52697843,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,7. Boutika,1,1.83, $1.54 , $1.54 ,-$2.00 
+9/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234148568,69354355,LAY,TRUE,Rated Price: 10 | Stake: 2 Units,7. Torque Power,0,14, $0.14 ,-$2.00 , $0.14 
+9/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234103821,20233074,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,1. Out Of Aces,0,2.42,-$2.00 ,-$2.00 , $1.31 
+9/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234103793,74744832,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,5. Argerich,0,3.82,-$1.00 ,-$1.00 , $0.33 
+9/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234103828,3023246,LAY,TRUE,Rated Price: 8 | Stake: 1 Units,12. Shy Guy,0,6.53, $0.17 ,-$1.00 , $0.17 
+9/10/2024,Thoroughbred,QLD,Doomben,The Leg Up,234103814,53089359,LAY,FALSE,Rated Price: 6.5 | Stake:  Units,4. Boom Shot,0,3.97, $0.31 ,-$1.00 , $0.31 
+9/10/2024,Thoroughbred,SA,Mount Gambier,Lachlan Mosley,234102942,66032314,BACK,FALSE,Rated Price:  | Stake: 2 Units,3. Portation ,1,1.63, $1.17 , $1.17 ,-$2.00 
+9/10/2024,Thoroughbred,SA,Mount Gambier,Lachlan Mosley,234102955,74744620,BACK,TRUE,Rated Price:  | Stake: 2 Units,7. Maiden Flight ,0,3.83,-$2.00 ,-$2.00 , $0.66 
+9/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234105325,74459791,BACK,TRUE,Rated Price: 1.8 | Stake: 4 Units,7. Extremely Hardys,1,2, $3.60 , $3.60 ,-$4.00 
+9/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234105293,74744655,LAY,TRUE,Rated Price: 5 | Stake: 1 Units,4. Darling Downs,0,2.68, $0.54 ,-$1.00 , $0.54 
+9/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234105301,74744657,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,1. French Endeavour,1,3.2, $3.96 , $3.96 ,-$2.00 
+9/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234105333,74744664,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,5. Hello World,1,5.07, $3.66 , $3.66 ,-$1.00 
+9/10/2024,Thoroughbred,VIC,Sale,Glenn Ingram,234104984,74744698,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,11. Oxford Blue,1,2.87, $3.48 , $3.48 ,-$2.00 
+9/10/2024,Thoroughbred,VIC,Sale,Jackson Oldham,234105011,74744713,BACK,TRUE,Rated Price: 1.55 | Stake: 5 Units,1. Martial Music,1,1.53, $2.46 , $2.46 ,-$5.00 
+9/10/2024,Thoroughbred,VIC,Sale,Jackson Oldham,234104984,72200185,LAY,TRUE,Rated Price: 4.9 | Stake: 3 Units,2. Eclipsion,0,4.8, $0.73 ,-$3.00 , $0.73 
+10/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234196382,64604543,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,1. Shine A Light,0,3.75,-$2.00 ,-$2.00 , $0.68 
+10/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234196412,47727766,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,1. Cluster,0,3.84,-$2.00 ,-$2.00 , $0.65 
+10/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234196422,71800725,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,7. Brunswick Flyer,0,4.8, $0.49 ,-$2.00 , $0.49 
+10/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234196387,54830629,LAY,FALSE,Rated Price: 8 | Stake: 2 Units,5. Ninetymile Venom,0,5.9, $0.38 ,-$2.00 , $0.38 
+10/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234196072,68791560,BACK,TRUE,Rated Price: 1.9 | Stake: 3 Units,1. Whisky Trip ,1,1.87, $2.43 , $2.43 ,-$3.00 
+10/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234196097,28090909,BACK,FALSE,Rated Price: 2.4 | Stake: 1 Units,3. Schillaci,1,2.04, $0.97 , $0.97 ,-$1.00 
+10/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234196082,59650368,LAY,TRUE,Rated Price: 3.15 | Stake: 2 Units,1. Mepunga Smokey ,0,2.85, $1.01 ,-$2.00 , $1.01 
+10/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234196102,61721198,LAY,FALSE,Rated Price:  | Stake: 2 Units,8. In The Hub ,1,3.15,-$2.00 , $4.00 ,-$2.00 
+10/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234196067,74745760,LAY,FALSE,Rated Price: 4.4 | Stake: 1 Units,5. Amron Bobby ,0,8.31, $0.13 ,-$1.00 , $0.13 
+10/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234196107,72168414,LAY,FALSE,Rated Price: 5.5 | Stake: 2 Units,7. Van Wyck,1,10.42,-$2.00 , $17.52 ,-$2.00 
+10/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234196107,74539272,BACK,FALSE,Rated Price: 5 | Stake: 2 Units,2. Paw Utility ,0,12.05,-$2.00 ,-$2.00 , $0.17 
+10/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234197650,48516351,BACK,TRUE,Rated Price: 1.7 | Stake: 5 Units,8. Yachi Bale,0,1.46,-$5.00 ,-$5.00 , $10.11 
+10/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234197655,40273332,LAY,TRUE,Rated Price: 3.5 | Stake: 2 Units,6. Father Rick,0,3.01, $0.93 ,-$2.00 , $0.93 
+10/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234197665,6853064,LAY,FALSE,Rated Price: 5.5 | Stake: 1 Units,3. Peacock,0,7.6, $0.14 ,-$1.00 , $0.14 
+10/10/2024,Harness,VIC,Kilmore,Brett & Darren Carroll,234196662,36833276,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,9. Nai Harn Bay,0,1.81,-$2.00 ,-$2.00 , $2.30 
+10/10/2024,Harness,VIC,Kilmore,Brett & Darren Carroll,234196660,74040467,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,10. Can Feel The Fury,0,2.91,-$2.00 ,-$2.00 , $0.97 
+10/10/2024,Harness,VIC,Kilmore,Brett & Darren Carroll,234196672,24008156,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,1. The Interceptor,0,5,-$1.00 ,-$1.00 , $0.23 
+10/10/2024,Harness,VIC,Kilmore,Brett & Darren Carroll,234196658,73260140,LAY,FALSE,Rated Price: 8 | Stake: 1 Units,7. Carly Perez,0,21.58, $0.05 ,-$1.00 , $0.05 
+10/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234147911,74773963,BACK,TRUE,Rated Price: 3.5 | Stake: 1 Units,6. Up The Front,0,5.22,-$1.00 ,-$1.00 , $0.21 
+10/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234147906,68157373,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,4. Lyrical Beauty,0,5.51,-$1.00 ,-$1.00 , $0.20 
+10/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234147896,62838904,BACK,FALSE,Rated Price: 3.8 | Stake: 1 Units,2. Whatadilemma,0,6.52,-$1.00 ,-$1.00 , $0.16 
+10/10/2024,Thoroughbred,NSW,Kilcoy,The Leg Up,234148234,56644857,LAY,FALSE,Rated Price: 4.5 | Stake:  Units,3. Flying Birds,1,3.87,-$1.00 , $2.58 ,-$1.00 
+10/10/2024,Thoroughbred,VIC,Mornington,Glenn Ingram,234148501,74774073,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,2. Certain Rise,1,1.71, $1.98 , $1.98 ,-$3.00 
+10/10/2024,Thoroughbred,VIC,Mornington,Jackson Oldham,234148501,74774073,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,2. Certain Rise,1,1.71, $1.32 , $1.32 ,-$2.00 
+10/10/2024,Thoroughbred,VIC,Mornington,Jackson Oldham,234148509,74264321,LAY,TRUE,Rated Price: 2.9 | Stake: 2 Units,13. Deep Pleasure,0,2.01, $1.84 ,-$2.00 , $1.84 
+10/10/2024,Thoroughbred,VIC,Mornington,Linton Chataway,234148501,74774079,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,10. Siesta,0,7.13, $0.15 ,-$1.00 , $0.15 
+11/10/2024,Greyhounds,VIC,Bendigo,Michael Tye,234231450,71436616,BACK,FALSE,Rated Price:  | Stake: 2 Units,1. Giacomo ,1,1.91, $1.69 , $1.69 ,-$2.00 
+11/10/2024,Greyhounds,VIC,Bendigo,Michael Tye,234231440,73371532,LAY,TRUE,Rated Price: 3.5 | Stake: 2 Units,8. Papa Easy ,0,2.11, $1.68 ,-$2.00 , $1.68 
+11/10/2024,Greyhounds,VIC,Bendigo,Michael Tye,234231475,2316440,LAY,FALSE,Rated Price: 6 | Stake: 2 Units,1. Pass The Buck ,0,6.19, $0.36 ,-$2.00 , $0.36 
+11/10/2024,Greyhounds,VIC,Bendigo,Michael Tye,234231465,59650373,LAY,FALSE,Rated Price: 5 | Stake: 2 Units,4. Better Banjo ,0,6.69, $0.33 ,-$2.00 , $0.33 
+11/10/2024,Greyhounds,VIC,Bendigo,Michael Tye,234231475,61557900,BACK,FALSE,Rated Price: 4 | Stake: 3 Units,2. Matt Loch ,0,9.04,-$3.00 ,-$3.00 , $0.35 
+11/10/2024,Greyhounds,VIC,Bendigo,Michael Tye,234231475,69793118,BACK,FALSE,Rated Price: 14 | Stake: 2 Units,3. Unleash In Miami ,0,24,-$2.00 ,-$2.00 , $0.08 
+11/10/2024,Harness,WA,Gloucester Park,Scott Hill,234230967,13145513,BACK,TRUE,Rated Price: 1.5 | Stake: 3 Units,1. Regal Cheval,0,1.33,-$3.00 ,-$3.00 , $8.45 
+11/10/2024,Harness,WA,Gloucester Park,Scott Hill,234230973,38706995,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,1. Alcopony,0,3.11,-$1.00 ,-$1.00 , $0.44 
+11/10/2024,Harness,WA,Gloucester Park,Scott Hill,234230970,74528845,BACK,FALSE,Rated Price: 3.3 | Stake: 1 Units,12. Star Casino,0,4.14,-$1.00 ,-$1.00 , $0.30 
+11/10/2024,Harness,WA,Gloucester Park,Scott Hill,234230985,74784796,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,8. Alta Tribute ,0,4.3,-$2.00 ,-$2.00 , $0.56 
+11/10/2024,Harness,WA,Gloucester Park,Scott Hill,234230982,39326169,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,2. Bellezza Nera,1,4.32, $6.18 , $6.18 ,-$2.00 
+11/10/2024,Harness,WA,Gloucester Park,Scott Hill,234230994,66088965,LAY,FALSE,Rated Price: 5 | Stake: 3 Units,3. Into The Future,0,6.43, $0.51 ,-$3.00 , $0.51 
+11/10/2024,Harness,WA,Gloucester Park,Scott Hill,234230988,46249536,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,10. Lamandier,0,7.13,-$1.00 ,-$1.00 , $0.15 
+11/10/2024,Harness,WA,Gloucester Park,Scott Hill,234230979,16311789,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,8. Peaceful,0,13.12,-$2.00 ,-$2.00 , $0.15 
+11/10/2024,Harness,VIC,Mildura,Brett & Darren Carroll,234231293,74755387,BACK,TRUE,Rated Price: 1.9 | Stake: 3 Units,10. Likeable Rogue,1,1.5, $1.40 , $1.40 ,-$3.00 
+11/10/2024,Harness,VIC,Mildura,Brett & Darren Carroll,234231283,74755377,BACK,FALSE,Rated Price: 1.8 | Stake: 2 Units,4. Beach Delight,0,1.53,-$2.00 ,-$2.00 , $3.51 
+11/10/2024,Harness,VIC,Mildura,Brett & Darren Carroll,234231287,41234538,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,3. Love To Deal,1,2.48, $2.75 , $2.75 ,-$2.00 
+11/10/2024,Harness,VIC,Mildura,Brett & Darren Carroll,234231301,68713380,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,1. Jetter Son,1,2.86, $1.73 , $1.73 ,-$1.00 
+11/10/2024,Harness,VIC,Mildura,Brett & Darren Carroll,234231285,64521256,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,11. Dancin Dolly,0,2.95,-$1.00 ,-$1.00 , $0.48 
+11/10/2024,Thoroughbred,VIC,Cranbourne,Glenn Ingram,234196763,74814097,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,9. Brutalina ,0,3.58,-$2.00 ,-$2.00 , $0.72 
+11/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234197231,74813688,BACK,FALSE,Rated Price:  | Stake: 3 Units,10. Swycho,1,1.54, $1.51 , $1.51 ,-$3.00 
+11/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234197253,40658192,BACK,FALSE,Rated Price:  | Stake: 1 Units,9. Red Roof ,1,2.65, $1.53 , $1.53 ,-$1.00 
+11/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234197245,63085144,BACK,TRUE,Rated Price:  | Stake: 2 Units,2. Sentimental Flame ,0,2.69,-$2.00 ,-$2.00 , $1.10 
+11/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234197259,64319046,BACK,FALSE,Rated Price:  | Stake: 2 Units,3. Nosie By Nature,0,4.51,-$2.00 ,-$2.00 , $0.53 
+11/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234197274,74813718,BACK,FALSE,Rated Price:  | Stake: 1 Units,15. Foster Street ,0,4.83,-$1.00 ,-$1.00 , $0.24 
+11/10/2024,Thoroughbred,NSW,Port Macquarie,Mitch Lewis,234196709,74813987,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,3. Raf Attack,0,1.56,-$2.00 ,-$2.00 , $3.21 
+11/10/2024,Thoroughbred,NSW,Port Macquarie,Mitch Lewis,234196684,74813954,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,6. Justice Warrior,0,2.05,-$2.00 ,-$2.00 , $1.71 
+11/10/2024,Thoroughbred,NSW,Port Macquarie,Mitch Lewis,234196714,74813990,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,4. Adjourn,0,6.65,-$1.00 ,-$1.00 , $0.16 
+11/10/2024,Thoroughbred,NSW,Port Macquarie,Mitch Lewis,234196699,63859798,BACK,FALSE,Rated Price: 6 | Stake: 1 Units,1. Veecee,0,9.34,-$1.00 ,-$1.00 , $0.11 
+11/10/2024,Thoroughbred,QLD,Sunshine Coast,Linton Chataway,234197309,74814003,LAY,FALSE,Rated Price: 1.8 | Stake: 1 Units,1. Blind Desire,1,1.6,-$1.00 , $0.56 ,-$1.00 
+11/10/2024,Thoroughbred,QLD,Sunshine Coast,Linton Chataway,234197336,68931083,BACK,TRUE,Rated Price: 2.5 | Stake: 3 Units,10. Deferential,0,2.28,-$3.00 ,-$3.00 , $2.18 
+11/10/2024,Thoroughbred,QLD,Sunshine Coast,Linton Chataway,234197356,74814031,LAY,TRUE,Rated Price: 4 | Stake: 1 Units,10. Umetini,0,3.2, $0.42 ,-$1.00 , $0.42 
+11/10/2024,Thoroughbred,QLD,Sunshine Coast,The Leg Up,234197346,74814028,LAY,FALSE,Rated Price: 5 | Stake:  Units,2. Keepmeinthelope,0,2.66, $0.56 ,-$1.00 , $0.56 
+12/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,234231074,66331822,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,2. Molfetta Cruise,0,2.38,-$2.00 ,-$2.00 , $1.35 
+12/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,234231089,51312716,BACK,FALSE,Rated Price: 2 | Stake: 3 Units,5. Solid Tank,0,2.57,-$3.00 ,-$3.00 , $1.78 
+12/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,234231064,56290796,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,4. Bunji Man,1,2.67, $4.66 , $4.66 ,-$3.00 
+12/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,234231064,71012350,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,1. Loki Hook,0,6.35, $0.35 ,-$2.00 , $0.35 
+12/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234272171,70965996,BACK,TRUE,Rated Price: 5 | Stake: 1 Units,2. Ellas Babe,1,1.55, $0.51 , $0.51 ,-$1.00 
+12/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234272190,68890501,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,8. Rinsed The Lot,0,2.12,-$3.00 ,-$3.00 , $2.49 
+12/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234272206,55860222,BACK,TRUE,Rated Price: 6 | Stake: 2 Units,8. Bella Una,0,2.19,-$2.00 ,-$2.00 , $1.56 
+12/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234272195,68416470,LAY,TRUE,Rated Price: 3.5 | Stake: 3 Units,7. Bezzecchi,1,2.33,-$3.00 , $3.71 ,-$3.00 
+12/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234272175,63609702,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,8. She IS Fire,0,2.46,-$1.00 ,-$1.00 , $0.64 
+12/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234272180,74227366,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,7. Angel Shirley,0,5.47, $0.42 ,-$2.00 , $0.42 
+12/10/2024,Harness,QLD,Albion Park,Ryan Spice,234274158,74784961,BACK,TRUE,Rated Price: 1.8 | Stake: 2 Units,3. Shards Matrix,0,1.44,-$2.00 ,-$2.00 , $4.23 
+12/10/2024,Harness,QLD,Albion Park,Ryan Spice,234274152,24900341,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,9. Is That A Bid,0,3.45,-$2.00 ,-$2.00 , $0.76 
+12/10/2024,Harness,WA,Bunbury,Scott Hill,234240845,36036929,BACK,TRUE,Rated Price: 1.65 | Stake: 3 Units,1. Cams Boulder,0,1.78,-$3.00 ,-$3.00 , $3.58 
+12/10/2024,Harness,WA,Bunbury,Scott Hill,234240849,4919641,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,1. Lets Get Rockin,1,2.04, $1.93 , $1.93 ,-$2.00 
+12/10/2024,Harness,WA,Bunbury,Scott Hill,234240847,2350026,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,1. Roman Legion,1,2.5, $2.79 , $2.79 ,-$2.00 
+12/10/2024,Harness,WA,Bunbury,Scott Hill,234240843,35920991,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,1. Cohlin,0,6.6,-$2.00 ,-$2.00 , $0.33 
+12/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234274673,41386220,BACK,FALSE,Rated Price: 2.4 | Stake: 2 Units,11. Cantfindabettorman,1,3.55, $4.74 , $4.74 ,-$2.00 
+12/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234274670,73138894,LAY,TRUE,Rated Price: 9 | Stake: 2 Units,4. Keayang Stuka,0,3.89, $0.64 ,-$2.00 , $0.64 
+12/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234274691,74775631,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,5. Exotic Bushranger,1,5.41, $12.30 , $12.30 ,-$3.00 
+12/10/2024,Harness,NSW,Menangle,Will Norman,234274700,6915348,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,6. Madigan,0,2.17,-$2.00 ,-$2.00 , $1.59 
+12/10/2024,Harness,NSW,Menangle,Will Norman,234274712,71846941,BACK,FALSE,Rated Price: 2.7 | Stake: 2 Units,6. My Ultimate Barney,0,3.15,-$2.00 ,-$2.00 , $0.87 
+12/10/2024,Harness,NSW,Menangle,Will Norman,234274697,58423297,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,3. I Break The Line,0,3.94,-$2.00 ,-$2.00 , $0.63 
+12/10/2024,Harness,NSW,Menangle,Will Norman,234274721,49460327,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,4. Ludacrous,0,4.2,-$2.00 ,-$2.00 , $0.58 
+12/10/2024,Harness,NSW,Menangle,Will Norman,234274706,72245423,LAY,FALSE,Rated Price: 6 | Stake: 1 Units,8. Path To Greatness,0,6.8, $0.16 ,-$1.00 , $0.16 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198141,62099317,BACK,FALSE,Rated Price: 1.85 | Stake: 4 Units,5. Rope Them In,0,2.11,-$4.00 ,-$4.00 , $3.35 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198168,61594058,BACK,TRUE,Rated Price: 1.9 | Stake: 4 Units,6. Almighty Class,1,2.79, $6.66 , $6.66 ,-$4.00 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198159,74815269,BACK,FALSE,Rated Price: 2.85 | Stake: 2 Units,4. West Star,0,3.02,-$2.00 ,-$2.00 , $0.92 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198096,6243232,BACK,FALSE,Rated Price: 2.05 | Stake: 1 Units,4. Kings Court,0,3.15,-$1.00 ,-$1.00 , $0.43 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198151,74815260,BACK,FALSE,Rated Price: 4.6 | Stake: 2 Units,12. Cosmic Crusader,1,3.63, $4.89 , $4.89 ,-$2.00 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198133,46603528,BACK,FALSE,Rated Price: 9 | Stake: 1 Units,4. Thehorseman,0,3.95,-$1.00 ,-$1.00 , $0.32 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198106,67532828,BACK,FALSE,Rated Price: 6.7 | Stake: 1 Units,8. Oliviasmemumma,0,3.96,-$1.00 ,-$1.00 , $0.31 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198124,74815246,BACK,FALSE,Rated Price: 8.9 | Stake: 1 Units,14. Yallingup Girl,0,4.1,-$1.00 ,-$1.00 , $0.30 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198123,74815243,BACK,FALSE,Rated Price: 2.6 | Stake: 1 Units,6. Great Fortune,1,4.14, $2.92 , $2.92 ,-$1.00 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198160,63610254,BACK,FALSE,Rated Price: 9.4 | Stake: 1 Units,3. Street Band,0,4.5,-$1.00 ,-$1.00 , $0.27 
+12/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234198096,74815237,BACK,FALSE,Rated Price: 4.4 | Stake: 1 Units,8. Strideaway,0,8.8,-$1.00 ,-$1.00 , $0.12 
+12/10/2024,Thoroughbred,VIC,Caulfield,Glenn Ingram,234196059,74814522,BACK,TRUE,Rated Price: 2.5 | Stake: 3 Units,4. Another Wil,0,2.23,-$3.00 ,-$3.00 , $2.27 
+12/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234147842,66789725,BACK,TRUE,Rated Price: 1.29 | Stake: 5 Units,1. Broadsiding,0,1.9,-$5.00 ,-$5.00 , $5.17 
+12/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234195987,74814505,LAY,TRUE,Rated Price: 9 | Stake: 3 Units,12. Keepsake,0,4.96, $0.70 ,-$3.00 , $0.70 
+12/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234195987,74814498,BACK,FALSE,Rated Price: 7.5 | Stake: 1 Units,5. Symphony Of Colour,0,19.61,-$1.00 ,-$1.00 , $0.05 
+12/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234196224,74814365,BACK,FALSE,Rated Price: 2.3 | Stake: 1 Units,2. Misting,0,2.7,-$1.00 ,-$1.00 , $0.55 
+12/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234196251,74814374,BACK,TRUE,Rated Price: 2.9 | Stake: 3 Units,5. Metalart,0,4.47,-$3.00 ,-$3.00 , $0.80 
+12/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234196296,74814394,BACK,FALSE,Rated Price: 4.4 | Stake: 1 Units,11. Belvedere Boys,0,8.71,-$1.00 ,-$1.00 , $0.12 
+12/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234196278,57625564,LAY,FALSE,Rated Price: 7 | Stake: 1 Units,12. Catwalk Criminal,0,9.53, $0.11 ,-$1.00 , $0.11 
+12/10/2024,Thoroughbred,NSW,Kembla Grange,Joshua Ingram,234228534,68415639,BACK,TRUE,Rated Price:  | Stake: 4 Units,2. Smashing Time,1,1.39, $1.40 , $1.40 ,-$4.00 
+12/10/2024,Thoroughbred,NSW,Kembla Grange,Joshua Ingram,234228519,74853234,LAY,TRUE,Rated Price:  | Stake: 2 Units,5. Vieri,0,3.49, $0.72 ,-$2.00 , $0.72 
+12/10/2024,Thoroughbred,NSW,Kembla Grange,Joshua Ingram,234228554,74853271,BACK,FALSE,Rated Price:  | Stake: 2 Units,9. Rock Revolution,0,7.4,-$2.00 ,-$2.00 , $0.28 
+12/10/2024,Thoroughbred,SA,Murray Bridge,Lachlan Mosley,234196613,52966884,BACK,TRUE,Rated Price:  | Stake: 2 Units,8. Intrepid Eagle ,1,2.28, $2.38 , $2.38 ,-$2.00 
+12/10/2024,Thoroughbred,SA,Murray Bridge,Lachlan Mosley,234196604,2246656,BACK,FALSE,Rated Price:  | Stake: 1 Units,7. Validated,0,3.41,-$1.00 ,-$1.00 , $0.39 
+12/10/2024,Thoroughbred,SA,Murray Bridge,Lachlan Mosley,234196630,66826343,BACK,FALSE,Rated Price:  | Stake: 2 Units,9. Thirsty Guest ,0,3.83,-$2.00 ,-$2.00 , $0.66 
+12/10/2024,Thoroughbred,SA,Murray Bridge,Lachlan Mosley,234196630,74813673,BACK,FALSE,Rated Price:  | Stake: 1 Units,11. Maracourt ,1,11.85, $10.09 , $10.09 ,-$1.00 
+12/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,234197118,74814671,LAY,TRUE,Rated Price: 3.8 | Stake: 2 Units,10. Pharari,1,1.99,-$2.00 , $1.78 ,-$2.00 
+12/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,234197109,54339893,BACK,TRUE,Rated Price: 2.2 | Stake: 3 Units,3. Olentia,1,2.79, $4.83 , $4.83 ,-$3.00 
+12/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,234197073,4256758,BACK,FALSE,Rated Price: 3.5 | Stake: 2 Units,1. Coleman,0,3.7,-$2.00 ,-$2.00 , $0.67 
+12/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,234197100,861198,BACK,FALSE,Rated Price: 3.2 | Stake: 2 Units,10. Gringotts,0,4,-$2.00 ,-$2.00 , $0.60 
+12/10/2024,Thoroughbred,NSW,Rosehill,Mitch Lewis,234197064,74814640,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,2. Henlein,0,5.5,-$2.00 ,-$2.00 , $0.40 
+13/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234271611,70170782,BACK,TRUE,Rated Price: 5.5 | Stake: 1 Units,1. Make Them Cry,1,1.55, $0.51 , $0.51 ,-$1.00 
+13/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234271650,66366389,BACK,TRUE,Rated Price: 1.8 | Stake: 5 Units,1. Talk About Class,1,1.73, $3.39 , $3.39 ,-$5.00 
+13/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234271641,74814463,BACK,FALSE,Rated Price: 8 | Stake: 1 Units,1. Promises Three,1,2.02, $0.95 , $0.95 ,-$1.00 
+13/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234271625,70966024,LAY,TRUE,Rated Price: 7.5 | Stake: 2 Units,8. Tarzan Teddy,0,7.43, $0.29 ,-$2.00 , $0.29 
+13/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234271635,74814462,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,3. Law Book,0,13.37, $0.08 ,-$1.00 , $0.08 
+13/10/2024,Harness,VIC,Ararat,Brett & Darren Carroll,234317832,51637268,BACK,FALSE,Rated Price: 1.8 | Stake: 2 Units,2. Senna Storm,0,1.68,-$2.00 ,-$2.00 , $2.74 
+13/10/2024,Harness,VIC,Ararat,Brett & Darren Carroll,234317828,74815054,BACK,TRUE,Rated Price: 1.6 | Stake: 3 Units,9. The Silent Assassin,1,2.6, $4.46 , $4.46 ,-$3.00 
+13/10/2024,Harness,VIC,Ararat,Brett & Darren Carroll,234317834,72610128,LAY,TRUE,Rated Price: 7.5 | Stake: 2 Units,6. Carla Pixie,1,5.93,-$2.00 , $9.17 ,-$2.00 
+13/10/2024,Thoroughbred,NSW,Coonamble,Joshua Ingram,234272794,41561840,BACK,FALSE,Rated Price:  | Stake: 1 Units,2. Sonic Tycoon,1,2.77, $1.59 , $1.59 ,-$1.00 
+13/10/2024,Thoroughbred,NSW,Coonamble,Joshua Ingram,234272784,66789438,BACK,FALSE,Rated Price:  | Stake: 1 Units,1. Byrons Farm,0,2.79,-$1.00 ,-$1.00 , $0.50 
+13/10/2024,Thoroughbred,NSW,Coonamble,Joshua Ingram,234272799,46652370,BACK,TRUE,Rated Price:  | Stake: 2 Units,7. Shen Gui,1,4.23, $5.81 , $5.81 ,-$2.00 
+13/10/2024,Thoroughbred,SA,Port Lincoln,Lachlan Mosley,234274209,64342966,BACK,TRUE,Rated Price:  | Stake: 2 Units,7. One Sky Above Us ,0,3.55,-$2.00 ,-$2.00 , $0.73 
+13/10/2024,Thoroughbred,SA,Port Lincoln,Lachlan Mosley,234274228,28386210,,FALSE,Rated Price:  | Stake: 2 Units,3. Riched,0,5.02, $0.46 ,-$2.00 , $0.46 
+13/10/2024,Thoroughbred,VIC,Seymour,Chris Camilleri,234274329,74853698,BACK,TRUE,Rated Price: 1.9 | Stake: 3 Units,5. Jammin Jimmy ,1,2.92, $5.36 , $5.36 ,-$3.00 
+13/10/2024,Thoroughbred,VIC,Seymour,Chris Camilleri,234274345,74853718,LAY,TRUE,Rated Price: 3.5 | Stake: 2 Units,12. Express Guard ,0,3.19, $0.85 ,-$2.00 , $0.85 
+13/10/2024,Thoroughbred,QLD,Townsville,The Leg Up,234274838,66789895,LAY,TRUE,Rated Price: 4 | Stake:  Units,1. Well Held,1,5.85,-$1.00 , $4.51 ,-$1.00 
+14/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234368038,74854050,BACK,TRUE,Rated Price: 1.8 | Stake: 2 Units,1. Lochinvar Marvel,1,1.27, $0.50 , $0.50 ,-$2.00 
+14/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234368058,74854059,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,2. Pay Pay Pay,1,1.91, $1.69 , $1.69 ,-$2.00 
+14/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234368053,73755565,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,1. Zipper Bank,1,4.1,-$2.00 , $5.77 ,-$2.00 
+14/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234368063,62326791,BACK,TRUE,Rated Price: 5 | Stake: 2 Units,5. Common Speed,0,4.4,-$2.00 ,-$2.00 , $0.55 
+14/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234368073,68826588,LAY,TRUE,Rated Price: 4.5 | Stake: 2 Units,4. Revived,0,5.8, $0.39 ,-$2.00 , $0.39 
+14/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234361626,74338946,BACK,FALSE,Rated Price: 2.15 | Stake: 2 Units,3. Alabama Jammer ,1,1.62, $1.15 , $1.15 ,-$2.00 
+14/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234361621,74900413,BACK,TRUE,Rated Price: 2.15 | Stake: 3 Units,5. Spring Regency ,1,2.42, $3.96 , $3.96 ,-$3.00 
+14/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234361631,74900424,BACK,FALSE,Rated Price: 3.15 | Stake: 3 Units,1. Caruggi ,0,4.13,-$3.00 ,-$3.00 , $0.89 
+14/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234361636,74616782,LAY,TRUE,Rated Price: 5.5 | Stake: 2 Units,3. Flying Batty ,0,4.39, $0.55 ,-$2.00 , $0.55 
+14/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234361611,66654270,BACK,FALSE,Rated Price: 3.9 | Stake: 1 Units,6. Ponting ,0,4.88,-$1.00 ,-$1.00 , $0.24 
+14/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234361651,74900430,LAY,FALSE,Rated Price: 7.5 | Stake: 1 Units,8. Barretos ,0,11.22, $0.09 ,-$1.00 , $0.09 
+14/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234361606,74900402,BACK,FALSE,Rated Price: 4.6 | Stake: 1 Units,3. Vista Vanadium ,0,12.81,-$1.00 ,-$1.00 , $0.08 
+14/10/2024,Harness,VIC,Charlton,Brett & Darren Carroll,234369146,43224600,BACK,TRUE,Rated Price: 1.4 | Stake: 2 Units,3. Boutika,1,1.33, $0.61 , $0.61 ,-$2.00 
+14/10/2024,Harness,VIC,Charlton,Brett & Darren Carroll,234369158,46159944,BACK,FALSE,Rated Price: 1.8 | Stake: 2 Units,6. Another Nien,1,2.14, $2.12 , $2.12 ,-$2.00 
+14/10/2024,Harness,VIC,Charlton,Brett & Darren Carroll,234369154,12264289,LAY,TRUE,Rated Price: 11 | Stake: 2 Units,1. One Off,0,44.11, $0.04 ,-$2.00 , $0.04 
+14/10/2024,Harness,SA,Globe Derby,Mark Lawrence,234370277,74901191,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,6. Shirley Not,0,1.52,-$3.00 ,-$3.00 , $5.37 
+14/10/2024,Harness,SA,Globe Derby,Mark Lawrence,234370287,63610310,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,1. Lady Vee,0,7.8, $0.27 ,-$2.00 , $0.27 
+14/10/2024,Harness,NSW,Newcastle,Will Norman,234368534,3255970,BACK,TRUE,Rated Price: 2.2 | Stake: 3 Units,7. Secret Wish,1,2.6, $4.46 , $4.46 ,-$3.00 
+14/10/2024,Harness,NSW,Newcastle,Will Norman,234368522,23055428,BACK,FALSE,Rated Price: 3.5 | Stake: 2 Units,5. Midnight In Memphis,0,3.15,-$2.00 ,-$2.00 , $0.87 
+14/10/2024,Harness,NSW,Newcastle,Will Norman,234368532,46346086,BACK,FALSE,Rated Price: 7 | Stake: 1 Units,3. Barbaradawnshannon,0,3.6,-$1.00 ,-$1.00 , $0.36 
+14/10/2024,Harness,NSW,Newcastle,Will Norman,234368516,22954613,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,3. Hasler,1,3.9, $2.70 , $2.70 ,-$1.00 
+14/10/2024,Harness,WA,Pinjarra,Scott Hill,234369747,294301,BACK,TRUE,Rated Price: 1.3 | Stake: 5 Units,2. Irresistible,0,1.7,-$5.00 ,-$5.00 , $6.64 
+14/10/2024,Harness,WA,Pinjarra,Scott Hill,234369741,74901222,BACK,FALSE,Rated Price: 2.2 | Stake: 2 Units,11. Major Disco ,1,2.08, $2.01 , $2.01 ,-$2.00 
+14/10/2024,Harness,WA,Pinjarra,Scott Hill,234369737,74901214,BACK,FALSE,Rated Price: 1.65 | Stake: 3 Units,6. Heza Whizard,0,2.2,-$3.00 ,-$3.00 , $2.33 
+14/10/2024,Harness,WA,Pinjarra,Scott Hill,234369751,68191133,BACK,FALSE,Rated Price: 1.75 | Stake: 3 Units,1. Goodtime Louis,1,2.54, $4.30 , $4.30 ,-$3.00 
+14/10/2024,Harness,WA,Pinjarra,Scott Hill,234369743,13210428,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,1. Double Edged,0,3.4,-$1.00 ,-$1.00 , $0.39 
+14/10/2024,Harness,WA,Pinjarra,Scott Hill,234369751,4125879,LAY,FALSE,Rated Price: 3 | Stake: 3 Units,3. Franklin Delano,0,3.64, $1.06 ,-$3.00 , $1.06 
+14/10/2024,Thoroughbred,VIC,Bairnsdale,Chris Camilleri,234287833,74901054,BACK,TRUE,Rated Price: 1.9 | Stake: 3 Units,14. Litzdeel ,1,2.94, $5.41 , $5.41 ,-$3.00 
+14/10/2024,Thoroughbred,VIC,Bairnsdale,Chris Camilleri,234287849,64997915,LAY,TRUE,Rated Price: 3.5 | Stake: 2 Units,1. Bossy Star ,0,3.66, $0.70 ,-$2.00 , $0.70 
+14/10/2024,Thoroughbred,VIC,Bairnsdale,Chris Camilleri,234375038,28605327,LAY,FALSE,Rated Price: 5.5 | Stake: 1 Units,1. Not Enough Effort ,0,3.9, $0.32 ,-$1.00 , $0.32 
+14/10/2024,Thoroughbred,NSW,Tamworth,Joshua Ingram,234318010,74853531,BACK,FALSE,Rated Price:  | Stake: 1 Units,6. Halle Bee,0,1.53,-$1.00 ,-$1.00 , $1.70 
+14/10/2024,Thoroughbred,NSW,Tamworth,Joshua Ingram,234317999,74853492,BACK,TRUE,Rated Price:  | Stake: 3 Units,10. Off The Scale,0,2.64,-$3.00 ,-$3.00 , $1.65 
+15/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234407049,59917947,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,1. King Baroque,1,1.71, $1.32 , $1.32 ,-$2.00 
+15/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234407044,46260502,BACK,TRUE,Rated Price: 2.4 | Stake: 2 Units,7. Fascinate Trump,0,2.39,-$2.00 ,-$2.00 , $1.34 
+15/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234407064,62990454,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,7. Tommy Tsunami,0,5, $0.47 ,-$2.00 , $0.47 
+15/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234407059,59888154,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,5. Tarawi Maple,0,11, $0.19 ,-$2.00 , $0.19 
+15/10/2024,Harness,QLD,Albion Park,Ryan Spice,234407194,44537432,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,1. Sporting Tristar,1,1.73, $1.36 , $1.36 ,-$2.00 
+15/10/2024,Harness,QLD,Albion Park,Ryan Spice,234407186,73759456,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,8. More Surprises,0,4.28,-$1.00 ,-$1.00 , $0.28 
+15/10/2024,Harness,QLD,Albion Park,Ryan Spice,234407188,28866577,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,10. The Tiger Army,0,9.8,-$1.00 ,-$1.00 , $0.11 
+15/10/2024,Harness,WA,Narrogin,Scott Hill,234409710,74900909,BACK,TRUE,Rated Price: 1.2 | Stake: 5 Units,6. Bull Shark Betty,1,1.56, $2.60 , $2.60 ,-$5.00 
+15/10/2024,Harness,WA,Narrogin,Scott Hill,234409708,74900906,LAY,FALSE,Rated Price: 3 | Stake: 3 Units,4. Major Blue Eyes,0,2.16, $2.41 ,-$3.00 , $2.41 
+15/10/2024,Harness,WA,Narrogin,Scott Hill,234409706,1386387,BACK,FALSE,Rated Price: 2.2 | Stake: 2 Units,1. Sugar Shake,0,2.2,-$2.00 ,-$2.00 , $1.55 
+15/10/2024,Harness,WA,Narrogin,Scott Hill,234409700,41224730,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,9. Lets Rock Tonight,0,4.3,-$1.00 ,-$1.00 , $0.28 
+15/10/2024,Harness,WA,Narrogin,Scott Hill,234409698,74900901,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,4. More Than Honoured,0,11.23,-$2.00 ,-$2.00 , $0.18 
+15/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234407203,59416332,BACK,TRUE,Rated Price: 5 | Stake: 1 Units,1. Sports Narrator,0,1.81,-$1.00 ,-$1.00 , $1.15 
+15/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234407204,71981358,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,11. Better Saint,0,3.62,-$1.00 ,-$1.00 , $0.35 
+15/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234407214,74854076,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,5. Frankie Firefly,0,8.2,-$1.00 ,-$1.00 , $0.13 
+15/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234407208,41409025,LAY,FALSE,Rated Price: 7.5 | Stake: 1 Units,10. Tex Goes Bang,0,14.5, $0.07 ,-$1.00 , $0.07 
+15/10/2024,Thoroughbred,VIC,Kilmore,Glenn Ingram,234369757,74900916,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,11. Shes Got Pizzazz,1,1.31, $0.86 , $0.86 ,-$3.00 
+15/10/2024,Thoroughbred,VIC,Kilmore,Linton Chataway,234369757,74900918,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,14. Ville De Lumiere,0,7.4, $0.15 ,-$1.00 , $0.15 
+15/10/2024,Thoroughbred,NSW,Murwillumbah,Mitch Lewis,234370270,67788986,BACK,FALSE,Rated Price: 2.6 | Stake: 2 Units,10. Veandechance,0,2.73,-$2.00 ,-$2.00 , $1.04 
+15/10/2024,Thoroughbred,NSW,Murwillumbah,Mitch Lewis,234370265,56321625,BACK,TRUE,Rated Price: 2.4 | Stake: 2 Units,5. Written Fame,0,2.82,-$2.00 ,-$2.00 , $0.99 
+16/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234452457,75019266,BACK,TRUE,Rated Price: 1.75 | Stake: 3 Units,1. Winter Goes ,0,1.64,-$3.00 ,-$3.00 , $4.36 
+16/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234452427,73720141,LAY,FALSE,Rated Price: 3.4 | Stake: 2 Units,1. Chemical Erosion,0,2.38, $1.35 ,-$2.00 , $1.35 
+16/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234452447,73756501,LAY,TRUE,Rated Price: 2.75 | Stake: 2 Units,4. Joey The Jet ,1,2.43,-$2.00 , $2.66 ,-$2.00 
+16/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234452437,69608360,BACK,FALSE,Rated Price: 3.4 | Stake: 1 Units,2. Xoel Bale,0,6.2,-$1.00 ,-$1.00 , $0.18 
+16/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234452452,73919575,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,8. Coopers Legacy,0,7.2,-$1.00 ,-$1.00 , $0.15 
+16/10/2024,Greyhounds,VIC,Ballarat,Michael Tye,234452422,75019254,BACK,FALSE,Rated Price: 3.15 | Stake: 2 Units,6. Oregon Janet ,0,7.47,-$2.00 ,-$2.00 , $0.29 
+16/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234452298,59918020,BACK,TRUE,Rated Price: 1.5 | Stake: 4 Units,1. Mark Sure Can,1,1.44, $1.64 , $1.64 ,-$4.00 
+16/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234452308,66758626,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,8. Bossy Miss Bliss,0,4.1,-$2.00 ,-$2.00 , $0.60 
+16/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234452273,68855566,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,2. Choose To Chance,0,15.81, $0.13 ,-$2.00 , $0.13 
+16/10/2024,Harness,NSW,Bathurst,Will Norman,234452407,75019718,BACK,TRUE,Rated Price: 1.5 | Stake: 3 Units,6. Rivera Lou,1,1.39, $1.09 , $1.09 ,-$3.00 
+16/10/2024,Harness,NSW,Bathurst,Will Norman,234452395,67127569,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,3. Hunter Shannon,0,3.27,-$1.00 ,-$1.00 , $0.41 
+16/10/2024,Harness,NSW,Bathurst,Will Norman,234452398,36087589,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,6. Cassius Deck,0,4.1,-$2.00 ,-$2.00 , $0.60 
+16/10/2024,Harness,NSW,Bathurst,Will Norman,234452392,49380801,BACK,FALSE,Rated Price: 3.5 | Stake: 2 Units,10. Sabella Shannon,1,4.6, $6.70 , $6.70 ,-$2.00 
+16/10/2024,Harness,NSW,Bathurst,Will Norman,234452389,28276002,BACK,FALSE,Rated Price: 4.5 | Stake: 2 Units,1. Yankee Ideal,1,7.98, $12.98 , $12.98 ,-$2.00 
+16/10/2024,Harness,NSW,Bathurst,Will Norman,234452404,53218809,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,6. Tinny Mahoney ,0,10.5,-$1.00 ,-$1.00 , $0.10 
+16/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234450126,67822933,BACK,TRUE,Rated Price: 1.4 | Stake: 3 Units,7. Katunga Express,0,1.5,-$3.00 ,-$3.00 , $5.58 
+16/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234450118,19921010,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,8. No Money No Honey,1,2.78, $3.31 , $3.31 ,-$2.00 
+16/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234450128,56646092,BACK,FALSE,Rated Price: 2 | Stake: 1 Units,7. Kaotic Flair,0,5.3,-$1.00 ,-$1.00 , $0.22 
+16/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234450112,72479319,LAY,TRUE,Rated Price: 10 | Stake: 2 Units,10. Kathys Free,0,8.78, $0.24 ,-$2.00 , $0.24 
+16/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,234408023,75018469,BACK,FALSE,Rated Price:  | Stake: 2 Units,9. All Too Mysti,0,2.03,-$2.00 ,-$2.00 , $1.81 
+16/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,234408058,52272504,BACK,FALSE,Rated Price:  | Stake: 2 Units,2. Mr Trafficanti ,0,2.58,-$2.00 ,-$2.00 , $1.18 
+16/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,234408037,63573380,BACK,TRUE,Rated Price:  | Stake: 2 Units,1. Hadar ,0,3.06,-$2.00 ,-$2.00 , $0.90 
+16/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,234408044,40091991,BACK,FALSE,Rated Price:  | Stake: 1 Units,7. Mays West,0,6.92,-$1.00 ,-$1.00 , $0.16 
+16/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,234408044,898279,BACK,FALSE,Rated Price:  | Stake: 1 Units,6. Jimmys Edge ,0,7.4,-$1.00 ,-$1.00 , $0.15 
+16/10/2024,Thoroughbred,VIC,Caulfield,Glenn Ingram,234408089,5715711,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,5. Plymouth,0,2.95,-$2.00 ,-$2.00 , $0.95 
+16/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234408089,75018888,BACK,TRUE,Rated Price: 2.6 | Stake: 3 Units,3. Treasurethe Moment ,1,3.53, $7.06 , $7.06 ,-$3.00 
+16/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234408134,3050461,LAY,TRUE,Rated Price: 4.4 | Stake: 2 Units,6. Nadal,1,3.72,-$2.00 , $5.06 ,-$2.00 
+16/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234413391,75018952,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,1. Bundella,0,2.5,-$2.00 ,-$2.00 , $1.24 
+16/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234413398,47252938,LAY,FALSE,Rated Price: 7 | Stake: 1 Units,6. Roll Up,0,7.8, $0.14 ,-$1.00 , $0.14 
+16/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234413370,75018945,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,7. Better Draw,0,7.88, $0.14 ,-$1.00 , $0.14 
+16/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234413384,3113746,BACK,FALSE,Rated Price: 6 | Stake: 1 Units,2. Jungle Law,0,15.5,-$1.00 ,-$1.00 , $0.06 
+16/10/2024,Thoroughbred,QLD,Doomben,The Leg Up,234413405,75018971,LAY,FALSE,Rated Price: 3.5 | Stake:  Units,10. Acappella Nova,1,2.63,-$1.00 , $1.52 ,-$1.00 
+16/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234408205,75018547,BACK,FALSE,Rated Price: 2 | Stake: 3 Units,2. Confess Our Dreams,1,1.75, $2.03 , $2.03 ,-$3.00 
+16/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234408221,53148536,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,1. Tavi Time,1,1.91, $2.46 , $2.46 ,-$3.00 
+16/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234408214,75018548,BACK,FALSE,Rated Price: 6 | Stake: 1 Units,1. Raikoke,0,3.7,-$1.00 ,-$1.00 , $0.33 
+17/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234512794,58844979,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,4. Skye Monelli,1,1.5, $0.93 , $0.93 ,-$2.00 
+17/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234512804,43234541,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,1. Brunswick Flyer,1,1.54, $1.51 , $1.51 ,-$3.00 
+17/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234512789,54633020,BACK,FALSE,Rated Price: 2 | Stake: 3 Units,8. Binny Doo,0,2.4,-$3.00 ,-$3.00 , $1.99 
+17/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234512819,62730258,LAY,TRUE,Rated Price: 3 | Stake: 2 Units,8. Bootin Boodie,1,3.1,-$2.00 , $3.91 ,-$2.00 
+17/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234512779,75019602,LAY,FALSE,Rated Price: 6 | Stake: 2 Units,1. Becky Dutton,0,4.04, $0.61 ,-$2.00 , $0.61 
+17/10/2024,Greyhounds,NSW,Richmond,Joe Lannutti,234507534,71146225,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,4. Cool Junior,1,2.26, $2.34 , $2.34 ,-$2.00 
+17/10/2024,Greyhounds,NSW,Richmond,Joe Lannutti,234507529,68124257,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,7. King Cant Win,0,2.37,-$2.00 ,-$2.00 , $1.36 
+17/10/2024,Greyhounds,NSW,Richmond,Joe Lannutti,234507539,75047169,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,5. Jakey Blue,1,3.22, $2.06 , $2.06 ,-$1.00 
+17/10/2024,Greyhounds,NSW,Richmond,Joe Lannutti,234507554,64959681,LAY,TRUE,Rated Price: 4.5 | Stake: 2 Units,7. Tulsi Banner,1,3.31,-$2.00 , $4.30 ,-$2.00 
+17/10/2024,Greyhounds,NSW,Richmond,Joe Lannutti,234507549,2140220,LAY,TRUE,Rated Price: 3.5 | Stake: 2 Units,7. All Time High,0,7.15, $0.30 ,-$2.00 , $0.30 
+17/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234507678,68791560,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,1. Whisky Trip ,1,1.71, $1.98 , $1.98 ,-$3.00 
+17/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234507713,70891944,BACK,FALSE,Rated Price: 1.75 | Stake: 2 Units,6. Excavation ,0,2.01,-$2.00 ,-$2.00 , $1.84 
+17/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234507688,66033510,BACK,FALSE,Rated Price: 2.05 | Stake: 2 Units,1. Ethanol Volume ,0,2.44,-$2.00 ,-$2.00 , $1.29 
+17/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234507723,57625924,LAY,TRUE,Rated Price:  | Stake: 2 Units,3. Mepunga Smokey ,0,2.99, $0.93 ,-$2.00 , $0.93 
+17/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234507718,69755784,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,3. Fernando Phil ,0,3.35,-$2.00 ,-$2.00 , $0.79 
+17/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234507673,70247753,LAY,FALSE,Rated Price: 5.5 | Stake: 2 Units,4. Spritely Sian ,0,5.8, $0.39 ,-$2.00 , $0.39 
+17/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234507703,61105495,LAY,FALSE,Rated Price: 8 | Stake: 1 Units,4. Bagman ,0,7.54, $0.14 ,-$1.00 , $0.14 
+17/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234507698,49118318,LAY,FALSE,Rated Price: 7.5 | Stake: 1 Units,1. Sunnyside Jo ,0,7.6, $0.14 ,-$1.00 , $0.14 
+17/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,234499111,75019405,BACK,TRUE,Rated Price: 1.7 | Stake: 2 Units,2. Picture Us Rollin,0,2.25,-$2.00 ,-$2.00 , $1.49 
+17/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,234499103,37398244,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,5. Martha Lavinia,0,2.96,-$2.00 ,-$2.00 , $0.95 
+17/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,234499076,49711827,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,10. Tubs Now Slim,0,13.69,-$2.00 ,-$2.00 , $0.15 
+17/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,234499109,26910919,LAY,TRUE,Rated Price: 11 | Stake: 2 Units,1. Fling It Rainbow,0,17.7, $0.11 ,-$2.00 , $0.11 
+17/10/2024,Harness,NSW,Penrith,Will Norman,234503340,56540655,BACK,FALSE,Rated Price: 2 | Stake: 1 Units,1. Okay Gringo,1,2.14, $1.06 , $1.06 ,-$1.00 
+17/10/2024,Harness,NSW,Penrith,Will Norman,234503343,49269618,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,3. Major Icon,0,3.35,-$3.00 ,-$3.00 , $1.19 
+17/10/2024,Harness,NSW,Penrith,Will Norman,234503331,57688788,LAY,FALSE,Rated Price: 7 | Stake: 1 Units,2. Kates Virtue,0,4.12, $0.30 ,-$1.00 , $0.30 
+17/10/2024,Harness,NSW,Penrith,Will Norman,234503334,28223724,BACK,FALSE,Rated Price: 7 | Stake: 1 Units,7. Capitallee,0,19.04,-$1.00 ,-$1.00 , $0.05 
+17/10/2024,Thoroughbred,VIC,Ballarat,Glenn Ingram,234450300,75047089,BACK,TRUE,Rated Price: 5 | Stake: 2 Units,11. Didnt Miss Many,1,2.65, $3.07 , $3.07 ,-$2.00 
+17/10/2024,Thoroughbred,VIC,Ballarat,Jackson Oldham,234450315,75047099,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,13. Roadcone,0,2.28,-$2.00 ,-$2.00 , $1.45 
+17/10/2024,Thoroughbred,NSW,Hawkesbury,Linton Chataway,234453667,75046966,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,7. Inoue,0,11.67, $0.08 ,-$1.00 , $0.08 
+17/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234453662,15129913,BACK,TRUE,Rated Price: 1.8 | Stake: 4 Units,3. Alinea,0,3.2,-$4.00 ,-$4.00 , $1.64 
+17/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234453687,74300370,BACK,FALSE,Rated Price: 3.5 | Stake: 1 Units,8. Brutal Bowler,0,3.22,-$1.00 ,-$1.00 , $0.41 
+17/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234453682,68637359,LAY,TRUE,Rated Price: 9 | Stake: 1 Units,2. Oakfield Hawk,0,5.04, $0.22 ,-$1.00 , $0.22 
+17/10/2024,Thoroughbred,QLD,Mackay,The Leg Up,234452121,47591114,LAY,FALSE,Rated Price: 4.5 | Stake:  Units,4. Mighty Judd,0,5.09, $0.23 ,-$1.00 , $0.23 
+18/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234548285,75084488,BACK,TRUE,Rated Price: 1.65 | Stake: 3 Units,4. Highly Abrasive ,0,1.7,-$3.00 ,-$3.00 , $3.99 
+18/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234548296,58280366,LAY,TRUE,Rated Price: 7 | Stake: 2 Units,1. Riendo ,0,1.78, $2.38 ,-$2.00 , $2.38 
+18/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234548315,58345047,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,3. Shanlyn Scout ,1,3.35, $4.37 , $4.37 ,-$2.00 
+18/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234548305,75084495,LAY,FALSE,Rated Price: 6 | Stake: 2 Units,4. Pat Ability ,0,5.2, $0.44 ,-$2.00 , $0.44 
+18/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234548310,47240704,LAY,FALSE,Rated Price: 6 | Stake: 2 Units,1. Mr Beets ,1,6.93,-$2.00 , $11.03 ,-$2.00 
+18/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234548290,75084490,LAY,FALSE,Rated Price: 7 | Stake: 2 Units,3. Frog March,1,11.48,-$2.00 , $19.49 ,-$2.00 
+18/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234547599,67821789,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,1. Power And Glory,0,1.96,-$2.00 ,-$2.00 , $1.94 
+18/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234606700,60038441,BACK,TRUE,Rated Price: 2.1 | Stake: 3 Units,7. Explicit,0,2.49,-$3.00 ,-$3.00 , $1.87 
+18/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234547575,75019116,BACK,FALSE,Rated Price: 6 | Stake: 1 Units,8. Zipping Jonas,0,2.52,-$1.00 ,-$1.00 , $0.61 
+18/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234547594,47295996,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,8. Agland Luai,0,5.2, $0.44 ,-$2.00 , $0.44 
+18/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234547589,65205060,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,3. Talk About Class,0,10.8, $0.09 ,-$1.00 , $0.09 
+18/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234547604,52901215,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,6. Valpolicella,0,11.64, $0.17 ,-$2.00 , $0.17 
+18/10/2024,Harness,WA,Gloucester Park,Scott Hill,234548804,51657202,BACK,TRUE,Rated Price: 1.5 | Stake: 3 Units,2. Ideal Muscle,1,1.71, $1.98 , $1.98 ,-$3.00 
+18/10/2024,Harness,WA,Gloucester Park,Scott Hill,234548792,60416456,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,6. Christopher Dance ,1,1.92, $1.71 , $1.71 ,-$2.00 
+18/10/2024,Harness,WA,Gloucester Park,Scott Hill,234548810,75061264,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,6. Soho Moonraker ,1,2.1, $2.05 , $2.05 ,-$2.00 
+18/10/2024,Harness,WA,Gloucester Park,Scott Hill,234548801,48106166,LAY,FALSE,Rated Price: 3 | Stake: 3 Units,1. Chaco Eagle ,1,3.83,-$3.00 , $7.90 ,-$3.00 
+18/10/2024,Harness,WA,Gloucester Park,Scott Hill,234548786,40856944,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,7. Solesseo Matuca ,0,4.36,-$2.00 ,-$2.00 , $0.55 
+18/10/2024,Harness,WA,Gloucester Park,Scott Hill,234548783,47905780,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,11. Skylord,0,5.1,-$1.00 ,-$1.00 , $0.23 
+18/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234548344,46328940,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,5. Nellie Joy,0,2.06,-$2.00 ,-$2.00 , $1.75 
+18/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234548350,71374976,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,2. Aardies Peak,0,4,-$2.00 ,-$2.00 , $0.62 
+18/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234548341,26070317,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,3. Im A Denny Too,0,8.59,-$2.00 ,-$2.00 , $0.25 
+18/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234548347,43509961,BACK,FALSE,Rated Price: 3.5 | Stake: 1 Units,1. Chansu,0,12.53,-$1.00 ,-$1.00 , $0.08 
+18/10/2024,Thoroughbred,QLD,Ipswich,Linton Chataway,234505973,75084808,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,1. Antonito,0,3.7,-$2.00 ,-$2.00 , $0.69 
+18/10/2024,Thoroughbred,QLD,Ipswich,Linton Chataway,234505958,41017653,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,1. Writtle,0,4,-$2.00 ,-$2.00 , $0.62 
+18/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234504726,75046615,BACK,FALSE,Rated Price:  | Stake: 2 Units,12. Tuskegee,0,1.85,-$2.00 ,-$2.00 , $2.19 
+18/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234504744,62393927,BACK,FALSE,Rated Price:  | Stake: 2 Units,4. Spring Bean,0,2.28,-$2.00 ,-$2.00 , $1.45 
+18/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234504738,72642076,BACK,FALSE,Rated Price:  | Stake: 3 Units,6. Bloomtime,0,2.6,-$3.00 ,-$3.00 , $1.74 
+18/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234504720,74493554,BACK,FALSE,Rated Price:  | Stake: 2 Units,1. Bunker Bob,1,3.45, $4.56 , $4.56 ,-$2.00 
+18/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234504750,75046635,LAY,FALSE,Rated Price:  | Stake: 2 Units,7. Garcon Despoir,0,3.55, $0.73 ,-$2.00 , $0.73 
+18/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234504732,75046629,BACK,FALSE,Rated Price:  | Stake: 2 Units,12. Azonto,0,3.84,-$2.00 ,-$2.00 , $0.65 
+18/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234504720,74773879,BACK,FALSE,Rated Price:  | Stake: 2 Units,13. Billie The Great,0,4.17,-$2.00 ,-$2.00 , $0.59 
+18/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234504756,59146754,LAY,FALSE,Rated Price:  | Stake: 1 Units,2. Cartoon Graveyard,0,5.01, $0.23 ,-$1.00 , $0.23 
+18/10/2024,Thoroughbred,VIC,Moe,Glenn Ingram,234505061,75084558,BACK,TRUE,Rated Price: 3 | Stake: 3 Units,8. Jennyanydots,1,2.89, $5.27 , $5.27 ,-$3.00 
+18/10/2024,Thoroughbred,NSW,Taree,Mitch Lewis,234511214,68599417,BACK,FALSE,Rated Price: 6.5 | Stake: 1 Units,1. Oakfield Redgum,0,3.25,-$1.00 ,-$1.00 , $0.40 
+18/10/2024,Thoroughbred,NSW,Taree,Mitch Lewis,234511218,45758815,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,3. I Am The Empire,0,4.1,-$2.00 ,-$2.00 , $0.58 
+18/10/2024,Thoroughbred,NSW,Taree,Mitch Lewis,234511203,53407514,BACK,FALSE,Rated Price: 3.7 | Stake: 1 Units,1. Markwell Dreamer,0,9,-$1.00 ,-$1.00 , $0.11 
+19/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,234616644,62177985,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,1. My Anarchy Boy,1,1.69, $1.93 , $1.93 ,-$3.00 
+19/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,234616654,62433337,LAY,FALSE,Rated Price: 5 | Stake: 2 Units,2. Imperial Sash,0,2.66, $1.12 ,-$2.00 , $1.12 
+19/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,234616629,73954641,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,2. Motor City Rossi,0,2.9,-$2.00 ,-$2.00 , $0.98 
+19/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,234616634,54085012,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,4. Saige Tenniele,0,10.45, $0.20 ,-$2.00 , $0.20 
+19/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234606711,75047339,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,2. Mr Peregrine,1,1.59, $1.10 , $1.10 ,-$2.00 
+19/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234606741,58100403,LAY,TRUE,Rated Price: 4.5 | Stake: 2 Units,6. Bella Una,0,2.66, $1.12 ,-$2.00 , $1.12 
+19/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234606701,65205053,BACK,TRUE,Rated Price: 3.5 | Stake: 1 Units,1. Harmony Fire,0,3.06,-$1.00 ,-$1.00 , $0.45 
+19/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234606721,3058001,BACK,FALSE,Rated Price: 2.8 | Stake: 1 Units,6. On Report,0,4.6,-$1.00 ,-$1.00 , $0.26 
+19/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234606751,71110019,LAY,TRUE,Rated Price: 5 | Stake: 1 Units,6. Drink Tins,0,5.97, $0.19 ,-$1.00 , $0.19 
+19/10/2024,Harness,QLD,Albion Park,Ryan Spice,234606919,60745600,BACK,FALSE,Rated Price: 2 | Stake: 3 Units,7. Shes Fullofspirit,0,1.65,-$3.00 ,-$3.00 , $4.29 
+19/10/2024,Harness,QLD,Albion Park,Ryan Spice,234606901,51577345,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,3. Always Smokin,1,1.77, $2.15 , $2.15 ,-$3.00 
+19/10/2024,Harness,QLD,Albion Park,Ryan Spice,234606925,75020157,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,7. Our Sweet Delight,0,2.16,-$2.00 ,-$2.00 , $1.60 
+19/10/2024,Harness,QLD,Albion Park,Ryan Spice,234606907,42751710,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,7. Jungle Baby,0,9.8,-$2.00 ,-$2.00 , $0.21 
+19/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234606770,48844532,BACK,FALSE,Rated Price: 1.7 | Stake: 2 Units,9. Cantfindabettorman,1,1.61, $1.13 , $1.13 ,-$2.00 
+19/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234606779,50853916,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,8. Sebastians Boy,0,2.4,-$2.00 ,-$2.00 , $1.33 
+19/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,234606773,67938323,LAY,TRUE,Rated Price: 7.5 | Stake: 2 Units,1. Rainbow Jester,0,11, $0.19 ,-$2.00 , $0.19 
+19/10/2024,Harness,NSW,Menangle,Will Norman,234607863,54712806,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,2. Ravishing Sloy,0,3.13,-$2.00 ,-$2.00 , $0.87 
+19/10/2024,Harness,NSW,Menangle,Will Norman,234607854,45910439,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,7. Regazzo Di Tilly,0,3.7,-$2.00 ,-$2.00 , $0.69 
+19/10/2024,Harness,WA,Northam,Scott Hill,234616544,59423593,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,2. Christophano,0,10.43,-$2.00 ,-$2.00 , $0.20 
+19/10/2024,Thoroughbred,UK,Ascot,Rory Flanagan,234565549,35872442,BACK,TRUE,Rated Price: 1.7 | Stake: 5 Units,Kyprios,1,1.83, $3.94 , $3.94 ,-$5.00 
+19/10/2024,Thoroughbred,UK,Ascot,Rory Flanagan,234565578,58720277,BACK,TRUE,Rated Price: 2.4 | Stake: 4 Units,Calandagan,0,2.63,-$4.00 ,-$4.00 , $2.33 
+19/10/2024,Thoroughbred,UK,Ascot,Rory Flanagan,234565556,26340381,BACK,FALSE,Rated Price: 4.5 | Stake: 2 Units,Kinross,0,5.41,-$2.00 ,-$2.00 , $0.43 
+19/10/2024,Thoroughbred,UK,Ascot,Rory Flanagan,234565571,43971016,BACK,FALSE,Rated Price: 5 | Stake: 2 Units,Facteur Cheval,0,6.24,-$2.00 ,-$2.00 , $0.36 
+19/10/2024,Thoroughbred,UK,Ascot,Rory Flanagan,234565564,19419976,BACK,FALSE,Rated Price: 7 | Stake: 1 Units,Queen Of The Pride,0,13.5,-$1.00 ,-$1.00 , $0.08 
+19/10/2024,Thoroughbred,UK,Ascot,Rory Flanagan,234565564,1297236,BACK,FALSE,Rated Price: 7 | Stake: 1 Units,Grateful,0,19.5,-$1.00 ,-$1.00 , $0.05 
+19/10/2024,Thoroughbred,UK,Ascot,Rory Flanagan,234565556,45720431,BACK,FALSE,Rated Price: 6 | Stake: 2 Units,Mill Stream,0,24,-$2.00 ,-$2.00 , $0.08 
+19/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234511362,55494147,BACK,FALSE,Rated Price: 2.45 | Stake: 2 Units,2. Captain Pluto,0,2.7,-$2.00 ,-$2.00 , $1.09 
+19/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234511398,74745337,BACK,FALSE,Rated Price: 2.9 | Stake: 3 Units,5. Richanco,0,3.25,-$3.00 ,-$3.00 , $1.24 
+19/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234511425,75085419,BACK,TRUE,Rated Price: 2.5 | Stake: 5 Units,11. Chollima,0,3.54,-$5.00 ,-$5.00 , $1.83 
+19/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234511371,67533420,BACK,FALSE,Rated Price: 2.7 | Stake: 2 Units,4. Miss Skyhigh,0,3.76,-$2.00 ,-$2.00 , $0.67 
+19/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234511426,40796608,BACK,FALSE,Rated Price: 12 | Stake: 1 Units,5. Pedal Power,0,9.93,-$1.00 ,-$1.00 , $0.10 
+19/10/2024,Thoroughbred,VIC,Avoca,Glenn Ingram,234548180,75119177,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,2. Shadow Land,0,5.87,-$2.00 ,-$2.00 , $0.38 
+19/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234507278,3151887,BACK,FALSE,Rated Price: 2.8 | Stake: 2 Units,7. Gallant Son,0,2.98,-$2.00 ,-$2.00 , $0.94 
+19/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234507269,73754894,BACK,TRUE,Rated Price: 2.2 | Stake: 3 Units,1. Sugar Coat,0,3.35,-$3.00 ,-$3.00 , $1.19 
+19/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234507350,53148344,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,1. Pinstriped,0,4.6, $0.52 ,-$2.00 , $0.52 
+19/10/2024,Thoroughbred,VIC,Caulfield,Jackson Oldham,234507305,2390675,BACK,FALSE,Rated Price: 3.1 | Stake: 2 Units,8. Isthmus ,0,4.74,-$2.00 ,-$2.00 , $0.50 
+19/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234506090,40775784,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,10. Super Daisy,0,3.54,-$1.00 ,-$1.00 , $0.37 
+19/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234506153,69066783,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,6. Bollinger Miss,0,5.42, $0.21 ,-$1.00 , $0.21 
+19/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234506108,67788999,BACK,TRUE,Rated Price: 6 | Stake: 1 Units,19. Jealous,0,8.8,-$1.00 ,-$1.00 , $0.12 
+19/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234513069,66543156,BACK,TRUE,Rated Price:  | Stake: 3 Units,4. Zebella ,0,2.24,-$3.00 ,-$3.00 , $2.25 
+19/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234513034,54404231,BACK,FALSE,Rated Price:  | Stake: 1 Units,3. Cullen Skink ,1,2.36, $1.26 , $1.26 ,-$1.00 
+19/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234513079,61371240,BACK,FALSE,Rated Price:  | Stake: 1 Units,12. On The Scent ,0,3.45,-$1.00 ,-$1.00 , $0.38 
+19/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234513006,73103449,BACK,FALSE,Rated Price:  | Stake: 2 Units,1. Goonsun,0,4.52,-$2.00 ,-$2.00 , $0.53 
+19/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234513052,1505541,BACK,FALSE,Rated Price:  | Stake: 1 Units,6. Howl,0,5.13,-$1.00 ,-$1.00 , $0.23 
+19/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234513042,75084433,BACK,FALSE,Rated Price:  | Stake: 2 Units,5. The Journo,1,6.28, $9.82 , $9.82 ,-$2.00 
+19/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234512181,36024344,BACK,FALSE,Rated Price: 2.2 | Stake: 2 Units,9. Pride Of Jenni,0,3.3,-$2.00 ,-$2.00 , $0.78 
+19/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234512154,75084738,BACK,TRUE,Rated Price: 3 | Stake: 3 Units,3. Southport Tycoon,0,4.53,-$3.00 ,-$3.00 , $0.76 
+19/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234512172,75084744,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,1. Veight,0,6.12,-$1.00 ,-$1.00 , $0.18 
+19/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234512127,69096454,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,10. Jellicious ,0,7.41,-$1.00 ,-$1.00 , $0.14 
+19/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234464771,40689723,BACK,FALSE,Rated Price: 4.5 | Stake: 1 Units,1. I Wish I Win,0,9.05,-$1.00 ,-$1.00 , $0.11 
+19/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234512127,75084718,LAY,TRUE,Rated Price: 9 | Stake: 1 Units,4. Island Dec,0,9.25, $0.11 ,-$1.00 , $0.11 
+19/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234464771,51033148,BACK,FALSE,Rated Price: 8 | Stake: 1 Units,5. I Am Me,0,14.18,-$1.00 ,-$1.00 , $0.07 
+20/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,234630729,19727912,BACK,TRUE,Rated Price: 1.9 | Stake: 3 Units,7. Call Me Jack,0,2.39,-$3.00 ,-$3.00 , $2.01 
+20/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,234630719,75084946,BACK,FALSE,Rated Price: 2.4 | Stake: 2 Units,2. My Kgari,0,3.14,-$2.00 ,-$2.00 , $0.87 
+20/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,234630721,62065389,LAY,TRUE,Rated Price: 8 | Stake: 1 Units,4. Sky Lindy,0,3.48, $0.38 ,-$1.00 , $0.38 
+20/10/2024,Thoroughbred,VIC,Horsham,Glenn Ingram,234607446,60415272,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,5. Dublin Journal,1,2.7, $3.16 , $3.16 ,-$2.00 
+21/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234724538,60265843,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,1. Queen Caviar,1,1.48, $0.45 , $0.45 ,-$1.00 
+21/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234724517,70533939,LAY,TRUE,Rated Price: 3.3 | Stake: 2 Units,8. Sunrise Jethro,1,2.92,-$2.00 , $3.57 ,-$2.00 
+21/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234724542,70351085,BACK,FALSE,Rated Price: 2.4 | Stake: 1 Units,2. Sunrise Cruiser,0,2.97,-$1.00 ,-$1.00 , $0.47 
+21/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,234724522,75120087,LAY,TRUE,Rated Price: 4.5 | Stake: 2 Units,7. Dawn Raider,1,3.07,-$2.00 , $3.85 ,-$2.00 
+21/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234730823,69463454,LAY,TRUE,Rated Price: 1.95 | Stake: 2 Units,5. Liveable ,1,1.4,-$2.00 , $0.74 ,-$2.00 
+21/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234730838,60780010,BACK,FALSE,Rated Price: 1.38 | Stake: 2 Units,1. Mepunga Ollie ,1,1.54, $1.00 , $1.00 ,-$2.00 
+21/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234730813,70386697,BACK,TRUE,Rated Price: 1.55 | Stake: 2 Units,8. Set To Sizzle ,1,1.71, $1.32 , $1.32 ,-$2.00 
+21/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234730803,75165501,BACK,FALSE,Rated Price: 5 | Stake: 2 Units,3. Feat Of Strength ,0,3.96,-$2.00 ,-$2.00 , $0.63 
+21/10/2024,Harness,NSW,Goulburn,Will Norman,234730855,73759497,BACK,TRUE,Rated Price: 1.6 | Stake: 3 Units,7. Testo Bromac,0,2.2,-$3.00 ,-$3.00 , $2.33 
+21/10/2024,Harness,NSW,Goulburn,Will Norman,234730853,67937897,LAY,FALSE,Rated Price: 5 | Stake: 1 Units,9. Tarentaise,0,7.52, $0.14 ,-$1.00 , $0.14 
+21/10/2024,Harness,WA,Pinjarra,Scott Hill,234724568,418759,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,2. Boy Blue,0,1.71,-$2.00 ,-$2.00 , $2.62 
+21/10/2024,Harness,WA,Pinjarra,Scott Hill,234724566,73498814,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,5. Sunnys Little Rose,1,2.46, $1.36 , $1.36 ,-$1.00 
+21/10/2024,Harness,WA,Pinjarra,Scott Hill,234724570,56127582,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,1. Cork Can Run,0,3.31,-$1.00 ,-$1.00 , $0.40 
+21/10/2024,Harness,VIC,Yarra Valley,Brett & Darren Carroll,234725459,40508793,BACK,FALSE,Rated Price: 1.55 | Stake: 2 Units,5. Gee Cee Calder,1,1.38, $0.71 , $0.71 ,-$2.00 
+21/10/2024,Harness,VIC,Yarra Valley,Brett & Darren Carroll,234725463,56127731,BACK,FALSE,Rated Price: 1.6 | Stake: 2 Units,1. Paigethehurrikane,1,2.55, $2.88 , $2.88 ,-$2.00 
+21/10/2024,Harness,VIC,Yarra Valley,Brett & Darren Carroll,234725453,75119233,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,4. Dougs Tribe,1,3.8, $5.21 , $5.21 ,-$2.00 
+21/10/2024,Harness,VIC,Yarra Valley,Brett & Darren Carroll,234725455,38835861,LAY,TRUE,Rated Price: 8 | Stake: 2 Units,1. Astro,1,5.1,-$2.00 , $7.63 ,-$2.00 
+21/10/2024,Thoroughbred,NSW,Muswellbrook,Joshua Ingram,234632522,75118172,BACK,TRUE,Rated Price:  | Stake: 3 Units,3. Open Pearly Gates,0,1.51,-$3.00 ,-$3.00 , $5.29 
+21/10/2024,Thoroughbred,NSW,Muswellbrook,Joshua Ingram,234632552,61371571,BACK,FALSE,Rated Price:  | Stake: 2 Units,6. Extreme Merger,1,3.95, $5.31 , $5.31 ,-$2.00 
+21/10/2024,Thoroughbred,NSW,Muswellbrook,Joshua Ingram,234632547,75118212,BACK,FALSE,Rated Price:  | Stake: 1 Units,4. Media Frenzy,0,4.25,-$1.00 ,-$1.00 , $0.28 
+21/10/2024,Thoroughbred,NSW,Muswellbrook,Joshua Ingram,234632557,52873290,LAY,FALSE,Rated Price:  | Stake: 1 Units,4. Climate Control,0,7.4, $0.14 ,-$1.00 , $0.14 
+21/10/2024,Thoroughbred,VIC,Warrnambool,The Leg Up,234607497,53679780,LAY,FALSE,Rated Price: 3 | Stake: 1 Units,4. Crafty Boss,0,1.94, $0.99 ,-$1.00 , $0.99 
+22/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234778055,63364195,LAY,FALSE,Rated Price: 2 | Stake: 1 Units,6. Angel Shirley,0,1.62, $1.50 ,-$1.00 , $1.50 
+22/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234778080,75165529,BACK,FALSE,Rated Price: 1.8 | Stake: 2 Units,1. Wild Sylvia,1,1.69, $1.28 , $1.28 ,-$2.00 
+22/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234778040,75165522,BACK,TRUE,Rated Price: 1.8 | Stake: 2 Units,4. Kunda,0,1.74,-$2.00 ,-$2.00 , $2.51 
+22/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234778045,63217641,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,4. Blaze Wave,0,2.31,-$2.00 ,-$2.00 , $1.42 
+22/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,234778035,75165517,LAY,TRUE,Rated Price: 2.5 | Stake: 2 Units,4. She Will Kick,0,2.96, $0.95 ,-$2.00 , $0.95 
+22/10/2024,Harness,WA,Gloucester Park,Scott Hill,234778644,43016016,LAY,FALSE,Rated Price: 3 | Stake: 2 Units,3. My Ultimate Chevron,0,2.44, $1.29 ,-$2.00 , $1.29 
+22/10/2024,Harness,WA,Gloucester Park,Scott Hill,234778635,75130887,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,1. Miss Uneek,0,3.23,-$1.00 ,-$1.00 , $0.42 
+22/10/2024,Harness,WA,Gloucester Park,Scott Hill,234778638,47472263,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,5. Soho Confidential,0,5.04,-$1.00 ,-$1.00 , $0.23 
+22/10/2024,Harness,WA,Gloucester Park,Scott Hill,234778644,37467332,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,6. Thomson Bay,0,14.48,-$1.00 ,-$1.00 , $0.07 
+22/10/2024,Harness,NSW,Menangle,Will Norman,234773855,53884414,LAY,FALSE,Rated Price: 5 | Stake: 1 Units,3. Majestic Tooth,1,4.5,-$1.00 , $3.26 ,-$1.00 
+22/10/2024,Harness,NSW,Menangle,Will Norman,234773873,62790603,BACK,TRUE,Rated Price: 3.5 | Stake: 2 Units,1. One For The Rodi,0,8,-$2.00 ,-$2.00 , $0.27 
+22/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234783542,69422506,BACK,TRUE,Rated Price: 2.4 | Stake: 3 Units,1. Big Sledge Hammer,1,1.69, $1.93 , $1.93 ,-$3.00 
+22/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234783548,75119225,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,8. The Silent Assassin,0,3.05,-$2.00 ,-$2.00 , $0.91 
+22/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234783550,41477799,BACK,FALSE,Rated Price: 2.2 | Stake: 1 Units,6. The Chook,1,7.2, $5.77 , $5.77 ,-$1.00 
+22/10/2024,Harness,VIC,Shepparton,Brett & Darren Carroll,234783540,42170443,LAY,TRUE,Rated Price: 7.5 | Stake: 1 Units,3. Therockgod,1,7.2,-$1.00 , $5.77 ,-$1.00 
+22/10/2024,Thoroughbred,NSW,Grafton,Linton Chataway,234722855,47988930,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,7. Intoxel,1,4.09,-$1.00 , $2.78 ,-$1.00 
+22/10/2024,Thoroughbred,NSW,Grafton,Mitch Lewis,234722861,38779800,BACK,TRUE,Rated Price: 5 | Stake: 2 Units,7. Baronessa,0,2.05,-$2.00 ,-$2.00 , $1.71 
+22/10/2024,Thoroughbred,NSW,Grafton,Mitch Lewis,234722870,75165778,BACK,FALSE,Rated Price: 2.7 | Stake: 2 Units,14. Khamis,0,2.47,-$2.00 ,-$2.00 , $1.22 
+22/10/2024,Thoroughbred,NSW,Grafton,Mitch Lewis,234722855,47988930,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,7. Intoxel,1,4.09,-$1.00 , $2.78 ,-$1.00 
+22/10/2024,Thoroughbred,VIC,Kyneton,Glenn Ingram,234723975,39989864,BACK,TRUE,Rated Price: 5 | Stake: 2 Units,1. Lovin Laughs,1,2.53, $2.85 , $2.85 ,-$2.00 
+23/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234842584,59115635,LAY,FALSE,Rated Price: 4 | Stake: 2 Units,6. Farmor Casual,1,3.15,-$2.00 , $4.00 ,-$2.00 
+23/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234842614,57564025,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,6. Garnacho,1,3.3, $4.28 , $4.28 ,-$2.00 
+23/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234842559,72479826,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,1. Blue Vista,1,3.64, $4.91 , $4.91 ,-$2.00 
+23/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234842594,65121949,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,8. Infamous,0,4.01, $0.62 ,-$2.00 , $0.62 
+23/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,234842564,75166497,LAY,FALSE,Rated Price: 7 | Stake: 2 Units,3. Mondo Cortez,1,7.88,-$2.00 , $12.80 ,-$2.00 
+23/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,234841814,67599768,LAY,TRUE,Rated Price: 2.1 | Stake: 2 Units,5. Beautiful Story ,1,1.4,-$2.00 , $0.74 ,-$2.00 
+23/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,234841829,72415874,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,1. Colac Kid ,1,2.57, $2.92 , $2.92 ,-$2.00 
+23/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,234841844,66704849,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,1. Farnham Bale ,0,4.8,-$1.00 ,-$1.00 , $0.24 
+23/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,234841824,70856030,LAY,FALSE,Rated Price: 8.5 | Stake: 1 Units,3. Mister Manfredi ,0,6.39, $0.17 ,-$1.00 , $0.17 
+23/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,234841814,72380141,BACK,FALSE,Rated Price: 3.65 | Stake: 2 Units,4. Vista Vanadium ,0,8,-$2.00 ,-$2.00 , $0.27 
+23/10/2024,Harness,NSW,Bathurst,Will Norman,234842937,57967164,BACK,FALSE,Rated Price: 4 | Stake: 2 Units,4. Lettys Reason,0,6,-$2.00 ,-$2.00 , $0.37 
+23/10/2024,Harness,NSW,Bathurst,Will Norman,234842952,73798419,BACK,FALSE,Rated Price: 6 | Stake: 1 Units,7. Something For Lexy,0,13.5,-$1.00 ,-$1.00 , $0.07 
+23/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234841933,75165724,BACK,TRUE,Rated Price: 1.3 | Stake: 3 Units,8. Dreams Of Love,1,1.36, $1.00 , $1.00 ,-$3.00 
+23/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234841921,28425231,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,3. Our Bella Lucia,0,3.03,-$2.00 ,-$2.00 , $0.92 
+23/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,234841923,51219011,LAY,TRUE,Rated Price: 8 | Stake: 2 Units,10. Yankee Gambler,0,14.72, $0.14 ,-$2.00 , $0.14 
+23/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234776234,70137419,BACK,FALSE,Rated Price: 1.8 | Stake: 2 Units,1. Victory Command,1,1.59, $1.10 , $1.10 ,-$2.00 
+23/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234776262,57148434,LAY,TRUE,Rated Price: 4.2 | Stake: 1 Units,1. Preach,0,8.2, $0.13 ,-$1.00 , $0.13 
+23/10/2024,Thoroughbred,QLD,Eagle Farm,Linton Chataway,234776276,50528384,LAY,FALSE,Rated Price: 6 | Stake: 1 Units,1. Bandasha,0,9.74, $0.11 ,-$1.00 , $0.11 
+23/10/2024,Thoroughbred,QLD,Eagle Farm,The Leg Up,234776269,62136209,LAY,FALSE,Rated Price: 6 | Stake: 1 Units,4. Big Ticket Boy,1,2.68,-$1.00 , $1.56 ,-$1.00 
+23/10/2024,Thoroughbred,VIC,Geelong,Glenn Ingram,234775217,75313881,BACK,TRUE,Rated Price: 3 | Stake: 3 Units,3. Oxford Blue,0,2.35,-$3.00 ,-$3.00 , $2.07 
+23/10/2024,Thoroughbred,VIC,Geelong,Jackson Oldham,234775217,75313880,LAY,TRUE,Rated Price: 4.1 | Stake: 3 Units,1. Lavalier,0,5.06, $0.69 ,-$3.00 , $0.69 
+23/10/2024,Thoroughbred,VIC,Geelong,Jackson Oldham,234775208,74814109,BACK,FALSE,Rated Price: 5.25 | Stake: 2 Units,12. Dangerous Liaisons,0,7.2,-$2.00 ,-$2.00 , $0.30 
+23/10/2024,Thoroughbred,VIC,Geelong,Jackson Oldham,234775190,74537589,BACK,FALSE,Rated Price: 7.6 | Stake: 1 Units,3. Theycallmebruce,0,14.44,-$1.00 ,-$1.00 , $0.07 
+23/10/2024,Thoroughbred,SA,Strathalbyn,Lachlan Mosley,234783687,63640960,BACK,FALSE,Rated Price:  | Stake: 2 Units,3. Sakasu,0,4.14,-$2.00 ,-$2.00 , $0.59 
+23/10/2024,Thoroughbred,SA,Strathalbyn,Lachlan Mosley,234783709,67788183,BACK,FALSE,Rated Price:  | Stake: 1 Units,10. Absolute Stunner ,0,4.62,-$1.00 ,-$1.00 , $0.26 
+23/10/2024,Thoroughbred,SA,Strathalbyn,Lachlan Mosley,234783722,66032304,BACK,TRUE,Rated Price:  | Stake: 2 Units,3. Flambard ,0,5.62,-$2.00 ,-$2.00 , $0.40 
+23/10/2024,Thoroughbred,SA,Strathalbyn,Lachlan Mosley,234783701,73642865,BACK,FALSE,Rated Price:  | Stake: 2 Units,6. Red Roof ,0,7.93,-$2.00 ,-$2.00 , $0.27 
+23/10/2024,Thoroughbred,SA,Strathalbyn,Lachlan Mosley,234783701,54173990,BACK,FALSE,Rated Price:  | Stake: 1 Units,3. Alpine Beau ,0,8.17,-$1.00 ,-$1.00 , $0.13 
+23/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234777975,26915163,BACK,TRUE,Rated Price: 1.9 | Stake: 4 Units,8. Pisanello,1,2.11, $4.00 , $4.00 ,-$4.00 
+23/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234777959,71867238,BACK,FALSE,Rated Price: 2.7 | Stake: 2 Units,2. Komodo Dragon,0,2.92,-$2.00 ,-$2.00 , $0.94 
+23/10/2024,Thoroughbred,NSW,Warwick Farm,Mitch Lewis,234777983,59957050,LAY,TRUE,Rated Price: 5 | Stake: 1 Units,4. French Endeavour,0,3.09, $0.43 ,-$1.00 , $0.43 
+24/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234896776,53090052,BACK,TRUE,Rated Price: 1.6 | Stake: 4 Units,5. Skye Monelli,1,1.72, $2.68 , $2.68 ,-$4.00 
+24/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234896766,75314775,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,9. Sweetest Of All,0,2.02,-$2.00 ,-$2.00 , $1.82 
+24/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234896821,42483559,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,2. Springtime Jet,0,2.54,-$2.00 ,-$2.00 , $1.21 
+24/10/2024,Greyhounds,QLD,Albion Park,Jaycin Campbell,234896791,66758459,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,1. It Wasnt Me,0,6.18, $0.36 ,-$2.00 , $0.36 
+24/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234895695,64547054,LAY,FALSE,Rated Price: 3.6 | Stake: 1 Units,1. Ethanol Water ,0,2.08, $0.86 ,-$1.00 , $0.86 
+24/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234895680,72990310,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,1. Paw Oswald ,1,2.4, $2.60 , $2.60 ,-$2.00 
+24/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234895710,48048985,BACK,FALSE,Rated Price: 3.2 | Stake: 1 Units,2. Sunnyside Jo,0,3.25,-$1.00 ,-$1.00 , $0.41 
+24/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234895700,47441634,LAY,FALSE,Rated Price: 3.85 | Stake: 1 Units,1. Hector Fawley ,1,3.42,-$1.00 , $2.25 ,-$1.00 
+24/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234895675,75323651,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,8. Come To Party ,0,3.49, $0.75 ,-$2.00 , $0.75 
+24/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,234895725,73483264,BACK,FALSE,Rated Price: 3.5 | Stake: 1 Units,1. Paw Louis ,1,3.66, $2.47 , $2.47 ,-$1.00 
+24/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234890237,71110020,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,4. Promises Three,1,1.72, $2.01 , $2.01 ,-$3.00 
+24/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234890222,75314952,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,2. Zipping Mayer,0,2.12,-$2.00 ,-$2.00 , $1.66 
+24/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234890217,75314950,LAY,TRUE,Rated Price: 3.5 | Stake: 2 Units,4. Jungle Johnny,0,3.5, $0.74 ,-$2.00 , $0.74 
+24/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,234890212,66758564,LAY,TRUE,Rated Price: 4.5 | Stake: 2 Units,1. Me Style,0,7.83, $0.27 ,-$2.00 , $0.27 
+24/10/2024,Harness,VIC,Mildura,Brett & Darren Carroll,234896143,56127722,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,1. Surfin At Midnight,0,1.83,-$3.00 ,-$3.00 , $3.36 
+24/10/2024,Harness,VIC,Mildura,Brett & Darren Carroll,234896139,54705515,BACK,FALSE,Rated Price: 2.4 | Stake: 2 Units,1. Ronzel Micky,0,2.38,-$2.00 ,-$2.00 , $1.35 
+24/10/2024,Harness,VIC,Mildura,Brett & Darren Carroll,234896141,56576911,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,4. Powersofpersuasion,1,3.42, $2.25 , $2.25 ,-$1.00 
+24/10/2024,Harness,NSW,Tamworth,Will Norman,234895161,599955,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,5. Sky Diamond,0,2.32,-$3.00 ,-$3.00 , $2.11 
+24/10/2024,Harness,NSW,Tamworth,Will Norman,234895167,75323628,BACK,FALSE,Rated Price: 2.2 | Stake: 2 Units,9. La Derniere,0,2.9,-$2.00 ,-$2.00 , $0.98 
+24/10/2024,Harness,NSW,Tamworth,Will Norman,234895173,56263803,BACK,FALSE,Rated Price: 4 | Stake: 2 Units,5. Lydias Art,0,8.47,-$2.00 ,-$2.00 , $0.25 
+24/10/2024,Thoroughbred,VIC,Ballarat,Glenn Ingram,234841741,75355073,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,8. Samangu,1,2.24, $3.46 , $3.46 ,-$3.00 
+24/10/2024,Thoroughbred,VIC,Ballarat,Jackson Oldham,234841773,75355102,BACK,TRUE,Rated Price: 1.7 | Stake: 4 Units,2. Changing Colours,0,1.95,-$4.00 ,-$4.00 , $3.92 
+24/10/2024,Thoroughbred,VIC,Ballarat,Jackson Oldham,234841749,6690508,LAY,TRUE,Rated Price: 5.5 | Stake: 2 Units,4. Just For Show,1,3.66,-$2.00 , $4.95 ,-$2.00 
+24/10/2024,Thoroughbred,NSW,Hawkesbury,Linton Chataway,234842906,75355138,LAY,TRUE,Rated Price: 4.4 | Stake: 1 Units,3. Altair I Am,0,3.18, $0.41 ,-$1.00 , $0.41 
+24/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234842916,3118200,BACK,TRUE,Rated Price: 2.25 | Stake: 3 Units,5. Flying Bandit,1,1.95, $2.57 , $2.57 ,-$3.00 
+24/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234842901,75355126,LAY,TRUE,Rated Price: 4 | Stake: 1 Units,5. Hawker Hall,0,2.18, $0.76 ,-$1.00 , $0.76 
+24/10/2024,Thoroughbred,NSW,Hawkesbury,Mitch Lewis,234842896,75355114,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,1. Nymphadora,0,10.24,-$1.00 ,-$1.00 , $0.10 
+24/10/2024,Thoroughbred,QLD,Ipswich,The Leg Up,234842016,74853908,LAY,FALSE,Rated Price: 12 | Stake: 1 Units,1. City Playboy,0,4.5, $0.27 ,-$1.00 , $0.27 
+25/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234941967,60949203,BACK,TRUE,Rated Price: 1.65 | Stake: 4 Units,5. Verdi ,1,1.86, $3.20 , $3.20 ,-$4.00 
+25/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234941977,72135337,BACK,FALSE,Rated Price: 1.55 | Stake: 3 Units,2. Joey The Jet ,0,1.88,-$3.00 ,-$3.00 , $3.17 
+25/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234941962,75392825,LAY,FALSE,Rated Price: 3.75 | Stake: 2 Units,4. Mepunga Tully ,1,2.11,-$2.00 , $2.06 ,-$2.00 
+25/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234941987,67857407,BACK,FALSE,Rated Price: 3.3 | Stake: 3 Units,8. Leo Bale ,0,2.3,-$3.00 ,-$3.00 , $2.15 
+25/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234941987,64604621,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,2. Aston Fantastic,0,3.5, $0.74 ,-$2.00 , $0.74 
+25/10/2024,Greyhounds,VIC,Geelong,Michael Tye,234941957,74814817,LAY,FALSE,Rated Price: 6 | Stake: 1 Units,1. Rosa Marie ,1,14.78,-$1.00 , $12.82 ,-$1.00 
+25/10/2024,Greyhounds,NSW,Richmond,Joe Lannutti,234947698,58919170,BACK,TRUE,Rated Price: 1.8 | Stake: 2 Units,8. Jans Memory,0,1.82,-$2.00 ,-$2.00 , $2.27 
+25/10/2024,Greyhounds,NSW,Richmond,Joe Lannutti,234947683,69202821,BACK,FALSE,Rated Price: 2.2 | Stake: 2 Units,7. Lady Wilson,1,1.85, $1.58 , $1.58 ,-$2.00 
+25/10/2024,Greyhounds,NSW,Richmond,Joe Lannutti,234947673,63519046,LAY,TRUE,Rated Price: 5.5 | Stake: 2 Units,7. Street Machine,0,4.97, $0.47 ,-$2.00 , $0.47 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943835,3805337,BACK,TRUE,Rated Price: 1.65 | Stake: 3 Units,2. Love On The Rocks,1,1.63, $1.76 , $1.76 ,-$3.00 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943838,61304482,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,1. Thenu Came Along,1,2.18, $2.19 , $2.19 ,-$2.00 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943841,47241864,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,2. Jawsoflincoln,1,2.69, $3.14 , $3.14 ,-$2.00 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943847,28339076,BACK,FALSE,Rated Price: 1.65 | Stake: 3 Units,1. The Code Breaker,0,2.73,-$3.00 ,-$3.00 , $1.61 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943832,67506651,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,1. Hes Never Been Beta,0,3.03,-$2.00 ,-$2.00 , $0.92 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943859,50853917,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,5. Marengo Bay,0,3.3,-$1.00 ,-$1.00 , $0.40 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943850,20961303,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,9. Peaceful,0,3.87,-$2.00 ,-$2.00 , $0.65 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943856,8895995,LAY,FALSE,Rated Price: 3 | Stake: 3 Units,6. Chivalry,0,4.28, $0.85 ,-$3.00 , $0.85 
+25/10/2024,Harness,WA,Gloucester Park,Scott Hill,234943844,39465504,BACK,FALSE,Rated Price: 3.3 | Stake: 1 Units,5. Pinny Tiger,0,4.89,-$1.00 ,-$1.00 , $0.24 
+25/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,234941763,75356874,BACK,FALSE,Rated Price: 1.5 | Stake: 3 Units,6. Caithness Lady,0,1.84,-$3.00 ,-$3.00 , $3.32 
+25/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,234941775,52644112,BACK,TRUE,Rated Price: 1.8 | Stake: 3 Units,4. Romantic Nina,1,2.07, $2.99 , $2.99 ,-$3.00 
+25/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,234941784,22210885,BACK,FALSE,Rated Price: 2.4 | Stake: 2 Units,9. Call Me Jack,1,2.62, $3.01 , $3.01 ,-$2.00 
+25/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,234941773,39008249,LAY,TRUE,Rated Price: 8 | Stake: 1 Units,6. Jahbella,0,22, $0.04 ,-$1.00 , $0.04 
+25/10/2024,Thoroughbred,SA,Gawler,Lachlan Mosley,234896456,75392004,BACK,TRUE,Rated Price:  | Stake: 3 Units,10. Dubai Focus,1,1.65, $1.81 , $1.81 ,-$3.00 
+25/10/2024,Thoroughbred,SA,Gawler,Lachlan Mosley,234896468,75392021,BACK,FALSE,Rated Price:  | Stake: 2 Units,2. Swycho,1,2.17, $2.18 , $2.18 ,-$2.00 
+25/10/2024,Thoroughbred,SA,Gawler,Lachlan Mosley,234896481,75313245,BACK,FALSE,Rated Price:  | Stake: 2 Units,7. Probate,0,3.23,-$2.00 ,-$2.00 , $0.83 
+25/10/2024,Thoroughbred,SA,Gawler,Lachlan Mosley,234896474,3520327,BACK,FALSE,Rated Price:  | Stake: 2 Units,9. Eventually,0,3.41,-$2.00 ,-$2.00 , $0.77 
+25/10/2024,Thoroughbred,SA,Gawler,Lachlan Mosley,234896492,75392028,BACK,TRUE,Rated Price:  | Stake: 2 Units,11. Betsys Flag ,0,4.8,-$2.00 ,-$2.00 , $0.49 
+25/10/2024,Thoroughbred,SA,Gawler,Lachlan Mosley,234896486,28737139,BACK,FALSE,Rated Price:  | Stake: 1 Units,9. Easy Campese,0,10.55,-$1.00 ,-$1.00 , $0.10 
+25/10/2024,Thoroughbred,SA,Gawler,Lachlan Mosley,234896486,36332079,BACK,FALSE,Rated Price:  | Stake: 1 Units,3. Royal Mile ,0,23,-$1.00 ,-$1.00 , $0.04 
+25/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234896210,75354802,BACK,FALSE,Rated Price:  | Stake: 1 Units,2. Elegantly Written ,1,1.7, $0.65 , $0.65 ,-$1.00 
+25/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234896203,69129089,BACK,FALSE,Rated Price:  | Stake: 3 Units,5. Rowing Power,0,3.42,-$3.00 ,-$3.00 , $1.15 
+25/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234896215,51454558,BACK,FALSE,Rated Price:  | Stake: 1 Units,9. Im Keefe,0,4.1,-$1.00 ,-$1.00 , $0.30 
+25/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234896227,51809126,BACK,FALSE,Rated Price:  | Stake: 2 Units,7. Pasheona,0,6.52,-$2.00 ,-$2.00 , $0.34 
+25/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,234896215,46314726,BACK,FALSE,Rated Price:  | Stake: 1 Units,5. Fast Thinker ,0,7.4,-$1.00 ,-$1.00 , $0.15 
+25/10/2024,Thoroughbred,VIC,Moonee Valley,Glenn Ingram,234894394,75393227,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,5. Shes Bulletproof,1,2.12, $2.08 , $2.08 ,-$2.00 
+25/10/2024,Thoroughbred,VIC,Moonee Valley,Jackson Oldham,234894394,75393227,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,5. Shes Bulletproof,1,2.12, $2.08 , $2.08 ,-$2.00 
+25/10/2024,Thoroughbred,VIC,Moonee Valley,Jackson Oldham,234894403,75393234,LAY,TRUE,Rated Price: 3.2 | Stake: 3 Units,1. Verdad,0,3.32, $1.20 ,-$3.00 , $1.20 
+25/10/2024,Thoroughbred,NSW,Scone,Mitch Lewis,234890320,75392494,BACK,TRUE,Rated Price: 2.1 | Stake: 2 Units,10. Eclair Encore,0,2.46,-$2.00 ,-$2.00 , $1.23 
+25/10/2024,Thoroughbred,NSW,Scone,Mitch Lewis,234890305,44388834,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,5. Smart And Dapper,0,3.86,-$1.00 ,-$1.00 , $0.31 
+25/10/2024,Thoroughbred,NSW,Scone,Mitch Lewis,234890295,75392459,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,7. Eclair,1,4.7, $3.33 , $3.33 ,-$1.00 
+25/10/2024,Thoroughbred,QLD,Sunshine Coast,The Leg Up,234896587,693627,LAY,TRUE,Rated Price: 3.2 | Stake: 1 Units,1. Italian Riviera,1,3,-$1.00 , $1.86 ,-$1.00 
+26/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,235007884,72680449,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,2. Impress Wilder,0,1.74,-$3.00 ,-$3.00 , $3.77 
+26/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,235007914,49711100,BACK,FALSE,Rated Price: 2.2 | Stake: 2 Units,4. Chloe Ant,1,1.98, $1.82 , $1.82 ,-$2.00 
+26/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,235007904,63824949,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,2. Sunset Comanche,0,2.54,-$2.00 ,-$2.00 , $1.21 
+26/10/2024,Greyhounds,WA,Mandurah,Jaycin Campbell,235007879,61671414,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,6. My Anarchy Boy,0,4.6, $0.52 ,-$2.00 , $0.52 
+26/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,235004258,73405927,BACK,TRUE,Rated Price: 2.6 | Stake: 1 Units,1. Devious,0,2.61,-$1.00 ,-$1.00 , $0.58 
+26/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,235004273,52697551,LAY,TRUE,Rated Price: 5.5 | Stake: 2 Units,8. Four Barrys,0,7.6, $0.28 ,-$2.00 , $0.28 
+26/10/2024,Harness,QLD,Albion Park,Ryan Spice,235004848,41120994,BACK,TRUE,Rated Price: 1.6 | Stake: 4 Units,1. Hiranya,1,1.39, $1.45 , $1.45 ,-$4.00 
+26/10/2024,Harness,QLD,Albion Park,Ryan Spice,235004842,56254563,BACK,TRUE,Rated Price: 2.5 | Stake: 3 Units,3. Throwyaarmsaroundme,0,2.05,-$3.00 ,-$3.00 , $2.66 
+26/10/2024,Harness,QLD,Albion Park,Ryan Spice,235004854,41127091,BACK,FALSE,Rated Price: 1.9 | Stake: 2 Units,6. Braedos Lad,0,2.26,-$2.00 ,-$2.00 , $1.48 
+26/10/2024,Harness,QLD,Albion Park,Ryan Spice,235004857,49269650,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,3. Betterthanarocket,0,5.02,-$1.00 ,-$1.00 , $0.23 
+26/10/2024,Harness,QLD,Albion Park,Ryan Spice,235004860,46159953,BACK,FALSE,Rated Price: 8 | Stake: 1 Units,5. A Perfect Dance,0,13.3,-$1.00 ,-$1.00 , $0.08 
+26/10/2024,Harness,QLD,Albion Park,Ryan Spice,235004839,45591855,BACK,FALSE,Rated Price: 21 | Stake: 1 Units,9. Bettor Keppel,0,26.29,-$1.00 ,-$1.00 , $0.04 
+26/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,235005691,75356048,LAY,TRUE,Rated Price: 8 | Stake: 2 Units,3. Sao Paulo Simba,0,2.95, $0.95 ,-$2.00 , $0.95 
+26/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,235005682,46426882,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,3. Spirit Of Arion,0,3.22,-$2.00 ,-$2.00 , $0.84 
+26/10/2024,Harness,VIC,Melton,Brett & Darren Carroll,235005694,44343420,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,7. Jilliby Willow,1,3.81, $5.23 , $5.23 ,-$2.00 
+26/10/2024,Harness,NSW,Menangle,Will Norman,235004607,49064640,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,1. Craftmans Charlie,1,3.71, $5.04 , $5.04 ,-$2.00 
+26/10/2024,Harness,NSW,Menangle,Will Norman,235004628,66583879,BACK,FALSE,Rated Price: 3.5 | Stake: 2 Units,2. Sugar Pie Honey,1,5.3, $8.00 , $8.00 ,-$2.00 
+26/10/2024,Harness,NSW,Menangle,Will Norman,235004631,58423872,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,8. Soap Opera,0,10.5,-$1.00 ,-$1.00 , $0.10 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897563,75394517,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,10. September Born,0,2.89,-$1.00 ,-$1.00 , $0.49 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897509,2156610,BACK,FALSE,Rated Price: 2.9 | Stake: 2 Units,3. All Play,1,3.21, $4.11 , $4.11 ,-$2.00 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897545,64764307,BACK,FALSE,Rated Price: 2.55 | Stake: 3 Units,4. Secret Attraction,0,3.55,-$3.00 ,-$3.00 , $1.09 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897572,61522829,BACK,FALSE,Rated Price: 3.4 | Stake: 2 Units,7. Keshi Boom,0,3.6,-$2.00 ,-$2.00 , $0.72 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897518,24810373,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,6. On Patrol,0,4.16,-$1.00 ,-$1.00 , $0.29 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897509,41145935,BACK,FALSE,Rated Price: 5.5 | Stake: 1 Units,5. Norich,0,4.6,-$1.00 ,-$1.00 , $0.26 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897537,50169333,BACK,FALSE,Rated Price: 9 | Stake: 1 Units,3. Harbin,1,4.71, $3.45 , $3.45 ,-$1.00 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897545,52638112,BACK,FALSE,Rated Price: 6.8 | Stake: 1 Units,5. Here For Cheques,0,5.2,-$1.00 ,-$1.00 , $0.22 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897518,39078588,BACK,FALSE,Rated Price: 4.3 | Stake: 1 Units,1. Aint No Other Man,1,6.42, $5.04 , $5.04 ,-$1.00 
+26/10/2024,Thoroughbred,WA,Ascot,Terry Leighton,234897537,75394500,BACK,FALSE,Rated Price: 7 | Stake: 2 Units,10. Lano,0,7.97,-$2.00 ,-$2.00 , $0.27 
+26/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234896499,75393336,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,11. Street Chase,0,2.34,-$2.00 ,-$2.00 , $1.39 
+26/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234896580,55205963,BACK,TRUE,Rated Price: 2.5 | Stake: 2 Units,6. I Am Artie,0,2.82,-$2.00 ,-$2.00 , $1.02 
+26/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234896562,75393367,BACK,FALSE,Rated Price: 3.2 | Stake: 2 Units,5. Bews,1,2.93, $3.59 , $3.59 ,-$2.00 
+26/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234896518,67788935,BACK,FALSE,Rated Price: 8 | Stake: 1 Units,8. Rashford,0,5.42,-$1.00 ,-$1.00 , $0.21 
+26/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,234896517,48048884,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,1. Castillian,0,6.98, $0.16 ,-$1.00 , $0.16 
+26/10/2024,Thoroughbred,NSW,Kembla Grange,Joshua Ingram,234946463,75434988,BACK,TRUE,Rated Price:  | Stake: 3 Units,7. Just Feelin Lucky,1,1.72, $1.94 , $1.94 ,-$3.00 
+26/10/2024,Thoroughbred,NSW,Kembla Grange,Joshua Ingram,234946449,75434966,BACK,FALSE,Rated Price:  | Stake: 1 Units,15. Ionaceltic,0,2.8,-$1.00 ,-$1.00 , $0.50 
+26/10/2024,Thoroughbred,NSW,Kembla Grange,Joshua Ingram,234946442,3011635,BACK,FALSE,Rated Price:  | Stake: 2 Units,7. Star Legacy,1,3.47, $4.45 , $4.45 ,-$2.00 
+26/10/2024,Thoroughbred,VIC,Moonee Valley,Jackson Oldham,234896378,73952523,BACK,TRUE,Rated Price: 2.6 | Stake: 3 Units,7. Certain Rise,1,2.56, $4.35 , $4.35 ,-$3.00 
+26/10/2024,Thoroughbred,VIC,Moonee Valley,Jackson Oldham,234896387,68931114,BACK,FALSE,Rated Price: 2.6 | Stake: 2 Units,7. Polymnia,0,2.73,-$2.00 ,-$2.00 , $1.08 
+26/10/2024,Thoroughbred,VIC,Moonee Valley,Jackson Oldham,234896423,50353937,LAY,TRUE,Rated Price: 7.2 | Stake: 2 Units,4. Nugget,0,7.57, $0.28 ,-$2.00 , $0.28 
+26/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234897392,74537446,BACK,TRUE,Rated Price:  | Stake: 3 Units,5. Zarkana,0,1.95,-$3.00 ,-$3.00 , $2.94 
+26/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234897402,75392066,BACK,FALSE,Rated Price:  | Stake: 1 Units,9. Nosie By Nature,0,3.4,-$1.00 ,-$1.00 , $0.39 
+26/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234897374,20586769,BACK,FALSE,Rated Price:  | Stake: 1 Units,8. Burning Bright,0,3.62,-$1.00 ,-$1.00 , $0.35 
+26/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234897419,50712880,BACK,FALSE,Rated Price:  | Stake: 2 Units,3. Delightful Shecky ,0,7.92,-$2.00 ,-$2.00 , $0.27 
+26/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234897365,36423975,BACK,FALSE,Rated Price:  | Stake: 2 Units,3. Grinzinger Prince ,0,8.96,-$2.00 ,-$2.00 , $0.23 
+26/10/2024,Thoroughbred,SA,Morphettville,Lachlan Mosley,234897365,75392062,BACK,FALSE,Rated Price:  | Stake: 2 Units,7. Overstrike ,0,11.4,-$2.00 ,-$2.00 , $0.18 
+26/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234897276,75392599,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,4. Smashing Time,0,2.92, $0.47 ,-$1.00 , $0.47 
+26/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234897303,73370836,BACK,FALSE,Rated Price: 2.6 | Stake: 2 Units,1. El Castello,1,3.21, $3.98 , $3.98 ,-$2.00 
+26/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234897285,74538047,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,2. Just Party,0,3.44,-$2.00 ,-$2.00 , $0.74 
+26/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,234897312,70350107,BACK,TRUE,Rated Price: 2.75 | Stake: 3 Units,2. Magic Time,0,3.48,-$3.00 ,-$3.00 , $1.09 
+26/10/2024,Thoroughbred,VIC,Yarra Valley,Glenn Ingram,234940295,607864,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,3. California Flyer,0,9.6,-$2.00 ,-$2.00 , $0.22 
+27/10/2024,Harness,TAS,Hobart,Jamie Cockshutt,235047539,75357852,BACK,TRUE,Rated Price:  | Stake: 5 Units,1. Okanui Beach,1,1.3, $1.40 , $1.40 ,-$5.00 
+27/10/2024,Harness,TAS,Hobart,Jamie Cockshutt,235047541,60452446,BACK,FALSE,Rated Price:  | Stake: 2 Units,4. Freeasabyrd,0,1.93,-$2.00 ,-$2.00 , $2.00 
+27/10/2024,Harness,TAS,Hobart,Jamie Cockshutt,235047553,40859159,BACK,FALSE,Rated Price:  | Stake: 2 Units,9. Magic Joe,1,3, $3.72 , $3.72 ,-$2.00 
+27/10/2024,Harness,TAS,Hobart,Jamie Cockshutt,235047545,57149023,BACK,FALSE,Rated Price:  | Stake: 2 Units,2. Settebello,1,3.11, $3.92 , $3.92 ,-$2.00 
+27/10/2024,Harness,TAS,Hobart,Jamie Cockshutt,235047551,50160743,BACK,FALSE,Rated Price:  | Stake: 2 Units,1. Vincenzo,0,4.5,-$2.00 ,-$2.00 , $0.53 
+27/10/2024,Harness,TAS,Hobart,Jamie Cockshutt,235047551,6202426,BACK,FALSE,Rated Price:  | Stake: 2 Units,8. We Salute You,0,5.2,-$2.00 ,-$2.00 , $0.44 
+27/10/2024,Harness,TAS,Hobart,Jamie Cockshutt,235047549,71868879,BACK,FALSE,Rated Price:  | Stake: 2 Units,4. Watch It Happen,0,5.48,-$2.00 ,-$2.00 , $0.42 
+27/10/2024,Harness,TAS,Hobart,Jamie Cockshutt,235047549,7261354,BACK,FALSE,Rated Price:  | Stake: 1 Units,8. Hurricane Rock,1,12.5, $10.70 , $10.70 ,-$1.00 
+27/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,235041050,52937902,BACK,FALSE,Rated Price: 2.6 | Stake: 2 Units,11. Gee Cee Calder,1,2.44, $2.68 , $2.68 ,-$2.00 
+27/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,235041046,75356984,BACK,TRUE,Rated Price: 2.5 | Stake: 3 Units,6. Old Dominion,0,2.6,-$3.00 ,-$3.00 , $1.74 
+27/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,235041056,58855785,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,5. Perfidious Sue,0,2.98,-$2.00 ,-$2.00 , $0.94 
+27/10/2024,Harness,VIC,Maryborough,Brett & Darren Carroll,235041044,75356980,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,5. Majestic Party Boy,0,3.07,-$2.00 ,-$2.00 , $0.90 
+27/10/2024,Thoroughbred,NSW,Coonabarabran,Joshua Ingram,235004911,75435213,BACK,TRUE,Rated Price:  | Stake: 4 Units,5. Dances With Hooves,0,2.42,-$4.00 ,-$4.00 , $2.54 
+27/10/2024,Thoroughbred,NSW,Coonabarabran,Joshua Ingram,235004901,74039396,BACK,FALSE,Rated Price:  | Stake: 2 Units,1. Seven Mile Missile,1,4.4, $6.12 , $6.12 ,-$2.00 
+27/10/2024,Thoroughbred,NSW,Coonabarabran,Joshua Ingram,235004886,75435194,BACK,FALSE,Rated Price:  | Stake: 1 Units,4. Wolf Club,0,5.43,-$1.00 ,-$1.00 , $0.20 
+27/10/2024,Thoroughbred,NSW,Coonabarabran,Joshua Ingram,235004881,75435191,LAY,FALSE,Rated Price:  | Stake: 1 Units,9. Joy Of The World,0,6.38, $0.17 ,-$1.00 , $0.17 
+27/10/2024,Thoroughbred,SA,Port Lincoln,Lachlan Mosley,235003718,63025801,BACK,TRUE,Rated Price:  | Stake: 2 Units,4. Jamaican Gold ,0,4.24,-$2.00 ,-$2.00 , $0.57 
+27/10/2024,Thoroughbred,VIC,Sale,Chris Camilleri,235001818,75435558,BACK,TRUE,Rated Price: 2.2 | Stake: 3 Units,8. The Western Front ,0,2.62,-$3.00 ,-$3.00 , $1.72 
+27/10/2024,Thoroughbred,VIC,Sale,Chris Camilleri,235001826,75435571,BACK,FALSE,Rated Price: 2.4 | Stake: 2 Units,12. Supervise ,0,3.19,-$2.00 ,-$2.00 , $0.85 
+27/10/2024,Thoroughbred,VIC,Sale,Chris Camilleri,235001834,75435576,LAY,TRUE,Rated Price: 4 | Stake: 1 Units,2. Subsix ,1,4.2,-$1.00 , $2.98 ,-$1.00 
+27/10/2024,Thoroughbred,VIC,Sale,Glenn Ingram,235001818,75435558,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,8. The Western Front,0,2.62,-$2.00 ,-$2.00 , $1.15 
+28/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,235107101,58919018,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,8. Max Stappen,0,2.18,-$1.00 ,-$1.00 , $0.79 
+28/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,235107069,75437484,BACK,TRUE,Rated Price: 2.2 | Stake: 2 Units,3. Got Merit,1,2.32, $2.46 , $2.46 ,-$2.00 
+28/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,235107109,72879297,LAY,FALSE,Rated Price: 4 | Stake: 1 Units,7. Blue Chanelle,0,3.1, $0.44 ,-$1.00 , $0.44 
+28/10/2024,Greyhounds,NSW,Maitland,Joe Lannutti,235107077,71302157,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,6. Elizabeth Fire,0,5.48, $0.42 ,-$2.00 , $0.42 
+28/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235103291,73199972,BACK,FALSE,Rated Price: 1.65 | Stake: 2 Units,4. Zipping Kai ,1,1.61, $1.13 , $1.13 ,-$2.00 
+28/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235103281,75481711,BACK,TRUE,Rated Price: 1.9 | Stake: 2 Units,1. Paw Harris ,0,2.42,-$2.00 ,-$2.00 , $1.31 
+28/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235103321,73793715,BACK,FALSE,Rated Price: 4.4 | Stake: 1 Units,3. Bruce Intention ,1,2.58, $1.47 , $1.47 ,-$1.00 
+28/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235103271,73222015,LAY,FALSE,Rated Price: 6.5 | Stake: 1 Units,4. Scotch Time ,0,4.88, $0.24 ,-$1.00 , $0.24 
+28/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235103311,59355729,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,8. Cloud Scootin,0,7.69, $0.28 ,-$2.00 , $0.28 
+28/10/2024,Harness,SA,Globe Derby,Mark Lawrence,235092744,4256634,BACK,TRUE,Rated Price: 3.5 | Stake: 3 Units,6. Manonthemoon,0,8.1,-$3.00 ,-$3.00 , $0.39 
+28/10/2024,Harness,WA,Pinjarra,Scott Hill,235102194,74901214,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,6. Heza Whizard,0,4.59,-$1.00 ,-$1.00 , $0.26 
+28/10/2024,Harness,WA,Pinjarra,Scott Hill,235102194,40470171,LAY,FALSE,Rated Price: 5 | Stake: 2 Units,8. Trixy Nixie,0,12, $0.17 ,-$2.00 , $0.17 
+28/10/2024,Harness,VIC,Warragul,Brett & Darren Carroll,235103583,56331340,BACK,TRUE,Rated Price: 1.7 | Stake: 3 Units,2. Paigethehurrikane,1,1.47, $1.31 , $1.31 ,-$3.00 
+28/10/2024,Harness,VIC,Warragul,Brett & Darren Carroll,235103581,49892867,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,6. Shoobees Spirit,1,1.66, $0.61 , $0.61 ,-$1.00 
+28/10/2024,Harness,VIC,Warragul,Brett & Darren Carroll,235103592,59627708,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,1. Our Fire And Delight,1,2.04, $0.97 , $0.97 ,-$1.00 
+28/10/2024,Harness,VIC,Warragul,Brett & Darren Carroll,235103585,75435597,LAY,TRUE,Rated Price: 8 | Stake: 1 Units,7. Heza Doozie,0,27, $0.04 ,-$1.00 , $0.04 
+28/10/2024,Thoroughbred,VIC,Benalla,Chris Camilleri,235005632,69576799,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,11. Eagle Express,0,2.5,-$3.00 ,-$3.00 , $1.86 
+28/10/2024,Thoroughbred,VIC,Benalla,Chris Camilleri,235005640,75481108,BACK,TRUE,Rated Price: 1.9 | Stake: 3 Units,2. Cameron Falls ,0,2.78,-$3.00 ,-$3.00 , $1.57 
+28/10/2024,Thoroughbred,VIC,Benalla,Chris Camilleri,235005648,28499827,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,7. Dancing Duck ,0,4.2, $0.58 ,-$2.00 , $0.58 
+28/10/2024,Thoroughbred,VIC,Benalla,Chris Camilleri,235005672,920681,BACK,FALSE,Rated Price: 2.8 | Stake: 2 Units,3. Abdication,0,4.9,-$2.00 ,-$2.00 , $0.48 
+28/10/2024,Thoroughbred,VIC,Benalla,Glenn Ingram,235005672,75481132,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,12. Stay Humble,0,3.25,-$2.00 ,-$2.00 , $0.83 
+28/10/2024,Thoroughbred,VIC,Benalla,The Leg Up,235005664,60816389,LAY,FALSE,Rated Price: 4.5 | Stake: 1 Units,9. Too Big,0,3.59, $0.36 ,-$1.00 , $0.36 
+28/10/2024,Thoroughbred,NSW,Quirindi,Joshua Ingram,235041500,75435162,BACK,TRUE,Rated Price:  | Stake: 2 Units,3. Awesome Tycoon,1,1.87, $1.57 , $1.57 ,-$2.00 
+28/10/2024,Thoroughbred,NSW,Quirindi,Joshua Ingram,235041480,75435144,BACK,FALSE,Rated Price:  | Stake: 1 Units,1. Coella,1,3.44, $2.20 , $2.20 ,-$1.00 
+29/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,235162577,44712105,BACK,TRUE,Rated Price: 1.8 | Stake: 2 Units,1. Stonewashed,1,1.62, $1.15 , $1.15 ,-$2.00 
+29/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,235162602,61862092,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,4. Mia Magnifico,1,2.05, $0.98 , $0.98 ,-$1.00 
+29/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,235162592,69544558,LAY,TRUE,Rated Price: 3.5 | Stake: 2 Units,8. Zipping Brando,0,2.55, $1.20 ,-$2.00 , $1.20 
+29/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,235162619,56254326,BACK,FALSE,Rated Price: 2.5 | Stake: 1 Units,8. Dinali Keroma,0,3.45,-$1.00 ,-$1.00 , $0.38 
+29/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,235162583,46520516,BACK,FALSE,Rated Price: 6 | Stake: 1 Units,4. Kilcoy Brae,0,3.83,-$1.00 ,-$1.00 , $0.33 
+29/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,235162631,66946151,LAY,FALSE,Rated Price: 5 | Stake: 1 Units,8. Lady Luella,1,5.23,-$1.00 , $3.93 ,-$1.00 
+29/10/2024,Greyhounds,NSW,Gosford,Joe Lannutti,235162607,70457036,LAY,TRUE,Rated Price: 3.8 | Stake: 2 Units,5. Federal Mel,0,6.12, $0.36 ,-$2.00 , $0.36 
+29/10/2024,Harness,QLD,Albion Park,Ryan Spice,235175422,26015478,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,7. Amami,1,2.18, $3.29 , $3.29 ,-$3.00 
+29/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,235170818,38902166,BACK,TRUE,Rated Price: 1.9 | Stake: 2 Units,6. Im Above The Law,0,2.48,-$2.00 ,-$2.00 , $1.26 
+29/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,235170822,70422296,BACK,FALSE,Rated Price: 1.7 | Stake: 1 Units,1. Major Crunch,0,2.84,-$1.00 ,-$1.00 , $0.51 
+29/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,235170824,75435816,BACK,FALSE,Rated Price: 2.2 | Stake: 1 Units,2. Nugget Rogers,1,3.3, $2.14 , $2.14 ,-$1.00 
+29/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,235170816,39610815,BACK,FALSE,Rated Price: 2.4 | Stake: 2 Units,7. Salsboy,0,4.44,-$2.00 ,-$2.00 , $0.54 
+29/10/2024,Harness,VIC,Bendigo,Brett & Darren Carroll,235170814,56357724,LAY,TRUE,Rated Price: 9 | Stake: 1 Units,3. Keayang Omar,0,4.57, $0.26 ,-$1.00 , $0.26 
+29/10/2024,Harness,WA,Gloucester Park,Scott Hill,235164428,43382620,BACK,TRUE,Rated Price: 1.65 | Stake: 3 Units,5. Rockandrollartist,0,2.14,-$3.00 ,-$3.00 , $2.45 
+29/10/2024,Harness,WA,Gloucester Park,Scott Hill,235164431,75449316,LAY,FALSE,Rated Price: 3 | Stake: 3 Units,3. Rock Rosie Rock,1,2.47,-$3.00 , $4.10 ,-$3.00 
+29/10/2024,Harness,WA,Gloucester Park,Scott Hill,235164437,66519387,BACK,FALSE,Rated Price: 1.85 | Stake: 3 Units,8. Bull Shark Betty,0,3.82,-$3.00 ,-$3.00 , $0.99 
+29/10/2024,Harness,WA,Gloucester Park,Scott Hill,235164431,5339735,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,5. Strike Master,0,4.35,-$1.00 ,-$1.00 , $0.28 
+29/10/2024,Harness,WA,Gloucester Park,Scott Hill,235164413,7825706,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,2. Unlucky,0,7.98,-$1.00 ,-$1.00 , $0.13 
+29/10/2024,Thoroughbred,NSW,Grafton,Linton Chataway,235101943,48920032,LAY,TRUE,Rated Price: 3.5 | Stake: 1 Units,9. Stapleton,0,2.9, $0.47 ,-$1.00 , $0.47 
+29/10/2024,Thoroughbred,NSW,Grafton,Mitch Lewis,235101958,67560541,LAY,TRUE,Rated Price: 6 | Stake: 1 Units,3. Kairos Louie,1,1.87,-$1.00 , $0.78 ,-$1.00 
+29/10/2024,Thoroughbred,NSW,Grafton,Mitch Lewis,235101968,75480616,BACK,TRUE,Rated Price: 2.25 | Stake: 2 Units,1. My Mums Toyboy,1,3, $3.60 , $3.60 ,-$2.00 
+29/10/2024,Thoroughbred,NSW,Grafton,Mitch Lewis,235101953,75480610,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,2. Pisa Cake,0,9,-$1.00 ,-$1.00 , $0.11 
+29/10/2024,Thoroughbred,VIC,Swan Hill,Jackson Oldham,235101124,75481300,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,3. The Ineos ,0,2.61,-$3.00 ,-$3.00 , $1.73 
+29/10/2024,Thoroughbred,VIC,Swan Hill,Jackson Oldham,235101116,75481293,LAY,TRUE,Rated Price: 10 | Stake: 2 Units,10. Frontline Action,0,11.13, $0.18 ,-$2.00 , $0.18 
+30/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,235230119,70705131,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,3. Double Dollars,1,2.32, $3.68 , $3.68 ,-$3.00 
+30/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,235230139,61028099,LAY,TRUE,Rated Price: 3 | Stake: 2 Units,8. Edgewood,1,2.98,-$2.00 , $3.68 ,-$2.00 
+30/10/2024,Greyhounds,QLD,Rockhampton,Jaycin Campbell,235230144,71618653,LAY,FALSE,Rated Price: 10 | Stake: 2 Units,4. Abodes Trilogy,0,11.5, $0.18 ,-$2.00 , $0.18 
+30/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,235226097,66366509,LAY,FALSE,Rated Price: 4.8 | Stake: 1 Units,1. Im Honey ,0,2, $0.93 ,-$1.00 , $0.93 
+30/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,235226102,75639448,BACK,TRUE,Rated Price: 2 | Stake: 3 Units,4. Only Easy ,1,3.1, $5.86 , $5.86 ,-$3.00 
+30/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,235226122,63825066,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,1. Confiscate,0,3.16,-$2.00 ,-$2.00 , $0.86 
+30/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,235226092,75085072,BACK,FALSE,Rated Price: 4.8 | Stake: 1 Units,8. Tammy Road ,0,4.41,-$1.00 ,-$1.00 , $0.27 
+30/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,235226112,75639454,LAY,TRUE,Rated Price: 4.6 | Stake: 2 Units,7. Aston Shekel ,0,4.5, $0.53 ,-$2.00 , $0.53 
+30/10/2024,Greyhounds,VIC,The Meadows,Michael Tye,235226132,52467630,BACK,FALSE,Rated Price: 6 | Stake: 2 Units,7. Cailahs Pistol ,1,8.34, $13.65 , $13.65 ,-$2.00 
+30/10/2024,Harness,VIC,Horsham,Brett & Darren Carroll,235218955,38677525,BACK,FALSE,Rated Price: 2 | Stake: 2 Units,6. Night Whisperer,1,1.67, $1.25 , $1.25 ,-$2.00 
+30/10/2024,Harness,VIC,Horsham,Brett & Darren Carroll,235218961,44365523,BACK,TRUE,Rated Price: 2 | Stake: 2 Units,1. Angelshavtime,0,2.79,-$2.00 ,-$2.00 , $1.04 
+30/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,235172337,75637660,BACK,FALSE,Rated Price:  | Stake: 3 Units,14. Surprise Pending ,0,2.14,-$3.00 ,-$3.00 , $2.45 
+30/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,235172373,28588240,BACK,FALSE,Rated Price:  | Stake: 1 Units,5. Enlist ,0,3.25,-$1.00 ,-$1.00 , $0.41 
+30/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,235172358,61371255,BACK,FALSE,Rated Price:  | Stake: 2 Units,3. Lord Morton,0,16.68,-$2.00 ,-$2.00 , $0.12 
+30/10/2024,Thoroughbred,SA,Balaklava,Lachlan Mosley,235172337,75637659,BACK,FALSE,Rated Price:  | Stake: 1 Units,13. Loca Bella ,0,17.11,-$1.00 ,-$1.00 , $0.06 
+30/10/2024,Thoroughbred,VIC,Bendigo,Glenn Ingram,235164202,67532955,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,5. Fragile Love,0,2.2,-$2.00 ,-$2.00 , $1.55 
+30/10/2024,Thoroughbred,VIC,Bendigo,Jackson Oldham,235164256,3328593,BACK,TRUE,Rated Price: 2.5 | Stake: 1 Units,10. Mantua ,0,2.54,-$1.00 ,-$1.00 , $0.60 
+30/10/2024,Thoroughbred,VIC,Bendigo,Jackson Oldham,235164238,9453218,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,3. Sure,0,2.92, $0.97 ,-$2.00 , $0.97 
+30/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,235164315,75638094,BACK,FALSE,Rated Price: 1.95 | Stake: 2 Units,2. Tuff Tu Mus,1,1.75, $1.40 , $1.40 ,-$2.00 
+30/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,235164273,75638067,BACK,TRUE,Rated Price: 2.8 | Stake: 2 Units,4. Wowzino,0,4.89,-$2.00 ,-$2.00 , $0.48 
+30/10/2024,Thoroughbred,QLD,Doomben,Linton Chataway,235164301,738222,LAY,TRUE,Rated Price: 8 | Stake: 1 Units,9. Sultry Siren,0,6.75, $0.16 ,-$1.00 , $0.16 
+30/10/2024,Thoroughbred,QLD,Doomben,The Leg Up,235164273,75638067,LAY,FALSE,Rated Price: 6 | Stake: 1 Units,4. Wowzino,0,4.89, $0.24 ,-$1.00 , $0.24 
+30/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,235175393,51958063,BACK,FALSE,Rated Price: 2.9 | Stake: 2 Units,2. Conumdrum,0,4.4,-$2.00 ,-$2.00 , $0.55 
+30/10/2024,Thoroughbred,TAS,Launceston,Stephen Christie,235231083,60815778,BACK,FALSE,Rated Price: 3.7 | Stake: 1 Units,3. Rich Glow,0,5.3,-$1.00 ,-$1.00 , $0.22 
+30/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,235168245,65787423,LAY,TRUE,Rated Price: 5 | Stake: 1 Units,5. Groundrush,0,2.43, $0.63 ,-$1.00 , $0.63 
+30/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,235168229,53914184,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,6. Inhibitions,0,3.65,-$2.00 ,-$2.00 , $0.68 
+30/10/2024,Thoroughbred,NSW,Randwick,Mitch Lewis,235168213,75638593,BACK,FALSE,Rated Price: 4 | Stake: 1 Units,5. Chiba,0,7.53,-$1.00 ,-$1.00 , $0.14 
+31/10/2024,Greyhounds,QLD,Ipswich,Jaycin Campbell,235299340,68349082,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,6. Autumn Storm,1,2.85, $3.44 , $3.44 ,-$2.00 
+31/10/2024,Greyhounds,QLD,Ipswich,Jaycin Campbell,235299325,52843065,LAY,TRUE,Rated Price: 6 | Stake: 2 Units,6. Skye Monelli,0,7, $0.31 ,-$2.00 , $0.31 
+31/10/2024,Greyhounds,QLD,Ipswich,Jaycin Campbell,235299350,61933336,BACK,TRUE,Rated Price: 3 | Stake: 2 Units,3. Saanvi,0,7.4,-$2.00 ,-$2.00 , $0.29 
+31/10/2024,Greyhounds,QLD,Ipswich,Jaycin Campbell,235299325,59812510,BACK,FALSE,Rated Price: 5 | Stake: 1 Units,1. Tagovailoa,0,8.17,-$1.00 ,-$1.00 , $0.13 
+31/10/2024,Greyhounds,QLD,Ipswich,Jaycin Campbell,235299370,49870399,LAY,FALSE,Rated Price: 6 | Stake: 2 Units,7. Bye Bye Raider,0,9.97, $0.21 ,-$2.00 , $0.21 
+31/10/2024,Greyhounds,QLD,Ipswich,Jaycin Campbell,235299320,70705151,LAY,FALSE,Rated Price: 7 | Stake: 2 Units,8. Ninetymile Venom,1,11.07,-$2.00 , $18.73 ,-$2.00 
+31/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235289362,74227355,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,2. Paw Ike ,0,1.89,-$2.00 ,-$2.00 , $2.09 
+31/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235289317,62522647,BACK,FALSE,Rated Price: 3.7 | Stake: 1 Units,1. Hello Pa,1,1.93, $0.86 , $0.86 ,-$1.00 
+31/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235289347,69503408,BACK,TRUE,Rated Price: 1.75 | Stake: 3 Units,8. Field Day ,0,2.02,-$3.00 ,-$3.00 , $2.74 
+31/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235289312,71980677,BACK,FALSE,Rated Price: 2.55 | Stake: 2 Units,1. Come To Party ,1,2.08, $2.01 , $2.01 ,-$2.00 
+31/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235289337,58672398,LAY,TRUE,Rated Price: 4 | Stake: 2 Units,2. Bagman ,1,2.94,-$2.00 , $3.61 ,-$2.00 
+31/10/2024,Greyhounds,VIC,Sandown Park,Michael Tye,235289307,75392828,BACK,FALSE,Rated Price: 4.6 | Stake: 2 Units,5. Paw Vortex ,0,3,-$2.00 ,-$2.00 , $0.93 
+31/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,235284406,69712654,BACK,TRUE,Rated Price: 3 | Stake: 1 Units,3. Make Them Cry,0,1.93,-$1.00 ,-$1.00 , $1.00 
+31/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,235284376,63027009,LAY,TRUE,Rated Price: 3 | Stake: 2 Units,1. Chief Lightning,1,2.44,-$2.00 , $2.68 ,-$2.00 
+31/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,235284381,2878707,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,1. On Report,0,3.25,-$1.00 ,-$1.00 , $0.41 
+31/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,235284401,67532274,LAY,TRUE,Rated Price: 5 | Stake: 2 Units,3. Canya Dazzle,0,9.08, $0.23 ,-$2.00 , $0.23 
+31/10/2024,Greyhounds,NSW,Wentworth Park,Joe Lannutti,235284391,42098827,LAY,TRUE,Rated Price: 7 | Stake: 2 Units,7. Agland Luai,0,9.8, $0.21 ,-$2.00 , $0.21 
+31/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,235291875,69932875,BACK,TRUE,Rated Price: 1.6 | Stake: 3 Units,9. Carramar Olam,0,1.98,-$3.00 ,-$3.00 , $2.85 
+31/10/2024,Harness,VIC,Ballarat,Brett & Darren Carroll,235291889,58314312,LAY,TRUE,Rated Price: 7.5 | Stake: 2 Units,5. Keayang Sadie,1,4.4,-$2.00 , $6.32 ,-$2.00 
+31/10/2024,Thoroughbred,NSW,Kilcoy,The Leg Up,235222227,64959280,LAY,TRUE,Rated Price: 5.5 | Stake:  Units,6. Lady Bossa Nova,0,4.7, $0.24 ,-$1.00 , $0.24 
+31/10/2024,Thoroughbred,VIC,Warrnambool,Glenn Ingram,235222207,67360255,BACK,TRUE,Rated Price: 3 | Stake: 3 Units,5. Sacred Eagle,0,3.75,-$3.00 ,-$3.00 , $1.01 
+31/10/2024,Thoroughbred,VIC,Warrnambool,Jackson Oldham,235222183,6659546,BACK,TRUE,Rated Price: 2.5 | Stake: 1 Units,10. Cora Lynn,1,2.5, $1.40 , $1.40 ,-$1.00 
+31/10/2024,Thoroughbred,VIC,Warrnambool,Jackson Oldham,235222207,75673444,LAY,TRUE,Rated Price: 5 | Stake: 1 Units,8. Alcoshare,1,7.75,-$1.00 , $6.28 ,-$1.00 
+31/10/2024,Thoroughbred,NSW,Wyong,Linton Chataway,235222147,75673499,LAY,TRUE,Rated Price: 4.5 | Stake: 1 Units,5. Cormac T,0,3.73, $0.33 ,-$1.00 , $0.33 
+31/10/2024,Thoroughbred,NSW,Wyong,Mitch Lewis,235222142,75673497,BACK,TRUE,Rated Price: 1.9 | Stake: 3 Units,1. Reigning King,1,1.85, $2.30 , $2.30 ,-$3.00 
+31/10/2024,Thoroughbred,NSW,Wyong,Mitch Lewis,235222122,75673468,BACK,FALSE,Rated Price: 3 | Stake: 2 Units,6. Shalaa Gold,0,2.75,-$2.00 ,-$2.00 , $1.03 
+31/10/2024,Thoroughbred,NSW,Wyong,Mitch Lewis,235222132,75673491,BACK,FALSE,Rated Price: 3 | Stake: 1 Units,5. Obscure,0,2.92,-$1.00 ,-$1.00 , $0.47 
+31/10/2024,Thoroughbred,NSW,Wyong,Mitch Lewis,235222137,75673496,BACK,FALSE,Rated Price: 2.5 | Stake: 2 Units,8. Bartolf,0,4.42,-$2.00 ,-$2.00 , $0.53 

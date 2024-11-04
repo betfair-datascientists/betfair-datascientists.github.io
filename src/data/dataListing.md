@@ -61,7 +61,7 @@ By downloading this data, you acknowledge and agree that:
  - [Top 5 Model Results 2021](../assets/Top5_Model_Results_2021.csv)
  - [Top 5 Model Results 2022](../assets/Top5_Model_Results_2022.csv)
  - [Top 5 Model Results 2023](../assets/Top5_Model_Results_2023.csv)
- - [Top 5 Model Results 2024 Jan - Sep](../assets/Top5_Model_Results_2024_01-09.csv)
+ - [Top 5 Model Results 2024 Jan - Oct](../assets/Top5_Model_Results_2024_01-10.csv)
 
 ### Harness
 
@@ -91,7 +91,7 @@ By downloading this data, you acknowledge and agree that:
 ### Harness Predictions Model
 
  - [Harness Model Results 2023](../assets/Globetrotter_Model_Results_2023.csv)
- - [Harness Model Results 2024 Jan - Sep](../assets/Globetrotter_Model_Results_2024_01-09.csv)
+ - [Harness Model Results 2024 Jan - Oct](../assets/Globetrotter_Model_Results_2024_01-10.csv)
 
 ### Greyhounds
 

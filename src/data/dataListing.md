@@ -52,7 +52,7 @@ By downloading this data, you acknowledge and agree that:
  - [Thoroughbred Model Results 2021](../assets/Kash_Model_Results_2021.csv)
  - [Thoroughbred Model Results 2022](../assets/Kash_Model_Results_2022.csv)
  - [Thoroughbred Model Results 2023](../assets/Kash_Model_Results_2023.csv)
- - [Thoroughbred Model Results 2024 Jan - Sep](../assets/Kash_Model_Results_2024_01-09.csv)
+ - [Thoroughbred Model Results 2024 Jan - Oct](../assets/Kash_Model_Results_2024_01-10.csv)
 
 ### Top 5 Model
 
@@ -128,7 +128,7 @@ By downloading this data, you acknowledge and agree that:
 
 ### Greyhound Predictions Model (Iggy Version 2 - New)
 
- - [Greyhound Model Results 2024 Aug - Sep](../assets/Iggy_Model_V2_Results_2024_08-09.csv)
+ - [Greyhound Model Results 2024 Aug - Oct](../assets/Iggy_Model_V2_Results_2024_08-10.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 

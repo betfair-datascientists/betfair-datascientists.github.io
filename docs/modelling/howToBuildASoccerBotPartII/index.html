@@ -4431,7 +4431,7 @@ Following this we've applied the models to our test set (on which we'll run our 
 <p>It's important to note that the historic files do not contain cross-matching volume (also called virtual bets) or information from the market catalogue. So just be aware that live behaviour may not necessarily reflect the simulations. Runner information is contained within market_book.market_definition.runners so runner names will be available in the files.</p>
 <h3 id="unzipping-the-files">Unzipping The Files</h3>
 <p>Flumine requires the tar files to be unzipped to run the simulations so we'll iterate over the tar files to extract only the markets we need before commencing the simulation.</p>
-<p>We'll quickly process our tar files using our super fast <strong>Rust</strong>-driven tutorial: <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvRevisited/">JSON to CSV Revisted</a></p>
+<p>We'll quickly process our tar files using our super fast <strong>Rust</strong>-driven tutorial: <a href="https://betfair-datascientists.github.io/tutorials/jsonToCsvRevisited/">JSON to CSV Revisited</a></p>
 <p>By doing so we've created a csv file where we can easily pick out the markets we want to use. (You can skip this step and use the flumine process of check_market_book to filter out unwanted markets)</p>
 <ul>
 <li><a href="../assets/EPL_Markets.csv">EPL Market CSV File</a></li>
@@ -4440,7 +4440,7 @@ Following this we've applied the models to our test set (on which we'll run our 
 <p class="admonition-title">Market Ids</p>
 <p>Market ids in the stream files are denoted by "1.XXXXXXXXX", however in the provided csv file we have removed the "1.".</p>
 <p>In excel we do this using the formula: (marketId - 1) * 1000000000</p>
-<p>We do this because excel likes to truncate trailing zeros on negative numbers. The python line is provided below</p>
+<p>We do this because excel likes to truncate trailing zeros on decimal numbers. The python line is provided below</p>
 </div>
 <div class="highlight"><span class="filename">Remove '1.' from market_id in Python</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MARKET_ID&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MARKET_ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)[:</span><span class="mi">9</span><span class="p">])</span>
 </code></pre></div>

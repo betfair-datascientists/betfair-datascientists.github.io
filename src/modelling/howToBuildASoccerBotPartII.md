@@ -538,7 +538,7 @@ It's important to note that the historic files do not contain cross-matching vol
 
 Flumine requires the tar files to be unzipped to run the simulations so we'll iterate over the tar files to extract only the markets we need before commencing the simulation.
 
-We'll quickly process our tar files using our super fast **Rust**-driven tutorial: [JSON to CSV Revisted](https://betfair-datascientists.github.io/tutorials/jsonToCsvRevisited/)
+We'll quickly process our tar files using our super fast **Rust**-driven tutorial: [JSON to CSV Revisited](https://betfair-datascientists.github.io/tutorials/jsonToCsvRevisited/)
 
 By doing so we've created a csv file where we can easily pick out the markets we want to use. (You can skip this step and use the flumine process of check_market_book to filter out unwanted markets)
 
@@ -549,7 +549,7 @@ By doing so we've created a csv file where we can easily pick out the markets we
     
     In excel we do this using the formula: (marketId - 1) * 1000000000
 
-    We do this because excel likes to truncate trailing zeros on negative numbers. The python line is provided below
+    We do this because excel likes to truncate trailing zeros on decimal numbers. The python line is provided below
 
 ```py title="Remove '1.' from market_id in Python"
 

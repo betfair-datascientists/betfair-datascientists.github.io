@@ -132,256 +132,268 @@ The next block of code assumes that all required modules have already been impor
 
 ```py title="Define our markets"
 
-df=pd.read_csv('ensemble_model_results.csv')
-
-'''
-The below code will calculate probabilities for each individual market and selection for most markets related to goals scored/conceded
-The new column name takes the format that matches the exchange 'marketName_selectionName'
-'''
-
-# Both Teams To Score
-df['Both Teams To Score?_Yes'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 0 and j > 0]].sum(axis=1)
-df['Both Teams To Score?_No'] = 1 - df['Both Teams To Score?_Yes']
-
-# Match Odds
-df['Match Odds_Home'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j]].sum(axis=1)
-df['Match Odds_The Draw'] = df[[f'home_{i}_x_away_{i}' for i in full_time_indices]].sum(axis=1)
-df['Match Odds_Away'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j]].sum(axis=1)
-
-# Draw No Bet - This is equivalent to match odds normalised after removal of the Draw probability (In the event of a draw, the market is voided)
-df['Draw No Bet_Home'] = df['Match Odds_Home'] / (1 - df['Match Odds_The Draw'])
-df['Draw No Bet_Away'] = df['Match Odds_Away'] / (1 - df['Match Odds_The Draw'])
-
-# Double Chance - This is a 2 winner market and has a market percentage of 200%
-df['Double Chance_Home Or Away'] = df['Match Odds_Home'] + df['Match Odds_Away']
-df['Double Chance_Home Or Draw'] = df['Match Odds_Home'] + df['Match Odds_The Draw']
-df['Double Chance_Draw Or Away'] = df['Match Odds_The Draw'] + df['Match Odds_Away']
-
-# Match Odds & Both Teams to Score
-df['Match Odds And Both Teams To Score_Home/Yes'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j < 0.5]].sum(axis=1)
-df['Match Odds And Both Teams To Score_Home/No'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j > 0.5]].sum(axis=1)
-df['Match Odds And Both Teams To Score_Draw/Yes'] = df['Match Odds_The Draw'] - df['home_0_x_away_0']
-df['Match Odds And Both Teams To Score_Draw/No'] = df['home_0_x_away_0']
-df['Match Odds And Both Teams To Score_Away/Yes'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j and i < 0.5]].sum(axis=1)
-df['Match Odds And Both Teams To Score_Away/No'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j and i > 0.5]].sum(axis=1)
-
-# Correct Score
-df['Correct Score_0 - 0'] = df['home_0_x_away_0']
-df['Correct Score_0 - 1'] = df['home_0_x_away_1']
-df['Correct Score_0 - 2'] = df['home_0_x_away_2']
-df['Correct Score_0 - 3'] = df['home_0_x_away_3']
-df['Correct Score_1 - 0'] = df['home_1_x_away_0']
-df['Correct Score_1 - 1'] = df['home_1_x_away_1']
-df['Correct Score_1 - 2'] = df['home_1_x_away_2']
-df['Correct Score_1 - 3'] = df['home_1_x_away_3']
-df['Correct Score_2 - 0'] = df['home_2_x_away_0']
-df['Correct Score_2 - 1'] = df['home_2_x_away_1']
-df['Correct Score_2 - 2'] = df['home_2_x_away_2']
-df['Correct Score_2 - 3'] = df['home_2_x_away_3']
-df['Correct Score_3 - 0'] = df['home_3_x_away_0']
-df['Correct Score_3 - 1'] = df['home_3_x_away_1'] 
-df['Correct Score_3 - 2'] = df['home_3_x_away_2']
-df['Correct Score_3 - 3'] = df['home_3_x_away_3']
-df['Correct Score_Any Other Home Win'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 3 and i > j]].sum(axis=1)
-df['Correct Score_Any Other Draw'] = df[[f'home_{i}_x_away_{i}' for i in full_time_indices if i > 3]].sum(axis=1)
-df['Correct Score_Any Other Away Win'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > 3 and j > i]].sum(axis=1)
-
-# Over/Under 5.5 Goals
-df['Over/Under 5.5 Goals_Over 5.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 5.5]].sum(axis=1)
-df['Over/Under 5.5 Goals_Under 5.5 Goals'] = 1 - df['Over/Under 5.5 Goals_Over 5.5 Goals']
-
-# Over/Under 4.5 Goals
-df['Over/Under 4.5 Goals_Over 4.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 4.5]].sum(axis=1)
-df['Over/Under 4.5 Goals_Under 4.5 Goals'] = 1 - df['Over/Under 4.5 Goals_Over 4.5 Goals']
-
-# Over/Under 3.5 Goals
-df['Over/Under 3.5 Goals_Over 3.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 3.5]].sum(axis=1)
-df['Over/Under 3.5 Goals_Under 3.5 Goals'] = 1 - df['Over/Under 3.5 Goals_Over 3.5 Goals']
-
-# Over/Under 2.5 Goals
-df['Over/Under 2.5 Goals_Over 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
-df['Over/Under 2.5 Goals_Under 2.5 Goals'] = 1 - df['Over/Under 2.5 Goals_Over 2.5 Goals']
-
-# Over/Under 1.5 Goals
-df['Over/Under 1.5 Goals_Over 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 1.5]].sum(axis=1)
-df['Over/Under 1.5 Goals_Under 1.5 Goals'] = 1 - df['Over/Under 1.5 Goals_Over 1.5 Goals']
-
-# Over/Under 0.5 Goals
-df['Over/Under 0.5 Goals_Under 0.5 Goals'] = df['home_0_x_away_0']
-df['Over/Under 0.5 Goals_Over 0.5 Goals'] = 1 - df['home_0_x_away_0']
-
-# Home Over/Under 0.5 Goals
-df['Home Over/Under 0.5 Goals_Over 0.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 0.5]].sum(axis=1)
-df['Home Over/Under 0.5 Goals_Under 0.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < 0.5]].sum(axis=1)
-
-# Home Over/Under 1.5 Goals
-df['Home Over/Under 1.5 Goals_Over 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 1.5]].sum(axis=1)
-df['Home Over/Under 1.5 Goals_Under 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < 1.5]].sum(axis=1)
-
-# Home Over/Under 2.5 Goals
-df['Home Over/Under 2.5 Goals_Over 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 2.5]].sum(axis=1)
-df['Home Over/Under 2.5 Goals_Under 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < 2.5]].sum(axis=1)
-
-# Away Over/Under 0.5 Goals
-df['Away Over/Under 0.5 Goals_Over 0.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j > 0.5]].sum(axis=1)
-df['Away Over/Under 0.5 Goals_Under 0.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j < 0.5]].sum(axis=1)
-
-# Away Over/Under 1.5 Goals
-df['Away Over/Under 1.5 Goals_Over 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j > 1.5]].sum(axis=1)
-df['Away Over/Under 1.5 Goals_Under 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j < 1.5]].sum(axis=1)
-
-# Away Over/Under 2.5 Goals
-df['Away Over/Under 2.5 Goals_Over 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j > 2.5]].sum(axis=1)
-df['Away Over/Under 2.5 Goals_Under 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j < 2.5]].sum(axis=1)
-
-# Match Odds & O/U 2.5 Goals
-df['Match Odds And Over/Under 2.5 Goals_Home/Over 2.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Home/Under 2.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Draw/Over 2.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Draw/Under 2.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Away/Over 2.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Away/Under 2.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
-
-# Match Odds & O/U 3.5 Goals
-df['Match Odds And Over/Under 2.5 Goals_Home/Over 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Home/Under 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Draw/Over 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Draw/Under 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Away/Over 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5]].sum(axis=1)
-df['Match Odds And Over/Under 2.5 Goals_Away/Under 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
-
-# Home Win To Nil
-df['Home Win To Nil_Yes'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j == 0]].sum(axis=1)
-df['Home Win To Nil_No'] = 1 - df['Home Win To Nil_Yes']
-
-# Away Win To Nil
-df['Away Win To Nil_Yes'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > i and i == 0]].sum(axis=1)
-df['Away Win To Nil_No'] = 1 - df['Away Win To Nil_Yes']
-
-# Home +1
-df['Home +1_Home +1'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j - 1]].sum(axis=1)
-df['Home +1_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i == j - 1]].sum(axis=1)
-df['Home +1_Away -1'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j - 1]].sum(axis=1)
-
-# Away +1
-df['Away +1_Away +1'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > i - 1]].sum(axis=1)
-df['Away +1_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j == i - 1]].sum(axis=1)
-df['Away +1_Home -1'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j < i - 1]].sum(axis=1)
-
-# Home +2
-df['Home +2_Home +2'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j - 2]].sum(axis=1)
-df['Home +2_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i == j - 2]].sum(axis=1)
-df['Home +2_Away -2'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j - 2]].sum(axis=1)
-
-# Away +2
-df['Away +2_Away +2'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > i - 2]].sum(axis=1)
-df['Away +2_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j == i - 2]].sum(axis=1)
-df['Away +2_Home -2'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j < i - 2]].sum(axis=1)
-
-# Home +3
-df['Home +3_Home +3'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j - 3]].sum(axis=1)
-df['Home +3_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i == j - 3]].sum(axis=1)
-df['Home +3_Away -3'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j - 3]].sum(axis=1)
-
-# Away +3
-df['Away +3_Away +3'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > i - 3]].sum(axis=1)
-df['Away +3_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j == i - 3]].sum(axis=1)
-df['Away +3_Home -3'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j < i - 3]].sum(axis=1)
-
-# Half Time Result
-df['Half Time_Home'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i > j]].sum(axis=1)
-df['Half Time_The Draw'] = df[[f'home_{i}_ht_x_away_{i}_ht' for i in half_time_indices]].sum(axis=1)
-df['Half Time_Away'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i < j]].sum(axis=1)
-
-# Half Time / Full Time
-df['Half Time/Full Time_Home/Home'] = df['Match Odds_Home'] * df['Half Time_Home']
-df['Half Time/Full Time_Home/Draw'] = df['Match Odds_The Draw'] * df['Half Time_Home']
-df['Half Time/Full Time_Home/Away'] = df['Match Odds_Away'] * df['Half Time_Home']
-df['Half Time/Full Time_Draw/Home'] = df['Match Odds_Home'] * df['Half Time_The Draw']
-df['Half Time/Full Time_Draw/Draw'] = df['Match Odds_The Draw'] * df['Half Time_The Draw']
-df['Half Time/Full Time_Draw/Away'] = df['Match Odds_Away'] * df['Half Time_The Draw']
-df['Half Time/Full Time_Away/Home'] = df['Match Odds_Home'] * df['Half Time_Away']
-df['Half Time/Full Time_Away/Draw'] = df['Match Odds_The Draw'] * df['Half Time_Away']
-df['Half Time/Full Time_Away/Away'] = df['Match Odds_Away'] * df['Half Time_Away']
-
-# First Half Over/Under 2.5 Goals
-df['First Half Goals 2.5_Over 2.5 Goals'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if (i + j) > 2.5]].sum(axis=1)
-df['First Half Goals 2.5_Under 2.5 Goals'] = 1 - df['First Half Goals 2.5_Over 2.5 Goals']
-
-# First Half Over/Under 1.5 Goals
-df['First Half Goals 1.5_Over 1.5 Goals'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if (i + j) > 1.5]].sum(axis=1)
-df['First Half Goals 1.5_Under 1.5 Goals'] = 1 - df['First Half Goals 1.5_Over 1.5 Goals']
-
-# First Half Over/Under 0.5 Goals
-df['First Half Goals 0.5_Under 0.5 Goals'] = df['home_0_ht_x_away_0_ht']
-df['First Half Goals 0.5_Over 0.5 Goals'] = 1 - df['home_0_ht_x_away_0_ht']
-
-# Half Time Score
-df['Half Time Score_0 - 0'] = df['home_0_ht_x_away_0_ht']
-df['Half Time Score_0 - 1'] = df['home_0_ht_x_away_1_ht']
-df['Half Time Score_0 - 2'] = df['home_0_ht_x_away_2_ht']
-df['Half Time Score_1 - 0'] = df['home_1_ht_x_away_0_ht']
-df['Half Time Score_1 - 1'] = df['home_1_ht_x_away_1_ht']
-df['Half Time Score_1 - 2'] = df['home_1_ht_x_away_2_ht']
-df['Half Time Score_2 - 0'] = df['home_2_ht_x_away_0_ht']
-df['Half Time Score_2 - 1'] = df['home_2_ht_x_away_1_ht']
-df['Half Time Score_2 - 2'] = df['home_2_ht_x_away_2_ht']
-df['Half Time Score_Any Unquoted'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i > 2 or j > 2]].sum(axis=1)
-
-# Reshape the dataframe to keep only required columns for our simulations
-df = df.drop(columns=new_column_names)
-df = df.drop(columns=['match_id','goalsScored_home','goalsScored_away','halfTimeGoalsScored_home','halfTimeGoalsScored_away'])
-df = df.rename(columns={'date_home':'event_date'})
-df.insert(3,'fixture',df['name_home'].fillna('').astype(str) + ' v ' + df['name_away'].fillna('').astype(str))
-
-# Create a rated price for each column, and ensuring that each rating is in the range valid for the exchange (1.01-1000)
-for col in df.columns:
-    if col not in ['event_date','name_home','name_away','fixture']:
-        # Avoid division by zero by replacing zeroes with 0.001 before taking the reciprocal
-        df[col] = 1 / df[col].replace(0, 0.001)
-        df[col] = df[col].round(2) # Round to 2 decimal places
-        df[col] = df[col].clip(lower=1.01, upper=1000) # Restrict rated prices to exchange min/max prices
-
-'''
-The below code block is to transform the dataframe from one row per match to having one row per market/selection
-
-Pre-Transformation Shape: 144 columns x 727 rows
-Post-Transformation Shape: 5 columns x 92,202 rows
-'''
-# Initialize an empty list to store the sub-DataFrames
-sub_dfs = []
-
-# Get the list of columns excluding the first four
-columns = df.columns[4:]
-
-# Loop through each column
-for col in columns:
-    # Create a sub-DataFrame with the first four columns and the current column
-    sub_df = df.iloc[:, :4].copy()
-    sub_df['rated_price'] = df[col]
-    # Extract market_name and runner_name from the column name
-    market_name, runner_name = col.split('_', 1)
-    sub_df['market_name'] = market_name
-    sub_df['runner_name'] = runner_name
-
-    # Define a function to replace 'Home' and 'Away' only if 'Any Other' is not in the string
-    def replace_names(value, home_name, away_name):
-        if 'Any Other' not in value and ' Or ' not in value:
-            value = value.replace('Home', home_name).replace('Away', away_name)
-        return value
+def process_model_predictions(model):
     
-    sub_df['market_name'] = sub_df.apply(lambda row: replace_names(row['market_name'], row['name_home'], row['name_away']), axis=1)
-    sub_df['runner_name'] = sub_df.apply(lambda row: replace_names(row['runner_name'], row['name_home'], row['name_away']), axis=1)
-    
-    # Add the sub-DataFrame to the list
-    sub_dfs.append(sub_df)
+    df=pd.read_csv(f'{model}_model_results.csv')
 
-# Concatenate all sub-DataFrames
-final_df = pd.concat(sub_dfs, ignore_index=True)
-final_df = final_df[['event_date','fixture','market_name','runner_name','rated_price']]
+    # List of indices representing the number of goals for which we want to calculate the probability
+    full_time_indices = range(8) # 0,1,2,3,4,5,6,7
+    half_time_indices = range(6) # 0,1,2,3,4,5
 
-# Write our predictions to a csv file for our simulations
-final_df.to_csv('ensemble_model_results_processed.csv',index=False)
+    '''
+    The below code will calculate probabilities for each individual market and selection for most markets related to goals scored/conceded
+    The new column name takes the format that matches the exchange 'marketName_selectionName'
+    '''
+
+    # Both Teams To Score
+    df['Both Teams To Score?_Yes'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 0 and j > 0]].sum(axis=1)
+    df['Both Teams To Score?_No'] = 1 - df['Both Teams To Score?_Yes']
+
+    # Match Odds
+    df['Match Odds_Home'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j]].sum(axis=1)
+    df['Match Odds_The Draw'] = df[[f'home_{i}_x_away_{i}' for i in full_time_indices]].sum(axis=1)
+    df['Match Odds_Away'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j]].sum(axis=1)
+
+    # Draw No Bet - This is equivalent to match odds normalised after removal of the Draw probability (In the event of a draw, the market is voided)
+    df['Draw No Bet_Home'] = df['Match Odds_Home'] / (1 - df['Match Odds_The Draw'])
+    df['Draw No Bet_Away'] = df['Match Odds_Away'] / (1 - df['Match Odds_The Draw'])
+
+    # Double Chance - This is a 2 winner market and has a market percentage of 200%
+    df['Double Chance_Home Or Away'] = df['Match Odds_Home'] + df['Match Odds_Away']
+    df['Double Chance_Home Or Draw'] = df['Match Odds_Home'] + df['Match Odds_The Draw']
+    df['Double Chance_Draw Or Away'] = df['Match Odds_The Draw'] + df['Match Odds_Away']
+
+    # Match Odds & Both Teams to Score
+    df['Match Odds And Both Teams To Score_Home/Yes'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j < 0.5]].sum(axis=1)
+    df['Match Odds And Both Teams To Score_Home/No'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j > 0.5]].sum(axis=1)
+    df['Match Odds And Both Teams To Score_Draw/Yes'] = df['Match Odds_The Draw'] - df['home_0_x_away_0']
+    df['Match Odds And Both Teams To Score_Draw/No'] = df['home_0_x_away_0']
+    df['Match Odds And Both Teams To Score_Away/Yes'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j and i < 0.5]].sum(axis=1)
+    df['Match Odds And Both Teams To Score_Away/No'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j and i > 0.5]].sum(axis=1)
+
+    # Correct Score
+    df['Correct Score_0 - 0'] = df['home_0_x_away_0']
+    df['Correct Score_0 - 1'] = df['home_0_x_away_1']
+    df['Correct Score_0 - 2'] = df['home_0_x_away_2']
+    df['Correct Score_0 - 3'] = df['home_0_x_away_3']
+    df['Correct Score_1 - 0'] = df['home_1_x_away_0']
+    df['Correct Score_1 - 1'] = df['home_1_x_away_1']
+    df['Correct Score_1 - 2'] = df['home_1_x_away_2']
+    df['Correct Score_1 - 3'] = df['home_1_x_away_3']
+    df['Correct Score_2 - 0'] = df['home_2_x_away_0']
+    df['Correct Score_2 - 1'] = df['home_2_x_away_1']
+    df['Correct Score_2 - 2'] = df['home_2_x_away_2']
+    df['Correct Score_2 - 3'] = df['home_2_x_away_3']
+    df['Correct Score_3 - 0'] = df['home_3_x_away_0']
+    df['Correct Score_3 - 1'] = df['home_3_x_away_1'] 
+    df['Correct Score_3 - 2'] = df['home_3_x_away_2']
+    df['Correct Score_3 - 3'] = df['home_3_x_away_3']
+    df['Correct Score_Any Other Home Win'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 3 and i > j]].sum(axis=1)
+    df['Correct Score_Any Other Draw'] = df[[f'home_{i}_x_away_{i}' for i in full_time_indices if i > 3]].sum(axis=1)
+    df['Correct Score_Any Other Away Win'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > 3 and j > i]].sum(axis=1)
+
+    # Over/Under 5.5 Goals
+    df['Over/Under 5.5 Goals_Over 5.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 5.5]].sum(axis=1)
+    df['Over/Under 5.5 Goals_Under 5.5 Goals'] = 1 - df['Over/Under 5.5 Goals_Over 5.5 Goals']
+
+    # Over/Under 4.5 Goals
+    df['Over/Under 4.5 Goals_Over 4.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 4.5]].sum(axis=1)
+    df['Over/Under 4.5 Goals_Under 4.5 Goals'] = 1 - df['Over/Under 4.5 Goals_Over 4.5 Goals']
+
+    # Over/Under 3.5 Goals
+    df['Over/Under 3.5 Goals_Over 3.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 3.5]].sum(axis=1)
+    df['Over/Under 3.5 Goals_Under 3.5 Goals'] = 1 - df['Over/Under 3.5 Goals_Over 3.5 Goals']
+
+    # Over/Under 2.5 Goals
+    df['Over/Under 2.5 Goals_Over 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5]].sum(axis=1)
+    df['Over/Under 2.5 Goals_Under 2.5 Goals'] = 1 - df['Over/Under 2.5 Goals_Over 2.5 Goals']
+
+    # Over/Under 1.5 Goals
+    df['Over/Under 1.5 Goals_Over 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 1.5]].sum(axis=1)
+    df['Over/Under 1.5 Goals_Under 1.5 Goals'] = 1 - df['Over/Under 1.5 Goals_Over 1.5 Goals']
+
+    # Over/Under 0.5 Goals
+    df['Over/Under 0.5 Goals_Under 0.5 Goals'] = df['home_0_x_away_0']
+    df['Over/Under 0.5 Goals_Over 0.5 Goals'] = 1 - df['home_0_x_away_0']
+
+    # Home Over/Under 0.5 Goals
+    df['Home Over/Under 0.5 Goals_Over 0.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 0.5]].sum(axis=1)
+    df['Home Over/Under 0.5 Goals_Under 0.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < 0.5]].sum(axis=1)
+
+    # Home Over/Under 1.5 Goals
+    df['Home Over/Under 1.5 Goals_Over 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 1.5]].sum(axis=1)
+    df['Home Over/Under 1.5 Goals_Under 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < 1.5]].sum(axis=1)
+
+    # Home Over/Under 2.5 Goals
+    df['Home Over/Under 2.5 Goals_Over 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > 2.5]].sum(axis=1)
+    df['Home Over/Under 2.5 Goals_Under 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < 2.5]].sum(axis=1)
+
+    # Away Over/Under 0.5 Goals
+    df['Away Over/Under 0.5 Goals_Over 0.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j > 0.5]].sum(axis=1)
+    df['Away Over/Under 0.5 Goals_Under 0.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j < 0.5]].sum(axis=1)
+
+    # Away Over/Under 1.5 Goals
+    df['Away Over/Under 1.5 Goals_Over 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j > 1.5]].sum(axis=1)
+    df['Away Over/Under 1.5 Goals_Under 1.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j < 1.5]].sum(axis=1)
+
+    # Away Over/Under 2.5 Goals
+    df['Away Over/Under 2.5 Goals_Over 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j > 2.5]].sum(axis=1)
+    df['Away Over/Under 2.5 Goals_Under 2.5 Goals'] = df[[f'home_{i}_x_away_{j}' for j in full_time_indices for i in full_time_indices if j < 2.5]].sum(axis=1)
+
+    # Match Odds & O/U 2.5 Goals
+    df['Match Odds And Over/Under 2.5 Goals_Home/Over 2.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i > j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Home/Under 2.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i > j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Draw/Over 2.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i == j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Draw/Under 2.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i == j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Away/Over 2.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i < j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Away/Under 2.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i < j]].sum(axis=1)
+
+    # Match Odds & O/U 3.5 Goals
+    df['Match Odds And Over/Under 2.5 Goals_Home/Over 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i > j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Home/Under 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i > j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Draw/Over 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i == j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Draw/Under 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i == j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Away/Over 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i < j]].sum(axis=1)
+    df['Match Odds And Over/Under 2.5 Goals_Away/Under 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i < j]].sum(axis=1)
+
+    # Home Win To Nil
+    df['Home Win To Nil_Yes'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j == 0]].sum(axis=1)
+    df['Home Win To Nil_No'] = 1 - df['Home Win To Nil_Yes']
+
+    # Away Win To Nil
+    df['Away Win To Nil_Yes'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > i and i == 0]].sum(axis=1)
+    df['Away Win To Nil_No'] = 1 - df['Away Win To Nil_Yes']
+
+    # Home +1
+    df['Home +1_Home +1'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j - 1]].sum(axis=1)
+    df['Home +1_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i == j - 1]].sum(axis=1)
+    df['Home +1_Away -1'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j - 1]].sum(axis=1)
+
+    # Away +1
+    df['Away +1_Away +1'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > i - 1]].sum(axis=1)
+    df['Away +1_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j == i - 1]].sum(axis=1)
+    df['Away +1_Home -1'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j < i - 1]].sum(axis=1)
+
+    # Home +2
+    df['Home +2_Home +2'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j - 2]].sum(axis=1)
+    df['Home +2_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i == j - 2]].sum(axis=1)
+    df['Home +2_Away -2'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j - 2]].sum(axis=1)
+
+    # Away +2
+    df['Away +2_Away +2'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > i - 2]].sum(axis=1)
+    df['Away +2_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j == i - 2]].sum(axis=1)
+    df['Away +2_Home -2'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j < i - 2]].sum(axis=1)
+
+    # Home +3
+    df['Home +3_Home +3'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j - 3]].sum(axis=1)
+    df['Home +3_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i == j - 3]].sum(axis=1)
+    df['Home +3_Away -3'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i < j - 3]].sum(axis=1)
+
+    # Away +3
+    df['Away +3_Away +3'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j > i - 3]].sum(axis=1)
+    df['Away +3_Draw'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j == i - 3]].sum(axis=1)
+    df['Away +3_Home -3'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if j < i - 3]].sum(axis=1)
+
+    # Half Time Result
+    df['Half Time_Home'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i > j]].sum(axis=1)
+    df['Half Time_The Draw'] = df[[f'home_{i}_ht_x_away_{i}_ht' for i in half_time_indices]].sum(axis=1)
+    df['Half Time_Away'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i < j]].sum(axis=1)
+
+    # Half Time / Full Time
+    df['Half Time/Full Time_Home/Home'] = df['Match Odds_Home'] * df['Half Time_Home']
+    df['Half Time/Full Time_Home/Draw'] = df['Match Odds_The Draw'] * df['Half Time_Home']
+    df['Half Time/Full Time_Home/Away'] = df['Match Odds_Away'] * df['Half Time_Home']
+    df['Half Time/Full Time_Draw/Home'] = df['Match Odds_Home'] * df['Half Time_The Draw']
+    df['Half Time/Full Time_Draw/Draw'] = df['Match Odds_The Draw'] * df['Half Time_The Draw']
+    df['Half Time/Full Time_Draw/Away'] = df['Match Odds_Away'] * df['Half Time_The Draw']
+    df['Half Time/Full Time_Away/Home'] = df['Match Odds_Home'] * df['Half Time_Away']
+    df['Half Time/Full Time_Away/Draw'] = df['Match Odds_The Draw'] * df['Half Time_Away']
+    df['Half Time/Full Time_Away/Away'] = df['Match Odds_Away'] * df['Half Time_Away']
+
+    # First Half Over/Under 2.5 Goals
+    df['First Half Goals 2.5_Over 2.5 Goals'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if (i + j) > 2.5]].sum(axis=1)
+    df['First Half Goals 2.5_Under 2.5 Goals'] = 1 - df['First Half Goals 2.5_Over 2.5 Goals']
+
+    # First Half Over/Under 1.5 Goals
+    df['First Half Goals 1.5_Over 1.5 Goals'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if (i + j) > 1.5]].sum(axis=1)
+    df['First Half Goals 1.5_Under 1.5 Goals'] = 1 - df['First Half Goals 1.5_Over 1.5 Goals']
+
+    # First Half Over/Under 0.5 Goals
+    df['First Half Goals 0.5_Under 0.5 Goals'] = df['home_0_ht_x_away_0_ht']
+    df['First Half Goals 0.5_Over 0.5 Goals'] = 1 - df['home_0_ht_x_away_0_ht']
+
+    # Half Time Score
+    df['Half Time Score_0 - 0'] = df['home_0_ht_x_away_0_ht']
+    df['Half Time Score_0 - 1'] = df['home_0_ht_x_away_1_ht']
+    df['Half Time Score_0 - 2'] = df['home_0_ht_x_away_2_ht']
+    df['Half Time Score_1 - 0'] = df['home_1_ht_x_away_0_ht']
+    df['Half Time Score_1 - 1'] = df['home_1_ht_x_away_1_ht']
+    df['Half Time Score_1 - 2'] = df['home_1_ht_x_away_2_ht']
+    df['Half Time Score_2 - 0'] = df['home_2_ht_x_away_0_ht']
+    df['Half Time Score_2 - 1'] = df['home_2_ht_x_away_1_ht']
+    df['Half Time Score_2 - 2'] = df['home_2_ht_x_away_2_ht']
+    df['Half Time Score_Any Unquoted'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i > 2 or j > 2]].sum(axis=1)
+
+    # Reshape the dataframe to keep only required columns for our simulations
+    df = df.drop(columns=new_column_names)
+    df = df.drop(columns=['match_id','goalsScored_home','goalsScored_away','halfTimeGoalsScored_home','halfTimeGoalsScored_away'])
+    df = df.rename(columns={'date_home':'event_date'})
+    df.insert(3,'fixture',df['name_home'].fillna('').astype(str) + ' v ' + df['name_away'].fillna('').astype(str))
+
+    # Create a rated price for each column, and ensuring that each rating is in the range valid for the exchange (1.01-1000)
+    for col in df.columns:
+        if col not in ['event_date','name_home','name_away','fixture']:
+            # Avoid division by zero by replacing zeroes with 0.001 before taking the reciprocal
+            df[col] = 1 / df[col].replace(0, 0.001)
+            df[col] = df[col].round(2) # Round to 2 decimal places
+            df[col] = df[col].clip(lower=1.01, upper=1000) # Restrict rated prices to exchange min/max prices
+
+    '''
+    The below code block is to transform the dataframe from one row per match to having one row per market/selection
+
+    Pre-Transformation Shape: 144 columns x 727 rows
+    Post-Transformation Shape: 5 columns x 92,202 rows
+    '''
+    # Initialize an empty list to store the sub-DataFrames
+    sub_dfs = []
+
+    # Get the list of columns excluding the first four
+    columns = df.columns[4:]
+
+    # Loop through each column
+    for col in columns:
+        # Create a sub-DataFrame with the first four columns and the current column
+        sub_df = df.iloc[:, :4].copy()
+        sub_df['rated_price'] = df[col]
+        # Extract market_name and runner_name from the column name
+        market_name, runner_name = col.split('_', 1)
+        sub_df['market_name'] = market_name
+        sub_df['runner_name'] = runner_name
+
+        # Define a function to replace 'Home' and 'Away' only if 'Any Other' is not in the string
+        def replace_names(value, home_name, away_name):
+            if 'Any Other' not in value and ' Or ' not in value:
+                value = value.replace('Home', home_name).replace('Away', away_name)
+            return value
+        
+        sub_df['market_name'] = sub_df.apply(lambda row: replace_names(row['market_name'], row['name_home'], row['name_away']), axis=1)
+        sub_df['runner_name'] = sub_df.apply(lambda row: replace_names(row['runner_name'], row['name_home'], row['name_away']), axis=1)
+        
+        # Add the sub-DataFrame to the list
+        sub_dfs.append(sub_df)
+
+    # Concatenate all sub-DataFrames
+    final_df = pd.concat(sub_dfs, ignore_index=True)
+    final_df = final_df[['event_date','fixture','market_name','runner_name','rated_price']]
+
+    # Write our predictions to a csv file for our simulations
+    final_df.to_csv(f'{model}_model_results_processed.csv',index=False)
+
+models = ['ensemble','LGBMClassifier','KNeighborsClassifier','RandomForestClassifier','LogisticsRegression','GradientBoostingClassifier']
+
+for model in models:
+
+    process_model_predictions(model)
 
 ```
 Following this we've applied the models to our test set (on which we'll run our simulations) and then generated rated prices for a (non-exhaustive) list of popular markets present on English Premier League matches. 
@@ -642,8 +654,7 @@ for tar_path in tar_files:
 
 Now that we've unzipped the files, we'll need to run the simulations on the files.
 
-**Just a word of warning**: This is not a fast process to run over two years of EPL data. It took my machine with 4 CPUs about 24 hours to pass over this data.
-The further out from the match start you're looking to place bets, the longer the process will take, as well if you leave bets inplay (using persistence_type="PERSIST") this will also take longer.
+**Just a word of warning**: This is not a fast process to run over two years of EPL data. It took my machine with 4 CPUs about 2 hours to pass over this data.
 
 The advice here is to use the check_market_book function to not process markets that you're not interested in (e.g. OVER/UNDER_8.5_GOALS, SHOTS_ON_TARGET).
 
@@ -689,11 +700,7 @@ logger.addHandler(log_handler)
 logger.propagate = False
 
 # Specify the folder where the unzipped stream files are stored
-source_folder = output_folder # We defined this earlier
-
-```
-
-```py title="define custom functions"
+source_folder = output_folder
 
 '''
 This code file is designed to iterate over the folder with the previously unzipped stream files
@@ -701,7 +708,6 @@ and place simulated bets on selections at 10 minutes before kick-off
 
 We will speed this process up using multi-threading
 '''
-
 
 # Function to split our list into chunks
 def split_list(lst, chunk_size):
@@ -729,10 +735,6 @@ def process_runner_catalogue(market_book: MarketBook):
 
     return runners_df
 
-```
-
-```py title="Define Flumine Class & Logging Control"
-
 # Defining our flumine class
 class SoccerSimulation(BaseStrategy):
 
@@ -742,10 +744,20 @@ class SoccerSimulation(BaseStrategy):
     It is essential that we tie the dataframe to the class using a self definition
     We also define an empty list to use later
     '''
-    def __init__(self, soccer_df, *args, **kwargs):
+    def __init__(self, model, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
         self.processed_selection_ids = []
-        self.soccer_df = soccer_df
+        self._is_main_df_pruned = False
+        self._pruned_soccer_df = None
+        self.model = model
+
+        # Read the model results CSV for the current model
+        self.soccer_df = pd.read_csv(
+            destination + f'{self.model}_model_results_processed.csv',
+            parse_dates=['event_date'],
+            dayfirst=False
+        )
 
     def check_market_book(self, market: Market, market_book: MarketBook) -> bool:
         ''' 
@@ -755,11 +767,20 @@ class SoccerSimulation(BaseStrategy):
         # This check skips markets for the ring-fenced Italian and Spanish exchanges
         if market_book.market_definition.regulators != ["MR_INT"]:
             return False
-        # Skip markets with unwanted market types
-        if market_book.market_definition.market_type in ['OVER_UNDER_85']
-            return False
         if market_book.status != "CLOSED" and market_book.inplay == False:
             return True
+        
+    def prune_soccer_df(self, market_name, event_date, fixture):
+        """ """
+        event_date = pd.to_datetime(event_date)
+
+        self._pruned_soccer_df = self.soccer_df[
+            (self.soccer_df['fixture'] == fixture)
+            & (self.soccer_df['event_date'] == event_date)
+            & (self.soccer_df['market_name'] == market_name)
+        ]
+
+        return self._pruned_soccer_df
 
     def process_market_book(self, market: Market, market_book: MarketBook) -> None:
  
@@ -778,11 +799,25 @@ class SoccerSimulation(BaseStrategy):
         # Preserve the index as a column before merging
         runners_df['selection_id'] = runners_df.index
         # Merge the market info with our ratings dataframe
-        market_df = pd.merge(runners_df,self.soccer_df, how='left', on=['event_date', 'fixture', 'market_name', 'runner_name'])
+        if not self._is_main_df_pruned:
+
+            self._pruned_soccer_df = self.prune_soccer_df(
+                market_name=market_book.market_definition.name.title(),
+                event_date=market_book.market_definition.market_time.date(),
+                fixture=market_book.market_definition.event_name,
+            )
+            self._is_main_df_pruned = True
+
+        market_df = pd.merge(
+            runners_df,
+            self._pruned_soccer_df,
+            how="left",
+            on=["event_date", "fixture", "market_name", "runner_name"],
+        )
         # Set the index as the selection_id for order placement
         market_df.set_index('selection_id',inplace=True)
 
-        if round(market.seconds_to_start, 0) <= 600 and round(market.seconds_to_start, 0) > 30:
+        if round(market.seconds_to_start, 0) <= 600:
 
             # Loop over each runner in the market
             for runner in market_book.runners:
@@ -794,7 +829,7 @@ class SoccerSimulation(BaseStrategy):
                     market_name = market_df.loc[runner.selection_id, 'market_name']
                     rated_price = float(market_df.loc[runner.selection_id, 'rated_price'] or 0)
 
-                    if runner.selection_id not in self.processed_selection_ids:
+                    if runner.selection_id not in self.processed_selection_ids and rated_price > 1:
                         # Create our ordered dictionary to store our order notes
                         notes = OrderedDict()
                         # Write our order notes - adding these notes is time-consuming but is helpful for troubleshooting string matching issues
@@ -812,20 +847,26 @@ class SoccerSimulation(BaseStrategy):
                             strategy=self,
                         )
                         order = trade.create_order(
+                            side="LAY",
+                            order_type=LimitOrder(
+                                price=runner.ex.available_to_lay[0]['price'],
+                                size=round(100 / rated_price, 2),
+                                persistence_type="LAPSE",
+                            )
+                        )
+                        market.place_order(order)
+
+                        order = trade.create_order(
                             side="BACK",
                             order_type=LimitOrder(
-                                price=price_ticks_away(runner.ex.available_to_back[0]['price'],-1),
+                                price=runner.ex.available_to_back[0]['price'],
                                 size=round(100 / rated_price, 2),
-                                persistence_type="LAPSE"
+                                persistence_type="LAPSE",
                             )
                         )
                         market.place_order(order)
                         # Add the selection to the list to ensure that we don't bet on it again.
                         self.processed_selection_ids.append(runner.selection_id)
-        
-        # cancel unmatched bets 30 seconds before the scheduled off
-        if round(market.seconds_to_start, 0) <= 30:
-            market.cancel_order(market_id=market_book.market_id)
 
 # Fields we want to log in our simulations
 FIELDNAMES = [
@@ -907,12 +948,7 @@ class BacktestLoggingControl(LoggingControl):
 
         logger.info("Orders updated", extra={"order_count": len(orders)})
 
-```
-
-```py title="Run the simulation"
-
-
-def run_process(chunk,soccer_df,model):  
+def run_process(chunk,model):  
     try:
         # Set Flumine to simulation mode
         client = clients.SimulatedClient(min_bet_validation=False)
@@ -924,7 +960,7 @@ def run_process(chunk,soccer_df,model):
                 "markets": chunk,  
                 "listener_kwargs": {"inplay":False,"seconds_to_start": 660},  
             },
-            soccer_df=soccer_df,
+            model = model,
             max_order_exposure=1000,
             max_selection_exposure=1000,
             max_live_trade_count=2,
@@ -967,19 +1003,11 @@ def process_csv_file(model):
 
 def process_model(model):
 
-    # Read the model results CSV for the current model
-    soccer_df = pd.read_csv(
-        destination + f'{model}_model_results_processed.csv',
-        parse_dates=['event_date'],
-        dayfirst=False
-    )
     logging.info(f"Processing model: {model}")
 
     data_folder = source_folder
     data_files = os.listdir(data_folder)
     data_files = [f'{data_folder}/{path}' for path in data_files]
-
-    print(data_files)
     
     chunks = list(split_list(data_files, 1000))  # Splitting data into chunks of 1000 files
     
@@ -995,7 +1023,7 @@ def process_model(model):
             # Here we use `markets_per_process` to split the chunk into smaller lists
             for m in split_list(all_markets, markets_per_process):
                 _process_jobs.append(
-                    p.submit(run_process, m, soccer_df, model)
+                    p.submit(run_process, m, model)
                 )
             for job in futures.as_completed(_process_jobs):
                 job.result()
@@ -1006,7 +1034,9 @@ def process_model(model):
     process_csv_file(model)
     logging.info(f"Completed processing for model {model}")
 
-process_model('ensemble')
+if __name__ == '__main__':
+    process_model('ensemble')
+    # You can substitute any model here that you want to run e.g. 'LogisticsRegression'
 
 ```
 

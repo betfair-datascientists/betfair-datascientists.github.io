@@ -654,7 +654,8 @@ for tar_path in tar_files:
 
 Now that we've unzipped the files, we'll need to run the simulations on the files.
 
-**Just a word of warning**: This is not a fast process to run over two years of EPL data. It took my machine with 4 CPUs about 2 hours to pass over this data.
+**Just a word of warning**: This is not a fast process to run over two years of EPL data. It took my machine with 4 CPUs about 5 hours to pass over this data.
+For ~27,000 markets this equated to about 1.6 seconds per market, which is quite reasonable. 
 
 The advice here is to use the check_market_book function to not process markets that you're not interested in (e.g. OVER/UNDER_8.5_GOALS, SHOTS_ON_TARGET).
 
@@ -681,6 +682,10 @@ from concurrent import futures
 from flumine.utils import price_ticks_away
 from collections import OrderedDict
 from tqdm import tqdm
+from multiprocessing import Lock
+
+# Create a global lock
+file_write_lock = Lock()
 
 # Create custom logger
 logger = logging.getLogger()
@@ -798,15 +803,34 @@ class SoccerSimulation(BaseStrategy):
         runners_df['event_date'] = pd.to_datetime(runners_df['event_date'])
         # Preserve the index as a column before merging
         runners_df['selection_id'] = runners_df.index
+
+        '''
+        Flumine keeps track of the market_time as it moves through the market. When doing this merge,
+        it will use the market_time at the point of the merge. There is some strange behaviour in the
+        historic stream files where the market_time will change to a different date and then back to
+        the original date back again. By using the counter we're able to ensure that we always have a
+        rated price to bet with by retrying until we have a pruned ratings dataframe that isn't empty
+        '''
         # Merge the market info with our ratings dataframe
         if not self._is_main_df_pruned:
+            retry_count = 0
+            max_retries = 10
+            while retry_count < max_retries:
+                # Attempt to prune the soccer dataframe
+                self._pruned_soccer_df = self.prune_soccer_df(
+                    market_name=market_book.market_definition.name.title(),
+                    event_date=market_book.market_definition.market_time.date(),
+                    fixture=market_book.market_definition.event_name,
+                )
 
-            self._pruned_soccer_df = self.prune_soccer_df(
-                market_name=market_book.market_definition.name.title(),
-                event_date=market_book.market_definition.market_time.date(),
-                fixture=market_book.market_definition.event_name,
-            )
-            self._is_main_df_pruned = True
+                # Check if the dataframe is not empty
+                if not self._pruned_soccer_df.empty:
+                    # If successful, mark the flag and break out of the loop
+                    self._is_main_df_pruned = True
+                    retry_count = max_retries
+                else:
+                    # Increment the retry counter and try again
+                    retry_count += 1
 
         market_df = pd.merge(
             runners_df,
@@ -908,45 +932,44 @@ class BacktestLoggingControl(LoggingControl):
 
     def _process_cleared_orders_meta(self, event):
         orders = event.event
-        with open(destination+f"soccer_simulation_{self.model}.csv", "a") as m:
-            for order in orders:
-                if order.order_type.ORDER_TYPE == OrderTypes.LIMIT:
-                    size = order.order_type.size
-                else:
-                    size = order.order_type.liability
-                if order.order_type.ORDER_TYPE == OrderTypes.MARKET_ON_CLOSE:
-                    price = None
-                else:
-                    price = order.order_type.price
-                try:
-                    order_data = {
-                        "bet_id": order.bet_id,
-                        "strategy_name": order.trade.strategy,
-                        "market_id": order.market_id,
-                        "selection_id": order.selection_id,
-                        "trade_id": order.trade.id,
-                        "date_time_placed": order.responses.date_time_placed,
-                        "price": price,
-                        "price_matched": order.average_price_matched,
-                        "size": size,
-                        "size_matched": order.size_matched,
-                        "profit": order.simulated.profit,
-                        "side": order.side,
-                        "elapsed_seconds_executable": order.elapsed_seconds_executable,
-                        "order_status": order.status.value,
-                        "market_note": order.trade.market_notes,
-                        "trade_notes": order.trade.notes_str,
-                        "order_notes": order.notes_str,
-                    }
-                    csv_writer = csv.DictWriter(m, delimiter=",", fieldnames=FIELDNAMES)
-                    csv_writer.writerow(order_data)
-                except Exception as e:
-                    logger.error(
-                        "_process_cleared_orders_meta: %s" % e,
-                        extra={"order": order, "error": e},
-                    )
+        file_path = destination + f"soccer_simulation_{self.model}.csv"
 
-        logger.info("Orders updated", extra={"order_count": len(orders)})
+        # Locking around the file write operation
+        with file_write_lock:
+            with open(file_path, "a") as m:
+                csv_writer = csv.DictWriter(m, delimiter=",", fieldnames=FIELDNAMES)
+                for order in orders:
+                    if order.order_type.ORDER_TYPE == OrderTypes.LIMIT:
+                        size = order.order_type.size
+                    else:
+                        size = order.order_type.liability
+                    price = None if order.order_type.ORDER_TYPE == OrderTypes.MARKET_ON_CLOSE else order.order_type.price
+
+                    try:
+                        order_data = {
+                            "bet_id": order.bet_id,
+                            "strategy_name": order.trade.strategy,
+                            "market_id": order.market_id,
+                            "selection_id": order.selection_id,
+                            "trade_id": order.trade.id,
+                            "date_time_placed": order.responses.date_time_placed,
+                            "price": price,
+                            "price_matched": order.average_price_matched,
+                            "size": size,
+                            "size_matched": order.size_matched,
+                            "profit": order.simulated.profit,
+                            "side": order.side,
+                            "elapsed_seconds_executable": order.elapsed_seconds_executable,
+                            "order_status": order.status.value,
+                            "market_note": order.trade.market_notes,
+                            "trade_notes": order.trade.notes_str,
+                            "order_notes": order.notes_str,
+                        }
+                        csv_writer.writerow(order_data)
+                    except Exception as e:
+                        logger.error("_process_cleared_orders_meta: %s" % e, extra={"order": order, "error": e})
+
+            logger.info("Orders updated", extra={"order_count": len(orders)})
 
 def run_process(chunk,model):  
     try:
@@ -991,9 +1014,10 @@ def process_csv_file(model):
     df[f'{model}_rated_price'] = df[f'{model}_rated_price'].str.replace('rated_price:', '', regex=False).astype(float)
     df[f'{model}_implied_value'] = 1/df['price_matched'] - 1/df[f'{model}_rated_price']
     
-    # Process date_time_placed column
-    df['date_time_placed'] = pd.to_datetime(df['date_time_placed'], dayfirst=True,format='mixed')
-    df['date_time_placed'] = df['date_time_placed'].dt.tz_localize('UTC', ambiguous=False).dt.tz_convert('Australia/Melbourne')
+    # Modify the date parsing line to handle errors
+    df['date_time_placed'] = pd.to_datetime(df['date_time_placed'], errors='coerce')
+    df = df.dropna(subset=['date_time_placed'])
+    df['date_time_placed'] = df['date_time_placed'].dt.tz_localize('UTC', ambiguous=False).dt.strftime('%d-%m-%Y %H:%M:%S')
 
     # Select relevant columns
     columns_to_keep = ['date_time_placed', 'fixture', 'market_id','market_type','market', 'selection_id', 'selection', 'side', f'{model}_rated_price', f'{model}_implied_value', 'price_matched', 'size', 'size_matched', 'profit']
@@ -1002,35 +1026,36 @@ def process_csv_file(model):
     df.to_csv(destination+f'soccer_simulation_{model}_processed.csv', index=False)
 
 def process_model(model):
-
     logging.info(f"Processing model: {model}")
 
     data_folder = source_folder
-    data_files = os.listdir(data_folder)
-    data_files = [f'{data_folder}/{path}' for path in data_files]
-    
-    chunks = list(split_list(data_files, 1000))  # Splitting data into chunks of 1000 files
-    
-    # Iterate over each chunk
-    for chunk_index, chunk in enumerate(tqdm(chunks, desc=f"Chunks Progress")):
-        all_markets = chunk
-        processes = 4  # Number of available CPUs
-        markets_per_process = 8  # Number of markets each process should handle
+    data_files = [os.path.join(data_folder, path) for path in os.listdir(data_folder)]
 
+    chunks = list(split_list(data_files, 1000))  # Split data into chunks of 1000 files
+
+    # Iterate over each chunk
+    for chunk_index, chunk in enumerate(tqdm(chunks, desc="Chunks Progress")):
+        processes = 4  # Number of processes
+        markets_per_process = 1  # Number of markets each process should handle
+
+        # Create a list to store futures for tracking process completion
         _process_jobs = []
 
-        with futures.ProcessPoolExecutor(max_workers=processes) as p:
-            # Here we use `markets_per_process` to split the chunk into smaller lists
-            for m in split_list(all_markets, markets_per_process):
-                _process_jobs.append(
-                    p.submit(run_process, m, model)
-                )
+        with futures.ProcessPoolExecutor(max_workers=processes) as executor:
+            for market_subset in split_list(chunk, markets_per_process):
+                # Submit jobs to executor
+                _process_jobs.append(executor.submit(run_process, market_subset, model))
+
+            # Ensure each job completes and handle any potential errors
             for job in futures.as_completed(_process_jobs):
-                job.result()
+                try:
+                    job.result()  # Trigger any exceptions raised
+                except Exception as e:
+                    logging.error(f"Error processing chunk {chunk_index+1} for model {model}: {e}")
 
         logging.info(f"Completed processing chunk {chunk_index+1} for model {model}")
-    
-    # Once done, process final CSV
+
+    # Once done, process the final CSV
     process_csv_file(model)
     logging.info(f"Completed processing for model {model}")
 

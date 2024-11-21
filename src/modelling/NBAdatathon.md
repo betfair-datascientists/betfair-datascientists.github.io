@@ -4,9 +4,7 @@
 
 ## Registration
 
-Registrations are now open and will close at **4:59pm AEDT on 18 November 2024**.
-
-All entrants must be current Betfair Australia customers and complete the [registration form](https://forms.office.com/r/D1c74yig8j).
+Registrations are closed
 
 ---
 
@@ -100,7 +98,8 @@ Submissions will be evaluated based on the [Mean Absolute Error (MAE)](https://e
 
 The dataset for the competition:
 
-- [Player Dataset 2019-10 to 2024-05](../assets/NBA_Dataset-2019-2024.zip)
+- [Player Dataset 2019-10-22 to 2024-10-30](../assets/NBA_Dataset-2019-2024.zip)
+- [Player Dataset 2024-10-31 to 2024-11-20](../assets/nba_player_data_update_20241031-20241120.csv)
 
 The data has been collected using the [nba_api package](https://github.com/swar/nba_api). Daily updates will be posted here throughout the competition.
 
@@ -246,9 +245,3 @@ Check back later for leaderboard updates.
  - Information on day-to-day injuries can be found on the [ESPN website](https://www.espn.com.au/nba/injuries)
 
 ---
-
-## Registration
-
-Registrations are now open and will close at **4:59pm AEDT on 18 November 2024**.
-
-All entrants must be current Betfair Australia customers and complete the [registration form](https://forms.office.com/r/D1c74yig8j).

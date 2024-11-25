@@ -57,10 +57,7 @@ Entrants will receive a bespoke set of historical NBA player data for all matche
 
 How you build your model is entirely up to you—whether it's an Elo model, regression, Machine Learning, or something else, the creativity is in your hands.
 
-Submit your predictions by these deadlines:
-
-- **10:59pm AEDT** for matches starting **before 10:00am AEDT** the following day.
-- **8:59am AEDT** for matches starting **at or after 10:00am AEDT**.
+Submit your predictions by **the tipoff time as recorded in the submission template**
 
 See the full Terms and Conditions for more competition rules.
 
@@ -209,7 +206,7 @@ for matchup in tqdm(unique_game_ids, desc="Processing Matchups", unit="matchup")
 
 ## Leaderboard
 
-Check back later for leaderboard updates.
+![Leaderboard](../img/NBA_Datathon_Leaderboard.png)
 
 ---
 

@@ -101,6 +101,7 @@ The dataset for the competition:
 - [Player Dataset 2024-11-22](../assets/nba_player_data_update_20241122.csv)
 - [Player Dataset 2024-11-23](../assets/nba_player_data_update_20241123.csv)
 - [Player Dataset 2024-11-24](../assets/nba_player_data_update_20241124.csv)
+- [Player Dataset 2024-11-25](../assets/nba_player_data_update_20241125.csv)
 
 The data has been collected using the [nba_api package](https://github.com/swar/nba_api). Daily updates will be posted here throughout the competition.
 

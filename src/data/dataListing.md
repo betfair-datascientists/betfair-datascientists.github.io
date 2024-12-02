@@ -46,13 +46,14 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2024-08](../assets/ANZ_Thoroughbreds_2024_08.csv)
  - [Aus & NZ Thoroughbreds 2024-09](../assets/ANZ_Thoroughbreds_2024_09.csv)
  - [Aus & NZ Thoroughbreds 2024-10](../assets/ANZ_Thoroughbreds_2024_10.csv)
+ - [Aus & NZ Thoroughbreds 2024-11](../assets/ANZ_Thoroughbreds_2024_11.csv)
 
 ### Thoroughbred Predictions Model
 
  - [Thoroughbred Model Results 2021](../assets/Kash_Model_Results_2021.csv)
  - [Thoroughbred Model Results 2022](../assets/Kash_Model_Results_2022.csv)
  - [Thoroughbred Model Results 2023](../assets/Kash_Model_Results_2023.csv)
- - [Thoroughbred Model Results 2024 Jan - Oct](../assets/Kash_Model_Results_2024_01-10.csv)
+ - [Thoroughbred Model Results 2024 Jan - Nov](../assets/Kash_Model_Results_2024_01-11.csv)
 
 ### Top 5 Model
 
@@ -61,7 +62,7 @@ By downloading this data, you acknowledge and agree that:
  - [Top 5 Model Results 2021](../assets/Top5_Model_Results_2021.csv)
  - [Top 5 Model Results 2022](../assets/Top5_Model_Results_2022.csv)
  - [Top 5 Model Results 2023](../assets/Top5_Model_Results_2023.csv)
- - [Top 5 Model Results 2024 Jan - Oct](../assets/Top5_Model_Results_2024_01-10.csv)
+ - [Top 5 Model Results 2024 Jan - Nov](../assets/Top5_Model_Results_2024_01-11.csv)
 
 ### Harness
 
@@ -87,11 +88,12 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Harness 2024-08](../assets/ANZ_Harness_2024_08.csv)
  - [Aus & NZ Harness 2024-09](../assets/ANZ_Harness_2024_09.csv)
  - [Aus & NZ Harness 2024-10](../assets/ANZ_Harness_2024_10.csv)
+ - [Aus & NZ Harness 2024-11](../assets/ANZ_Harness_2024_11.csv)
 
 ### Harness Predictions Model
 
  - [Harness Model Results 2023](../assets/Globetrotter_Model_Results_2023.csv)
- - [Harness Model Results 2024 Jan - Oct](../assets/Globetrotter_Model_Results_2024_01-10.csv)
+ - [Harness Model Results 2024 Jan - Nov](../assets/Globetrotter_Model_Results_2024_01-11.csv)
 
 ### Greyhounds
 
@@ -116,7 +118,8 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2024-07](../assets/ANZ_Greyhounds_2024_07.csv)
  - [Aus & NZ Greyhounds 2024-08](../assets/ANZ_Greyhounds_2024_08.csv)
  - [Aus & NZ Greyhounds 2024-09](../assets/ANZ_Greyhounds_2024_09.csv)
- - [Aus & NZ Greyhounds 2024-10](../assets/ANZ_Greyhounds_2024_10.csv) 
+ - [Aus & NZ Greyhounds 2024-10](../assets/ANZ_Greyhounds_2024_10.csv)
+ - [Aus & NZ Greyhounds 2024-11](../assets/ANZ_Greyhounds_2024_11.csv) 
 
 ### Greyhound Predictions Model (Iggy Version 1 - Now Deprecated)
 
@@ -128,7 +131,7 @@ By downloading this data, you acknowledge and agree that:
 
 ### Greyhound Predictions Model (Iggy Version 2 - New)
 
- - [Greyhound Model Results 2024 Aug - Oct](../assets/Iggy_Model_V2_Results_2024_08-10.csv)
+ - [Greyhound Model Results 2024 Aug - Nov](../assets/Iggy_Model_V2_Results_2024_08-11.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 

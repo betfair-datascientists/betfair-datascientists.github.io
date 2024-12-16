@@ -229,6 +229,8 @@ By downloading this data, you acknowledge and agree that:
  - [BBL 2022-2023 Match Odds Markets](../assets/BBL12_Match_Odds.csv) 
  - [BBL 2023-2024 All Markets](../assets/BBL13_All_Markets.csv)
  - [BBL 2023-2024 Match Odds Markets](../assets/BBL13_Match_Odds.csv)
+ - [BBL 2024-2025 All Markets](../assets/BBL14_All_Markets.csv)
+ - [BBL 2024-2025 Match Odds Markets](../assets/BBL14_Match_Odds.csv)
 
 ### WBBL
 

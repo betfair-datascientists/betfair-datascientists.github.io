@@ -461,7 +461,7 @@ def fit_and_save_model(key, model, train_x, train_y, test_x, prefix, suffix):
     model.fit(train_x, train_y)
     
     # Save the model
-    model_filename = f'{key}_{prefix}_{suffix}.pickle'
+    model_filename = f'{key}_{prefix}{suffix}.pickle'
     with open(model_filename, 'wb') as f:
         pickle.dump(model, f)
     

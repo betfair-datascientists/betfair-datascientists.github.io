@@ -24,12 +24,28 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
+'''
+Here we will initialise a new column called 'selection_group' as a copy of 'selection' and then
+apply changes to this column based on our groups.
+
+For Correct Score & Half Time Score markets we will group scores based on whether the score indicates
+a home win, away win or a draw, and additionally treat 0-0 scorelines separately as these
+selections behave differently again.
+
+For markets like Match Odds and Handicap (e.g. 'TEAM_A_1'), we will identify the home and away
+teams from the event name and compare to whether the team name is contained with the selection name
+
+Finally we will generate a series of graphs using pyplot to visualise these profitability curves
+and identify where we might place bets to our gain
+
+'''
+
 models = ['ensemble']
 
 # Define common conditions for simplification
 home_team_win = ['1&0', '2&1', '2&0', '3&0', '3&1', '3&2', 'Any Other Home Win']
 away_team_win = ['0&1', '1&2', '0&2', '0&3', '1&3', '2&3', 'Any Other Away Win']
-draw_results = ['0&0','1&1', '2&2', '3&3', 'Any Other Draw', 'The Draw']
+draw_results = ['1&1', '2&2', '3&3', 'Any Other Draw', 'The Draw']
 
 for model in models:
     print(f'Processing {model}')
@@ -177,3 +193,202 @@ This image here is an example of a market where we could theoretically bet at an
 This image here is a market type and grouping where we would need to input an edge limit
 
 ![HALF_TIME_RESULT](../img/HALF_TIME_BACK_Home_ensemble_cumulative_profit.jpeg)
+
+Once we've identified our edge from our graphs, then in order to bet these edges, we'll need to be able to generate new rated prices for upcoming matches, and then feed our rated prices into our live (not simulation) flumine class for the upcoming matches. We will start by using the EPL competition ID to find upcoming matches, update our dataset and perform the rolling window calculations
+
+```py title="Pull upcoming EPL Matches"
+
+# Import libraries
+import betfairlightweight
+import pandas as pd
+import datetime
+from datetime import timedelta
+import json
+from sklearn.preprocessing import StandardScaler
+
+# Your credentials.json file should look like this:
+
+# {
+#     "username" : "johnsmith123",
+#     "password" : "guest",
+#     "app_key" : "****************"
+# }
+
+with open("credentials.json") as f:
+    cred = json.load(f)
+    my_username = cred["username"]
+    my_password = cred["password"]
+    my_app_key = cred["app_key"]
+
+trading = betfairlightweight.APIClient(username=my_username,
+                                       password=my_password,
+                                       app_key=my_app_key
+                                       )
+
+trading.login_interactive()
+
+# Define a market filter
+epl_event_filter = betfairlightweight.filters.market_filter(
+    event_type_ids=["1"],
+    competition_ids=["10932509"],
+    market_start_time={
+        "to": (datetime.datetime.now() + datetime.timedelta(days=2)).strftime("%Y-%m-%dT%TZ")
+    })
+
+
+# Get a list of all thoroughbred events as objects
+epl_events = trading.betting.list_events(
+    filter=epl_event_filter
+)
+
+# Create a DataFrame with all the events by iterating over each event object
+epl_events_upcoming = pd.DataFrame({
+    "Event Name": [event_object.event.name for event_object in epl_events],
+    "Event ID": [event_object.event.id for event_object in epl_events],
+    "Open Date": [event_object.event.open_date for event_object in epl_events],
+})
+
+# Remove daily goals and matches too far ahead
+epl_events_upcoming = epl_events_upcoming[epl_events_upcoming["Event Name"].str.contains(" v ", case=False, na=False)]
+
+# Find the maximum match_id from our existing dataset
+existing_df = pd.read_csv("englishPremierLeague.csv")
+max_match_id = existing_df["match_id"].max()
+
+# Create the new DataFrame
+upcoming_matches = pd.DataFrame({
+    "date": epl_events_upcoming["Open Date"].dt.date,
+    "match_id": range(max_match_id + 1, max_match_id + 1 + len(epl_events_upcoming)),
+    "home_team_name": epl_events_upcoming["Event Name"].str.split(" v ").str[0],
+    "away_team_name": epl_events_upcoming["Event Name"].str.split(" v ").str[1],
+    "home_team_goal_count": 0,
+    "away_team_goal_count": 0,
+    "home_team_half_time_goal_count": 0,
+    "away_team_half_time_goal_count": 0,
+    "home_team_shots": 0,
+    "away_team_shots": 0,
+    "home_team_shots_on_target": 0,
+    "away_team_shots_on_target": 0,
+    "home_team_fouls": 0,
+    "away_team_fouls": 0,
+    "home_team_corner_count": 0,
+    "away_team_corner_count": 0,
+    "home_team_yellow": 0,
+    "away_team_yellow": 0,
+    "home_team_red": 0,
+    "away_team_red": 0,
+})
+
+upcoming_matches['date'] = pd.to_datetime(upcoming_matches['date'])
+
+from datetime import datetime
+
+def generate_rolling_windows_upcoming(upcoming_matches):
+
+    raw_match_stats = load_data()
+    raw_match_stats = pd.concat([raw_match_stats,upcoming_matches])
+    raw_match_stats = championshipPoints(raw_match_stats)
+    team_match_stats = separate_home_and_away(raw_match_stats)
+    team_match_stats = calculate_differential(team_match_stats)
+    team_data_all_sorted, team_rolling_columns = calculate_rolling_median(team_match_stats)
+    team_stats_rolling_dataframe = rejoin_home_away_data(team_data_all_sorted,column_list,team_rolling_columns)
+    team_stats_rolling_dataframe,feature_columns = reshape_dataframe(MATCH_INFO_COLUMNS,DROP_COLUMNS,team_stats_rolling_dataframe)
+    upcoming_matches_rolling_windows = team_stats_rolling_dataframe[team_stats_rolling_dataframe['date_home'] >= datetime.now() - timedelta(days=1)]
+
+    return upcoming_matches_rolling_windows,feature_columns
+
+upcoming_matches_rolling_windows,feature_columns = generate_rolling_windows_upcoming(upcoming_matches)
+# Instantiate the scaler
+scaler = StandardScaler()
+# Select the columns to normalize (feature_columns)
+upcoming_matches_rolling_windows[feature_columns] = scaler.fit_transform(upcoming_matches_rolling_windows[feature_columns])
+
+import numpy as np
+import pandas as pd
+import pickle
+
+# Define model weights (these should sum to 1 for proper ensembling)
+model_weights = {'GradientBoostingClassifier': 0.25, 
+                 'RandomForestClassifier': 0.25,
+                 'LGBMClassifier': 0.25,
+                 'KNeighborsClassifier': 0.15,
+                 'LogisticsRegression': 0.1}
+
+model_names = ["KNeighborsClassifier", "LogisticsRegression", "RandomForestClassifier", "GradientBoostingClassifier","LGBMClassifier"]
+
+prefixes = ['home','away']
+suffixes = ['','_ht']
+
+new_column_names = []
+
+def apply_models_to_new_data_with_ensemble(model_names, new_data, model_weights):
+    # Separate match information and feature columns
+    final_predictions = new_data[MATCH_INFO_COLUMNS]
+    feature_data = new_data.drop(columns=MATCH_INFO_COLUMNS)
+
+    for prefix in prefixes:
+
+        for suffix in suffixes:
+
+            # Initialize a list to hold the weighted predictions
+            weighted_predictions = None
+        
+            # Loop over each model
+            for model_name in model_names:
+                # Load the model
+                with open(f"{model_name}_{prefix}{suffix}.pickle", "rb") as file:
+                    model = pickle.load(file)
+
+                model_predictions = model.predict_proba(feature_data)
+                
+                # Weight the predictions by the model's weight
+                if weighted_predictions is None:
+                    weighted_predictions = model_predictions * model_weights.get(model_name, 0)
+                else:
+                    weighted_predictions += model_predictions * model_weights.get(model_name, 0)
+
+            # Normalize the weighted predictions (to make sure they sum to 1 for each instance)
+            weighted_predictions /= np.sum(list(model_weights.values()))
+
+            # Add the ensemble predictions as new columns to the final DataFrame
+            for i in range(weighted_predictions.shape[1]):
+                final_predictions[f"{prefix}_{i}{suffix}"] = weighted_predictions[:, i]
+
+    return final_predictions
+
+goal_predictions = apply_models_to_new_data_with_ensemble(model_names, upcoming_matches_rolling_windows, model_weights)
+
+# List of indices representing the number of goals for which we want to calculate the probability
+full_time_indices = range(8) # 0,1,2,3,4,5,6,7
+half_time_indices = range(6) # 0,1,2,3,4,5
+
+# Generate new columns efficiently using vectorized operations
+for i in full_time_indices:
+    for j in full_time_indices:
+        home_col = f'home_{i}'
+        away_col = f'away_{j}'
+        new_col_name = f'{home_col}_x_{away_col}'
+        goal_predictions[new_col_name] = goal_predictions[home_col].fillna(0) * goal_predictions[away_col].fillna(0)
+        new_column_names.append(new_col_name)
+
+for i in half_time_indices:
+    for j in half_time_indices:
+        home_ht_col = f'home_{i}_ht'
+        away_ht_col = f'away_{j}_ht'
+        new_col_name = f'{home_ht_col}_x_{away_ht_col}'
+        goal_predictions[new_col_name] = goal_predictions[home_ht_col].fillna(0) * goal_predictions[away_ht_col].fillna(0)
+        new_column_names.append(new_col_name)
+
+# Final DataFrame with only the relevant columns (Match Information plus the probability of each scoreline)
+goal_predictions = goal_predictions[MATCH_INFO_COLUMNS + [col for col in goal_predictions.columns if '_x_' in col]]
+goal_predictions.to_csv('upcoming_scoreline_predictions.csv', index=False)
+
+rated_prices = process_model_predictions(goal_predictions)
+print(rated_prices)
+rated_prices.to_csv('upcoming_rated_prices.csv', index=False)
+
+```
+
+### Disclaimer
+
+Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.

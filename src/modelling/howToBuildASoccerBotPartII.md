@@ -132,9 +132,7 @@ The next block of code assumes that all required modules have already been impor
 
 ```py title="Define our markets"
 
-def process_model_predictions(model):
-    
-    df=pd.read_csv(f'{model}_model_results.csv')
+def process_model_predictions(df):
 
     # List of indices representing the number of goals for which we want to calculate the probability
     full_time_indices = range(8) # 0,1,2,3,4,5,6,7
@@ -249,12 +247,12 @@ def process_model_predictions(model):
     df['Match Odds And Over/Under 2.5 Goals_Away/Under 2.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i < j]].sum(axis=1)
 
     # Match Odds & O/U 3.5 Goals
-    df['Match Odds And Over/Under 2.5 Goals_Home/Over 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i > j]].sum(axis=1)
-    df['Match Odds And Over/Under 2.5 Goals_Home/Under 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i > j]].sum(axis=1)
-    df['Match Odds And Over/Under 2.5 Goals_Draw/Over 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i == j]].sum(axis=1)
-    df['Match Odds And Over/Under 2.5 Goals_Draw/Under 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i == j]].sum(axis=1)
-    df['Match Odds And Over/Under 2.5 Goals_Away/Over 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 2.5 and i < j]].sum(axis=1)
-    df['Match Odds And Over/Under 2.5 Goals_Away/Under 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 2.5 and i < j]].sum(axis=1)
+    df['Match Odds And Over/Under 3.5 Goals_Home/Over 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 3.5 and i > j]].sum(axis=1)
+    df['Match Odds And Over/Under 3.5 Goals_Home/Under 3.5 Goals'] = df['Match Odds_Home'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 3.5 and i > j]].sum(axis=1)
+    df['Match Odds And Over/Under 3.5 Goals_Draw/Over 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 3.5 and i == j]].sum(axis=1)
+    df['Match Odds And Over/Under 3.5 Goals_Draw/Under 3.5 Goals'] = df['Match Odds_The Draw']  - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 3.5 and i == j]].sum(axis=1)
+    df['Match Odds And Over/Under 3.5 Goals_Away/Over 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) < 3.5 and i < j]].sum(axis=1)
+    df['Match Odds And Over/Under 3.5 Goals_Away/Under 3.5 Goals'] = df['Match Odds_Away'] - df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if (i + j) > 3.5 and i < j]].sum(axis=1)
 
     # Home Win To Nil
     df['Home Win To Nil_Yes'] = df[[f'home_{i}_x_away_{j}' for i in full_time_indices for j in full_time_indices if i > j and j == 0]].sum(axis=1)
@@ -300,6 +298,7 @@ def process_model_predictions(model):
     df['Half Time_Away'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i < j]].sum(axis=1)
 
     # Half Time / Full Time
+    # This is a simplication as the half time result and full time result are not independent. This market may require separate modelling
     df['Half Time/Full Time_Home/Home'] = df['Match Odds_Home'] * df['Half Time_Home']
     df['Half Time/Full Time_Home/Draw'] = df['Match Odds_The Draw'] * df['Half Time_Home']
     df['Half Time/Full Time_Home/Away'] = df['Match Odds_Away'] * df['Half Time_Home']
@@ -332,7 +331,7 @@ def process_model_predictions(model):
     df['Half Time Score_2 - 0'] = df['home_2_ht_x_away_0_ht']
     df['Half Time Score_2 - 1'] = df['home_2_ht_x_away_1_ht']
     df['Half Time Score_2 - 2'] = df['home_2_ht_x_away_2_ht']
-    df['Half Time Score_Any Unquoted'] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i > 2 or j > 2]].sum(axis=1)
+    df['Half Time Score_Any Unquoted '] = df[[f'home_{i}_ht_x_away_{j}_ht' for i in half_time_indices for j in half_time_indices if i > 2 or j > 2]].sum(axis=1)
 
     # Reshape the dataframe to keep only required columns for our simulations
     df = df.drop(columns=new_column_names)
@@ -386,14 +385,16 @@ def process_model_predictions(model):
     final_df = pd.concat(sub_dfs, ignore_index=True)
     final_df = final_df[['event_date','fixture','market_name','runner_name','rated_price']]
 
-    # Write our predictions to a csv file for our simulations
-    final_df.to_csv(f'{model}_model_results_processed.csv',index=False)
+    return final_df
 
 models = ['ensemble','LGBMClassifier','KNeighborsClassifier','RandomForestClassifier','LogisticsRegression','GradientBoostingClassifier']
 
 for model in models:
 
-    process_model_predictions(model)
+    df=pd.read_csv(f'{model}_model_results.csv')
+    final_df = process_model_predictions(df)
+    # Write our predictions to a csv file for our simulations
+    final_df.to_csv(f'{model}_model_results_processed.csv',index=False)
 
 ```
 Following this we've applied the models to our test set (on which we'll run our simulations) and then generated rated prices for a (non-exhaustive) list of popular markets present on English Premier League matches. 

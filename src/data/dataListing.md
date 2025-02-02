@@ -37,6 +37,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2024-10](../assets/ANZ_Thoroughbreds_2024_10.csv)
  - [Aus & NZ Thoroughbreds 2024-11](../assets/ANZ_Thoroughbreds_2024_11.csv)
  - [Aus & NZ Thoroughbreds 2024-12](../assets/ANZ_Thoroughbreds_2024_12.csv)
+ - [Aus & NZ Thoroughbreds 2025-01](../assets/ANZ_Thoroughbreds_2025_01.csv)
 
 ### Thoroughbred Predictions Model
 
@@ -69,6 +70,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Harness 2024-10](../assets/ANZ_Harness_2024_10.csv)
  - [Aus & NZ Harness 2024-11](../assets/ANZ_Harness_2024_11.csv)
  - [Aus & NZ Harness 2024-12](../assets/ANZ_Harness_2024_12.csv)
+ - [Aus & NZ Harness 2025-01](../assets/ANZ_Harness_2025_01.csv)
 
 ### Harness Predictions Model
 
@@ -89,7 +91,8 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2024-09](../assets/ANZ_Greyhounds_2024_09.csv)
  - [Aus & NZ Greyhounds 2024-10](../assets/ANZ_Greyhounds_2024_10.csv)
  - [Aus & NZ Greyhounds 2024-11](../assets/ANZ_Greyhounds_2024_11.csv)
- - [Aus & NZ Greyhounds 2024-12](../assets/ANZ_Greyhounds_2024_12.csv) 
+ - [Aus & NZ Greyhounds 2024-12](../assets/ANZ_Greyhounds_2024_12.csv)
+ - [Aus & NZ Greyhounds 2025-01](../assets/ANZ_Greyhounds_2025_01.csv) 
 
 ### Greyhound Predictions Model (Iggy Version 1 - Now Deprecated)
 

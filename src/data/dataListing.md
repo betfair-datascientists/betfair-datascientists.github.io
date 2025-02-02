@@ -45,6 +45,7 @@ By downloading this data, you acknowledge and agree that:
  - [Thoroughbred Model Results 2022](../assets/Kash_Model_Results_2022.csv)
  - [Thoroughbred Model Results 2023](../assets/Kash_Model_Results_2023.csv)
  - [Thoroughbred Model Results 2024](../assets/Kash_Model_Results_2024.csv)
+ - [Thoroughbred Model Results 2025 Jan](../assets/Kash_Model_Results_2025_01.csv)
 
 ### Top 5 Model
 
@@ -54,6 +55,7 @@ By downloading this data, you acknowledge and agree that:
  - [Top 5 Model Results 2022](../assets/Top5_Model_Results_2022.csv)
  - [Top 5 Model Results 2023](../assets/Top5_Model_Results_2023.csv)
  - [Top 5 Model Results 2024](../assets/Top5_Model_Results_2024.csv)
+ - [Top 5 Model Results 2025 Jan](../assets/Top5_Model_Results_2025_01.csv)
 
 ### Harness
 
@@ -76,6 +78,7 @@ By downloading this data, you acknowledge and agree that:
 
  - [Harness Model Results 2023](../assets/Globetrotter_Model_Results_2023.csv)
  - [Harness Model Results 2024](../assets/Globetrotter_Model_Results_2024.csv)
+ - [Harness Model Results 2025](../assets/Globetrotter_Model_Results_2025_01.csv)
 
 ### Greyhounds
 
@@ -105,6 +108,7 @@ By downloading this data, you acknowledge and agree that:
 ### Greyhound Predictions Model (Iggy Version 2 - New)
 
  - [Greyhound Model Results 2024 Aug - Dec](../assets/Iggy_Model_V2_Results_2024_08-12.csv)
+ - [Greyhound Model Results 2025 Jan](../assets/Iggy_Model_V2_Results_2025_01.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 

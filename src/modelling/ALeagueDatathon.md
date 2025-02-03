@@ -88,6 +88,10 @@ See the full Terms and Conditions for more competition rules.
 
 Submissions will be evaluated based on the [Log Loss method](https://en.wikipedia.org/wiki/Cross-entropy#Cross-entropy_loss_function_and_logistic_regression). The entrant with the lowest average log loss per selection will be declared the winner.
 
+All submissions should be emailed to datathon@betfair.com.au
+
+ - [Blank Submission Template](../assets/ALeague_Datathon_Submission_Template.csv)
+
 **Missed submissions after tip-off?**
 
  - You’ll be assigned the median log-loss of all other entrants for that selection.
@@ -104,8 +108,8 @@ Submissions will be evaluated based on the [Log Loss method](https://en.wikipedi
 
 The dataset for the competition:
 
-- [Player Dataset 2016-10-07 to 2025-01-07](../assets/A-League-Player-Data.csv)
-- [Goalkeeper Dataset 2016-10-07 to 2025-01-07](../assets/A-League-Goalkeeper-Data.csv)
+- [Player Dataset 2016-10-07 to 2025-02-03](../assets/A-League-Player-Data.csv)
+- [Goalkeeper Dataset 2016-10-07 to 2025-02-03](../assets/A-League-Goalkeeper-Data.csv)
 
 The data has been collected from [fbref](www.fbref.com). Weekly updates will be posted here throughout the competition.
 

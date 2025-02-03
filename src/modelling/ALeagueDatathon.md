@@ -6,7 +6,7 @@
 
 Registrations open 12:00pm AEDT Monday, February 3rd and close 4:59pm AEDT Thursday, February 27th
 
-Register for the competition by completing the [registration form](https://forms.office.com/r/ZG9ea1xQj1)
+Register for the competition by completing the [registration form](https://forms.office.com/r/FCq9BbQ2mM)
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## Registration
 
-Registrations open 12:00pm AEDT Monday, February 3rd and closed 4:59pm AEDT Thursday, February 27th
+Registrations open 12:00pm AEDT Monday, February 3rd and close 4:59pm AEDT Thursday, February 27th
 
 Register for the competition by completing the [registration form](https://forms.office.com/r/ZG9ea1xQj1)
 
@@ -14,9 +14,9 @@ Register for the competition by completing the [registration form](https://forms
 
 Think you’ve got what it takes to predict model the Australian Soccer A-League competition? Now’s your chance to showcase your data modeling skills in Betfair’s 2025 A-League Datathon!
 
-With **$5,000 in prizes** on offer, this is your opportunity to create a predictive model for the 2024-2025 A-League Season. Whether you're a seasoned pro or new to sports modeling, we encourage you to get creative—adapt your skills from other fields, improve an existing model, or start fresh!
+With **$5,000 in prizes** on offer, this is your opportunity to create a predictive model for the 2024-2025 A-League Season. Whether you're a seasoned pro or new to sports modeling, we encourage you to get creative — adapt your skills from other fields, improve an existing model, or start fresh!
 
-This year’s Datathon features **103 matches** from the 2024-2025 A-League Regular Season, and we challenge you to test your skills against others for both **prizes** and **ultimate bragging rights**.
+This year’s Datathon features **24 matches** from the 2024-2025 A-League Regular Season with a total of **1527 predictions** required, and we challenge you to test your skills against others for both **prizes** and **ultimate bragging rights**.
 
 - Leaderboard updates will be posted here throughout the competition, so check back often.
 - Join the conversation in the Quants Discord server (#datathon channel), where you can discuss models with fellow participants.
@@ -92,7 +92,7 @@ All submissions should be emailed to datathon@betfair.com.au
 
  - [Blank Submission Template](../assets/ALeague_Datathon_Submission_Template.csv)
 
-**Missed submissions after tip-off?**
+**Missed submissions after kick-off?**
 
  - You’ll be assigned the median log-loss of all other entrants for that selection.
 

@@ -28,7 +28,7 @@ For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon
 
 ## The Specifics
 
-Review the full Terms and Conditions for the 2025 NBA Datathon [here](../assets/ALeague_Datathon_2025_TCs.pdf).
+Review the full Terms and Conditions for the 2025 A-League Datathon [here](../assets/ALeague_Datathon_2025_TCs.pdf).
 
 ### Prizes
 

@@ -16,7 +16,7 @@ Think you’ve got what it takes to predict model the Australian Soccer A-League
 
 With **$5,000 in prizes** on offer, this is your opportunity to create a predictive model for the 2024-2025 A-League Season. Whether you're a seasoned pro or new to sports modeling, we encourage you to get creative — adapt your skills from other fields, improve an existing model, or start fresh!
 
-This year’s Datathon features **24 matches** from the 2024-2025 A-League Regular Season with a total of **1527 predictions** required, and we challenge you to test your skills against others for both **prizes** and **ultimate bragging rights**.
+This year’s Datathon features **24 matches** from the 2024-2025 A-League Regular Season with a total of **1104 predictions** required, and we challenge you to test your skills against others for both **prizes** and **ultimate bragging rights**.
 
 - Leaderboard updates will be posted here throughout the competition, so check back often.
 - Join the conversation in the Quants Discord server (#datathon channel), where you can discuss models with fellow participants.
@@ -60,11 +60,6 @@ Your goal is create a model or a set of models to generate Rated Prices for a se
  - CORRECT_SCORE
  - DOUBLE_CHANCE
  - DRAW_NO_BET
- - FIRST_HALF_GOALS_05
- - FIRST_HALF_GOALS_15
- - FIRST_HALF_GOALS_25
- - HALF_TIME
- - HALF_TIME_SCORE
  - MATCH_ODDS
  - OVER_UNDER_05
  - OVER_UNDER_15

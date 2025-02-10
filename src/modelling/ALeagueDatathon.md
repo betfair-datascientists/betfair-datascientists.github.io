@@ -110,6 +110,7 @@ The dataset for the competition:
 
 - [Player Dataset 2016-10-07 to 2025-02-03](../assets/A-League-Player-Data.csv)
 - [Goalkeeper Dataset 2016-10-07 to 2025-02-03](../assets/A-League-Goalkeeper-Data.csv)
+- [Half Time Scores](../assets/A-League-HalfTimeScores.csv)
 
 The data has been collected from [fbref](www.fbref.com). Weekly updates will be posted here throughout the competition.
 

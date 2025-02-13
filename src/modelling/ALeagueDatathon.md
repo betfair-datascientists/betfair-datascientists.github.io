@@ -109,6 +109,9 @@ The dataset for the competition:
 
 The data has been collected from [fbref](www.fbref.com). Weekly updates will be posted here throughout the competition.
 
+ - [Player update 13/02/2025](../assets/A-League-Player-Data-Update-20250213.csv)
+ - [Goalkeeper update 13/02/2025]((../assets/A-League-Goalkeeper-Data-Update-20250213.csv))
+
 ```
 
 ## Leaderboard

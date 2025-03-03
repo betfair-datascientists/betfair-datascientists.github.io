@@ -118,7 +118,7 @@ The data has been collected from [fbref](www.fbref.com). Weekly updates will be 
 
 ## Leaderboard
 
-Check back later
+![Leaderboard](../assets/A-League_Leaderboard.png)
 
 ---
 

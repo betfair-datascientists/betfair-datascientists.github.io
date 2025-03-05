@@ -115,6 +115,8 @@ The data has been collected from [fbref](www.fbref.com). Weekly updates will be 
  - [Goalkeeper update 18/02/2025](../assets/A-League-Goalkeeper-Data-Update-20250218.csv)
  - [Player update 24/02/2025](../assets/A-League-Player-Data-Update-20250224.csv)
  - [Goalkeeper update 24/02/2025](../assets/A-League-Goalkeeper-Data-Update-20250224.csv)
+ - [Player update 05/03/2025](../assets/A-League-Player-Data-Update-20250305.csv)
+ - [Goalkeeper update 05/03/2025](../assets/A-League-Goalkeeper-Data-Update-20250305.csv)
 
 ## Leaderboard
 

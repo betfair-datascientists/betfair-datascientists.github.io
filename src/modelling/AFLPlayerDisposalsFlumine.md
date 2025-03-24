@@ -148,7 +148,7 @@ class PlayerDisposalsBets(BaseStrategy):
         super().__init__(*args, **kwargs)
         self.processed_selection_ids = []
         self.disposals_df = disposals_df
-        self.markets_bet_into = []
+        self.markets_bet_into = {}
 
     def check_market_book(self, market: Market, market_book: MarketBook) -> bool:
         ''' 
@@ -162,11 +162,11 @@ class PlayerDisposalsBets(BaseStrategy):
 
     def process_market_book(self, market: Market, market_book: MarketBook) -> None:
 
-        # Create a dataframe with all the selection_ids and runner_names from the market
-        runners_df = process_runner_catalogue(market)
-
         # If there is less than 30 minutes before the match start and the market is a Most Disposals - Group market or a Most Disposals - H2H market
-        if round(market.seconds_to_start, 0) <= 1800 and 'Most Disposals' in market.market_catalogue.market_name:
+        if round(market.seconds_to_start, 0) < 3600 and 'Most Disposals' in market.market_catalogue.market_name:
+
+            # Create a dataframe with all the selection_ids and runner_names from the market
+            runners_df = process_runner_catalogue(market)
 
             '''
             For these markets the player names are the runner_names so we can easily join our predictions file
@@ -174,10 +174,9 @@ class PlayerDisposalsBets(BaseStrategy):
             to have the highest disposals in the group/match-up using the rank function and back that selection
             '''
             afl_players_df = pd.merge(runners_df,self.disposals_df,how="left",left_on=['runner_name'],right_on=['player_name'])
+            afl_players_df.index = runners_df.index
             # These parameters rank on disposals_predictions from highest to lowest, with equal predictions having the same rank
             afl_players_df['rank'] = afl_players_df['disposals_prediction'].rank(ascending=False,method='min')
-            # We need to set the index as the selection_id to reference it when processing each runner.
-            afl_players_df.set_index('selection_id')
             # Loop over each runner in the market
             for runner in market_book.runners:
                 # Check runner isn't scratched and that first layer of back price exists
@@ -186,7 +185,7 @@ class PlayerDisposalsBets(BaseStrategy):
                     rank = afl_players_df.loc[runner.selection_id, 'rank']
                     runner_name = runners_df.loc[runner.selection_id, 'runner_name']
                     # If the player is ranked first for the disposal prediction and we haven't yet placed a bet
-                    if rank == 1 and runner.selection_id not in self.processed_selection_ids:
+                    if rank == 1:
                         # Create our ordered dictionary to store our order notes
                         notes = OrderedDict()
                         # Write our order notes
@@ -203,19 +202,21 @@ class PlayerDisposalsBets(BaseStrategy):
                         order = trade.create_order(
                             side="BACK",
                             order_type=LimitOrder(
-                                price=price_ticks_away(runner.ex.available_to_back[0]['price'], -1),
-                                size=round((50 / (price_ticks_away(runner.ex.available_to_back[0]['price'], -1))), 2),
+                                price=runner.ex.available_to_back[0]['price'],
+                                size=round(20 / runner.ex.available_to_back[0]['price'], 2),
                                 persistence_type="LAPSE"
                             )
                         )
                         market.place_order(order)
-                        # Add the selection to the list to ensure that we don't bet on it again.
-                        self.processed_selection_ids.append(runner.selection_id)
+
             # Add the market to the list so we don't process it again
             self.markets_bet_into[market.market_id] = True
 
         # If there is less than 30 minutes before the match start and the market is a Player Disposals Line market
-        elif round(market.seconds_to_start, 0) == 1800 and 'Player Disposals' in market.market_catalogue.market_name:
+        elif round(market.seconds_to_start, 0) < 3600 and 'Player Disposals' in market.market_catalogue.market_name:
+
+            # Create a dataframe with all the selection_ids and runner_names from the market
+            runners_df = process_runner_catalogue(market)
 
             '''
             These markets have the player_name in the market_name rather than the runner_name so we'll need to split this up,
@@ -224,7 +225,7 @@ class PlayerDisposalsBets(BaseStrategy):
             to define which selection is over and which is under and exactly what the disposal line is. 
             '''
             # Split the market_name on ' - ' and keep the value to the right
-            runners_df['player_name'] = market.market_catalogue.market_name.split(' - ',1)
+            runners_df['player_name'] = market.market_catalogue.market_name.split(' - ', 1)[1]
             # Remove any - or ' in the player name
             runners_df['player_name'] = runners_df['player_name'].str.replace("-|'","")
             # Extract the string 'Over' or 'Under' from the runner_name
@@ -235,22 +236,23 @@ class PlayerDisposalsBets(BaseStrategy):
             runners_df['disposals_market_line'] = runners_df['disposals_market_line'].str.split(' ').str[0].astype('float')
             # Merge the dataframes together on the player name
             afl_players_df = pd.merge(runners_df,self.disposals_df,how="left",on=['player_name'])
+            afl_players_df.index = runners_df.index
+            print(afl_players_df)
             # Calculate the difference between our line and the market line
             afl_players_df['prediction_differential'] = afl_players_df['disposals_prediction'] - afl_players_df['disposals_market_line']
-            # Set the index as the selection_id
-            afl_players_df.set_index('selection_id')
             # Loop over each runner in the market ['Over XX.5 Disposals','Under XX.5 Disposals']
             for runner in market_book.runners:
                 # Check runner isn't scratched and that first layer of back price exists
                 if runner.status == "ACTIVE" and len(runner.ex.available_to_back) > 0:
 
                     # Set relevant variables according to our dataframe
+                    disposal_prediction = afl_players_df.loc[runner.selection_id, 'disposals_prediction']
                     disposal_difference = afl_players_df.loc[runner.selection_id, 'prediction_differential']
                     over_under = afl_players_df.loc[runner.selection_id, 'overUnder']
                     player_name = afl_players_df.loc[runner.selection_id,'player_name']
                     market_line = afl_players_df.loc[runner.selection_id,'disposals_market_line']
 
-                    if disposal_difference > 0 and over_under == 'Over' and runner.selection_id not in self.processed_selection_ids:
+                    if disposal_prediction > 12 and disposal_difference > 0 and over_under == 'Over':
                         # Place a back set if the selection is the Overs and our model has predicted higher than the line and we haven't bet previously
                         '''
                         If we decide to bet only on overs where we've predicted over the line by a minimum amount or offset,
@@ -275,16 +277,14 @@ class PlayerDisposalsBets(BaseStrategy):
                         order = trade.create_order(
                             side="BACK",
                             order_type=LimitOrder(
-                                price=price_ticks_away(runner.ex.available_to_back[0]['price'],-1),
-                                size=round((50 / (price_ticks_away(runner.ex.available_to_back[0]['price'],-1))), 2),
+                                price=1.01,
+                                size=10,
                                 persistence_type="LAPSE"
                             )
                         )
                         market.place_order(order)
-                        # Add the selection to the list to ensure that we don't bet on it again.
-                        self.processed_selection_ids.append(runner.selection_id)
                     
-                    elif disposal_difference < 0 and over_under == 'Under' and runner.selection_id not in self.processed_selection_ids:
+                    elif disposal_prediction > 12 and disposal_difference < 0 and over_under == 'Under':
                         # Place a back set if the selection is the Overs and our model has predicted higher than the line and we haven't bet previously
                         '''
                         If we decide to bet only on unders where we've predicted under the line by a minimum amount or offset,
@@ -309,14 +309,13 @@ class PlayerDisposalsBets(BaseStrategy):
                         order = trade.create_order(
                             side="BACK",
                             order_type=LimitOrder(
-                                price=price_ticks_away(runner.ex.available_to_back[0]['price'],-1),
-                                size=round((50 / (price_ticks_away(runner.ex.available_to_back[0]['price'],-1))), 2),
+                                price=1.01,
+                                size=10,
                                 persistence_type="LAPSE"
                             )
                         )
                         market.place_order(order)
-                        # Add the selection to the list to ensure that we don't bet on it again.
-                        self.processed_selection_ids.append(runner.selection_id)
+
             # Add the market to the list so we don't process it again
             self.markets_bet_into[market.market_id] = True
 

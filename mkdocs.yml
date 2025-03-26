@@ -39,23 +39,26 @@ nav:
         - AFL:
             - Player Disposal Lines: modelling/AFLPlayerDisposalsTutorial.md
             - Betting Player Disposal Markets: modelling/AFLPlayerDisposalsFlumine.md
-            - AFL modelling walk through in Python: modelling/AFLmodellingPython.md
             - How does a Data Scientist model the Brownlow?: modelling/modellingTheBrownlowMedal.md
+        - AFL (Archive):
+            - AFL modelling walk through in Python: modelling/AFLmodellingPython.md
             - Modelling the Brownlow Medal in Python: modelling/brownlowModelTutorial.ipynb
-        - Racing:
+        - Greyhounds:
             - Greyhound Topaz API (Python): modelling/topazTutorial.md
+        - Greyhounds (Archive):
             - Greyhound FastTrack API (Python): modelling/fasttrackTutorial.ipynb
             - Greyhound modelling (Python): modelling/greyhoundModellingPython.ipynb
         - Soccer:
             - How To Build A Soccer Bot P1: modelling/howToBuildASoccerBotPartI.md
             - How To Build A Soccer Bot P2: modelling/howToBuildASoccerBotPartII.md
+            - How To Build A Soccer Bot P3: modelling/howToBuildASoccerBotPartIII.md
         - Soccer (Archive):
             - Soccer modelling (Python): modelling/soccerModellingTutorialPython.md
             - EPL Machine Learning (Python): modelling/EPLmlPython.md
             - Soccer modelling (R) - 2022 FIFA World Cup: modelling/soccerModellingELO2022WorldCup.md
             - Elo soccer tutorial (R): modelling/soccerEloTutorialR.md
             - Soccer modelling (R): modelling/soccerModellingTutorialR.md
-        - Tennis:
+        - Tennis (Archive):
             - How to model the Australian Open: modelling/howToModelTheAusOpen.md
             - Aus Open R Tutorial: modelling/AusOpenRTutorial.md
             - Aus Open Python Tutorial: modelling/AusOpenPythonTutorial.md

@@ -471,56 +471,128 @@ If we do need to define a value boundary, we'll do the calculations individually
 This function will calculate our upper and lower price limits
 '''
 
-def set_min_max_prices(rated_prices, epl_events_upcoming):
+def set_min_max_prices(rated_prices,epl_events_upcoming):
+    
+    # Initialise certain columns as required with placeholder values
+    rated_prices['home_team'] = rated_prices['fixture'].str.split(' v ').str[0]
+    rated_prices['away_team'] = rated_prices['fixture'].str.split(' v ').str[1]
+    rated_prices['min_price'] = 1.01
+    rated_prices['max_price'] = 1000
+    rated_prices['side'] = None
 
-    # Initialize columns
-    rated_prices[['home_team', 'away_team']] = rated_prices['fixture'].str.split(' v ', expand=True)
-    rated_prices['min_price'], rated_prices['max_price'], rated_prices['side'] = 1.01, 1000, None
+    df = pd.merge(rated_prices, epl_events_upcoming, how="left",left_on=["fixture","market_name"],right_on=["event_name","market_name"])
+    df = df[['event_date',
+                                            'home_team',
+                                            'away_team',
+                                            'fixture',
+                                            'market_type',
+                                            'market_name',
+                                            'market_id',
+                                            'runner_name',
+                                            'rated_price',
+                                            'min_price',
+                                            'max_price',
+                                            'side'
+                                            ]]
+    df = df.dropna(subset=['market_type'])
 
-    # Merge with event data
-    df = pd.merge(
-        rated_prices, epl_events_upcoming,
-        how="left", left_on=["fixture", "market_name"],
-        right_on=["event_name", "market_name"]
-    )
+    # Set our side
 
-    df = df[['event_date', 'home_team', 'away_team', 'fixture', 'market_type', 'market_name',
-             'market_id', 'runner_name', 'rated_price', 'min_price', 'max_price', 'side']]
-    df.dropna(subset=['market_type'], inplace=True)
+    df.loc[
+        (
+            (df['market_type'].isin(['BOTH_TEAMS_TO_SCORE']) & df['runner_name'].isin(['No'])) |
+            (df['market_type'].isin(['CORRECT_SCORE']) & df['runner_name'].isin(['0 - 0','0 - 1','0 - 2','0 - 3','1 - 2','1 - 3','2 - 3','Any Other Away Win'])) |
+            (df['market_type'].isin(['DOUBLE CHANCE']) & df['runner_name'].isin(['Draw or Away'])) |
+            (df['market_type'].isin(['DRAW_NO_BET']) & (df['runner_name'] == df['away_team'])) |
+            (df['market_type'].isin(['FIRST_HALF_GOALS_05']) & df['runner_name'].isin(['Under 0.5 Goals'])) |
+            (df['market_type'].isin(['FIRST_HALF_GOALS_15']) & df['runner_name'].isin(['Under 1.5 Goals'])) |
+            (df['market_type'].isin(['FIRST_HALF_GOALS_25']) & df['runner_name'].isin(['Under 2.5 Goals'])) |
+            (df['market_type'].isin(['HALF_TIME_SCORE']) & df['runner_name'].isin(['0 - 0','0 - 1','0 - 2','1 - 2'])) |
+            (df['market_type'].isin(['MATCH_ODDS']) & (df['runner_name'] == df['away_team'])) |
+            (df['market_type'].isin(['MATCH_ODDS_AND_OU_25']) & df['runner_name'].isin(['Draw/Under 2.5 Goals'])) |
+            (df['market_type'].isin(['OVER_UNDER_05']) & df['runner_name'].isin(['Under 0.5 Goals'])) |
+            (df['market_type'].isin(['TEAM_A_1']) & df['runner_name'].isin(['Draw']))
+        ),
+        'side'
+    ] = 'LAY'
 
-    # Define conditions for setting 'side'
-    lay_conditions = [
-        (df['market_type'] == 'BOTH_TEAMS_TO_SCORE') & (df['runner_name'] == 'No'),
-        (df['market_type'] == 'CORRECT_SCORE') & df['runner_name'].isin(
-            ['0 - 0', '0 - 1', '0 - 2', '0 - 3', '1 - 2', '1 - 3', '2 - 3', 'Any Other Away Win']),
-        (df['market_type'] == 'DOUBLE CHANCE') & (df['runner_name'] == 'Draw or Away'),
-        (df['market_type'] == 'DRAW_NO_BET') & (df['runner_name'] == df['away_team']),
-        (df['market_type'] == 'MATCH_ODDS') & (df['runner_name'] == df['away_team']),
-        (df['market_type'] == 'HALF_TIME_FULL_TIME') & (df['runner_name'].str.count(df['away_team']) == 2)
-    ]
-    df.loc[pd.concat(lay_conditions, axis=1).any(axis=1), 'side'] = 'LAY'
+    df['side'] = df.apply(lambda row: 'LAY' if row['market_type'] == 'TEAM_B_1' and '+' in row['runner_name'] else row['side'], axis=1)
+    df['side'] = df.apply(lambda row: 'LAY' if row['market_type'] == 'HALF_TIME_FULL_TIME' and row['runner_name'].count(row['away_team']) == 2 else row['side'], axis=1)
 
-    back_conditions = [
-        (df['market_type'] == 'CORRECT_SCORE') & df['runner_name'].isin(
-            ['1 - 0', '2 - 0', '3 - 0', '2 - 1', '3 - 1', '3 - 2', 'Any Other Home Win',
-             '1 - 1', '2 - 2', '3 - 3', 'Any Other Draw']),
-        (df['market_type'] == 'DOUBLE CHANCE') & (df['runner_name'] == 'Home or Draw'),
-        (df['market_type'] == 'MATCH_ODDS') & (df['runner_name'] == df['home_team']),
-        (df['market_type'] == 'OVER_UNDER_15') & (df['runner_name'] == 'Over 1.5 Goals')
-    ]
-    df.loc[pd.concat(back_conditions, axis=1).any(axis=1), 'side'] = 'BACK'
+    df.loc[
+        (
+            (df['market_type'].isin(['CORRECT_SCORE']) & df['runner_name'].isin(['1 - 0','2 - 0','3 - 0','2 - 1','2 - 0','3 - 1','3 - 2','Any Other Home Win','1 - 1','2 - 2','3 - 3', 'Any Other Draw'])) |
+            (df['market_type'].isin(['DOUBLE CHANCE']) & df['runner_name'].isin(['Home or Draw'])) |
+            (df['market_type'].isin(['HALF_TIME_SCORE']) & df['runner_name'].isin(['1 - 1','2 - 2'])) |
+            (df['market_type'].isin(['MATCH_ODDS']) & (df['runner_name'] == df['home_team'])) |
+            (df['market_type'].isin(['OVER_UNDER_15']) & df['runner_name'].isin(['Over 1.5 Goals'])) |
+            (df['market_type'].isin(['OVER_UNDER_25']) & df['runner_name'].isin(['Over 2.5 Goals'])) |
+            (df['market_type'].isin(['OVER_UNDER_35']) & df['runner_name'].isin(['Over 3.5 Goals'])) |
+            (df['market_type'].isin(['OVER_UNDER_45']) & df['runner_name'].isin(['Over 4.5 Goals'])) |
+            (df['market_type'].isin(['OVER_UNDER_55']) & df['runner_name'].isin(['Over 5.5 Goals'])) |
+            (df['market_type'].isin(['TEAM_A_OVER_05']) & df['runner_name'].isin(['Over 0.5 Goals'])) |
+            (df['market_type'].isin(['TEAM_A_OVER_15']) & df['runner_name'].isin(['Over 1.5 Goals'])) |
+            (df['market_type'].isin(['TEAM_A_OVER_25']) & df['runner_name'].isin(['Over 2.5 Goals'])) |
+            (df['market_type'].isin(['TEAM_B_1']) & df['runner_name'].isin(['Draw']))
+        ),
+        'side'
+    ] = 'BACK'
 
-    # Drop rows where 'side' is still NaN
-    df.dropna(subset=['side'], inplace=True)
+    df['side'] = df.apply(lambda row: 'BACK' if row['market_type'] == 'TEAM_A_1' and '+' in row['runner_name'] else row['side'], axis=1)
+    df['side'] = df.apply(lambda row: 'BACK' if row['market_type'] == 'HALF_TIME_FULL_TIME' and 'Draw/' in row['runner_name'] and row['runner_name'].count(row['home_team']) == 1 else row['side'], axis=1)
+    df['side'] = df.apply(lambda row: 'BACK' if row['market_type'] == 'MATCH_ODDS_AND_OU_25' and 'OVer' in row['runner_name'] and row['runner_name'].count(row['home_team']) == 1 else row['side'], axis=1)
 
-    # Set price limits based on conditions
-    df.loc[(df['market_type'] == 'CORRECT_SCORE') & (df['runner_name'] == '0 - 0'), 'max_price'] = \
-        (100 * df['rated_price']) / (100 + 3.25 * df['rated_price'])
-    df.loc[(df['market_type'] == 'CORRECT_SCORE') & df['runner_name'].isin(
-        ['0 - 1', '0 - 2', '0 - 3', '1 - 2', '1 - 3', '2 - 3', 'Any Other Away Win']), 'max_price'] = \
-        (100 * df['rated_price']) / (100 - 8 * df['rated_price'])
-    df.loc[(df['market_type'] == 'DRAW_NO_BET'), 'max_price'] = \
-        (100 * df['rated_price']) / (100 - 2 * df['rated_price'])
+    # Discard any markets/selections that we're not interested in
+    df.dropna(subset=['side'],inplace=True)
+
+    # Set any prices that we have limits for
+    df['max_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 3.25 * row['rated_price'])
+                        if row['market_type'] == 'CORRECT_SCORE' and row['runner_name'] == '0 - 0' else row['max_price'],axis=1)
+    df['max_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 - 8 * row['rated_price'])
+                        if row['market_type'] == 'CORRECT_SCORE' and row['runner_name'] in ['0 - 1','0 - 2','0 - 3','1 - 2','1 - 3','2 - 3','Any Other Away Win'] else row['max_price'],axis=1)
+    df['max_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 - 8 * row['rated_price'])
+                        if row['market_type'] == 'CORRECT_SCORE' and row['runner_name'] in ['1 - 0','2 - 0','3 - 0','2 - 1','3 - 1','3 - 2','Any Other Home Win'] else row['max_price'],axis=1)
+    df['max_price'] = df.apply(lambda row: row['rated_price']
+                        if row['market_type'] == 'CORRECT_SCORE' and row['runner_name'] in ['1 - 1','2 - 2','Any Other Draw'] else row['max_price'],axis=1)
+    df['max_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 - 11 * row['rated_price'])
+                        if row['market_type'] == 'DOUBLE_CHANCE' and row['runner_name'] == 'Home or Draw' else row['max_price'],axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 8 * row['rated_price'])
+                        if row['market_type'] == 'DOUBLE_CHANCE' and row['runner_name'] == 'Home or Draw' else row['min_price'],axis=1)
+    df['max_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 - 2 * row['rated_price'])
+                        if row['market_type'] == 'DRAW_NO_BET' else row['max_price'],axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 5 * row['rated_price'])
+                        if row['market_type'] == 'HALF_TIME_SCORE' and row['runner_name'] == '0 - 0' else row['min_price'],axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 1 * row['rated_price'])
+                        if row['market_type'] == 'CORRECT_SCORE' and row['runner_name'] in ['1 - 1','2 - 2'] else row['min_price'],axis=1)
+    df['max_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 - 11 * row['rated_price'])
+                        if row['market_type'] == 'CORRECT_SCORE' and row['runner_name'] in ['0 - 1','0 - 2','1 - 2'] else row['max_price'],axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 7 * row['rated_price'])
+                        if row['market_type'] == 'CORRECT_SCORE' and row['runner_name'] in ['0 - 1','0 - 2','1 - 2'] else row['min_price'],axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 6 * row['rated_price'])
+                        if row['market_type'] == 'HALF_TIME_FULL_TIME' and 'Draw/' in row['runner_name'] and row['runner_name'].count(row['home_team']) == 1 else row['min_price'], axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 5 * row['rated_price']) 
+                        if row['market_type'] == 'MATCH_ODDS_AND_OU_25' and 'OVer' in row['runner_name'] and row['runner_name'].count(row['home_team']) == 1 else row['min_price'], axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 3 * row['rated_price'])
+                        if row['market_type'] == 'OVER_UNDER_05' else row['min_price'],axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 5 * row['rated_price'])
+                        if row['market_type'] in ['OVER_UNDER_15','OVER_UNDER_25','OVER_UNDER_35','OVER_UNDER_45','OVER_UNDER_55'] else row['min_price'],axis=1)
+    df['max_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 - 10 * row['rated_price'])
+                        if row['market_type'] in ['OVER_UNDER_15','OVER_UNDER_25','OVER_UNDER_35','OVER_UNDER_45','OVER_UNDER_55'] else row['max_price'],axis=1)
+    df['min_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 + 5 * row['rated_price'])
+                        if row['market_type'] in ['OVER_UNDER_15','OVER_UNDER_25','OVER_UNDER_35','OVER_UNDER_45','OVER_UNDER_55'] else row['min_price'],axis=1)
+    df['max_price'] = df.apply(lambda row: (100 * row['rated_price'])/(100 - 10 * row['rated_price'])
+                        if row['market_type'] in ['OVER_UNDER_15','OVER_UNDER_25','OVER_UNDER_35','OVER_UNDER_45','OVER_UNDER_55'] else row['max_price'],axis=1)
+    
+    '''
+    These calculations can result in negative values
+    e.g. where we've set an upper boundary of 7% but the implied probability of the rated price is only 4%
+    So we'll set any negative values to 1000
+    '''
+    df['max_price'] = df.apply(lambda row: 1000
+                        if row['max_price'] < 0 else row['max_price'], axis=1)
+    
+
+    df.sort_values(by=['event_date','fixture','market_type','runner_name'],inplace=True)
 
     return df
 ```
@@ -855,7 +927,7 @@ framework.run()
 
 ### Conclusion
 
-Hopefully this 3-part tutorial has been information and insightful and provided lots of ideas for different strategies! Soccer/Football is the most popular sport across the Betfair Exchange and so there are numerous possibilities across different leagues to create a new strategy! If you have any questions, including about accessing historic pricing data, Australian and NZ customers can email us at automation@betfair.com.au!
+Hopefully this 3-part tutorial has been informative and insightful and provided lots of ideas for different strategies! Soccer/Football is the most popular sport across the Betfair Exchange and so there are numerous possibilities across different leagues to create a new strategy! If you have any questions, including about accessing historic pricing data, Australian and NZ customers can email us at automation@betfair.com.au!
 
 ### Disclaimer
 

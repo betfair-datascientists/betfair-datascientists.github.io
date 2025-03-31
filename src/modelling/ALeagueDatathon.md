@@ -2,12 +2,6 @@
 
 ![A-League Datathon Banner](../img/ALEAGUE_DATATHON_BANNER.png)
 
-## Registration
-
-Registrations open 12:00pm AEDT Monday, February 3rd and close 4:59pm AEDT Thursday, February 27th
-
-Register for the competition by completing the [registration form](https://forms.office.com/r/FCq9BbQ2mM)
-
 ---
 
 ## The Competition
@@ -126,7 +120,7 @@ The data has been collected from [fbref](www.fbref.com). Weekly updates will be 
 
 ## Leaderboard
 
-![Leaderboard](../assets/A-League_Leaderboard.png)
+![Leaderboard](../assets/A-League_Leaderboard_Final.png)
 
 ---
 

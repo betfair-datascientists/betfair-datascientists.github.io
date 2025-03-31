@@ -246,3 +246,7 @@ By downloading this data, you acknowledge and agree that:
  - [NBL 2023-2024 Match Odds Markets](../assets/NBL_2023-2024_Match_Odds.csv)
  - [NBL 2024-2025 All Markets](../assets/NBL_2024-2025_All_Markets.csv)
  - [NBL 2024-2025 Match Odds Markets](../assets/NBL_2024-2025_Match_Odds.csv)
+
+### Politics
+
+ - [Federal Election 2022](../assets/Politics_2022_Aus_Fed_Election.csv)

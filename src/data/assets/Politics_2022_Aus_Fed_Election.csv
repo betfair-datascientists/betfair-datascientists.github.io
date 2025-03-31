@@ -1,0 +1,513 @@
+EVENT_DATE,PATH,GROUP,STATE,EVENT_ID,MARKET_ID,MARKET_NAME,SELECTION_ID,RUNNER_NAME,IS_WINNER,BEST_BACK_PRICE_60_MIN_PRIOR,BEST_LAY_PRICE_60_MIN_PRIOR,IMPLIED_PROB,MATCHED_VOLUME_60_MIN_PRIOR,TOTAL_MATCHED_VOLUME,LAST_PREPLAY_PRICE
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Seat Handicap,,28808409,198695461,Coalition +10.5 Seats,4865672,Coalition +10.5 Seats,0,,1.79,,5101.15,5585.31,1.76
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Seat Handicap,,28808409,198695461,Coalition +10.5 Seats,4865673,Labor -10.5 Seats,1,2.28,1000,44%,4435.28,4945.71,2.3
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914767,Coalition Seats Won - New South Wales,4912199,Over 20.5 Seats,0,2.1,890,48%,144.8,144.8,2.1
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914767,Coalition Seats Won - New South Wales,4912198,Under 20.5 Seats,1,1.05,1.48,95%,1366.25,1366.25,1.8
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196915372,Coalition Seats Won - Queensland,43836447,Over 21.5 Seats,0,2,970,50%,998.44,998.44,2
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196915372,Coalition Seats Won - Queensland,43836446,Under 21.5 Seats,1,1.6,1.95,63%,1304.43,1304.43,2
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914673,Coalition Seats Won - Victoria,1250707,Over 14.5 Seats,0,2.1,1000,48%,685.5,692.5,3.5
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914673,Coalition Seats Won - Victoria,1250706,Under 14.5 Seats,1,1.1,1.4,91%,2275.65,2293.15,1.4
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836370,Seven Seats Won,0,6,7.6,17%,295.18,319.46,6.8
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836371,Eight Seats Won,0,6.2,10,16%,683.73,718.5,7.6
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836363,Zero Seats Won,0,1000,,0%,0.11,0.11,1000
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836366,Three Seats Won,0,8,15,13%,236.94,304.39,14
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836365,Two Seats Won,0,15.5,50,6%,19.74,40.85,15.5
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836364,One Seat Won,0,110,940,1%,5.14,5.2,940
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836368,Five Seats Won,0,4.7,4.9,21%,238.42,320.51,5.9
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836372,Nine Seats Won,0,11,23,9%,178.61,208.18,13
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836369,Six Seats Won,0,5,6.6,20%,202.04,256.25,6.4
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836367,Four Seats Won,0,6.4,40,16%,293.87,351.21,13
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914671,Independent Seats Won,43836373,Ten or More Seats Won,1,10,24,10%,342.19,422.82,9.4
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196915375,Labor Seats Won - New South Wales,4912192,Over 26.5 Seats,0,1.94,1000,52%,1141.15,1141.15,2.1
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196915375,Labor Seats Won - New South Wales,4912191,Under 26.5 Seats,1,1.8,1.9,56%,503.72,503.72,1.9
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196915377,Labor Seats Won - Queensland,4642663,Over 8.5 Seats,0,2.5,1000,40%,370.84,405.06,2.68
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196915377,Labor Seats Won - Queensland,4642662,Under 8.5 Seats,1,1.6,1.86,63%,976.28,1033.59,1.6
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196915376,Labor Seats Won - Victoria,10743961,Under 23.5 Seats,0,1.91,1000,52%,102.5,192.01,1.91
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196915376,Labor Seats Won - Victoria,10743962,Over 23.5 Seats,1,1.86,2.08,54%,276.68,284.98,2.08
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Type of Government,,28808409,188347553,Majority Government?,1108299,No,0,2.24,2.8,45%,4050.97,5619.69,2.36
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Type of Government,,28808409,188347553,Majority Government?,1108298,Yes,1,1.68,1.8,60%,8611.61,20981.82,1.86
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919263,Seat of Adelaide,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919263,Seat of Adelaide,2049781,Labor,1,1.01,1.06,99%,7947.37,7947.37,1.01
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297468,Seat of Aston,2365174,Any Other Party or Independent,0,34,,3%,,,
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297468,Seat of Aston,2049782,Coalition,1,1.1,1.15,91%,12358.26,12598.26,1.1
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297468,Seat of Aston,2049781,Labor,0,5.2,,19%,19,19,20
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919146,Seat of Ballarat,2049781,Labor,1,1.01,1.03,99%,6048.7,6048.7,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919146,Seat of Ballarat,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238565,Seat of Banks,2365174,Any Other Party or Independent,0,30,,3%,0.04,0.04,30
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238565,Seat of Banks,2049782,Coalition,1,1.2,1.36,83%,1999.62,1999.62,1.2
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238565,Seat of Banks,2049781,Labor,0,4.3,,23%,34.46,34.46,4.2
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919264,Seat of Barker,2049782,Coalition,1,1.01,,99%,7113,7113,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919264,Seat of Barker,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917096,Seat of Barton,2049781,Labor,1,1.01,,99%,7596.57,7596.57,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917096,Seat of Barton,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241160,Seat of Bass,2365174,Any Other Party or Independent,0,9.6,,10%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241160,Seat of Bass,2049781,Labor,0,1.5,1.8,67%,934.98,939.98,1.5
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241160,Seat of Bass,2049782,Coalition,1,2.3,3.2,43%,239,239,2.3
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,ACT,31356077,197916614,Seat of Bean,2049781,Labor,1,1.01,1.06,99%,7397.9,7397.9,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,ACT,31356077,197916614,Seat of Bean,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919147,Seat of Bendigo,2049781,Labor,1,1.01,,99%,10452.37,10452.37,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919147,Seat of Bendigo,2365174,Any Other Party or Independent,0,20,,5%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919147,Seat of Bendigo,2049782,Coalition,0,15,,7%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298465,Seat of Bennelong,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298465,Seat of Bennelong,2049782,Coalition,0,1.9,,53%,2166.9,2287.9,1.8
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298465,Seat of Bennelong,2049781,Labor,1,1.85,3.8,54%,2307.7,2312.7,1.72
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197916684,Seat of Berowra,2049782,Coalition,1,1.01,,99%,9101.26,9366.26,1.04
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197916684,Seat of Berowra,2365174,Any Other Party or Independent,0,30,,3%,,9.19,30
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919184,Seat of Blair,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919184,Seat of Blair,2049781,Labor,1,1.09,,92%,163.1,163.1,1.1
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919184,Seat of Blair,2049782,Coalition,0,6,11,17%,179.17,189.17,6
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197916689,Seat of Blaxland,2049781,Labor,1,1.01,,99%,7657.1,7757.1,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197916689,Seat of Blaxland,2365174,Any Other Party or Independent,0,30,,3%,5,5,50
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298051,Seat of Bonner,2365174,Any Other Party or Independent,0,13.5,,7%,,,
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298051,Seat of Bonner,2049781,Labor,0,4.8,8,21%,37,37,3.95
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298051,Seat of Bonner,2049782,Coalition,1,,1.28,,1275.62,1275.62,1.21
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197241027,Seat of Boothby,1111887,Any Other Party,0,23,,4%,0.05,0.05,1000
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197241027,Seat of Boothby,8498800,Independent,0,13.5,,7%,5.72,5.72,300
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197241027,Seat of Boothby,2049781,Labor,1,1.21,1.29,83%,9660.25,10007.25,1.21
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197241027,Seat of Boothby,2049782,Coalition,0,3.6,,28%,120.66,120.66,3.6
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919185,Seat of Bowman,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919185,Seat of Bowman,2049782,Coalition,1,1.13,1.15,88%,3668.2,3668.2,1.13
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919185,Seat of Bowman,2049781,Labor,0,5.4,,19%,5,5,5.4
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241245,Seat of Braddon,15328795,Jacqui Lambie Network,0,19,,5%,17.32,17.32,24
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241245,Seat of Braddon,8498800,Independent,0,16,,6%,20.74,20.74,20
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241245,Seat of Braddon,1111887,Any Other Party,0,60,,2%,6.7,6.7,60
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241245,Seat of Braddon,2049782,Coalition,1,2.02,2.3,50%,124.11,239.11,2.04
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241245,Seat of Braddon,2049781,Labor,0,1.7,1.96,59%,412.23,447.23,1.78
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917097,Seat of Bradfield,1111887,Any Other Party,0,30,,3%,,,
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917097,Seat of Bradfield,8498800,Independent,0,30,,3%,10,17,30
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917097,Seat of Bradfield,2049782,Coalition,1,1.02,1.04,98%,8517.22,8517.22,1.04
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917097,Seat of Bradfield,2049781,Labor,0,30,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919371,Seat of Brand,2049781,Labor,1,1.01,1.1,99%,9056,9056,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919371,Seat of Brand,2365174,Any Other Party or Independent,0,17,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919371,Seat of Brand,2049782,Coalition,0,14,,7%,,,
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197238626,Seat of Brisbane,2365174,Any Other Party or Independent,0,30,,3%,10.1,10.1,40
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197238626,Seat of Brisbane,3789290,The Greens,1,6,14,17%,426.85,6248.38,13
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197238626,Seat of Brisbane,2049782,Coalition,0,2.1,,48%,1894.18,2156.74,2.68
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197238626,Seat of Brisbane,2049781,Labor,0,1.6,2.14,63%,5934.07,9280.16,1.81
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919148,Seat of Bruce,2365174,Any Other Party or Independent,0,50,,2%,1.36,1.36,1000
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919148,Seat of Bruce,2049782,Coalition,0,25,,4%,48.28,48.28,100
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919148,Seat of Bruce,2049781,Labor,1,,1.03,,14399.93,14399.93,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919372,Seat of Burt,2049781,Labor,1,1.01,,99%,8487.48,8487.48,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919372,Seat of Burt,2365174,Any Other Party or Independent,0,21,,5%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919372,Seat of Burt,2049782,Coalition,0,15,,7%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197919144,Seat of Calare,2365174,Any Other Party or Independent,0,20,55,5%,9.98,9.98,50
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197919144,Seat of Calare,15067251,Shooters Fishers and Farmers,0,20,,5%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197919144,Seat of Calare,2049782,Coalition,1,1.02,1.11,98%,10077.51,10077.51,1.06
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919149,Seat of Calwell,2049781,Labor,1,1.01,1.02,99%,8464.87,9089.87,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919149,Seat of Calwell,2365174,Any Other Party or Independent,0,19,,5%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919149,Seat of Calwell,2049782,Coalition,0,19,95,5%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,ACT,31356077,197916617,Seat of Canberra,2049781,Labor,1,1.01,1.07,99%,14039.55,14039.55,1.01
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,ACT,31356077,197916617,Seat of Canberra,2365174,Any Other Party or Independent,0,15,300,7%,5.88,5.88,15
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197712857,Seat of Canning,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197712857,Seat of Canning,2049782,Coalition,1,1.05,1.09,95%,1233.33,1233.33,1.09
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197712857,Seat of Canning,2049781,Labor,0,8.4,,12%,27,27,8.4
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919186,Seat of Capriconia,15724847,One Nation,0,24,,4%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919186,Seat of Capriconia,2365174,Any Other Party or Independent,0,21,,5%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919186,Seat of Capriconia,2049782,Coalition,1,1.02,1.06,98%,10041.06,10041.06,1.02
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919186,Seat of Capriconia,2049781,Labor,0,17.5,,6%,10,10,27
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196915956,Seat of Casey,2365174,Any Other Party or Independent,0,20,,5%,12.12,12.12,21
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196915956,Seat of Casey,2049782,Coalition,1,1.15,1.4,87%,813.22,813.22,1.28
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196915956,Seat of Casey,2049781,Labor,0,2.1,7,48%,14.09,14.09,3.35
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917278,Seat of Chifley,2049781,Labor,1,1.01,1.02,99%,8162.47,8162.47,1.01
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917278,Seat of Chifley,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196915957,Seat of Chisholm,2365174,Any Other Party or Independent,0,30,,3%,6.36,6.36,50
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196915957,Seat of Chisholm,2049781,Labor,1,1.32,1.37,76%,3123.64,3317.04,1.4
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196915957,Seat of Chisholm,2049782,Coalition,0,3,,33%,848.63,897.63,3.7
+2022-05-22 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197919368,Seat of Clark,1111887,Any Other Party,0,15,,7%,,,
+2022-05-22 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197919368,Seat of Clark,8498800,Independent,1,1.01,1.03,99%,7958.48,8208.48,1.01
+2022-05-22 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197919368,Seat of Clark,2049781,Labor,0,19,,5%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917279,Seat of Cook,2049782,Coalition,1,1.01,1.04,99%,18776.73,18776.73,1.04
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917279,Seat of Cook,2365174,Any Other Party or Independent,0,30,95,3%,111.52,111.52,95
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919150,Seat of Cooper,2365174,Any Other Party or Independent,0,30,,3%,0.61,0.61,1000
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919150,Seat of Cooper,3789290,The Greens,0,9,42,11%,69.36,69.36,42
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919150,Seat of Cooper,2049781,Labor,1,1.03,1.09,97%,8226.6,8636.6,1.05
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196916049,Seat of Corangamite,2365174,Any Other Party or Independent,0,50,,2%,0.27,0.27,1000
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196916049,Seat of Corangamite,2049781,Labor,1,1.22,1.65,82%,886.18,886.18,1.35
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196916049,Seat of Corangamite,2049782,Coalition,0,3.3,,30%,400.87,400.87,3.8
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919158,Seat of Corio,2049781,Labor,1,1.01,1.02,99%,9917.25,9917.25,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919158,Seat of Corio,2365174,Any Other Party or Independent,0,15,,7%,50.65,50.65,21
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197712979,Seat of Cowan,2365174,Any Other Party or Independent,0,16.5,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197712979,Seat of Cowan,2049781,Labor,1,1.08,1.21,93%,1190.09,1415.06,1.08
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197712979,Seat of Cowan,2049782,Coalition,0,5.7,,18%,39.5,39.5,5.7
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917280,Seat of Cowper,1111887,Any Other Party,0,20,,5%,10,10,14
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917280,Seat of Cowper,8498800,Independent,0,,21,,177.93,177.93,10
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917280,Seat of Cowper,2049782,Coalition,1,1.05,1.15,95%,10035.24,10035.24,1.05
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197916764,Seat of Cunningham,2049781,Labor,1,1.01,,99%,7862.47,7862.47,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197916764,Seat of Cunningham,2365174,Any Other Party or Independent,0,15,,7%,10,10,30
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241120,Seat of Curtin,1111887,Any Other Party,0,36,,3%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241120,Seat of Curtin,8498800,Independent,1,2.42,2.72,41%,2470.9,2471.94,2.58
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241120,Seat of Curtin,2049782,Coalition,0,1.45,1.62,69%,7146.52,7268.16,1.62
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241120,Seat of Curtin,2049781,Labor,0,13.5,,7%,16.14,16.14,30
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197654174,Seat of Dawson,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197654174,Seat of Dawson,2049782,Coalition,1,1.08,1.13,93%,9880.36,9880.36,1.1
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197654174,Seat of Dawson,2049781,Labor,0,7.8,,13%,243,243,8.6
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241021,Seat of Dickson,2365174,Any Other Party or Independent,0,12,,8%,30,30,15.5
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241021,Seat of Dickson,2049782,Coalition,1,1.2,1.51,83%,2538.74,2559.71,1.2
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241021,Seat of Dickson,2049781,Labor,0,3.9,9,26%,1946.45,1946.45,3.9
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238566,Seat of Dobell,2365174,Any Other Party or Independent,0,30,300,3%,20,20,30
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238566,Seat of Dobell,2049781,Labor,1,1.18,1.23,85%,1914.82,2468.06,1.18
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238566,Seat of Dobell,2049782,Coalition,0,2.72,,37%,155,155,5
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919159,Seat of Dunkley,2365174,Any Other Party or Independent,0,19,,5%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919159,Seat of Dunkley,2049781,Labor,1,1.18,1.25,85%,4986.34,4986.34,1.2
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919159,Seat of Dunkley,2049782,Coalition,0,6,,17%,57,57,6
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919373,Seat of Durack,2049782,Coalition,1,1.01,,99%,7393.9,7393.9,1.02
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919373,Seat of Durack,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298487,Seat of Eden-Monaro,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298487,Seat of Eden-Monaro,2049781,Labor,1,1.1,1.19,91%,2793.17,2843.17,1.1
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298487,Seat of Eden-Monaro,2049782,Coalition,0,5.9,13.5,17%,276.17,276.17,6.2
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919223,Seat of Fadden,2049782,Coalition,1,1.01,,99%,7947.37,7947.37,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919223,Seat of Fadden,2365174,Any Other Party or Independent,0,20,,5%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919224,Seat of Fairfax,2049782,Coalition,1,1.01,1.02,99%,7947.38,7947.38,1.01
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919224,Seat of Fairfax,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917281,Seat of Farrer,2049782,Coalition,1,1.02,1.15,98%,8510.75,8510.75,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917281,Seat of Farrer,1111887,Any Other Party,0,34,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917281,Seat of Farrer,8498800,Independent,0,10,,10%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917281,Seat of Farrer,2049781,Labor,0,15.5,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,ACT,31356077,197241058,Seat of Fenner,2049781,Labor,1,1.01,1.14,99%,11826.35,11926.35,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,ACT,31356077,197241058,Seat of Fenner,2365174,Any Other Party or Independent,0,55,310,2%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919225,Seat of Fisher,2049782,Coalition,1,1.02,1.05,98%,5572.37,5572.37,1.02
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919225,Seat of Fisher,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238222,Seat of Flinders,1111887,Any Other Party,0,42,,2%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238222,Seat of Flinders,8498800,Independent,0,5.2,,19%,81.79,81.79,5.2
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238222,Seat of Flinders,2049782,Coalition,1,1.13,1.3,88%,861.36,868.03,1.3
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238222,Seat of Flinders,2049781,Labor,0,8.8,,11%,74.32,74.32,8.8
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241022,Seat of Flynn,2365174,Any Other Party or Independent,0,30,,3%,5,5,29
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241022,Seat of Flynn,2049782,Coalition,1,1.19,1.55,84%,6877.03,6882.03,1.32
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241022,Seat of Flynn,2049781,Labor,0,3.3,4.1,30%,305.83,528.56,3.3
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919226,Seat of Forde,2049782,Coalition,1,1.08,1.16,93%,2050.56,2050.56,1.08
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919226,Seat of Forde,2365174,Any Other Party or Independent,0,14,,7%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919226,Seat of Forde,2049781,Labor,0,5.8,,17%,42,42,5.8
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919374,Seat of Forrest,2049782,Coalition,1,1.01,,99%,7197.91,7197.91,1.02
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919374,Seat of Forrest,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197629765,Seat of Fowler,1111887,Any Other Party,0,36,,3%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197629765,Seat of Fowler,8498800,Independent,1,3,6.8,33%,1286.33,1461.18,3.4
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197629765,Seat of Fowler,2049781,Labor,0,1.4,1.54,71%,11508.01,12118.01,1.4
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197629765,Seat of Fowler,2049782,Coalition,0,8.6,,12%,20,20,11
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197919369,Seat of Franklin,2365174,Any Other Party or Independent,0,44,,2%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197919369,Seat of Franklin,15328795,Jacqui Lambie Network,0,27,,4%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197919369,Seat of Franklin,3789290,The Greens,0,23,,4%,1.5,1.5,200
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197919369,Seat of Franklin,2049782,Coalition,0,13.5,,7%,5,5,60
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197919369,Seat of Franklin,2049781,Labor,1,,1.03,,10591.18,10591.18,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919160,Seat of Fraser,2049781,Labor,1,1.01,1.02,99%,8262.47,8762.47,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919160,Seat of Fraser,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919377,Seat of Fremantle,2365174,Any Other Party or Independent,0,18,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919377,Seat of Fremantle,2049782,Coalition,0,11,,9%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919377,Seat of Fremantle,2049781,Labor,1,,1.08,,8711.6,8711.6,1.02
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919161,Seat of Gellibrand,2049781,Labor,1,1.01,1.02,99%,7632.4,7632.4,1.02
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919161,Seat of Gellibrand,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238601,Seat of Gilmore,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238601,Seat of Gilmore,2049782,Coalition,0,2.2,2.76,45%,1638.75,1638.75,2.4
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238601,Seat of Gilmore,2049781,Labor,1,1.65,1.89,61%,6920.2,8156.99,1.6
+2022-05-22 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919162,Seat of Gippsland,2049782,Coalition,1,1.01,1.02,99%,7213,7213,1.01
+2022-05-22 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919162,Seat of Gippsland,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238481,Seat of Goldstein,1111887,Any Other Party,0,48,,2%,6.88,6.88,50
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238481,Seat of Goldstein,8498800,Independent,1,1.21,1.5,83%,6332.18,6825.52,1.48
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238481,Seat of Goldstein,2049782,Coalition,0,2.94,3.3,34%,3770.49,4322.74,3.05
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919163,Seat of Gorton,2049781,Labor,1,1.01,,99%,7421.4,7421.4,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919163,Seat of Gorton,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197916765,Seat of Grayndler,2049781,Labor,1,1.01,,99%,11530.33,11530.33,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197916765,Seat of Grayndler,2365174,Any Other Party or Independent,0,65,490,2%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917462,Seat of Greenway,2049781,Labor,1,1.14,1.24,88%,902.71,902.71,1.14
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917462,Seat of Greenway,2365174,Any Other Party or Independent,0,3.6,,28%,86.13,86.13,13
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917462,Seat of Greenway,2049782,Coalition,0,7,,14%,39.79,39.79,6.4
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197606386,Seat of Grey,2049782,Coalition,1,1.15,1.27,87%,5611.85,5611.85,1.15
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197606386,Seat of Grey,1111887,Any Other Party,0,70,,1%,,,
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197606386,Seat of Grey,8498800,Independent,0,6.4,,16%,307,307,7
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197606386,Seat of Grey,3789290,The Greens,0,29,,3%,,,
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197606386,Seat of Grey,2049781,Labor,0,15,16.5,7%,184.38,184.38,16.5
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298052,Seat of Griffith,2365174,Any Other Party or Independent,0,23,,4%,1.91,1.91,23
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298052,Seat of Griffith,3789290,The Greens,1,,4.3,,318.8,374.87,4.9
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298052,Seat of Griffith,2049781,Labor,0,1.21,1.31,83%,2896.01,3099.32,1.25
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298052,Seat of Griffith,2049782,Coalition,0,30,,3%,4.54,17.54,22
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919261,Seat of Groom,2049782,Coalition,1,1.1,1.17,91%,8395.05,8695.05,1.18
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919261,Seat of Groom,1111887,Any Other Party,0,27,,4%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919261,Seat of Groom,8498800,Independent,0,6.6,,15%,85,85,7
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919261,Seat of Groom,2049781,Labor,0,20,,5%,15,15,19.5
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241132,Seat of Hasluck,2365174,Any Other Party or Independent,0,18,,6%,5.76,5.76,50
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241132,Seat of Hasluck,2049781,Labor,1,3.3,,30%,470.08,470.08,3.3
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241132,Seat of Hasluck,2049782,Coalition,0,,1.64,,2297,2297,1.4
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919164,Seat of Hawke,2049781,Labor,1,1.01,,99%,7828.98,7828.98,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919164,Seat of Hawke,2365174,Any Other Party or Independent,0,16,,6%,12,12,50
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241023,Seat of Herbert,2049782,Coalition,1,1.08,1.2,93%,4526.02,4526.02,1.1
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241023,Seat of Herbert,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241023,Seat of Herbert,2049781,Labor,0,5,,20%,32,32,4.4
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238482,Seat of Higgins,8498800,Independent,0,80,,1%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238482,Seat of Higgins,3789290,The Greens,0,4.9,20,20%,205.01,205.01,6
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238482,Seat of Higgins,1111887,Any Other Party,0,110,,1%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238482,Seat of Higgins,2049782,Coalition,0,1.56,2,64%,2335.94,2442.94,1.56
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197238482,Seat of Higgins,2049781,Labor,1,2.5,4,40%,612.48,617.48,2.5
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919332,Seat of Hindmarsh,2049781,Labor,1,1.01,1.07,99%,9476.44,9476.44,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919332,Seat of Hindmarsh,2365174,Any Other Party or Independent,0,11,,9%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919332,Seat of Hindmarsh,2049782,Coalition,0,16,,6%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298230,Seat of Hinkler,2049782,Coalition,1,1.18,1.34,85%,4452.88,4452.88,1.13
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298230,Seat of Hinkler,1111887,Any Other Party,0,30,,3%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298230,Seat of Hinkler,8498800,Independent,0,4.4,,23%,110.84,110.84,9.2
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298230,Seat of Hinkler,2049781,Labor,0,30,,3%,13.57,13.57,150
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919165,Seat of Holt,2049781,Labor,1,1.01,1.04,99%,10069.9,10069.9,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919165,Seat of Holt,2365174,Any Other Party or Independent,0,17,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919165,Seat of Holt,2049782,Coalition,0,14,,7%,5,5,14
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919170,Seat of Hotham,2049781,Labor,1,1.01,1.05,99%,8082,8082,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919170,Seat of Hotham,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238602,Seat of Hughes,2049782,Coalition,1,1.5,1.66,67%,5776.75,5902.3,1.4
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238602,Seat of Hughes,8498800,Independent,0,2.7,,37%,789.94,789.94,5.8
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238602,Seat of Hughes,1111887,Any Other Party,0,80,,1%,7.94,7.94,80
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238602,Seat of Hughes,23938065,United Australia Party,0,12,,8%,268.04,268.04,15
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238602,Seat of Hughes,2049781,Labor,0,30,,3%,19.91,19.91,30
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917553,Seat of Hume,2049782,Coalition,1,1.02,1.09,98%,9522.78,9522.78,1.02
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917553,Seat of Hume,8498800,Independent,0,16,,6%,37.6,37.6,11
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917553,Seat of Hume,1111887,Any Other Party,0,18,,6%,0.14,0.14,1000
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298493,Seat of Hunter,2049781,Labor,1,1.2,1.4,83%,6270.4,6519.52,1.2
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298493,Seat of Hunter,2365174,Any Other Party or Independent,0,30,,3%,17.42,17.42,95
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298493,Seat of Hunter,15724847,One Nation,0,30,,3%,96.37,96.37,1000
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298493,Seat of Hunter,2049782,Coalition,0,3.5,,29%,446.27,446.27,3.8
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919145,Seat of Indi,1111887,Any Other Party,0,27,,4%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919145,Seat of Indi,8498800,Independent,1,1.04,1.11,96%,3510.24,4866.1,1.06
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919145,Seat of Indi,2049782,Coalition,0,6.8,,15%,123.62,273.62,17.5
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919145,Seat of Indi,2049781,Labor,0,23,,4%,0.6,0.6,1000
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919174,Seat of Isaacs,2049781,Labor,1,1.03,1.09,97%,2969,2969,1.03
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919174,Seat of Isaacs,2365174,Any Other Party or Independent,0,17,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919174,Seat of Isaacs,2049782,Coalition,0,14,,7%,5,5,14
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919175,Seat of Jagajaga,2049781,Labor,1,1.01,1.07,99%,11834.38,11834.38,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919175,Seat of Jagajaga,2365174,Any Other Party or Independent,0,17,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919175,Seat of Jagajaga,2049782,Coalition,0,15.5,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919227,Seat of Kennedy,2365174,Any Other Party or Independent,0,19,,5%,1.65,1.65,19
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919227,Seat of Kennedy,39448080,Katters Australia Party,1,1.01,1.02,99%,9268.42,9268.42,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919227,Seat of Kennedy,2049782,Coalition,0,17,,6%,1.85,1.85,17
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919227,Seat of Kennedy,2049781,Labor,0,24,,4%,1.31,1.31,24
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917554,Seat of Kingsford Smith,2049781,Labor,1,1.01,1.07,99%,7941.13,7941.13,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917554,Seat of Kingsford Smith,2365174,Any Other Party or Independent,0,30,,3%,5,5,50
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919266,Seat of Kingston,2049781,Labor,1,1.01,,99%,8484.32,8484.32,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919266,Seat of Kingston,2365174,Any Other Party or Independent,0,12,,8%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919266,Seat of Kingston,2049782,Coalition,0,16,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196967407,Seat of Kooyong,2049782,Coalition,0,1.41,1.6,71%,59682.07,59851.18,1.6
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196967407,Seat of Kooyong,3789290,The Greens,0,40,,3%,59.45,59.45,120
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196967407,Seat of Kooyong,1111887,Any Other Party,0,200,,1%,7.11,7.11,200
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196967407,Seat of Kooyong,8498800,Independent,1,2.8,3.6,36%,15649.09,15773.69,2.66
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,196967407,Seat of Kooyong,2049781,Labor,0,100,,1%,31.96,31.96,120
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297471,Seat of La Trobe,2049782,Coalition,1,1.16,1.3,86%,1505.54,1505.54,1.25
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297471,Seat of La Trobe,2365174,Any Other Party or Independent,0,20,,5%,6.24,6.24,17.5
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297471,Seat of La Trobe,2049781,Labor,0,4.4,,23%,248.61,248.61,5.8
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919176,Seat of Lalor,2049781,Labor,1,1.01,1.04,99%,8759.47,8859.47,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919176,Seat of Lalor,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241025,Seat of Leichhardt,2049782,Coalition,1,1.35,1.74,74%,628.17,628.17,1.35
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241025,Seat of Leichhardt,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241025,Seat of Leichhardt,2049781,Labor,0,2.7,,37%,508,508,3
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298238,Seat of Lilley,2049781,Labor,1,1.08,1.19,93%,2987.68,2987.68,1.08
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298238,Seat of Lilley,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298238,Seat of Lilley,2049782,Coalition,0,6.6,,15%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238603,Seat of Lindsay,2049782,Coalition,1,1.52,1.9,66%,973.22,973.22,1.5
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238603,Seat of Lindsay,2365174,Any Other Party or Independent,0,30,,3%,24,24,32
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238603,Seat of Lindsay,2049781,Labor,0,2.4,,42%,10,10,2.46
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NT,31356100,197241250,Seat of Lingiari,2049781,Labor,1,1.32,,76%,9889.85,9889.85,1.41
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NT,31356100,197241250,Seat of Lingiari,2049782,Coalition,0,3,3.4,33%,1524.43,1524.43,3.4
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NT,31356100,197241250,Seat of Lingiari,2365174,Any Other Party or Independent,0,30,,3%,1,1,30
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241026,Seat of Longman,2049782,Coalition,1,1.9,2.3,53%,662.53,662.53,1.9
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241026,Seat of Longman,2049781,Labor,0,1.77,,56%,699.69,699.69,2.02
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197241026,Seat of Longman,2365174,Any Other Party or Independent,0,13,,8%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917076,Seat of Lyne,2049782,Coalition,1,1.01,1.03,99%,5667.86,5667.86,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917076,Seat of Lyne,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241220,Seat of Lyons,2049781,Labor,1,1.05,1.35,95%,6947.23,6947.23,1.25
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241220,Seat of Lyons,15328795,Jacqui Lambie Network,0,38,,3%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241220,Seat of Lyons,3789290,The Greens,0,16,,6%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241220,Seat of Lyons,2365174,Any Other Party or Independent,0,60,,2%,,,
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,TAS,31356090,197241220,Seat of Lyons,2049782,Coalition,0,4,8,25%,761.13,766.13,4
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917077,Seat of Macarthur,2049781,Labor,1,1.01,,99%,8627.23,8627.23,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917077,Seat of Macarthur,2365174,Any Other Party or Independent,0,30,,3%,10,10,36
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917077,Seat of Macarthur,2049782,Coalition,0,30,,3%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298492,Seat of Mackellar,2049782,Coalition,0,1.55,1.75,65%,3458.69,3683.18,1.71
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298492,Seat of Mackellar,1111887,Any Other Party,0,30,,3%,2.2,2.96,30
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298492,Seat of Mackellar,8498800,Independent,1,2.32,,43%,1307.87,1361.32,2.4
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298492,Seat of Mackellar,2049781,Labor,0,30,,3%,2.2,2.96,30
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197295959,Seat of Macnamara,2049781,Labor,1,1.07,,93%,7655.49,8617,1.07
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197295959,Seat of Macnamara,3789290,The Greens,0,6.6,,15%,185.64,215.65,6.6
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197295959,Seat of Macnamara,2365174,Any Other Party or Independent,0,60,,2%,,,
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197295959,Seat of Macnamara,2049782,Coalition,0,20,,5%,1.44,1.44,1000
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298489,Seat of Macquarie,2049781,Labor,1,1.2,1.5,83%,119.09,119.09,1.21
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298489,Seat of Macquarie,2049782,Coalition,0,4,7.6,25%,93.88,93.88,4
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298489,Seat of Macquarie,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919267,Seat of Makin,2049781,Labor,1,1.02,1.07,98%,10371.31,10371.31,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919267,Seat of Makin,3789290,The Greens,0,25,,4%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919267,Seat of Makin,2365174,Any Other Party or Independent,0,17,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919267,Seat of Makin,2049782,Coalition,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919177,Seat of Mallee,2049782,Coalition,1,1.01,,99%,6244.98,6244.98,1.03
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919177,Seat of Mallee,8498800,Independent,0,17,,6%,13,13,17
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919177,Seat of Mallee,1111887,Any Other Party,0,27,,4%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919177,Seat of Mallee,2049781,Labor,0,18,,6%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919230,Seat of Maranoa,2365174,Any Other Party or Independent,0,20,,5%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919230,Seat of Maranoa,2049782,Coalition,1,,1.01,,11267.31,11267.31,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919178,Seat of Maribyrnong,2049781,Labor,1,1.01,1.04,99%,11157.13,11237.13,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919178,Seat of Maribyrnong,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919268,Seat of Mayo,2365174,Any Other Party or Independent,0,18,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919268,Seat of Mayo,19008673,Centre Alliance,1,1.01,1.17,99%,3883.99,4383.76,1.06
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919268,Seat of Mayo,2049782,Coalition,0,8.6,,12%,2,2,8.6
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919268,Seat of Mayo,2049781,Labor,0,15,,7%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919179,Seat of McEwen,2049781,Labor,1,1.17,1.19,85%,5641.54,5641.54,1.19
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919179,Seat of McEwen,2049782,Coalition,0,4,,25%,306,306,6.2
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919179,Seat of McEwen,2365174,Any Other Party or Independent,0,17,,6%,5,5,36
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917555,Seat of McMahon,2049781,Labor,1,1.02,1.07,98%,9698.42,9698.42,1.02
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917555,Seat of McMahon,2365174,Any Other Party or Independent,0,30,,3%,10,10,28
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917555,Seat of McMahon,2049782,Coalition,0,15.5,50,6%,6,6,30
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919231,Seat of McPherson,2049782,Coalition,1,1.01,1.06,99%,6694.89,6694.89,1.01
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919231,Seat of McPherson,2365174,Any Other Party or Independent,0,18,,6%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919180,Seat of Melbourne,2365174,Any Other Party or Independent,0,19,,5%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919180,Seat of Melbourne,3789290,The Greens,1,1.02,1.04,98%,10617.69,10717.69,1.01
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919180,Seat of Melbourne,2049781,Labor,0,16.5,,6%,,,
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297749,Seat of Menzies,2049782,Coalition,1,1.05,1.16,95%,6605.36,6605.36,1.03
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297749,Seat of Menzies,1111887,Any Other Party,0,60,,2%,3.01,3.01,60
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297749,Seat of Menzies,8498800,Independent,0,60,,2%,3.01,3.01,60
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197297749,Seat of Menzies,2049781,Labor,0,7.2,,14%,25.03,25.03,12
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917594,Seat of Mitchell,2049782,Coalition,1,1.01,1.05,99%,7862.47,7862.47,1.01
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917594,Seat of Mitchell,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197298027,Seat of Monash,2049782,Coalition,1,1.12,1.2,89%,1228.67,1228.67,1.12
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197298027,Seat of Monash,8498800,Independent,0,28,,4%,5,5,28
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197298027,Seat of Monash,1111887,Any Other Party,0,50,,2%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197298027,Seat of Monash,2049781,Labor,0,7,21,14%,10,10,8
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919234,Seat of Moncrieff,2049782,Coalition,1,1.02,1.05,98%,11856.8,11856.8,1.04
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919234,Seat of Moncrieff,2365174,Any Other Party or Independent,0,15,25,7%,10.4,10.4,25
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919382,Seat of Moore,2049782,Coalition,1,1.01,1.05,99%,5885.54,5885.54,1.01
+2022-05-28 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919382,Seat of Moore,2365174,Any Other Party or Independent,0,12,,8%,36,36,15
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919243,Seat of Moreton,2049781,Labor,1,1.08,1.13,93%,1125,1125,1.08
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919243,Seat of Moreton,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919243,Seat of Moreton,2049782,Coalition,0,10.5,,10%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917600,Seat of New England,2049782,Coalition,1,1.01,1.09,99%,7336.3,7336.3,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917600,Seat of New England,2365174,Any Other Party or Independent,0,60,880,2%,6,6,40
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917637,Seat of Newcastle,2049781,Labor,1,1.01,1.07,99%,8990.53,9040.53,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917637,Seat of Newcastle,2365174,Any Other Party or Independent,0,30,,3%,13,13,50
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197298050,Seat of Nicholls,2049782,Coalition,1,1.5,1.63,67%,2745.82,3180.85,1.63
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197298050,Seat of Nicholls,1111887,Any Other Party,0,20,,5%,4.52,4.52,30
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197298050,Seat of Nicholls,8498800,Independent,0,2.66,,38%,179.93,504.78,2.58
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238604,Seat of North Sydney,2049782,Coalition,0,1.59,2.18,63%,5441.26,5471.26,1.49
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238604,Seat of North Sydney,1111887,Any Other Party,0,100,,1%,18.89,18.89,100
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238604,Seat of North Sydney,8498800,Independent,1,2.26,5.6,44%,2849.66,2960.66,2.46
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238604,Seat of North Sydney,2049781,Labor,0,8,10,13%,389.66,477.66,5.5
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919399,Seat of O'Connor,2049782,Coalition,1,1.01,,99%,7233,7233,1.01
+2022-05-26 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919399,Seat of O'Connor,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919256,Seat of Oxley,2049781,Labor,1,1.02,1.1,98%,12057.7,12057.7,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919256,Seat of Oxley,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919256,Seat of Oxley,2049782,Coalition,0,12,,8%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238619,Seat of Page,2049782,Coalition,1,1.2,1.39,83%,2806.73,2806.73,1.3
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238619,Seat of Page,2049781,Labor,0,5.4,,19%,124.93,124.93,6.2
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238619,Seat of Page,1111887,Any Other Party,0,36,,3%,9.29,9.29,400
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238619,Seat of Page,8498800,Independent,0,4.6,,22%,203.08,203.08,6
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917638,Seat of Parkes,2049782,Coalition,1,1.01,1.03,99%,6061.3,6061.3,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917638,Seat of Parkes,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298490,Seat of Parramatta,2049781,Labor,1,1.17,1.26,85%,6811.2,6931.78,1.16
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298490,Seat of Parramatta,2049782,Coalition,0,3.6,7.2,28%,575.13,575.13,6
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197298490,Seat of Parramatta,2365174,Any Other Party or Independent,0,30,,3%,25.22,25.22,30
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197482585,Seat of Paterson,2049781,Labor,1,1.05,1.15,95%,8199.06,8199.06,1.07
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197482585,Seat of Paterson,2049782,Coalition,0,8,21,13%,75.72,75.72,14.5
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197482585,Seat of Paterson,2365174,Any Other Party or Independent,0,13.5,,7%,18.07,18.07,13.5
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241141,Seat of Pearce,2049781,Labor,1,1.32,,76%,85.06,85.06,1.6
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241141,Seat of Pearce,2365174,Any Other Party or Independent,0,17.5,,6%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241141,Seat of Pearce,2049782,Coalition,0,,4.1,,241,241,2.66
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919407,Seat of Perth,2049781,Labor,1,1.01,1.04,99%,11977.97,11977.97,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919407,Seat of Perth,3789290,The Greens,0,25,,4%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919407,Seat of Perth,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197919407,Seat of Perth,2049782,Coalition,0,21,,5%,,,
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298462,Seat of Petrie,2049782,Coalition,1,1.1,1.23,91%,5641.49,5641.49,1.1
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298462,Seat of Petrie,2049781,Labor,0,4.8,,21%,54,54,7
+2022-05-25 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298462,Seat of Petrie,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919259,Seat of Rankin,2049781,Labor,1,1.01,1.04,99%,10537.32,10537.32,1.02
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919259,Seat of Rankin,2049782,Coalition,0,12,,8%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919259,Seat of Rankin,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238622,Seat of Reid,2049781,Labor,1,1.25,1.38,80%,2341.75,2459.58,1.38
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238622,Seat of Reid,2049782,Coalition,0,3.8,10,26%,327,439.66,3.8
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238622,Seat of Reid,8498800,Independent,0,13,,8%,2.93,2.93,70
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238622,Seat of Reid,1111887,Any Other Party,0,36,,3%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917639,Seat of Richmond,2049781,Labor,1,1.15,1.35,87%,6112.17,6334.14,1.16
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917639,Seat of Richmond,2365174,Any Other Party or Independent,0,10.5,,10%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197917639,Seat of Richmond,3789290,The Greens,0,5,22,20%,129.32,196.32,7.2
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918754,Seat of Riverina,2049782,Coalition,1,1.01,1.02,99%,8256.38,8256.38,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918754,Seat of Riverina,2365174,Any Other Party or Independent,0,55,,2%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238623,Seat of Robertson,2049782,Coalition,0,2.12,,47%,683.11,924.66,2
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238623,Seat of Robertson,2049781,Labor,1,1.72,1.9,58%,2196.32,2567.82,1.7
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238623,Seat of Robertson,2365174,Any Other Party or Independent,0,30,,3%,26.22,26.22,1000
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298463,Seat of Ryan,2049782,Coalition,0,1.62,2.1,62%,2185.91,2479.51,1.62
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298463,Seat of Ryan,2049781,Labor,0,3,5,33%,743.45,865.45,2.88
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298463,Seat of Ryan,2365174,Any Other Party or Independent,0,30,,3%,4.63,4.63,19
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197298463,Seat of Ryan,3789290,The Greens,1,4.2,5.5,24%,316.7,729.84,5.6
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919181,Seat of Scullin,2049781,Labor,1,1.01,1.02,99%,11438.8,11438.8,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919181,Seat of Scullin,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918773,Seat of Shortland,2049781,Labor,1,1.05,1.16,95%,6861.48,6861.48,1.07
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918773,Seat of Shortland,2049782,Coalition,0,6.8,21,15%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918773,Seat of Shortland,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NT,31356100,197241251,Seat of Solomon,2049781,Labor,1,1.08,1.14,93%,1684.32,1684.32,1.14
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NT,31356100,197241251,Seat of Solomon,2049782,Coalition,0,6.2,10,16%,184.81,184.81,8
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NT,31356100,197241251,Seat of Solomon,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919307,Seat of Spence,2049781,Labor,1,1.01,,99%,7193,7193,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197919307,Seat of Spence,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197241030,Seat of Sturt,2049782,Coalition,1,1.35,2.3,74%,1281.45,1527.45,1.33
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197241030,Seat of Sturt,2049781,Labor,0,2.84,5,35%,409.33,409.33,2.88
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,SA,31356074,197241030,Seat of Sturt,2365174,Any Other Party or Independent,0,20,,5%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241146,Seat of Swan,2049781,Labor,1,1.2,1.5,83%,13406.58,13406.58,1.22
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241146,Seat of Swan,2049782,Coalition,0,3.4,7,29%,779.81,779.81,3.4
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241146,Seat of Swan,2365174,Any Other Party or Independent,0,18,,6%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918810,Seat of Sydney,2365174,Any Other Party or Independent,0,15,540,7%,,,
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918810,Seat of Sydney,2049781,Labor,1,,1.01,,11529.81,11529.81,1.01
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241151,Seat of Tangney,2049782,Coalition,0,1.2,1.44,83%,3819.84,3819.84,1.2
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241151,Seat of Tangney,2049781,Labor,1,2.96,,34%,24.63,24.63,5.2
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,WA,31356080,197241151,Seat of Tangney,2365174,Any Other Party or Independent,0,40,,3%,,,
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919182,Seat of Wannon,2049782,Coalition,1,1.02,1.11,98%,10608.77,10608.77,1.02
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919182,Seat of Wannon,2049781,Labor,0,14,,7%,2.14,2.14,140
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919182,Seat of Wannon,2365174,Any Other Party or Independent,0,13.5,50,7%,9.9,9.9,50
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238624,Seat of Warringah,2049782,Coalition,0,6.4,8.2,16%,3667.55,3721.08,8.2
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238624,Seat of Warringah,2049781,Labor,0,25,,4%,27.24,27.24,130
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238624,Seat of Warringah,1111887,Any Other Party,0,40,,3%,9.4,9.4,150
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238624,Seat of Warringah,8498800,Independent,1,1.12,1.15,89%,34160.8,34414.81,1.14
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918991,Seat of Watson,2049781,Labor,1,1.01,1.02,99%,7736.75,7736.75,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197918991,Seat of Watson,2365174,Any Other Party or Independent,0,15,,7%,5,5,50
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238625,Seat of Wentworth,2049782,Coalition,0,1.81,2.08,55%,8545.46,9729.79,2
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238625,Seat of Wentworth,2049781,Labor,0,55,,2%,15.97,15.97,200
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238625,Seat of Wentworth,1111887,Any Other Party,0,55,,2%,12.02,12.02,110
+2022-05-24 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197238625,Seat of Wentworth,8498800,Independent,1,1.9,1.97,53%,7324.01,8532.62,2
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197919142,Seat of Werriwa,2049781,Labor,1,1.2,1.35,83%,3982.84,4207.84,1.2
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197919142,Seat of Werriwa,2049782,Coalition,0,4,9,25%,333.27,343.27,9
+2022-05-27 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197919142,Seat of Werriwa,2365174,Any Other Party or Independent,0,30,,3%,9.17,9.17,30
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197919143,Seat of Whitlam,2049781,Labor,1,1.01,1.05,99%,7684.66,7684.66,1.01
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,NSW,31355970,197919143,Seat of Whitlam,2365174,Any Other Party or Independent,0,30,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919262,Seat of Wide Bay,2049782,Coalition,1,1.01,,99%,7197.91,7197.91,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919262,Seat of Wide Bay,2365174,Any Other Party or Independent,0,16,,6%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919183,Seat of Wills,2049781,Labor,1,1.01,1.05,99%,13802.85,13802.85,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919183,Seat of Wills,2049782,Coalition,0,25,,4%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919183,Seat of Wills,3789290,The Greens,0,17.5,,6%,8.97,8.97,9.8
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,VIC,31339813,197919183,Seat of Wills,2365174,Any Other Party or Independent,0,29,,3%,,,
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919260,Seat of Wright,2049782,Coalition,1,1.01,1.03,99%,5671.61,5671.61,1.02
+2022-05-23 00:00:00.000 Z,2022 Australian Federal Election,Individual Electorates,QLD,31355989,197919260,Seat of Wright,2365174,Any Other Party or Independent,0,15,,7%,,,
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836364,One Seat Won,0,1.43,1.65,70%,12337.17,12912.72,1.59
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836368,Five Seats Won,0,200,,1%,0.17,526.54,70
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836369,Six Seats Won,0,200,,1%,0.03,6.89,110
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836366,Three Seats Won,0,12,18.5,8%,530.83,5229.07,14
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836371,Eight Seats Won,0,400,,0%,0.02,0.56,580
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836365,Two Seats Won,0,2.98,3,34%,1879.92,2426.69,3.85
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836363,Zero Seats Won,0,40,,3%,20.84,25.84,42
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836370,Seven Seats Won,0,400,,0%,0.02,2.15,300
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836376,Nine or More Seats Won,0,26,,4%,5.02,5.3,1000
+2022-05-31 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,196914672,The Greens Seats Won,43836367,Four Seats Won,1,25,1000,4%,27.67,13097.18,80
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,44713786,50 Seats or fewer,0,32,60,3%,110.32,124.37,60
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,4625944,101 Seats or more,0,85,1000,1%,0.07,0.28,1000
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,38829573,61 - 65 seats,0,3.5,4.4,29%,354.99,551.25,4.4
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,4642986,91 - 95 Seats,0,27,1000,4%,0.07,0.28,1000
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,38829584,71 - 75 seats,0,5,9.8,20%,10,512.41,2.64
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,2364087,66 - 70 Seats,0,3.3,4.4,30%,1558.38,1757.21,4.4
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,38829560,86 - 90 seats,0,28,890,4%,0.09,0.35,890
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,4642987,96 - 100 Seats,0,60,1000,2%,0.07,0.28,1000
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,4642636,51 - 55 Seats,0,13.5,18,7%,64,145.5,18
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,38829563,81 - 85 seats,0,15.5,890,6%,10.09,10.35,890
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,38829586,76 - 80 seats,0,7.2,890,14%,52,52.26,890
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611138,Total Coalition Seats Won,35683047,56 - 60 seats,1,7,10,14%,109,231.73,11
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,44713786,50 Seats or fewer,0,85,1000,1%,,,
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,4625944,101 Seats or more,0,200,890,1%,6.08,6.08,890
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,38829584,71 - 75 seats,0,3.5,9,29%,513.88,710.85,3.3
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,2364087,66 - 70 Seats,0,6.4,40,16%,72.36,82.36,6.4
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,35683047,56 - 60 seats,0,40,1000,3%,,,
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,38829563,81 - 85 seats,0,2.9,4.5,34%,579.96,642.03,4.5
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,4642987,96 - 100 Seats,0,90,200,1%,3.26,3.26,200
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,38829560,86 - 90 seats,0,10,25,10%,174.57,183.44,28
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,4642636,51 - 55 Seats,0,65,1000,2%,,,
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,38829573,61 - 65 seats,0,26,1000,4%,5,10,32
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,4642986,91 - 95 Seats,0,50,90,2%,61.23,61.23,50
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Total Seats,,28808409,198611678,Total Labor Seats Won,38829586,76 - 80 seats,1,2.8,3,36%,838.96,985.37,2.9
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Type of Government,,28808409,197602691,Type of Government Formed,44160344,Coalition Minority,0,4,4.5,25%,10099.77,10852.23,4.2
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Type of Government,,28808409,197602691,Type of Government Formed,15407103,Labor Minority,0,5,6,20%,12206.95,15002.48,5.5
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Type of Government,,28808409,197602691,Type of Government Formed,44160343,Coalition Majority,0,20,21,5%,3233.95,3363.18,36
+2022-05-30 00:00:00.000 Z,2022 Australian Federal Election,Type of Government,,28808409,197602691,Type of Government Formed,15407104,Labor Majority,1,1.74,1.99,57%,28523.91,34931.83,1.94

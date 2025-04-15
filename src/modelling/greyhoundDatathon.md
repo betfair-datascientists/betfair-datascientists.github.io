@@ -4,9 +4,9 @@
 
 ## Registration
 
-Registrations are open until May 16th 2025. Only entrants who have registered through the link will be eligible to win a prize
-
 [Register Here!](https://forms.office.com/r/VbxSUYXjsi)
+
+Registrations are open until May 16th 2025. Only entrants who have registered through the link will be eligible to win a prize
 
 ---
 
@@ -54,14 +54,14 @@ Winners will be announced at the end of the competition, with prizes distributed
 
 The aim of this competition is to generate a **rated price** for every runner in every race across a set of meetings during the competition period (**WIN** markets only)
 
-The competition period is May 19th, 2025 - May, 30th 2025 (excluding 24/5/25 and 25/5/25)
+The competition period is May 19th, 2025 - May, 30th 2025
 
 The specific meetings will meet the following criteria:
 
-    - The meeting will occur in Australia 
-    - The meeting will NOT occur at a venue in Western Australia
-    - The meeting will occur on a weekday (Monday to Friday)
-    - The meeting will commence after 5pm AEST (Evening meeting)
+ - The meeting will occur in Australia 
+ - The meeting will NOT occur at a venue in Western Australia
+ - The meeting will occur on a weekday (Monday to Friday)
+ - The meeting will commence after 5pm AEST (Evening meeting)
 
 Submissions are by due by 4:59pm AEST each day
 
@@ -486,6 +486,9 @@ Leaderboards will be published here throughout the competition
 ### What happens if there is a deadheat?
 
  - The result will be recorded as 1 divided by the number of winners
- - e.g. for a runner with a rated price of 4.00 in a deadheat with one other runner, the log loss will be -1 * (0.5 * LN(0.75) + 0.5 * LN(0.25))
 
 ---
+
+### Disclaimer
+
+Note that whilst models and automated strategies are fun and rewarding to create, we can't promise that your model or betting strategy will be profitable, and we make no representations in relation to the code shared or information on this page. If you're using this code or implementing your own strategies, you do so entirely at your own risk and you are responsible for any winnings/losses incurred. Under no circumstances will Betfair be liable for any loss or damage you suffer.

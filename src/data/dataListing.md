@@ -192,6 +192,13 @@ By downloading this data, you acknowledge and agree that:
  - [NRL 2025 All Markets](../assets/NRL_2025_All_Markets.csv)
  - [NRL 2025 Match Odds](../assets/NRL_2025_Match_Odds.csv)
 
+### NRLW
+
+ - [NRLW 2021 All Markets](../assets/NRLW_2021_All_Markets.csv)
+ - [NRLW 2022 All Markets](../assets/NRLW_2022_All_Markets.csv)
+ - [NRLW 2023 All Markets](../assets/NRLW_2023_All_Markets.csv)
+ - [NRLW 2024 All Markets](../assets/NRLW_2024_All_Markets.csv)
+
 ### A-League
 
  - [A-League 2020-2021 All Markets](../assets/A-League_2020-2021_All_Markets.csv)
@@ -253,6 +260,12 @@ By downloading this data, you acknowledge and agree that:
  - [NBL 2023-2024 Match Odds Markets](../assets/NBL_2023-2024_Match_Odds.csv)
  - [NBL 2024-2025 All Markets](../assets/NBL_2024-2025_All_Markets.csv)
  - [NBL 2024-2025 Match Odds Markets](../assets/NBL_2024-2025_Match_Odds.csv)
+
+### WNBL
+ - [WNBL 2021-2022 All Markets](../assets/WNBL_2021-2022_All_Markets.csv)
+ - [WNBL 2022-2023 All Markets](../assets/WNBL_2022-2023_All_Markets.csv)
+ - [WNBL 2023-2024 All Markets](../assets/WNBL_2023-2024_All_Markets.csv)
+ - [WNBL 2024-2025 All Markets](../assets/WNBL_2024-2025_All_Markets.csv)
 
 ### Politics
 

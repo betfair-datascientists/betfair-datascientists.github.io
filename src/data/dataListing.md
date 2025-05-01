@@ -25,21 +25,11 @@ By downloading this data, you acknowledge and agree that:
 ### Thoroughbred
 
  - [Aus & NZ Thoroughbreds 2023](../assets/ANZ_Thoroughbreds_2023.zip)
- - [Aus & NZ Thoroughbreds 2024-01](../assets/ANZ_Thoroughbreds_2024_01.csv)
- - [Aus & NZ Thoroughbreds 2024-02](../assets/ANZ_Thoroughbreds_2024_02.csv)
- - [Aus & NZ Thoroughbreds 2024-03](../assets/ANZ_Thoroughbreds_2024_03.csv)
- - [Aus & NZ Thoroughbreds 2024-04](../assets/ANZ_Thoroughbreds_2024_04.csv)
- - [Aus & NZ Thoroughbreds 2024-05](../assets/ANZ_Thoroughbreds_2024_05.csv)
- - [Aus & NZ Thoroughbreds 2024-06](../assets/ANZ_Thoroughbreds_2024_06.csv)
- - [Aus & NZ Thoroughbreds 2024-07](../assets/ANZ_Thoroughbreds_2024_07.csv)
- - [Aus & NZ Thoroughbreds 2024-08](../assets/ANZ_Thoroughbreds_2024_08.csv)
- - [Aus & NZ Thoroughbreds 2024-09](../assets/ANZ_Thoroughbreds_2024_09.csv)
- - [Aus & NZ Thoroughbreds 2024-10](../assets/ANZ_Thoroughbreds_2024_10.csv)
- - [Aus & NZ Thoroughbreds 2024-11](../assets/ANZ_Thoroughbreds_2024_11.csv)
- - [Aus & NZ Thoroughbreds 2024-12](../assets/ANZ_Thoroughbreds_2024_12.csv)
+ - [Aus & NZ Thoroughbreds 2024](../assets/ANZ_Thoroughbreds_2024.zip)
  - [Aus & NZ Thoroughbreds 2025-01](../assets/ANZ_Thoroughbreds_2025_01.csv)
  - [Aus & NZ Thoroughbreds 2025-02](../assets/ANZ_Thoroughbreds_2025_02.csv)
  - [Aus & NZ Thoroughbreds 2025-03](../assets/ANZ_Thoroughbreds_2025_03.csv)
+ - [Aus & NZ Thoroughbreds 2025-04](../assets/ANZ_Thoroughbreds_2025_04.csv)
 
 ### Thoroughbred Predictions Model
 
@@ -50,6 +40,7 @@ By downloading this data, you acknowledge and agree that:
  - [Thoroughbred Model Results 2025 Jan](../assets/Kash_Model_Results_2025_01.csv)
  - [Thoroughbred Model Results 2025 Feb](../assets/Kash_Model_Results_2025_02.csv)
  - [Thoroughbred Model Results 2025 Mar](../assets/Kash_Model_Results_2025_03.csv)
+ - [Thoroughbred Model Results 2025 Apr](../assets/Kash_Model_Results_2025_04.csv)
 
 ### Top 5 Model
 
@@ -62,25 +53,16 @@ By downloading this data, you acknowledge and agree that:
  - [Top 5 Model Results 2025 Jan](../assets/Top5_Model_Results_2025_01.csv)
  - [Top 5 Model Results 2025 Feb](../assets/Top5_Model_Results_2025_02.csv)
  - [Top 5 Model Results 2025 Mar](../assets/Top5_Model_Results_2025_03.csv)
+ - [Top 5 Model Results 2025 Apr](../assets/Top5_Model_Results_2025_04.csv)
 
 ### Harness
 
  - [Aus & NZ Harness 2023](../assets/ANZ_Harness_2023.zip)
- - [Aus & NZ Harness 2024-01](../assets/ANZ_Harness_2024_01.csv)
- - [Aus & NZ Harness 2024-02](../assets/ANZ_Harness_2024_02.csv)
- - [Aus & NZ Harness 2024-03](../assets/ANZ_Harness_2024_03.csv)
- - [Aus & NZ Harness 2024-04](../assets/ANZ_Harness_2024_04.csv)
- - [Aus & NZ Harness 2024-05](../assets/ANZ_Harness_2024_05.csv)
- - [Aus & NZ Harness 2024-06](../assets/ANZ_Harness_2024_06.csv)
- - [Aus & NZ Harness 2024-07](../assets/ANZ_Harness_2024_07.csv)
- - [Aus & NZ Harness 2024-08](../assets/ANZ_Harness_2024_08.csv)
- - [Aus & NZ Harness 2024-09](../assets/ANZ_Harness_2024_09.csv)
- - [Aus & NZ Harness 2024-10](../assets/ANZ_Harness_2024_10.csv)
- - [Aus & NZ Harness 2024-11](../assets/ANZ_Harness_2024_11.csv)
- - [Aus & NZ Harness 2024-12](../assets/ANZ_Harness_2024_12.csv)
+ - [Aus & NZ Harness 2024](../assets/ANZ_Harness_2024.zip)
  - [Aus & NZ Harness 2025-01](../assets/ANZ_Harness_2025_01.csv)
  - [Aus & NZ Harness 2025-02](../assets/ANZ_Harness_2025_02.csv)
  - [Aus & NZ Harness 2025-03](../assets/ANZ_Harness_2025_03.csv)
+ - [Aus & NZ Harness 2025-04](../assets/ANZ_Harness_2025_04.csv)
 
 ### Harness Predictions Model
 
@@ -89,25 +71,16 @@ By downloading this data, you acknowledge and agree that:
  - [Harness Model Results 2025 Jan](../assets/Globetrotter_Model_Results_2025_01.csv)
  - [Harness Model Results 2025 Feb](../assets/Globetrotter_Model_Results_2025_02.csv)
  - [Harness Model Results 2025 Mar](../assets/Globetrotter_Model_Results_2025_03.csv)
+ - [Harness Model Results 2025 Apr](../assets/Globetrotter_Model_Results_2025_04.csv)
 
 ### Greyhounds
 
  - [Aus & NZ Greyhounds 2023](../assets/ANZ_Greyhounds_2023.zip)
- - [Aus & NZ Greyhounds 2024-01](../assets/ANZ_Greyhounds_2024_01.csv)
- - [Aus & NZ Greyhounds 2024-02](../assets/ANZ_Greyhounds_2024_02.csv)
- - [Aus & NZ Greyhounds 2024-03](../assets/ANZ_Greyhounds_2024_03.csv)
- - [Aus & NZ Greyhounds 2024-04](../assets/ANZ_Greyhounds_2024_04.csv)
- - [Aus & NZ Greyhounds 2024-05](../assets/ANZ_Greyhounds_2024_05.csv)
- - [Aus & NZ Greyhounds 2024-06](../assets/ANZ_Greyhounds_2024_06.csv)
- - [Aus & NZ Greyhounds 2024-07](../assets/ANZ_Greyhounds_2024_07.csv)
- - [Aus & NZ Greyhounds 2024-08](../assets/ANZ_Greyhounds_2024_08.csv)
- - [Aus & NZ Greyhounds 2024-09](../assets/ANZ_Greyhounds_2024_09.csv)
- - [Aus & NZ Greyhounds 2024-10](../assets/ANZ_Greyhounds_2024_10.csv)
- - [Aus & NZ Greyhounds 2024-11](../assets/ANZ_Greyhounds_2024_11.csv)
- - [Aus & NZ Greyhounds 2024-12](../assets/ANZ_Greyhounds_2024_12.csv)
+ - [Aus & NZ Greyhounds 2024](../assets/ANZ_Greyhounds_2024.zip)
  - [Aus & NZ Greyhounds 2025-01](../assets/ANZ_Greyhounds_2025_01.csv)
  - [Aus & NZ Greyhounds 2025-02](../assets/ANZ_Greyhounds_2025_02.csv)
- - [Aus & NZ Greyhounds 2025-03](../assets/ANZ_Greyhounds_2025_03.csv) 
+ - [Aus & NZ Greyhounds 2025-03](../assets/ANZ_Greyhounds_2025_03.csv)
+ - [Aus & NZ Greyhounds 2025-04](../assets/ANZ_Greyhounds_2025_04.csv)
 
 ### Greyhound Predictions Model (Iggy Version 1 - Now Deprecated)
 
@@ -123,33 +96,22 @@ By downloading this data, you acknowledge and agree that:
  - [Greyhound Model Results 2025 Jan](../assets/Iggy_Model_V2_Results_2025_01.csv)
  - [Greyhound Model Results 2025 Feb](../assets/Iggy_Model_V2_Results_2025_02.csv)
  - [Greyhound Model Results 2025 Mar](../assets/Iggy_Model_V2_Results_2025_03.csv)
+ - [Greyhound Model Results 2025 Apr](../assets/Iggy_Model_V2_Results_2025_04.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 
- - [Betfair Hub Tipsters 2023-03](../assets/Hub_2023_03_March_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-04](../assets/Hub_2023_04_April_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-05](../assets/Hub_2023_05_May_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-06](../assets/Hub_2023_06_June_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-07](../assets/Hub_2023_07_July_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-08](../assets/Hub_2023_08_August_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-09](../assets/Hub_2023_09_September_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-10](../assets/Hub_2023_10_October_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-11](../assets/Hub_2023_11_November_Racing_Results.csv)
- - [Betfair Hub Tipsters 2023-12](../assets/Hub_2023_12_December_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-01](../assets/Hub_2024_01_January_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-02](../assets/Hub_2024_02_February_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-03](../assets/Hub_2024_03_March_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-04](../assets/Hub_2024_04_April_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-05](../assets/Hub_2024_05_May_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-06](../assets/Hub_2024_06_June_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-07](../assets/Hub_2024_07_July_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-08](../assets/Hub_2024_08_August_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-09](../assets/Hub_2024_09_September_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-10](../assets/Hub_2024_10_October_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-11](../assets/Hub_2024_11_November_Racing_Results.csv)
- - [Betfair Hub Tipsters 2024-12](../assets/Hub_2024_12_December_Racing_Results.csv)
- - [Betfair Hub Tipsters 2025-01](../assets/Hub_2025_01_January_Racing_Results.csv)
- - [Betfair Hub Tipsters 2025-02](../assets/Hub_2025_02_February_Racing_Results.csv)
+ - [Betfair Hub Tipsters 2024-05](../assets/Hub_Tipster_Results_2024-05.csv)
+ - [Betfair Hub Tipsters 2024-06](../assets/Hub_Tipster_Results_2024-06.csv)
+ - [Betfair Hub Tipsters 2024-07](../assets/Hub_Tipster_Results_2024-07.csv)
+ - [Betfair Hub Tipsters 2024-08](../assets/Hub_Tipster_Results_2024-08.csv)
+ - [Betfair Hub Tipsters 2024-09](../assets/Hub_Tipster_Results_2024-09.csv)
+ - [Betfair Hub Tipsters 2024-10](../assets/Hub_Tipster_Results_2024-10.csv)
+ - [Betfair Hub Tipsters 2024-11](../assets/Hub_Tipster_Results_2024-11.csv)
+ - [Betfair Hub Tipsters 2024-12](../assets/Hub_Tipster_Results_2024-12.csv)
+ - [Betfair Hub Tipsters 2025-01](../assets/Hub_Tipster_Results_2025-01.csv)
+ - [Betfair Hub Tipsters 2025-02](../assets/Hub_Tipster_Results_2025-02.csv)
+ - [Betfair Hub Tipsters 2025-03](../assets/Hub_Tipster_Results_2025-03.csv)
+ - [Betfair Hub Tipsters 2025-04](../assets/Hub_Tipster_Results_2025-04.csv)
 
 ## Australian Sport
 

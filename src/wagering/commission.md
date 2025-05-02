@@ -18,7 +18,7 @@ Betfair Commission is automatically removed from your winnings when the market i
 
 View this easy-to-read chart for a guide to MBR across racing and sport on the Exchange.
 
-![jpg](../img/MBR_Graphic.png)
+![jpg](../img/MBR-Graphic.jpg)
 
 ### Example
 
@@ -103,27 +103,26 @@ Customers will be contacted directly by Betfair and informed when this Transacti
 
 ## Premium Charge
 
-The Betfair Premium charge is only payable by the top 0.5% of customers, and while most exchange accounts will never encounter it, it is important to become informed about how and when it applies. In its essence, premium charge is a profit-sharing arrangement, whereby successful punters and traders share profit with Betfair to help us grow the exchange to ensure a strong and vibrant future.
+The Betfair Premium charge (or Expert Fee) is only payable by the top 0.5% of customers, and while most exchange accounts will never encounter it, it is important to become informed about how and when it applies. In its essence, premium charge is a profit-sharing arrangement, whereby successful punters and traders share profit with Betfair to help us grow the exchange to ensure a strong and vibrant future.
 
 ### Who will pay the Premium Charge?
 
-Each week Betfair will calculate your ‘gross profits’ made, and your ‘total charges’ generated over the lifetime of your account. The details of these calculations are explained below.
+Each week Betfair will calculate your ‘gross profits’ made, and your ‘total charges’ generated over your last 52 Active Weeks. The details of these calculations are explained below.
 
-You’ll only be considered for the Premium Charge if your account is in profit and only if the total charges generated since joining Betfair are less than 20% of your gross profits.
+**Total_Charges = (Commission_Paid + 0.03 x Losses)/2** (0.025 for Betfair UK accounts)
+
+You’ll only be considered for the Premium Charge if:
+
+    - Your account is in overall lifetime profit and;
+    - You have made more than £25,000 in profit in your last 52 Active Weeks and;
+    - You have had bets settled in more than 100 markets lifetime
+    - Your total charges are less than 20% of account profit in your last 52 Active Weeks
+    
+**An Active Week will be considered as any week where you have at least one settled bet in a market that fully settles in that week**
 
 The vast majority of customers, and even the majority of those whose betting on Betfair is profitable since they joined, do not meet both these conditions and will not incur the Premium Charge.
 
-While those conditions accurately describe our most successful customers, they might also apply to new customers who have only bet in a few markets, or those whose accounts are in profit because of a significant big win. To ensure that those accounts are not inadvertently charged, we’ve added two further conditions: 
-
-- any single win that constitutes more than 50% of lifetime gross profits will be excluded from the calculation
-- customers will only be considered for the Premium Charge after they have bet in more than 250 markets.
-
-### What is the Premium Charge?
-
-Each week the customers who meet all the conditions set out above will be charged the lesser of:
-
-- The difference between 20% of the previous week’s gross profits and the total charges generated during the week; and
-- The difference between 20% of gross profits and the total charges generated during the lifetime of the account.
+More information and detailed calculations can be found here: https://support.betfair.com/app/answers/detail/expert-fee-faqs 
 
 ## Closing thoughts
 

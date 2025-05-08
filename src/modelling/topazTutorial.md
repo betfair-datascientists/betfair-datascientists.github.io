@@ -28,11 +28,8 @@ This tutorial will walk you through the different steps required to generate Gre
 
 ---
 ## Historic Data
-To get started on building our own Topaz model, first we need to download the historic data from the Topaz API. The API has rate limits in place and so for the purposes of a bulk download of historic data, we will need to implement some way of handling these rate limits in order for us to download the data with a high degree of completeness. After all, the maxim 'Garbage In, Garbage Out' in regards to modelling holds true. If you don't feed your model good, complete data, then you won't have much success.
 
-In the code block below, there are multiple instances of retries and programmed sleep functions to allow the rate limits to reset. We are also requesting the races for each state in blocks of 7 days.
-
-NOTE: For state / date-range combinations where there are genuinely no races that occurred, the function will continuously error until it reaches the maximum specified retries before continuing to the next block. This may occur during the pandemic shutdown period in 2020 or the NSW Greyhound racing ban in 2017 or for time periods with the 'NT' jurisdiction where greyhound meetings may be up to 14 days apart.
+To get started on building our own Topaz model, first we need to download the historic data from the Topaz API. While we used to have to do this on a race level, it was painfully slow (with downloading a bulk dataset taking about 2-3 days). Now we're able to use a bulk data endpoint, to enable us to do this in minutes! The data goes back to January 2020 and is available as monthly or daily blocks up until today - 1 (i.e. yesterday). This won't work for upcoming races, but we'll look at that a bit later
 
 ```py title="Downloading Historic Data"
 import os
@@ -176,9 +173,6 @@ download_bulk_data(topaz_api, START_DATE, END_DATE, JURISDICTION_CODES)
 
 ---
 
-The Topaz race results endpoint requires the passing of a jurisdiction ID as a parameter to pull the results. Simply passing a date range will return no data. This is why we have looped over all jurisdictions in 10 day blocks.
-
-Bulk downloading the historical data in this way may take a while depending on how many years of data you are requesting. Bruno, the author of one of our previous greyhound modelling tutorials, uses 6 years worth of data for his backtesting. This however is computationally expensive to process in a machine learning model, so we suggest 2-3 years for those just starting out. 
 
 NOTE: In the above code we have exported each state separately to its own csv file. This will keep each file under a million rows ensuring that you can manually inspect the data by opening the file in Excel. This is not required (we will pull in each file to our model before we begin to process the data)
 
@@ -257,13 +251,13 @@ This is what the data may look like once exported
 { "secondSplitTime":"16.32"  }
 ]
 
-'''
+```
+
+```py title='Cleaning The Data'
 
 def load_topaz_data(codes):
     '''
     This function here will loop over our previously written csv files and load them into one dataframe.
-    Due to the time taken to gather data from the Topaz API and the sheer size of the files, it makes sense to store the Topaz data locally as csv files locally rather than as a variable in the operating environment.
-    If the python kernel needs to be reset for whatever reason, all stored variables are lost - so storing the data in csv files means we can just load up the files directly rather than spending another 24 hours re-downloading all the data
     '''
     # initialise the dataframe
     topaz_data_all = pd.DataFrame()
@@ -282,8 +276,10 @@ def load_topaz_data(codes):
     return topaz_data_all
 
 '''
-Because this new function returns a dataframe as the output, we need to define the output of the function as a named variable. This name can be different to the name of the variable named after the 'return' operation.
-Simply calling the function without assigning the output as a variable will result in the function's output not being defined which will affect our downstream operations.
+Because this new function returns a dataframe as the output, we need to define the output of the function as a named variable.
+This name can be different to the name of the variable named after the 'return' operation.
+Simply calling the function without assigning the output as a variable will result in the function's
+output not being defined which will affect our downstream operations.
 '''
 
 topaz_data_all = load_topaz_data(JURISDICTION_CODES)
@@ -301,7 +297,8 @@ topaz_data_all = discard_using_dates(topaz_data_all,START_DATE)
 def discard_scratched_runners_data(topaz_data_all):
     '''
     This function will discard all scratched runners and abandoned races by dropping all rows where place = None
-    Note that this should only be done for past races, as upcoming races will also have place = None, because they have not been run yet, and so dropping these would remove all upcoming races
+    Note that this should only be done for past races, as upcoming races will also have place = None,
+    because they have not been run yet, and so dropping these would remove all upcoming races
     '''
     # Discard scratched runners and abandoned races
     topaz_data_all.dropna(subset=['place'], how='all', inplace=True)
@@ -347,7 +344,8 @@ def discard_unnecessary_columns(topaz_data_all,columns):
      - Entries contain data leakage which is data that has been added after the race has been run and would not be available for a live model
      - Significant amounts of missing data
 
-    Duplicate rows have also been discarded. These rows may exist if the collect_topaz_data function has been run for the same date more than once.
+    Duplicate rows have also been discarded. 
+    These rows may exist if the collect_topaz_data function has been run for the same date more than once.
     Each race a dog runs will have a unique runId which is why this column is ideal for identifying duplicates
     '''
     # Keep the required columns
@@ -362,8 +360,10 @@ def discard_unnecessary_columns(topaz_data_all,columns):
     return topaz_data
 
 '''
-For all function where the defined variable name is the same as the parameter name included in the function call, this means we are doing an 'inplace' modification of the existing dataframe
-The variable here is being mutated and will not be the same after the application of the function. This means that if the function is run twice, the second run may fail because the variable has changed
+For all function where the defined variable name is the same as the parameter name included in the function call,
+this means we are doing an 'inplace' modification of the existing dataframe
+The variable here is being mutated and will not be the same after the application of the function.
+This means that if the function is run twice, the second run may fail because the variable has changed
 '''
 topaz_data_all = discard_scratched_runners_data(topaz_data_all)
 
@@ -418,7 +418,6 @@ def correct_result_margin(topaz_data):
 topaz_data = correct_result_margin(topaz_data)
 
 ```
-
 Here we've cleaned our dataset as much as we can. Next it's on to the feature creation!
 
 ## Create the features

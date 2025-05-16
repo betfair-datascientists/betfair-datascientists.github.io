@@ -242,7 +242,8 @@ The entrant with the lowest average log loss per race will be declared the winne
 
 ### Historic Data
 
-Registrants will be provided with a link for a historic dataset from the Topaz API. Updates will be posted here weekly leading up to the competition and daily during the competition.
+Registrants will be provided with a link for a historic dataset from the Topaz API. Updates will be added to the folder provided in the registration email
+
 
 Registrants with a Topaz API key can utilise the code below:
 
@@ -254,195 +255,148 @@ from tqdm import tqdm
 import time
 from datetime import datetime, timedelta
 from topaz import TopazAPI
+from sklearn.preprocessing import MinMaxScaler 
+import numpy as np
 import requests
 import os
+import itertools
+from dateutil.relativedelta import relativedelta
 
-# Insert your TOPAZ API key 
+# Constants
 TOPAZ_API_KEY = ''
 
-# Define the states you require
-JURISDICTION_CODES = ['VIC','NSW','QLD','SA','NZ','TAS','NT','WA']
+JURISDICTION_CODES = ['NSW', 'QLD', 'WA', 'TAS', 'NT', 'NZ', 'VIC', 'SA']
+
+START_DATE = '2025-01-01'
+today = datetime.today()
+END_DATE = (today - timedelta(days=7)).strftime('%Y-%m-%d')
+first_of_this_month = today.replace(day=1).strftime('%Y-%m-%d')
+first_of_last_month = (today.replace(day=1) - relativedelta(months=1)).strftime('%Y-%m-%d')
+
+def define_topaz_api(api_key):
+    return TopazAPI(api_key)
+
+topaz_api = define_topaz_api(TOPAZ_API_KEY)
 
 '''
 It is pythonic convention to define hard-coded variables (like credentials) in all caps. Variables whose value may change in use should be defined in lowercase with underscore spacing
 '''
 
-# Define the start and end date for the historic data download
-start_date = datetime(2025,2,1)
-end_date = datetime(2025,3,20)
+def generate_month_year_range(start_date, end_date):
 
-def generate_date_range(start_date, end_date):
-    ''' 
-    Here we generate our date range for passing into the Topaz API.
-    This is necessary due to the rate limits implemented in the Topaz API. 
-    Passing a start date and end date 12 months apart in the API call will cause significant amounts of data to be omitted, so we need to generate a range to pass much smaller date ranges in the Topaz API calls
-    '''
-    # Initialise the date_range list
-    date_range = []
+    dates = pd.date_range(start=start_date, end=end_date, freq='MS')
+    return [(date.year, date.month) for date in dates]
 
-    current_date = start_date
+def generate_day_range(start_date, end_date):
 
-    while current_date <= end_date:
-        date_range.append(current_date.strftime("%Y-%m-%d"))
-        current_date += timedelta(days=1)
+    dates = pd.date_range(start=start_date, end=end_date, freq='D')
+    return [(date.year, date.month, date.day) for date in dates]
 
-    return date_range
+def get_existing_bulk_data(csv_path):
 
-def define_topaz_api(api_key):
-    '''
-    This is where we define the Topaz API and pass our credentials
-    '''
-    topaz_api = TopazAPI(api_key)
+    if not os.path.isfile(csv_path):
+        return set(), set()
 
-    return topaz_api
+    try:
+        # Extract owning authority code from filename
+        base_name = os.path.basename(csv_path)
+        owning_authority_code = base_name.split('_')[0]
 
-def download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sleep_time):
-    '''
-    The parameters passed here are:
-        1. The TopazAPI instance with our credentials
-        2. Our date range that we generated which is in the format of a list of strings
-        3. Our list of JURISDICTION_CODES
-        4. Our datatype (either 'HISTORICAL' or 'UPCOMING'). 
-            It is important to separate these in our database to ensure that the upcoming races with lots of empty fields (like margin) do not contaminate our historical dataset.
-    '''
+        # Read and parse meetingDate
+        df = pd.read_csv(csv_path, usecols=['meetingDate'], parse_dates=['meetingDate'])
 
-    # Iterate over 10-day blocks
-    for i in range(0, len(date_range), 10):
-        start_block_date = date_range[i]
-        print(start_block_date)
-        end_block_date = date_range[min(i + 9, len(date_range) - 1)]  # Ensure the end date is within the range
+        # Create year, month, and day columns
+        df['year'] = df['meetingDate'].dt.year
+        df['month'] = df['meetingDate'].dt.month
+        df['day'] = df['meetingDate'].dt.day
 
-        
-        for code in codes:
-            # initialise the race list
-            all_races = []
+        # Generate sets
+        monthly_done = set((owning_authority_code, y, m) for y, m in zip(df['year'], df['month']))
+        daily_done = set((owning_authority_code, y, m, d) for y, m, d in zip(df['year'], df['month'], df['day']))
 
-            print(code)
+        return monthly_done, daily_done
 
-            retries = number_of_retries  # Number of retries
-            '''
-            In this code block we are attempting to download a list of raceIds by passing our JURISDICTION_CODES and date range.
-            The sleep functions are included to allow time for the rate limits to reset and any other errors to clear.
-            The Topaz API does not return much detail in error messages and through extensive trial and error, we have found the best way to resolve errors is simply to pause for a short time and then try again.
-            After 10 retries, the function will move to the next block. This will usually only occur if there actually were zero races for that JURISDICTION_CODE and date_range or there is a total Topaz API outage.
-            '''
-            while retries > 0:
-                try:
-                    races = topaz_api.get_races(from_date=start_block_date, to_date=end_block_date, owning_authority_code=code)
-                    all_races.append(races)
-                    break  # Break out of the loop if successful
-                except requests.HTTPError as http_err:
-                    if http_err.response.status_code == 429:
-                        retries -= 1
-                        if retries > 0:
-                            print(f"Rate limited. Retrying in {sleep_time * 4/60} minutes...")
-                            time.sleep(sleep_time * 4)
-                        else:
-                            print("Max retries reached. Moving to the next block.")
-                    else:
-                        print(f"Error fetching races for {code}: {http_err.response.status_code}")
-                        retries -= 1
-                        if retries > 0:
-                            print(f"Retrying in {sleep_time} seconds...")
-                            time.sleep(sleep_time)
-                        else:
-                            print("Max retries reached. Moving to the next block.")
+    except Exception as e:
+        print(f"Error reading {csv_path}: {e}")
+        return set(), set()
 
-            try:
-                all_races_df = pd.concat(all_races, ignore_index=True)
-            except ValueError:
+def download_bulk_data(topaz_api, start_date, end_date, jurisdiction_codes):
+    for code in jurisdiction_codes:
+        csv_path = f"{code}_bulk_runs.csv"
+        file_exists = os.path.isfile(csv_path)
+
+        # Track completed months/days
+        monthly_done, daily_done = get_existing_bulk_data(csv_path)
+
+        # --- Monthly ---
+        for year, month in generate_month_year_range(start_date, first_of_last_month):
+            if (code, year, month) in monthly_done:
+                print(f"Skipping {code} {year}-{month:02d} (already downloaded)")
                 continue
 
-            # Extract unique race IDs
-            race_ids = list(all_races_df['raceId'].unique())
+            success = False
+            retries = 0
+            max_retries = 5
 
-            # Define the file path
-            file_path = code + '_DATA_'+datatype+'.csv'
-            
-            # Use tqdm to create a progress bar
-            for race_id in tqdm(race_ids, desc="Processing races", unit="race"):
-                result_retries = number_of_retries
-                '''
-                Here we utilise the retries function again to maximise the chances of our data being complete.
-                We spend some time here gathering the splitPosition and splitTime. While these fields are not utilised in the completed model, the process to extract this data has been included here for the sake of completeness only, as it is not straightforward.
-                
-                '''
-                while result_retries > 0:
-                    # Check if we already have a file for this jurisdiction
-                    file_exists = os.path.isfile(file_path)
-                    # Set the header_param to the opposite Bool
-                    header_param = not file_exists
-                    
-                    try:                        
-                        # Get the race result data
-                        race_result_json = topaz_api.get_race_result(race_id=race_id)
-
-                        # Flatten the JSON response into a dataframe
-                        race_result = pd.json_normalize(race_result_json)
-
-                        race_run_df = pd.DataFrame(race_result['runs'].tolist(),index=race_result.index)
-                        race_run = race_run_df.T.stack().to_frame()
-                        race_run.reset_index(drop=True, inplace= True)
-                        race_run_normalised = pd.json_normalize(race_run[0])
-
-                        # Separate the split times and flatten them
-                        split_times_df = pd.DataFrame(race_result['splitTimes'].tolist(),index=race_result.index)
-                        splits_dict = split_times_df.T.stack().to_frame()
-                        splits_dict.reset_index(drop=True, inplace= True)
-                        splits_normalised = pd.json_normalize(splits_dict[0])
-                        
-                        if len(splits_normalised) > 0:
-                            
-                            # Create a dataframe from the first split
-                            first_split = splits_normalised[splits_normalised['splitTimeMarker'] == 1]
-                            first_split = first_split[['runId','position','time']]
-                            first_split = first_split.rename(columns={'position':'firstSplitPosition','time':'firstSplitTime'})
-
-                            # Create a dataframe from the second split
-                            second_split = splits_normalised[splits_normalised['splitTimeMarker'] == 2]
-                            second_split = second_split[['runId','position','time']]
-                            second_split = second_split.rename(columns={'position':'secondSplitPosition','time':'secondSplitTime'})
-
-                            # Create a dataframe from the runIds, then merge the first and second split dataframes
-                            split_times = splits_normalised[['runId']]
-                            split_times = pd.merge(split_times,first_split,how='left',on=['runId'])
-                            split_times = pd.merge(split_times,second_split,how='left',on=['runId'])
-
-                        try:
-                            # Attach the split times to the original race_run dataframe
-                            race_run = pd.merge(race_run_normalised,split_times,how='left',on=['runId'])
-                        except Exception:
-                            race_run=race_run_normalised   
-
-                    except requests.HTTPError as http_err:
-                        if http_err.response.status_code == 404:
-                            break
-
-                    except Exception as e:
-                        print(f"Error {e}")
-                        result_retries -= 1
-                        if result_retries > 0:
-                            time.sleep(sleep_time)
-                        else:
-                            break
-                    
-                    finally:
-                        race_run.drop_duplicates(inplace=True)
-                        race_run.to_csv(file_path, mode='a', header=header_param, index=False)
+            while not success and retries < max_retries:
+                try:
+                    data = topaz_api.get_bulk_runs_by_month(
+                        owning_authority_code=code,
+                        year=year,
+                        month=month
+                    )
+                    if data.empty:
+                        print(f"No data for {code} {year}-{month:02d}")
+                        break
+                    data.to_csv(csv_path, mode='a', index=False, header=not file_exists)
+                    file_exists = True
+                    print(f"Appended data for {code} {year}-{month:02d}")
+                    success = True
+                except Exception as e:
+                    error_msg = str(e).lower()
+                    if '429' in error_msg or 'rate limit' in error_msg or 'timed out' in error_msg or 'timeout' in error_msg:
+                        retries += 1
+                        print(f"Retryable error for {code} {year}-{month:02d}: {e}. Retrying in 60 seconds... ({retries}/{max_retries})")
+                        time.sleep(60)
+                    else:
+                        print(f"Non-retryable error for {code} {year}-{month:02d}: {e}")
                         break
 
-def collect_topaz_data(api_key,codes,start_date,end_date,datatype,number_of_retries,sleep_time):
-    '''
-    This function here combines our three previously defined functions into one neat function in the correct order of execution.
-    As the data is written to csv files, we do not need to return anything at the end of the function. This also means that it is not necessary to define a variable as the output of a function
-    '''
-    date_range = generate_date_range(start_date,end_date)
+        # --- Daily ---
+        for year, month, day in generate_day_range(first_of_this_month, end_date):
+            if (code, year, month, day) in daily_done:
+                continue
 
-    topaz_api = define_topaz_api(api_key)
-    
-    download_topaz_data(topaz_api,date_range,codes,datatype,number_of_retries,sleep_time)
+            success = False
+            retries = 0
+            max_retries = 5
 
-collect_topaz_data(TOPAZ_API_KEY,JURISDICTION_CODES,start_date,end_date,'HISTORICAL',10,30)
+            while not success and retries < max_retries:
+                try:
+                    data = topaz_api.get_bulk_runs_by_day(
+                        owning_authority_code=code,
+                        year=year,
+                        month=month,
+                        day=day
+                    )
+                    if data.empty:
+                        print(f"No data for {code} {year}-{month:02d}-{day:02d}")
+                        break
+                    data.to_csv(csv_path, mode='a', index=False, header=not file_exists)
+                    file_exists = True
+                    print(f"Appended data for {code} {year}-{month:02d}-{day:02d}")
+                    success = True
+                except Exception as e:
+                    error_msg = str(e).lower()
+                    if '429' in error_msg or 'rate limit' in error_msg or 'timed out' in error_msg or 'timeout' in error_msg:
+                        retries += 1
+                        print(f"Retryable error for {code} {year}-{month:02d}-{day:02d}: {e}. Retrying in 60 seconds... ({retries}/{max_retries})")
+                        time.sleep(60)
+                    else:
+                        print(f"Non-retryable error for {code} {year}-{month:02d}-{day:02d}: {e}")
+                        break
+
+download_bulk_data(topaz_api, START_DATE, END_DATE, JURISDICTION_CODES)
 
 ```
 

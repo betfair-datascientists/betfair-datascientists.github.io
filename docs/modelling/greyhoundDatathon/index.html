@@ -3635,7 +3635,10 @@
 <hr />
 <h3 id="submission-process">Submission Process</h3>
 <p>Submission templates will be provided here by 12:00pm AEST each day</p>
-<p><a href="../assets/submission_template_2025-04-15.csv">Example Submission Template</a></p>
+<ul>
+<li><a href="../assets/submission_template_2025-04-15.csv">Example Submission Template</a></li>
+<li><a href="../assets/submission_template_2025-04-19.csv">May 19th Submission</a></li>
+</ul>
 <p>Entrants should not edit the template in any way except to add the rated price for each runner.</p>
 <div class="highlight"><span class="filename">Generate Submission Template</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">betfairlightweight</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">betfairlightweight</span><span class="w"> </span><span class="kn">import</span> <span class="n">filters</span>
@@ -3764,7 +3767,7 @@
 <a id="__codelineno-0-125" name="__codelineno-0-125" href="#__codelineno-0-125"></a><span class="c1">#remove scratched runners, WA Tracks and meetings starting before 6pm</span>
 <a id="__codelineno-0-126" name="__codelineno-0-126" href="#__codelineno-0-126"></a><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;REMOVED&#39;</span><span class="p">)]</span>
 <a id="__codelineno-0-127" name="__codelineno-0-127" href="#__codelineno-0-127"></a><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">~</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;venue&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;Cannington&#39;</span><span class="p">,</span> <span class="s1">&#39;Mandurah&#39;</span><span class="p">,</span> <span class="s1">&#39;Northam&#39;</span><span class="p">])]</span>
-<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;event_open_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">time</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
+<a id="__codelineno-0-128" name="__codelineno-0-128" href="#__codelineno-0-128"></a><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;event_open_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">time</span> <span class="o">&gt;=</span> <span class="n">time</span><span class="p">(</span><span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span>
 <a id="__codelineno-0-129" name="__codelineno-0-129" href="#__codelineno-0-129"></a><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;event_open_date&#39;</span><span class="p">])</span>
 <a id="__codelineno-0-130" name="__codelineno-0-130" href="#__codelineno-0-130"></a>
 <a id="__codelineno-0-131" name="__codelineno-0-131" href="#__codelineno-0-131"></a><span class="c1">#sort columns</span>

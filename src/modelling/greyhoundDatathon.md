@@ -71,7 +71,9 @@ Submissions are by due by 4:59pm AEST each day
 
 Submission templates will be provided here by 12:00pm AEST each day
 
-[Example Submission Template](../assets/submission_template_2025-04-15.csv)
+ - [Example Submission Template](../assets/submission_template_2025-04-15.csv)
+ - [May 19th Submission](../assets/submission_template_2025-04-19.csv)
+
 
 Entrants should not edit the template in any way except to add the rated price for each runner.
 
@@ -204,7 +206,7 @@ df = pd.concat(runner_dataframes, ignore_index=True)
 #remove scratched runners, WA Tracks and meetings starting before 6pm
 df=df[~(df['status'] == 'REMOVED')]
 df = df[~df['venue'].isin(['Cannington', 'Mandurah', 'Northam'])]
-df = df[df['event_open_date'].dt.time >= time(18, 0)]
+df = df[df['event_open_date'].dt.time >= time(17, 0)]
 df = df.drop(columns=['event_open_date'])
 
 #sort columns

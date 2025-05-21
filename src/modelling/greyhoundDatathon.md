@@ -406,7 +406,7 @@ download_bulk_data(topaz_api, START_DATE, END_DATE, JURISDICTION_CODES)
 
 ## Leaderboard
 
-Leaderboards will be published here throughout the competition
+![Leaderboard](../img/GH_Leaderboard.png)
 
 ---
 

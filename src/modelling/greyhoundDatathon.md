@@ -405,7 +405,7 @@ download_bulk_data(topaz_api, START_DATE, END_DATE, JURISDICTION_CODES)
 
 ```
 
-## Leaderboard
+## Leaderboard - 23rd May
 
 ![Leaderboard](../img/GH_Leaderboard.png)
 
@@ -433,6 +433,10 @@ download_bulk_data(topaz_api, START_DATE, END_DATE, JURISDICTION_CODES)
 ### What happens if I miss a race?
 
 - You’ll be assigned the median log loss from other entrants for that race.
+
+### How many races can I miss?
+
+- You can miss up to two full days of racing before you will no longer be eligible for a prize
 
 ### What happens if a race is not run (abandoned) or is declared a no-race?
 

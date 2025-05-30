@@ -81,6 +81,7 @@ Submission templates will be provided here by 12:00pm AEST each day
  - [May 27th Submission](../assets/submission_template_2025-05-27.csv)
  - [May 28th Submission](../assets/submission_template_2025-05-28.csv)
  - [May 29th Submission](../assets/submission_template_2025-05-29.csv)
+ - [May 30th Submission](../assets/submission_template_2025-05-30.csv)
 
 Entrants should not edit the template in any way except to add the rated price for each runner.
 

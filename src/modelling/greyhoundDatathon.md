@@ -410,7 +410,7 @@ download_bulk_data(topaz_api, START_DATE, END_DATE, JURISDICTION_CODES)
 
 ```
 
-## Leaderboard - 28th May
+## Leaderboard - 30th May
 
 ![Leaderboard](../img/GH_Leaderboard.png)
 

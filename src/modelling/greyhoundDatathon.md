@@ -2,14 +2,6 @@
 
 ![Greyhound Datathon Banner](../img/GREYHOUND_DATATHON_BANNER.png)
 
-## Registration
-
-[Register Here!](https://forms.office.com/r/VbxSUYXjsi)
-
-Registrations are open until May 16th 2025. Only entrants who have registered through the link will be eligible to win a prize
-
----
-
 ## The Competition
 
 Think you’ve got what it takes to price up a Greyhound market? Now’s your chance to showcase your data modeling skills in Betfair’s 2025 Greyhound Racing Datathon!
@@ -410,7 +402,7 @@ download_bulk_data(topaz_api, START_DATE, END_DATE, JURISDICTION_CODES)
 
 ```
 
-## Leaderboard - 30th May
+## Leaderboard - Final
 
 ![Leaderboard](../img/GH_Leaderboard.png)
 

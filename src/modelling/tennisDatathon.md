@@ -4,7 +4,7 @@
 
 ## Registration
 
-To enter the Competition, an Eligible Participant must register their details by filling out the registration form found at: https://forms.office.com/r/VbxSUYXjsi 
+To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/VbxSUYXjsi)
 
 ---
 

@@ -1,5 +1,7 @@
 # Golden Rules of Automation
-| Some rules of thumb to help on your modelling & automation journey
+
+**Some rules of thumb to help on your modelling & automation journey**
+
  ---
 So, you're interested in modelling and automation? That's great to hear, but between having that interest and actually developing a fully working automated betting strategy is often a lot of effort, mistakes and iterative learning. Here we share some of our internal 'golden rules' of automation 
 - those lessons we've learnt ourselves or heard from others in the community 

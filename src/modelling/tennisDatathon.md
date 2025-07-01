@@ -17,7 +17,7 @@ With **$5,000 in prizes** on offer, this is your opportunity to create a predict
 This year’s Datathon features the **127 scheduled matches** from the tournament with a total of **8128 match predictions** required (equal to the number of possible matches), and we challenge you to test your skills against others for both **prizes** and **ultimate bragging rights**.
 
 - Leaderboard updates will be posted here throughout the competition, so check back often.
-- Join the conversation in the Quants Discord server (#datathon channel), where you can discuss models with fellow participants.
+- Join the conversation in the Quants Discord server (**#datathon** channel), where you can discuss models with fellow participants.
 - Don't forget to complete the [registration form](https://forms.office.com/r/ZG9ea1xQj1) to join the Discord Server.
 
 For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon@betfair.com.au).
@@ -50,7 +50,7 @@ Winners will be announced at the end of the competition, with prizes distributed
 
 ### Competition Rules
 
-Entrants will receive a bespoke set of historical tennis player data for all ATP matches from 20XX to the present.
+Entrants will receive a bespoke set of historical tennis player data for all ATP matches from 2021 to the present.
 
 Your goal is create a model or a set of models to generate a probability for each player to win the match.
 
@@ -94,16 +94,16 @@ Check back later for leaderboard updates
 
 ### What are the guidelines for the rated prices?
 
-- For each match, the sum of the reciprocals of all players must sum to 1
+- For each match, the sum of the reciprocals for both players must sum to 1
 - Each probability must be between 0 and 1, exclusive
 - No truncation of decimal points is required
 
 ### What happens for matches that don't happen because one of the players was eliminated?
 
-- Only matches that are played to the completion of at least 1 set will be considered for scoring
+- These matches will not be considered for scoring
 
 ### What happens in the event of a walkover or retirement?
 
-- Any match that has had at least one set completed will be considered for scoring
+- The match will only be considered for scoring if at least 1 set has been completed
 
 ---

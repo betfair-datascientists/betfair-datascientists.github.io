@@ -9,10 +9,10 @@ hide:
     
 # _
 <div class="grid-container-CTA">
-<div style="position: relative; font-family: National2; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 50px; border-radius: 10px 10px 0 0; width: 100%; height: 440px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotif.png'); background-size: cover; background-repeat: no-repeat; background-position: top;">
+<div style="position: relative; font-family: DIN_Regular; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 50px; border-radius: 10px 10px 0 0; width: 100%; height: 440px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotif.png'); background-size: cover; background-repeat: no-repeat; background-position: top;">
     <div style="position: absolute; top: 63%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; line-height: 1.05">
-        <b><font size="6rem">TRADE AND BET ON BETFAIR USING OUR API OR CHOOSE</font></b><br>
-        <b><font size="6rem">FROM A CATALOGUE OF THIRD PARTY BETTING TOOLS</font></b><br>
+        <b><font size="5rem">TRADE AND BET ON BETFAIR USING OUR API OR CHOOSE</font></b><br>
+        <b><font size="5rem">FROM A CATALOGUE OF THIRD PARTY BETTING TOOLS</font></b><br>
         <br>
         <span style="font-family: DIN_Regular; font-size: 0.75rem;">
             The Betfair Exchange is a unique platform for peer-to-peer trading and wagering.<br>

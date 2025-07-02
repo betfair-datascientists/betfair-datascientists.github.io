@@ -31,6 +31,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2025-03](../assets/ANZ_Thoroughbreds_2025_03.csv)
  - [Aus & NZ Thoroughbreds 2025-04](../assets/ANZ_Thoroughbreds_2025_04.csv)
  - [Aus & NZ Thoroughbreds 2025-05](../assets/ANZ_Thoroughbreds_2025_05.csv)
+ - [Aus & NZ Thoroughbreds 2025-06](../assets/ANZ_Thoroughbreds_2025_06.csv)
 
 ### Thoroughbred Predictions Model
 
@@ -43,6 +44,7 @@ By downloading this data, you acknowledge and agree that:
  - [Thoroughbred Model Results 2025 Mar](../assets/Kash_Model_Results_2025_03.csv)
  - [Thoroughbred Model Results 2025 Apr](../assets/Kash_Model_Results_2025_04.csv)
  - [Thoroughbred Model Results 2025 May](../assets/Kash_Model_Results_2025_05.csv)
+ - [Thoroughbred Model Results 2025 Jun](../assets/Kash_Model_Results_2025_06.csv)
 
 ### Top 5 Model
 
@@ -57,6 +59,7 @@ By downloading this data, you acknowledge and agree that:
  - [Top 5 Model Results 2025 Mar](../assets/Top5_Model_Results_2025_03.csv)
  - [Top 5 Model Results 2025 Apr](../assets/Top5_Model_Results_2025_04.csv)
  - [Top 5 Model Results 2025 May](../assets/Top5_Model_Results_2025_05.csv)
+ - [Top 5 Model Results 2025 Jun](../assets/Top5_Model_Results_2025_06.csv)
 
 ### Harness
 
@@ -67,6 +70,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Harness 2025-03](../assets/ANZ_Harness_2025_03.csv)
  - [Aus & NZ Harness 2025-04](../assets/ANZ_Harness_2025_04.csv)
  - [Aus & NZ Harness 2025-05](../assets/ANZ_Harness_2025_05.csv)
+ - [Aus & NZ Harness 2025-06](../assets/ANZ_Harness_2025_06.csv)
 
 ### Harness Predictions Model
 
@@ -77,6 +81,7 @@ By downloading this data, you acknowledge and agree that:
  - [Harness Model Results 2025 Mar](../assets/Globetrotter_Model_Results_2025_03.csv)
  - [Harness Model Results 2025 Apr](../assets/Globetrotter_Model_Results_2025_04.csv)
  - [Harness Model Results 2025 May](../assets/Globetrotter_Model_Results_2025_05.csv)
+ - [Harness Model Results 2025 Jun](../assets/Globetrotter_Model_Results_2025_06.csv)
 
 ### Greyhounds
 
@@ -87,6 +92,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2025-03](../assets/ANZ_Greyhounds_2025_03.csv)
  - [Aus & NZ Greyhounds 2025-04](../assets/ANZ_Greyhounds_2025_04.csv)
  - [Aus & NZ Greyhounds 2025-05](../assets/ANZ_Greyhounds_2025_05.csv)
+ - [Aus & NZ Greyhounds 2025-06](../assets/ANZ_Greyhounds_2025_06.csv)
 
 ### Greyhound Predictions Model (Iggy Version 1 - Now Deprecated)
 
@@ -104,6 +110,7 @@ By downloading this data, you acknowledge and agree that:
  - [Greyhound Model Results 2025 Mar](../assets/Iggy_Model_V2_Results_2025_03.csv)
  - [Greyhound Model Results 2025 Apr](../assets/Iggy_Model_V2_Results_2025_04.csv)
  - [Greyhound Model Results 2025 May](../assets/Iggy_Model_V2_Results_2025_05.csv)
+ - [Greyhound Model Results 2025 Jun](../assets/Iggy_Model_V2_Results_2025_06.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 
@@ -119,6 +126,8 @@ By downloading this data, you acknowledge and agree that:
  - [Betfair Hub Tipsters 2025-02](../assets/Hub_Tipster_Results_2025-02.csv)
  - [Betfair Hub Tipsters 2025-03](../assets/Hub_Tipster_Results_2025-03.csv)
  - [Betfair Hub Tipsters 2025-04](../assets/Hub_Tipster_Results_2025-04.csv)
+ - [Betfair Hub Tipsters 2025-05](../assets/Hub_Tipster_Results_2025-05.csv)
+ - [Betfair Hub Tipsters 2025-06](../assets/Hub_Tipster_Results_2025-06.csv)
 
 ## Australian Sport
 

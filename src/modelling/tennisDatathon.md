@@ -82,7 +82,7 @@ The dataset for the competition will be provided to participants in the registra
 
 ## Leaderboard
 
-Check back later for leaderboard updates
+![Leaderboard](../img/DATATHON_LEADERBOARD.png)
 
 ---
 

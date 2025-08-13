@@ -13,7 +13,7 @@ There are four steps involved in getting access to our API
 
 !!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
-    Please [reach out](mailto:api@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
+    Please [reach out](mailto:automation@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
 ---
 
 ## New Zealand customers
@@ -69,4 +69,4 @@ This process will generate two app keys:
 
 ***Please note that if the live key is used to pull data from the Exchange without corresponding bets being placed a delay may be automatically applied to the live key.***
 
-If you’re ready to start testing your strategy or placing bets, please contact api@betfair.com.au and we will be happy to assist with activating the live key and implementing your strategy. 
+If you’re ready to start testing your strategy or placing bets, please contact automation@betfair.com.au and we will be happy to assist with activating the live key and implementing your strategy. 

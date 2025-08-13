@@ -16,7 +16,7 @@ The historic data files and their use in simulation mode have some limitations c
  - Live markets react to changes in volume on the exchange, so there will be no data on how any simulated bets would have affected other players in the market. This is salient if you wanted to test a strategy utilising large bet sizes or on high odds selections or using a trading model
  - The simulation is suited to Australian or New Zealand races but can be adapted for use in other countries with some minor changes.
 
-This tutorial will utilise the PRO level files only, and has not been tested on the BASIC or ADVANCED level files. Australian and New Zealand customers can reach out to us at [data@betfair.com.au](mailto:data@betfair.com.au) to gain access to the PRO data files
+This tutorial will utilise the PRO level files only, and has not been tested on the BASIC or ADVANCED level files. Australian and New Zealand customers can reach out to us at [automation@betfair.com.au](mailto:automation@betfair.com.au) to gain access to the PRO data files
 
 ## Tutorial Outline
 

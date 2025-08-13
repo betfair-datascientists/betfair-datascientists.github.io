@@ -4,7 +4,7 @@ Building a greyhound racing model using Python and Machine Learning
 This tutorial is a refreshed version of our previous tutorials utilising the new version of the FastTrack API (now called Topaz). 
 Topaz is a product provided to Betfair Australia & New Zealand customers by Greyhound Racing Victoria (GRV). 
 
-If you would like your own Topaz API key, please contact us [here](mailto:data@betfair.com.au). 
+If you would like your own Topaz API key, please contact us [here](mailto:automation@betfair.com.au). 
 Access can only be provided to Betfair Australia or New Zealand customers with active accounts
 
 ---
@@ -22,7 +22,7 @@ This tutorial will walk you through the different steps required to generate Gre
 ## Requirements
 - Coding environment which supports Jupyter Notebooks (e.g. Visual Studio Code)
 - Betfair API Key. If you don't have one please follow the steps outlined on the [The Automation Hub](https://betfair-datascientists.github.io/api/apiappkey/)
-- Topaz API Key. If you would like to be considered for a Topaz key, please email [data@betfair.com.au](mailto:data@betfair.com.au) (Australian/New Zealand customers only).
+- Topaz API Key. If you would like to be considered for a Topaz key, please email [automation@betfair.com.au](mailto:automation@betfair.com.au) (Australian/New Zealand customers only).
     - A screening call may be required for new accounts or accounts with no history of automated betting activity
 - Python Topaz API wrapper. To install this package using pip, type 'pip install topaz_api' into your terminal
 

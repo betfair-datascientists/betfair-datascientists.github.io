@@ -89,4 +89,4 @@ We’re putting together a collection of articles on how to use some of these th
 ---
 ### Need extra help?
 
-If you’re looking for bespoke advice or have extra questions, please contact us at bdp@betfair.com.au. We have a dedicated in-house resource that is here to automate your betting strategies.
+If you’re looking for bespoke advice or have extra questions, please contact us at automation@betfair.com.au. We have a dedicated in-house resource that is here to automate your betting strategies.

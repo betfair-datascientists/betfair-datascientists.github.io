@@ -25,7 +25,7 @@ Once you've developed the first cut of your model you're going to want to make s
 - When back testing make sure to partition your dataset:
     - It is common in data science to split your dataset into training, testing and validation sets, this way you can create and train your strategy on the training dataset and test and validate your strategy on separate datasets.
     - Strategies can often become overfitted to the dataset they were trained on, leading to strategies that may not be generalizable or don't hold in real life. Making sure you separate your testing and validation datasets will help mitigate this risk by back testing your strategy on an out of sample data set.
-- If you don't have the data you need to back test your strategy reach out to <Data@betfair.com.au> and we'll see what we can do!
+- If you don't have the data you need to back test your strategy reach out to <automation@betfair.com.au> and we'll see what we can do!
 
 ---
 ## Staking

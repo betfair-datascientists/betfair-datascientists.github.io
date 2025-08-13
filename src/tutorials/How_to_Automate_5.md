@@ -28,7 +28,7 @@ But either way, we can still try some really cool things such as testing differe
 
 Before we get started, although Jupyter Notebook/lab is a quants' favourite tool we need to use a different IDE such as VS Code for our simulation code (feel free to try it out, it didn't work for me and I read a note somewhere about it in the docs, but can't find it anymore). All code files are made available on [github](https://github.com/betfair-down-under/autoHubTutorials/tree/master).
 
-I am going to use the March 2022 Greyhound Pro data and I've provided a sample of that data in the github repo which you can use to follow along, but if your an Australian and New Zealand customer make sure to shoot an email to <data@betfair.com.au>. 
+I am going to use the March 2022 Greyhound Pro data and I've provided a sample of that data in the github repo which you can use to follow along, but if your an Australian and New Zealand customer make sure to shoot an email to <automation@betfair.com.au>. 
 
 Simulation mode in Flumine requires your data to be structured a certain way. So, if you have purchased data you will need it to be extracted formatted so that each market file is within a single file, instead or having files within files within files (default).
 

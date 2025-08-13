@@ -2,7 +2,7 @@
 
 Want to learn how to create your own predictive model using sports or racing data, but you don’t know where to start? We’re here to help.
 
-The Data Scientists at Betfair have put together the first few steps we suggest you take to get you started on your data modelling journey. We also run occasional data modelling workshops to help you get the basics down – [reach out and let us know](mailto:bdp@betfair.com.au) if you’re interested in being notified about upcoming data events.
+The Data Scientists at Betfair have put together the first few steps we suggest you take to get you started on your data modelling journey. We also run occasional data modelling workshops to help you get the basics down – [reach out and let us know](mailto:automation@betfair.com.au) if you’re interested in being notified about upcoming data events.
 
 ---
 ## Choose your language

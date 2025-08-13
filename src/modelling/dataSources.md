@@ -8,7 +8,7 @@ For more information on how to use this data to make your own predictive model, 
 ## [Historical Stream API data](https://historicdata.betfair.com/#/mydata)
 
 Betfair UK give access to all the historical Stream API data since 2016. It is excellent to use in building models and back testing strategies, however isn't necessarily in an easily accessible format for everyone.
-Australian and New Zealand customers should email us at data@betfair.com.au before purchasing any data from this site.
+Australian and New Zealand customers should email us at automation@betfair.com.au before purchasing any data from this site.
 
 ### What you need to know about this data source:
 
@@ -81,4 +81,4 @@ This is an excellent resource if you are interested in racing and like to see ma
     - [Globetrotter Harness Predictions Model](https://www.betfair.com.au/hub/racing/harness/harness-racing-predictions/)
  ---
 
-If none of these options suit your needs please contact us at data@betfair.com.au to discuss other potential options.
+If none of these options suit your needs please contact us at automation@betfair.com.au to discuss other potential options.

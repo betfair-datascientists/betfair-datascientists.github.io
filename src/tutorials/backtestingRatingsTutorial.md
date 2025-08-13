@@ -9,7 +9,7 @@ This tutorial was written by [Tom Bishop](https://github.com/TMBish) and was [or
 
 This tutorial follows on logically from the [JSON to CSV tutorial](https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/) we shared previously. If you're still new to working with the JSON data sets we suggest you take a look at that tutorial before diving into this one. 
 
-As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/pulls) if you catch some bugs or have other improvements! 
+As always please [reach out](mailto:automation@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/pulls) if you catch some bugs or have other improvements! 
 
 !!! note "Cheat sheet"
     - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/tutorials/backtestingRatingsTutorial/#complete-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/aa76784071aad7703266d53dead7a713815e6107/backtestRatings/main.py).
@@ -972,7 +972,7 @@ If you want to expand this backtesting analysis, here's a list (in no particular
 ---
 ### Over to you
 
-We're planning on writing some more tutorials to help make it easier to work with the JSON data sets. If there are particular examples or data sets you'd like to see us walk through [please reach out](mailto:data@betfair.com.au).
+We're planning on writing some more tutorials to help make it easier to work with the JSON data sets. If there are particular examples or data sets you'd like to see us walk through [please reach out](mailto:automation@betfair.com.au).
 
 !!! note "Community support"
     - There's a really active [Betcode (formerly Betfairlightweight) slack group](https://betcode-org.slack.com/ssb/redirect) that's a great place to go to ask questions about the library and get support from other people who are also working in the space

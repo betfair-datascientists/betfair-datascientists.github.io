@@ -14,7 +14,7 @@ Here are some of the resources we'd recommend taking a look at if you're buildin
 
 !!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
-    Please [reach out](mailto:api@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
+    Please [reach out](mailto:automation@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
 
 ## Github
 - Our Datascientists' repos for using [R](/api/apiRtutorial) and [Python](/api/apiPythontutorial) to access the API

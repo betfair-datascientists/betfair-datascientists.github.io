@@ -11,7 +11,7 @@ Some examples being:
 However, trying to find sports data or more detailed racing data can be challenging, especially if you don't have a programming background to process the historic JSON Files (although we have an excellent [tutorial](https://betfair-datascientists.github.io/tutorials/processingTarFiles101/)). That's why we've worked to bring you some additional sports and racing files to make backtesting a model that much easier.
 
 As this site is run by Betfair Australia and New Zealand, unfortunately we are only able to provide data on markets which take place within Australia and New Zealand (so no English Premier League unfortunately).
-If, after viewing the data, there's something else you'd like to see, please reach out to us at [data@betfair.com.au](mailto:data@betfair.com.au).
+If, after viewing the data, there's something else you'd like to see, please reach out to us at [automation@betfair.com.au](mailto:automation@betfair.com.au).
 
 ### Disclaimer
  

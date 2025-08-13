@@ -11,7 +11,7 @@ In this tutorial we're going to step through the process of using the Python `be
 
 The idea of this tutorial is to share a way of using existing libraries to make working with the JSON data sets easier, and hopefully the provide a foundation that you can build your own code base and data sets from. We'll be focusing on horse racing data; what we want to produce is a csv output that includes one row per runner for each market we're interested in, along with summary pre-play and in-play data for the runner. We'll step through the issues we encountered and how we went about solving the various challenges, including sharing relevant code snips along the way. 
 
-We're not Python natives and acknowledge that there are probably more efficient and neater ways of achieving the same end goal! As always please [reach out](mailto:data@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py) if you catch some bugs or have other improvements! 
+We're not Python natives and acknowledge that there are probably more efficient and neater ways of achieving the same end goal! As always please [reach out](mailto:automation@betfair.com.au) with feedback, suggestions or queries, or feel free to submit a [pull request](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py) if you catch some bugs or have other improvements! 
 
 !!! note "Cheat sheet"
     - If you're looking for the complete code [head to the bottom of the page](https://betfair-datascientists.github.io/tutorials/jsonToCsvTutorial/#sample-code) or [download the script from Github](https://github.com/betfair-down-under/autoHubTutorials/blob/master/jsonToCsv/main.py).
@@ -456,7 +456,7 @@ def min_gr0(a: float, b: float) -> float:
 
 Our intention is that you don't need a heap of Python experience to be able to work through this tutorial; as long as you're prepared to get the Python environment set up and learn some basic programming skills, the hope is that you'll be able to customise your own csv file and maybe even extend on what we've covered and produced here.
 
-We're planning on writing some more tutorials to help make it easier to work with the JSON data sets. If there are particular examples or data sets you'd like to see us walk through [please reach out](mailto:data@betfair.com.au).
+We're planning on writing some more tutorials to help make it easier to work with the JSON data sets. If there are particular examples or data sets you'd like to see us walk through [please reach out](mailto:automation@betfair.com.au).
 
 !!! note "Community support"
     - There's a really active [Betcode (formerly Betfairlightweight) slack group](https://betcode-org.slack.com/ssb/redirect) that's a great place to go to ask questions about the library and get support from other people who are also working in the space

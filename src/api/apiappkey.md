@@ -27,7 +27,7 @@ Betfair apologises for any inconvenience caused.
 ### Find your SSOID token
 The simplest way to setup your browser with the SSOID is to follow <a href="https://identitysso.betfair.com/view/login?product=home.betfair.int&url=https%3A%2F%2Fwww.betfair.com.au%2F" target="_blank">this link</a> and log in - this will allow for the SSOID to be automatically populated in the next step. 
 
-After logging in, you’ll be sent to the main Betfair website. *Note: it may not show that you’re logged in on the site. You can ignore that. Proceed to step two.*
+After logging in, you’ll be sent to the main Betfair website. *Note: it may not show that you’re logged in on the site. Login again before proceeding to step two.*
 
 ---
 ### Register your application
@@ -43,7 +43,7 @@ Type in an application name (this is your app key name, so make sure this is uni
 
 - Common errors when creating your app key are if the Application Name you’re using isn’t unique (no Betfair customers can have the same Application Name) or if you’re Application Name contains your account username
  
-If you receive an error message saying that your app key couldn’t be created, it’s most likely because you already have one. Use the `getDeveloperAppKeys` method in the left hand menu to check whether there’s already an app key associated with your account.
+If you receive an error message saying that your app key couldn’t be created, it’s most likely because you already have one. Use the `getDeveloperAppKeys` method in the left hand menu to check whether there’s already an app key associated with your account (and click `Execute` at the bottom of the screen)
 
 ---
 ### Find your app key

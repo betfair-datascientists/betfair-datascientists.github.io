@@ -11,8 +11,8 @@ hide:
 <div class="grid-container-CTA">
 <div style="position: relative; font-family: DIN_Regular; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 50px; border-radius: 10px 10px 0 0; width: 100%; height: 440px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotif.png'); background-size: cover; background-repeat: no-repeat; background-position: top;">
     <div style="position: absolute; top: 63%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; line-height: 1.05">
-        <b><font size="5rem">TRADE AND BET ON BETFAIR USING OUR API OR CHOOSE</font></b><br>
-        <b><font size="5rem">FROM A CATALOGUE OF THIRD PARTY BETTING TOOLS</font></b><br>
+        <b><font size="5rem">TRADE AND BET ON BETFAIR USING OUR</font></b><br>
+        <b><font size="5rem">SUITE OF TRANSACTIONAL API TOOLS</font></b><br>
         <br>
         <span style="font-family: DIN_Regular; font-size: 0.75rem;">
             The Betfair Exchange is a unique platform for peer-to-peer trading and wagering.<br>
@@ -36,7 +36,7 @@ hide:
 <div class="grid-container-CTA-mob">
 <div style="position: relative; font-family: Din_Regular; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 10px; border-radius: 10px 10px 0 0; width: 100%; height: 350px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotifMobile.PNG'); background-size: cover; background-repeat: no-repeat; background-position: top;">
     <div style="position: absolute; top: 60%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; line-height: 1.05">
-        <b><font size="2rem !important">Trade and bet on Betfair using our API or choose from a catalogue of third party betting tools</font></b><br>
+        <b><font size="2rem !important">Trade and bet on Betfair using our suite of transactional API tools</font></b><br>
         <br>
         <br>
         <div class="button-container" style="width:100%">
@@ -58,7 +58,7 @@ hide:
 <div class="grid-container-CTA-mid">
 <div style="position: relative; font-family: Din_Regular; font-size: 10px; display: flex; justify-content: space-between; align-items: flex-start; padding: 10px; border-radius: 10px 10px 0 0; width: 100%; height: 350px; background-color: rgba(0, 0, 0, 0.5); background-image: url('/img/AutomationHubMotifMid.PNG'); background-size: cover; background-repeat: no-repeat; background-position: top;">
     <div style="position: absolute; top: 70%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; line-height: 1.05; text-transform: uppercase;">
-        <b><font size="3rem">Trade and bet on Betfair using our API or choose from a catalogue of third party betting tools</font></b><br>
+        <b><font size="3rem">Trade and bet on Betfair using our suite of transactional API tools</font></b><br>
         <br>
         <br>
         <div class="button-container">
@@ -362,14 +362,6 @@ hide:
             </div>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Automation Tools</h2>
-            <br>
-            <p style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">There are many applications that have been built by external developers which offer exciting features including one-click bets or tools for fully automating your strategies on the exchange. We've developed reviews and tutorials for some of the most popular tools.</p>
-            <div class="button-container">
-            <a target="_blank" href="https://betfair-datascientists.github.io/automation/overview/" class="btn btn-hd" style="font-size: 0.9rem;padding: 5px 10px;width: auto;margin-top: 10px;height: 35px;">Learn More</a>
-            </div>
-        </div>
-        <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
             <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Inspiration and Information</h2>
             <p style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. We're always looking for new and interesting content.</p>
             <div class="button-container">
@@ -389,7 +381,6 @@ hide:
         <div>
         </div>
         <div class="carousel-dots">
-        <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span> 
         <span class="dot"></span>
@@ -420,13 +411,6 @@ hide:
             </div>
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
-            <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Automation Tools</h2>
-            <p style="color: white !important;font-family:DIN_Regular;font-size:0.7rem;line-height: 1">There are many applications that have been built by external developers which offer exciting features including one-click bets or tools for fully automating your strategies on the exchange. We've developed reviews and tutorials for some of the most popular tools.</p>
-            <div class="button-container">
-            <a target="_blank" href="https://betfair-datascientists.github.io/autoTools/overview/" class="btn btn-hd" style="font-size: 0.9rem;padding: 5px 10px;width: auto;margin: 10px;height: 35px;">Learn More</a>
-            </div>
-        </div>
-        <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
             <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Inspiration & Info</h2>
             <p style="color: white !important;font-family:DIN_Regular;font-size:0.7rem;line-height: 1">There are a lot of people who use data, models and automation to make a living out of professional betting. Here are some of their stories, and some extra tools to help you develop your own strategy. We're always looking for new and interesting content.</p>
             <div class="button-container">
@@ -441,7 +425,6 @@ hide:
             </div>
         </div>
         <div class="carousel-dots"> 
-        <span class="dot"></span> 
         <span class="dot"></span> 
         <span class="dot"></span> 
         <span class="dot"></span> 

@@ -67,6 +67,8 @@ The submission template will be provided here no later than 8th September 2025
 
 Entrants should not edit the template in any way except to add the predicted number of votes for each player.
 
+- [SUBMISSION FORM](../assets/Brownlow_Medal_Datathon_2025_Submission_Form.csv)
+
 ---
 
 ### Judging
@@ -80,6 +82,8 @@ The score for each model will be the average RMSE for each individual prediction
 ### Historic Data
 
 Registrants will be provided with a historic dataset from the fitzRoy R package.
+
+ - [DATASET](../assets/brownlow_datathon_dataset.zip)
 
 ## Leaderboard
 

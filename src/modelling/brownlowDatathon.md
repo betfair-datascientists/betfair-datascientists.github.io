@@ -24,7 +24,7 @@ For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon
 
 ## The Specifics
 
-Review the full Terms and Conditions for the 2025 Brownlow Medal Datathon [here](../assets/Greyhound_Datathon_2025_TCs.pdf).
+Review the full Terms and Conditions for the 2025 Brownlow Medal Datathon [here](../assets/Brownlow_Datathon_2025_TCs.pdf).
 
 ### Prizes
 

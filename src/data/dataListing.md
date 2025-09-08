@@ -144,6 +144,7 @@ By downloading this data, you acknowledge and agree that:
  - [Betfair Hub Tipsters 2025-05](../assets/Hub_Tipster_Results_2025-05.csv)
  - [Betfair Hub Tipsters 2025-06](../assets/Hub_Tipster_Results_2025-06.csv)
  - [Betfair Hub Tipsters 2025-07](../assets/Hub_Tipster_Results_2025-07.csv)
+ - [Betfair Hub Tipsters 2025-08](../assets/Hub_Tipster_Results_2025-08.csv)
 
 ## Australian Sport
 

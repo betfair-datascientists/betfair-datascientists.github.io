@@ -95,6 +95,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#coding-principles" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -2465,7 +2470,115 @@ Collecting your own data ensures that data leakage is excluded from your databas
 Greyhound Racing, sometimes with 150+ Australian races per day, won't take long, maybe 3 months, to collect a meaningful dataset, whereas Thoroughbred racing might be 12 months, and sport data even longer.
 And for events like the Olympics, well you'll need to have the patience of a saint.</p>
 <p>There goes a saying of unknown origin that states <strong>"The best time to plant a tree is twenty years ago. The second best time is now."</strong>
-Well let's look at how we plant the seed of building a database of recordings from the Betfair Streaming and Polling APIs</p>
+Well let's look at how we plant the seed of building a database of recordings from the Betfair Streaming and Polling APIs as well as a template for sending alerts to an external service like Discord</p>
+<p><strong>Note:</strong> Read-only access to the live Betfair API is not allowed, so any results recording bot should be supplemented with betting activity to maintain live access</p>
+<h2 id="coding-principles">Coding Principles</h2>
+<p>As I'm sure many self-taught coders started out, my early python code consisted of one long script with less than 5 defined functions. This code tended to be a nightmare to maintain, debug and little to no reusability or compartmentalisation. Thankfully, I'm now older and (somewhat) wiser, and I've learned some basic principles of coding that have helped to make code more logical and maintainable.</p>
+<p><strong>"Write your code as though the person who has to maintain it is a violent psychopath who knows where you live (and that someone might be you)" - Unknown</strong></p>
+<p>Here's a short list of tips to improve the quality of your code</p>
+<ul>
+<li>Break your code into functions — each function should do one clear job.</li>
+<li>Use meaningful names for variables and functions so the code explains itself.</li>
+<li>Add comments for “why”, not “what” (the code should show what it’s doing).</li>
+<li>Keep your code consistent in style (indentation, naming, spacing).</li>
+<li>Test your code in small pieces and use print/logging to trace issues.</li>
+<li>Where possible, utilise multiple files to reduce the number of lines in each file</li>
+</ul>
+<p>This tutorial will be written utilising the flumine python wrapper and using the Visual Studio Code IDE</p>
+<h2 id="structure">Structure</h2>
+<p>This bot is setup with 5 files to reduce the size of each file:</p>
+<ul>
+<li>main.py</li>
+<li>utils.py</li>
+<li>placing_helpers.py</li>
+<li>racing_logger.py</li>
+<li>discord_helper.py</li>
+</ul>
+<p>We'll run the main.py file only, and it will import all the other files to assist the process. You could further compartmentalise this to have a config.py file and only ever need to change that file.
+The live API key being used to run this bot has a market subscription limit of 1000 for the streaming API, if you need an increased limit please email automation@betfair.com.au (upon application)</p>
+<h2 id="mainpy">Main.py</h2>
+<div class="highlight"><span class="filename">main.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Import Libraries</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">flumine</span><span class="w"> </span><span class="kn">import</span> <span class="n">Flumine</span><span class="p">,</span> <span class="n">clients</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">betfairlightweight.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">streaming_market_filter</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">betfairlightweight.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">streaming_market_data_filter</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># Import Flumine Class and Util</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">racing_logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">RacingLogger</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">bflw_trading</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;results_logger.log&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1">:</span><span class="si">%(levelname)s</span><span class="s1">:</span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="c1"># Credentials to login and logging in </span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">trading</span> <span class="o">=</span> <span class="n">bflw_trading</span><span class="p">()</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">clients</span><span class="o">.</span><span class="n">BetfairClient</span><span class="p">(</span><span class="n">trading</span><span class="p">,</span> <span class="n">interactive_login</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># Not using certificates</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>    <span class="n">framework</span> <span class="o">=</span> <span class="n">Flumine</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="n">client</span><span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="c1"># Define the flumine strategy</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">market_monitoring</span> <span class="o">=</span> <span class="n">RacingLogger</span><span class="p">(</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="n">market_filter</span><span class="o">=</span><span class="n">streaming_market_filter</span><span class="p">(</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>            <span class="n">event_type_ids</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;4339&quot;</span><span class="p">],</span> <span class="c1"># Greyhound Markets</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>            <span class="n">market_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;WIN&#39;</span><span class="p">,</span><span class="s1">&#39;PLACE&#39;</span><span class="p">,</span><span class="s1">&#39;EXACTA&#39;</span><span class="p">,</span><span class="s1">&#39;QUINELLA&#39;</span><span class="p">,</span><span class="s1">&#39;FORECAST&#39;</span><span class="p">,</span><span class="s1">&#39;REV_FORECAST&#39;</span><span class="p">],</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="p">),</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="n">market_data_filter</span><span class="o">=</span><span class="n">streaming_market_data_filter</span><span class="p">(</span><span class="n">fields</span><span class="o">=</span><span class="p">[</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="s2">&quot;EX_BEST_OFFERS_DISP&quot;</span><span class="p">,</span> <span class="c1"># This imports cross-matching or virtual bets</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="s2">&quot;EX_TRADED&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        <span class="s2">&quot;EX_TRADED_VOL&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        <span class="s2">&quot;EX_LTP&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        <span class="s2">&quot;EX_MARKET_DEF&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        <span class="s2">&quot;SP_TRADED&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="s2">&quot;SP_PROJECTED&quot;</span><span class="p">],</span> <span class="n">ladder_levels</span><span class="o">=</span><span class="mi">3</span><span class="p">),</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="n">streaming_timeout</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="p">)</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="n">framework</span><span class="o">.</span><span class="n">add_strategy</span><span class="p">(</span><span class="n">market_monitoring</span><span class="p">)</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="n">framework</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</code></pre></div>
+<h2 id="cross-matching">Cross-Matching</h2>
+<p>Cross-matching bets are bets automatically placed by an engine within the Betfair infrastructure to extend the reach of bets being offered on the Exchange.</p>
+<p>An example of this would be a customer offering a lay bet to lose $50 at a price of $10 on the outcome "Under 0.5 Goals" in the market type "OVER_UNDER_05" for a soccer match.
+The opposing customer would then see a back bet available to take of $50 at a price of $10
+The cross-matching engine could, in theory, offer this bet on the following equivalent selections within the same event:</p>
+<table>
+<thead>
+<tr>
+<th>Market Type</th>
+<th>Selection</th>
+<th>Side</th>
+<th>Price</th>
+<th>Size</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CORRECT_SCORE</td>
+<td>0 - 0</td>
+<td>BACK</td>
+<td>$1.11</td>
+<td>$454.54</td>
+</tr>
+<tr>
+<td>OVER_UNDER_05</td>
+<td>Over 0.5 Goals</td>
+<td>BACK</td>
+<td>$1.11</td>
+<td>$454.54</td>
+</tr>
+<tr>
+<td>MATCH_ODDS_AND_BTTS</td>
+<td>Draw/No</td>
+<td>BACK</td>
+<td>$1.11</td>
+<td>$454.54</td>
+</tr>
+</tbody>
+</table>
+<p>These prices and stakes are calculated as <strong>1 / (1 - 1 / (Price))</strong> with the price then rounded down to the nearest tick </p>
 
 
 

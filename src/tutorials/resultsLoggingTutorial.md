@@ -109,7 +109,7 @@ The cross-matching engine could, in theory, offer this bet on the following equi
 | Market Type         | Selection            | Side | Price | Size  |
 |---------------------|----------------------|------|-------|-------|
 |CORRECT_SCORE        |0 - 0                 |BACK  |$1.11   |$454.54|
-|OVER_UNDER_05        |Over 0.5 Goals        |BACK  |$1.11   |$454.54|
+|OVER_UNDER_05        |Under 0.5 Goals        |BACK  |$1.11   |$454.54|
 |MATCH_ODDS_AND_BTTS  |Draw/No               |BACK  |$1.11   |$454.54|
 
 These prices and stakes are calculated as **1 / (1 - 1 / (Price))** with the price then rounded down to the nearest tick 

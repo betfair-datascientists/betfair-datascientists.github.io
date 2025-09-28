@@ -108,8 +108,35 @@ The cross-matching engine could, in theory, offer this bet on the following equi
 
 | Market Type         | Selection            | Side | Price | Size  |
 |---------------------|----------------------|------|-------|-------|
-|CORRECT_SCORE        |0 - 0                 |BACK  |$1.11   |$454.54|
-|OVER_UNDER_05        |Under 0.5 Goals        |BACK  |$1.11   |$454.54|
-|MATCH_ODDS_AND_BTTS  |Draw/No               |BACK  |$1.11   |$454.54|
+|CORRECT_SCORE        |0 - 0                 |BACK  |$10.00 |$50.00 |
+|OVER_UNDER_05        |Over 0.5 Goals        |LAY   |$1.11  |$454.54|
+|MATCH_ODDS_AND_BTTS  |Draw/No               |BACK  |$10.00 |$50.00 |
 
-These prices and stakes are calculated as **1 / (1 - 1 / (Price))** with the price then rounded down to the nearest tick 
+These prices and stakes are calculated as **1 / (1 - 1 / (Price))** with the price then rounded down to the nearest tick
+
+This logic covers all 2 selection markets like Over/Under markets, but **how is it calculated for markets of 3 or more selections?**
+As the number of runners increase in a market, the calculations become more complex but the cross-matching does help in closing the gap between back and lay prices
+
+Let's consider a racing win market with 5 runners
+
+| Runner | BATB | Prob  |100%-SUM_OTHER_RUNNERS|XM Unrounded|XM Rounded|
+|--------|------|-------|----------------------|------------|----------|
+|1       |$7.00 |14.28% |13.49%                |$7.41       |$7.50     |
+|2       |$9.20 |10.87% |10.08%                |$9.92       |$10.00    |
+|3       |$2.50 |40.00% |39.21%                |$2.55       |$2.56     |
+|2       |$3.90 |25.64% |24.85%                |$4.02       |$4.10     |
+|3       |$10.00|10.00% |9.21%                 |$10.86      |$11.00    |
+
+The column indicates how much market percentage is remaining if you took the current best available back prices for each runner excluding the current runner.
+Using the fact that backing all other runners is the same as laying just one, the cross-matcher is able to calculate the price to offer on that one runner.
+
+In the event that someone takes the cross-matcher price, then the cross-matcher would take all other back bets to ensure an even position. Obviously it can only offer
+valid Betfair ticks, so it will round up the prices where it is backing (a lay bet for someone else to take) and round down lay bets. If someone were to take one of the back
+bets available, then the cross matcher price would be invalid and then recalculated.
+
+By default, Flumine does not return the cross-matching bets (also called virtual bets) so we must explicitly call it. These bets are available to take, so it makes sense to call them.
+To do this we call **"EX_BEST_OFFERS_DISP"** in the streaming_market_data_filter
+
+## racing_logger.py
+
+Now let's outline our custom flumine class. While this code could be refactored further, keeping the process_market_book function as flat as possible, enables better readability.

@@ -12,7 +12,7 @@ Think you’ve got what it takes to model **Thoroughbred Racing** markets? Now�
 
 With **$5,000 in prizes** on offer, this is your opportunity to create a predictive model that accurately **prices up Place markets** across Victorian Thoroughbred racing. Whether you're a seasoned pro or new to racing analytics, we encourage you to get creative — adapt your skills from other fields, improve an existing model, or start fresh!  
 
-This year’s Datathon takes place over **3 weeks**, featuring a curated selection of **real Thoroughbred races**. Participants will be challenged to produce **probabilities for each runner in the Place market**, with performance measured against real-world outcomes to determine model accuracy and leaderboard rankings.  
+This year’s Datathon takes place over **3 weeks**, featuring a curated selection of **real Thoroughbred races**. Participants will be challenged to produce **probabilities for each runner in the Place market**, with performance measured against real-world outcomes to determine model accuracy and leaderboard rankings.
 
 - **Leaderboard updates** will be posted here throughout the competition, so check back often.  
 - Join the conversation in the Quants Discord server (**#datathon** channel), where you can discuss models with fellow participants.  
@@ -25,6 +25,8 @@ For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon
 ## The Specifics
 
 Review the full Terms and Conditions for the 2025 Spring Racing Datathon [here](../assets/Spring_Racing_Datathon_2025_TCs.pdf).
+
+The competition will run from **10 November** 2025 until **29 November** 2025 (**excluding Sundays**) and will cover **all** Victorian Thoroughbred Racing
 
 ### Prizes
 

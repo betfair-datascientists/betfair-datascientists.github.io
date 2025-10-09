@@ -2480,9 +2480,9 @@
 <p>To enter the Competition, an Eligible Participant must register their details by filling out the <a href="https://forms.office.com/r/QnQVkCqtd7">registration form</a></p>
 <hr />
 <h2 id="the-competition">The Competition</h2>
-<p>Think you’ve got what it takes to model <strong>Thoroughbred Racing</strong> markets? Now’s your chance to showcase your data modeling skills in <strong>Betfair’s 2025 Springacing Datathon!</strong>  </p>
+<p>Think you’ve got what it takes to model <strong>Thoroughbred Racing</strong> markets? Now’s your chance to showcase your data modeling skills in <strong>Betfair’s 2025 Spring Racing Datathon!</strong>  </p>
 <p>With <strong>$5,000 in prizes</strong> on offer, this is your opportunity to create a predictive model that accurately <strong>prices up Place markets</strong> across Victorian Thoroughbred racing. Whether you're a seasoned pro or new to racing analytics, we encourage you to get creative — adapt your skills from other fields, improve an existing model, or start fresh!  </p>
-<p>This year’s Datathon takes place over <strong>3 weeks</strong>, featuring a curated selection of <strong>real Thoroughbred races</strong>. Participants will be challenged to produce <strong>probabilistic prices for each runner in the Place market</strong>, with performance measured against real-world outcomes to determine model accuracy and leaderboard rankings.  </p>
+<p>This year’s Datathon takes place over <strong>3 weeks</strong>, featuring a curated selection of <strong>real Thoroughbred races</strong>. Participants will be challenged to produce <strong>probabilities for each runner in the Place market</strong>, with performance measured against real-world outcomes to determine model accuracy and leaderboard rankings.  </p>
 <ul>
 <li><strong>Leaderboard updates</strong> will be posted here throughout the competition, so check back often.  </li>
 <li>Join the conversation in the Quants Discord server (<strong>#datathon</strong> channel), where you can discuss models with fellow participants.  </li>
@@ -2491,7 +2491,7 @@
 <p>For questions and submissions, contact <a href="mailto:datathon@betfair.com.au">datathon@betfair.com.au</a></p>
 <hr />
 <h2 id="the-specifics">The Specifics</h2>
-<p>Review the full Terms and Conditions for the 2025 Tennis Datathon <a href="../assets/Spring_Racing_Datathon_2025_TCs.pdf">here</a>.</p>
+<p>Review the full Terms and Conditions for the 2025 Spring Racing Datathon <a href="../assets/Spring_Racing_Datathon_2025_TCs.pdf">here</a>.</p>
 <h3 id="prizes">Prizes</h3>
 <p><strong>$5,000 in prizes</strong> are up for grabs! Here's the breakdown of the prize pool:</p>
 <table>
@@ -2549,11 +2549,12 @@
 </tbody>
 </table>
 <p>Winners will be announced at the end of the competition, with prizes distributed shortly afterward.</p>
+<hr />
 <h3 id="competition-rules">Competition Rules</h3>
-<p>Entrants will receive a bespoke set of thoroughbred racing data from a variety of sources and this will be updated daily.</p>
-<p>Your goal is create a model or a set of models to generate a probability for each horse to place. The sum of the probabilities for all horses in each race must equal the number of winners in the <strong>PLACE</strong> market on the Betfair Exchange. If the number of runners at the time of market loading is less than 8, then the PLACE market will pay two winners, otherwise three winners will be paid. In the event of scratchings that reduce the number of runners to less than 8, the initial number of winners in the PLACE market will remain unchanged.</p>
+<p>Entrants will receive a bespoke set of thoroughbred racing data from a variety of sources and <strong>this will be updated daily.</strong></p>
+<p>Your goal is create a model or a set of models to generate a probability for each horse to place. The sum of the probabilities for all horses in each race must equal the number of winners in the <strong>PLACE</strong> market on the Betfair Exchange. If the number of runners at the time of market loading is <strong>less than 8</strong>, then the PLACE market will pay <strong>two winners, otherwise three winners will be paid.</strong> In the event of scratchings that reduce the number of runners to less than 8, the initial number of winners in the PLACE market will remain unchanged.</p>
 <p>How you build your model is entirely up to you—whether it's an Elo model, regression, Machine Learning, or something else, the creativity is in your hands.</p>
-<p>Submit your predictions by 60 minutes prior to the first race of the day.</p>
+<p>Submit your predictions by <strong>60 minutes prior to the first race of the day.</strong></p>
 <p>See the full Terms and Conditions for more competition rules.</p>
 <hr />
 <h3 id="submission-process">Submission Process</h3>
@@ -2566,7 +2567,8 @@
 </ul>
 <hr />
 <h3 id="historic-data">Historic Data</h3>
-<p>The dataset for the competition will be provided to participants in the registration email</p>
+<p>The dataset for the competition will be provided to participants in the registration email and daily updates will be provided here</p>
+<hr />
 <h2 id="leaderboard">Leaderboard</h2>
 <h2 id="check-back-later"><strong>Check Back Later</strong></h2>
 <h2 id="faqs">FAQs</h2>
@@ -2592,14 +2594,18 @@
 </ul>
 <h3 id="what-happens-in-the-event-of-a-dead-heat">What happens in the event of a dead heat?</h3>
 <ul>
-<li>If there is a dead heat, such that the number of actual winners exceeds the market number of winners, the binary result will be divided by the number of runners for the final place. e.g. If there is a dead heat for 3rd place between 2 runners, the horses placed 1st and 2nd will be assigned 1, the two runners in 3rd will be assigned a result of 0.5 and all other runners will receive 0. This replicates the process used for market settlement on the Betfair Exchange</li>
+<li>If there is a dead heat, such that the number of actual winners exceeds the market number of winners, the binary result will be divided by the number of runners for the final place.</li>
+<li>e.g. If there is a dead heat for 3rd place between 2 runners, the horses placed 1st and 2nd will be assigned 1, the two runners in 3rd will be assigned a result of 0.5 and all other runners will receive 0. This replicates the process used for market settlement on the Betfair Exchange</li>
 </ul>
 <h3 id="what-if-i-want-to-use-a-machine-learning-model">What if I want to use a Machine Learning model?</h3>
 <ul>
 <li>The algorithm choice doesn’t matter from a competition perspective. However, you should use a classification model, not a regression model.</li>
 </ul>
 <h3 id="what-happens-if-i-miss-a-race">What happens if I miss a race?</h3>
-<h2 id="-the-entrant-will-be-assigned-the-median-value-of-all-other-participants-for-the-race-you-must-submit-at-least-90-of-races-to-remain-eligible-for-a-prize">- The entrant will be assigned the median value of all other participants for the race. You must submit at least 90% of races to remain eligible for a prize.</h2>
+<ul>
+<li>The entrant will be assigned the median value of all other participants for the race. You must submit at least 90% of races to remain eligible for a prize.</li>
+</ul>
+<hr />
 <h2 id="registration_1">Registration</h2>
 <p>To enter the Competition, an Eligible Participant must register their details by filling out the <a href="https://forms.office.com/r/QnQVkCqtd7">registration form</a></p>
 

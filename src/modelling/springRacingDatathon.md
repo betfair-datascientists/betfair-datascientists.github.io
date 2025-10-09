@@ -8,11 +8,11 @@ To enter the Competition, an Eligible Participant must register their details by
 
 ## The Competition
 
-Think you’ve got what it takes to model **Thoroughbred Racing** markets? Now’s your chance to showcase your data modeling skills in **Betfair’s 2025 Springacing Datathon!**  
+Think you’ve got what it takes to model **Thoroughbred Racing** markets? Now’s your chance to showcase your data modeling skills in **Betfair’s 2025 Spring Racing Datathon!**  
 
 With **$5,000 in prizes** on offer, this is your opportunity to create a predictive model that accurately **prices up Place markets** across Victorian Thoroughbred racing. Whether you're a seasoned pro or new to racing analytics, we encourage you to get creative — adapt your skills from other fields, improve an existing model, or start fresh!  
 
-This year’s Datathon takes place over **3 weeks**, featuring a curated selection of **real Thoroughbred races**. Participants will be challenged to produce **probabilistic prices for each runner in the Place market**, with performance measured against real-world outcomes to determine model accuracy and leaderboard rankings.  
+This year’s Datathon takes place over **3 weeks**, featuring a curated selection of **real Thoroughbred races**. Participants will be challenged to produce **probabilities for each runner in the Place market**, with performance measured against real-world outcomes to determine model accuracy and leaderboard rankings.  
 
 - **Leaderboard updates** will be posted here throughout the competition, so check back often.  
 - Join the conversation in the Quants Discord server (**#datathon** channel), where you can discuss models with fellow participants.  
@@ -24,7 +24,7 @@ For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon
 
 ## The Specifics
 
-Review the full Terms and Conditions for the 2025 Tennis Datathon [here](../assets/Spring_Racing_Datathon_2025_TCs.pdf).
+Review the full Terms and Conditions for the 2025 Spring Racing Datathon [here](../assets/Spring_Racing_Datathon_2025_TCs.pdf).
 
 ### Prizes
 
@@ -46,15 +46,17 @@ Review the full Terms and Conditions for the 2025 Tennis Datathon [here](../asse
 
 Winners will be announced at the end of the competition, with prizes distributed shortly afterward.
 
+---
+ 
 ### Competition Rules
 
-Entrants will receive a bespoke set of thoroughbred racing data from a variety of sources and this will be updated daily.
+Entrants will receive a bespoke set of thoroughbred racing data from a variety of sources and **this will be updated daily.**
 
-Your goal is create a model or a set of models to generate a probability for each horse to place. The sum of the probabilities for all horses in each race must equal the number of winners in the **PLACE** market on the Betfair Exchange. If the number of runners at the time of market loading is less than 8, then the PLACE market will pay two winners, otherwise three winners will be paid. In the event of scratchings that reduce the number of runners to less than 8, the initial number of winners in the PLACE market will remain unchanged.
+Your goal is create a model or a set of models to generate a probability for each horse to place. The sum of the probabilities for all horses in each race must equal the number of winners in the **PLACE** market on the Betfair Exchange. If the number of runners at the time of market loading is **less than 8**, then the PLACE market will pay **two winners, otherwise three winners will be paid.** In the event of scratchings that reduce the number of runners to less than 8, the initial number of winners in the PLACE market will remain unchanged.
 
 How you build your model is entirely up to you—whether it's an Elo model, regression, Machine Learning, or something else, the creativity is in your hands.
 
-Submit your predictions by 60 minutes prior to the first race of the day.
+Submit your predictions by **60 minutes prior to the first race of the day.**
 
 See the full Terms and Conditions for more competition rules.
 
@@ -67,7 +69,7 @@ Submissions will be evaluated based on the [Log Loss method](https://en.wikipedi
 All submissions should be emailed to datathon@betfair.com.au
 
 ---
-
+ 
 ### Judging
 
  - Entrants will be ranked in ascending order on their average log loss per race
@@ -76,8 +78,10 @@ All submissions should be emailed to datathon@betfair.com.au
 
 ### Historic Data
 
-The dataset for the competition will be provided to participants in the registration email
+The dataset for the competition will be provided to participants in the registration email and daily updates will be provided here
 
+---
+ 
 ## Leaderboard
 
 **Check Back Later**
@@ -107,7 +111,8 @@ The dataset for the competition will be provided to participants in the registra
 
 ### What happens in the event of a dead heat?
 
-- If there is a dead heat, such that the number of actual winners exceeds the market number of winners, the binary result will be divided by the number of runners for the final place. e.g. If there is a dead heat for 3rd place between 2 runners, the horses placed 1st and 2nd will be assigned 1, the two runners in 3rd will be assigned a result of 0.5 and all other runners will receive 0. This replicates the process used for market settlement on the Betfair Exchange
+- If there is a dead heat, such that the number of actual winners exceeds the market number of winners, the binary result will be divided by the number of runners for the final place.
+- e.g. If there is a dead heat for 3rd place between 2 runners, the horses placed 1st and 2nd will be assigned 1, the two runners in 3rd will be assigned a result of 0.5 and all other runners will receive 0. This replicates the process used for market settlement on the Betfair Exchange
 
 ### What if I want to use a Machine Learning model?
 
@@ -116,6 +121,7 @@ The dataset for the competition will be provided to participants in the registra
 ### What happens if I miss a race?
 
 - The entrant will be assigned the median value of all other participants for the race. You must submit at least 90% of races to remain eligible for a prize.
+
 ---
 
 ## Registration

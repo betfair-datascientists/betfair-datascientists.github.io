@@ -203,6 +203,7 @@ By downloading this data, you acknowledge and agree that:
  - [NRLW 2022 All Markets](../assets/NRLW_2022_All_Markets.csv)
  - [NRLW 2023 All Markets](../assets/NRLW_2023_All_Markets.csv)
  - [NRLW 2024 All Markets](../assets/NRLW_2024_All_Markets.csv)
+ - [NRLW 2025 All Markets](../assets/NRLW_2025_All_Markets.csv)
 
 ### A-League
 

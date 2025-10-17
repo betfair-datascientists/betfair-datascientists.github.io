@@ -1,5 +1,7 @@
 # Betfair’s 2025 Spring Racing Datathon
 
+![Spring Racing Datathon Banner](../img/RACING_DATATHON.png)
+
 ## Registration
 
 To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/QnQVkCqtd7)

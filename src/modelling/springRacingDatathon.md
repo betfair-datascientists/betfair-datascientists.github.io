@@ -411,6 +411,8 @@ The dataset for the competition will be provided to participants in the registra
  - [October Dataset](../assets/Datathon_Dataset_2025_10.csv)
  - [01-Nov-2025](../assets/Datathon_Dataset_2025_11_01.csv)
  - [02-Nov-2025](../assets/Datathon_Dataset_2025_11_02.csv)
+ - [03-Nov-2025](../assets/Datathon_Dataset_2025_11_03.csv)
+ - [04-Nov-2025](../assets/Datathon_Dataset_2025_11_04.csv)
 
 ---
  

@@ -72,7 +72,9 @@ Submissions will be evaluated based on the [Log Loss method](https://en.wikipedi
 
 All submissions should be emailed to datathon@betfair.com.au
 
- - [Example Submission File](../assets/submission_template_example.csv)
+- [Submission File 10th November](../assets/Spring_Racing_Datathon_2025_Submission_{Model_Name}_20251110.csv)
+
+
 
 **Code to generate submission file**
 
@@ -414,6 +416,9 @@ The dataset for the competition will be provided to participants in the registra
  - [03-Nov-2025](../assets/Datathon_Dataset_2025_11_03.csv)
  - [04-Nov-2025](../assets/Datathon_Dataset_2025_11_04.csv)
  - [05-Nov-2025](../assets/Datathon_Dataset_2025_11_05.csv)
+ - [06-Nov-2025](../assets/Datathon_Dataset_2025_11_06.csv)
+ - [07-Nov-2025](../assets/Datathon_Dataset_2025_11_07.csv)
+ - [08-Nov-2025](../assets/Datathon_Dataset_2025_11_08.csv)
 ---
  
 ## Leaderboard

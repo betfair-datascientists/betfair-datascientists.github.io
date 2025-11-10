@@ -307,7 +307,7 @@ def build_win_dataframe(trading, win_markets) -> pd.DataFrame:
         df["venue"] = event_name.split(" (")[0]
         df["race_no"] = market_name.split(" ")[0].replace("R", "")
         df["race_type"] = market_name.split("m ")[-1] if "m " in market_name else None
-        df["runner_name"] = df["runner_name"].str.split(". ").str[-1]
+        df["runner_name"] = df["runner_name"].str.split(". ",n=1).str[-1]
 
         all_rows.append(df)
 
@@ -419,6 +419,7 @@ The dataset for the competition will be provided to participants in the registra
  - [06-Nov-2025](../assets/Datathon_Dataset_2025_11_06.csv)
  - [07-Nov-2025](../assets/Datathon_Dataset_2025_11_07.csv)
  - [08-Nov-2025](../assets/Datathon_Dataset_2025_11_08.csv)
+ - [09-Nov-2025](../assets/Datathon_Dataset_2025_11_09.csv)
 ---
  
 ## Leaderboard

@@ -159,6 +159,7 @@ By downloading this data, you acknowledge and agree that:
  - [Betfair Hub Tipsters 2025-07](../assets/Hub_Tipster_Results_2025-07.csv)
  - [Betfair Hub Tipsters 2025-08](../assets/Hub_Tipster_Results_2025-08.csv)
  - [Betfair Hub Tipsters 2025-09](../assets/Hub_Tipster_Results_2025-09.csv)
+ - [Betfair Hub Tipsters 2025-10](../assets/Hub_Tipster_Results_2025-10.csv)
 
 ## Australian Sport
 
@@ -266,6 +267,9 @@ By downloading this data, you acknowledge and agree that:
  - [WBBL 2023 Match Odds Markets](../assets/WBBL09_Match_Odds.csv)
  - [WBBL 2024 All Markets](../assets/WBBL10_All_Markets.csv)
  - [WBBL 2024 Match Odds Markets](../assets/WBBL10_Match_Odds.csv)
+ - [WBBL 2025 All Markets](../assets/WBBL11_All_Markets.csv)
+ - [WBBL 2025 Match Odds Markets](../assets/WBBL11_Match_Odds.csv)
+
 
 ### NBL
  - [NBL 2021-2022 All Markets](../assets/NBL_2021-2022_All_Markets.csv)

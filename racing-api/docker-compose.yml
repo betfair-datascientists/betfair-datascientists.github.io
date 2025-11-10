@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - BETFAIR_USERNAME=${BETFAIR_USERNAME}
+      - BETFAIR_PASSWORD=${BETFAIR_PASSWORD}
+      - BETFAIR_APP_KEY=${BETFAIR_APP_KEY}
+    env_file:
+      - .env
+    volumes:
+      - ./racing_data.db:/app/racing_data.db
+      - ./app:/app/app
+    restart: unless-stopped

@@ -429,7 +429,8 @@ The dataset for the competition will be provided to participants in the registra
  
 ## Leaderboard
 
-**Check Back Later**
+![Datathon Leaderboard](../assets/DATATHON_LEADERBOARD.png)
+
 ---
 
 ## FAQs

@@ -75,6 +75,7 @@ All submissions should be emailed to datathon@betfair.com.au
 - [Submission File 10th November](../assets/Spring_Racing_Datathon_2025_Submission_Model-Name_20251110.csv)
 - [Submission File 11th November](../assets/Spring_Racing_Datathon_2025_Submission_Model-Name_20251111.csv)
 - [Submission File 12th November](../assets/Spring_Racing_Datathon_2025_Submission_Model-Name_20251112.csv)
+- [Submission File 13th November](../assets/Spring_Racing_Datathon_2025_Submission_Model-Name_20251113.csv)
 
 **Code to generate submission file**
 
@@ -352,6 +353,8 @@ def merge_win_place(win_df: pd.DataFrame, place_df: pd.DataFrame) -> pd.DataFram
         how="left",
     )
 
+    merged["cloth_number"] = merged["cloth_number"].astype(int)
+
     merged.sort_values(["venue", "race_no", "cloth_number"], inplace=True)
     return merged
 
@@ -421,6 +424,7 @@ The dataset for the competition will be provided to participants in the registra
  - [08-Nov-2025](../assets/Datathon_Dataset_2025-11-08.csv)
  - [09-Nov-2025](../assets/Datathon_Dataset_2025-11-09.csv)
  - [10-Nov-2025](../assets/Datathon_Dataset_2025-11-10.csv)
+ - [11-Nov-2025](../assets/Datathon_Dataset_2025-11-11.csv)
 ---
  
 ## Leaderboard

@@ -82,6 +82,7 @@ All submissions should be emailed to datathon@betfair.com.au
 - [Submission File 19th November](../assets/Spring_Racing_Datathon_2025_Submission_Model-Name_20251119.csv)
 - [Submission File 20th November](../assets/Spring_Racing_Datathon_2025_Submission_Model-Name_20251120.csv)
 - [Submission File 21st November](../assets/Spring_Racing_Datathon_2025_Submission_Model-Name_20251121.csv)
+- [Submission File 22nd November](../assets/Spring_Racing_Datathon_2025_Submission_Model-Name_20251122.csv)
 
 **Code to generate submission file**
 

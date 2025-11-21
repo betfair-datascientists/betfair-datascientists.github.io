@@ -1,0 +1,25 @@
+# Core API Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Betfair API
+betfairlightweight==2.18.0
+
+# Database
+sqlalchemy==2.0.23
+aiosqlite==0.19.0
+
+# Data Processing
+pandas==2.1.3
+numpy==1.26.2
+
+# Utilities
+python-dotenv==1.0.0
+python-multipart==0.0.6
+httpx==0.25.2
+
+# Testing
+pytest==7.4.3
+pytest-asyncio==0.21.1

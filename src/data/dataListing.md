@@ -38,22 +38,38 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2025-10](../assets/ANZ_Thoroughbreds_2025_10.csv)
  - [Aus & NZ Thoroughbreds 2025-11](../assets/ANZ_Thoroughbreds_2025_11.csv)
 
-### Thoroughbred Predictions Model
+### Aus & NZ Thoroughbred Predictions Model
 
- - [Thoroughbred Model Results 2021](../assets/Kash_Model_Results_2021.csv)
- - [Thoroughbred Model Results 2022](../assets/Kash_Model_Results_2022.csv)
- - [Thoroughbred Model Results 2023](../assets/Kash_Model_Results_2023.csv)
- - [Thoroughbred Model Results 2024](../assets/Kash_Model_Results_2024.csv)
- - [Thoroughbred Model Results 2025 Jan](../assets/Kash_Model_Results_2025_01.csv)
- - [Thoroughbred Model Results 2025 Feb](../assets/Kash_Model_Results_2025_02.csv)
- - [Thoroughbred Model Results 2025 Mar](../assets/Kash_Model_Results_2025_03.csv)
- - [Thoroughbred Model Results 2025 Apr](../assets/Kash_Model_Results_2025_04.csv)
- - [Thoroughbred Model Results 2025 May](../assets/Kash_Model_Results_2025_05.csv)
- - [Thoroughbred Model Results 2025 Jun](../assets/Kash_Model_Results_2025_06.csv)
- - [Thoroughbred Model Results 2025 Jul](../assets/Kash_Model_Results_2025_07.csv)
- - [Thoroughbred Model Results 2025 Aug](../assets/Kash_Model_Results_2025_08.csv)
- - [Thoroughbred Model Results 2025 Sep](../assets/Kash_Model_Results_2025_09.csv)
- - [Thoroughbred Model Results 2025 Oct](../assets/Kash_Model_Results_2025_10.csv)
+ - [Aus & NZ Thoroughbred Model Results 2021](../assets/Kash_Model_Results_2021.csv)
+ - [Aus & NZ Thoroughbred Model Results 2022](../assets/Kash_Model_Results_2022.csv)
+ - [Aus & NZ Thoroughbred Model Results 2023](../assets/Kash_Model_Results_2023.csv)
+ - [Aus & NZ Thoroughbred Model Results 2024](../assets/Kash_Model_Results_2024.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Jan](../assets/Kash_Model_Results_2025_01.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Feb](../assets/Kash_Model_Results_2025_02.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Mar](../assets/Kash_Model_Results_2025_03.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Apr](../assets/Kash_Model_Results_2025_04.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 May](../assets/Kash_Model_Results_2025_05.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Jun](../assets/Kash_Model_Results_2025_06.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Jul](../assets/Kash_Model_Results_2025_07.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Aug](../assets/Kash_Model_Results_2025_08.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Sep](../assets/Kash_Model_Results_2025_09.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Oct](../assets/Kash_Model_Results_2025_10.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Nov](../assets/Kash_Model_Results_2025_11.csv)
+
+### UK & IRE Thoroughbred Predictions Model
+
+ - [UK & IE Thoroughbred Model Results 2024](../assets/UK_IE_Thoroughbred_Racing_Model_2024.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Jan](../assets/UK_IE_Thoroughbred_Racing_Model_2025_01.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Feb](../assets/UK_IE_Thoroughbred_Racing_Model_2025_02.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Mar](../assets/UK_IE_Thoroughbred_Racing_Model_2025_03.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Apr](../assets/UK_IE_Thoroughbred_Racing_Model_2025_04.csv)
+ - [UK & IE Thoroughbred Model Results 2025 May](../assets/UK_IE_Thoroughbred_Racing_Model_2025_05.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Jun](../assets/UK_IE_Thoroughbred_Racing_Model_2025_06.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Jul](../assets/UK_IE_Thoroughbred_Racing_Model_2025_07.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Aug](../assets/UK_IE_Thoroughbred_Racing_Model_2025_08.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Sep](../assets/UK_IE_Thoroughbred_Racing_Model_2025_09.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Oct](../assets/UK_IE_Thoroughbred_Racing_Model_2025_10.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Nov](../assets/UK_IE_Thoroughbred_Racing_Model_2025_11.csv)
 
 ### Top 5 Model
 
@@ -73,6 +89,7 @@ By downloading this data, you acknowledge and agree that:
  - [Top 5 Model Results 2025 Aug](../assets/Top5_Model_Results_2025_08.csv)
  - [Top 5 Model Results 2025 Sep](../assets/Top5_Model_Results_2025_09.csv)
  - [Top 5 Model Results 2025 Oct](../assets/Top5_Model_Results_2025_10.csv)
+ - [Top 5 Model Results 2025 Nov](../assets/Top5_Model_Results_2025_11.csv)
 
 ### Harness
 
@@ -105,6 +122,7 @@ By downloading this data, you acknowledge and agree that:
  - [Harness Model Results 2025 Aug](../assets/Globetrotter_Model_Results_2025_08.csv)
  - [Harness Model Results 2025 Sep](../assets/Globetrotter_Model_Results_2025_09.csv)
  - [Harness Model Results 2025 Oct](../assets/Globetrotter_Model_Results_2025_10.csv)
+ - [Harness Model Results 2025 Nov](../assets/Globetrotter_Model_Results_2025_11.csv)
 
 ### Greyhounds
 
@@ -121,7 +139,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2025-09](../assets/ANZ_Greyhounds_2025_09.csv)
  - [Aus & NZ Greyhounds 2025-10](../assets/ANZ_Greyhounds_2025_10.csv)
  - [Aus & NZ Greyhounds 2025-11](../assets/ANZ_Greyhounds_2025_11.csv)
- 
+
 ### Greyhound Predictions Model (Iggy Version 1 - Now Deprecated)
 
  - [Greyhound Model Results 2020](../assets/Iggy_Model_Results_2020.csv)
@@ -143,6 +161,7 @@ By downloading this data, you acknowledge and agree that:
  - [Greyhound Model Results 2025 Aug](../assets/Iggy_Model_V2_Results_2025_08.csv)
  - [Greyhound Model Results 2025 Sep](../assets/Iggy_Model_V2_Results_2025_09.csv)
  - [Greyhound Model Results 2025 Oct](../assets/Iggy_Model_V2_Results_2025_10.csv)
+ - [Greyhound Model Results 2025 Nov](../assets/Iggy_Model_V2_Results_2025_11.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 
@@ -164,6 +183,8 @@ By downloading this data, you acknowledge and agree that:
  - [Betfair Hub Tipsters 2025-08](../assets/Hub_Tipster_Results_2025-08.csv)
  - [Betfair Hub Tipsters 2025-09](../assets/Hub_Tipster_Results_2025-09.csv)
  - [Betfair Hub Tipsters 2025-10](../assets/Hub_Tipster_Results_2025-10.csv)
+ - [Betfair Hub Tipsters 2025-11](../assets/Hub_Tipster_Results_2025-11.csv)
+
 
 ## Australian Sport
 

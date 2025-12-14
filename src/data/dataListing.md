@@ -24,6 +24,9 @@ By downloading this data, you acknowledge and agree that:
 
 ### Thoroughbred
 
+ - [Aus & NZ Thoroughbreds 2020](../assets/ANZ_Thoroughbreds_2020.zip)
+ - [Aus & NZ Thoroughbreds 2021](../assets/ANZ_Thoroughbreds_2021.zip)
+ - [Aus & NZ Thoroughbreds 2022](../assets/ANZ_Thoroughbreds_2022.zip)
  - [Aus & NZ Thoroughbreds 2023](../assets/ANZ_Thoroughbreds_2023.zip)
  - [Aus & NZ Thoroughbreds 2024](../assets/ANZ_Thoroughbreds_2024.zip)
  - [Aus & NZ Thoroughbreds 2025-01](../assets/ANZ_Thoroughbreds_2025_01.csv)
@@ -93,6 +96,9 @@ By downloading this data, you acknowledge and agree that:
 
 ### Harness
 
+ - [Aus & NZ Harness 2020](../assets/ANZ_Harness_2020.zip)
+ - [Aus & NZ Harness 2021](../assets/ANZ_Harness_2021.zip)
+ - [Aus & NZ Harness 2022](../assets/ANZ_Harness_2022.zip)
  - [Aus & NZ Harness 2023](../assets/ANZ_Harness_2023.zip)
  - [Aus & NZ Harness 2024](../assets/ANZ_Harness_2024.zip)
  - [Aus & NZ Harness 2025-01](../assets/ANZ_Harness_2025_01.csv)
@@ -126,6 +132,9 @@ By downloading this data, you acknowledge and agree that:
 
 ### Greyhounds
 
+ - [Aus & NZ Greyhounds 2020](../assets/ANZ_Greyhounds_2020.zip)
+ - [Aus & NZ Greyhounds 2021](../assets/ANZ_Greyhounds_2021.zip)
+ - [Aus & NZ Greyhounds 2022](../assets/ANZ_Greyhounds_2022.zip)
  - [Aus & NZ Greyhounds 2023](../assets/ANZ_Greyhounds_2023.zip)
  - [Aus & NZ Greyhounds 2024](../assets/ANZ_Greyhounds_2024.zip)
  - [Aus & NZ Greyhounds 2025-01](../assets/ANZ_Greyhounds_2025_01.csv)

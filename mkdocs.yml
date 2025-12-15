@@ -32,7 +32,7 @@ nav:
             
     - Modelling:
         #- Brownlow Medal Datathon: modelling/brownlowDatathon.md
-        - Spring Racing Datathon: modelling/springRacingDatathon.md
+        #- Spring Racing Datathon: modelling/springRacingDatathon.md
         - Intro to modelling: modelling/howToModel.md
         - Pricing Data Sources: modelling/dataSources.md
         - Cloud or Local: modelling/cloudOrLocalMachine.md
@@ -65,6 +65,7 @@ nav:
             - Aus Open Python Tutorial: modelling/AusOpenPythonTutorial.md
 
     - Tutorials:
+        - Golden Rules of Automation: tutorials/goldenRulesOfAutomation.md
         - How to Automate 1: tutorials/How_to_Automate_1.ipynb
         - How to Automate 2: tutorials/How_to_Automate_2.ipynb
         - How to Automate 3: tutorials/How_to_Automate_3.ipynb

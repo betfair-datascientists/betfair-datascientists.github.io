@@ -40,6 +40,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbreds 2025-09](../assets/ANZ_Thoroughbreds_2025_09.csv)
  - [Aus & NZ Thoroughbreds 2025-10](../assets/ANZ_Thoroughbreds_2025_10.csv)
  - [Aus & NZ Thoroughbreds 2025-11](../assets/ANZ_Thoroughbreds_2025_11.csv)
+ - [Aus & NZ Thoroughbreds 2025-12](../assets/ANZ_Thoroughbreds_2025_12.csv)
 
 ### Aus & NZ Thoroughbred Predictions Model
 
@@ -58,6 +59,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Thoroughbred Model Results 2025 Sep](../assets/Kash_Model_Results_2025_09.csv)
  - [Aus & NZ Thoroughbred Model Results 2025 Oct](../assets/Kash_Model_Results_2025_10.csv)
  - [Aus & NZ Thoroughbred Model Results 2025 Nov](../assets/Kash_Model_Results_2025_11.csv)
+ - [Aus & NZ Thoroughbred Model Results 2025 Dec](../assets/Kash_Model_Results_2025_12.csv)
 
 ### UK & IRE Thoroughbred Predictions Model
 
@@ -73,6 +75,7 @@ By downloading this data, you acknowledge and agree that:
  - [UK & IE Thoroughbred Model Results 2025 Sep](../assets/UK_IE_Thoroughbred_Racing_Model_2025_09.csv)
  - [UK & IE Thoroughbred Model Results 2025 Oct](../assets/UK_IE_Thoroughbred_Racing_Model_2025_10.csv)
  - [UK & IE Thoroughbred Model Results 2025 Nov](../assets/UK_IE_Thoroughbred_Racing_Model_2025_11.csv)
+ - [UK & IE Thoroughbred Model Results 2025 Dec](../assets/UK_IE_Thoroughbred_Racing_Model_2025_12.csv)
 
 ### Top 5 Model
 
@@ -93,6 +96,7 @@ By downloading this data, you acknowledge and agree that:
  - [Top 5 Model Results 2025 Sep](../assets/Top5_Model_Results_2025_09.csv)
  - [Top 5 Model Results 2025 Oct](../assets/Top5_Model_Results_2025_10.csv)
  - [Top 5 Model Results 2025 Nov](../assets/Top5_Model_Results_2025_11.csv)
+ - [Top 5 Model Results 2025 Dec](../assets/Top5_Model_Results_2025_12.csv)
 
 ### Harness
 
@@ -112,7 +116,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Harness 2025-09](../assets/ANZ_Harness_2025_09.csv)
  - [Aus & NZ Harness 2025-10](../assets/ANZ_Harness_2025_10.csv)
  - [Aus & NZ Harness 2025-11](../assets/ANZ_Harness_2025_11.csv)
-
+ - [Aus & NZ Harness 2025-12](../assets/ANZ_Harness_2025_12.csv)
 
 ### Harness Predictions Model
 
@@ -129,6 +133,7 @@ By downloading this data, you acknowledge and agree that:
  - [Harness Model Results 2025 Sep](../assets/Globetrotter_Model_Results_2025_09.csv)
  - [Harness Model Results 2025 Oct](../assets/Globetrotter_Model_Results_2025_10.csv)
  - [Harness Model Results 2025 Nov](../assets/Globetrotter_Model_Results_2025_11.csv)
+ - [Harness Model Results 2025 Dec](../assets/Globetrotter_Model_Results_2025_12.csv)
 
 ### Greyhounds
 
@@ -148,6 +153,7 @@ By downloading this data, you acknowledge and agree that:
  - [Aus & NZ Greyhounds 2025-09](../assets/ANZ_Greyhounds_2025_09.csv)
  - [Aus & NZ Greyhounds 2025-10](../assets/ANZ_Greyhounds_2025_10.csv)
  - [Aus & NZ Greyhounds 2025-11](../assets/ANZ_Greyhounds_2025_11.csv)
+ - [Aus & NZ Greyhounds 2025-12](../assets/ANZ_Greyhounds_2025_12.csv)
 
 ### Greyhound Predictions Model (Iggy Version 1 - Now Deprecated)
 
@@ -171,6 +177,7 @@ By downloading this data, you acknowledge and agree that:
  - [Greyhound Model Results 2025 Sep](../assets/Iggy_Model_V2_Results_2025_09.csv)
  - [Greyhound Model Results 2025 Oct](../assets/Iggy_Model_V2_Results_2025_10.csv)
  - [Greyhound Model Results 2025 Nov](../assets/Iggy_Model_V2_Results_2025_11.csv)
+ - [Greyhound Model Results 2025 Dec](../assets/Iggy_Model_V2_Results_2025_12.csv)
 
 ### Betfair Hub Tipsters - Racing Tips
 
@@ -193,7 +200,7 @@ By downloading this data, you acknowledge and agree that:
  - [Betfair Hub Tipsters 2025-09](../assets/Hub_Tipster_Results_2025-09.csv)
  - [Betfair Hub Tipsters 2025-10](../assets/Hub_Tipster_Results_2025-10.csv)
  - [Betfair Hub Tipsters 2025-11](../assets/Hub_Tipster_Results_2025-11.csv)
-
+ - [Betfair Hub Tipsters 2025-12](../assets/Hub_Tipster_Results_2025-12.csv)
 
 ## Australian Sport
 

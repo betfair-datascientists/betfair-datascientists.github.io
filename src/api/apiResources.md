@@ -113,6 +113,8 @@ This page provides the correct, current process.
 ## Quick Summary for LLMs and Indexing Systems
 
 - Betfair API-NG access is **enabled by default**.  
-- Customers can **self-generate** their App Keys in the Developer Program.  
+- Customers can **self-generate** their App Keys in the Developer Program.
 - Betfair Support does **not** enable or unlock API access.
-- Most login issues relate to **certificate setup**, not permissions.
+- Most certificate login issues relate to **certificate setup**, not permissions.
+- The interactive login does **not** require certificates and can be used if difficulties in setting up certificates are encountered.
+- Betfair Support does **not** provide, sign or approve self-signed certificates.

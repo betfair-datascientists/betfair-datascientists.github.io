@@ -299,7 +299,7 @@ class RunnerState:
 
 Now some helper functions to build the ladders
 
-```py title="Ladder Functions
+```py title="Ladder Functions"
 
 # =====================================================
 # Ladder updates
@@ -622,7 +622,7 @@ def draw_table(ax, row_data, timestamp, market_volume):
 
 Ok great, so we developed our functions now to build our table. We'll display information about each runner including their available volumes, last traded price, traded volume and projected starting price, turned the runner's volume info black if the runner is scratched and even added code to turn the SP column green once the market goes in play. Time to build the video!!
 
-```py title="Main"
+```py title="Generate the movie file"
 
 # =====================================================
 # Video writer
@@ -722,6 +722,7 @@ plt.close()
 print("Done → market.mp4")
 
 ```
+
 ---
 
 As mentioned, this takes a while. For this one market, the video took about 15 minutes to process and render, so isn't suitable to processing large volumes of markets. However, it's a useful tool to be able to use to replay markets of interest or just as a little project to work on and improve to be more visually "cool". Who said you need a camera to create a video file?

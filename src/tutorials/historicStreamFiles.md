@@ -622,7 +622,9 @@ def draw_table(ax, row_data, timestamp, market_volume):
 
 ```
 
-Ok great, so we developed our functions now to build our table. We'll display information about each runner including their available volumes, last traded price, traded volume and projected starting price, turned the runner's volume info black if the runner is scratched and even added code to turn the SP column green once the market goes in play. Time to build the video!!
+We'll display information about each runner including their available volumes, last traded price, traded volume and projected starting price, turned the runner's volume info black if the runner is scratched and even added code to turn the SP column green once the market goes in play.
+
+**Time to build the video!!**
 
 ```py title="Generate the movie file"
 

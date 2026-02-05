@@ -2839,6 +2839,7 @@ This is the <strong>full</strong> currently available volume at that price point
 <p>All this happens in the space of 7-8 lines within the file with 4 marketDefinition updates</p>
 <h2 id="replaying-a-market">Replaying a market</h2>
 <p>Ok, now that we've stepped through exactly what detail can be found in a stream file, let's step through how we can replay a market and make a video of it. Note that this process does not use Rust, only Python, and so to process large numbers of markets would be tediously slow and as such, is intended only as an example.</p>
+<p>Here's the actual file I've used: <a href="../resources/252161052.json">Flemington R7 31/12/25</a></p>
 <p><img alt="Screenshot" src="../img/StreamFileMovieScreenshot.png" /></p>
 <div class="highlight"><span class="filename">Import Packages</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>

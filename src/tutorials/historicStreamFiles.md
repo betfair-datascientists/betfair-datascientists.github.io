@@ -245,6 +245,8 @@ All this happens in the space of 7-8 lines within the file with 4 marketDefiniti
 
 Ok, now that we've stepped through exactly what detail can be found in a stream file, let's step through how we can replay a market and make a video of it. Note that this process does not use Rust, only Python, and so to process large numbers of markets would be tediously slow and as such, is intended only as an example.
 
+Here's the actual file I've used: [Flemington R7 31/12/25](../resources/252161052.json)
+
 ![Screenshot](./img/StreamFileMovieScreenshot.png)
 
 ```py title="Import Packages"

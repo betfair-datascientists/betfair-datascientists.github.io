@@ -2644,12 +2644,12 @@ These files are recordings of the Stream API and come in three levels of granula
 </ul>
 <p>Whilst the BASIC files have their uses, we believe the PRO level files are required for any robust simulations or backtesting on a series of markets. Australian customers should contact automation@betfair.com.au regarding accessing the PRO level files.</p>
 <p>The specifications for the files can be found <a href="https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf">here</a></p>
-<p>Now whilst it's all well and good to have the specifications to hand, how is it possible to actually interpret the data from inspecting the files? The data is in JSON format, and whilst machines can read it quite easily, it's not overly suited to being interpreted by humans. So let's do a walkthrough of a single stream file, and we'll even output a video file at the end so you can watch the market back.</p>
+<p>Now whilst it's all well and good to have the specifications to hand, how is it possible to actually interpret the data from inspecting the files? The data is in JSON format, and whilst machines can read it quite easily, it's not overly suited to being interpreted by humans. So let's do a walkthrough of the data contained within a single stream file, and we'll even output a video file at the end so you can watch the market back.</p>
 <h2 id="the-data">The Data</h2>
 <p>So first let's walk through exactly what is and what is not contained in the stream files.</p>
 <p>What it contains:</p>
 <ul>
-<li>Every bet that was placed, matched, or cancelled on every runner in the market in GBP</li>
+<li>Every bet that was placed, matched, or cancelled on every runner in the market in GBP (British Pounds)</li>
 <li>Information about the market and status of every runner at every point in time</li>
 </ul>
 <p>What it does not contain:</p>
@@ -2729,12 +2729,13 @@ These files are recordings of the Stream API and come in three levels of granula
 <a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>    <span class="p">]</span>
 <a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="p">}</span>
 </code></pre></div>
-<p>It's important that any bot listens to the market definition for any updates as this may affect your betting strategy.</p>
+<p>It's important that any bot listens to the market definition for any updates as this may affect your betting strategy.
+For example, if your strategy places BSP bets, then implementing a check for "bspReconciled":true can stop large numbers of failed transactions that may cause Transaction Charges.</p>
 <h2 id="runner-changes">Runner Changes</h2>
 <p>The other, much more numerous, type of message in the stream is <strong>Runner Change</strong> denoted by the field 'rc'.
 These updates contain information about the available to back and available to lay volumes at each price point, as well as traded volumes and volumes available at the BSP.</p>
 <p>Importantly, these messages only contain <strong>changes</strong> and do not contain the full ladder, so to understand the full ladder at any single point in time, you'll need to build the orderbook from these messages. This would not be a trivial process to do by hand, but as the API is designed for computers rather than humans, luckily you don't have to.</p>
-<p>First, lets walk through each type of runner change message:</p>
+<p>First, lets walk through each type of runner change message</p>
 <h3 id="exchange-bets-limit-bets">Exchange Bets / Limit Bets</h3>
 <p>These messages contain the price point and available size at a specific price point denoted by a tuple in the form <strong>[[price,size]]</strong>
 This is the <strong>full</strong> currently available volume at that price point and should override any previous volume value rather than add to it, as the volume value is a float that is zero or positive (i.e. there is no message than indicates a reduction in volume other than 0)</p>
@@ -2763,13 +2764,13 @@ This is the <strong>full</strong> currently available volume at that price point
 <a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1"># This means this runner has 44.66GBP available to lay at a price of $13</span>
 </code></pre></div>
 <h3 id="traded-volume">Traded Volume</h3>
-<p>These messages contain the price point and volume of bets that have been traded at a particular price point denoted by a tuple in the form <strong>[[price,size]]</strong> as well as the last traded price and full traded volume for that update. If only one price has been traded in an update, then 'ltp' will be identical to the price in the tuple but if more than one price has been traded then it will include the bet fragment with the highest bet id value for last traded price</p>
+<p>These messages contain the price point and volume of bets that have been traded at a particular price point denoted by a tuple in the form <strong>[[price,size]]</strong> as well as the last traded price and full traded volume for that runner in that update. If only one price has been traded in an update, then 'ltp' will be identical to the price in the tuple but if more than one price has been traded then it will include the bet fragment with the highest bet id value for last traded price. As with atb/atl changes, the size associated with each price is the <strong>total</strong> volume traded at that price and not the volume in that update.</p>
 <p>If the volume value is 0 then this means that either the runner has been scratched, bets have been voided for some reason or the runner has been settled - losers may be settled before the end of the market, but winners will all be settled at the conclusion of the market. In fact the penultimate message in every market is to set every level of traded volume of every runner to 0.</p>
 <p>Traded volume may also fluctuate slightly with changes to FX rates (i.e. currency conversion) as, while the stream files are in GBP, customers may bet in other currencies, and any markets managed in Australia operate in Australian dollars.</p>
 <p>Additionally, it is possible to see an addition of volume traded at a price without a message for that price appearing as "atl" or "atl" messages. This is due to the absence of the cross-matching bets.</p>
 <div class="highlight"><span class="filename">Traded Volume</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="s2">&quot;rc&quot;</span><span class="p">:[</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>        <span class="p">{</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>            <span class="s2">&quot;trd&quot;</span><span class="p">:[[</span><span class="mi">17</span><span class="p">,</span><span class="mf">1.97</span><span class="p">],[</span><span class="mf">17.5</span><span class="p">,</span><span class="mf">0.82</span><span class="p">]],</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>            <span class="s2">&quot;trd&quot;</span><span class="p">:[[</span><span class="mi">17</span><span class="p">,</span><span class="mf">2.97</span><span class="p">],[</span><span class="mf">17.5</span><span class="p">,</span><span class="mf">0.82</span><span class="p">]],</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>            <span class="s2">&quot;ltp&quot;</span><span class="p">:</span><span class="mf">17.0</span><span class="p">,</span>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            <span class="s2">&quot;tv&quot;</span><span class="p">:</span><span class="mf">2.79</span><span class="p">,</span>
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>            <span class="s2">&quot;id&quot;</span><span class="p">:</span><span class="mi">93168070</span><span class="p">}],</span>
@@ -2778,8 +2779,8 @@ This is the <strong>full</strong> currently available volume at that price point
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="p">}</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="p">]</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># This means that 1.97GBP was traded at $17 and 0.82GBP was traded at $17.50</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># $17 was the most recently traded price and 2.79GBP was traded in total for this message</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># This means that 2.97GBP was traded at $17 and 0.82GBP was traded at $17.50</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># $17 was the most recently traded price and 2.79GBP has been traded on this runner in this update</span>
 </code></pre></div>
 <h3 id="betfair-starting-price">Betfair Starting Price</h3>
 <p>The final type of message that may appear in the stream files, where bspMarket = True in the marketDefinition, is messages relating to the Betfair Starting Price. There are two main types of message here:</p>
@@ -2840,7 +2841,6 @@ This is the <strong>full</strong> currently available volume at that price point
 <h2 id="replaying-a-market">Replaying a market</h2>
 <p>Ok, now that we've stepped through exactly what detail can be found in a stream file, let's step through how we can replay a market and make a video of it. Note that this process does not use Rust, only Python, and so to process large numbers of markets would be tediously slow and as such, is intended only as an example.</p>
 <p>Here's the actual file I've used: <a href="../resources/252161052.json">Flemington R7 31/12/25</a></p>
-<p><img alt="Screenshot" src="../img/StreamFileMovieScreenshot.png" /></p>
 <div class="highlight"><span class="filename">Import Packages</span><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -2872,11 +2872,11 @@ This is the <strong>full</strong> currently available volume at that price point
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s2">&quot;ACTIVE&quot;</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">bsp</span> <span class="o">=</span> <span class="kc">None</span>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">atb</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># back ladder as dict</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">atl</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># lay ladder as dict</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">spn</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ltp</span> <span class="o">=</span> <span class="kc">None</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tv</span> <span class="o">=</span> <span class="mf">0.0</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">trd_ladder</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">atl</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># lay ladder as dict</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">trd_ladder</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># trade ladder as dict</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">spn</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">ltp</span> <span class="o">=</span> <span class="kc">None</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">tv</span> <span class="o">=</span> <span class="mf">0.0</span>
 </code></pre></div>
 <p>Now some helper functions to build the ladders</p>
 <div class="highlight"><span class="filename">Ladder Functions</span><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># =====================================================</span>
@@ -2933,26 +2933,28 @@ This is the <strong>full</strong> currently available volume at that price point
 <a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a>
 <a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a>        <span class="c1"># inside apply_rc_list, per runner:</span>
 <a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a>        <span class="k">if</span> <span class="s2">&quot;trd&quot;</span> <span class="ow">in</span> <span class="n">rc</span><span class="p">:</span>
-<a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a>            <span class="c1"># rc[&quot;trd&quot;] is a list of [price, volume] tuples</span>
-<a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a>            <span class="k">for</span> <span class="n">price</span><span class="p">,</span> <span class="n">vol</span> <span class="ow">in</span> <span class="n">rc</span><span class="p">[</span><span class="s2">&quot;trd&quot;</span><span class="p">]:</span>
-<a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a>                <span class="c1"># append trade to the ladder</span>
-<a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a>                <span class="n">r</span><span class="o">.</span><span class="n">trd_ladder</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">price</span><span class="p">,</span> <span class="n">vol</span><span class="p">))</span>
-<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a>
-<a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a>            <span class="c1"># recompute total volume</span>
-<a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a>            <span class="n">r</span><span class="o">.</span><span class="n">tv</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">trd_ladder</span> <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-<a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a>
-<a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a>        <span class="c1"># ltp</span>
-<a id="__codelineno-7-64" name="__codelineno-7-64" href="#__codelineno-7-64"></a>        <span class="k">if</span> <span class="s2">&quot;ltp&quot;</span> <span class="ow">in</span> <span class="n">rc</span><span class="p">:</span>
-<a id="__codelineno-7-65" name="__codelineno-7-65" href="#__codelineno-7-65"></a>            <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-7-66" name="__codelineno-7-66" href="#__codelineno-7-66"></a>                <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">rc</span><span class="p">[</span><span class="s2">&quot;ltp&quot;</span><span class="p">])</span>
-<a id="__codelineno-7-67" name="__codelineno-7-67" href="#__codelineno-7-67"></a>                <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
-<a id="__codelineno-7-68" name="__codelineno-7-68" href="#__codelineno-7-68"></a>                    <span class="n">r</span><span class="o">.</span><span class="n">ltp</span> <span class="o">=</span> <span class="n">val</span>
-<a id="__codelineno-7-69" name="__codelineno-7-69" href="#__codelineno-7-69"></a>            <span class="k">except</span><span class="p">:</span>
-<a id="__codelineno-7-70" name="__codelineno-7-70" href="#__codelineno-7-70"></a>                <span class="k">pass</span>
-<a id="__codelineno-7-71" name="__codelineno-7-71" href="#__codelineno-7-71"></a>
-<a id="__codelineno-7-72" name="__codelineno-7-72" href="#__codelineno-7-72"></a>        <span class="c1"># status</span>
-<a id="__codelineno-7-73" name="__codelineno-7-73" href="#__codelineno-7-73"></a>        <span class="k">if</span> <span class="s2">&quot;status&quot;</span> <span class="ow">in</span> <span class="n">rc</span><span class="p">:</span>
-<a id="__codelineno-7-74" name="__codelineno-7-74" href="#__codelineno-7-74"></a>            <span class="n">r</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">rc</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
+<a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a>            <span class="n">apply_ladder_update</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">trd_ladder</span><span class="p">,</span> <span class="n">rc</span><span class="p">[</span><span class="s2">&quot;trd&quot;</span><span class="p">])</span>
+<a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a>
+<a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a>            <span class="c1"># recompute total volume</span>
+<a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a>
+<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a>            <span class="k">if</span> <span class="s2">&quot;tv&quot;</span> <span class="ow">in</span> <span class="n">rc</span><span class="p">:</span>
+<a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a>                <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a>                    <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">rc</span><span class="p">[</span><span class="s2">&quot;tv&quot;</span><span class="p">])</span>
+<a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a>                    <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+<a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a>                        <span class="n">r</span><span class="o">.</span><span class="n">tv</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">tv</span> <span class="o">+</span> <span class="n">val</span>
+<a id="__codelineno-7-64" name="__codelineno-7-64" href="#__codelineno-7-64"></a>
+<a id="__codelineno-7-65" name="__codelineno-7-65" href="#__codelineno-7-65"></a>        <span class="c1"># lt</span>
+<a id="__codelineno-7-66" name="__codelineno-7-66" href="#__codelineno-7-66"></a>        <span class="k">if</span> <span class="s2">&quot;ltp&quot;</span> <span class="ow">in</span> <span class="n">rc</span><span class="p">:</span>
+<a id="__codelineno-7-67" name="__codelineno-7-67" href="#__codelineno-7-67"></a>            <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-7-68" name="__codelineno-7-68" href="#__codelineno-7-68"></a>                <span class="n">val</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">rc</span><span class="p">[</span><span class="s2">&quot;ltp&quot;</span><span class="p">])</span>
+<a id="__codelineno-7-69" name="__codelineno-7-69" href="#__codelineno-7-69"></a>                <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+<a id="__codelineno-7-70" name="__codelineno-7-70" href="#__codelineno-7-70"></a>                    <span class="n">r</span><span class="o">.</span><span class="n">ltp</span> <span class="o">=</span> <span class="n">val</span>
+<a id="__codelineno-7-71" name="__codelineno-7-71" href="#__codelineno-7-71"></a>            <span class="k">except</span><span class="p">:</span>
+<a id="__codelineno-7-72" name="__codelineno-7-72" href="#__codelineno-7-72"></a>                <span class="k">pass</span>
+<a id="__codelineno-7-73" name="__codelineno-7-73" href="#__codelineno-7-73"></a>
+<a id="__codelineno-7-74" name="__codelineno-7-74" href="#__codelineno-7-74"></a>        <span class="c1"># status</span>
+<a id="__codelineno-7-75" name="__codelineno-7-75" href="#__codelineno-7-75"></a>        <span class="k">if</span> <span class="s2">&quot;status&quot;</span> <span class="ow">in</span> <span class="n">rc</span><span class="p">:</span>
+<a id="__codelineno-7-76" name="__codelineno-7-76" href="#__codelineno-7-76"></a>            <span class="n">r</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="n">rc</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span>
 </code></pre></div>
 <p>Now some other helper functions</p>
 <div class="highlight"><span class="filename">utils</span><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># =====================================================</span>
@@ -3040,38 +3042,35 @@ This is the <strong>full</strong> currently available volume at that price point
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>    <span class="n">rows</span> <span class="o">=</span> <span class="p">[]</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
 <a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>    <span class="n">ordered</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">runners</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">r</span><span class="p">:</span> <span class="n">r</span><span class="o">.</span><span class="n">sort_priority</span><span class="p">)</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>    <span class="n">market_volume</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ordered</span><span class="p">:</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="n">backs</span> <span class="o">=</span> <span class="n">best_levels</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">atb</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>        <span class="n">lays</span>  <span class="o">=</span> <span class="n">best_levels</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">atl</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="n">backs</span> <span class="o">+=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">)]</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">backs</span><span class="p">))</span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>        <span class="n">lays</span>  <span class="o">+=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">)]</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">lays</span><span class="p">))</span>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>
-<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>        <span class="n">row</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>            <span class="n">r</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
-<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>
-<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>            <span class="n">fmt_price</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ltp</span><span class="p">),</span>
-<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>            <span class="n">fmt_price</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">tv</span><span class="p">),</span>
-<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>
-<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">backs</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
-<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">backs</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">backs</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>
-<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>            <span class="n">fmt_price</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">bsp</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">bsp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">r</span><span class="o">.</span><span class="n">spn</span><span class="p">),</span>
-<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>
-<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">lays</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
-<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">lays</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
-<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">lays</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
-<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>        <span class="p">]</span>
-<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>
-<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">row</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">status</span><span class="p">))</span>
-<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>
-<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a>        <span class="n">market_volume</span> <span class="o">+=</span> <span class="n">r</span><span class="o">.</span><span class="n">tv</span>
-<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a>
-<a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a>    <span class="k">return</span> <span class="n">rows</span><span class="p">,</span> <span class="n">market_volume</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">ordered</span><span class="p">:</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>        <span class="n">backs</span> <span class="o">=</span> <span class="n">best_levels</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">atb</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>        <span class="n">lays</span>  <span class="o">=</span> <span class="n">best_levels</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">atl</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>        <span class="n">backs</span> <span class="o">+=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">)]</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">backs</span><span class="p">))</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a>        <span class="n">lays</span>  <span class="o">+=</span> <span class="p">[(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">)]</span><span class="o">*</span><span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="n">lays</span><span class="p">))</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>        <span class="n">row</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>            <span class="n">r</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a>            <span class="n">fmt_price</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">ltp</span><span class="p">),</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a>            <span class="n">fmt_price</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">tv</span><span class="p">),</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">backs</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">backs</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">backs</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a>            <span class="n">fmt_price</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">bsp</span> <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">bsp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">r</span><span class="o">.</span><span class="n">spn</span><span class="p">),</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">lays</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">lays</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>            <span class="n">cell_text</span><span class="p">(</span><span class="o">*</span><span class="n">lays</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>        <span class="p">]</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>        <span class="n">rows</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">row</span><span class="p">,</span> <span class="n">r</span><span class="o">.</span><span class="n">status</span><span class="p">))</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>
+<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>    <span class="k">return</span> <span class="n">rows</span>
 </code></pre></div>
 <p>Now let's render the image of our table</p>
 <div class="highlight"><span class="filename">Renderer</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># =====================================================</span>

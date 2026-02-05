@@ -11,7 +11,7 @@ Whilst the BASIC files have their uses, we believe the PRO level files are requi
 
 The specifications for the files can be found [here](https://historicdata.betfair.com/Betfair-Historical-Data-Feed-Specification.pdf)
 
-Now whilst it's all well and good to have the specifications to hand, how is it possible to actually interpret the data from inspecting the files? The data is in JSON format, and whilst machines can read it quite easily, it's not overly suited to being interpreted by humans. So let's do a walkthrough of a single stream file, and we'll even output a video file at the end so you can watch the market back.
+Now whilst it's all well and good to have the specifications to hand, how is it possible to actually interpret the data from inspecting the files? The data is in JSON format, and whilst machines can read it quite easily, it's not overly suited to being interpreted by humans. So let's do a walkthrough of the data contained within a single stream file, and we'll even output a video file at the end so you can watch the market back.
 
 ## The Data
 
@@ -19,7 +19,7 @@ So first let's walk through exactly what is and what is not contained in the str
 
 What it contains:
 
- - Every bet that was placed, matched, or cancelled on every runner in the market in GBP
+ - Every bet that was placed, matched, or cancelled on every runner in the market in GBP (British Pounds)
  - Information about the market and status of every runner at every point in time
 
 What it does not contain:
@@ -107,6 +107,7 @@ The first message contained within any stream file will be the **marketDefinitio
 ```
 
 It's important that any bot listens to the market definition for any updates as this may affect your betting strategy.
+For example, if your strategy places BSP bets, then implementing a check for "bspReconciled":true can stop large numbers of failed transactions that may cause Transaction Charges.
 
 ## Runner Changes
 
@@ -115,7 +116,7 @@ These updates contain information about the available to back and available to l
 
 Importantly, these messages only contain **changes** and do not contain the full ladder, so to understand the full ladder at any single point in time, you'll need to build the orderbook from these messages. This would not be a trivial process to do by hand, but as the API is designed for computers rather than humans, luckily you don't have to.
 
-First, lets walk through each type of runner change message:
+First, lets walk through each type of runner change message
 
 ### Exchange Bets / Limit Bets
 
@@ -153,7 +154,7 @@ A runner change message may only have one runner with an update at one price poi
 
 ### Traded Volume
 
-These messages contain the price point and volume of bets that have been traded at a particular price point denoted by a tuple in the form **[[price,size]]** as well as the last traded price and full traded volume for that update. If only one price has been traded in an update, then 'ltp' will be identical to the price in the tuple but if more than one price has been traded then it will include the bet fragment with the highest bet id value for last traded price
+These messages contain the price point and volume of bets that have been traded at a particular price point denoted by a tuple in the form **[[price,size]]** as well as the last traded price and full traded volume for that runner in that update. If only one price has been traded in an update, then 'ltp' will be identical to the price in the tuple but if more than one price has been traded then it will include the bet fragment with the highest bet id value for last traded price. As with atb/atl changes, the size associated with each price is the **total** volume traded at that price and not the volume in that update.
 
 If the volume value is 0 then this means that either the runner has been scratched, bets have been voided for some reason or the runner has been settled - losers may be settled before the end of the market, but winners will all be settled at the conclusion of the market. In fact the penultimate message in every market is to set every level of traded volume of every runner to 0.
 
@@ -165,7 +166,7 @@ Additionally, it is possible to see an addition of volume traded at a price with
 
 "rc":[
         {
-            "trd":[[17,1.97],[17.5,0.82]],
+            "trd":[[17,2.97],[17.5,0.82]],
             "ltp":17.0,
             "tv":2.79,
             "id":93168070}],
@@ -174,8 +175,8 @@ Additionally, it is possible to see an addition of volume traded at a price with
         }
     ]
 
-# This means that 1.97GBP was traded at $17 and 0.82GBP was traded at $17.50
-# $17 was the most recently traded price and 2.79GBP was traded in total for this message
+# This means that 2.97GBP was traded at $17 and 0.82GBP was traded at $17.50
+# $17 was the most recently traded price and 2.79GBP has been traded on this runner in this update
 ```
 
 ### Betfair Starting Price
@@ -247,8 +248,6 @@ Ok, now that we've stepped through exactly what detail can be found in a stream 
 
 Here's the actual file I've used: [Flemington R7 31/12/25](../resources/252161052.json)
 
-![Screenshot](./img/StreamFileMovieScreenshot.png)
-
 ```py title="Import Packages"
 
 import json
@@ -291,11 +290,12 @@ class RunnerState:
         self.status = "ACTIVE"
         self.bsp = None
         self.atb = {}  # back ladder as dict
-        self.atl = {}  # lay ladder as dict
+        self.atl = {} # lay ladder as dict
+        self.trd_ladder = {} # trade ladder as dict
         self.spn = None
         self.ltp = None
         self.tv = 0.0
-        self.trd_ladder = []
+        
 
 ```
 
@@ -357,15 +357,17 @@ def apply_rc_list(runners, rc_list):
 
         # inside apply_rc_list, per runner:
         if "trd" in rc:
-            # rc["trd"] is a list of [price, volume] tuples
-            for price, vol in rc["trd"]:
-                # append trade to the ladder
-                r.trd_ladder.append((price, vol))
-            
+            apply_ladder_update(r.trd_ladder, rc["trd"])
+
             # recompute total volume
-            r.tv = sum(v for _, v in r.trd_ladder if math.isfinite(v))
-            
-        # ltp
+
+            if "tv" in rc:
+                try:
+                    val = float(rc["tv"])
+                    if math.isfinite(val):
+                        r.tv = r.tv + val
+
+        # lt
         if "ltp" in rc:
             try:
                 val = float(rc["ltp"])
@@ -473,7 +475,6 @@ def build_rows():
     rows = []
 
     ordered = sorted(runners.values(), key=lambda r: r.sort_priority)
-    market_volume = 0
 
     for r in ordered:
 
@@ -502,9 +503,7 @@ def build_rows():
 
         rows.append((row, r.status))
 
-        market_volume += r.tv
-
-    return rows, market_volume
+    return rows
 
 ```
 

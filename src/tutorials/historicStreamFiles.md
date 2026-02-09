@@ -248,6 +248,8 @@ Ok, now that we've stepped through exactly what detail can be found in a stream 
 
 Here's the actual file I've used: [Flemington R7 31/12/25](../resources/252161052.json)
 
+[Screenshot](../img/StreamFileMovieScreenshot.png)
+
 ```py title="Import Packages"
 
 import json
@@ -290,8 +292,10 @@ class RunnerState:
         self.status = "ACTIVE"
         self.bsp = None
         self.atb = {}  # back ladder as dict
-        self.atl = {} # lay ladder as dict
-        self.trd_ladder = {} # trade ladder as dict
+        self.atl = {}  # lay ladder as dict
+        self.spb = {}  # back ladder as dict
+        self.spl = {}  # lay ladder as dict
+        self.trd_ladder = {}
         self.spn = None
         self.ltp = None
         self.tv = 0.0
@@ -318,7 +322,7 @@ def apply_ladder_update(ladder, updates):
         else:
             ladder[price] = vol
 
-def apply_rc_list(runners, rc_list):
+def apply_rc_list(runners, rc_list, bsp_reconciled):
 
     """
     runners: list of runners
@@ -345,6 +349,10 @@ def apply_rc_list(runners, rc_list):
             apply_ladder_update(r.atb, rc["atb"])
         if "atl" in rc:
             apply_ladder_update(r.atl, rc["atl"])
+        if "spb" in rc:
+            apply_ladder_update(r.spb, rc['spb'])
+        if "spl" in rc:
+            apply_ladder_update(r.spb, rc['spl'])
 
         # spn
         if "spn" in rc:
@@ -355,19 +363,14 @@ def apply_rc_list(runners, rc_list):
             except:
                 pass
 
-        # inside apply_rc_list, per runner:
         if "trd" in rc:
             apply_ladder_update(r.trd_ladder, rc["trd"])
+            r.tv = sum(r.trd_ladder.values())
 
-            # recompute total volume
+            if bsp_reconciled:
+                r.tv += sum(r.spb.values())
 
-            if "tv" in rc:
-                try:
-                    val = float(rc["tv"])
-                    if math.isfinite(val):
-                        r.tv = r.tv + val
-
-        # lt
+        # ltp
         if "ltp" in rc:
             try:
                 val = float(rc["ltp"])
@@ -475,6 +478,7 @@ def build_rows():
     rows = []
 
     ordered = sorted(runners.values(), key=lambda r: r.sort_priority)
+    market_volume = 0
 
     for r in ordered:
 
@@ -503,7 +507,9 @@ def build_rows():
 
         rows.append((row, r.status))
 
-    return rows
+        market_volume += r.tv
+
+    return rows, market_volume
 
 ```
 
@@ -671,9 +677,9 @@ with open(INPUT_FILE, "r", encoding="utf-8") as stream_lines:
                     "eventId": md.get("eventId"),
                     "marketTime": md.get("marketTime"),
                     "timezone": md.get("timezone", "UTC"),
-                    "inPlay": md.get("inPlay")
+                    "inPlay": md.get("inPlay"),
+                    "bspReconciled": md.get("bspReconciled")
                 }
-                # We'll display all this info in a block next to our table
 
                 market_start_ms = iso_to_epoch_ms(market_info["marketTime"])
 
@@ -699,7 +705,7 @@ with open(INPUT_FILE, "r", encoding="utf-8") as stream_lines:
             # RUNNER CHANGES (rc)
             # ------------------------------
             if "rc" in mc:
-                apply_rc_list(runners, mc["rc"])
+                apply_rc_list(runners, mc["rc"],market_info.get("bspReconciled"))
 
         # ------------------------------
         # RENDER VIDEO FRAME

@@ -6,6 +6,8 @@
 
 To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/mUmj35mFHb)
 
+Note – only existing customers of Betfair, as at 18 February 2026, can participate in the Competition.
+
 ---
 
 ## The Competition
@@ -113,7 +115,7 @@ Check back later
 
 ### What happens in the event of a scratching?
 
-- That runner will be removed from the race, and all remaining probabilities will be normalised
+- That runner will be removed from the race, and all combinations relating to that runner will be removed from scoring
 
 ### What happens if one or both dogs fail to complete the race?
 

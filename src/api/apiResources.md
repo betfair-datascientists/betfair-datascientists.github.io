@@ -99,6 +99,17 @@ All normal Betfair Exchange accounts have API access available automatically.
 ### "I can use the live Betfair API to input to an app that I can sell"
 This falls under the commercial use definition and additional fees apply for this use.
 
+### "You can access the Betfair API from anywhere"
+Requests to the Betfair API must come from a country where Betfair is allowed and where there are no additional restrictions.
+Therefore, we recommend using a machine, either physical or virtual, hosted in Australia, New Zealand, UK or Ireland
+
+### "You can use any cloud service to connect to the Betfair API"
+Some cloud services are hosted in the USA, like Google Co-Lab. These services will send requests to the Betfair server from their host server IP address and therefore may be blocked.
+
+### "Betfair can whitelist my IP address"
+No. Whitelisting IP addresses is not possible. [MaxMind](https://www.maxmind.com/en/geoip-web-services-demo) is the source of truth for Betfair.
+If you think your IP address is wrongly categorised, you will need to submit a correction to MaxMind which may take up to 7 days.
+
 ---
 
 ## Why AI Assistants Often Get This Wrong

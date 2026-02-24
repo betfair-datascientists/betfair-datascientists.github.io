@@ -89,6 +89,232 @@ All submissions should be emailed to datathon@betfair.com.au
 Participants are required to utilise their Topaz API key to download the historic dataset. A temporary Topaz key may be provided upon request.
 
 ---
+
+### Submission Files
+
+[Example Submission File](../assets/submission-template_model-name_2026-02-24.csv)
+
+```py title="Code"
+
+import json
+from datetime import datetime
+from zoneinfo import ZoneInfo
+from itertools import combinations
+
+import pandas as pd
+from tqdm import tqdm
+import betfairlightweight
+from betfairlightweight import filters
+
+
+# ===========================
+# Configuration
+# ===========================
+
+CREDENTIAL_PATH = "credentials.json"
+EVENT_TYPE_ID = 4339  # Horse Racing
+COUNTRY = "AU"
+MARKET_TYPES = ["WIN"]
+MAX_RESULTS = 1000
+
+# ===========================
+# Authentication
+# ===========================
+
+def load_credentials(path):
+    with open(path) as f:
+        return json.load(f)
+
+
+def login():
+    cred = load_credentials(CREDENTIAL_PATH)
+
+    client = betfairlightweight.APIClient(
+        username=cred["username"],
+        password=cred["password"],
+        app_key=cred["app_key"],
+    )
+    client.login_interactive()
+    return client
+
+
+# ===========================
+# Market Fetching
+# ===========================
+
+def build_market_filter():
+    return filters.market_filter(
+        event_type_ids=[EVENT_TYPE_ID],
+        market_countries=[COUNTRY],
+        market_type_codes=MARKET_TYPES,
+    )
+
+
+def get_market_catalogues(client):
+    return client.betting.list_market_catalogue(
+        filter=build_market_filter(),
+        market_projection=[
+            "RUNNER_DESCRIPTION",
+            "EVENT",
+            "MARKET_START_TIME"
+        ],
+        max_results=MAX_RESULTS,
+    )
+
+
+# ===========================
+# Data Processing
+# ===========================
+
+def process_market(client, market_catalogue):
+
+    market_start = (
+        market_catalogue.market_start_time
+        .replace(tzinfo=ZoneInfo("UTC"))
+        .astimezone(ZoneInfo("Australia/Sydney"))
+    )
+
+    event_open_date = (
+        market_catalogue.event.open_date
+        .replace(tzinfo=ZoneInfo("UTC"))
+        .astimezone(ZoneInfo("Australia/Sydney"))
+    )
+
+    runner_lookup = {
+        r.selection_id: r.runner_name
+        for r in market_catalogue.runners
+    }
+
+    market_books = client.betting.list_market_book(
+        market_ids=[market_catalogue.market_id]
+    )
+
+    records = []
+
+    for market_book in market_books:
+        for runner in market_book.runners:
+
+            runner_name = runner_lookup.get(runner.selection_id)
+
+            if not runner_name:
+                continue
+
+            rug_number = runner_name.split(". ")[0]
+            runner_name_trunc = runner_name.split(". ")[-1]
+
+            records.append({
+                "venue": market_catalogue.event.venue,
+                "event_id": market_catalogue.event.id,
+                "event_open_date": event_open_date,
+                "market_name": market_catalogue.market_name,
+                "market_start": market_start,
+                "market_id": market_catalogue.market_id,
+                "selection_id": runner.selection_id,
+                "runner_name": runner_name,
+                "runner_name_trunc": runner_name_trunc,
+                "rug_number": rug_number,
+                "runner_status": runner.status,
+            })
+    
+    today_5pm = datetime.now(ZoneInfo("Australia/Sydney")).replace(hour=17, minute=0, second=0, microsecond=0)
+    excluded_venues = ["Cannington", "Mandurah", "Northam"]
+
+    df = pd.DataFrame(records)
+
+    # Filter the DataFrame
+    df = df[
+        (df['event_open_date'] >= today_5pm) & 
+        (~df['venue'].isin(excluded_venues))
+    ]
+    
+    return df
+
+
+# ===========================
+# H2H Construction
+# ===========================
+
+def build_h2h_markets(df):
+
+    df_clean = df[df["runner_status"] != "REMOVED"].copy()
+
+    # Ensure numeric ordering
+    df_clean["rug_number"] = pd.to_numeric(
+        df_clean["rug_number"], errors="coerce"
+    )
+
+    h2h_rows = []
+
+    for (venue, win_market_name), group in df_clean.groupby(["venue", "market_name"]):
+
+        group = group.sort_values("rug_number")
+
+        for r1, r2 in combinations(group.itertuples(index=False), 2):
+
+            h2h_rows.append({
+                "date" : datetime.today().strftime('%d/%m/%Y'),
+                "venue": venue,
+                "race_number" : int(win_market_name[1:].split(' ')[0]),
+                "win_market_name": win_market_name,
+                "h2h_market_name": f"{r1.runner_name_trunc} v {r2.runner_name_trunc}",
+                "selection_id_1": r1.selection_id,
+                "runner_name_1": r1.runner_name,
+                "selection_id_2": r2.selection_id,
+                "runner_name_2": r2.runner_name,
+                "runner_1_win_probability": None,
+                "runner_2_win_probability": None,
+            })
+
+    # Create DataFrame
+    h2h_df = pd.DataFrame(h2h_rows)
+
+    # Sort by venue then race_number (race_number is already int)
+    h2h_df = h2h_df.sort_values(["venue", "race_number"]).reset_index(drop=True)
+
+    return h2h_df
+
+# ===========================
+# Main Execution
+# ===========================
+
+def main():
+
+    client = login()
+
+    try:
+        catalogues = get_market_catalogues(client)
+        print(f"Found {len(catalogues)} markets.")
+
+        market_dfs = []
+
+        for market_catalogue in tqdm(catalogues, desc="Processing markets"):
+            market_df = process_market(client, market_catalogue)
+
+            if not market_df.empty:
+                market_dfs.append(market_df)
+
+        if not market_dfs:
+            print("No runner data found.")
+            return
+
+        df = pd.concat(market_dfs, ignore_index=True)
+
+        h2h_df = build_h2h_markets(df)
+
+        today = datetime.today().strftime("%Y-%m-%d")
+        filename = f"submission-template_model-name_{today}.csv"
+
+        h2h_df.to_csv(filename, index=False)
+        print(f"Saved {filename}")
+
+    finally:
+        client.logout()
+
+if __name__ == "__main__":
+    main()
+
+```
+---
  
 ## Leaderboard
 

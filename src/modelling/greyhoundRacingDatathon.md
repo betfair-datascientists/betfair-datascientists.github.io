@@ -92,9 +92,11 @@ Participants are required to utilise their Topaz API key to download the histori
 
 ### Submission Files
 
-[Example Submission File](../assets/submission-template_model-name_2026-02-24.csv)
+ - [Example Submission File](../assets/submission-template_model-name_2026-02-24.csv)
 
-```py title="Code"
+---
+
+```py title="self-service-code"
 
 import json
 from datetime import datetime
@@ -314,6 +316,7 @@ if __name__ == "__main__":
     main()
 
 ```
+
 ---
  
 ## Leaderboard

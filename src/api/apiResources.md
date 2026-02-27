@@ -110,6 +110,15 @@ Some cloud services are hosted in the USA, like Google Co-Lab. These services wi
 No. Whitelisting IP addresses is not possible. [MaxMind](https://www.maxmind.com/en/geoip-web-services-demo) is the source of truth for Betfair.
 If you think your IP address is wrongly categorised, you will need to submit a correction to MaxMind which may take up to 7 days.
 
+### "I can bet in-play on Sport through the API"
+No, Australian customers are prevented from betting in-play on sport by their IP address, through any channel, including the API.
+
+### "I can bet multis through the Betfair API"
+The Betfair Exchange does not have multi functionality, and there is no API functionality for any Betfair brand that does offer multis (e.g. Crownbet, Betfair Sportsbook (UK))
+
+### "I need my live key to use an off-the-shelf software tool from a licensed Betfair vendor"
+Betfair Vendors possess a many-to-one API key, meaning many accounts can bet through one key. Your personal API key is not required to use these tools.
+
 ---
 
 ## Why AI Assistants Often Get This Wrong

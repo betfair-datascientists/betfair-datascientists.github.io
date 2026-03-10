@@ -93,6 +93,7 @@ Participants are required to utilise their Topaz API key to download the histori
 ### Submission Files
 
  - [Example Submission File](../assets/submission-template_model-name_2026-02-24.csv)
+ - [Submission File 10 March](../assets/submission-template_model-name_2026-03-10.csv)
 
 ---
 
@@ -114,7 +115,7 @@ from betfairlightweight import filters
 # ===========================
 
 CREDENTIAL_PATH = "credentials.json"
-EVENT_TYPE_ID = 4339  # Horse Racing
+EVENT_TYPE_ID = 4339  # Greyhound Racing
 COUNTRY = "AU"
 MARKET_TYPES = ["WIN"]
 MAX_RESULTS = 1000

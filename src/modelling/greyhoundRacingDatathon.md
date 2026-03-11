@@ -94,6 +94,7 @@ Participants are required to utilise their Topaz API key to download the histori
 
  - [Example Submission File](../assets/submission-template_model-name_2026-02-24.csv)
  - [Submission File 10 March](../assets/submission-template_model-name_2026-03-10.csv)
+ - [Submission File 11 March](../assets/submission-template_model-name_2026-03-11.csv)
 
 ---
 
@@ -322,7 +323,29 @@ if __name__ == "__main__":
  
 ## Leaderboard
 
-Check back later
+|Model|Score|Rank|
+|------------------------|-------|--|
+|JFLASH|12.7279|1|
+|SniperV2|12.8586|2|
+|reavepaleg|13.0342|3|
+|LobsterDishes|13.0464|4|
+|NogginNoggin|13.0526|5|
+|G2G|13.0651|6|
+|TalkingHeadsToHeads|13.0775|7|
+|ExivaOrey|13.1257|8|
+|FootyProphet|13.1266|9|
+|GreysAI|13.1271|10|
+|ApproachingProfit|13.1272|11|
+|Hounded|13.2098|12|
+|Leisurinho|13.3271|13|
+|TheGreyhoundWhisperer|13.391|14|
+|PawsitiveEV|13.4469|15|
+|watptv|13.45|16|
+|NotSure|13.5887|17|
+|Nightingale|13.6158|18|
+|RockSystems|14.4485|19|
+|WirtzIt|18.155|20|
+|NoOffensiveNames|38.0793|21|
 
 ---
 

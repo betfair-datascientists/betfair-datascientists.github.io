@@ -102,6 +102,7 @@ Participants are required to utilise their Topaz API key to download the histori
  - [Submission File 18 March](../assets/submission-template_model-name_2026-03-18.csv)
  - [Submission File 19 March](../assets/submission-template_model-name_2026-03-19.csv)
  - [Submission File 20 March](../assets/submission-template_model-name_2026-03-20.csv)
+ - [Submission File 23 March](../assets/submission-template_model-name_2026-03-23.csv)
 
 ---
 
@@ -332,28 +333,28 @@ if __name__ == "__main__":
 
 |Model|Score|Rank|
 |------------------------|-------|--|
-|JFLASH|12.9032|1|
-|Leisurinho|13.1043|2|
-|NogginNoggin|13.119|3|
-|FootyProphet|13.1415|4|
-|TheGreyhoundWhisperer|13.1415|5|
-|Hounded|13.2098|6|
-|ExivaOrey|13.2735|7|
-|GreysAI|13.3209|8|
-|reavepaleg|13.3222|9|
-|PawsitiveEV|13.3409|10|
-|Nightingale|13.3413|11|
-|NotSure|13.3424|12|
-|camow7|13.3578|13|
-|SniperV2|13.36|14|
-|G2G|13.4559|15|
-|TalkingHeadsToHeads|13.5169|16|
-|watptv|13.5427|17|
-|LobsterDishes|13.5614|18|
-|DashHoundFever|14.0993|19|
-|WirtzIt|14.9917|20|
-|RockSystems|15.222|21|
-|NoOffensiveNames|20.2942|22|
+|JFLASH|13.0663|1|
+|Leisurinho|13.2604|2|
+|NogginNoggin|13.3155|3|
+|TheGreyhoundWhisperer|13.3227|4|
+|FootyProphet|13.334|5|
+|Hounded|13.3974|6|
+|ExivaOrey|13.4706|7|
+|GreysAI|13.491|8|
+|reavepaleg|13.4957|9|
+|NotSure|13.497|10|
+|Nightingale|13.508|11|
+|SniperV2|13.5359|12|
+|PawsitiveEV|13.5442|13|
+|camow7|13.5533|14|
+|G2G|13.6062|15|
+|TalkingHeadsToHeads|13.7006|16|
+|LobsterDishes|13.7365|17|
+|watptv|13.8087|18|
+|DashHoundFever|14.3084|19|
+|WirtzIt|15.118|20|
+|RockSystems|15.4063|21|
+|NoOffensiveNames|19.9509|22|
 
 ---
 

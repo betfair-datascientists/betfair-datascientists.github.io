@@ -331,32 +331,32 @@ if __name__ == "__main__":
 
 ---
  
-## Leaderboard
+## Leaderboard (Final)
 
 |Model|Score|Rank|
 |------------------------|-------|--|
-|JFLASH|13.1298|1|
-|Leisurinho|13.2834|2|
-|NogginNoggin|13.3632|3|
-|FootyProphet|13.3728|4|
-|TheGreyhoundWhisperer|13.3735|5|
-|reavepaleg|13.4324|6|
-|Hounded|13.4418|7|
-|GreysAI|13.4982|8|
-|Nightingale|13.5132|9|
-|NotSure|13.5321|10|
-|SniperV2|13.5416|11|
-|PawsitiveEV|13.5534|12|
-|G2G|13.6814|13|
-|camow7|13.6884|14|
-|TalkingHeadsToHeads|13.7131|15|
-|LobsterDishes|13.7259|16|
-|ExivaOrey|13.7605|17|
-|watptv|13.897|18|
-|DashHoundFever|14.2109|19|
-|WirtzIt|14.9202|20|
-|RockSystems|15.4628|21|
-|NoOffensiveNames|18.8844|22|
+|JFLASH|12.9902|1|
+|Leisurinho|13.1449|2|
+|NogginNoggin|13.2375|3|
+|FootyProphet|13.2485|4|
+|TheGreyhoundWhisperer|13.2545|5|
+|reavepaleg|13.283|6|
+|Hounded|13.3132|7|
+|GreysAI|13.3547|8|
+|Nightingale|13.3652|9|
+|SniperV2|13.4201|10|
+|NotSure|13.4318|11|
+|PawsitiveEV|13.4471|12|
+|G2G|13.4618|13|
+|ExivaOrey|13.534|14|
+|camow7|13.5631|15|
+|TalkingHeadsToHeads|13.5697|16|
+|LobsterDishes|13.6005|17|
+|watptv|13.8124|18|
+|DashHoundFever|14.0652|19|
+|WirtzIt|14.775|20|
+|RockSystems|15.3469|21|
+|NoOffensiveNames|18.2027|22|
 
 ---
 

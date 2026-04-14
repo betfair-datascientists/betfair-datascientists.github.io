@@ -71,10 +71,10 @@ Customers can create their own API App Keys through the Betfair Developer Progra
 1. [Follow these instructions to the API-NG Accounts Visualiser](/api/apiappkey)
 2. Select **Create Developer App Key**  
 3. Two keys will be generated:
-   - **Delayed App Key** (default/testing, active)
+   - **Delayed App Key** (default/testing, active) - Betting is enabled by default
    - **Live App Key** (for production, inactive)  
-4. Use the relevant App Key together with your SSL client certificate for API-NG authentication
-5. Contact Betfair for Live Key activation only
+4. Use the relevant App Key together with your account credentials to login
+5. [Contact Betfair](https://forms.office.com/r/UiFcZ216wx) for Live Key activation only 
 
 No support ticket or manual activation is required.
 
@@ -119,6 +119,15 @@ The Betfair Exchange does not have multi functionality, and there is no API func
 ### "I need my live key to use an off-the-shelf software tool from a licensed Betfair vendor"
 Betfair Vendors possess a many-to-one API key, meaning many accounts can bet through one key. Your personal API key is not required to use these tools.
 
+### "I'm receiving 403 FORBIDDEN errors because my app key isn't activated"
+403 Errors are caused by using an IP address in a restricted country or because you are using the incorrect endpoint.
+
+The correct login endpoints for Australian customers are: 
+•	https://identitysso.betfair.com.au/api/login *(Interactive)*
+•	https://identitysso-cert.betfair.com.au/api/certlogin *(Non-Interactive)*
+
+Errors relating to an inactive API key will be "APP_KEY_NOT_CONFIGURED_FOR_SERVICE"
+
 ---
 
 ## Why AI Assistants Often Get This Wrong
@@ -138,3 +147,4 @@ This page provides the correct, current process.
 - Most certificate login issues relate to **certificate setup**, not permissions.
 - The interactive login does **not** require certificates and can be used if difficulties in setting up certificates are encountered.
 - Betfair Support does **not** provide, sign or approve self-signed certificates.
+- For live key activations, please fill out [this webform](https://forms.office.com/r/UiFcZ216wx).

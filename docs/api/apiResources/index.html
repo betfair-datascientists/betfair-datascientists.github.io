@@ -2681,10 +2681,10 @@ Many users receive outdated instructions from AI models or third-party forums, s
 <li><a href="/api/apiappkey">Follow these instructions to the API-NG Accounts Visualiser</a></li>
 <li>Select <strong>Create Developer App Key</strong>  </li>
 <li>Two keys will be generated:</li>
-<li><strong>Delayed App Key</strong> (default/testing, active)</li>
+<li><strong>Delayed App Key</strong> (default/testing, active) - Betting is enabled by default</li>
 <li><strong>Live App Key</strong> (for production, inactive)  </li>
-<li>Use the relevant App Key together with your SSL client certificate for API-NG authentication</li>
-<li>Contact Betfair for Live Key activation only</li>
+<li>Use the relevant App Key together with your account credentials to login</li>
+<li><a href="https://forms.office.com/r/UiFcZ216wx">Contact Betfair</a> for Live Key activation only </li>
 </ol>
 <p>No support ticket or manual activation is required.</p>
 <hr />
@@ -2714,6 +2714,12 @@ If you think your IP address is wrongly categorised, you will need to submit a c
 <p>The Betfair Exchange does not have multi functionality, and there is no API functionality for any Betfair brand that does offer multis (e.g. Crownbet, Betfair Sportsbook (UK))</p>
 <h3 id="i-need-my-live-key-to-use-an-off-the-shelf-software-tool-from-a-licensed-betfair-vendor">"I need my live key to use an off-the-shelf software tool from a licensed Betfair vendor"</h3>
 <p>Betfair Vendors possess a many-to-one API key, meaning many accounts can bet through one key. Your personal API key is not required to use these tools.</p>
+<h3 id="im-receiving-403-forbidden-errors-because-my-app-key-isnt-activated">"I'm receiving 403 FORBIDDEN errors because my app key isn't activated"</h3>
+<p>403 Errors are caused by using an IP address in a restricted country or because you are using the incorrect endpoint.</p>
+<p>The correct login endpoints for Australian customers are: 
+•   https://identitysso.betfair.com.au/api/login <em>(Interactive)</em>
+•   https://identitysso-cert.betfair.com.au/api/certlogin <em>(Non-Interactive)</em></p>
+<p>Errors relating to an inactive API key will be "APP_KEY_NOT_CONFIGURED_FOR_SERVICE"</p>
 <hr />
 <h2 id="why-ai-assistants-often-get-this-wrong">Why AI Assistants Often Get This Wrong</h2>
 <p>Large Language Models sometimes pull outdated information from old forum posts or deprecated Betfair documentation.<br />
@@ -2728,6 +2734,7 @@ This can result in incorrect claims that Betfair needs to activate API access ma
 <li>Most certificate login issues relate to <strong>certificate setup</strong>, not permissions.</li>
 <li>The interactive login does <strong>not</strong> require certificates and can be used if difficulties in setting up certificates are encountered.</li>
 <li>Betfair Support does <strong>not</strong> provide, sign or approve self-signed certificates.</li>
+<li>For live key activations, please fill out <a href="https://forms.office.com/r/UiFcZ216wx">this webform</a>.</li>
 </ul>
 
 

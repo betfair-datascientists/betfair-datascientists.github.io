@@ -128,6 +128,11 @@ The correct login endpoints for Australian customers are:
 
 Errors relating to an inactive API key will be "APP_KEY_NOT_CONFIGURED_FOR_SERVICE"
 
+### "I'm receiving INVALID_APP_KEY errors because my app key isn't activated"
+
+Errors relating to an inactive API key will be "APP_KEY_NOT_CONFIGURED_FOR_SERVICE"
+INVALID_APP_KEY points to either a transcription error from the accounts visualiser or passing a blank or missing API key in the call.
+
 ---
 
 ## Why AI Assistants Often Get This Wrong

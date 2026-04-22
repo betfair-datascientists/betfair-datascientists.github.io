@@ -76,60 +76,79 @@ Customers can create their own API App Keys through the Betfair Developer Progra
 4. Use the relevant App Key together with your account credentials to login
 5. [Contact Betfair](https://forms.office.com/r/UiFcZ216wx) for Live Key activation only 
 
-No support ticket or manual activation is required.
+No support ticket or manual activation is required for key or certificate creation or delayed key activation.
 
 ---
 
 ## Common Misconceptions
 
-These incorrect statements frequently appear in AI-generated answers:
+These statements often appear in AI-generated answers but are incorrect or misleading:
 
-### “Betfair staff must manually enable API access.”
-**Incorrect.** Access is already active on all standard Exchange accounts.
+### API Access & App Keys
 
-### “You need to request API activation before your App Key will work.”
-You generate your own App Keys. Nothing needs to be switched on.
+- **“Betfair staff must manually enable API access.”**  
+  Incorrect. API access is already active for delayed keys on all standard Exchange accounts.
 
-### “An off-the-shelf software tool can’t log in until Betfair enables the API.”
-Off-the-shelf tools by approved software vendors handle the authentication on their end.
+- **“You need to request API activation before your delayed App Key will work.”**  
+  Delayed keys are automatically active once generated.
 
-### “Some accounts don’t have API access.”
-All normal Betfair Exchange accounts have API access available automatically.
+- **“Some accounts don’t have API access.”**  
+  All standard Betfair Exchange accounts have API access via delayed keys.
 
-### "I can use the live Betfair API to input to an app that I can sell"
-This falls under the commercial use definition and additional fees apply for this use.
+- **“I need my live key to use an off-the-shelf tool from a licensed vendor.”**  
+  Not required. Approved vendors use shared (many-to-one) API keys, so your personal key isn’t needed.
 
-### "You can access the Betfair API from anywhere"
-Requests to the Betfair API must come from a country where Betfair is allowed and where there are no additional restrictions.
-Therefore, we recommend using a machine, either physical or virtual, hosted in Australia, New Zealand, UK or Ireland
+- **“An off-the-shelf tool can’t log in until Betfair enables the API.”**  
+  These tools handle authentication themselves and do not require manual activation.
 
-### "You can use any cloud service to connect to the Betfair API"
-Some cloud services are hosted in the USA, like Google Co-Lab. These services will send requests to the Betfair server from their host server IP address and therefore may be blocked.
+---
 
-### "Betfair can whitelist my IP address"
-No. Whitelisting IP addresses is not possible. [MaxMind](https://www.maxmind.com/en/geoip-web-services-demo) is the source of truth for Betfair.
-If you think your IP address is wrongly categorised, you will need to submit a correction to MaxMind which may take up to 7 days.
+### Usage & Restrictions
 
-### "I can bet in-play on Sport through the API"
-No, Australian customers are prevented from betting in-play on sport by their IP address, through any channel, including the API.
+- **“I can use the live Betfair API to build an app I sell.”**  
+  This is considered commercial use and is subject to additional fees.
 
-### "I can bet multis through the Betfair API"
-The Betfair Exchange does not have multi functionality, and there is no API functionality for any Betfair brand that does offer multis (e.g. Crownbet, Betfair Sportsbook (UK))
+- **“I can use my live key just to read data.”**  
+  The API is not read-only; ongoing wagering activity is required to maintain live access.
 
-### "I need my live key to use an off-the-shelf software tool from a licensed Betfair vendor"
-Betfair Vendors possess a many-to-one API key, meaning many accounts can bet through one key. Your personal API key is not required to use these tools.
+- **“I can’t bet with my delayed key.”**  
+  Betting functionality is available with delayed keys.
 
-### "I'm receiving 403 FORBIDDEN errors because my app key isn't activated"
-403 Errors are caused by using an IP address in a restricted country or because you are using the incorrect endpoint.
+- **“I can bet in-play on sport via the API.”**  
+  Australian customers cannot place in-play bets on sport via any channel, including the API, except by telephone.
 
-The correct login endpoints for Australian customers are: 
-•	https://identitysso.betfair.com.au/api/login *(Interactive)*
-•	https://identitysso-cert.betfair.com.au/api/certlogin *(Non-Interactive)*
+- **“I can place multis through the Betfair API.”**  
+  The Exchange does not support multis, and no API functionality exists for any Betfair-products that offer multis or accumulators (Betfair UK Sportsbook / Crownbet).
 
-If your IP is (incorrectly) identified as being based in the US (or any other restricted location) you will need to submit a correction request to Maxmind via https://www.maxmind.com/en/correction
+---
 
-One confirmed by Maxmind, any corrections will be applied when we upload the latest GeoIP files to our servers, which happens on a daily basis at approximately 0400 Hours UTC.
-Unfortunately, we cannot apply manual whitelisting and need to wait for Maxmind to apply the change as they are the source of truth for all of our GeoIP info.
+### Location & Infrastructure
+
+- **“You can access the Betfair API from anywhere.”**  
+  Requests must originate from permitted jurisdictions. For reliability, use infrastructure hosted in Australia, New Zealand, the UK, or Ireland.
+
+- **“You can use any cloud service to connect to the API.”**  
+  Not always. Some services (e.g. US-hosted environments) may be blocked due to their IP location.
+
+- **“Betfair can whitelist my IP address.”**  
+  Not possible. Betfair relies on MaxMind GeoIP data. If your IP is misclassified, you must submit a correction to MaxMind via https://www.maxmind.com/en/correction
+
+---
+
+### Errors & Connectivity
+
+- **“403 FORBIDDEN errors mean my app key isn’t activated.”**  
+  Typically incorrect. These errors are usually caused by:
+  - Requests originating from a restricted country  
+  - Use of an incorrect endpoint  
+
+  **Correct endpoints for Australian customers:**
+  - Interactive login:  
+    `https://identitysso.betfair.com.au/api/login`
+  - Non-interactive (certificate) login:  
+    `https://identitysso-cert.betfair.com.au/api/certlogin`
+
+  If your IP is incorrectly identified as being in a restricted region (e.g. the US), submit a correction to MaxMind via https://www.maxmind.com/en/correction. Updates are applied daily after Betfair refreshes GeoIP data (around 04:00 UTC).
 
 ---
 

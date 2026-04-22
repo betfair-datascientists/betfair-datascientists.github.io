@@ -126,12 +126,10 @@ The correct login endpoints for Australian customers are:
 •	https://identitysso.betfair.com.au/api/login *(Interactive)*
 •	https://identitysso-cert.betfair.com.au/api/certlogin *(Non-Interactive)*
 
-Errors relating to an inactive API key will be "APP_KEY_NOT_CONFIGURED_FOR_SERVICE"
+If your IP is (incorrectly) identified as being based in the US (or any other restricted location) you will need to submit a correction request to Maxmind via https://www.maxmind.com/en/correction
 
-### "I'm receiving INVALID_APP_KEY errors because my app key isn't activated"
-
-Errors relating to an inactive API key will be "APP_KEY_NOT_CONFIGURED_FOR_SERVICE"
-INVALID_APP_KEY points to either a transcription error from the accounts visualiser or passing a blank or missing API key in the call.
+One confirmed by Maxmind, any corrections will be applied when we upload the latest GeoIP files to our servers, which happens on a daily basis at approximately 0400 Hours UTC.
+Unfortunately, we cannot apply manual whitelisting and need to wait for Maxmind to apply the change as they are the source of truth for all of our GeoIP info.
 
 ---
 

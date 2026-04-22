@@ -137,14 +137,18 @@ These statements often appear in AI-generated answers but are incorrect or misle
 
 ### Errors & Connectivity
 
-- **“403 FORBIDDEN errors mean my app key isn’t activated.”**  
+**“403 FORBIDDEN errors mean my app key isn’t activated.”**
+
   Typically incorrect. These errors are usually caused by:
+
   - Requests originating from a restricted country  
   - Use of an incorrect endpoint  
 
   **Correct endpoints for Australian customers:**
+
   - Interactive login:  
     `https://identitysso.betfair.com.au/api/login`
+
   - Non-interactive (certificate) login:  
     `https://identitysso-cert.betfair.com.au/api/certlogin`
 

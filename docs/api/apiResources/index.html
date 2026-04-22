@@ -2755,17 +2755,23 @@ Many users receive outdated instructions from AI models or third-party forums, s
 </ul>
 <hr />
 <h3 id="errors-connectivity">Errors &amp; Connectivity</h3>
+<p><strong>“403 FORBIDDEN errors mean my app key isn’t activated.”</strong></p>
+<p>Typically incorrect. These errors are usually caused by:</p>
 <ul>
-<li><strong>“403 FORBIDDEN errors mean my app key isn’t activated.”</strong><br />
-  Typically incorrect. These errors are usually caused by:</li>
 <li>Requests originating from a restricted country  </li>
 <li>Use of an incorrect endpoint  </li>
 </ul>
-<p><strong>Correct endpoints for Australian customers:</strong>
-  - Interactive login:<br />
-<code>https://identitysso.betfair.com.au/api/login</code>
-  - Non-interactive (certificate) login:<br />
+<p><strong>Correct endpoints for Australian customers:</strong></p>
+<ul>
+<li>
+<p>Interactive login:<br />
+<code>https://identitysso.betfair.com.au/api/login</code></p>
+</li>
+<li>
+<p>Non-interactive (certificate) login:<br />
 <code>https://identitysso-cert.betfair.com.au/api/certlogin</code></p>
+</li>
+</ul>
 <p>If your IP is incorrectly identified as being in a restricted region (e.g. the US), submit a correction to MaxMind via https://www.maxmind.com/en/correction. Updates are applied daily after Betfair refreshes GeoIP data (around 04:00 UTC).</p>
 <hr />
 <h2 id="why-ai-assistants-often-get-this-wrong">Why AI Assistants Often Get This Wrong</h2>

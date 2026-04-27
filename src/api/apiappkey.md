@@ -1,8 +1,8 @@
 # How to access the Betfair API
 
-Betfair has it’s own [Exchange API](https://betfair-developer-docs.atlassian.net/). You can use it to programmatically retrieve live markets, automate successful trading strategies or create your own customised trading interface. Professional punters use it for these functions and many more.
+Betfair has its own [Exchange API](https://betfair-developer-docs.atlassian.net/). You can use it to programmatically retrieve live markets, automate successful trading strategies or create your own customised trading interface. Professional punters use it for these functions and many more.
 
-This guide helps Australian and New Zealand customers with obtaining their Betfair API Key. If you’re outside of these two regions please go to the [UK's Developer Program website](http://developer.betfair.com).
+This guide helps Australian customers with obtaining their Betfair API Key. If you’re outside of this region please go to the [UK's Developer Program website](http://developer.betfair.com).
 
 There are four steps involved in getting access to our API
 
@@ -33,7 +33,7 @@ Next click on `createDeveloperAppKeys` in the left hand navigation.
 
 Type in an application name (this is your app key name, so make sure this is unique), then click ‘Execute’ down the bottom of the page.
 
-- Common errors when creating your app key are if the Application Name you’re using isn’t unique (no Betfair customers can have the same Application Name) or if you’re Application Name contains your account username
+- Common errors when creating your app key are if the Application Name your using isn’t unique (no Betfair customers can have the same Application Name) or if your Application Name contains your account username or email address
  
 If you receive an error message saying that your app key couldn’t be created, it’s most likely because you already have one. Use the `getDeveloperAppKeys` method in the left hand menu to check whether there’s already an app key associated with your account (and click `Execute` at the bottom of the screen)
 
@@ -49,15 +49,16 @@ You’ll notice that two application keys have been created;
 
 - Version – 1.0: is the live pricing app key; on yours it should have a status ‘No’ in Active.
 
-Grab the application key listed for the live price one - for the example above, that is ‘MkcBqyZrD53V6A..’
+Grab the application key listed for the delayed price one - for the example above, that is ‘VonbT9529IVf9sa5’.
+You'll need to complete testing utilising the delayed key before you can apply for activation of the live key.
 
 ---
 ### Activate your app key
 This process will generate two app keys: 
 
-- A developer key which is designed for development purposes. This has a variable delay of between 1 and 180 seconds, doesn’t show matched volume and doesn’t need to be activated prior to use.
+- A developer key which is designed for development purposes. This has a variable delay of between 1 and 180 seconds, doesn’t show matched volume and doesn’t need to be activated prior to use. This key has betting functionality and you'll need to place at least one bet through it before activation of the live key will be considered.
 
-- A live app key is intended for transacting on the Exchange and should only be used when you’re ready to start placing bets or can no longer test your strategy effectively using the developer key. 
+- A live app key is intended for transacting on the Exchange and should only be used when you’re ready to deploy your betting strategy or can no longer test your strategy effectively using the developer key. 
 
 ***Please note that if the live key is used to pull data from the Exchange without corresponding bets being placed a delay may be automatically applied to the live key.***
 

@@ -340,7 +340,7 @@ hide:
         <div class="grid-item carousel-item active" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
             <h2 style="color: white !important;text-transform:uppercase;font-family:National2;font-weight: 100;line-height: 1">API Tutorials</h2>
             <br>
-            <p style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</p>
+            <p style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our customers bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</p>
             <div class="button-container">
             <a target="_blank" href="https://betfair-datascientists.github.io/api/apiResources/" class="btn btn-hd" style="font-size: 0.9rem;padding: 5px 10px;width: auto;margin-top: 10px;height: 35px;">Learn More</a>
             </div>
@@ -356,7 +356,7 @@ hide:
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
             <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Data Modelling</h2>
             <br>
-            <p style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Many of our most successful customers use predictive models as the basis for their betting strategies. We have a series of modelling tutorials created by community members ranging from racing to sports. We hold regular datathons where cash prizes can be won.</p>
+            <p style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">Many of our customers use predictive models as the basis for their betting strategies. We have a series of modelling tutorials created by community members ranging from racing to sports. We hold regular datathons where cash prizes can be won.</p>
             <div class="button-container">
             <a target="_blank" href="https://betfair-datascientists.github.io/modelling/howToModel/" class="btn btn-hd" style="font-size: 0.9rem;padding: 5px 10px;width: auto;margin-top: 10px;height: 35px;">Learn More</a>
             </div>
@@ -391,7 +391,7 @@ hide:
     <div class="grid-container-carousel-mob" style="width: 100%; margin: 10 10; text-align: center; height: 100%;">
         <div class="grid-item carousel-item active" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
             <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">API Tutorials</h2>
-            <p style="color: white !important;font-family:DIN_Regular;font-size:0.7rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our most successful clients bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</p>
+            <p style="color: white !important;font-family:DIN_Regular;font-size:0.7rem;line-height: 1">Betfair has a set of customer-facing transactional APIs to allow you to integrate your program into the Exchange. Many of our clients bet exclusively through this by placing automated bets using custom software setups or tapping existing libraries.</p>
             <div class="button-container">
             <a target="_blank" href="https://betfair-datascientists.github.io/api/apiResources/" class="btn btn-hd" style="font-size: 0.9rem;padding: 5px 10px;width: auto;margin: 10px;height: 35px;">Learn More</a>
             </div>
@@ -405,7 +405,7 @@ hide:
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
             <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Data Modelling</h2>
-            <p style="color: white !important;font-family:DIN_Regular;font-size:0.7rem;line-height: 1">Many of our most successful customers use predictive models as the basis for their betting strategies. We have a series of modelling tutorials created by community members ranging from racing to sports. We hold regular datathons where cash prizes can be won.</p>
+            <p style="color: white !important;font-family:DIN_Regular;font-size:0.7rem;line-height: 1">Many of our customers use predictive models as the basis for their betting strategies. We have a series of modelling tutorials created by community members ranging from racing to sports. We hold regular datathons where cash prizes can be won.</p>
             <div class="button-container">
             <a target="_blank" href="https://betfair-datascientists.github.io/modelling/howToModel/" class="btn btn-hd" style="font-size: 0.9rem;padding: 5px 10px;width: auto;margin: 10px;height: 35px;">Learn More</a>
             </div>

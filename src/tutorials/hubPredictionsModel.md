@@ -69,61 +69,61 @@ We have previously done [another tutorial](https://betfair-datascientists.github
 ---
 ### All Races
 
-![Flat Back](./img/FB_ALL.png)
+![Flat Back](../img/FB_ALL.png)
 
-![Prop Back](./img/PB_ALL.png)
+![Prop Back](../img/PB_ALL.png)
 
-![Flat Lay](./img/FL_ALL.png)
+![Flat Lay](../img/FL_ALL.png)
 
 ### Distance Buckets
 
-![Flat Back Sprint](./img/FB_SPRINT.png)
+![Flat Back Sprint](../img/FB_SPRINT.png)
 
-![Flat Back Middle](./img/FB_MID.png)
+![Flat Back Middle](../img/FB_MID.png)
 
-![Flat Back Staying](./img/FB_STAY.png)
+![Flat Back Staying](../img/FB_STAY.png)
 
-![Flat Lay Sprint](./img/FL_SPRINT.png)
+![Flat Lay Sprint](../img/FL_SPRINT.png)
 
-![Flat Lay Middle](./img/FL_MID.png)
+![Flat Lay Middle](../img/FL_MID.png)
 
-![Flat Lay Staying](./img/FL_STAY.png)
+![Flat Lay Staying](../img/FL_STAY.png)
 
 ### Race Types
 
-![Flat Back Handicap](./img/FB_HCAP.png)
+![Flat Back Handicap](../img/FB_HCAP.png)
 
-![Flat Back Win Restricted](./img/FB_WIN.png)
+![Flat Back Win Restricted](../img/FB_WIN.png)
 
-![Flat Back Other](./img/FB_OTHER.png)
+![Flat Back Other](../img/FB_OTHER.png)
 
-![Flat Lay Handicap](./img/FL_HAND.png)
+![Flat Lay Handicap](../img/FL_HAND.png)
 
-![Flat Lay Win Restricted](./img/FL_WIN.png)
+![Flat Lay Win Restricted](../img/FL_WIN.png)
 
-![Flat Lay Other](./img/FL_OTHER.png)
+![Flat Lay Other](../img/FL_OTHER.png)
 
 ### Field Size
 
-![Proportional Back Less Than 10 Runners](./img/PB_LT10.png)
+![Proportional Back Less Than 10 Runners](../img/PB_LT10.png)
 
-![Proportional Back 10 or more runners](./img/PB_GT10.png)
+![Proportional Back 10 or more runners](../img/PB_GT10.png)
 
-![Flat Lay Less Than 10 Runners](./img/FL_LT10.png)
+![Flat Lay Less Than 10 Runners](../img/FL_LT10.png)
 
-![Flat Lay Win 10 or more runners](./img/FL_GT10.png)
+![Flat Lay Win 10 or more runners](../img/FL_GT10.png)
 
 ### State Based
 
-![Flat Lay VIC](./img/FL_VIC.png)
+![Flat Lay VIC](../img/FL_VIC.png)
 
-![Flat Lay NSW](./img/FL_NSW.png)
+![Flat Lay NSW](../img/FL_NSW.png)
 
-![Flat Lay WA](./img/FL_WA.png)
+![Flat Lay WA](../img/FL_WA.png)
 
-![Flat Lay QLD](./img/FL_QLD.png)
+![Flat Lay QLD](../img/FL_QLD.png)
 
-![Flat Lay All without NSW](./img/FL_EXNSW.png)
+![Flat Lay All without NSW](../img/FL_EXNSW.png)
 
 ## Practically betting a value range
 
@@ -132,7 +132,7 @@ If you were to bet a value range, say laying the Top 2 Runners in WA races where
 Well, you would need to first calculate what those boundary prices would be. The upper bound of 0% is easy, that's simply the rated price.
 The lower bound of -7% requires a bit of calculation but comes out as:
 
-![Price Boundary Calculation](./img/priceBoundary.JPG) ('7' being your value target)
+![Price Boundary Calculation](../img/priceBoundary.JPG) ('7' being your value target)
 
 For example, if a horse at Ascot had a rated price of $3.85 and the upper and lower boundaries for your betting price would be $3.03 and $3.85 (noting that the prices must be converted to valid Betfair ticks).
 Now to bet this practically, you can easily place a limit BSP lay bet with the 0% price as your upper bound. However, you cannot specify a minimum lay price, so how can you do that?

@@ -2,8 +2,6 @@
 ---
 ### Workshop
 
-<iframe width="950" height="534" src="https://www.youtube.com/embed/zRvCj-GXflI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ---
 This tutorial was written by Jason and was [originally published on Github](https://github.com/betfair-down-under/autoHubTutorials/blob/master/stakingMethodsAndBankrollManagement/stakingFunctions.py). It is shared here with his permission. 
 

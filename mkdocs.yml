@@ -8,92 +8,108 @@ site_dir: 'docs'
 
 # Navigation
 nav:
-    - Home: index.md  
+    - Home: index.md
 
-    - Data: 
+    - Getting Started:
+        - Getting Started with Betfair: gettingStarted/betfairHowTo.md
+        - Betting Glossary: gettingStarted/bettingGlossary.md
+        - Commission and Charges: gettingStarted/commission.md
+        - Value and Odds: gettingStarted/valueAndOdds.md
+        - Staking Methods and Bankroll Management: gettingStarted/stakingMethods.md
+        - Cashback 2nd Markets: gettingStarted/2ndPlaceVoid.md
+        - Exactas & Quinella: gettingStarted/exactaQuinella.md
+
+    - Betfair Data: 
         - CSV Files: data/dataListing.md
         - Historic Data Site: data/usingHistoricDataSite.md
+        - Making Sense of the Stream Files: data/historicStreamFiles.md
+        - Processing TAR Files Efficiently: data/processingTarFiles101.ipynb
+        - Converting JSON Stream Data to CSV: data/jsonToCsvRevisited/index.md
 
-    - Wagering:
-        - Betfair How-To: wagering/betfairHowTo.md
-        - Betting Glossary: wagering/bettingGlossary.md
-        - Staking Methods and Bankroll Management: wagering/stakingMethods.md
-        - Value and Odds: wagering/valueAndOdds.md
-        - Commission and other charges: wagering/commission.md
-        - Hub Predictions Model: wagering/hubPredictionsModel.md
-        - Cashback 2nd Markets: wagering/2ndPlaceVoid.md
-        - Exactas & Quinella: wagering/exactaQuinella.md
-
-    - API:
+    - Betfair API:
         - API resources: api/apiResources.md
         - How to access the Betfair API: api/apiappkey.md
-        - API tutorial in R: api/apiRtutorial.md
-        - API tutorial in Python: api/apiPythontutorial.md
+        - Betfair API Tutorial (R): api/apiRtutorial.md
+        - Betfair API Tutorial (Python): api/apiPythontutorial.md
             
     - Modelling:
-        # - Greyhound Racing Datathon: modelling/greyhoundRacingDatathon.md
-        - Intro to modelling: modelling/howToModel.md
-        - Pricing Data Sources: modelling/dataSources.md
-        - Cloud or Local: modelling/cloudOrLocalMachine.md
-        - Monte Carlo Simulations: modelling/monteCarloSimulations.md
+        - Foundations:
+            - Introduction to Modelling: modelling/howToModel.md
+            - Pricing Data Sources: modelling/dataSources.md
+            - Cloud vs Local Machines: modelling/cloudOrLocalMachine.md
+            - Monte Carlo Simulations: modelling/monteCarloSimulations.md
+
         - AFL:
             - Player Disposal Lines: modelling/AFLPlayerDisposalsTutorial.md
             - Betting Player Disposal Markets: modelling/AFLPlayerDisposalsFlumine.md
-            - How does a Data Scientist model the Brownlow?: modelling/modellingTheBrownlowMedal.md
-        - AFL (Archive):
-            - AFL modelling walk through in Python: modelling/AFLmodellingPython.md
-            - Modelling the Brownlow Medal in Python: modelling/brownlowModelTutorial.ipynb
+            - How a Data Scientist Models the Brownlow: modelling/modellingTheBrownlowMedal.md
+
+            - Legacy Tutorials:
+                - AFL Modelling Walkthrough (Python): modelling/AFLmodellingPython.md
+                - Modelling the Brownlow Medal (Python): modelling/brownlowModelTutorial.ipynb
+
         - Greyhounds:
             - Greyhound Topaz API (Python): modelling/topazTutorial.md
-        - Greyhounds (Archive):
-            - Greyhound FastTrack API (Python): modelling/fasttrackTutorial.ipynb
-            - Greyhound modelling (Python): modelling/greyhoundModellingPython.ipynb
-        - Soccer:
-            - How To Build A Soccer Bot P1: modelling/howToBuildASoccerBotPartI.md
-            - How To Build A Soccer Bot P2: modelling/howToBuildASoccerBotPartII.md
-            - How To Build A Soccer Bot P3: modelling/howToBuildASoccerBotPartIII.md
-        - Soccer (Archive):
-            - Soccer modelling (Python): modelling/soccerModellingTutorialPython.md
-            - EPL Machine Learning (Python): modelling/EPLmlPython.md
-            - Soccer modelling (R) - 2022 FIFA World Cup: modelling/soccerModellingELO2022WorldCup.md
-            - Elo soccer tutorial (R): modelling/soccerEloTutorialR.md
-            - Soccer modelling (R): modelling/soccerModellingTutorialR.md
-        - Tennis (Archive):
-            - How to model the Australian Open: modelling/howToModelTheAusOpen.md
-            - Aus Open R Tutorial: modelling/AusOpenRTutorial.md
-            - Aus Open Python Tutorial: modelling/AusOpenPythonTutorial.md
 
-    - Tutorials:
-        - Golden Rules of Automation: tutorials/goldenRulesOfAutomation.md
-        - How to Automate 1: tutorials/How_to_Automate_1.ipynb
-        - How to Automate 2: tutorials/How_to_Automate_2.ipynb
-        - How to Automate 3: tutorials/How_to_Automate_3.ipynb
-        - How to Automate 4: tutorials/How_to_Automate_4.md
-        - How to Automate 5: tutorials/How_to_Automate_5.md
-        - Making Sense of the Stream Files: tutorials/historicStreamFiles.md
-        - Flumine Results to CSV Files: tutorials/resultsLoggingTutorial.md
-        - Flumine Simulations: tutorials/flumineSimulations.md
-        - Take away the pain! Processing TAR Files 101: tutorials/processingTarFiles101.ipynb
-        #- JSON to CSV in Python: tutorials/jsonToCsvTutorial.md
-        - JSON to CSV | Revisited: tutorials/jsonToCsvRevisited/index.md
-        - Back testing ratings in Python: tutorials/backtestingRatingsTutorial.md
-        - Automated betting angles in Python: tutorials/automatedBettingAnglesTutorial.ipynb
-        - Do they know? Analysing Betfair market formation & market movements: tutorials/analysingAndPredictingMarketMovements.ipynb
-        - Wisdom of the crowd? Analysing & understanding BSP: tutorials/analysingAndPredictingBSP.ipynb
+            - Legacy Tutorials:
+                - Greyhound FastTrack API (Python): modelling/fasttrackTutorial.ipynb
+                - Greyhound Modelling (Python): modelling/greyhoundModellingPython.ipynb
+
+        - Soccer:
+            - Building a Soccer Bot — Part 1: modelling/howToBuildASoccerBotPartI.md
+            - Building a Soccer Bot — Part 2: modelling/howToBuildASoccerBotPartII.md
+            - Building a Soccer Bot — Part 3: modelling/howToBuildASoccerBotPartIII.md
+
+            - Legacy Tutorials:
+                - Soccer Modelling (Python): modelling/soccerModellingTutorialPython.md
+                - EPL Machine Learning (Python): modelling/EPLmlPython.md
+                - Soccer Modelling for the 2022 FIFA World Cup (R): modelling/soccerModellingELO2022WorldCup.md
+                - Elo Soccer Tutorial (R): modelling/soccerEloTutorialR.md
+                - Soccer Modelling (R): modelling/soccerModellingTutorialR.md
+
+        - Tennis:
+            - Legacy Tutorials:
+                - How to Model the Australian Open: modelling/howToModelTheAusOpen.md
+                - Australian Open Tutorial (R): modelling/AusOpenRTutorial.md
+                - Australian Open Tutorial (Python): modelling/AusOpenPythonTutorial.md
+
+    - Automation & Backtesting:
+        - Foundations:
+            - Golden Rules of Automation: tutorials/goldenRulesOfAutomation.md
+
+        - Automation Series:
+            - How to Automate — Part 1: tutorials/How_to_Automate_1.ipynb
+            - How to Automate — Part 2: tutorials/How_to_Automate_2.ipynb
+            - How to Automate — Part 3: tutorials/How_to_Automate_3.ipynb
+            - How to Automate — Part 4: tutorials/How_to_Automate_4.md
+            - How to Automate — Part 5: tutorials/How_to_Automate_5.md
+
+        - Backtesting:
+            - Hub Predictions Model: tutorials/hubPredictionsModel.md
+            - Back testing ratings in Python: tutorials/backtestingRatingsTutorial.md
+            - Flumine Simulations: tutorials/flumineSimulations.md
+
+        - Data & Logging:
+            - Flumine Results to CSV Files: tutorials/resultsLoggingTutorial.md
+
+        - Strategy Automation:
+            - Automated Betting Angles in Python: tutorials/automatedBettingAnglesTutorial.ipynb
+
+        - Market Analysis:
+            - Understanding Market Formation and Price Movement: tutorials/analysingAndPredictingMarketMovements.ipynb
+            - Understanding BSP and Market Efficiency: tutorials/analysingAndPredictingBSP.ipynb
 
     - Mental Game:
         - Intro: mentalGame/intro.md
-        - Part 1: mentalGame/roleOfEmotions.md
-        - Part 2: mentalGame/mapYourEmotions.md
-        - Part 3: mentalGame/handlingBadVariance.md
-        - Part 4: mentalGame/winbyBeingGreatatLosing.md
-        - Part 5: mentalGame/correctingyouremotions.md
-        - Part 6: mentalGame/responsibleGambling.md
-        - Part 7: mentalGame/InchwormConcept.md
-        - Part 8: mentalGame/HighExpectations.md
-        - Part 9: mentalGame/TappingYourIntuition.md
-    - Contact Us:
-        - Meet the Team: contactUs/test.md
+        - The Role of Emotions in Wagering: mentalGame/roleOfEmotions.md
+        - Map Your Emotions: mentalGame/mapYourEmotions.md
+        - Handling Variance: mentalGame/handlingBadVariance.md
+        - Win By Being Great At Losing: mentalGame/winbyBeingGreatatLosing.md
+        - Correcting Your Emotions: mentalGame/correctingyouremotions.md
+        - Responsible Gambling: mentalGame/responsibleGambling.md
+        - Maximize Your Learning with the Inchworm Concept: mentalGame/InchwormConcept.md
+        - The High Cost of High Expectations: mentalGame/HighExpectations.md
+        - Tapping Your Intuition: mentalGame/TappingYourIntuition.md
 
 # Theme settings
 theme:

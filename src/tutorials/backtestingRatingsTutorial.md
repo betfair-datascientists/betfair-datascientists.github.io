@@ -2,8 +2,6 @@
 ---
 ### Workshop
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0UfPdeghuN8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 ---
 This tutorial was written by [Tom Bishop](https://github.com/TMBish) and was [originally published on Github](https://github.com/TMBish/bfStreamTutorials/tree/main/01-backtesting). It is shared here with his permission. 
 

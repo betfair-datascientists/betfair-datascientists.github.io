@@ -57,15 +57,15 @@ You'll need to download a program to unzip the TAR files. Here we'll be using [7
 
 Locate the data.tar file in your computer's file explorer program. Right click on the file, select '7-Zip' from the menu then choose 'Extract files...'.
 
-![Betfair Historic Data](./img/historicDataUnzip2.png)
+![Betfair Historic Data](../img/historicDataUnzip2.png)
 
 In the model that pops up change the path mode to 'No pathnames'. You can also change the name and/or path of the folder you want the files extracted to if you want to.
 
-![Betfair Historic Data](./img/historicDataUnzip3.png)
+![Betfair Historic Data](../img/historicDataUnzip3.png)
 
 You now have a collection of .bz2 files. The final step is to select all the files, right click, select '7-Zip' from the menu then choose 'Extract here'. This will then extract all the individual zipped files which you can then either open in a text editor - you can use something basic like Notepad (installed on basically all computers by default) or a more complete program like [Visual Studio Code](https://code.visualstudio.com/) (my go to), [Vim](https://www.vim.org/) or [Notepad++](https://notepad-plus-plus.org/) - or you can parse over the using a program to do the work for you. We'll explore how to parse the data another time. If you're opening the files with a text editor you might need to right click, choose 'open with' and select your preferred program. 
 
-![Betfair Historic Data](./img/historicDataUnzip4.png)
+![Betfair Historic Data](../img/historicDataUnzip4.png)
 
 ---
 ### What's it for? 

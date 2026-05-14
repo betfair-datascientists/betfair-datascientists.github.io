@@ -8,6 +8,8 @@ To enter the Competition, an Eligible Participant must register their details by
 
 Note – only existing customers of Betfair, as at 17 May 2026, can participate in the Competition.
 
+**Registrations close at 4:59pm AEST on Monday June 8th 2026.**
+
 ---
 
 ## The Competition
@@ -16,11 +18,18 @@ Think you’ve got what it takes to model the FIFA World Cup? Now’s your chanc
 
 With **$5,000 in prizes** on offer, this is your opportunity to create a predictive model that accurately **predicts match results** across the World Cup Tournament. Whether you're a seasoned pro or new to soccer analytics, we encourage you to get creative — adapt your skills from other fields, improve an existing model, or start fresh! 
 
-This year’s Datathon takes place over the entire tournament, featuring **72 Group Stage Matches** and **32 Knockout Stage Matches**. Participants will be challenged to produce **probabilities for each Home/Draw/Away result of the group matches AND the Home/Away 'To Qualify' probability for every possible combination of Knockout Stage match**, with performance measured against real-world outcomes to determine model accuracy and leaderboard rankings.
+This year’s Datathon takes place over the entire tournament, featuring **72 Group Stage Matches** and **32 Knockout Stage Matches**. 
+
+Participants will be challenged to produce 
+
+ -**probabilities for each Home/Draw/Away result of the group matches**; AND 
+ -**the Home/Away 'To Qualify' probability for every possible combination of Knockout Stage match**
+ 
+Performance will be measured against real-world outcomes to determine model accuracy and leaderboard rankings.
 
 - **Leaderboard updates** will be posted here throughout the competition, so check back often.  
 - Join the conversation in the Quants Discord server (**#datathon** channel), where you can discuss models with fellow participants.  
-- Don’t forget to complete the [registration form](https://forms.office.com/r/ZG9ea1xQj1) to join the Discord Server.  
+- You can join the Discord Server [here](https://forms.office.com/r/ZG9ea1xQj1).  
 
 For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon@betfair.com.au)
 
@@ -30,7 +39,7 @@ For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon
 
 Review the full Terms and Conditions for the 2026 FIFA World Cup Datathon [here](../assets/FIFA_World_Cup_Datathon_2026_TCs.pdf).
 
-The competition will run from **11 June** 2026 until **19 July** 2026 (**excluding weekends**) and will cover **all** matches in the World Cup competition
+The competition will run from **12 June** 2026 until **20 July** 2026 and will cover **all** matches in the World Cup competition
 
 ### Prizes
 
@@ -59,7 +68,7 @@ Winners will be announced at the end of the competition, with prizes distributed
 Your goal is create a model or a set of models to generate the probability:
 
  - For Home / Draw / Away Full-Time Results for all 72 Group Stage Matches
- - For Home / Away To-Qualify Results for all **possible** Knockout Stage Match-Ups
+ - For Home / Away To-Qualify Results for all **possible** Knockout Stage Match-Ups (1128)
 
 How you build your model is entirely up to you—whether it's an Elo model, regression, Machine Learning, or something else, the creativity is in your hands.
 
@@ -79,13 +88,14 @@ All submissions should be emailed to datathon@betfair.com.au
  
 ### Judging
 
- - Entrants will be ranked in ascending order on their average log loss per race
+ Entrants will be ranked in ascending order on their total log loss across all matches that take place
 
 ---
 
 ### Historic Data
 
 The historic dataset will be provided by email with 2 business days of registering for the competition
+
 ---
 
 ### Submission File
@@ -97,14 +107,20 @@ Check Back Later
 ## Leaderboard (Final)
 
 Check Back Later
+
 ---
 
 ## FAQs
 
 ### What happens if Italy replaces Iran in the final groups?
 
-- There will be an additional 6 matches included in the submission file for Group G where Italy replaces Iran
+- There will be an additional 3 matches included in the submission file for Group G where Italy replaces Iran
 - There will be an additional 47 Knockout Stage match-ups where Italy replaces Iran
+
+### How is Log Loss calculated?
+
+- Log Loss for each selection is defined as -1 * (R * LN(P) + (1-R) * LN(1-P)) where R is the binary result and P is the submitted probability
+- There will be 3 log loss values for each group stage match and 2 for each knockout match for a total of 280 log loss values
 
 ### Can I resubmit my submission if I notice an error?
 
@@ -143,3 +159,5 @@ Check Back Later
 ## Registration
 
 To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/QnQVkCqtd7)
+
+Registrations close at 4:59pm AEST on Monday June 8th 2026.

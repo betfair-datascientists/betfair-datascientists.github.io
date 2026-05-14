@@ -81,5 +81,3 @@ Here are some other useful resources that can help you work with this Historic D
 - [Data Specification](https://historicdata.betfair.com/files/Betfair-Historical-Data-Feed-Specification.pdf)
 - [API for downloading historic data files](https://historicdata.betfair.com.au/#/apidocs) (quicker than manually downloading)
 - [Sample code for using the historic data download API](https://github.com/betfair/historicdata)
- 
-  

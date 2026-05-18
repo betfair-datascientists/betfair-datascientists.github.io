@@ -158,6 +158,6 @@ Check Back Later
 
 ## Registration
 
-To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/QnQVkCqtd7)
+To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/iHjKeNM5Vd)
 
 Registrations close at 4:59pm AEST on Monday June 8th 2026.

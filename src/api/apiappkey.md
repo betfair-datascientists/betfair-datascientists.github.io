@@ -1,4 +1,4 @@
-# How to access the Betfair API
+# How to access the Betfair API in Australia
 
 Betfair has its own [Exchange API](https://betfair-developer-docs.atlassian.net/). You can use it to programmatically retrieve live markets, automate successful trading strategies or create your own customised trading interface. Professional punters use it for these functions and many more.
 

@@ -22,8 +22,8 @@ This year’s Datathon takes place over the entire tournament, featuring **72 Gr
 
 Participants will be challenged to produce 
 
- -**probabilities for each Home/Draw/Away result of the group matches**; AND 
- -**the Home/Away 'To Qualify' probability for every possible combination of Knockout Stage match**
+ - **probabilities for each Home/Draw/Away result of the group matches**; AND 
+ - **the Home/Away 'To Qualify' probability for every possible combination of Knockout Stage match**
  
 Performance will be measured against real-world outcomes to determine model accuracy and leaderboard rankings.
 

@@ -28,6 +28,7 @@ nav:
 
     - Betfair API:
         - API resources: api/apiResources.md
+        - Creating certificates with OpenSSL: api/apiCertificatesOpenSSL.md
         - Betfair Australia - How to access the Betfair API: api/apiappkey.md
         - Betfair API Tutorial (R): api/apiRtutorial.md
         - Betfair API Tutorial (Python): api/apiPythontutorial.md

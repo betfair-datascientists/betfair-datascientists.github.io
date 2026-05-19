@@ -12,13 +12,13 @@
         <meta name="author" content="Betfair Data Scientists">
       
       
-        <link rel="canonical" href="https://betfair-datascientists.github.io/modelling/howToModel/">
+        <link rel="canonical" href="https://betfair-datascientists.github.io/api/apiCertificatesOpenSSL/">
       
       
-        <link rel="prev" href="../worldCupDatathon/">
+        <link rel="prev" href="../apiResources/">
       
       
-        <link rel="next" href="../dataSources/">
+        <link rel="next" href="../apiappkey/">
       
       
       <link rel="icon" href="../../img/BetfairFavicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Introduction to Modelling - The Automation Hub</title>
+        <title>Creating certificates with OpenSSL - The Automation Hub</title>
       
     
     
@@ -100,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intro-to-modelling" class="md-skip">
+        <a href="#creating-betfair-api-certificates-with-openssl-on-windows" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
           <div class="md-header__topic" data-md-component="header-topic">
             <span class="md-ellipsis">
               
-                Introduction to Modelling
+                Creating certificates with OpenSSL
               
             </span>
           </div>
@@ -250,11 +250,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../api/apiResources/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../apiResources/" class="md-tabs__link">
           
   
   Betfair API
@@ -268,21 +270,17 @@
         
   
   
-    
-  
   
     
     
       
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../worldCupDatathon/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../modelling/worldCupDatathon/" class="md-tabs__link">
           
   
   Modelling
@@ -764,27 +762,30 @@
       
   
   
+    
   
   
+  
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -796,7 +797,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Betfair API
@@ -810,7 +811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/apiResources/" class="md-nav__link">
+      <a href="../apiResources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -829,10 +830,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../api/apiCertificatesOpenSSL/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Creating certificates with OpenSSL
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -842,6 +864,125 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-use-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why use certificates?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-install-openssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Install OpenSSL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-create-a-working-directory-for-creating-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Create a working directory for creating certificates
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-open-openssl-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Open OpenSSL Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-generate-private-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Generate Private Key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-generate-certificate-signing-request-csr" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Generate Certificate Signing Request (CSR)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-generate-self-signed-certificate" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Generate Self-Signed Certificate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-create-the-pem-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Create the .pem file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-upload-certificate-to-betfair" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Upload Certificate to Betfair
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-using-certificates-in-python-betfairlightweight" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Using Certificates in Python (betfairlightweight)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. Notes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -854,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/apiappkey/" class="md-nav__link">
+      <a href="../apiappkey/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -876,7 +1017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/apiRtutorial/" class="md-nav__link">
+      <a href="../apiRtutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -898,7 +1039,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api/apiPythontutorial/" class="md-nav__link">
+      <a href="../apiPythontutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -924,30 +1065,27 @@
       
   
   
-    
   
   
-  
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -959,7 +1097,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Modelling
@@ -978,13 +1116,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -993,7 +1128,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
         
           
-          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1019,7 +1154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../worldCupDatathon/" class="md-nav__link">
+      <a href="../../modelling/worldCupDatathon/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1046,30 +1181,27 @@
                 
   
   
-    
   
   
-  
     
     
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
         
           
-          
         
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" checked>
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1081,7 +1213,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_2">
             <span class="md-nav__icon md-icon"></span>
             Foundations
@@ -1092,31 +1224,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Introduction to Modelling
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../modelling/howToModel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1126,95 +1237,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#choose-your-language" class="md-nav__link">
-    <span class="md-ellipsis">
-      Choose your language
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Choose your language">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#language-1-r" class="md-nav__link">
-    <span class="md-ellipsis">
-      Language 1: R
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#language-2-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      Language 2: Python
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#find-a-data-source" class="md-nav__link">
-    <span class="md-ellipsis">
-      Find a data source
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#learn-to-program" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learn to Program
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#learn-how-to-model-data" class="md-nav__link">
-    <span class="md-ellipsis">
-      Learn how to model data
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-your-hands-dirty" class="md-nav__link">
-    <span class="md-ellipsis">
-      Get your hands dirty
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1227,7 +1249,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dataSources/" class="md-nav__link">
+      <a href="../../modelling/dataSources/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1249,7 +1271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudOrLocalMachine/" class="md-nav__link">
+      <a href="../../modelling/cloudOrLocalMachine/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1271,7 +1293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../monteCarloSimulations/" class="md-nav__link">
+      <a href="../../modelling/monteCarloSimulations/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1306,13 +1328,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1321,7 +1340,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1347,7 +1366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AFLPlayerDisposalsTutorial/" class="md-nav__link">
+      <a href="../../modelling/AFLPlayerDisposalsTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1369,7 +1388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AFLPlayerDisposalsFlumine/" class="md-nav__link">
+      <a href="../../modelling/AFLPlayerDisposalsFlumine/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1391,7 +1410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../modellingTheBrownlowMedal/" class="md-nav__link">
+      <a href="../../modelling/modellingTheBrownlowMedal/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1456,7 +1475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AFLmodellingPython/" class="md-nav__link">
+      <a href="../../modelling/AFLmodellingPython/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1478,7 +1497,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../brownlowModelTutorial/" class="md-nav__link">
+      <a href="../../modelling/brownlowModelTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1521,13 +1540,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1536,7 +1552,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
         
           
-          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1562,7 +1578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../topazTutorial/" class="md-nav__link">
+      <a href="../../modelling/topazTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1627,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../fasttrackTutorial/" class="md-nav__link">
+      <a href="../../modelling/fasttrackTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1649,7 +1665,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../greyhoundModellingPython/" class="md-nav__link">
+      <a href="../../modelling/greyhoundModellingPython/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1692,13 +1708,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1707,7 +1720,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
         
           
-          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1733,7 +1746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../howToBuildASoccerBotPartI/" class="md-nav__link">
+      <a href="../../modelling/howToBuildASoccerBotPartI/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1755,7 +1768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../howToBuildASoccerBotPartII/" class="md-nav__link">
+      <a href="../../modelling/howToBuildASoccerBotPartII/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1777,7 +1790,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../howToBuildASoccerBotPartIII/" class="md-nav__link">
+      <a href="../../modelling/howToBuildASoccerBotPartIII/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1842,7 +1855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../soccerModellingTutorialPython/" class="md-nav__link">
+      <a href="../../modelling/soccerModellingTutorialPython/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1864,7 +1877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../EPLmlPython/" class="md-nav__link">
+      <a href="../../modelling/EPLmlPython/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1886,7 +1899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../soccerModellingELO2022WorldCup/" class="md-nav__link">
+      <a href="../../modelling/soccerModellingELO2022WorldCup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1908,7 +1921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../soccerEloTutorialR/" class="md-nav__link">
+      <a href="../../modelling/soccerEloTutorialR/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1930,7 +1943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../soccerModellingTutorialR/" class="md-nav__link">
+      <a href="../../modelling/soccerModellingTutorialR/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1973,13 +1986,10 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
@@ -1988,7 +1998,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
         
           
-          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2057,7 +2067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../howToModelTheAusOpen/" class="md-nav__link">
+      <a href="../../modelling/howToModelTheAusOpen/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2079,7 +2089,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AusOpenRTutorial/" class="md-nav__link">
+      <a href="../../modelling/AusOpenRTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2101,7 +2111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AusOpenPythonTutorial/" class="md-nav__link">
+      <a href="../../modelling/AusOpenPythonTutorial/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3067,61 +3077,150 @@
 
 
 
-<h1 id="intro-to-modelling">Intro to modelling</h1>
-<p>Want to learn how to create your own predictive model using sports or racing data, but you don’t know where to start? We’re here to help.</p>
-<p>The Data Scientists at Betfair have put together the first few steps we suggest you take to get you started on your data modelling journey. We also run occasional data modelling workshops to help you get the basics down – <a href="mailto:automation@betfair.com.au">reach out and let us know</a> if you’re interested in being notified about upcoming data events.</p>
+<h1 id="creating-betfair-api-certificates-with-openssl-on-windows">Creating Betfair API Certificates with OpenSSL on Windows</h1>
+<p>This guide walks through generating Betfair API certificates from scratch using OpenSSL on Windows.</p>
+<h2 id="why-use-certificates">Why use certificates?</h2>
+<p>The certificate proves:
+- The request is coming from a <strong>trusted registered client</strong>
+- The client owns the private key associated with the uploaded certificate</p>
+<p>When you upload a certificate to Betfair:
+- Betfair stores the public certificate
+- You keep the private key locally
+- Requests signed using that key can be validated by Betfair</p>
+<p>If someone steals:
+- your username/password → still not enough
+- your app key → still not enough
+- they ALSO need your private key → otherwise authentication fails</p>
+<p>Think of authentication like this:</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Username/password</td>
+<td>Who you are</td>
+</tr>
+<tr>
+<td>App key</td>
+<td>Which application you are using</td>
+</tr>
+<tr>
+<td>Certificate</td>
+<td>Proof your application is trusted</td>
+</tr>
+</tbody>
+</table>
+<p>The certificate is the <strong>strongest binding factor</strong> between your code and your account.</p>
 <hr />
-<h2 id="choose-your-language">Choose your language</h2>
-<p>There are lots of programming languages to choose from. For our data modelling workshops we work in R and Python, as they’re both relatively easy to learn and designed for working with data.</p>
-<p>If you’re new to these languages, here are some resources that will help get you set up.</p>
-<h3 id="language-1-r">Language 1: R</h3>
+<h2 id="1-install-openssl">1. Install OpenSSL</h2>
+<p>Download the Windows installer:</p>
+<p>https://slproweb.com/products/Win32OpenSSL.html</p>
+<p>Install:
+- Win64 OpenSSL if using 64-bit Windows
+- Use default installation settings</p>
+<p>During installation:
+- Select <strong>"Copy OpenSSL DLLs to: The OpenSSL binaries (/bin) directory"</strong></p>
+<hr />
+<h2 id="2-create-a-working-directory-for-creating-certificates">2. Create a working directory for creating certificates</h2>
+<p>e.g. "C:\Users\Mitch\Documents\Betfair_Certs"</p>
+<hr />
+<h2 id="3-open-openssl-installation">3. Open OpenSSL Installation</h2>
 <ul>
-<li><a href="https://www.r-project.org/about.html">What is R?</a></li>
-<li><a href="https://cran.ms.unimelb.edu.au/">Download and install R</a> – get the language set up on your computer</li>
-<li><a href="https://www.rstudio.com/">Download and install RStudio</a> – you’ll need a program to develop in, and this one is custom-designed to work with R</li>
-<li>Take a look at the some of the existing R libraries you can use if you want to connect to our API, including <a href="https://github.com/phillc73/abettor">abettor</a> and our <a href="/api/apiRtutorial">Data Scientists’ R repo</a>.</li>
-</ul>
-<h3 id="language-2-python">Language 2: Python</h3>
-<ul>
-<li><a href="https://www.python.org/">What is Python?</a></li>
-<li><a href="https://www.anaconda.com/download/">Download and install Anaconda Distribution</a> – this will install Python and a heap of data science packages along with it</li>
+<li>Open <strong>Win64 OpenSSL Command Prompt</strong> from the Windows Search Bar</li>
+<li>Change the working directory using the command "cd" - e.g. "cd C:\Users\Mitch\Documents\Betfair_Certs"</li>
 </ul>
 <hr />
-<h2 id="find-a-data-source">Find a data source</h2>
-<p>Finding quality data is crucial to being able to create a successful model. We have lots of historical Exchange data that we’re happy to share, and there are lots of other sources of sports or racing specific data available online, depending on what you’re looking for.</p>
-<p>For our workshops we use historical NBA odds data from the Exchange (<a href="/modelling/assets/BetfairNBAOdds.csv">which you can download directly from here</a>, along with NBA game data from a variety of sources including:</p>
-<ul>
-<li><a href="http://www.espn.com/nba/">ESPN.com</a></li>
-<li><a href="http://stats.nba.com/">NBA.com</a></li>
-<li><a href="https://www.basketball-reference.com/">basketball-reference.com</a></li>
-<li><a href="https://github.com/stattleship/stattleship-r">Stattleship’s API</a></li>
-</ul>
+<h2 id="4-generate-private-key">4. Generate Private Key</h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>openssl genrsa -out client-2048.key 2048
+</code></pre></div>
+<p>This creates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>client-2048.key
+</code></pre></div>
+<p>This is your private certificate key.</p>
 <hr />
-<h2 id="learn-to-program">Learn to Program</h2>
-<p>Okay, so easier said than done, but you don't actually need a high level of programming knowledge to be able to build a decent model, and there are so many excellent resources available online that the barrier to entry is much lower than it's been in the past.</p>
-<p>These are some of our favourites if you want to learn to use R or Python for data modelling:</p>
-<ul>
-<li><a href="https://www.dataquest.io/">Dataquest</a> – free coding resource for learning both Python and R for data science</li>
-<li><a href="https://www.datacamp.com/">Datacamp</a> – another popular free resource to learn both R and Python for data science</li>
-<li><a href="https://www.codecademy.com/">Codeacademy</a> – free online programming courses with community engagement</li>
-</ul>
-<p>We've also shared a <a href="/api/apiRtutorial">R repo for connecting with our API</a>, which might make that part of the learning process easier for you, if you go down that path.</p>
+<h2 id="5-generate-certificate-signing-request-csr">5. Generate Certificate Signing Request (CSR)</h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>openssl req -new -key client-2048.key -out client-2048.csr
+</code></pre></div>
+<p>You will be prompted for certificate information.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Country Name (2 letter code) [AU]:AU
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>State or Province Name (full name) []:Victoria
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Locality Name (eg, city) []:Melbourne
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Organization Name (eg, company) []:Personal
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Organizational Unit Name (eg, section) []:API
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Common Name (e.g. server FQDN or YOUR name) []:Betfair API
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Email Address []:your@email.com
+</code></pre></div>
+<p>For these fields simply press Enter:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>A challenge password []:
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>An optional company name []:
+</code></pre></div>
+<p>This creates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>client-2048.csr
+</code></pre></div>
+<p><strong>For anything regarding organization, simply enter '.' and it will be blank</strong></p>
 <hr />
-<h2 id="learn-how-to-model-data">Learn how to model data</h2>
-<p>We’ve put together some articles to give you an introduction to some of the different approaches you can take to modelling data, but again there are also lots of resources available online. Here are some good places to start:</p>
-<ul>
-<li>Work through the modelling tutorials we've put together using <a href="/modelling/AFLmodellingPython/">AFL</a> and <a href="/modelling/soccerEloTutorialR/">soccer</a> data</li>
-<li>This <a href="https://betfair-datascientists.github.io/modelling/howToModelTheAusOpen/">Introduction to Tennis Modelling</a> gives a good overview of ranking-based models, regression-based models and point-based models</li>
-<li>How we used <a href="https://betfair-datascientists.github.io/modelling/soccerEloTutorialR/">ELO</a> and <a href="https://betfair-datascientists.github.io/modelling/EPLmlPython/">machine learning</a> as different approaches to modelling the World Cup</li>
-</ul>
+<h2 id="6-generate-self-signed-certificate">6. Generate Self-Signed Certificate</h2>
+<p>Run:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>openssl x509 -req -days 365 -in client-2048.csr -signkey client-2048.key -out client-2048.crt
+</code></pre></div>
+<p>This creates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>client-2048.crt
+</code></pre></div>
+<p>You should now have:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>client-2048.key
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>client-2048.csr
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>client-2048.crt
+</code></pre></div>
+<p>The <code>.csr</code> file is no longer needed after the certificate is created.</p>
 <hr />
-<h2 id="get-your-hands-dirty">Get your hands dirty</h2>
-<p>The best way to learn is by doing. Make sure you have a solid foundation knowledge to work from, then get excited, get your hands dirty and see what you can create! Here are a final few thoughts to help you decide where to from here:</p>
+<h2 id="7-create-the-pem-file">7. Create the .pem file</h2>
+<p>In any text-editor, combine the text from the client-2048.key and client-2048.crt files into a new file.
+Save this file as 'client-2048.pem'</p>
+<p><strong>After saving, check that the file is client-2048.pem and NOT client-2048.pem.txt</strong></p>
+<hr />
+<h2 id="8-upload-certificate-to-betfair">8. Upload Certificate to Betfair</h2>
+<p>Login to Betfair.</p>
+<p>Navigate to https://myaccount.betfair.com.au/accountdetails/mysecurity?showAPI=1</p>
+<p>Upload the below file to <strong>Automated Betting Program Access</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>client-2048.crt
+</code></pre></div>
+<p>Do NOT upload the <code>.key</code> file.</p>
+<hr />
+<h2 id="9-using-certificates-in-python-betfairlightweight">9. Using Certificates in Python (betfairlightweight)</h2>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">betfairlightweight</span><span class="w"> </span><span class="kn">import</span> <span class="n">APIClient</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pprint</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="n">certs_path</span> <span class="o">=</span> <span class="s1">&#39;C:\Users\Mitch\Documents\Betfair_Certs&#39;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="n">trading</span> <span class="o">=</span> <span class="n">APIClient</span><span class="p">(</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>    <span class="n">username</span><span class="o">=</span><span class="s1">&#39;YOUR_USERNAME&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>    <span class="n">password</span><span class="o">=</span><span class="s1">&#39;YOUR_PASSWORD&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>    <span class="n">app_key</span><span class="o">=</span><span class="s1">&#39;YOUR_APP_KEY&#39;</span><span class="p">,</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>    <span class="n">certs</span><span class="o">=</span><span class="n">certs_path</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="p">)</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="n">login_response</span> <span class="o">=</span> <span class="n">trading</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">login_response</span><span class="p">))</span>
+</code></pre></div>
+<p>Folder structure example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>C:\Users\Mitch\Documents\Betfair_Certs\
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>    client-2048.pem
+</code></pre></div>
+<hr />
+<h2 id="10-notes">10. Notes</h2>
 <ul>
-<li>Make sure you’ve got your <a href="https://www.betfair.com.au/hub/education/betfair-basics/the-betfair-exchange/">Betfair Basics</a> knowledge solid including <a href="https://www.betfair.com.au/hub/education/betfair-basics/back-betting/">back betting</a>, <a href="https://www.betfair.com.au/hub/education/betfair-basics/lay-betting/">lay betting</a> and <a href="https://www.betfair.com.au/hub/education/betfair-basics/read-an-exchange-market/">reading exchange markets</a></li>
-<li>Learn about the importance of ratings and <a href="https://www.betfair.com.au/hub/education/racing-strategy/value-and-odds/">prices</a> and get inspired by the <a href="https://www.betfair.com.au/hub/models/">models</a> created by our Data Scientists</li>
-<li>Consider how you could use our <a href="/api/apiappkey">API</a> in building and automating your model</li>
-<li>Find out about how successful some of our customers have been in their <a href="https://www.youtube.com/watch?v=zBU5JA4hl1c&amp;list=PLvw8KRdyfOY19ys_5lpSpcbjpy_PBoZEZ">modelling journeys</a></li>
+<li>Betfair Australia users do NOT require a separate developer account</li>
+<li>Certificates are required for non-interactive login</li>
+<li>Keep your <code>.key</code> file private</li>
+<li>Never share the private key publicly</li>
 </ul>
 
 
@@ -3158,7 +3257,7 @@
       <nav class="md-footer__inner md-grid" aria-label="footer.title">
         
           
-          <a href="../worldCupDatathon/" class="md-footer__link md-footer__link--prev" aria-label="Previous: FIFA World Cup Datathon" rel="prev">
+          <a href="../apiResources/" class="md-footer__link md-footer__link--prev" aria-label="Previous: API resources" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
@@ -3167,20 +3266,20 @@
                 <span class="md-footer__direction">
                   Previous
                 </span>
-                FIFA World Cup Datathon
+                API resources
               </div>
             </div>
           </a>
         
         
           
-          <a href="../dataSources/" class="md-footer__link md-footer__link--next" aria-label="Next: Pricing Data Sources" rel="next">
+          <a href="../apiappkey/" class="md-footer__link md-footer__link--next" aria-label="Next: Betfair Australia - How to access the Betfair API" rel="next">
             <div class="md-footer__title">
               <div class="md-ellipsis">
                 <span class="md-footer__direction">
                   Next
                 </span>
-                Pricing Data Sources
+                Betfair Australia - How to access the Betfair API
               </div>
             </div>
             <div class="md-footer__button md-icon">

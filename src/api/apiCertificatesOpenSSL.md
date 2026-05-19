@@ -5,18 +5,21 @@ This guide walks through generating Betfair API certificates from scratch using 
 ## Why use certificates?
 
 The certificate proves:
-- The request is coming from a **trusted registered client**
-- The client owns the private key associated with the uploaded certificate
+
+ - The request is coming from a **trusted registered client**
+ - The client owns the private key associated with the uploaded certificate
 
 When you upload a certificate to Betfair:
-- Betfair stores the public certificate
-- You keep the private key locally
-- Requests signed using that key can be validated by Betfair
+
+ - Betfair stores the public certificate
+ - You keep the private key locally
+ - Requests signed using that key can be validated by Betfair
 
 If someone steals:
-- your username/password → still not enough
-- your app key → still not enough
-- they ALSO need your private key → otherwise authentication fails
+
+ - your username/password → still not enough
+ - your app key → still not enough
+ - they ALSO need your private key → otherwise authentication fails
 
 Think of authentication like this:
 
@@ -32,16 +35,14 @@ The certificate is the **strongest binding factor** between your code and your a
 
 ## 1. Install OpenSSL
 
-Download the Windows installer:
-
-https://slproweb.com/products/Win32OpenSSL.html
+[Download the Windows installer](https://slproweb.com/products/Win32OpenSSL.html)
 
 Install:
-- Win64 OpenSSL if using 64-bit Windows
-- Use default installation settings
 
-During installation:
-- Select **"Copy OpenSSL DLLs to: The OpenSSL binaries (/bin) directory"**
+ - Win64 OpenSSL if using 64-bit Windows
+ - Use default installation settings
+
+During installation select **"Copy OpenSSL DLLs to: The OpenSSL binaries (/bin) directory"**
 
 ---
 
@@ -111,7 +112,7 @@ This creates:
 client-2048.csr
 ```
 
-**For anything regarding organization, simply enter '.' and it will be blank**
+For anything regarding organization, simply enter '.' and it will be blank
 
 ---
 
@@ -146,7 +147,7 @@ The `.csr` file is no longer needed after the certificate is created.
 In any text-editor, combine the text from the client-2048.key and client-2048.crt files into a new file.
 Save this file as 'client-2048.pem'
 
-**After saving, check that the file is client-2048.pem and NOT client-2048.pem.txt**
+After saving, check that the file is client-2048.pem and **NOT** client-2048.pem.txt
 
 ---
 
@@ -162,7 +163,7 @@ Upload the below file to **Automated Betting Program Access**
 client-2048.crt
 ```
 
-Do NOT upload the `.key` file.
+Do **NOT** upload the `.key` file.
 
 ---
 
@@ -204,3 +205,9 @@ C:\Users\Mitch\Documents\Betfair_Certs\
 - Certificates are required for non-interactive login
 - Keep your `.key` file private
 - Never share the private key publicly
+
+---
+
+## Further Support
+
+Australian customers can email us for support at automation@betfair.com.au

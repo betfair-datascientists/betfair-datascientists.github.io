@@ -979,6 +979,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#further-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further Support
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -3080,17 +3089,23 @@
 <h1 id="creating-betfair-api-certificates-with-openssl-on-windows">Creating Betfair API Certificates with OpenSSL on Windows</h1>
 <p>This guide walks through generating Betfair API certificates from scratch using OpenSSL on Windows.</p>
 <h2 id="why-use-certificates">Why use certificates?</h2>
-<p>The certificate proves:
-- The request is coming from a <strong>trusted registered client</strong>
-- The client owns the private key associated with the uploaded certificate</p>
-<p>When you upload a certificate to Betfair:
-- Betfair stores the public certificate
-- You keep the private key locally
-- Requests signed using that key can be validated by Betfair</p>
-<p>If someone steals:
-- your username/password → still not enough
-- your app key → still not enough
-- they ALSO need your private key → otherwise authentication fails</p>
+<p>The certificate proves:</p>
+<ul>
+<li>The request is coming from a <strong>trusted registered client</strong></li>
+<li>The client owns the private key associated with the uploaded certificate</li>
+</ul>
+<p>When you upload a certificate to Betfair:</p>
+<ul>
+<li>Betfair stores the public certificate</li>
+<li>You keep the private key locally</li>
+<li>Requests signed using that key can be validated by Betfair</li>
+</ul>
+<p>If someone steals:</p>
+<ul>
+<li>your username/password → still not enough</li>
+<li>your app key → still not enough</li>
+<li>they ALSO need your private key → otherwise authentication fails</li>
+</ul>
 <p>Think of authentication like this:</p>
 <table>
 <thead>
@@ -3117,13 +3132,13 @@
 <p>The certificate is the <strong>strongest binding factor</strong> between your code and your account.</p>
 <hr />
 <h2 id="1-install-openssl">1. Install OpenSSL</h2>
-<p>Download the Windows installer:</p>
-<p>https://slproweb.com/products/Win32OpenSSL.html</p>
-<p>Install:
-- Win64 OpenSSL if using 64-bit Windows
-- Use default installation settings</p>
-<p>During installation:
-- Select <strong>"Copy OpenSSL DLLs to: The OpenSSL binaries (/bin) directory"</strong></p>
+<p><a href="https://slproweb.com/products/Win32OpenSSL.html">Download the Windows installer</a></p>
+<p>Install:</p>
+<ul>
+<li>Win64 OpenSSL if using 64-bit Windows</li>
+<li>Use default installation settings</li>
+</ul>
+<p>During installation select <strong>"Copy OpenSSL DLLs to: The OpenSSL binaries (/bin) directory"</strong></p>
 <hr />
 <h2 id="2-create-a-working-directory-for-creating-certificates">2. Create a working directory for creating certificates</h2>
 <p>e.g. "C:\Users\Mitch\Documents\Betfair_Certs"</p>
@@ -3164,7 +3179,7 @@
 <p>This creates:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>client-2048.csr
 </code></pre></div>
-<p><strong>For anything regarding organization, simply enter '.' and it will be blank</strong></p>
+<p>For anything regarding organization, simply enter '.' and it will be blank</p>
 <hr />
 <h2 id="6-generate-self-signed-certificate">6. Generate Self-Signed Certificate</h2>
 <p>Run:</p>
@@ -3183,7 +3198,7 @@
 <h2 id="7-create-the-pem-file">7. Create the .pem file</h2>
 <p>In any text-editor, combine the text from the client-2048.key and client-2048.crt files into a new file.
 Save this file as 'client-2048.pem'</p>
-<p><strong>After saving, check that the file is client-2048.pem and NOT client-2048.pem.txt</strong></p>
+<p>After saving, check that the file is client-2048.pem and <strong>NOT</strong> client-2048.pem.txt</p>
 <hr />
 <h2 id="8-upload-certificate-to-betfair">8. Upload Certificate to Betfair</h2>
 <p>Login to Betfair.</p>
@@ -3191,7 +3206,7 @@ Save this file as 'client-2048.pem'</p>
 <p>Upload the below file to <strong>Automated Betting Program Access</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>client-2048.crt
 </code></pre></div>
-<p>Do NOT upload the <code>.key</code> file.</p>
+<p>Do <strong>NOT</strong> upload the <code>.key</code> file.</p>
 <hr />
 <h2 id="9-using-certificates-in-python-betfairlightweight">9. Using Certificates in Python (betfairlightweight)</h2>
 <p>Example:</p>
@@ -3222,6 +3237,9 @@ Save this file as 'client-2048.pem'</p>
 <li>Keep your <code>.key</code> file private</li>
 <li>Never share the private key publicly</li>
 </ul>
+<hr />
+<h2 id="further-support">Further Support</h2>
+<p>Australian customers can email us for support at automation@betfair.com.au</p>
 
 
 

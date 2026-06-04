@@ -188,7 +188,7 @@ for m in market_catalogues:
 
     race_time_local = (
         pd.to_datetime(m.market_start_time)
-        .tz_localize("UTC")
+        .tz_localize("UTC") # Remove this line for betfairlightweight versions 2.23 and above
         .tz_convert(local_tz)
     )
 
@@ -298,64 +298,64 @@ There are various error-handling steps included in the bet placement code below,
 
  - **BSP Bets (No Price Limit)**
     - **Lay**
-        bet_type = 'SP'
-        side = 'LAY'
-        liability = '30' (amount to lose)
+        - bet_type = 'SP'
+        - side = 'LAY'
+        - liability = '30' (amount to lose)
     - **Back Bets**
-        bet_type = 'SP'
-        side = 'BACK'
-        stake = '5.00' (amount to lose)
+        - bet_type = 'SP'
+        - side = 'BACK'
+        - stake = '5.00' (amount to lose)
  - **BSP Bets (Price Limit)**
      - **Lay Bets**
-        bet_type = 'SP'
-        side = 'LAY'
-        price = '10' (maximum lay price)
-        liability = '30' (amount to lose)
+        - bet_type = 'SP'
+        - side = 'LAY'
+        - price = '10' (maximum lay price)
+        - liability = '30' (amount to lose)
     - **Back Bets**
-        bet_type = 'SP'
-        side = 'BACK'
-        price = '3.20' (minimum back price)
-        stake = '5.00' (amount to lose)
+        - bet_type = 'SP'
+        - side = 'BACK'
+        - price = '3.20' (minimum back price)
+        - stake = '5.00' (amount to lose)
  - **Exchange Bets**
     - **Lapse Bets**
         - **Lay Bets**
-            bet_type = 'EX'
-            side = 'LAY'
-            price = '10'
-            persistence_type = 'LAPSE'
-            liability = '30' OR stake = '5.00'
+            - bet_type = 'EX'
+            - side = 'LAY'
+            - price = '10'
+            - persistence_type = 'LAPSE'
+            - liability = '30' OR stake = '5.00'
         - **Back Bets**
-            bet_type = 'EX'
-            side = 'BACK'
-            price = '3.20'
-            persistence_type = 'LAPSE'
-            liability = '30' OR stake = '5.00'
+            - bet_type = 'EX'
+            - side = 'BACK'
+            - price = '3.20'
+            - persistence_type = 'LAPSE'
+            - liability = '30' OR stake = '5.00'
     - **Keep Bets**
         - **Lay Bets**
-            bet_type = 'EX'
-            side = 'LAY'
-            price = '10'
-            persistence_type = 'PERSIST'
-            liability = '30' OR stake = '5.00'
+            - bet_type = 'EX'
+            - side = 'LAY'
+            - price = '10'
+            - persistence_type = 'PERSIST'
+            - liability = '30' OR stake = '5.00'
         - **Back Bets**
-            bet_type = 'EX'
-            side = 'BACK'
-            price = '3.20'
-            persistence_type = 'PERSIST'
-            liability = '30' OR stake = '5.00'
+            - bet_type = 'EX'
+            - side = 'BACK'
+            - price = '3.20'
+            - persistence_type = 'PERSIST'
+            - liability = '30' OR stake = '5.00'
     - **Take BSP Bets**
         - **Lay Bets**
-            bet_type = 'EX'
-            side = 'LAY'
-            price = '10'
-            persistence_type = 'MARKET_ON_CLOSE'
-            liability = '30' OR stake = '5.00'
+            - bet_type = 'EX'
+            - side = 'LAY'
+            - price = '10'
+            - persistence_type = 'MARKET_ON_CLOSE'
+            - liability = '30' OR stake = '5.00'
         - **Back Bets**
-            bet_type = 'EX'
-            side = 'BACK'
-            price = '3.20'
-            persistence_type = 'MARKET_ON_CLOSE'
-            liability = '30' OR stake = '5.00'
+            - bet_type = 'EX'
+            - side = 'BACK'
+            - price = '3.20'
+            - persistence_type = 'MARKET_ON_CLOSE'
+            - liability = '30' OR stake = '5.00'
 
 You will need to ensure that the values inserted in the cells match the acceptable values as outlined here:
 
@@ -408,6 +408,9 @@ def bet_checker(
     # -------------------------
     if not bsp_enabled and persistence_type == 'MARKET_ON_CLOSE':
         return False, 'Invalid Persistence Type - BSP not enabled'
+
+    if not bsp_enabled and bet_type == 'SP':
+        return False, 'Invalid Bet Type - BSP not enabled - EX bets only'
 
     if not turn_in_play and persistence_type == 'PERSIST':
         return False, 'Invalid Persistence Type - Market does not go in play'

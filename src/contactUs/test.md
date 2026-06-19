@@ -29,6 +29,4 @@ Automation Queries: automation@betfair.com.au
 
 Datathon Queries: datathon@betfair.com.au
 
-API Queries: api@betfair.com.au
-
 Commercial Enquiries: bdp@betfair.com.au

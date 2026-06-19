@@ -17,10 +17,6 @@ Betfair's API can be easily traversed in R. It allows you to retrieve market inf
 
 ---
 
-## New Zealand customers
-**All requests to Betfair sites from IP addresses located in New Zealand must now call endpoints ending in '.com.au'** (requests to '.com' endpoints will be blocked).
-
-
 ### Required Packages
 
 Two R packages are required:

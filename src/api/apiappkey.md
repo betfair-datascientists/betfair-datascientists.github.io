@@ -13,7 +13,7 @@ There are four steps involved in getting access to our API
 
 !!! info "API access"
     Customers are able to access our API to embed it into their programs and automate their strategies
-    Please [reach out](mailto:automation@betfair.com.au) if you're an Australian or New Zealand based customer and are keen for support.
+    Please [reach out](mailto:automation@betfair.com.au) if you're an Australian based customer and are keen for support.
 ---
 
 ### Find your SSOID token

@@ -28,7 +28,7 @@ hide:
         <br>
         <br>
         <div class="text-container">
-            <a target="_blank" href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia or New Zealand?</a>
+            <a target="_blank" href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia?</a>
         </div>
     </div>
 </div>
@@ -50,7 +50,7 @@ hide:
         <br>
         <br>
         <div class="text-container"  style="width:100%">
-            <a target="_blank" href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia or New Zealand?</a>
+            <a target="_blank" href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia?</a>
         </div>
     </div>
 </div>
@@ -68,7 +68,7 @@ hide:
         <br>
         <br>
         <div class="text-container"  style="width:100%">
-            <a target="_blank" href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia or New Zealand?</a>
+            <a target="_blank" href="https://developer.betfair.com/get-started/#exchange-api/" class="white-text-link">Not in Australia?</a>
         </div>
     </div>
 </div>
@@ -348,7 +348,7 @@ hide:
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
             <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Historic Pricing Data</h2>
             <br>
-            <p style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. Australian and New Zealand customers can reach out directly for access to our curated database.</p>
+            <p style="color: white !important;font-family:DIN_Regular;font-size:1rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. Australian customers can reach out directly for access to our curated database.</p>
             <div class="button-container">
             <a target="_blank" href="https://betfair-datascientists.github.io/data/dataListing/" class="btn btn-hd" style="font-size: 0.9rem;padding: 5px 10px;width: auto;margin-top: 10px;height: 35px;">Learn More</a>
             </div>
@@ -398,7 +398,7 @@ hide:
         </div>
         <div class="grid-item carousel-item" style="background-image: url('/img/carousel_background.png'); background-size: cover;">
             <h2 style="color: white !important;text-transform:uppercase;font-family:National2;line-height: 1">Historic Pricing Data</h2>
-            <p style="color: white !important;font-family:DIN_Regular;font-size:0.7rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. Australian and New Zealand customers can reach out directly for access to our curated database.</p>
+            <p style="color: white !important;font-family:DIN_Regular;font-size:0.7rem;line-height: 1">We know that automated strategies are only as good as your data. There’s a huge variety of historic pricing data available for almost any race or sport. Australian customers can reach out directly for access to our curated database.</p>
             <div class="button-container">
             <a target="_blank" href="https://betfair-datascientists.github.io/historicData/dataSources/" class="btn btn-hd" style="font-size: 0.9rem;padding: 5px 10px;width: auto;margin: 10px;height: 35px;">Learn More</a>
             </div>
@@ -464,7 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <div style="background-color: black; color: #ffb80c; font-family: DIN_Regular; font-size: 10px; display: flex; justify-content: flex-end; align-items: center; padding: 0;width: 100%; border-radius: 0 0 10px 10px;">
     <div class="grid-container-left" style="flex: 1; font-size: 10px; line-height: 1.5;">
         <br>
-        <p style="text-align: center; font-size: 1rem; font-family: DIN_Regular; line-height: 1;">For one-on-one support, AUS and NZ customers can contact us</p>
+        <p style="text-align: center; font-size: 1rem; font-family: DIN_Regular; line-height: 1;">For one-on-one support, Australian customers can contact us</p>
         <a target="_blank" href="mailto:automation@betfair.com.au" class="btn btn-api" style="margin: auto; color: black!important; font-size: 0.9rem;">Contact us</a>   
         <a target="_blank" href="https://betfair-datascientists.github.io/api/apiappkey/" class="btn btn-api" style="margin: auto; color: black!important; font-size: 0.9rem;">Get Your API Key</a>
         <br>

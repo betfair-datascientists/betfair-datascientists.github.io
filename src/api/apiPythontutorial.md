@@ -9,9 +9,6 @@ This tutorial will assume that you have an API app key. If you don't, please fol
 
 This tutorial will also assume that you have a basic understanding of what an API is. For a summary in layman's terms, [read this article](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82).
 
-## New Zealand customers
-**All requests to Betfair sites from IP addresses located in New Zealand must now call endpoints ending in '.com.au'** (requests to '.com' endpoints will be blocked).
-
 ---
 ## Quick Links
 

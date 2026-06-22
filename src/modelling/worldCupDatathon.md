@@ -97,16 +97,54 @@ All submissions should be emailed to datathon@betfair.com.au
 The historic dataset will be provided by email with 2 business days of registering for the competition
 
 ---
-
-### Submission File
-
-Check Back Later
-
----
  
-## Leaderboard (Final)
+## Leaderboard
 
-Check Back Later
+| Model | Log Loss | Rank |
+|-----------------------------------------|------|------|
+|Cregh|56.564|1|
+|LogLobster|56.666|2|
+|LMac|56.828|3|
+|GoalSniper|58.027|4|
+|TerrySpanks|58.042|5|
+|Nightingale|58.558|6|
+|jnik|58.815|7|
+|AirRaider|59.044|8|
+|Shiverm3ginger|59.094|9|
+|IfISpeakIAmInBigTrouble|59.165|10|
+|PopovickingOff|59.348|11|
+|blend|59.381|12|
+|TeslaKnight3701|59.445|13|
+|WorldYup|59.541|14|
+|VARgorithm|59.643|15|
+|willingly|59.773|16|
+|Dandmm|59.785|17|
+|SokkahModlol|59.889|18|
+|TheLassoWay|60.025|19|
+|Amade|60.134|20|
+|camow7|60.265|21|
+|Jumbalumba|60.44|22|
+|footyprophet|60.608|23|
+|Garrincha|60.703|24|
+|FightAndWin|60.891|25|
+|Watptv|61.396|26|
+|Garbage1368|61.511|27|
+|Ca7618|61.863|28|
+|Connor|62.058|29|
+|assumethecrown|62.685|30|
+|ACoupleOfDimmies|62.804|31|
+|Tdot|62.805|32|
+|MyWorldCupModel|62.904|33|
+|Gisele|63.088|34|
+|JacksArmy|63.263|35|
+|smarm|63.537|36|
+|Swish|63.64|37|
+|tomket|63.893|38|
+|DrinkCard|63.902|39|
+|SnoopBall|64.509|40|
+|NetResults|64.883|41|
+|ThePuddictor|65.167|42|
+
 
 ---
 

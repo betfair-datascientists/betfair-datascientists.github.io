@@ -148,6 +148,7 @@ By downloading this data, you acknowledge and agree that:
  - [Betfair Hub Tipsters 2026-03](../assets/Hub_Tipster_Results_2026-03.csv)
  - [Betfair Hub Tipsters 2026-04](../assets/Hub_Tipster_Results_2026-04.csv)
  - [Betfair Hub Tipsters 2026-05](../assets/Hub_Tipster_Results_2026-05.csv)
+ - [Betfair Hub Tipsters 2026-06](../assets/Hub_Tipster_Results_2026-06.csv)
 
 ## Australian Sport
 

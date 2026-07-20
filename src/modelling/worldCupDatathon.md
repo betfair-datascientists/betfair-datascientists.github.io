@@ -98,52 +98,52 @@ The historic dataset will be provided by email with 2 business days of registeri
 
 ---
  
-## Leaderboard
+## Final Leaderboard
 
 | Model | Log Loss | Rank |
 |-----------------------------------------|------|------|
-|AirRaider|130.722|1|
-|Dandmm|131.47|2|
-|TerrySpanks|132.274|3|
-|GoalSniper|132.739|4|
-|IfISpeakIAmInBigTrouble|132.813|5|
-|SokkahModlol|133.434|6|
-|TeslaKnight3701|133.952|7|
-|willingly|134.778|8|
-|Garbage1368|134.997|9|
-|WorldYup|135.081|10|
-|PopovickingOff|135.483|11|
-|FightAndWin|135.575|12|
-|camow7|135.733|13|
-|Amade|135.879|14|
-|footyprophet|136.136|15|
-|Ca7618|137.284|16|
-|Nightingale|137.827|17|
-|Garrincha|137.846|18|
-|assumethecrown|138.63|19|
-|TheLassoWay|138.746|20|
-|ThePuddictor|139.011|21|
-|Shiverm3ginger|139.197|22|
-|LMac|139.246|23|
-|Watptv|139.949|24|
-|Cregh|140.236|25|
-|DrinkCard|140.463|26|
-|tomket|140.562|27|
-|Jumbalumba|140.772|28|
-|VARgorithm|141.331|29|
-|blend|142.123|30|
-|LogLobster|142.524|31|
-|NetResults|143.007|32|
-|Connor|143.6|33|
-|JacksArmy|143.908|34|
-|jnik|143.965|35|
-|Gisele|144.31|36|
-|smarm|144.335|37|
-|SnoopBall|144.831|38|
-|ACoupleOfDimmies|149.238|39|
-|Swish|149.782|40|
-|Tdot|150.259|41|
-|MyWorldCupModel|150.492|42|
+|AirRaider|136.23|1|
+|Dandmm|137.106|2|
+|TerrySpanks|137.873|3|
+|GoalSniper|138.153|4|
+|IfISpeakIAmInBigTrouble|138.354|5|
+|SokkahModlol|138.786|6|
+|TeslaKnight3701|139.407|7|
+|camow7|139.492|8|
+|WorldYup|139.882|9|
+|willingly|139.93|10|
+|Garbage1368|140.613|11|
+|PopovickingOff|140.791|12|
+|FightAndWin|140.965|13|
+|footyprophet|141.118|14|
+|Amade|141.241|15|
+|Ca7618|142.001|16|
+|Nightingale|142.862|17|
+|Garrincha|142.994|18|
+|assumethecrown|143.271|19|
+|TheLassoWay|144.299|20|
+|Cregh|144.433|21|
+|ThePuddictor|144.449|22|
+|LMac|144.652|23|
+|Shiverm3ginger|144.691|24|
+|DrinkCard|144.899|25|
+|Watptv|144.926|26|
+|tomket|145.223|27|
+|Jumbalumba|146.559|28|
+|VARgorithm|146.702|29|
+|LogLobster|146.925|30|
+|blend|146.941|31|
+|NetResults|147.707|32|
+|Gisele|148.179|33|
+|Connor|148.405|34|
+|JacksArmy|148.691|35|
+|jnik|148.886|36|
+|smarm|149.172|37|
+|SnoopBall|150.041|38|
+|ACoupleOfDimmies|154.274|39|
+|Tdot|154.664|40|
+|MyWorldCupModel|155.771|41|
+|Swish|156.245|42|
 
 ---
 

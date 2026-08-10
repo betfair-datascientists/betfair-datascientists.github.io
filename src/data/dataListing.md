@@ -190,6 +190,8 @@ By downloading this data, you acknowledge and agree that:
  - [AFLW 2024 Match Odds](../assets/AFLW_2024_Match_Odds.csv)
  - [AFLW 2025 All Markets](../assets/AFLW_2025_All_Markets.csv)
  - [AFLW 2025 Match Odds](../assets/AFLW_2025_Match_Odds.csv)
+ - [AFLW 2026 All Markets](../assets/AFLW_2026_All_Markets.csv)
+ - [AFLW 2026 Match Odds](../assets/AFLW_2026_Match_Odds.csv)
 
 ### NRL
 

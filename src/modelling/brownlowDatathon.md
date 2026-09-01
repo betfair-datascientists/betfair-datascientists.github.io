@@ -1,22 +1,22 @@
-# Betfair’s 2025 Brownlow Medal Datathon
+# Betfair’s 2026 Brownlow Medal Datathon
 
 ![Brownlow Datathon Banner](../img/BROWNLOW_MEDAL_DATATHON.png)
 
 ## Registration
 
-To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/VbxSUYXjsi)
+To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.cloud.microsoft/r/iHjKeNM5Vd)
 
 ## The Competition
 
-Think you’ve got what it takes to predict who wins the biggest individual prize in footy? Now’s your chance to showcase your data modeling skills in Betfair’s 2025 Brownlow Medal Datathon!
+Think you’ve got what it takes to predict who wins the biggest individual prize in footy? Now’s your chance to showcase your data modelling skills in Betfair’s 2026 Brownlow Medal Datathon!
 
 With **$5,000 in prizes** on offer, this is your opportunity to create a predictive model for the Brownlow Medal count on the Betfair Exchange. Whether you're a seasoned pro or new to player prop modelling, we encourage you to get creative—adapt your skills from other fields, improve an existing model, or start fresh!
 
-This year’s Brownlow Medal Datathon will concern only the count on the night, tentatively scheduled for Monday 22nd September 2025, and we challenge you to test your skills against others for both **prizes** and **ultimate bragging rights**.
+This year’s Brownlow Medal Datathon will concern only the count on the night, scheduled for Monday 21st September 2026, and we challenge you to test your skills against others for both **prizes** and **ultimate bragging rights**.
 
 - Only a final leaderboard will be posted here, follow along in the Discord server for updates during the count!
 - Join the conversation in the Quants Discord server (#datathon channel), where you can discuss models with fellow participants.
-- Don't forget to complete the [registration form](https://forms.office.com/r/ZG9ea1xQj1) to join the Discord Server.
+- [Join the Discord Server here](https://forms.office.com/r/ZG9ea1xQj1) 
 
 For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon@betfair.com.au).
 
@@ -24,7 +24,7 @@ For questions and submissions, contact [datathon@betfair.com.au](mailto:datathon
 
 ## The Specifics
 
-Review the full Terms and Conditions for the 2025 Brownlow Medal Datathon [here](../assets/Brownlow_Datathon_2025_TCs.pdf).
+Review the full Terms and Conditions for the 2026 Brownlow Medal Datathon [here](../assets/Brownlow_Datathon_2026_TCs.pdf).
 
 ### Prizes
 
@@ -48,8 +48,8 @@ Winners will be announced at the end of the competition, with prizes distributed
 
 ### Competition Rules
 
-The aim of this competition is to predict **how many votes** a player will receive from the umpires in every given match in the 2025 AFL season!
-With 23 players per team across 23 rounds, that's a total of **9522 predictions** across the season!
+The aim of this competition is to predict **how many votes** a player will receive from the umpires in every given match in the 2026 AFL season!
+With 23 players per team across 23 matches, that's a total of **9522 predictions** across the season!
 
 The individual match predictions must meet the following criteria:
 
@@ -57,17 +57,15 @@ The individual match predictions must meet the following criteria:
  - The total predictions across all 46 players in an individual match must equal exactly 6
  - Predictions are not required to be whole numbers, decimals are allowed
 
-Submissions are by due by 2:59pm AEST on the day of count (Monday 22nd September 2025)
+Submissions are by due by 2:59pm AEST on the day of count (Monday 21nd September 2026)
 
 ---
 
 ### Submission Process
 
-The submission template will be provided here no later than 8th September 2025
+The submission template will be provided here no later than 8th September 2026
 
 Entrants should not edit the template in any way except to add the predicted number of votes for each player.
-
-- [SUBMISSION FORM](../assets/Brownlow_Medal_Datathon_2025_Submission_Form.csv)
 
 ---
 
@@ -81,9 +79,7 @@ The score for each model will be the average RMSE for each individual prediction
 
 ### Historic Data
 
-Registrants will be provided with a historic dataset from the fitzRoy R package.
-
- - [DATASET](../assets/brownlow_datathon_dataset.zip)
+Check Back Later
 
 ## Leaderboard
 
@@ -119,7 +115,7 @@ Check Back Later
 
 ## Registration
 
-To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.office.com/r/VbxSUYXjsi)
+To enter the Competition, an Eligible Participant must register their details by filling out the [registration form](https://forms.cloud.microsoft/r/iHjKeNM5Vd)
 
 ---
 

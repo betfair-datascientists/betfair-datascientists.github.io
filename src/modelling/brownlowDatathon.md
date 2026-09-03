@@ -63,9 +63,9 @@ Submissions are by due by 2:59pm AEST on the day of count (Monday 21nd September
 
 ### Submission Process
 
-The submission template will be provided here no later than 8th September 2026
-
 Entrants should not edit the template in any way except to add the predicted number of votes for each player.
+
+ - [Download Submission File](../assets/Brownlow_Medal_Datathon_2026_Submission_Form_{Model_Name}.pdf)
 
 ---
 
@@ -79,7 +79,7 @@ The score for each model will be the average RMSE for each individual prediction
 
 ### Historic Data
 
-Check Back Later
+ - [Dataset 2015-2026](../assets/brownlow_datathon_dataset.csv)
 
 ## Leaderboard
 

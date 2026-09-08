@@ -64,8 +64,9 @@ Submissions are by due by 2:59pm AEST on the day of count (Monday 21nd September
 ### Submission Process
 
 Entrants should not edit the template in any way except to add the predicted number of votes for each player.
+Please ensure you are using the V2 version below.
 
- - [Download Submission File](../assets/Brownlow_Medal_Datathon_2026_Submission_Form_{Model_Name}.pdf)
+ - [Download Submission File](../assets/Brownlow_Medal_Datathon_2026_Submission_Form_V2_{Model_Name}.csv)
 
 ---
 

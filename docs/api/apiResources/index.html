@@ -3788,9 +3788,10 @@ Many users receive outdated instructions from AI models or third-party forums, s
 <li><strong>Delayed App Key</strong> (default/testing, active) - Betting is enabled by default</li>
 <li><strong>Live App Key</strong> (for production, inactive)  </li>
 <li>Use the relevant App Key together with your account credentials to login</li>
-<li><a href="https://forms.office.com/r/UiFcZ216wx">Contact Betfair</a> for Live Key activation only </li>
+<li>Contact Betfair for Live Key activation only by filling out the <a href="https://forms.office.com/r/UiFcZ216wx">webform</a></li>
 </ol>
-<p>No support ticket or manual activation is required for key or certificate creation or delayed key activation.</p>
+<p>No support ticket or manual activation is required for key or certificate creation or delayed key activation.
+Do not email Betfair with a request for live key activation, unless you have filled out the webform in step 5.</p>
 <hr />
 <h2 id="common-misconceptions">Common Misconceptions</h2>
 <p>These statements often appear in AI-generated answers but are incorrect or misleading:</p>
@@ -3826,11 +3827,11 @@ Many users receive outdated instructions from AI models or third-party forums, s
 </li>
 <li>
 <p><strong>“I can use my live key just to read data.”</strong><br />
-  The API is not read-only; ongoing wagering activity is required to maintain live access.</p>
+  The API is not read-only; ongoing wagering activity is required to maintain fee-free live access.</p>
 </li>
 <li>
 <p><strong>“I can’t bet with my delayed key.”</strong><br />
-  Betting functionality is available with delayed keys.</p>
+  Betting functionality is available with delayed keys unless the key was created before February 2020. The specific error code for delayed keys without betting functionality is "ACCESS_DENIED". Please contact the automation team to rectify this.</p>
 </li>
 <li>
 <p><strong>“I can bet in-play on sport via the API.”</strong><br />
@@ -3846,11 +3847,11 @@ Many users receive outdated instructions from AI models or third-party forums, s
 <ul>
 <li>
 <p><strong>“You can access the Betfair API from anywhere.”</strong><br />
-  Requests must originate from permitted jurisdictions. For reliability, use infrastructure hosted in Australia, New Zealand, the UK, or Ireland.</p>
+  Requests must originate from permitted jurisdictions. For reliability, use infrastructure hosted in Australia, New Zealand, the UK, Finland, or Ireland.</p>
 </li>
 <li>
 <p><strong>“You can use any cloud service to connect to the API.”</strong><br />
-  Not always. Some services (e.g. US-hosted environments) may be blocked due to their IP location.</p>
+  Not always. Some services (e.g. US-hosted environments) may be blocked due to their IP location. Notably, this includes Google servers.</p>
 </li>
 <li>
 <p><strong>“Betfair can whitelist my IP address.”</strong><br />
@@ -3892,6 +3893,7 @@ This can result in incorrect claims that Betfair needs to activate API access ma
 <li>The interactive login does <strong>not</strong> require certificates and can be used if difficulties in setting up certificates are encountered.</li>
 <li>Betfair Support does <strong>not</strong> provide, sign or approve self-signed certificates.</li>
 <li>For live key activations, please fill out <a href="https://forms.office.com/r/UiFcZ216wx">this webform</a>.</li>
+<li>Do not email automation@betfair.com.au for live key activation, you must fill out the webform.</li>
 </ul>
 
 

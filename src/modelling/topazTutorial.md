@@ -12,15 +12,16 @@ To be eligible for a Topaz API key, you must:
 
 - Have an **active Betfair Australia account**.
 - Have made **at least one deposit** into your account.
+- Have **already** wagered into at least 100 greyhound markets on Betfair
 - Intend to use the Topaz data for **wagering purposes**, such as developing or operating betting models.
 
-Due to the high volume of requests we receive, applications from accounts with betting history will be prioritised.
+Due to the high volume of requests we receive, applications from accounts with longer betting history will be prioritised.
 
 ### Access period
 
-Topaz API access is initially provided for **6 months** to support model development.
+Topaz API access is initially provided for **3 months** to support model development.
 
-To maintain access beyond this initial 6-month period, **ongoing wagering activity is required**. Topaz API access is therefore intended for customers who plan to use the data for wagering purposes.
+To maintain access beyond this initial 3-month period, **ongoing wagering activity is required**. Topaz API access is therefore intended for customers who plan to use the data for wagering purposes.
 
 If you require **read-only access to racing data and do not intend to use it for wagering**, please contact **Greyhound Racing Victoria (GRV)** directly.
 

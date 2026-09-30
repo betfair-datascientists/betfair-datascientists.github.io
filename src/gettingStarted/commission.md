@@ -10,9 +10,9 @@ But like any traditional bookmaker, there needs to be some way for Betfair to ma
 
 Betfair’s pricing model comes into the picture after the race has been won, when commission is taken from a customer’s net winnings. This is called a Market Base Rate. This rate is the maximum percentage of your winnings that you will pay in commission. To find out what the Market Base Rate is for a market, simply click on the “Rules” section of the Market you wish to place a bet on to find it. The percentage of commission will depend on what type of sport you are betting into, as well as which governing body is overseeing the sporting event. And that can vary from state to state, code to code. 
 
-Market Base Rates for Sport and International Racing Markets are currently 5%, except for NRL at 10%. 
+Market Base Rates for Sport and International Racing Markets are currently 6%, except for NRL at 10%. 
 
-On Australian thoroughbred, harness and greyhound racing, the Market Base Rate ranges from 7% – 10% depending on the state and racing code. Betfair is charged different fees to provide the betting exchange from state to state. These variable Market Base Rates are reflective of the fees each racing body charges Betfair. 
+On Australian thoroughbred, harness and greyhound racing, the Market Base Rate ranges from 8% – 10% depending on the state and racing code. Betfair is charged different fees to provide the betting exchange from state to state. These variable Market Base Rates are reflective of the fees each racing body charges Betfair. 
 
 Betfair Commission is automatically removed from your winnings when the market is settled. 
 
@@ -22,13 +22,13 @@ View this easy-to-read chart for a guide to MBR across racing and sport on the E
 
 ### Example
 
-For example, Victorian thoroughbred racing (i.e. the Melbourne Cup market) has a 7% Market Base Rate. 
+For example, Victorian thoroughbred racing (i.e. the Melbourne Cup market) has a 8% Market Base Rate. 
 
 You place a $50 BACK bet on Deauville Legend in the Melbourne Cup at odds of $4.00. If Deauville Legend wins, this means that your winnings are $150 ($200 return – $50 stake). 
 
-With the Market Base Rate at 7%, the commission you will pay is $150 x 7% = $10.50. 
+With the Market Base Rate at 8%, the commission you will pay is $150 x 8% = $12.00. 
 
-The commission is cumulative across a single market and is calculated only on the total profit for the market. If you also placed a $50 back bet on Smokin Romans at $15, but it lost, your total winnings on Deauville Legend would now be $100 on which your commission would be $7.00 
+The commission is cumulative across a single market and is calculated only on the total profit for the market. If you also placed a $50 back bet on Smokin Romans at $15, but it lost, your total winnings on Deauville Legend would now be $100 on which your commission would be $8.00 
 
 It's important to note that commission is charged per market not per event. We’ll talk about the difference between markets and events a bit later. This means if you were to place a bet in the Place market as well in the same race, any losses you incur there will not offset commission in the win market. 
 
@@ -128,4 +128,4 @@ More information and detailed calculations can be found here: https://support.be
 
 While ultimately we would prefer to not charge fees, it is necessary to pay the sporting and racing bodies to be able to offer markets on the exchange as well as to invest in our people and infrastructure to ensure a bright future for the exchange. 
 
-Australian and New Zealand customers are welcome to reach out to us to discuss fees and what we can do to help you at [automation@betfair.com.au](mailto:automation@betfair.com.au)
+Australian customers are welcome to reach out to us to discuss fees and what we can do to help you at [automation@betfair.com.au](mailto:automation@betfair.com.au)

@@ -246,6 +246,8 @@ By downloading this data, you acknowledge and agree that:
  - [A-League 2024-2025 Match Odds Markets](../assets/A-League_2024-2025_Match_Odds.csv)
  - [A-League 2025-2026 All Markets](../assets/A-League_2025-2026_All_Markets.csv)
  - [A-League 2025-2026 Match Odds Markets](../assets/A-League_2025-2026_Match_Odds.csv)
+ - [A-League 2026-2027 All Markets](../assets/A-League_2026-2027_All_Markets.csv)
+ - [A-League 2026-2027 Match Odds Markets](../assets/A-League_2026-2027_Match_Odds.csv)
 
 ### A-League Womens
 
@@ -261,6 +263,8 @@ By downloading this data, you acknowledge and agree that:
  - [A-League Womens 2024-2025 Match Odds Markets](../assets/A-League_Womens_2024-2025_Match_Odds.csv)
  - [A-League Womens 2025-2026 All Markets](../assets/A-League_Womens_2025-2026_All_Markets.csv)
  - [A-League Womens 2025-2026 Match Odds Markets](../assets/A-League_Womens_2025-2026_Match_Odds.csv)
+ - [A-League Womens 2026-2027 All Markets](../assets/A-League_Womens_2026-2027_All_Markets.csv)
+ - [A-League Womens 2026-2027 Match Odds Markets](../assets/A-League_Womens_2026-2027_Match_Odds.csv)
 
 ### BBL 
 

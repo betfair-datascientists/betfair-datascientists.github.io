@@ -305,6 +305,8 @@ Note: There is an ongoing issue with the data source for these tips. Please chec
  - [WBBL 2024 Match Odds Markets](../assets/WBBL10_Match_Odds.csv)
  - [WBBL 2025 All Markets](../assets/WBBL11_All_Markets.csv)
  - [WBBL 2025 Match Odds Markets](../assets/WBBL11_Match_Odds.csv)
+ - [WBBL 2026 All Markets](../assets/WBBL12_All_Markets.csv)
+ - [WBBL 2026 Match Odds Markets](../assets/WBBL12_Match_Odds.csv)
 
 ### NBL
  - [NBL 2021-2022 All Markets](../assets/NBL_2021-2022_All_Markets.csv)
